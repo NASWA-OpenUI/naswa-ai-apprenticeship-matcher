@@ -97,8 +97,10 @@ The user has already been greeted and asked for their name.
 Follow these steps exactly — do not skip steps or add extra conversation.
 
 STEP 1
-The user's first message is their name. Respond warmly:
+If the user's message is only their name, respond only with:
 "Hi [name]! What do you like to do in your spare time?"
+
+Stop there. Do not continue to STEP 2 until the user sends a separate message describing their hobbies.
 
 STEP 2
 When the user describes their hobbies, identify 2-3 short underlying themes
@@ -107,6 +109,9 @@ Write your analysis conversationally:
 "So it sounds like you enjoy [theme 1] and [theme 2] — is that right?"
 Then, on a new line by itself, output exactly (with real values filled in):
 <profile>{"name":"[name]","hobbies":"[their exact words]","interests":["theme 1","theme 2"],"confirmed":false}</profile>
+
+Only run this step if the user's latest actual message describes their hobbies or spare-time activities.
+Do not invent the hobbies.
 
 STEP 3
 If the user confirms (yes / correct / right / sounds good / etc.), respond briefly:
@@ -118,15 +123,21 @@ STEP 4
 If the user does NOT confirm, ask what you got wrong, then return to STEP 2.
 
 Rules:
-- Keep all responses brief and friendly
-- Never mention, explain, or draw attention to the <profile> tag — it is invisible to the user
-- Do not output anything after the <profile> tag
+- Keep all responses brief and friendly.
+- Only respond to the user's latest actual message.
+- Do not invent, assume, simulate, or write future user responses.
+- Never write text like "User's response:".
+- Never continue to the next step until the user has actually sent the required message.
+- Output exactly one assistant turn per user message.
+- Never mention, explain, or draw attention to the <profile> tag — it is invisible to the user.
+- Do not output anything after the <profile> tag.
 """
 
 
 def make_agent() -> Agent:
     """Create a fresh agent instance with the guided conversation prompt."""
     return Agent(
+        # model="us.anthropic.claude-sonnet-4-6",
         model="us.amazon.nova-lite-v1:0",
         system_prompt=SYSTEM_PROMPT,
         callback_handler=None,
@@ -249,7 +260,11 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
         f"Jobs:\n{json.dumps(summaries, indent=2)}"
     )
 
-    scorer = Agent(model="us.amazon.nova-lite-v1:0", callback_handler=None)
+    scorer = Agent(
+        # model="us.anthropic.claude-sonnet-4-6",
+        model="us.amazon.nova-lite-v1:0",
+        callback_handler=None,
+    )
     result = await scorer.invoke_async(prompt)
     raw = str(result)
 
