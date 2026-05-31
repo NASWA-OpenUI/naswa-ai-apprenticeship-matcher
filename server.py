@@ -271,6 +271,13 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+# ── AWS Healthcheck ───────────────────────────────────────────────────────────
+
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
