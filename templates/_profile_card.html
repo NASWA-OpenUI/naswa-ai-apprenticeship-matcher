@@ -1,0 +1,18 @@
+<div class="profile-card" role="region" aria-label="Your profile summary">
+  <h2>Your Profile</h2>
+  <dl>
+    <dt>Name</dt>      <dd>{{ profile.name }}</dd>
+    <dt>Interests</dt> <dd>{{ profile.interests | join(', ') }}</dd>
+  </dl>
+  <div class="btn-row">
+    <button
+      type="button"
+      class="restart-btn"
+      hx-post="/chat/reset"
+      hx-swap="none"
+    >
+      Start over
+    </button>
+    <a href="{{ ranked_url }}" class="jobs-btn">See relevant jobs →</a>
+  </div>
+</div>

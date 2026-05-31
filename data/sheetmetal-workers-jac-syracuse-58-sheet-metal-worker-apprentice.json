@@ -1,0 +1,58 @@
+{
+  "id": "sheetmetal-workers-jac-syracuse-58-sheet-metal-worker-apprentice",
+  "socCode": "",
+  "posting": {
+    "id": "sheetmetal-workers-jac-syracuse-58-sheet-metal-worker-apprentice",
+    "sourceUrl": "https://dol.ny.gov/news/sheetmetal-workers-jac-syracuse-58",
+    "sourceTitle": "Sheetmetal Workers JAC of Syracuse #58",
+    "jobTitle": "Sheet Metal Worker Apprentice",
+    "socCode": "",
+    "numberOfOpenings": 5,
+    "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Sheet Metal Workers, Local Union #58",
+    "unionName": "Sheet Metal Workers, Local Union #58",
+    "locationSummary": "Central, Mohawk Valley, North Country, and Southern Tier regions of New York",
+    "regions": [
+      "Central",
+      "Mohawk Valley",
+      "North Country",
+      "Southern Tier"
+    ],
+    "recruitmentStartDate": "2025-08-01",
+    "recruitmentEndDate": "2026-07-31",
+    "applicationStartDate": "2025-08-01",
+    "applicationEndDate": "2026-07-31",
+    "applicationMethods": [
+      "online_application"
+    ],
+    "applicationSummary": "Apply online at smw58.org. If you do not have a computer, you may use a local library or a New York State Department of Labor Career Center if open. Applications must be received by July 31, 2026.",
+    "applicationWebsite": "https://www.smw58.org",
+    "applicationEmail": null,
+    "applicationPhone": null,
+    "applicationInPersonAddress": null,
+    "applicationMailingAddress": null,
+    "applicationHours": null,
+    "applicationLimit": null,
+    "applicationLimitDetails": null,
+    "applicationFee": null,
+    "applicationFeeDetails": null,
+    "ageRequirement": "Must be at least 18 years old.",
+    "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as GED or TASC, including at least one year of Algebra, Math I, or high school Regents Math.",
+    "residencyRequirement": null,
+    "transportationRequirement": null,
+    "drugTestRequirement": null,
+    "classRequirement": null,
+    "allRequirements": [
+      "Must be at least 18 years old.",
+      "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), including at least one year of Algebra, Math I, or high school Regents Math.",
+      "Must attest in writing that they are physically able to perform the work of a Sheet Metal Worker, which may include working from ladders and heights, lifting heavy materials (up to 75 pounds), standing for long periods of time, working in confined spaces, working outdoors in all kinds of weather conditions, possible exposure to loud noises, and wearing respirators, hard hats, and safety glasses as required."
+    ],
+    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency with the required math coursework, and attest they can perform the physical demands of the job.",
+    "contactName": "Sheet Metal Workers, Local Union #58",
+    "contactPhone": "(315) 472-4411",
+    "contactEmail": null,
+    "contactWebsite": null,
+    "contactSummary": "For further information, contact Sheet Metal Workers, Local Union #58 at (315) 472-4411."
+  },
+  "oes": null,
+  "onet": null
+}

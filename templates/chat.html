@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strands Chat Assistant</title>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmx-ext-sse@2.2.4" integrity="sha384-A986SAtodyH8eg8x8irJnYUk7i9inVQqYigD6qZ9evobksGNIXfeFvDwLSHcp31N" crossorigin="anonymous"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      background: #f0f2f5;
+      color: #1a1a1a;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1a1a2e;
+      color: #ffffff;
+      padding: 0.875rem 1.5rem;
+      flex-shrink: 0;
+    }
+
+    header h1 { margin: 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.01em; }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 1rem 1rem 0;
+      min-height: 0;
+    }
+
+    .messages-area {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 0.5rem;
+      scroll-behavior: smooth;
+    }
+
+    #chat-log {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .message { display: flex; flex-direction: column; gap: 0.2rem; max-width: 78%; }
+    .message--user     { align-self: flex-end;   align-items: flex-end; }
+    .message--assistant { align-self: flex-start; align-items: flex-start; }
+
+    .message-role {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+    }
+
+    .message-content {
+      margin: 0;
+      padding: 0.65rem 0.9rem;
+      border-radius: 1rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .message--user .message-content {
+      background: #0055b3;
+      color: #ffffff;
+      border-bottom-right-radius: 0.2rem;
+    }
+
+    .message--assistant .message-content {
+      background: #ffffff;
+      border: 1px solid #d8dde3;
+      border-bottom-left-radius: 0.2rem;
+      color: #1a1a1a;
+    }
+
+    #streaming-bubble {
+      align-self: flex-start;
+      max-width: 78%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-top: 0.875rem;
+    }
+
+    #streaming-bubble .message-role {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+    }
+
+    #streaming-text {
+      margin: 0;
+      padding: 0.65rem 0.9rem;
+      background: #ffffff;
+      border: 1px solid #d8dde3;
+      border-radius: 1rem;
+      border-bottom-left-radius: 0.2rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    #streaming-text::after {
+      content: "▋";
+      display: inline-block;
+      animation: blink 0.9s step-end infinite;
+      margin-left: 1px;
+      color: #888;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    .profile-card {
+      margin: 1rem 0 0;
+      padding: 1.25rem 1.5rem;
+      background: #eef4ff;
+      border: 1px solid #b3d0ff;
+      border-radius: 0.75rem;
+    }
+
+    .profile-card h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #1a1a2e;
+    }
+
+    .profile-card dl {
+      margin: 0 0 1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+      align-items: baseline;
+    }
+
+    .profile-card dt { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #555; }
+    .profile-card dd { margin: 0; }
+
+    .btn-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .restart-btn {
+      padding: 0.45rem 1rem;
+      background: transparent;
+      color: #0055b3;
+      border: 1.5px solid #0055b3;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .restart-btn:hover { background: #0055b3; color: #fff; }
+    .restart-btn:focus-visible { outline: 3px solid #0055b3; outline-offset: 2px; }
+
+    .jobs-btn {
+      display: inline-block;
+      padding: 0.45rem 1rem;
+      background: #0055b3;
+      color: #fff;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .jobs-btn:hover { background: #003f8a; }
+    .jobs-btn:focus-visible { outline: 3px solid #0055b3; outline-offset: 2px; }
+
+    form {
+      flex-shrink: 0;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.75rem 0 1rem;
+      background: #f0f2f5;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border: 1px solid #c5cbd3;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #ffffff;
+      color: #1a1a1a;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    #user-input:focus {
+      outline: none;
+      border-color: #0055b3;
+      box-shadow: 0 0 0 3px rgba(0, 85, 179, 0.25);
+    }
+
+    #user-input:disabled { background: #eaeaea; cursor: not-allowed; }
+
+    #send-button {
+      padding: 0.65rem 1.25rem;
+      background: #0055b3;
+      color: #ffffff;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    #send-button:hover:not(:disabled) { background: #003f8a; }
+    #send-button:focus-visible { outline: 3px solid #0055b3; outline-offset: 2px; }
+    #send-button:disabled { opacity: 0.55; cursor: not-allowed; }
+  </style>
+</head>
+<body hx-ext="sse">
+
+  <header>
+    <h1>Strands Chat Assistant</h1>
+  </header>
+
+  <main id="main-content">
+
+    <div class="messages-area" id="messages-area" sse-connect="/chat/stream">
+
+      <!--
+        role="log" is the correct ARIA landmark for a chat transcript.
+        sse-swap="message" appends completed assistant messages here.
+      -->
+      <ol
+        id="chat-log"
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions"
+        aria-label="Chat history"
+        sse-swap="message"
+        hx-swap="beforeend"
+      >
+        <!-- Opening greeting pre-rendered server-side — no JS init call needed -->
+        <li class="message message--assistant">
+          <span class="message-role">Assistant</span>
+          <p class="message-content">Hi there! What's your name?</p>
+        </li>
+      </ol>
+
+      <!--
+        Streaming bubble: tokens arrive via sse-swap="token" and accumulate.
+        Cleared by JS when the message event fires.
+        aria-hidden — screen readers get the final committed message instead.
+      -->
+      <div id="streaming-bubble" aria-hidden="true" hidden>
+        <span class="message-role">Assistant</span>
+        <p id="streaming-text" sse-swap="token" hx-swap="beforeend"></p>
+      </div>
+
+      <!-- Profile card injected here when conversation is confirmed -->
+      <div id="profile-area" sse-swap="profile-confirmed" hx-swap="innerHTML">
+        {% if profile and profile.confirmed %}
+          {% set ranked_url = "/opportunities?" ~
+            "ranked=true" ~
+            "&interests=" ~ profile.interests | join("&interests=")
+          %}
+          {% include "_profile_card.html" %}
+        {% endif %}
+      </div>
+
+      <!-- Hidden: gives HTMX a sse-swap target for 'clear-stream' so the JS handler fires -->
+      <div id="stream-clear-target" sse-swap="clear-stream" hx-swap="innerHTML" aria-hidden="true" hidden></div>
+
+      <!-- Hidden: another hidden div which will get hydrated in the event of AWS Strands errors -->
+      <div
+        id="agent-error-target"
+        sse-swap="agent-error"
+        hx-swap="innerHTML"
+        aria-hidden="true"
+        hidden
+      ></div>
+
+    </div>
+
+    <div
+      id="chat-status"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      class="visually-hidden"
+    ></div>
+
+    {% if not (profile and profile.confirmed) %}
+      <form
+        id="chat-form"
+        aria-label="Send a message"
+        hx-post="/chat"
+        hx-target="#chat-log"
+        hx-swap="beforeend"
+        hx-on::after-request="this.reset()"
+      >
+        <label for="user-input" class="visually-hidden">Message</label>
+        <input
+          type="text"
+          id="user-input"
+          name="message"
+          autocomplete="off"
+          spellcheck="true"
+          placeholder="Type a message…"
+        >
+        <button type="submit" id="send-button">Send</button>
+      </form>
+    {% endif %}
+
+  </main>
+
+  <script>
+    const chatForm        = document.getElementById('chat-form');
+    const userInput       = document.getElementById('user-input');
+    const sendButton      = document.getElementById('send-button');
+    const streamingBubble = document.getElementById('streaming-bubble');
+    const streamingText   = document.getElementById('streaming-text');
+    const chatStatus      = document.getElementById('chat-status');
+    const messagesArea    = document.getElementById('messages-area');
+
+    let conversationComplete = false;
+
+    sessionStorage.removeItem('jobRankings');
+
+    function setInputLocked(locked) {
+      if (!userInput || !sendButton) return;
+
+      userInput.disabled = locked;
+      sendButton.disabled = locked;
+      sendButton.textContent = locked ? 'Sending…' : 'Send';
+    }
+
+    if (chatForm) {
+      chatForm.addEventListener('htmx:beforeRequest', function () {
+        setInputLocked(true);
+        chatStatus.textContent = 'Assistant is responding…';
+      });
+    }
+
+    document.body.addEventListener('htmx:sseMessage', function (e) {
+      const { type, data } = e.detail;
+
+      if (type === 'token') {
+        streamingBubble.hidden = false;
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+      }
+
+      if (type === 'clear-stream') {
+        streamingText.textContent = '';
+        streamingBubble.hidden = true;
+      }
+
+      if (type === 'message') {
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+
+        if (!conversationComplete) {
+          setInputLocked(false);
+          if (userInput) userInput.focus();
+        }
+
+        chatStatus.textContent = 'Response received.';
+      }
+
+      if (type === 'profile-confirmed') {
+        conversationComplete = true;
+
+        if (userInput && sendButton) {
+          userInput.disabled = true;
+          sendButton.disabled = true;
+          sendButton.textContent = 'Done';
+          userInput.placeholder = 'Conversation complete';
+        }
+
+        chatStatus.textContent = 'Conversation complete. Your profile summary is now shown.';
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+      }
+
+      if (type === 'error') {
+        streamingText.textContent = '';
+        streamingBubble.hidden = true;
+        setInputLocked(false);
+        chatStatus.textContent = data || 'Something went wrong.';
+      }
+
+      if (type === 'agent-error') {
+        streamingText.textContent = '';
+        streamingBubble.hidden = true;
+        setInputLocked(false);
+        chatStatus.textContent = data || 'Something went wrong.';
+      }
+    });
+  </script>
+
+</body>
+</html>
