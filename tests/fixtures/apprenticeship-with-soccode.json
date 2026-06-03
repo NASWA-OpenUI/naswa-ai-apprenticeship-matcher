@@ -1,0 +1,87 @@
+{
+  "id": "electrician-apprentice-fixture",
+  "socCode": "47-2111.00",
+  "posting": {
+    "id": "electrician-apprentice-fixture",
+    "sourceUrl": "https://example.com/electrician",
+    "sourceTitle": "Electricians JAC Fixture",
+    "jobTitle": "Electrician Apprentice",
+    "socCode": "47-2111.00",
+    "numberOfOpenings": 15,
+    "sponsorName": "Joint Apprenticeship and Training Committee for Electricians",
+    "unionName": "IBEW Local Fixture",
+    "locationSummary": "Binghamton, NY area",
+    "regions": [],
+    "recruitmentStartDate": "2026-08-01",
+    "recruitmentEndDate": "2027-07-31",
+    "applicationStartDate": "2026-08-01",
+    "applicationEndDate": "2027-07-31",
+    "applicationMethods": ["online_application"],
+    "applicationSummary": "Apply online during the recruitment period.",
+    "applicationWebsite": "https://example.com/apply",
+    "applicationEmail": null,
+    "applicationPhone": null,
+    "applicationInPersonAddress": null,
+    "applicationMailingAddress": null,
+    "applicationHours": null,
+    "applicationLimit": null,
+    "applicationLimitDetails": null,
+    "applicationFee": 22,
+    "applicationFeeDetails": "A testing fee is required.",
+    "ageRequirement": "Must be at least 18 years old.",
+    "educationRequirement": "Must have a high school diploma or equivalent.",
+    "residencyRequirement": null,
+    "transportationRequirement": "Must have reliable transportation.",
+    "drugTestRequirement": null,
+    "classRequirement": "Must be able to attend required classes.",
+    "allRequirements": [
+      "Must be at least 18 years old.",
+      "Must have a high school diploma or equivalent."
+    ],
+    "requirementsSummary": "Applicants must be at least 18 and meet education requirements.",
+    "contactName": "Local Union Fixture",
+    "contactPhone": "(555) 555-5555",
+    "contactEmail": null,
+    "contactWebsite": null,
+    "contactSummary": "Call Local Union Fixture for further information."
+  },
+  "oes": {
+    "areaType": "10",
+    "area": "000010",
+    "areaName": "Western New York",
+    "socCode": "47-2111",
+    "socTitle": "Electricians",
+    "socDescription": "Install, maintain, and repair electrical wiring, equipment, and fixtures.",
+    "employment": 2490,
+    "meanAnnualWage": 76826.74,
+    "medianAnnualWage": 79307.58,
+    "entryAnnualWage": 49249.29,
+    "experiencedAnnualWage": 90614.44
+  },
+  "onet": {
+    "socCode": "47-2111.00",
+    "onetSocCode": "47-2111.00",
+    "title": "Electricians",
+    "description": "Install, maintain, and repair electrical wiring, equipment, and fixtures.",
+    "detailed_work_activities": {
+      "data": {
+        "activity": [
+          {
+            "id": "fixture-activity-1",
+            "title": "Install electrical components, equipment, or systems."
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "data": {
+        "element": [
+          {
+            "id": "fixture-style-1",
+            "name": "Dependability"
+          }
+        ]
+      }
+    }
+  }
+}
