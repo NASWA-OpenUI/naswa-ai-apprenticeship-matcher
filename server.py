@@ -22,7 +22,28 @@ load_dotenv(BASE_DIR / ".env")
 
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
-logger = logging.getLogger(__name__)
+# ── Logging setup and filters ───────────────────────────────────────────────────
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+)
+
+logger = logging.getLogger("naswa")
+
+
+def _describe_exception(exc: Exception) -> str:
+    """Return a compact message for logs and local/demo UI errors."""
+    response = getattr(exc, "response", None)
+
+    if isinstance(response, dict):
+        error = response.get("Error", {})
+        code = error.get("Code", exc.__class__.__name__)
+        message = error.get("Message", str(exc))
+        return f"{code}: {message}"
+
+    return f"{exc.__class__.__name__}: {exc}"
+
 
 # ── Jinja2 filters ────────────────────────────────────────────────────────────
 
@@ -282,6 +303,7 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_db()
+    logger.info("Application started and opportunity data loaded")
     yield
 
 
@@ -342,6 +364,7 @@ async def chat(request: Request, message: str = Form(...)):
     session_id, session, needs_cookie = _get_or_create_session(request)
 
     await session.queue.put(message)
+    logger.info("Chat message queued")
 
     response = templates.TemplateResponse(
         request, "_message.html", {"role": "user", "content": message}
@@ -368,6 +391,8 @@ async def chat_stream(request: Request):
             prev_display_len = 0
 
             try:
+                logger.info("Chat agent started")
+
                 async for event in session.agent.stream_async(message):
                     if "data" not in event:
                         continue
@@ -377,13 +402,25 @@ async def chat_stream(request: Request):
                     if new_chunk:
                         yield {"event": "token", "data": new_chunk}
                         prev_display_len = len(display)
-            except Exception:
-                logger.exception("Agent stream failed while responding to chat message")
-                yield {
-                    "event": "agent-error",
-                    "data": "Sorry, something went wrong. Check the server logs.",
-                }
+
+            except Exception as exc:
+                error_message = _describe_exception(exc)
+                logger.exception("Chat agent failed: %s", error_message)
+
+                msg_html = render(
+                    "_message.html",
+                    role="assistant",
+                    content=(
+                        "Sorry, the AI service is not available right now.\n\n"
+                        f"Error: {error_message}"
+                    ),
+                )
+
+                yield {"event": "clear-stream", "data": ""}
+                yield {"event": "message", "data": msg_html}
                 continue
+
+            logger.info("Chat agent completed")
 
             profile = _extract_profile(full_text)
             final_text = _strip_profile(full_text)
@@ -461,8 +498,11 @@ async def rank_opportunities(
 
     if onet_jobs:
         try:
+            logger.info("Opportunity ranking started for %s jobs", len(onet_jobs))
             scores = await _score_jobs(interests, onet_jobs)
-        except Exception:
+            logger.info("Opportunity ranking completed")
+        except Exception as exc:
+            logger.exception("Opportunity ranking failed: %s", _describe_exception(exc))
             scores = []
     else:
         scores = []
