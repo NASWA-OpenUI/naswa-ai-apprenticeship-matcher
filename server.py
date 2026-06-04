@@ -159,8 +159,8 @@ Rules:
 def make_agent() -> Agent:
     """Create a fresh agent instance with the guided conversation prompt."""
     return Agent(
-        # model="us.anthropic.claude-sonnet-4-6",
-        model="us.amazon.nova-2-lite-v1:0",
+        model="us.anthropic.claude-sonnet-4-6",
+        # model="us.amazon.nova-2-lite-v1:0",
         system_prompt=SYSTEM_PROMPT,
         callback_handler=None,
     )
@@ -283,8 +283,8 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
     )
 
     scorer = Agent(
-        # model="us.anthropic.claude-sonnet-4-6",
-        model="us.amazon.nova-2-lite-v1:0",
+        model="us.anthropic.claude-sonnet-4-6",
+        # model="us.amazon.nova-2-lite-v1:0",
         callback_handler=None,
     )
     result = await scorer.invoke_async(prompt)
