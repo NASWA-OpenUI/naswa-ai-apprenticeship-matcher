@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="business">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Apprenticeship Matcher{% endblock %}</title>
+
+  {#
+    NYS Design System — full stylesheet (reset + tokens + typography + utilities).
+    Loaded from a CDN for now; pin the version. Verify this resolves (it should
+    return 200 and the bubbles/bands should pick up the teal Business theme).
+    When ready, vendor it into /static and point the link there instead.
+  #}
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@nysds/styles@1.18.3/dist/nysds-full.min.css">
+
+  <!-- App styles: our chrome, chat transcript, profile card, buttons -->
+  <link rel="stylesheet" href="/static/css/app.css">
+
+  <!-- HTMX core (pages add extensions, e.g. SSE, via head_extra) -->
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
+          integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+          crossorigin="anonymous"></script>
+
+  {% block head_extra %}{% endblock %}
+</head>
+
+{# data-theme is also set on <html> above so the band/header pick up the theme;
+   keeping it here too is harmless and explicit. #}
+<body data-theme="business">
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Gov utility strip (UNav-style; the official component is <nys-unavheader>) -->
+  <div class="gov-strip">
+    An official website of New York State&nbsp;&nbsp;·&nbsp;&nbsp;<strong>Here's how you know</strong>
+  </div>
+
+  <!-- Site header (light chrome; official component is <nys-globalheader>) -->
+  <header class="site-header">
+    <a class="ny-lockup" href="/">
+      <span class="wordmark">New York<br>State</span>
+    </a>
+    <span class="header-divider"></span>
+    <span class="app-name">{% block app_name %}Apprenticeship Matcher{% endblock %}</span>
+    <span class="app-tag">Beta</span>
+  </header>
+
+  <!-- Page title band. Pages set page_heading and (optionally) page_subhead,
+       or override the whole title_band block to remove it. -->
+  {% block title_band %}
+  <div class="title-band">
+    <div class="title-band-inner">
+      <h1 class="title-band-h">{% block page_heading %}Apprenticeship Matcher{% endblock %}</h1>
+      {% block page_subhead %}{% endblock %}
+    </div>
+  </div>
+  {% endblock %}
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Reverse footer (official component is <nys-globalfooter> / <nys-unavfooter>) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <nav class="footer-links" aria-label="Footer">
+          <a href="#">Accessibility</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

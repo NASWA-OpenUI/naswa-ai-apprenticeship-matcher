@@ -1,0 +1,500 @@
+/* ============================================================================
+   app.css — Apprenticeship Matcher
+   ----------------------------------------------------------------------------
+   Layered on top of the NYSDS "full" stylesheet (nysds-full.min.css), which
+   provides the reset, base typography, design tokens, and utility classes.
+   This file only contains styles for things the design system does NOT own:
+   our page chrome, the chat transcript, the profile card, and our buttons.
+
+   THEMING
+   - The themeable colors below use the NYSDS theme tokens directly
+     (--nys-color-theme, -faint, -weak, etc.). They respond automatically to
+     the data-theme="business" attribute set on <body> in base.html, which
+     maps the whole ramp to the Business/Labor teal (#084b52). Switch agencies
+     by changing that one attribute — no edits here.
+   - Each theme token also carries an inline fallback (the concept's teal
+     values) so the page still looks right if the stylesheet fails to load.
+
+   NON-THEME TOKENS
+   - The :root block below is a thin alias layer over the NYSDS neutral /
+     radius / shadow / spacing / font tokens, each with the concept's value as
+     a fallback. This keeps the rules readable and means a wrong CDN path or a
+     token-name mismatch degrades gracefully instead of breaking the layout.
+     Once you've confirmed the live names in the NYSDS token browser, you can
+     collapse each alias to the bare nys- token (or drop the fallback).
+   ========================================================================== */
+
+:root {
+  /* neutrals */
+  --app-ink: var(--nys-color-ink, #1b1b1b);
+  --app-text-weak: var(--nys-color-text-weak, #4a4f54);
+  --app-surface: var(--nys-color-surface, #ffffff);
+  --app-surface-muted: var(--nys-color-surface-muted, #f6f8f9);
+  --app-base: var(--nys-color-base, #d0d5d9);
+  --app-base-weak: var(--nys-color-base-weak, #e4e8ea);
+  --app-link: var(--nys-color-link, #004dd1);
+  --app-focus: var(--nys-color-focus, #004dd1);
+
+  /* reverse (dark footer) */
+  --app-surface-reverse: var(--nys-color-surface-reverse, #1b1b1b);
+  --app-text-reverse: var(--nys-color-text-reverse, #ffffff);
+  --app-link-reverse: var(--nys-color-link-reverse, #9cc3ff);
+
+  /* radius */
+  --app-radius-sm: var(--nys-radius-sm, 2px);
+  --app-radius-md: var(--nys-radius-md, 6px);
+  --app-radius-lg: var(--nys-radius-lg, 12px);
+  --app-radius-pill: var(--nys-radius-pill, 999px);
+
+  /* elevation */
+  --app-shadow-sm: var(
+    --nys-shadow-sm,
+    0 1px 2px rgba(16, 24, 40, 0.06),
+    0 1px 3px rgba(16, 24, 40, 0.1)
+  );
+  --app-shadow-md: var(--nys-shadow-md, 0 4px 12px rgba(16, 24, 40, 0.1));
+
+  /* spacing (NYSDS scale; fallbacks match the concept) */
+  --app-space-50: var(--nys-space-50, 0.25rem);
+  --app-space-100: var(--nys-space-100, 0.5rem);
+  --app-space-150: var(--nys-space-150, 0.75rem);
+  --app-space-200: var(--nys-space-200, 1rem);
+  --app-space-300: var(--nys-space-300, 1.5rem);
+  --app-space-400: var(--nys-space-400, 2rem);
+  --app-space-600: var(--nys-space-600, 3rem);
+
+  /* type — body font with a system fallback stack (Proxima Nova ships
+     separately under NYS font licensing; see Typography in the docs) */
+  --app-font: var(
+    --nys-font-family-body,
+    var(
+      --nys-font-family-sans,
+      "Proxima Nova",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif
+    )
+  );
+}
+
+/* ── Page shell ──────────────────────────────────────────────────────────── */
+body {
+  margin: 0;
+  font-family: var(--app-font);
+  color: var(--app-ink);
+  background: var(--app-surface-muted);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+a {
+  color: var(--app-link);
+}
+
+:focus-visible {
+  outline: 3px solid var(--app-focus);
+  outline-offset: 2px;
+  border-radius: var(--app-radius-sm);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link — NYSDS-style accessibility affordance */
+.skip-link {
+  position: absolute;
+  left: var(--app-space-100);
+  top: -3rem;
+  z-index: 10;
+  background: var(--app-surface);
+  color: var(--app-link);
+  padding: var(--app-space-100) var(--app-space-200);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-md);
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: var(--app-space-100);
+}
+
+/* ── Gov utility strip (UNav-style) ──────────────────────────────────────── */
+.gov-strip {
+  background: #eef0f2;
+  color: #2c3137;
+  font-size: 0.72rem;
+  padding: 0.3rem 1.25rem;
+  border-bottom: 1px solid #dfe3e6;
+}
+.gov-strip strong {
+  font-weight: 600;
+}
+
+/* ── Site header (light chrome) ──────────────────────────────────────────── */
+.site-header {
+  background: var(--app-surface);
+  border-bottom: 1px solid var(--app-base);
+  padding: 0.7rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+.ny-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--app-ink);
+}
+
+.ny-lockup .wordmark {
+  font-weight: 800;
+  font-size: 0.78rem;
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.header-divider {
+  width: 1px;
+  height: 26px;
+  background: var(--app-base);
+}
+.app-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.app-tag {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nys-color-theme, #084b52);
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--app-radius-pill);
+}
+
+/* ── Page title band ─────────────────────────────────────────────────────── */
+.title-band {
+  background: var(--nys-color-theme, #084b52);
+  color: #fff;
+  padding: 1.1rem 1.25rem;
+}
+.title-band-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.title-band-h {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.title-band-sub {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+}
+
+/* ── Main column ─────────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* ── Chat transcript ─────────────────────────────────────────────────────── */
+.chat-stream {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+#chat-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-200);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-50);
+  max-width: 80%;
+  scroll-margin-bottom: 6rem; /* clears the sticky composer when scrolled into view */
+}
+.message--user {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.message--assistant {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.message-role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--app-text-weak);
+}
+.message-content {
+  margin: 0;
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--app-radius-lg);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.message--assistant .message-content {
+  background: var(--app-surface);
+  border: 1px solid var(--app-base);
+  border-bottom-left-radius: var(--app-radius-sm);
+  box-shadow: var(--app-shadow-sm);
+}
+.message--user .message-content {
+  background: var(--nys-color-theme, #084b52);
+  color: #fff;
+  border-bottom-right-radius: var(--app-radius-sm);
+}
+
+/* streaming bubble */
+#streaming-bubble {
+  align-self: flex-start;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-50);
+  margin-top: var(--app-space-200);
+  scroll-margin-bottom: 6rem;
+}
+#streaming-bubble .message-role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--app-text-weak);
+}
+#streaming-text {
+  margin: 0;
+  padding: 0.7rem 0.95rem;
+  background: var(--app-surface);
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-lg);
+  border-bottom-left-radius: var(--app-radius-sm);
+  box-shadow: var(--app-shadow-sm);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#streaming-text::after {
+  content: "▋";
+  margin-left: 1px;
+  color: var(--nys-color-theme-mid, #3f8186);
+  animation: blink 0.9s step-end infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── Profile summary card ────────────────────────────────────────────────── */
+.profile-card {
+  margin: var(--app-space-300) 0 0;
+  background: var(--app-surface);
+  border: 1px solid var(--app-base);
+  border-left: 4px solid var(--nys-color-theme, #084b52);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-sm);
+  overflow: hidden;
+}
+.profile-card-head {
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border-bottom: 1px solid var(--nys-color-theme-weaker, #d7e8e9);
+  padding: 0.7rem 1.25rem;
+}
+.profile-card-head h2 {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nys-color-theme-stronger, #042a2e);
+}
+.profile-card-body {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+.profile-card dl {
+  margin: 0 0 1.1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem 1.25rem;
+  align-items: baseline;
+}
+.profile-card dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-text-weak);
+}
+.profile-card dd {
+  margin: 0;
+  font-size: 0.97rem;
+}
+.interest-chip {
+  display: inline-block;
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  color: var(--nys-color-theme-stronger, #042a2e);
+  font-size: 0.83rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: var(--app-radius-pill);
+  margin: 0 0.25rem 0.3rem 0;
+}
+.btn-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* ── Buttons (app-owned; styled with theme tokens) ───────────────────────────
+   Named .btn rather than .nys-btn so we don't shadow any class the design
+   system itself may ship; the official equivalent is the <nys-button> web
+   component, which you can adopt later without touching these rules. */
+.btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--app-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 2px solid transparent;
+  transition:
+    background 0.12s,
+    border-color 0.12s,
+    color 0.12s;
+}
+.btn--filled {
+  background: var(--nys-color-theme, #084b52);
+  color: #fff;
+}
+.btn--filled:hover {
+  background: var(--nys-color-theme-strong, #06393f);
+}
+.btn--outline {
+  background: transparent;
+  color: var(--nys-color-theme, #084b52);
+  border-color: var(--nys-color-theme, #084b52);
+}
+.btn--outline:hover {
+  background: var(--nys-color-theme-faint, #eef5f5);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ── Composer ────────────────────────────────────────────────────────────── */
+.composer-wrap {
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    var(--app-surface-muted) 70%,
+    transparent
+  );
+  padding: 0.9rem 0 1rem;
+  margin-top: var(--app-space-100);
+}
+#chat-form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+#user-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+  color: var(--app-ink);
+}
+#user-input:disabled {
+  background: var(--app-base-weak);
+  color: var(--app-text-weak);
+}
+#user-input:focus-visible {
+  border-color: var(--nys-color-theme, #084b52);
+  outline-offset: 0;
+}
+.composer-note {
+  font-size: 0.74rem;
+  color: var(--app-text-weak);
+  margin: 0.5rem 0 0;
+  text-align: center;
+}
+
+/* ── Footer (reverse) ────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--app-surface-reverse);
+  color: var(--app-text-reverse);
+  margin-top: 2.5rem;
+  padding: 1.6rem 1.25rem 1.4rem;
+}
+.footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  margin-left: auto;
+}
+.footer-links a {
+  color: var(--app-link-reverse);
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
