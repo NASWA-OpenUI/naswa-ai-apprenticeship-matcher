@@ -84,11 +84,18 @@
 {% endif %}
 
 <script>
-  // Cache rankings so opportunity detail pages can show match explanations
+  // Cache rankings so opportunity detail pages can show match explanations.
+  sessionStorage.setItem('lastOpportunitiesMode', 'ranked');
+  sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);
+
   sessionStorage.setItem('jobRankings', JSON.stringify({
     ranked: [
       {% for item in ranked %}
-      { id: {{ item.id | tojson }}, tier: {{ item.tier | tojson }}, explanation: {{ item.explanation | tojson }} }{% if not loop.last %},{% endif %}
+      {
+        id: {{ item.id | tojson }},
+        tier: {{ item.tier | tojson }},
+        explanation: {{ item.explanation | tojson }}
+      }{% if not loop.last %},{% endif %}
       {% endfor %}
     ]
   }));

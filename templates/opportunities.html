@@ -83,3 +83,13 @@
     {% endif %}
   </div>
 {% endblock %}
+
+{% block scripts %}
+  {% if not ranked|default(false) %}
+  <script>
+    sessionStorage.setItem('lastOpportunitiesMode', 'unranked');
+    sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);
+    sessionStorage.removeItem('jobRankings');
+  </script>
+  {% endif %}
+{% endblock %}

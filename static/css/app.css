@@ -805,7 +805,7 @@ main {
 }
 
 .match-card__inner {
-  border-radius: var(--app-radius-md);
+  border-radius: calc(var(--app-radius-md) - 1px);
   background: var(--app-surface);
   border-left: 4px solid var(--app-base);
   padding: 1rem 1.15rem;
@@ -880,8 +880,8 @@ main {
 }
 
 .match-card__why {
-  background: var(--app-surface-muted);
-  border: 1px solid var(--app-base-weak);
+  background: var(--nys-color-black-transparent-50);
+  border: 1px solid var(--nys-color-black-transparent-100);
   border-radius: var(--app-radius-md);
   padding: 0.6rem 0.75rem;
 }
@@ -941,5 +941,351 @@ main {
 
   .match-card__why {
     padding: 0.6rem;
+  }
+}
+
+/* ── Opportunity detail service page ────────────────────────────────────────
+   Appended after the opportunities/ranked styles in app.css.
+   The template extends base.html and replaces the generic title band with a
+   custom crumb + hero, then uses the shared base header/footer/container.
+   ------------------------------------------------------------------------- */
+
+/* The service-page design is white, while the chat/results pages use the
+   muted background. :has() lets us switch only the detail page without adding
+   a body-class block to base.html. */
+body:has(.opportunity-detail-page) {
+  background: var(--app-surface);
+}
+
+#main-content:has(.opportunity-detail-page) {
+  margin-top: 2rem;
+}
+
+.detail-crumb {
+  background: var(--app-surface);
+  padding: 0.85rem 0;
+  font-size: 0.9rem;
+}
+
+.detail-crumb a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-crumb a:hover {
+  text-decoration: underline;
+}
+
+.detail-hero {
+  background: var(--nys-color-theme, #084b52);
+  color: #fff;
+  padding: 1.75rem 0 2rem;
+}
+
+.detail-hero h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.detail-hero__org {
+  margin: 0.4rem 0 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.detail-hero__meta {
+  margin: 0.55rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+  font-size: 0.95rem;
+}
+
+.detail-hero__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.detail-hero__meta svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.opportunity-detail-page {
+  width: 100%;
+}
+
+.opportunity-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.on-this-page {
+  position: sticky;
+  top: 1rem;
+}
+
+.on-this-page p {
+  margin: 0 0 0.6rem;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-text-weak);
+}
+
+.on-this-page ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.on-this-page li a {
+  display: block;
+  padding: 0.4rem 0 0.4rem 0.85rem;
+  border-left: 2px solid var(--app-base-weak);
+  color: var(--app-ink);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.on-this-page li a:hover,
+.on-this-page li a:focus {
+  border-left-color: var(--nys-color-theme, #084b52);
+  color: var(--nys-color-theme, #084b52);
+}
+
+.on-this-page li a.active {
+  border-left-color: var(--nys-color-theme, #084b52);
+  color: var(--nys-color-theme-stronger, #042a2e);
+  font-weight: 700;
+}
+
+.detail-content {
+  max-width: 680px;
+}
+
+.detail-section {
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--app-base-weak);
+  scroll-margin-top: 30px;
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+.detail-section p {
+  margin: 0;
+  color: #333;
+}
+
+.detail-section__heading {
+  margin: 0 0 0.9rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--nys-color-theme, #084b52);
+}
+
+.detail-match {
+  border: 1px solid var(--nys-color-black-transparent-100);
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+}
+
+.detail-match__inner {
+  border-radius: calc(var(--app-radius-md) - 1px);
+  border-left: 4px solid var(--app-base);
+  padding: 1.1rem 1.25rem;
+  transition:
+    box-shadow 0.12s,
+    transform 0.12s;
+}
+
+.detail-match--strong .detail-match__inner {
+  border-left-color: var(--nys-color-success);
+}
+
+.detail-match--moderate .detail-match__inner {
+  border-left-color: var(--nys-color-yellow-600);
+}
+
+.detail-match--weak .detail-match__inner {
+  border-left-color: var(--nys-color-black-transparent-300);
+}
+
+.detail-match__body {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.detail-match__body p {
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+.detail-tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--app-radius-pill);
+}
+
+.detail-tier__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.detail-tier--strong {
+  background: var(--nys-color-success-weak, #e3f3e6);
+  color: var(--nys-color-success, #1e752e);
+}
+
+.detail-tier--moderate {
+  background: var(--nys-color-warning-weak, #fbf1cf);
+  color: var(--app-warning-dark, #7a5c00);
+}
+
+.detail-tier--weak {
+  background: var(--app-base-weak);
+  color: var(--app-text-weak);
+}
+
+.detail-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.detail-fact {
+  background: var(--app-surface-muted);
+  border: 1px solid var(--nys-color-black-transparent-100);
+  border-radius: var(--app-radius-md);
+  padding: 0.85rem 1rem;
+}
+
+.detail-fact dt {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-text-weak);
+}
+
+.detail-fact dd {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.detail-subheading {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--app-ink);
+}
+
+.detail-subheading:first-of-type {
+  margin-top: 0;
+}
+
+.detail-wage {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--nys-color-theme, #084b52);
+}
+
+.detail-wage-area {
+  font-size: 0.85rem;
+  color: var(--app-text-weak);
+}
+
+.detail-clean-list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.detail-clean-list li {
+  margin: 0.35rem 0;
+}
+
+.detail-clean-list li::marker {
+  color: var(--nys-color-theme, #084b52);
+}
+
+.detail-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin: 0.5rem 0 0;
+}
+
+.detail-contact-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-contact-item dt {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-text-weak);
+}
+
+.detail-contact-item dd {
+  margin: 0.2rem 0 0;
+  font-weight: 700;
+}
+
+.detail-contact-item dd a {
+  font-weight: 700;
+}
+
+@media (max-width: 820px) {
+  .opportunity-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .on-this-page {
+    display: none;
+  }
+
+  .detail-content {
+    max-width: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .detail-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-match__body {
+    flex-direction: column;
   }
 }
