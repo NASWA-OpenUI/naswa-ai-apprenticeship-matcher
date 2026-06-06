@@ -1,29 +1,55 @@
 <div class="interests-banner">
-  Matched to your interests:
-  {% for interest in interests %}<strong>{{ interest }}</strong>{% if not loop.last %}, {% endif %}{% endfor %}.
-  <a href="/">Change interests</a>
+  <span class="interests-banner__lead">Matched to your interests:</span>
+  {% for interest in interests %}
+    <span class="interests-banner__chip">{{ interest }}</span>
+  {% endfor %}
+  <a class="interests-banner__link" href="/">Change interests</a>
 </div>
 
 {% if ranked %}
-<h2 class="section-heading">{{ ranked|length }} matched opportunit{{ "y" if ranked|length == 1 else "ies" }}</h2>
-<div class="ranked-list">
-  {% for item in ranked %}
-  <div class="ranked-item">
-    <div class="ranked-item-title">
-      <span class="tier-tag tier-{{ item.tier | lower }}">{{ item.tier }}</span>
-      <a class="job-link" href="/opportunities/{{ item.id }}">{{ item.posting.jobTitle }}</a>
-    </div>
-    <div class="ranked-item-meta">{{ item.posting.sourceTitle }} · {{ item.posting.locationSummary }}</div>
-    {% if item.explanation %}
-    <div class="ranked-item-explanation">{{ item.explanation }}</div>
-    {% endif %}
+<h2 class="section-heading">Matched opportunities</h2>
+<div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
+  <div class="count">
+    <span>{{ ranked|length }}</span> opportunit{{ "y" if ranked|length == 1 else "ies" }}
   </div>
+  <div class="results-meta">Matches generated using AI</div>
+</div>
+
+<div class="match-list">
+  {% for item in ranked %}
+  {% set tier_class = item.tier | lower %}
+  <article class="match-card match-card--{{ tier_class }}">
+    <div class="match-card__inner">
+      <div class="match-card__top">
+        <span class="match-tier match-tier--{{ tier_class }}">
+          <span class="match-tier__dot" aria-hidden="true"></span>
+          {{ item.tier }}
+        </span>
+        <a class="job-link match-card__title" href="/opportunities/{{ item.id }}">
+          {{ item.posting.jobTitle }}
+        </a>
+      </div>
+
+      <div class="match-card__meta">
+        {{ item.posting.sourceTitle }}{% if item.posting.locationSummary %} · {{ item.posting.locationSummary }}{% endif %}
+      </div>
+
+      {% if item.explanation %}
+      <div class="match-card__why">
+        <p>
+          <span class="match-card__why-label">Why this matches you</span>
+          {{ item.explanation }}
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </article>
   {% endfor %}
 </div>
 {% endif %}
 
 {% if unranked %}
-<h2 class="section-heading">More Opportunities</h2>
+<h2 class="section-heading">More opportunities</h2>
 <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
   <div class="count">
     <span>{{ unranked|length }}</span> opportunit{{ "y" if unranked|length == 1 else "ies" }}
@@ -31,7 +57,7 @@
   <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
 </div>
 <div class="table-wrapper">
-  <table  aria-describedby="results-bar">
+  <table aria-describedby="results-bar">
     <thead>
       <tr>
         <th scope="col">Position / Organization</th>

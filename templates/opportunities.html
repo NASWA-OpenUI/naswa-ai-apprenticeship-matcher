@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Apprenticeship Opportunities{% endblock %}
+{% block title %}{% if ranked|default(false) %}Your apprenticeship matches{% else %}Apprenticeship Opportunities{% endif %}{% endblock %}
 
-{% block page_heading %}Apprenticeship opportunities{% endblock %}
+{% block page_heading %}{% if ranked|default(false) %}Your apprenticeship matches{% else %}Apprenticeship opportunities{% endif %}{% endblock %}
+
 {% block page_subhead %}
-  <p class="title-band-sub">Browse registered apprenticeships currently recruiting across New York State.</p>
+  {% if ranked|default(false) %}
+    <p class="title-band-sub">Ranked by how well each opportunity fits what you told us.</p>
+  {% else %}
+    <p class="title-band-sub">Browse registered apprenticeships currently recruiting across New York State.</p>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -32,12 +37,14 @@
       </div>
 
     {% else %}
+
       <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
         <div class="count">
           <span>{{ opportunities|length }}</span> opportunit{{ "y" if opportunities|length == 1 else "ies" }}
         </div>
         <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
       </div>
+
       {% if opportunities %}
         <div class="table-wrap">
           <table class="opportunities-table" aria-describedby="results-bar">

@@ -141,5 +141,6 @@ def test_rank_opportunities_route_uses_mocked_scores(client, monkeypatch):
     assert "Good match for hands-on troubleshooting work." in response.text
 
     # Non-O*NET opportunity still appears as unranked.
-    assert "More Opportunities" in response.text
+    print(response.text)
+    assert "More opportunities" in response.text
     assert "Sheet Metal Worker Apprentice" in response.text

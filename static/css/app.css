@@ -97,6 +97,16 @@ a {
   color: var(--app-link);
 }
 
+a[class^="btn"]:hover,
+a[class^="btn"]:focus {
+  color: currentColor;
+}
+
+a.btn--filled:hover,
+a.btn--filled:focus {
+  color: #fff;
+}
+
 :focus-visible {
   outline: 3px solid var(--app-focus);
   outline-offset: 2px;
@@ -601,7 +611,7 @@ main {
 
 .opportunities-table thead th,
 .opportunities-page .table-wrapper thead th {
-  background: var(--nys-color-theme, #084b52);
+  background: var(--nys-color-theme);
   color: #fff;
   font-weight: 700;
   font-size: 0.76rem;
@@ -636,7 +646,7 @@ main {
 
 .opportunities-table tbody tr:hover,
 .opportunities-page .table-wrapper tbody tr:hover {
-  background: var(--nys-color-theme-faint, #eef5f5);
+  background: var(--nys-color-theme-faint);
 }
 
 .opportunities-table td,
@@ -647,7 +657,7 @@ main {
 }
 
 .job-link {
-  color: var(--nys-color-theme, #084b52);
+  color: var(--nys-color-theme);
   font-weight: 700;
   text-decoration: none;
 }
@@ -694,8 +704,8 @@ main {
 
 /* Keep the existing ranked fragment presentable after moving styles out of opportunities.html. */
 .interests-banner {
-  background: var(--nys-color-theme-faint, #eef5f5);
-  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  background: var(--nys-color-theme-faint);
+  border: 1px solid var(--nys-color-theme);
   border-radius: var(--app-radius-md);
   padding: 0.75rem 1rem;
   margin-bottom: 1.25rem;
@@ -711,44 +721,6 @@ main {
   margin: 0 0 0.75rem;
 }
 
-.ranked-list {
-  background: var(--app-surface);
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-md);
-  box-shadow: var(--app-shadow-sm);
-  overflow: hidden;
-  margin-bottom: 2.5rem;
-}
-
-.ranked-item {
-  padding: 0.875rem 1rem;
-  border-bottom: 1px solid var(--app-base-weak);
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.ranked-item:last-child {
-  border-bottom: none;
-}
-
-.ranked-item-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ranked-item-meta,
-.ranked-item-explanation {
-  font-size: 0.85rem;
-  color: var(--app-text-weak);
-}
-
-.ranked-item-explanation {
-  font-style: italic;
-}
-
 .tier-tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -761,16 +733,213 @@ main {
 }
 
 .tier-strong {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--nys-color-success-weak);
+  color: var(--nys-color-success);
 }
 
 .tier-moderate {
-  background: #fef9c3;
-  color: #a16207;
+  background: var(--nys-color-warning-weak);
+  color: var(--app-warning-dark);
 }
 
 .tier-weak {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: var(--nys-color-link-reverse-strong);
+  color: var(--app-text-weak);
+}
+
+/* ── Ranked opportunity cards ───────────────────────────────────────────────
+   Add this after the existing opportunities CSS in app.css. These selectors are
+   intentionally match-* scoped so they do not accidentally restyle the match
+   section on opportunity detail pages, which still uses .tier-tag.
+   ------------------------------------------------------------------------- */
+
+.interests-banner {
+  background: var(--nys-color-theme-faint);
+  border: 1px solid var(--nys-color-theme-weaker);
+  border-radius: var(--app-radius-md);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--app-ink);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.interests-banner__lead {
+  font-weight: 700;
+  margin-right: 0.2rem;
+}
+
+.interests-banner__chip {
+  display: inline-block;
+  background: var(--app-surface);
+  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  color: var(--nys-color-theme-stronger, #042a2e);
+  font-size: 0.83rem;
+  padding: 0.08rem 0.55rem;
+  border-radius: var(--app-radius-pill);
+}
+
+.interests-banner__link {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.match-card {
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-sm);
+}
+
+.match-card:hover {
+  box-shadow: var(--app-shadow-md);
+}
+
+.match-card__inner {
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+  border-left: 4px solid var(--app-base);
+  padding: 1rem 1.15rem;
+  transition:
+    box-shadow 0.12s,
+    transform 0.12s;
+}
+
+.match-card--strong .match-card__inner {
+  border-left-color: var(--nys-color-success);
+}
+
+.match-card--moderate .match-card__inner {
+  border-left-color: var(--nys-color-yellow-600);
+}
+
+.match-card--weak .match-card__inner {
+  border-left-color: var(--nys-color-black-transparent-300);
+}
+
+.match-card__top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.15rem;
+}
+
+.match-card__title {
+  font-size: 1.08rem;
+}
+
+.match-card__meta {
+  font-size: 0.88rem;
+  color: var(--app-text-weak);
+  margin: 0.05rem 0 0.6rem;
+}
+
+.match-tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--app-radius-pill);
+  white-space: nowrap;
+}
+
+.match-tier__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.match-tier--strong {
+  background: var(--nys-color-success-weak);
+  color: var(--nys-color-success);
+}
+
+.match-tier--moderate {
+  background: var(--nys-color-warning-weak);
+  color: var(--app-warning-dark);
+}
+
+.match-tier--weak {
+  background: var(--nys-color-link-reverse-strong);
+  color: var(--app-text-weak);
+}
+
+.match-card__why {
+  background: var(--app-surface-muted);
+  border: 1px solid var(--app-base-weak);
+  border-radius: var(--app-radius-md);
+  padding: 0.6rem 0.75rem;
+}
+
+.match-card__why p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--app-ink);
+}
+
+.match-card__why-label {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nys-color-theme-stronger);
+}
+
+.more-wrap {
+  margin-top: 2.25rem;
+}
+
+.table-wrap--compact {
+  box-shadow: none;
+}
+
+.opportunities-table--compact {
+  min-width: 680px;
+}
+
+.opportunities-table--compact thead th {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.74rem;
+}
+
+.opportunities-table--compact td {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+.more-foot {
+  text-align: center;
+  margin: 1rem 0 0;
+}
+
+@media (max-width: 640px) {
+  .interests-banner__link {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .match-card__inner {
+    padding: 0.95rem 1rem;
+  }
+
+  .match-card__why {
+    padding: 0.6rem;
+  }
 }
