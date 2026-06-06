@@ -24,9 +24,14 @@
 
 {% if unranked %}
 <h2 class="section-heading">More Opportunities</h2>
+<div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
+  <div class="count">
+    <span>{{ unranked|length }}</span> opportunit{{ "y" if unranked|length == 1 else "ies" }}
+  </div>
+  <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
+</div>
 <div class="table-wrapper">
-  <table>
-    <caption>{{ unranked|length }} opportunit{{ "y" if unranked|length == 1 else "ies" }} listed</caption>
+  <table  aria-describedby="results-bar">
     <thead>
       <tr>
         <th scope="col">Position / Organization</th>

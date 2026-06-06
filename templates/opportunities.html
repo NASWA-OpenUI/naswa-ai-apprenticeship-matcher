@@ -1,136 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apprenticeship Opportunities</title>
-  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js" integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V" crossorigin="anonymous"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    [hidden] { display: none !important; }
+{% extends "base.html" %}
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 1rem;
-      line-height: 1.5;
-      background: #f0f2f5;
-      color: #1a1a1a;
-      min-height: 100dvh;
-    }
+{% block title %}Apprenticeship Opportunities{% endblock %}
 
-    header { background: #1a1a2e; color: #fff; padding: 0.875rem 1.5rem; }
-    header h1 { margin: 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.01em; }
+{% block page_heading %}Apprenticeship opportunities{% endblock %}
+{% block page_subhead %}
+  <p class="title-band-sub">Browse registered apprenticeships currently recruiting across New York State.</p>
+{% endblock %}
 
-    main { max-width: 1000px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-
-    #page-status { padding: 2rem; text-align: center; color: #555; }
-    #page-status.error { color: #b91c1c; }
-
-    .table-wrapper { overflow-x: auto; border-radius: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-
-    table { width: 100%; border-collapse: collapse; background: #fff; }
-
-    caption { text-align: left; font-size: 0.85rem; color: #555; padding: 0 0 0.5rem; }
-
-    thead th {
-      background: #1a1a2e;
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.75rem 1rem;
-      text-align: left;
-      white-space: nowrap;
-    }
-
-    th.num, td.num { text-align: right; }
-
-    tbody tr { border-bottom: 1px solid #e8eaed; transition: background 0.1s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: #f7f8fa; }
-
-    td { padding: 0.75rem 1rem; vertical-align: top; font-size: 0.95rem; }
-    td.location { color: #444; font-size: 0.9rem; }
-    td.date { white-space: nowrap; }
-
-    a.job-link { color: #0055b3; font-weight: 600; text-decoration: none; }
-    a.job-link.with-onet { font-style: italic; }
-    a.job-link:hover { text-decoration: underline; }
-    a.job-link:focus-visible { outline: 3px solid #0055b3; outline-offset: 2px; border-radius: 2px; }
-
-    .org-name { font-size: 0.85rem; color: #555; margin-top: 0.15rem; }
-
-    /* ── Interests banner ── */
-    .interests-banner {
-      background: #eef4ff;
-      border: 1px solid #b3d0ff;
-      border-radius: 0.5rem;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-      color: #333;
-    }
-
-    .interests-banner a { color: #0055b3; }
-    .interests-banner a:hover { text-decoration: underline; }
-
-    .section-heading {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #555;
-      margin: 0 0 0.75rem;
-    }
-
-    .tier-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      vertical-align: middle;
-    }
-
-    .tier-strong   { background: #dcfce7; color: #15803d; }
-    .tier-moderate { background: #fef9c3; color: #a16207; }
-    .tier-weak     { background: #f3f4f6; color: #6b7280; }
-
-    .ranked-list {
-      background: #fff;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-      overflow: hidden;
-      margin-bottom: 2.5rem;
-    }
-
-    .ranked-item {
-      padding: 0.875rem 1rem;
-      border-bottom: 1px solid #e8eaed;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .ranked-item:last-child { border-bottom: none; }
-
-    .ranked-item-title { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .ranked-item-meta { font-size: 0.85rem; color: #555; }
-    .ranked-item-explanation { font-size: 0.88rem; color: #444; font-style: italic; }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Apprenticeship Opportunities</h1>
-  </header>
-
-  <main id="main-content">
-
+{% block content %}
+  <div class="opportunities-page">
     {% if ranked %}
 
       <!--
@@ -154,38 +32,47 @@
       </div>
 
     {% else %}
-
-      <!-- Standard view: table rendered directly by Jinja2, no JS fetch needed -->
-      <div class="table-wrapper">
-        <table>
-          <caption>{{ opportunities|length }} opportunit{{ "y" if opportunities|length == 1 else "ies" }} listed</caption>
-          <thead>
-            <tr>
-              <th scope="col">Position / Organization</th>
-              <th scope="col">Location</th>
-              <th scope="col">Recruitment Closes</th>
-              <th scope="col" class="num">Openings</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for opp in opportunities %}
-            <tr>
-              <td>
-                <a class="job-link{% if opp.onet %} with-onet{% endif %}" href="/opportunities/{{ opp.id }}">{{ opp.posting.jobTitle }}</a>
-                <div class="org-name">{{ opp.posting.sourceTitle }}</div>
-              </td>
-              <td class="location">{{ opp.posting.locationSummary }}</td>
-              <td class="date">{{ opp.posting.recruitmentEndDate | format_date }}</td>
-              <td class="num">{{ opp.posting.numberOfOpenings or '—' }}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+      <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
+        <div class="count">
+          <span>{{ opportunities|length }}</span> opportunit{{ "y" if opportunities|length == 1 else "ies" }}
+        </div>
+        <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
       </div>
+      {% if opportunities %}
+        <div class="table-wrap">
+          <table class="opportunities-table" aria-describedby="results-bar">
+            <caption class="visually-hidden">
+              Apprenticeship opportunities
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Position / Organization</th>
+                <th scope="col">Location</th>
+                <th scope="col">Recruitment closes</th>
+                <th scope="col" class="num">Openings</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for opp in opportunities %}
+              <tr>
+                <td>
+                  <a class="job-link{% if opp.onet %} with-onet{% endif %}" href="/opportunities/{{ opp.id }}">
+                    {{ opp.posting.jobTitle }}
+                  </a>
+                  <div class="org">{{ opp.posting.sourceTitle }}</div>
+                </td>
+                <td class="location">{{ opp.posting.locationSummary or '—' }}</td>
+                <td class="date">{{ opp.posting.recruitmentEndDate | format_date }}</td>
+                <td class="num">{{ opp.posting.numberOfOpenings or '—' }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="empty-state">No apprenticeship opportunities are available right now.</p>
+      {% endif %}
 
     {% endif %}
-
-  </main>
-
-</body>
-</html>
+  </div>
+{% endblock %}

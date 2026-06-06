@@ -550,3 +550,227 @@ main {
   font-size: 0.85rem;
   text-decoration: underline;
 }
+
+/* ── Opportunities list and ranked results ───────────────────────────────── */
+.opportunities-page {
+  width: 100%;
+}
+
+.results-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--app-space-100);
+  flex-wrap: wrap;
+  margin-bottom: 0.9rem;
+}
+
+.results-bar .count {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--app-text-weak);
+}
+
+.results-bar .count span {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--app-ink);
+}
+
+.results-meta {
+  font-size: 0.85rem;
+  color: var(--app-text-weak);
+}
+
+.table-wrap,
+.opportunities-page .table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-sm);
+  background: var(--app-surface);
+}
+
+.opportunities-table,
+.opportunities-page .table-wrapper table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: var(--app-surface);
+}
+
+.opportunities-table thead th,
+.opportunities-page .table-wrapper thead th {
+  background: var(--nys-color-theme, #084b52);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+}
+
+.opportunities-table th.num,
+.opportunities-table td.num,
+.opportunities-page .table-wrapper th.num,
+.opportunities-page .table-wrapper td.num {
+  text-align: right;
+}
+
+.opportunities-table td.num,
+.opportunities-page .table-wrapper td.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.opportunities-table tbody tr,
+.opportunities-page .table-wrapper tbody tr {
+  border-top: 1px solid var(--app-base-weak);
+}
+
+.opportunities-table tbody tr:nth-child(even),
+.opportunities-page .table-wrapper tbody tr:nth-child(even) {
+  background: #fafcfc;
+}
+
+.opportunities-table tbody tr:hover,
+.opportunities-page .table-wrapper tbody tr:hover {
+  background: var(--nys-color-theme-faint, #eef5f5);
+}
+
+.opportunities-table td,
+.opportunities-page .table-wrapper td {
+  padding: 0.75rem 1rem;
+  vertical-align: top;
+  font-size: 0.94rem;
+}
+
+.job-link {
+  color: var(--nys-color-theme, #084b52);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.job-link:hover {
+  text-decoration: underline;
+}
+
+.org,
+.org-name {
+  font-size: 0.82rem;
+  color: var(--app-text-weak);
+  margin-top: 0.1rem;
+}
+
+.location,
+.opportunities-table td.location,
+.opportunities-page .table-wrapper td.location {
+  color: var(--app-text-weak);
+  font-size: 0.9rem;
+}
+
+.date,
+.opportunities-table td.date,
+.opportunities-page .table-wrapper td.date {
+  white-space: nowrap;
+}
+
+.empty-state,
+#page-status {
+  background: var(--app-surface);
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-sm);
+  padding: 2rem;
+  text-align: center;
+  color: var(--app-text-weak);
+  cursor: progress;
+}
+
+#page-status.error {
+  color: #b91c1c;
+}
+
+/* Keep the existing ranked fragment presentable after moving styles out of opportunities.html. */
+.interests-banner {
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  border-radius: var(--app-radius-md);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.section-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-text-weak);
+  margin: 0 0 0.75rem;
+}
+
+.ranked-list {
+  background: var(--app-surface);
+  border: 1px solid var(--app-base);
+  border-radius: var(--app-radius-md);
+  box-shadow: var(--app-shadow-sm);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.ranked-item {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--app-base-weak);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ranked-item:last-child {
+  border-bottom: none;
+}
+
+.ranked-item-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ranked-item-meta,
+.ranked-item-explanation {
+  font-size: 0.85rem;
+  color: var(--app-text-weak);
+}
+
+.ranked-item-explanation {
+  font-style: italic;
+}
+
+.tier-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--app-radius-pill);
+  vertical-align: middle;
+}
+
+.tier-strong {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.tier-moderate {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.tier-weak {
+  background: #f3f4f6;
+  color: #6b7280;
+}
