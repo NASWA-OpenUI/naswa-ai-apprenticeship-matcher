@@ -1,6 +1,7 @@
 import asyncio
 import json
 import logging
+import os
 import re
 import secrets
 import time
@@ -16,6 +17,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sse_starlette.sse import EventSourceResponse
 from strands import Agent
+from strands.models import BedrockModel
+
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -155,16 +158,68 @@ Rules:
 - Do not output anything after the <profile> tag.
 """
 
+REQUESTED_MAX_OUTPUT_TOKENS = 16_384
+
+
+@dataclass(frozen=True)
+class ModelConfig:
+    model_id: str
+    max_output_tokens: int
+    temperature: float = 0.0
+
+
+MODEL_CONFIGS = {
+    "sonnet-4.6": ModelConfig(
+        model_id="us.anthropic.claude-sonnet-4-6",
+        max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
+    ),
+    "nova-lite": ModelConfig(
+        model_id="us.amazon.nova-lite-v1:0",
+        # Nova Lite v1 max output is 10K, so don't send 16K here.
+        max_output_tokens=10_000,
+    ),
+    "nova-2-lite": ModelConfig(
+        model_id="us.amazon.nova-2-lite-v1:0",
+        max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
+    ),
+}
+
+
+# change model name here
+CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "sonnet-4.6")
+SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", CHAT_MODEL_NAME)
+
+
+def make_bedrock_model(
+    model_name: str,
+    *,
+    streaming: bool = True,
+    temperature: float | None = None,
+) -> BedrockModel:
+    """Create a configured Bedrock model for Strands.
+
+    Supported model_name values:
+    - sonnet-4.6
+    - nova-lite
+    - nova-2-lite
+    """
+    config = MODEL_CONFIGS[model_name]
+
+    return BedrockModel(
+        model_id=config.model_id,
+        max_tokens=config.max_output_tokens,
+        temperature=config.temperature if temperature is None else temperature,
+        streaming=streaming,
+    )
+
 
 def make_agent() -> Agent:
     """Create a fresh agent instance with the guided conversation prompt."""
     return Agent(
-        model="us.anthropic.claude-sonnet-4-6",
-        # model="us.amazon.nova-2-lite-v1:0",
+        model=make_bedrock_model(CHAT_MODEL_NAME, streaming=True),
         system_prompt=SYSTEM_PROMPT,
         callback_handler=None,
     )
-
 
 # ── Set up lightweight sessions ────────────────────────────────────────────────
 
@@ -180,6 +235,7 @@ class ChatSession:
     queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
     profile: dict | None = None
     last_seen: float = field(default_factory=time.time)
+    active_stream_id: str | None = None
 
 
 _sessions: dict[str, ChatSession] = {}
@@ -283,10 +339,10 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
     )
 
     scorer = Agent(
-        model="us.anthropic.claude-sonnet-4-6",
-        # model="us.amazon.nova-2-lite-v1:0",
+        model=make_bedrock_model(SCORING_MODEL_NAME, streaming=False),
         callback_handler=None,
     )
+
     result = await scorer.invoke_async(prompt)
     raw = str(result)
 
@@ -382,10 +438,24 @@ async def chat_stream(request: Request):
     session_id, session, needs_cookie = _get_or_create_session(request)
 
     stream_queue = session.queue
+    stream_id = secrets.token_urlsafe(16)
+    session.active_stream_id = stream_id
 
     async def generate():
         while True:
+            # If another EventSource connection replaced this one, stop this generator.
+            if session.active_stream_id != stream_id:
+                logger.info("Closing stale chat stream")
+                return
+
             message = await stream_queue.get()
+
+            # If this stream became stale while waiting, put the message back
+            # so the active stream can consume it.
+            if session.active_stream_id != stream_id:
+                await stream_queue.put(message)
+                logger.info("Stale chat stream re-queued message and closed")
+                return
 
             full_text = ""
             prev_display_len = 0
@@ -396,9 +466,11 @@ async def chat_stream(request: Request):
                 async for event in session.agent.stream_async(message):
                     if "data" not in event:
                         continue
+
                     full_text += event["data"]
                     display = _strip_profile(full_text)
                     new_chunk = display[prev_display_len:]
+
                     if new_chunk:
                         yield {"event": "token", "data": new_chunk}
                         prev_display_len = len(display)
@@ -426,6 +498,8 @@ async def chat_stream(request: Request):
             final_text = _strip_profile(full_text)
 
             msg_html = render("_message.html", role="assistant", content=final_text)
+            logger.info("Sending assistant message event")
+
             yield {"event": "clear-stream", "data": ""}
             yield {"event": "message", "data": msg_html}
 

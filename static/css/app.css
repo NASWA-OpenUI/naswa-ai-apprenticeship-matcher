@@ -702,16 +702,6 @@ main {
   color: #b91c1c;
 }
 
-/* Keep the existing ranked fragment presentable after moving styles out of opportunities.html. */
-.interests-banner {
-  background: var(--nys-color-theme-faint);
-  border: 1px solid var(--nys-color-theme);
-  border-radius: var(--app-radius-md);
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.95rem;
-}
-
 .section-heading {
   font-size: 0.85rem;
   font-weight: 700;
