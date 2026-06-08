@@ -397,7 +397,7 @@ main {
   flex-direction: column;
   gap: var(--app-space-50);
   max-width: 80%;
-  scroll-margin-bottom: 6rem; /* clears the sticky composer when scrolled into view */
+  scroll-margin-bottom: 8rem; /* clears the sticky composer when scrolled into view */
 }
 .message--user {
   align-self: flex-end;
@@ -457,6 +457,7 @@ main {
 /* ── Profile summary card ────────────────────────────────────────────────── */
 .profile-card {
   margin: var(--app-space-300) 0 0;
+  scroll-margin-bottom: 8rem;
 }
 .profile-card-head {
   background: var(--nys-color-theme-faint, #eef5f5);

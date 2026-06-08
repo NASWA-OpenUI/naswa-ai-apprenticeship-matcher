@@ -123,6 +123,7 @@
   const streamingText   = document.getElementById('streaming-text');
   const chatStatus      = document.getElementById('chat-status');
   const chatLog         = document.getElementById('chat-log');
+  const profileArea     = document.getElementById('profile-area');
 
   let conversationComplete = false;
 
@@ -175,13 +176,20 @@
 
     if (type === 'profile-confirmed') {
       conversationComplete = true;
+
       if (userInput && sendButton) {
         userInput.disabled = true;
         sendButton.disabled = true;
         sendButton.textContent = 'Done';
         userInput.placeholder = 'Conversation complete';
       }
+
       chatStatus.textContent = 'Conversation complete. Your profile summary is now shown.';
+
+      requestAnimationFrame(() => {
+        const profileCard = profileArea?.querySelector('.profile-card') || profileArea;
+        scrollIntoViewSafe(profileCard);
+      });
     }
 
     if (type === 'error' || type === 'agent-error') {
