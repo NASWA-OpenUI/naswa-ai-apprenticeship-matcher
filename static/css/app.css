@@ -113,6 +113,14 @@ a.btn--filled:focus {
   border-radius: var(--app-radius-sm);
 }
 
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
 [hidden] {
   display: none !important;
 }
@@ -226,20 +234,12 @@ a.btn--filled:focus {
   gap: 0.75rem;
   flex-shrink: 0;
 }
-.ny-lockup {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
-  color: var(--app-ink);
+.site-header .app-logo {
+  line-height: 0;
+  width: 150px;
 }
-
-.ny-lockup .wordmark {
-  font-weight: 800;
-  font-size: 0.78rem;
-  line-height: 1.02;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+.site-header .app-logo img {
+  width: 100%;
 }
 .header-divider {
   width: 1px;
@@ -1226,15 +1226,11 @@ body:has(.opportunity-detail-page) {
 
 .detail-clean-list {
   margin: 0.25rem 0 0;
-  padding-left: 1.2rem;
+  padding-left: 0;
 }
 
 .detail-clean-list li {
   margin: 0.35rem 0;
-}
-
-.detail-clean-list li::marker {
-  color: var(--nys-color-theme, #084b52);
 }
 
 .detail-contact-row {

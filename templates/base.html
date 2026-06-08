@@ -22,6 +22,8 @@
           integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
           crossorigin="anonymous"></script>
 
+  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+
   {% block head_extra %}{% endblock %}
 </head>
 
@@ -42,8 +44,8 @@
   <!-- Site header (light chrome; official component is <nys-globalheader>) -->
   <header class="site-header">
     <div class="container container-flex">
-      <a class="ny-lockup" href="/">
-        <span class="wordmark">New York<br>State</span>
+      <a class="app-logo" href="/">
+        <img src="/static/img/dol-black-short.png" />
       </a>
       <span class="header-divider"></span>
       <span class="app-name">{% block app_name %}Apprenticeship Matcher{% endblock %}</span>
