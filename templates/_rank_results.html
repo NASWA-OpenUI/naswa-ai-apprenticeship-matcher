@@ -1,7 +1,7 @@
 <div class="interests-banner">
   <span class="interests-banner__lead">Matched to your interests:</span>
   {% for interest in interests %}
-    <span class="interests-banner__chip">{{ interest }}</span>
+    <span class="chip chip--theme chip--bg-white">{{ interest }}</span>
   {% endfor %}
   <a class="interests-banner__link" href="/">Change interests</a>
 </div>
@@ -12,25 +12,25 @@
   <div class="count">
     <span>{{ ranked|length }}</span> opportunit{{ "y" if ranked|length == 1 else "ies" }}
   </div>
-  <div class="results-meta">Matches generated using AI</div>
+  <div class="text-meta">Matches generated using AI</div>
 </div>
 
 <div class="match-list">
   {% for item in ranked %}
   {% set tier_class = item.tier | lower %}
-  <article class="match-card match-card--{{ tier_class }}">
+  <article class="match-card match-card--{{ tier_class }} surface surface--shadow">
     <div class="match-card__inner">
       <div class="match-card__top">
-        <span class="match-tier match-tier--{{ tier_class }}">
-          <span class="match-tier__dot" aria-hidden="true"></span>
-          {{ item.tier }}
+        <span class="chip chip--{{ tier_class }}">
+          <span class="chip__dot" aria-hidden="true"></span>
+          <span class="chip--label">{{ item.tier }}</span>
         </span>
         <a class="job-link match-card__title" href="/opportunities/{{ item.id }}">
           {{ item.posting.jobTitle }}
         </a>
       </div>
 
-      <div class="match-card__meta">
+      <div class="match-card__meta text-meta">
         {{ item.posting.sourceTitle }}{% if item.posting.locationSummary %} · {{ item.posting.locationSummary }}{% endif %}
       </div>
 
@@ -54,10 +54,10 @@
   <div class="count">
     <span>{{ unranked|length }}</span> opportunit{{ "y" if unranked|length == 1 else "ies" }}
   </div>
-  <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
+  <!-- <div class="text-meta">Sorted by recruitment closing date</div> -->
 </div>
-<div class="table-wrapper">
-  <table aria-describedby="results-bar">
+<div class="table-wrap surface surface--shadow">
+  <table class="opportunities-table" aria-describedby="results-bar">
     <thead>
       <tr>
         <th scope="col">Position / Organization</th>
@@ -71,7 +71,7 @@
       <tr>
         <td>
           <a class="job-link" href="/opportunities/{{ opp.id }}">{{ opp.posting.jobTitle }}</a>
-          <div class="org-name">{{ opp.posting.sourceTitle }}</div>
+          <div class="org-name text-meta">{{ opp.posting.sourceTitle }}</div>
         </td>
         <td class="location">{{ opp.posting.locationSummary }}</td>
         <td class="date">{{ opp.posting.recruitmentEndDate | format_date }}</td>

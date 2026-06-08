@@ -69,12 +69,12 @@
         {% if opp.onet %}
         <section class="detail-section" id="match" aria-label="Why this job matches your interests" hidden>
           <h2 class="detail-section__heading">Why this matches you</h2>
-          <div class="detail-match" id="detail-match">
+          <div class="detail-match surface" id="detail-match">
             <div class="detail-match__inner">
               <div class="detail-match__body">
-                <span class="detail-tier" id="detail-tier">
-                  <span class="detail-tier__dot" aria-hidden="true"></span>
-                  <span id="detail-tier-text"></span>
+                <span id="detail-tier" class="chip">
+                  <span class="chip__dot" aria-hidden="true"></span>
+                  <span id="detail-tier-text" class="chip--label"></span>
                 </span>
                 <p id="detail-explanation"></p>
               </div>
@@ -86,15 +86,15 @@
         <section class="detail-section" id="details">
           <h2 class="detail-section__heading">Key details</h2>
           <dl class="detail-facts">
-            <div class="detail-fact">
+            <div class="detail-fact surface surface--muted">
               <dt>Recruitment opens</dt>
               <dd>{{ opp.posting.recruitmentStartDate | format_date }}</dd>
             </div>
-            <div class="detail-fact">
+            <div class="detail-fact surface surface--muted">
               <dt>Recruitment closes</dt>
               <dd>{{ opp.posting.recruitmentEndDate | format_date }}</dd>
             </div>
-            <div class="detail-fact">
+            <div class="detail-fact surface surface--muted">
               <dt>Openings</dt>
               <dd>{{ opp.posting.numberOfOpenings or '—' }}</dd>
             </div>
@@ -111,7 +111,7 @@
             {{ opp.oes.entryAnnualWage | format_wage }}
           </div>
           {% if opp.oes.areaName %}
-          <div class="detail-wage-area">{{ opp.oes.areaName }}</div>
+          <div class="text-meta">{{ opp.oes.areaName }}</div>
           {% endif %}
           {% endif %}
 
@@ -278,10 +278,9 @@
         const tierClass = (match.tier || 'Weak').toLowerCase();
 
         if (tierContainerEl) {
-          tierContainerEl.className = `detail-match detail-match--${tierClass}`;
+          tierContainerEl.className = `detail-match surface detail-match--${tierClass}`;
         }
-
-        tierEl.className = `detail-tier detail-tier--${tierClass}`;
+        tierEl.className = `chip chip--${tierClass}`;
         tierTextEl.textContent = match.tier || 'Weak';
         expEl.textContent = match.explanation || '';
 

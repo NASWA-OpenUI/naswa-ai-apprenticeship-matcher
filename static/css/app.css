@@ -36,6 +36,18 @@
   --app-focus: var(--nys-color-focus, #004dd1);
   --app-warning-dark: #7a5c00;
 
+  /* semantic aliases */
+  --app-border: var(--app-base);
+  --app-border-weak: var(--app-base-weak);
+  --app-row-stripe: #fafcfc;
+  --app-danger: #b91c1c;
+  --app-warning-border: #ecdca0;
+  --app-text-on-theme: var(--nys-color-ink-reverse, #ffffff);
+
+  /* common component padding */
+  --app-card-padding: 1rem 1.15rem;
+  --app-panel-padding: 1.1rem 1.25rem;
+
   /* reverse (dark footer) */
   --app-surface-reverse: var(--nys-color-surface-reverse, #1b1b1b);
   --app-text-reverse: var(--nys-color-text-reverse, #ffffff);
@@ -104,7 +116,7 @@ a[class^="btn"]:focus {
 
 a.btn--filled:hover,
 a.btn--filled:focus {
-  color: #fff;
+  color: var(--app-text-on-theme);
 }
 
 :focus-visible {
@@ -182,6 +194,11 @@ ol {
   display: none;
 }
 
+.text-meta {
+  color: var(--app-text-weak);
+  font-size: 0.85rem;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -200,6 +217,81 @@ ol {
   }
 }
 
+/* ── SURFACES (shared cards / panels) ───────────────────────────────────── */
+
+.surface {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+}
+
+.surface--muted {
+  background: var(--app-surface-muted);
+}
+
+.surface--shadow {
+  box-shadow: var(--app-shadow-sm);
+}
+
+.surface--accent {
+  border-left: 4px solid var(--nys-color-theme, #084b52);
+}
+
+.surface--clip {
+  overflow: hidden;
+}
+
+/* ── CHIPS (shared component) ──────────────────────────────────────────── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  font-size: 0.83rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: var(--app-radius-pill);
+}
+
+.chip--theme {
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
+  color: var(--nys-color-theme-stronger, #042a2e);
+}
+
+.chip--strong {
+  background: var(--nys-color-success-weak);
+  color: var(--nys-color-success);
+}
+
+.chip--moderate {
+  background: var(--nys-color-warning-weak);
+  color: var(--app-warning-dark);
+}
+
+.chip--weak {
+  background: var(--nys-color-link-reverse-strong);
+  color: var(--app-text-weak);
+}
+
+.chip--bg-white {
+  background: var(--nys-color-ink-reverse);
+}
+
+.chip .chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.chip .chip--label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 /* ── Beta / development notice (replaces the gov strip) ──────────────────── */
 .dev-banner {
   padding: 0.4rem 1.25rem;
@@ -209,18 +301,13 @@ ol {
 .dev-banner--notice {
   background: var(--nys-color-warning-weak, #fbf1cf);
   color: var(--app-warning-dark);
-  border-bottom: 1px solid #ecdca0;
+  border-bottom: 1px solid var(--app-warning-border);
 }
-.dev-banner__tag {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.8rem;
+.chip--banner-tag {
+  color: var(--nys-color-ink-reverse);
   background: var(--app-warning-dark);
-  color: #fff;
-  border-radius: var(--app-radius-sm, 2px);
-  padding: 0.15rem 0.5rem;
   margin-right: 0.5rem;
+  border-radius: var(--app-radius-sm, 2px);
 }
 
 /* ── Site header (light chrome) ──────────────────────────────────────────── */
@@ -250,23 +337,15 @@ ol {
   font-weight: 700;
   font-size: 1rem;
 }
-.app-tag {
+.chip--phase-tag {
   margin-left: auto;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--nys-color-theme, #084b52);
-  background: var(--nys-color-theme-faint, #eef5f5);
-  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--app-radius-pill);
+  color: var(--nys-color-theme);
 }
 
 /* ── Page title band ─────────────────────────────────────────────────────── */
 .title-band {
   background: var(--nys-color-theme, #084b52);
-  color: #fff;
+  color: var(--app-text-on-theme);
   padding: 1.1rem 0;
 }
 .title-band-inner {
@@ -278,7 +357,7 @@ ol {
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: var(--app-text-on-theme);
 }
 .title-band-sub {
   margin: 0.2rem 0 0;
@@ -351,37 +430,13 @@ main {
 }
 .message--user .message-content {
   background: var(--nys-color-theme, #084b52);
-  color: #fff;
+  color: var(--app-text-on-theme);
   border-bottom-right-radius: var(--app-radius-sm);
 }
 
 /* streaming bubble */
 #streaming-bubble {
-  align-self: flex-start;
-  max-width: 80%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--app-space-50);
   margin-top: var(--app-space-200);
-  scroll-margin-bottom: 6rem;
-}
-#streaming-bubble .message-role {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--app-text-weak);
-}
-#streaming-text {
-  margin: 0;
-  padding: 0.7rem 0.95rem;
-  background: var(--app-surface);
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-lg);
-  border-bottom-left-radius: var(--app-radius-sm);
-  box-shadow: var(--app-shadow-sm);
-  white-space: pre-wrap;
-  word-break: break-word;
 }
 #streaming-text::after {
   content: "▋";
@@ -402,12 +457,6 @@ main {
 /* ── Profile summary card ────────────────────────────────────────────────── */
 .profile-card {
   margin: var(--app-space-300) 0 0;
-  background: var(--app-surface);
-  border: 1px solid var(--app-base);
-  border-left: 4px solid var(--nys-color-theme, #084b52);
-  border-radius: var(--app-radius-md);
-  box-shadow: var(--app-shadow-sm);
-  overflow: hidden;
 }
 .profile-card-head {
   background: var(--nys-color-theme-faint, #eef5f5);
@@ -443,14 +492,7 @@ main {
   margin: 0;
   font-size: 0.97rem;
 }
-.interest-chip {
-  display: inline-block;
-  background: var(--nys-color-theme-faint, #eef5f5);
-  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
-  color: var(--nys-color-theme-stronger, #042a2e);
-  font-size: 0.83rem;
-  padding: 0.1rem 0.55rem;
-  border-radius: var(--app-radius-pill);
+.chip--interest {
   margin: 0 0.25rem 0.3rem 0;
 }
 .btn-row {
@@ -482,7 +524,7 @@ main {
 }
 .btn--filled {
   background: var(--nys-color-theme, #084b52);
-  color: #fff;
+  color: var(--app-text-on-theme);
 }
 .btn--filled:hover {
   background: var(--nys-color-theme-strong, #06393f);
@@ -535,9 +577,8 @@ main {
   border-color: var(--nys-color-theme, #084b52);
   outline-offset: 0;
 }
-.composer-note {
+.chat-disclaimer {
   font-size: 0.74rem;
-  color: var(--app-text-weak);
   margin: 0.5rem 0 0;
   text-align: center;
 }
@@ -587,32 +628,20 @@ main {
   color: var(--app-ink);
 }
 
-.results-meta {
-  font-size: 0.85rem;
-  color: var(--app-text-weak);
-}
-
-.table-wrap,
-.opportunities-page .table-wrapper {
+.table-wrap {
   overflow-x: auto;
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-md);
-  box-shadow: var(--app-shadow-sm);
-  background: var(--app-surface);
 }
 
-.opportunities-table,
-.opportunities-page .table-wrapper table {
+.opportunities-table {
   width: 100%;
   min-width: 720px;
   border-collapse: collapse;
   background: var(--app-surface);
 }
 
-.opportunities-table thead th,
-.opportunities-page .table-wrapper thead th {
+.opportunities-table thead th {
   background: var(--nys-color-theme);
-  color: #fff;
+  color: var(--app-text-on-theme);
   font-weight: 700;
   font-size: 0.76rem;
   text-transform: uppercase;
@@ -623,34 +652,27 @@ main {
 }
 
 .opportunities-table th.num,
-.opportunities-table td.num,
-.opportunities-page .table-wrapper th.num,
-.opportunities-page .table-wrapper td.num {
+.opportunities-table td.num {
   text-align: right;
 }
 
-.opportunities-table td.num,
-.opportunities-page .table-wrapper td.num {
+.opportunities-table td.num {
   font-variant-numeric: tabular-nums;
 }
 
-.opportunities-table tbody tr,
-.opportunities-page .table-wrapper tbody tr {
+.opportunities-table tbody tr {
   border-top: 1px solid var(--app-base-weak);
 }
 
-.opportunities-table tbody tr:nth-child(even),
-.opportunities-page .table-wrapper tbody tr:nth-child(even) {
-  background: #fafcfc;
+.opportunities-table tbody tr:nth-child(even) {
+  background: var(--app-row-stripe);
 }
 
-.opportunities-table tbody tr:hover,
-.opportunities-page .table-wrapper tbody tr:hover {
+.opportunities-table tbody tr:hover {
   background: var(--nys-color-theme-faint);
 }
 
-.opportunities-table td,
-.opportunities-page .table-wrapper td {
+.opportunities-table td {
   padding: 0.75rem 1rem;
   vertical-align: top;
   font-size: 0.94rem;
@@ -666,40 +688,28 @@ main {
   text-decoration: underline;
 }
 
-.org,
 .org-name {
-  font-size: 0.82rem;
-  color: var(--app-text-weak);
+  font-size: 0.8rem;
   margin-top: 0.1rem;
 }
 
-.location,
-.opportunities-table td.location,
-.opportunities-page .table-wrapper td.location {
-  color: var(--app-text-weak);
-  font-size: 0.9rem;
-}
-
-.date,
-.opportunities-table td.date,
-.opportunities-page .table-wrapper td.date {
+.opportunities-table td.date {
   white-space: nowrap;
 }
 
 .empty-state,
 #page-status {
-  background: var(--app-surface);
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-md);
-  box-shadow: var(--app-shadow-sm);
   padding: 2rem;
   text-align: center;
   color: var(--app-text-weak);
+}
+
+#page-status {
   cursor: progress;
 }
 
 #page-status.error {
-  color: #b91c1c;
+  color: var(--app-danger);
 }
 
 .section-heading {
@@ -711,37 +721,7 @@ main {
   margin: 0 0 0.75rem;
 }
 
-.tier-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--app-radius-pill);
-  vertical-align: middle;
-}
-
-.tier-strong {
-  background: var(--nys-color-success-weak);
-  color: var(--nys-color-success);
-}
-
-.tier-moderate {
-  background: var(--nys-color-warning-weak);
-  color: var(--app-warning-dark);
-}
-
-.tier-weak {
-  background: var(--nys-color-link-reverse-strong);
-  color: var(--app-text-weak);
-}
-
-/* ── Ranked opportunity cards ───────────────────────────────────────────────
-   Add this after the existing opportunities CSS in app.css. These selectors are
-   intentionally match-* scoped so they do not accidentally restyle the match
-   section on opportunity detail pages, which still uses .tier-tag.
-   ------------------------------------------------------------------------- */
+/* ── Ranked opportunity cards ────────────────────────────────────────────── */
 
 .interests-banner {
   background: var(--nys-color-theme-faint);
@@ -762,16 +742,6 @@ main {
   margin-right: 0.2rem;
 }
 
-.interests-banner__chip {
-  display: inline-block;
-  background: var(--app-surface);
-  border: 1px solid var(--nys-color-theme-weak, #a8cccd);
-  color: var(--nys-color-theme-stronger, #042a2e);
-  font-size: 0.83rem;
-  padding: 0.08rem 0.55rem;
-  border-radius: var(--app-radius-pill);
-}
-
 .interests-banner__link {
   margin-left: auto;
   font-weight: 700;
@@ -782,12 +752,6 @@ main {
   flex-direction: column;
   gap: 0.9rem;
   margin-bottom: 2.5rem;
-}
-
-.match-card {
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-md);
-  box-shadow: var(--app-shadow-sm);
 }
 
 .match-card:hover {
@@ -829,44 +793,12 @@ main {
 }
 
 .match-card__meta {
-  font-size: 0.88rem;
-  color: var(--app-text-weak);
   margin: 0.05rem 0 0.6rem;
 }
 
-.match-tier {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
+.match-card .chip .chip--label {
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.18rem 0.55rem;
-  border-radius: var(--app-radius-pill);
-  white-space: nowrap;
-}
-
-.match-tier__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.match-tier--strong {
-  background: var(--nys-color-success-weak);
-  color: var(--nys-color-success);
-}
-
-.match-tier--moderate {
-  background: var(--nys-color-warning-weak);
-  color: var(--app-warning-dark);
-}
-
-.match-tier--weak {
-  background: var(--nys-color-link-reverse-strong);
-  color: var(--app-text-weak);
+  margin-top: 1px;
 }
 
 .match-card__why {
@@ -968,7 +900,7 @@ body:has(.opportunity-detail-page) {
 
 .detail-hero {
   background: var(--nys-color-theme, #084b52);
-  color: #fff;
+  color: var(--app-text-on-theme);
   padding: 1.75rem 0 2rem;
 }
 
@@ -978,13 +910,13 @@ body:has(.opportunity-detail-page) {
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0.01em;
-  color: #fff;
+  color: var(--app-text-on-theme);
 }
 
 .detail-hero__org {
   margin: 0.4rem 0 0;
   font-size: 1.1rem;
-  color: #fff;
+  color: var(--app-text-on-theme);
 }
 
 .detail-hero__meta {
@@ -1077,7 +1009,7 @@ body:has(.opportunity-detail-page) {
 
 .detail-section p {
   margin: 0;
-  color: #333;
+  color: var(--app-ink);
 }
 
 .detail-section__heading {
@@ -1086,12 +1018,6 @@ body:has(.opportunity-detail-page) {
   font-weight: 800;
   line-height: 1.25;
   color: var(--nys-color-theme, #084b52);
-}
-
-.detail-match {
-  border: 1px solid var(--nys-color-black-transparent-100);
-  border: 1px solid var(--app-base);
-  border-radius: var(--app-radius-md);
 }
 
 .detail-match__inner {
@@ -1126,42 +1052,6 @@ body:has(.opportunity-detail-page) {
   font-size: 0.97rem;
 }
 
-.detail-tier {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  flex-shrink: 0;
-  white-space: nowrap;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--app-radius-pill);
-}
-
-.detail-tier__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.detail-tier--strong {
-  background: var(--nys-color-success-weak, #e3f3e6);
-  color: var(--nys-color-success, #1e752e);
-}
-
-.detail-tier--moderate {
-  background: var(--nys-color-warning-weak, #fbf1cf);
-  color: var(--app-warning-dark, #7a5c00);
-}
-
-.detail-tier--weak {
-  background: var(--app-base-weak);
-  color: var(--app-text-weak);
-}
-
 .detail-facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1169,9 +1059,6 @@ body:has(.opportunity-detail-page) {
 }
 
 .detail-fact {
-  background: var(--app-surface-muted);
-  border: 1px solid var(--nys-color-black-transparent-100);
-  border-radius: var(--app-radius-md);
   padding: 0.85rem 1rem;
 }
 
@@ -1207,11 +1094,6 @@ body:has(.opportunity-detail-page) {
   font-weight: 800;
   line-height: 1.2;
   color: var(--nys-color-theme, #084b52);
-}
-
-.detail-wage-area {
-  font-size: 0.85rem;
-  color: var(--app-text-weak);
 }
 
 .detail-clean-list {

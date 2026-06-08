@@ -49,9 +49,9 @@
       Cleared by JS when the message event fires.
       aria-hidden — screen readers get the final committed message instead.
     -->
-    <div id="streaming-bubble" aria-hidden="true" hidden>
+    <div id="streaming-bubble" class="message message--assistant" aria-hidden="true" hidden>
       <span class="message-role">Assistant</span>
-      <p id="streaming-text" sse-swap="token" hx-swap="beforeend"></p>
+      <p id="streaming-text" class="message-content" sse-swap="token" hx-swap="beforeend"></p>
     </div>
 
     <!-- Profile card injected here when conversation is confirmed -->
@@ -109,7 +109,7 @@
         <button type="button" class="btn btn--filled" disabled>Done</button>
       </form>
     {% endif %}
-    <p class="composer-note">This is an AI disclaimer.</p>
+    <p class="chat-disclaimer text-meta">This is an AI disclaimer.</p>
   </div>
 
 {% endblock %}

@@ -30,6 +30,7 @@
       >
         <div
           id="page-status"
+          class="surface surface--shadow"
           role="status"
           aria-live="polite"
           aria-atomic="true"
@@ -42,11 +43,11 @@
         <div class="count">
           <span>{{ opportunities|length }}</span> opportunit{{ "y" if opportunities|length == 1 else "ies" }}
         </div>
-        <!-- <div class="results-meta">Sorted by recruitment closing date</div> -->
+        <!-- <div class="text-meta">Sorted by recruitment closing date</div> -->
       </div>
 
       {% if opportunities %}
-        <div class="table-wrap">
+        <div class="table-wrap surface surface--shadow">
           <table class="opportunities-table" aria-describedby="results-bar">
             <caption class="visually-hidden">
               Apprenticeship opportunities
@@ -66,7 +67,7 @@
                   <a class="job-link{% if opp.onet %} with-onet{% endif %}" href="/opportunities/{{ opp.id }}">
                     {{ opp.posting.jobTitle }}
                   </a>
-                  <div class="org">{{ opp.posting.sourceTitle }}</div>
+                  <div class="org-name text-meta">{{ opp.posting.sourceTitle }}</div>
                 </td>
                 <td class="location">{{ opp.posting.locationSummary or '—' }}</td>
                 <td class="date">{{ opp.posting.recruitmentEndDate | format_date }}</td>
@@ -77,7 +78,7 @@
           </table>
         </div>
       {% else %}
-        <p class="empty-state">No apprenticeship opportunities are available right now.</p>
+        <p class="empty-state surface surface--shadow">No apprenticeship opportunities are available right now.</p>
       {% endif %}
 
     {% endif %}

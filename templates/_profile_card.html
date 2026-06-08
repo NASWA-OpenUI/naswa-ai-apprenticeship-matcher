@@ -3,7 +3,7 @@
   in via SSE on "profile-confirmed". Expects `profile` (with .name and
   .interests) and `ranked_url` in context.
 #}
-<div class="profile-card" role="region" aria-label="Your profile summary">
+<div class="profile-card surface surface--shadow surface--accent surface--clip" role="region" aria-label="Your profile summary">
   <div class="profile-card-head">
     <h2>Your Profile</h2>
   </div>
@@ -14,7 +14,7 @@
       <dt>Interests</dt>
       <dd>
         {% for interest in profile.interests %}
-        <span class="interest-chip">{{ interest }}</span>
+        <span class="chip chip--theme chip--interest">{{ interest }}</span>
         {% endfor %}
       </dd>
     </dl>
