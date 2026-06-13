@@ -1,8 +1,10 @@
 <div class="interests-banner">
   <span class="interests-banner__lead">Matched to your interests:</span>
+  <span class="interests-banner__chip-container">
   {% for interest in interests %}
     <span class="chip chip--theme chip--bg-white">{{ interest }}</span>
   {% endfor %}
+  </span>
   <a class="interests-banner__link" href="/">Change interests</a>
 </div>
 

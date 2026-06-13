@@ -2,15 +2,8 @@
 
 - Harmonize the design on opportunities page
 - Stub out a landing page
-- Changes suggested by Kevin
-  - Call the chatbot "Tyler"
-  - Rework opening messages to give more context (keep name for now)
-  - Remove panel on assistant messages
 - Mobile
-  - Chat is fine mostly, maybe padding could go down a little
-  - Profile card is okay, maybe check padding
   - Match should maybe have a short and long explanation
-  - "Matched to your interests": put tags on their onn line
 - Look into: Addresses for sponsors?
 - Feat: add more interests
 - Feat: show "closes soon"
@@ -21,12 +14,19 @@
 
 ## DONE
 
+- Theme-coloured links
 - Mobile
   - Beta: text should not be under beta banner
   - Apprenticeship Matcher, line height is too big
+  - Lower gap spacing between chat messages
+  - Reduced horizontal padding for profile panel
+  - "Matched to your interests": put tags on their own line
+  - Opportunity list padding
+  - Opportunity Contact org styles
 - Changes suggested by Kevin
+  - Subtler AI chat messages (different font also)
   - Call the chatbot "Tyler"
-  - Rework opening messages to give more context
+  - Rework opening messages to give more context (keep name for now)
 - Scroll the profile into view
 - Add in an app logo
 - Add in a favicon

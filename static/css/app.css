@@ -106,7 +106,7 @@ body {
 }
 
 a {
-  color: var(--app-link);
+  color: var(--nys-color-theme);
 }
 
 a[class^="btn"]:hover,
@@ -406,7 +406,7 @@ main {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--app-space-200);
+  gap: var(--app-space-100);
 }
 
 .message {
@@ -441,14 +441,12 @@ main {
 }
 .message--assistant .message-content {
   background: var(--app-surface);
-  border: 1px solid var(--app-base);
-  border-bottom-left-radius: var(--app-radius-sm);
   box-shadow: var(--app-shadow-sm);
+  font-family: var(--nys-font-family-serif);
 }
 .message--user .message-content {
   background: var(--nys-color-theme, #084b52);
   color: var(--app-text-on-theme);
-  border-bottom-right-radius: var(--app-radius-sm);
 }
 
 /* streaming bubble */
@@ -479,7 +477,7 @@ main {
 .profile-card-head {
   background: var(--nys-color-theme-faint, #eef5f5);
   border-bottom: 1px solid var(--nys-color-theme-weaker, #d7e8e9);
-  padding: 0.7rem 1.25rem;
+  padding: 0.7rem 1.1rem;
 }
 .profile-card-head h2 {
   margin: 0;
@@ -490,7 +488,7 @@ main {
   color: var(--nys-color-theme-stronger, #042a2e);
 }
 .profile-card-body {
-  padding: 1.1rem 1.25rem 1.25rem;
+  padding: 1.1rem 1.1rem  1.25rem 1.1rem ;
 }
 .profile-card dl {
   margin: 0 0 1.1rem;
@@ -525,7 +523,7 @@ main {
    component, which you can adopt later without touching these rules. */
 .btn {
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   padding: 0.55rem 1.15rem;
   border-radius: var(--app-radius-md);
@@ -534,7 +532,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  border: 2px solid transparent;
+  border: 1.5px solid transparent;
   transition:
     background 0.12s,
     border-color 0.12s,
@@ -768,7 +766,7 @@ main {
 .match-list {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 1rem;
   margin-bottom: 2.5rem;
 }
 
@@ -873,6 +871,7 @@ main {
   .interests-banner__link {
     width: 100%;
     margin-left: 0;
+    margin-top: var(--nys-space-100);
   }
 
   .match-card__inner {
@@ -909,11 +908,6 @@ body:has(.opportunity-detail-page) {
 
 .detail-crumb a {
   font-weight: 700;
-  text-decoration: none;
-}
-
-.detail-crumb a:hover {
-  text-decoration: underline;
 }
 
 .detail-hero {
@@ -989,6 +983,12 @@ body:has(.opportunity-detail-page) {
   padding: 0;
 }
 
+
+.on-this-page li {
+  margin-bottom: 0;
+}
+
+
 .on-this-page li a {
   display: block;
   padding: 0.4rem 0 0.4rem 0.85rem;
@@ -1023,6 +1023,7 @@ body:has(.opportunity-detail-page) {
 
 .detail-section:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
 .detail-section p {
@@ -1124,27 +1125,42 @@ body:has(.opportunity-detail-page) {
 }
 
 .detail-contact-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 2.5rem;
-  margin: 0.5rem 0 0;
+  margin: 1rem 0 0;
+  background: var(--app-surface, #fff);
+  border: 1px solid var(--nys-color-black-transparent-300);
+  border-radius: var(--app-radius-md, 6px);
+  overflow: hidden;
 }
 
 .detail-contact-item {
-  display: flex;
-  flex-direction: column;
+  padding: 0.65rem .9rem;
+  border-top: 1px solid var(--app-base-weak, #e4e8ea);
+}
+
+.detail-contact-item:first-of-type {
+  padding-top: .9rem;
+}
+
+.detail-contact-item:last-of-type {
+  padding-bottom: .9rem;
+}
+
+.detail-contact-item:first-child {
+  border-top: none;
 }
 
 .detail-contact-item dt {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--app-text-weak);
+  margin-bottom: 0.15rem;
+  line-height: 1;
 }
 
 .detail-contact-item dd {
-  margin: 0.2rem 0 0;
+  margin: 0;
   font-weight: 700;
 }
 
@@ -1163,6 +1179,10 @@ body:has(.opportunity-detail-page) {
 
   .detail-content {
     max-width: none;
+  }
+
+  .detail-clean-list {
+    padding-left: 15px;
   }
 }
 
