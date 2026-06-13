@@ -306,9 +306,17 @@ ol {
 .chip--banner-tag {
   color: var(--nys-color-ink-reverse);
   background: var(--app-warning-dark);
-  margin-right: 0.5rem;
+  margin-right: 0.75rem;
   border-radius: var(--app-radius-sm, 2px);
+  height: max-content;
 }
+
+@media (max-width: 520px) {
+  .chip--banner-tag {
+    padding: 0.15rem 0.65rem
+  }
+}
+
 
 /* ── Site header (light chrome) ──────────────────────────────────────────── */
 .site-header {
@@ -323,23 +331,32 @@ ol {
 }
 .site-header .app-logo {
   line-height: 0;
-  width: 150px;
+  width: 140px;
 }
 .site-header .app-logo img {
   width: 100%;
 }
-.header-divider {
-  width: 1px;
-  height: 26px;
-  background: var(--app-base);
-}
 .app-name {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  margin: 0 .75rem;
 }
 .chip--phase-tag {
   margin-left: auto;
   color: var(--nys-color-theme);
+}
+
+@media (max-width: 520px) {
+  .site-header .app-logo {
+    max-width: 135px;
+    min-width: 125px;
+  }
+
+  .site-header .app-name {
+    font-size: 1rem;
+    margin: 0 .65rem;
+  }
 }
 
 /* ── Page title band ─────────────────────────────────────────────────────── */
@@ -588,7 +605,7 @@ main {
 .site-footer {
   background: var(--app-surface-reverse);
   color: var(--app-text-reverse);
-  margin-top: 2.5rem;
+  margin-top: 1.25rem;
   padding: 1.6rem 1.25rem 1.4rem;
 }
 .footer-links {

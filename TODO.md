@@ -7,8 +7,6 @@
   - Rework opening messages to give more context (keep name for now)
   - Remove panel on assistant messages
 - Mobile
-  - Beta: text should not be under beta banner
-  - Apprenticeship Matcher, line height is too big
   - Chat is fine mostly, maybe padding could go down a little
   - Profile card is okay, maybe check padding
   - Match should maybe have a short and long explanation
@@ -23,6 +21,9 @@
 
 ## DONE
 
+- Mobile
+  - Beta: text should not be under beta banner
+  - Apprenticeship Matcher, line height is too big
 - Changes suggested by Kevin
   - Call the chatbot "Tyler"
   - Rework opening messages to give more context
