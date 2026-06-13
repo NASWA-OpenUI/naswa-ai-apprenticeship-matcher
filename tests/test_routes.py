@@ -13,7 +13,7 @@ def test_index_route_renders_chat_page(client):
 
     assert response.status_code == 200
     print(response.text)
-    assert "Hi there! What’s your name?" in response.text
+    assert "What’s your name?" in response.text
     assert 'id="chat-form"' in response.text
     assert 'sse-connect="/chat/stream"' in response.text
 

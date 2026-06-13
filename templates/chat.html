@@ -39,8 +39,8 @@
     >
       <!-- Opening greeting pre-rendered server-side — no JS init call needed -->
       <li class="message message--assistant">
-        <span class="message-role">Assistant</span>
-        <p class="message-content">Hi there! What’s your name?</p>
+        <span class="message-role">Tyler</span>
+        <p class="message-content">Registered apprenticeships let you earn while you learn. Let’s see if one might be right for you. What’s your name?</p>
       </li>
     </ol>
 
@@ -50,7 +50,7 @@
       aria-hidden — screen readers get the final committed message instead.
     -->
     <div id="streaming-bubble" class="message message--assistant" aria-hidden="true" hidden>
-      <span class="message-role">Assistant</span>
+      <span class="message-role">Tyler</span>
       <p id="streaming-text" class="message-content" sse-swap="token" hx-swap="beforeend"></p>
     </div>
 
@@ -99,7 +99,7 @@
           name="message"
           autocomplete="off"
           spellcheck="true"
-          placeholder="Type a message…"
+          placeholder="Message Tyler…"
         >
         <button type="submit" id="send-button" class="btn btn--filled">Send</button>
       </form>
@@ -148,7 +148,7 @@
   if (chatForm) {
     chatForm.addEventListener('htmx:beforeRequest', function () {
       setInputLocked(true);
-      chatStatus.textContent = 'Assistant is responding…';
+      chatStatus.textContent = 'Tyler is responding…';
     });
   }
 
