@@ -6,7 +6,8 @@ The app uses AWS Strands and Bedrock to collect a simple interest profile, then 
 
 ## What the app does
 
-* Runs a guided chat flow that asks for the user’s name and hobbies
+* Shows a landing page at `/`
+* runs a guided chat flow at `/chat` that asks for the user’s name and interests
 * Extracts a simple profile with name, hobbies, interest themes, and confirmation status
 * Lists apprenticeship opportunities at `/opportunities`
 * Shows individual opportunity detail pages at `/opportunities/{slug}`
@@ -102,7 +103,8 @@ http://localhost:8000
 ## Main routes
 
 ```text
-/                         Guided chat flow
+/                         Landing page
+/chat                     Guided chat flow
 /health                   Health check
 /chat/stream              Server-Sent Events stream for chat responses
 /opportunities            All apprenticeship opportunities

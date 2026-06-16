@@ -1,19 +1,17 @@
 ## TODO
 
 - Harmonize the design on opportunities page
-- Stub out a landing page
 - Mobile
   - Match should maybe have a short and long explanation
-- Look into: Addresses for sponsors?
 - Feat: add more interests
 - Feat: show "closes soon"
-- Feat: initial landing page (2 options)
-- Header links
 - Feat: return to search
 
 
 ## DONE
 
+- Add landing page
+- Feat: initial landing page
 - Theme-coloured links
 - Mobile
   - Beta: text should not be under beta banner

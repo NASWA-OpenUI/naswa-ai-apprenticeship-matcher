@@ -46,10 +46,14 @@
   <!-- Site header (light chrome; official component is <nys-globalheader>) -->
   <header class="site-header">
     <div class="container container-flex">
-      <a class="app-logo" href="/">
-        <img src="/static/img/dol-black-short.png" />
+      <a class="app-logo" href="/" aria-label="Apprenticeship Matcher homepage">
+        <img src="/static/img/dol-black-short.png" alt="New York Department of Labor logo" />
       </a>
-      <span class="app-name">{% block app_name %}Apprenticeship Matcher{% endblock %}</span>
+      <span class="app-name">
+        <a href="/">
+          {% block app_name %}Apprenticeship Matcher{% endblock %}
+        </a>
+      </span>
       <span class="chip chip--theme chip--phase-tag">
         <span class="chip--label">Beta</span>
       </span>
@@ -67,7 +71,7 @@
   </div>
   {% endblock %}
 
-  <main id="main-content" class="container">
+  <main id="main-content" class="{% block main_class %}container{% endblock %}">
       {% block content %}{% endblock %}
   </main>
 

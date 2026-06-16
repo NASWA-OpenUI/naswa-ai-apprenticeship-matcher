@@ -8,15 +8,22 @@ def test_health_route(client):
     assert response.json() == {"status": "ok"}
 
 
-def test_index_route_renders_chat_page(client):
+def test_index_route_renders_index(client):
     response = client.get("/")
 
     assert response.status_code == 200
-    print(response.text)
+    assert "Get matched with a career you’ll love" in response.text
+    assert 'href="/chat"' in response.text
+    assert 'class="landing-page"' in response.text
+
+
+def test_chat_get_route_renders_chat_page(client):
+    response = client.get("/chat")
+
+    assert response.status_code == 200
     assert "What’s your name?" in response.text
     assert 'id="chat-form"' in response.text
     assert 'sse-connect="/chat/stream"' in response.text
-
 
 def test_chat_route_accepts_message_and_returns_user_bubble(client):
     response = client.post("/chat", data={"message": "Paul"})
@@ -31,7 +38,7 @@ def test_chat_reset_route_redirects_to_fresh_chat(client):
     response = client.post("/chat/reset")
 
     assert response.status_code == 204
-    assert response.headers["HX-Redirect"] == "/"
+    assert response.headers["HX-Redirect"] == "/chat"
 
 
 def test_opportunities_route_renders_fixture_opportunities(client):

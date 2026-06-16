@@ -380,12 +380,19 @@ async def health():
     return {"status": "ok"}
 
 
-# ── Chat ──────────────────────────────────────────────────────────────────────
-
+# ── Landing page ──────────────────────────────────────────────────────────────
 
 @app.get("/")
 async def index(request: Request):
-    """Serve the chat page."""
+    """Serve the public landing page."""
+    return templates.TemplateResponse(request, "index.html")
+
+# ── Chat ──────────────────────────────────────────────────────────────────────
+
+
+@app.get("/chat")
+async def chat_page(request: Request):
+    """Serve the guided chat page."""
     session_id, session, needs_cookie = _get_or_create_session(request)
 
     response = templates.TemplateResponse(
@@ -399,7 +406,6 @@ async def index(request: Request):
 
     return response
 
-
 @app.post("/chat/reset")
 async def reset_chat(request: Request):
     """Replace this browser session's agent and redirect to a fresh chat page."""
@@ -412,7 +418,7 @@ async def reset_chat(request: Request):
     session.queue = asyncio.Queue()
 
     response = Response(status_code=204)
-    response.headers["HX-Redirect"] = "/"
+    response.headers["HX-Redirect"] = "/chat"
 
     if needs_cookie:
         _set_session_cookie(response, session_id)

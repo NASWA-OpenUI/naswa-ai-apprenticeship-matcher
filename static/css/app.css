@@ -25,7 +25,7 @@
    ========================================================================== */
 
 :root {
-  /* neutrals */
+  /* colours */
   --app-ink: var(--nys-color-ink, #1b1b1b);
   --app-text-weak: var(--nys-color-text-weak, #4a4f54);
   --app-surface: var(--nys-color-surface, #ffffff);
@@ -34,7 +34,9 @@
   --app-base-weak: var(--nys-color-base-weak, #e4e8ea);
   --app-link: var(--nys-color-link, #004dd1);
   --app-focus: var(--nys-color-focus, #004dd1);
+  --app-accent: var(--nys-color-accent, #face00);
   --app-warning-dark: #7a5c00;
+  --app-glass-on-theme: rgba(255, 255, 255, 0.12);
 
   /* semantic aliases */
   --app-border: var(--app-base);
@@ -259,6 +261,12 @@ ol {
   color: var(--nys-color-theme-stronger, #042a2e);
 }
 
+.chip--theme-alt {
+  background: var(--app-glass-on-theme);
+  border: 1px solid var(--nys-color-business-teal-300);
+  color: var(--app-text-on-theme);
+}
+
 .chip--strong {
   background: var(--nys-color-success-weak);
   color: var(--nys-color-success);
@@ -342,6 +350,10 @@ ol {
   line-height: 1.2;
   margin: 0 .75rem;
 }
+.app-name a {
+  color: currentColor;
+  text-decoration: none;
+}
 .chip--phase-tag {
   margin-left: auto;
   color: var(--nys-color-theme);
@@ -391,6 +403,408 @@ main {
   flex-direction: column;
   min-height: 0;
 }
+
+/* NEW CSS HERE */
+/* ── Landing page ───────────────────────────────────────────────────────── */
+body:has(.landing-page) {
+  background: var(--app-surface);
+}
+
+body:has(.landing-page) .site-footer {
+  margin-top: 0;
+}
+
+#main-content.landing-main {
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+  padding: 0;
+  display: block;
+}
+
+.landing-main section + section {
+  margin: 0;
+}
+
+.landing-hero {
+  background: var(--nys-color-theme, #084b52);
+  color: var(--app-text-on-theme);
+  padding: 3rem 1.25rem 3.25rem;
+  background-image: radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.06), transparent 55%);
+}
+
+.landing-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 3rem;
+  align-items: center;
+}
+
+.landing-hero .chip {
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.landing-hero h1 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: clamp(2.2rem, 5vw, 2.9rem);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: 0.005em;
+  color: var(--app-text-on-theme);
+}
+
+.landing-hero__subhead {
+  margin: 1.1rem 0 0;
+  font-size: 1.12rem;
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+  max-width: 34ch;
+}
+
+.landing-reassure {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-size: 0.9rem;
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+}
+
+.landing-reassure li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.landing-reassure span {
+  color: var(--app-accent);
+  font-weight: 800;
+}
+
+.landing-paths {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.landing-path-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  border-radius: var(--app-radius-lg);
+  padding: 1.3rem 1.4rem;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s,
+    background 0.12s;
+}
+
+.landing-path-card:hover,
+.landing-path-card:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--app-shadow-md);
+  text-decoration: none;
+}
+
+.landing-path-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.landing-path-card__kicker {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin: 0 0 0.15rem;
+}
+
+.landing-path-card__title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.landing-path-card__desc {
+  font-size: 0.92rem;
+  margin: 0.3rem 0 0;
+  line-height: 1.4;
+}
+
+.landing-path-card__arrow {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-path-card--primary {
+  border-color: var(--app-surface);
+}
+
+.landing-path-card--primary .landing-path-card__kicker {
+  color: var(--nys-color-theme-mid, #3f8186);
+}
+
+.landing-path-card--primary .landing-path-card__title {
+  color: var(--nys-color-theme-stronger, #042a2e);
+}
+
+.landing-path-card--primary .landing-path-card__desc {
+  color: var(--app-text-weak);
+}
+
+.landing-path-card--primary .landing-path-card__arrow {
+  background: var(--app-accent);
+  color: var(--app-ink);
+}
+
+.landing-path-card--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.landing-path-card--secondary .landing-path-card__kicker {
+  color: var(--nys-color-theme-weak, #a8cccd);
+}
+
+.landing-path-card--secondary .landing-path-card__title {
+  color: var(--app-text-on-theme);
+}
+
+.landing-path-card--secondary .landing-path-card__desc {
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+}
+
+.landing-path-card--secondary .landing-path-card__arrow {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--app-text-on-theme);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.landing-section {
+  padding: 2.5rem 0;
+}
+
+.landing-section__title {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--app-ink);
+  margin: 0 0 2rem;
+}
+
+.landing-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.landing-card-grid--loose {
+  gap: 2rem;
+}
+
+.landing-step {
+  text-align: center;
+}
+
+.landing-step__num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--nys-color-theme, #084b52);
+  color: var(--app-text-on-theme);
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.8rem;
+}
+
+.landing-step h3,
+.landing-benefit-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--app-ink);
+}
+
+.landing-step p,
+.landing-benefit-card p {
+  margin: 0;
+  color: var(--app-text-weak);
+  font-size: 0.9rem;
+}
+
+.landing-step p {
+  text-wrap: balance;
+}
+
+.landing-benefits {
+  background: var(--app-surface-muted);
+}
+
+.landing-benefit-card {
+  padding: 1.5rem;
+  border-radius: var(--nys-radius-xl);
+}
+
+.landing-benefit-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--app-radius-md);
+  background: var(--nys-color-theme-faint, #eef5f5);
+  color: var(--nys-color-theme, #084b52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+}
+
+.landing-benefit-card__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.landing-quote {
+  text-align: center;
+}
+
+.landing-quote__mark {
+  font-size: 3rem;
+  line-height: 0.5;
+  color: var(--app-accent);
+  font-weight: 800;
+}
+
+.landing-quote blockquote {
+  margin: 0.5rem auto 0;
+  max-width: 24ch;
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--app-ink);
+  line-height: 1.25;
+}
+
+.landing-quote cite {
+  display: block;
+  margin-top: 1rem;
+  font-style: normal;
+  color: var(--app-text-weak);
+  font-size: 0.95rem;
+}
+
+.landing-final-cta {
+  background: var(--nys-color-theme, #084b52);
+  color: var(--app-text-on-theme);
+  text-align: center;
+}
+
+.landing-final-cta h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--app-text-on-theme);
+}
+
+.landing-final-cta p {
+  margin: 0 0 1.5rem;
+  color: var(--nys-color-theme-weaker, #d7e8e9);
+}
+
+.landing-final-cta__buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.landing-final-cta .btn--outline {
+  color: var(--app-text-on-theme);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.landing-final-cta .btn--outline:hover,
+.landing-final-cta .btn--outline:focus {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--app-text-on-theme);
+}
+
+.landing-trust {
+  background: var(--app-surface-muted);
+  border-top: 1px solid var(--app-base);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.landing-trust__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--app-text-weak);
+}
+
+.landing-trust__seal {
+  width: 24px;
+  height: 24px;
+  color: var(--nys-color-theme, #084b52);
+  flex: 0 0 auto;
+}
+
+.landing-trust strong {
+  color: var(--app-ink);
+}
+
+@media (max-width: 1020px) {
+  .landing-hero__inner {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 880px) {
+  .landing-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .landing-hero h1 {
+    max-width: 14ch;
+  }
+}
+
+@media (max-width: 760px) {
+  .landing-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 330px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .landing-hero,
+  .landing-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .landing-path-card {
+    padding: 1.1rem 1rem;
+  }
+}
+/* NEW CSS ENDS */
 
 /* ── Chat transcript ─────────────────────────────────────────────────────── */
 .chat-stream {
@@ -553,6 +967,20 @@ main {
 .btn--outline:hover {
   background: var(--nys-color-theme-faint, #eef5f5);
 }
+.btn--accent {
+  background: var(--app-accent);
+  color: var(--app-ink);
+  border-color: var(--app-accent);
+}
+.btn--accent:hover,
+.btn--accent:focus,
+a.btn--accent:hover,
+a.btn--accent:focus {
+  background: color-mix(in srgb, var(--app-accent), #000 10%);
+  border-color: color-mix(in srgb, var(--app-accent), #000 10%);
+  color: var(--app-ink);
+}
+
 .btn:disabled {
   opacity: 0.6;
   cursor: default;
