@@ -2,6 +2,14 @@
 
 {% block title %}{% if ranked|default(false) %}Your apprenticeship matches{% else %}Apprenticeship Opportunities{% endif %}{% endblock %}
 
+{% block head_extra %}
+  {% if ranked|default(false) %}
+    <script src="https://cdn.jsdelivr.net/npm/htmx-ext-sse@2.2.4"
+            integrity="sha384-A986SAtodyH8eg8x8irJnYUk7i9inVQqYigD6qZ9evobksGNIXfeFvDwLSHcp31N"
+            crossorigin="anonymous"></script>
+  {% endif %}
+{% endblock %}
+
 {% block page_heading %}{% if ranked|default(false) %}Your apprenticeship matches{% else %}Apprenticeship opportunities{% endif %}{% endblock %}
 
 {% block page_subhead %}
@@ -16,26 +24,105 @@
   <div class="opportunities-page">
     {% if ranked %}
 
-      <!--
-        Ranked mode: hx-trigger="load" fires the GET request immediately.
-        The server-built rank_url already contains interests as query params.
-        The response (_rank_results.html fragment) replaces this div's content.
-      -->
       <div
         id="ranked-content"
-        hx-get="{{ rank_url }}"
-        hx-trigger="load"
-        hx-target="this"
-        hx-swap="outerHTML"
+        hx-ext="sse"
+        sse-connect="{{ rank_stream_url }}"
+        sse-close="done"
       >
+        <div class="interests-banner">
+          <span class="interests-banner__lead">Matched to your interests:</span>
+          <span class="interests-banner__chip-container">
+          {% for interest in interests %}
+            <span class="chip chip--theme chip--bg-white">{{ interest }}</span>
+          {% endfor %}
+          </span>
+          <a class="interests-banner__link" href="/chat">Change interests</a>
+        </div>
+
         <div
-          id="page-status"
-          class="surface surface--shadow"
+          id="rank-progress"
+          class="surface surface--shadow rank-progress"
           role="status"
           aria-live="polite"
           aria-atomic="true"
-        >Analyzing your interests…</div>
-      </div>
+          sse-swap="progress"
+          hx-swap="innerHTML"
+        >
+          {% include "_rank_progress.html" with context %}
+        </div>
+
+        <h2 class="section-heading">Matched opportunities</h2>
+
+        <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
+          <div class="count">
+            <span id="ranked-count">0</span> of {{ ranked_total }} opportunities analyzed
+          </div>
+          <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while ranking is in progress.</div>
+        </div>
+
+        <div
+          id="match-list"
+          class="match-list"
+          sse-swap="batch"
+          hx-swap="beforeend"
+        ></div>
+
+        <div
+          id="rank-errors"
+          sse-swap="batch-error"
+          hx-swap="beforeend"
+        ></div>
+
+        <div
+          id="rank-done"
+          sse-swap="done"
+          hx-swap="innerHTML"
+          hidden
+        ></div>
+        </div>
+
+
+        {% if unranked %}
+        <section class="unranked-opportunities" aria-labelledby="unranked-heading">
+          <h2 id="unranked-heading" class="section-heading">More opportunities</h2>
+
+          <p class="text-meta">
+            These opportunities are available, but do not have enough occupation data to rank against your interests.
+          </p>
+
+          <div class="table-wrap surface surface--shadow">
+            <table class="opportunities-table">
+              <caption class="visually-hidden">
+                More apprenticeship opportunities
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Position / Organization</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Recruitment closes</th>
+                  <th scope="col" class="num">Openings</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in unranked %}
+                <tr>
+                  <td>
+                    <a class="job-link" href="/opportunities/{{ item.id }}">
+                      {{ item.posting.jobTitle }}
+                    </a>
+                    <div class="org-name text-meta">{{ item.posting.sourceTitle }}</div>
+                  </td>
+                  <td class="location">{{ item.posting.locationSummary or '—' }}</td>
+                  <td class="date">{{ item.posting.recruitmentEndDate | format_date }}</td>
+                  <td class="num">{{ item.posting.numberOfOpenings or '—' }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      {% endif %}
 
     {% else %}
 
@@ -86,7 +173,86 @@
 {% endblock %}
 
 {% block scripts %}
-  {% if not ranked|default(false) %}
+  {% if ranked|default(false) %}
+  <script>
+    (function () {
+      const matchList = document.getElementById('match-list');
+      const rankedCount = document.getElementById('ranked-count');
+      const rankStatus = document.getElementById('rank-status');
+
+      sessionStorage.setItem('lastOpportunitiesMode', 'ranked');
+      sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);
+      sessionStorage.setItem('jobRankings', JSON.stringify({ ranked: [] }));
+
+      function sortCards() {
+        if (!matchList) return;
+
+        const cards = Array.from(matchList.querySelectorAll('.match-card'));
+
+        cards.sort((a, b) => {
+          const tierA = Number(a.dataset.tierOrder || 3);
+          const tierB = Number(b.dataset.tierOrder || 3);
+
+          if (tierA !== tierB) {
+            return tierA - tierB;
+          }
+
+          const indexA = Number(a.dataset.sortIndex || 0);
+          const indexB = Number(b.dataset.sortIndex || 0);
+
+          return indexA - indexB;
+        });
+
+        cards.forEach(card => matchList.appendChild(card));
+      }
+
+      function syncRankingsToSessionStorage() {
+        if (!matchList) return;
+
+        const rankings = Array.from(matchList.querySelectorAll('.match-card')).map(card => {
+          return {
+            id: card.dataset.rankingId,
+            tier: card.dataset.rankingTier,
+            explanation: card.dataset.rankingExplanation || ''
+          };
+        });
+
+        sessionStorage.setItem('jobRankings', JSON.stringify({ ranked: rankings }));
+      }
+
+      function updateCount() {
+        if (!matchList || !rankedCount) return;
+
+        const count = matchList.querySelectorAll('.match-card').length;
+        rankedCount.textContent = String(count);
+      }
+
+      document.body.addEventListener('htmx:sseMessage', function (event) {
+        const type = event.detail.type;
+
+        if (type === 'batch') {
+          requestAnimationFrame(() => {
+            sortCards();
+            updateCount();
+            syncRankingsToSessionStorage();
+          });
+        }
+
+        if (type === 'done') {
+          requestAnimationFrame(() => {
+            sortCards();
+            updateCount();
+            syncRankingsToSessionStorage();
+
+            if (rankStatus) {
+              rankStatus.textContent = 'Ranking complete. Matches generated using AI.';
+            }
+          });
+        }
+      });
+    })();
+  </script>
+  {% else %}
   <script>
     sessionStorage.setItem('lastOpportunitiesMode', 'unranked');
     sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);

@@ -27,13 +27,16 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 # ── Logging setup and filters ───────────────────────────────────────────────────
 
+ROOT_LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
+NASWA_LOG_LEVEL = os.getenv("NASWA_LOG_LEVEL", ROOT_LOG_LEVEL).upper()
+
 logging.basicConfig(
-    level=logging.INFO,
+    level=getattr(logging, ROOT_LOG_LEVEL, logging.INFO),
     format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
 )
 
 logger = logging.getLogger("naswa")
-
+logger.setLevel(getattr(logging, NASWA_LOG_LEVEL, logging.INFO))
 
 def _describe_exception(exc: Exception) -> str:
     """Return a compact message for logs and local/demo UI errors."""
@@ -193,7 +196,7 @@ MODEL_CONFIGS = {
 
 # change model name here
 CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "sonnet-4.6")
-SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", CHAT_MODEL_NAME)
+SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", "nova-2-lite")
 
 
 def make_bedrock_model(
@@ -302,6 +305,58 @@ def _set_session_cookie(response, session_id: str) -> None:
 
 # ── ONET scoring ──────────────────────────────────────────────────────────────
 
+RANKING_BATCH_SIZE = int(os.getenv("RANKING_BATCH_SIZE", "10"))
+RANKING_MAX_CONCURRENCY = int(os.getenv("RANKING_MAX_CONCURRENCY", "3"))
+
+TIER_ORDER = {"Strong": 0, "Moderate": 1, "Weak": 2}
+
+
+def _chunks(items: list[dict], size: int) -> list[list[dict]]:
+    """Split a list into fixed-size chunks."""
+    return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def _normalize_tier(tier: str | None) -> str:
+    """Keep unexpected model output from breaking CSS/classes/sorting."""
+    if tier in TIER_ORDER:
+        return tier
+    return "Weak"
+
+
+def _build_ranked_items(
+    batch_jobs: list[dict],
+    scores: list[dict],
+    job_index: dict[str, int],
+) -> list[dict]:
+    """Attach model scores back to jobs and sort this batch by tier."""
+    score_map = {
+        score.get("id"): score
+        for score in scores
+        if isinstance(score, dict) and score.get("id")
+    }
+
+    ranked = []
+
+    for job in batch_jobs:
+        score = score_map.get(job["id"], {})
+        tier = _normalize_tier(score.get("tier"))
+
+        ranked.append(
+            {
+                "id": job["id"],
+                "tier": tier,
+                "tier_order": TIER_ORDER.get(tier, 3),
+                "sort_index": job_index[job["id"]],
+                "explanation": score.get("explanation", ""),
+                "posting": job["posting"],
+            }
+        )
+
+
+    return sorted(
+        ranked,
+        key=lambda item: (item["tier_order"], item["sort_index"]),
+    )
 
 async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]:
     """One LLM call that tier-ranks all ONET jobs against user interests."""
@@ -432,7 +487,7 @@ async def chat(request: Request, message: str = Form(...)):
     session_id, session, needs_cookie = _get_or_create_session(request)
 
     await session.queue.put(message)
-    logger.info("Chat message queued")
+    logger.debug("Chat message queued")
 
     response = templates.TemplateResponse(
         request, "_message.html", {"role": "user", "content": message}
@@ -457,7 +512,7 @@ async def chat_stream(request: Request):
         while True:
             # If another EventSource connection replaced this one, stop this generator.
             if session.active_stream_id != stream_id:
-                logger.info("Closing stale chat stream")
+                logger.debug("Closing stale chat stream")
                 return
 
             message = await stream_queue.get()
@@ -466,14 +521,14 @@ async def chat_stream(request: Request):
             # so the active stream can consume it.
             if session.active_stream_id != stream_id:
                 await stream_queue.put(message)
-                logger.info("Stale chat stream re-queued message and closed")
+                logger.debug("Stale chat stream re-queued message and closed")
                 return
 
             full_text = ""
             prev_display_len = 0
 
             try:
-                logger.info("Chat agent started")
+                logger.debug("Chat agent started")
 
                 async for event in session.agent.stream_async(message):
                     if "data" not in event:
@@ -504,13 +559,13 @@ async def chat_stream(request: Request):
                 yield {"event": "message", "data": msg_html}
                 continue
 
-            logger.info("Chat agent completed")
+            logger.debug("Chat agent completed")
 
             profile = _extract_profile(full_text)
             final_text = _strip_profile(full_text)
 
             msg_html = render("_message.html", role="assistant", content=final_text)
-            logger.info("Sending assistant message event")
+            logger.debug("Sending assistant message event")
 
             yield {"event": "clear-stream", "data": ""}
             yield {"event": "message", "data": msg_html}
@@ -547,11 +602,31 @@ async def opportunities_page(
 ):
     """Serve the opportunities list, optionally in ranked mode."""
     if ranked and interests:
-        rank_url = "/api/rank-opportunities?" + urlencode(
+        all_jobs = all_opportunities()
+        onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
+        no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
+
+        rank_stream_url = "/api/rank-opportunities?" + urlencode(
             [("interests", i) for i in interests]
         )
+
+        unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
+
         return templates.TemplateResponse(
-            request, "opportunities.html", {"ranked": True, "rank_url": rank_url}
+            request,
+            "opportunities.html",
+            {
+                "ranked": True,
+                "rank_stream_url": rank_stream_url,
+                "interests": interests,
+                "ranked_total": len(onet_jobs),
+                "unranked": unranked,
+                "completed_jobs": 0,
+                "total_jobs": len(onet_jobs),
+                "completed_batches": 0,
+                "total_batches": len(_chunks(onet_jobs, RANKING_BATCH_SIZE)),
+                "is_done": False,
+            },
         )
     return templates.TemplateResponse(
         request,
@@ -573,46 +648,199 @@ async def opportunity_detail_page(request: Request, slug: str):
 
 
 @app.get("/api/rank-opportunities")
-async def rank_opportunities(
+async def rank_opportunities_stream(
     request: Request,
     interests: list[str] = Query(...),
 ):
-    """Rank ONET jobs by relevance; return an HTML fragment for HTMX swap."""
+    """
+    Rank ONET jobs in parallel batches and stream result cards as each batch completes.
+    """
+    benchmark_id = secrets.token_hex(4)
+    request_started_at = time.perf_counter()
+
     all_jobs = all_opportunities()
     onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
-    no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
 
-    if onet_jobs:
+    job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
+    batches = _chunks(onet_jobs, RANKING_BATCH_SIZE)
+    total_batches = len(batches)
+
+    logger.info(
+        "Streaming opportunity ranking started id=%s model=%s jobs=%s batches=%s batch_size=%s concurrency=%s",
+        benchmark_id,
+        SCORING_MODEL_NAME,
+        len(onet_jobs),
+        total_batches,
+        RANKING_BATCH_SIZE,
+        RANKING_MAX_CONCURRENCY,
+    )
+
+    async def generate():
+        semaphore = asyncio.Semaphore(RANKING_MAX_CONCURRENCY)
+        completed_batches = 0
+        completed_jobs = 0
+
+        async def rank_batch(batch_number: int, batch_jobs: list[dict]) -> dict:
+            async with semaphore:
+                batch_started_at = time.perf_counter()
+
+                logger.debug(
+                    "Ranking batch started id=%s batch=%s/%s jobs=%s model=%s",
+                    benchmark_id,
+                    batch_number,
+                    total_batches,
+                    len(batch_jobs),
+                    SCORING_MODEL_NAME,
+                )
+
+                try:
+                    scores = await _score_jobs(interests, batch_jobs)
+
+                    if len(scores) != len(batch_jobs):
+                        logger.warning(
+                            "Ranking batch returned unexpected score count id=%s batch=%s/%s jobs=%s scores=%s model=%s",
+                            benchmark_id,
+                            batch_number,
+                            total_batches,
+                            len(batch_jobs),
+                            len(scores),
+                            SCORING_MODEL_NAME,
+                        )
+
+                    ranked = _build_ranked_items(
+                        batch_jobs=batch_jobs,
+                        scores=scores,
+                        job_index=job_index,
+                    )
+
+                    elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
+
+                    logger.debug(
+                        "Ranking batch completed id=%s batch=%s/%s jobs=%s scores=%s elapsed_ms=%.1f",
+                        benchmark_id,
+                        batch_number,
+                        total_batches,
+                        len(batch_jobs),
+                        len(scores),
+                        elapsed_ms,
+                    )
+
+                    return {
+                        "batch_number": batch_number,
+                        "jobs": batch_jobs,
+                        "ranked": ranked,
+                        "error": None,
+                        "elapsed_ms": elapsed_ms,
+                    }
+
+                except Exception as exc:
+                    elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
+                    error_message = _describe_exception(exc)
+
+                    logger.exception(
+                        "Ranking batch failed id=%s batch=%s/%s jobs=%s elapsed_ms=%.1f error=%s",
+                        benchmark_id,
+                        batch_number,
+                        total_batches,
+                        len(batch_jobs),
+                        elapsed_ms,
+                        error_message,
+                    )
+
+                    return {
+                        "batch_number": batch_number,
+                        "jobs": batch_jobs,
+                        "ranked": [],
+                        "error": error_message,
+                        "elapsed_ms": elapsed_ms,
+                    }
+
+        tasks = [
+            asyncio.create_task(rank_batch(batch_number, batch_jobs))
+            for batch_number, batch_jobs in enumerate(batches, start=1)
+        ]
+
         try:
-            logger.info("Opportunity ranking started for %s jobs", len(onet_jobs))
-            scores = await _score_jobs(interests, onet_jobs)
-            logger.info("Opportunity ranking completed")
-        except Exception as exc:
-            logger.exception("Opportunity ranking failed: %s", _describe_exception(exc))
-            scores = []
-    else:
-        scores = []
+            for task in asyncio.as_completed(tasks):
+                if await request.is_disconnected():
+                    logger.info(
+                        "Streaming opportunity ranking disconnected id=%s completed_batches=%s/%s",
+                        benchmark_id,
+                        completed_batches,
+                        total_batches,
+                    )
+                    break
 
-    score_map = {s["id"]: s for s in scores}
-    tier_order = {"Strong": 0, "Moderate": 1, "Weak": 2}
+                result = await task
+                completed_batches += 1
+                completed_jobs += len(result["jobs"])
 
-    ranked = sorted(
-        [
-            {
-                "id": job["id"],
-                "tier": score_map.get(job["id"], {}).get("tier", "Weak"),
-                "explanation": score_map.get(job["id"], {}).get("explanation", ""),
-                "posting": job["posting"],
+                if result["error"]:
+                    yield {
+                        "event": "batch-error",
+                        "data": (
+                            f"<p class='empty-state surface surface--shadow'>"
+                            f"One ranking batch failed: {result['error']}"
+                            f"</p>"
+                        ),
+                    }
+                else:
+                    cards_html = render(
+                        "_rank_cards.html",
+                        ranked=result["ranked"],
+                    )
+
+                    yield {
+                        "event": "batch",
+                        "data": cards_html,
+                    }
+
+                progress_html = render(
+                    "_rank_progress.html",
+                    completed_jobs=completed_jobs,
+                    total_jobs=len(onet_jobs),
+                    completed_batches=completed_batches,
+                    total_batches=total_batches,
+                    is_done=False,
+                )
+
+                yield {
+                    "event": "progress",
+                    "data": progress_html,
+                }
+
+            total_elapsed_ms = (time.perf_counter() - request_started_at) * 1000
+
+            logger.info(
+                "Streaming opportunity ranking completed id=%s jobs=%s batches=%s total_elapsed_ms=%.1f",
+                benchmark_id,
+                len(onet_jobs),
+                total_batches,
+                total_elapsed_ms,
+            )
+
+            final_progress_html = render(
+                "_rank_progress.html",
+                completed_jobs=completed_jobs,
+                total_jobs=len(onet_jobs),
+                completed_batches=completed_batches,
+                total_batches=total_batches,
+                is_done=True,
+            )
+
+            yield {
+                "event": "progress",
+                "data": final_progress_html,
             }
-            for job in onet_jobs
-        ],
-        key=lambda x: tier_order.get(x["tier"], 3),
-    )
 
-    unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
+            yield {
+                "event": "done",
+                "data": "Ranking complete.",
+            }
 
-    return templates.TemplateResponse(
-        request,
-        "_rank_results.html",
-        {"interests": interests, "ranked": ranked, "unranked": unranked},
-    )
+        finally:
+            for task in tasks:
+                if not task.done():
+                    task.cancel()
+
+    return EventSourceResponse(generate())

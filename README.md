@@ -91,7 +91,11 @@ Do not commit `.env` files or AWS credentials.
 ## Run the app
 
 ```bash
+# Run the app normally
 uv run uvicorn server:app --reload
+
+# Run the app with DEBUG logs
+NASWA_LOG_LEVEL=DEBUG uv run uvicorn server:app --reload
 ```
 
 Then open:

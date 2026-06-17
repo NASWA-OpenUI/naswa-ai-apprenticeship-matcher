@@ -1,0 +1,24 @@
+{# templates/_rank_progress.html #}
+
+<div class="rank-progress__summary">
+  {% if is_done %}
+    <strong>Ranking complete.</strong>
+    Analyzed {{ completed_jobs }} of {{ total_jobs }} opportunities.
+  {% else %}
+    <strong>Analyzing opportunities…</strong>
+    {{ completed_jobs }} of {{ total_jobs }} checked.
+  {% endif %}
+</div>
+
+<div class="text-meta">
+  {{ completed_batches }} of {{ total_batches }} batches complete.
+  Showing matches as they arrive.
+</div>
+
+<progress
+  class="rank-progress__bar"
+  value="{{ completed_jobs }}"
+  max="{{ total_jobs }}"
+>
+  {{ completed_jobs }} of {{ total_jobs }}
+</progress>

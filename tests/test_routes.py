@@ -56,23 +56,6 @@ def test_opportunities_route_renders_fixture_opportunities(client):
     assert "February 28, 2027" in response.text
 
 
-def test_ranked_opportunities_page_renders_htmx_shell(client):
-    response = client.get(
-        "/opportunities",
-        params=[
-            ("ranked", "true"),
-            ("interests", "hands-on work"),
-            ("interests", "problem solving"),
-        ],
-    )
-
-    assert response.status_code == 200
-    assert "Analyzing your interests" in response.text
-    assert 'hx-get="/api/rank-opportunities?' in response.text
-    assert "hands-on+work" in response.text
-    assert "problem+solving" in response.text
-
-
 def test_opportunity_detail_route_renders_enriched_opportunity(client):
     response = client.get("/opportunities/electrician-apprentice-fixture")
 
@@ -113,7 +96,7 @@ def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
     assert response.status_code == 404
 
 
-def test_rank_opportunities_route_uses_mocked_scores(client, monkeypatch):
+def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
     async def fake_score_jobs(interests, onet_jobs):
         assert interests == ["hands-on work", "problem solving"]
         assert [job["id"] for job in onet_jobs] == ["electrician-apprentice-fixture"]
@@ -128,9 +111,34 @@ def test_rank_opportunities_route_uses_mocked_scores(client, monkeypatch):
 
     monkeypatch.setattr(server, "_score_jobs", fake_score_jobs)
 
-    response = client.get(
+    with client.stream(
+        "GET",
         "/api/rank-opportunities",
         params=[
+            ("interests", "hands-on work"),
+            ("interests", "problem solving"),
+        ],
+    ) as response:
+        assert response.status_code == 200
+        body = "".join(response.iter_text())
+
+    assert "event: batch" in body
+    assert "event: progress" in body
+    assert "event: done" in body
+
+    # Ranked O*NET-backed opportunity.
+    assert "Strong" in body
+    assert "Electrician Apprentice" in body
+    assert "Good match for hands-on troubleshooting work." in body
+
+    # Stream endpoint only returns ranked cards/progress, not the full page shell.
+    assert "Sheet Metal Worker Apprentice" not in body
+
+def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
+    response = client.get(
+        "/opportunities",
+        params=[
+            ("ranked", "true"),
             ("interests", "hands-on work"),
             ("interests", "problem solving"),
         ],
@@ -138,16 +146,18 @@ def test_rank_opportunities_route_uses_mocked_scores(client, monkeypatch):
 
     assert response.status_code == 200
 
+    # Ranked page shell.
     assert "Matched to your interests" in response.text
     assert "hands-on work" in response.text
     assert "problem solving" in response.text
+    assert "Analyzing opportunities…" in response.text
 
-    # Ranked O*NET-backed opportunity.
-    assert "Strong" in response.text
-    assert "Electrician Apprentice" in response.text
-    assert "Good match for hands-on troubleshooting work." in response.text
+    # The page should connect to the streaming ranking endpoint.
+    assert "sse-connect" in response.text
+    assert "/api/rank-opportunities" in response.text
+    assert "interests=hands-on+work" in response.text
+    assert "interests=problem+solving" in response.text
 
-    # Non-O*NET opportunity still appears as unranked.
-    print(response.text)
+    # Non-O*NET opportunity still appears as unranked on the page shell.
     assert "More opportunities" in response.text
     assert "Sheet Metal Worker Apprentice" in response.text

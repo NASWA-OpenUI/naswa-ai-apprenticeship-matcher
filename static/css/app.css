@@ -1623,3 +1623,18 @@ body:has(.opportunity-detail-page) {
     flex-direction: column;
   }
 }
+
+
+.rank-progress {
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.rank-progress__summary {
+  margin-bottom: 0.25rem;
+}
+
+.rank-progress__bar {
+  width: 100%;
+  margin-top: 0.75rem;
+}
