@@ -1,24 +1,35 @@
 {# templates/_rank_progress.html #}
+{% set pct = (completed_jobs / total_jobs * 100) | round | int if total_jobs else 0 %}
+{% set indeterminate = (not is_done) and completed_jobs == 0 %}
+{% set elapsed = elapsed_seconds | default(0) %}
 
-<div class="rank-progress__summary">
+<div class="rank-progress__head">
   {% if is_done %}
-    <strong>Ranking complete.</strong>
-    Analyzed {{ completed_jobs }} of {{ total_jobs }} opportunities.
+    <span class="rank-progress__check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
   {% else %}
-    <strong>Analyzing opportunities…</strong>
-    {{ completed_jobs }} of {{ total_jobs }} checked.
+    <span class="rank-progress__spinner" aria-hidden="true"></span>
   {% endif %}
+
+  <span class="rank-progress__title">
+    {% if is_done %}Ranking complete{% else %}Analyzing opportunities…{% endif %}
+  </span>
+
+  <span class="rank-progress__pct">{{ pct }}%</span>
 </div>
 
-<div class="text-meta">
-  {{ completed_batches }} of {{ total_batches }} batches complete.
-  Showing matches as they arrive.
+<div class="rank-progress__track">
+  <div
+    class="rank-progress__fill{% if indeterminate %} rank-progress__fill--indeterminate{% endif %}"
+    {% if not indeterminate %}style="width: {{ pct }}%;"{% endif %}
+  ></div>
 </div>
 
-<progress
-  class="rank-progress__bar"
-  value="{{ completed_jobs }}"
-  max="{{ total_jobs }}"
->
-  {{ completed_jobs }} of {{ total_jobs }}
-</progress>
+<p class="rank-progress__sub text-meta">
+  {% if is_done %}
+    Analyzed all {{ total_jobs }} opportunities · ranked by best fit
+  {% else %}
+    {{ completed_jobs }} of {{ total_jobs }} checked{% if elapsed %} in {{ elapsed }}s{% endif %} · showing matches as they arrive
+  {% endif %}
+</p>

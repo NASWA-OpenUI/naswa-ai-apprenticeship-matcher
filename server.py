@@ -29,6 +29,10 @@ templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 ROOT_LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO").upper()
 NASWA_LOG_LEVEL = os.getenv("NASWA_LOG_LEVEL", ROOT_LOG_LEVEL).upper()
+BOTO_LOG_LEVEL = os.getenv(
+    "BOTO_LOG_LEVEL",
+    "DEBUG" if ROOT_LOG_LEVEL == "DEBUG" else "WARNING",
+).upper()
 
 logging.basicConfig(
     level=getattr(logging, ROOT_LOG_LEVEL, logging.INFO),
@@ -37,6 +41,10 @@ logging.basicConfig(
 
 logger = logging.getLogger("naswa")
 logger.setLevel(getattr(logging, NASWA_LOG_LEVEL, logging.INFO))
+
+logging.getLogger("botocore").setLevel(
+        getattr(logging, BOTO_LOG_LEVEL, logging.WARNING)
+    )
 
 def _describe_exception(exc: Exception) -> str:
     """Return a compact message for logs and local/demo UI errors."""
@@ -623,8 +631,6 @@ async def opportunities_page(
                 "unranked": unranked,
                 "completed_jobs": 0,
                 "total_jobs": len(onet_jobs),
-                "completed_batches": 0,
-                "total_batches": len(_chunks(onet_jobs, RANKING_BATCH_SIZE)),
                 "is_done": False,
             },
         )
@@ -795,13 +801,13 @@ async def rank_opportunities_stream(
                         "data": cards_html,
                     }
 
+                elapsed_seconds = round(time.perf_counter() - request_started_at)
                 progress_html = render(
                     "_rank_progress.html",
                     completed_jobs=completed_jobs,
                     total_jobs=len(onet_jobs),
-                    completed_batches=completed_batches,
-                    total_batches=total_batches,
                     is_done=False,
+                    elapsed_seconds=elapsed_seconds,
                 )
 
                 yield {
@@ -823,8 +829,6 @@ async def rank_opportunities_stream(
                 "_rank_progress.html",
                 completed_jobs=completed_jobs,
                 total_jobs=len(onet_jobs),
-                completed_batches=completed_batches,
-                total_batches=total_batches,
                 is_done=True,
             )
 
@@ -835,7 +839,7 @@ async def rank_opportunities_stream(
 
             yield {
                 "event": "done",
-                "data": "Ranking complete.",
+                "data": str(round(total_elapsed_ms / 1000)),
             }
 
         finally:

@@ -1,15 +1,17 @@
 ## TODO
 
 - Harmonize the design on opportunities page
-- Mobile
-  - Match should maybe have a short and long explanation
 - Feat: add more interests
 - Feat: show "closes soon"
 - Feat: return to search
+- Feat: add new opportunities from crawler
 
 
 ## DONE
 
+- Feat: Load matched opportunities faster
+  - When loading matched opportunities, show progress
+  - Add a loading spinnner or something
 - Add landing page
 - Feat: initial landing page
 - Theme-coloured links

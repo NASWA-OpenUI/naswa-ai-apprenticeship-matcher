@@ -43,9 +43,6 @@
         <div
           id="rank-progress"
           class="surface surface--shadow rank-progress"
-          role="status"
-          aria-live="polite"
-          aria-atomic="true"
           sse-swap="progress"
           hx-swap="innerHTML"
         >
@@ -55,10 +52,10 @@
         <h2 class="section-heading">Matched opportunities</h2>
 
         <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
-          <div class="count">
-            <span id="ranked-count">0</span> of {{ ranked_total }} opportunities analyzed
+          <div class="count" id="rank-count" aria-live="polite" aria-atomic="true">
+            <span id="ranked-count">0</span> <span class="visually-hidden">of {{ ranked_total }} </span>opportunities analyzed
           </div>
-          <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while ranking is in progress.</div>
+          <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches are loading.</div>
         </div>
 
         <div
@@ -84,7 +81,12 @@
 
 
         {% if unranked %}
-        <section class="unranked-opportunities" aria-labelledby="unranked-heading">
+        <section
+          id="unranked-opportunities"
+          class="unranked-opportunities"
+          aria-labelledby="unranked-heading"
+          hidden
+        >
           <h2 id="unranked-heading" class="section-heading">More opportunities</h2>
 
           <p class="text-meta">
@@ -126,11 +128,10 @@
 
     {% else %}
 
-      <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
+      <div id="results-bar" class="results-bar" data-total="{{ ranked_total }}" aria-label="Opportunity results summary">
         <div class="count">
           <span>{{ opportunities|length }}</span> opportunit{{ "y" if opportunities|length == 1 else "ies" }}
         </div>
-        <!-- <div class="text-meta">Sorted by recruitment closing date</div> -->
       </div>
 
       {% if opportunities %}
@@ -229,25 +230,30 @@
 
       document.body.addEventListener('htmx:sseMessage', function (event) {
         const type = event.detail.type;
+        if (type !== 'batch' && type !== 'done') return;
 
-        if (type === 'batch') {
-          requestAnimationFrame(() => {
-            sortCards();
-            updateCount();
-            syncRankingsToSessionStorage();
-          });
-        }
+        const secs = type === 'done' ? parseInt(event.detail.data, 10) : null;
+
+        requestAnimationFrame(() => {
+          sortCards();
+          updateCount();              // updates #ranked-count → announced via the live .count region
+          syncRankingsToSessionStorage();
+
+          if (type === 'done') {
+            const tail = Number.isFinite(secs) ? ` in ${secs}s` : '';
+            if (rankStatus) rankStatus.textContent = `Ranking complete${tail}. Matches generated using AI.`;
+          }
+        });
 
         if (type === 'done') {
-          requestAnimationFrame(() => {
-            sortCards();
-            updateCount();
-            syncRankingsToSessionStorage();
+          const panel = document.getElementById('rank-progress');
+          if (panel) setTimeout(() => panel.classList.add('is-collapsed'), 3000);
 
-            if (rankStatus) {
-              rankStatus.textContent = 'Ranking complete. Matches generated using AI.';
-            }
-          });
+          const unranked = document.getElementById('unranked-opportunities');
+          if (unranked) {
+            unranked.hidden = false;
+            requestAnimationFrame(() => unranked.classList.add('is-revealed'));
+          }
         }
       });
     })();
