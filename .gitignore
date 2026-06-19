@@ -6,3 +6,4 @@ __pycache__/
 data/_opportunities.db
 llm-export*
 data-new/*
+data-old/*

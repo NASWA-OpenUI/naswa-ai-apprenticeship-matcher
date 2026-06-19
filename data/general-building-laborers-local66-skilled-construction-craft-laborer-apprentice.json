@@ -10,7 +10,7 @@
     "numberOfOpenings": 20,
     "sponsorName": "JATC for General Building Laborers, Local Union #66",
     "unionName": "General Building Laborers, Local Union #66",
-    "locationSummary": "Melville, NY; Nassau and Suffolk counties",
+    "locationSummary": "Melville, NY; applicants must live within the Local Union #66 jurisdiction, including Nassau and Suffolk counties",
     "regions": [],
     "recruitmentStartDate": "2025-08-13",
     "recruitmentEndDate": "2026-08-12",
@@ -19,7 +19,7 @@
     "applicationMethods": [
       "in_person_application"
     ],
-    "applicationSummary": "Apply in person only at General Building Laborers, Local Union #66 in Melville, NY, on Mondays and Wednesdays from 10:00 a.m. to 3:00 p.m. during the recruitment period. All applications must be received by August 12, 2026.",
+    "applicationSummary": "Apply in person only at Local Union #66 in Melville, NY on Mondays and Wednesdays from 10:00 a.m. to 3:00 p.m. during the recruitment period. Applications must be received by August 12, 2026.",
     "applicationWebsite": null,
     "applicationEmail": null,
     "applicationPhone": null,
@@ -32,27 +32,30 @@
     "applicationFeeDetails": null,
     "ageRequirement": "Must be at least 18 years old.",
     "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
-    "residencyRequirement": "Must have resided within the jurisdiction of Local Union #66 for at least six months before applying, including Nassau and Suffolk counties.",
-    "transportationRequirement": "Must have reliable transportation to and from various jobsites and required classes, and must have a valid New York State driver's license. Apprentices may be required to drive company vehicles.",
+    "residencyRequirement": "Must have lived within the jurisdiction of Local Union #66 for at least six months before applying, including Nassau and Suffolk counties.",
+    "transportationRequirement": "Must have reliable transportation to and from jobsites and required classes. Must have a valid New York State driver’s license and may be required to drive company vehicles.",
     "drugTestRequirement": "Must take and pass a drug test at the applicant’s expense after selection and before enrollment.",
     "classRequirement": "Must be able to attend required classes at the approved school.",
     "allRequirements": [
-      "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in apprenticeship.",
-      "Must have a high school diploma or a high school equivalency diploma such as TASC or GED. Proof will be required after selection and prior to enrollment in apprenticeship.",
+      "Must be at least 18 years old; proof will be required after selection and prior to enrollment in apprenticeship.",
+      "Must have a high school diploma or a high school equivalency diploma such as TASC or GED; proof will be required after selection and prior to enrollment in apprenticeship.",
       "Must take and pass a drug test, at the applicant’s expense, after selection and prior to enrollment in apprenticeship.",
-      "Must sign an affidavit stating that they are physically able to perform the work of a Skilled Construction Craft Laborer, including lifting and carrying an aggregate of approximately 94 pounds for 25 feet and restacking it to a height of approximately 54 inches; loading approximately half of a cubic yard of material with a shovel into a wheelbarrow, wheeling it 30 feet, and depositing it into a container; working at heights of 10 feet or higher; and working in confined spaces.",
+      "Must sign an affidavit stating that they are physically able to perform the work of a Skilled Construction Craft Laborer, including lifting and carrying an aggregate of approximately 94 pounds for 25 feet and restacking it to a height of approximately 54 inches.",
+      "Must sign an affidavit stating that they are physically able to perform the work of a Skilled Construction Craft Laborer, including loading approximately half of a cubic yard of material with a shovel into a wheelbarrow, wheeling it 30 feet, and depositing it into a container.",
+      "Must sign an affidavit stating that they are physically able to perform the work of a Skilled Construction Craft Laborer, including working at heights of 10 feet or higher.",
+      "Must sign an affidavit stating that they are physically able to perform the work of a Skilled Construction Craft Laborer, including working in confined spaces.",
       "Must have reliable means of transportation to and from various jobsites and required classes at the approved school.",
-      "Must have a valid New York State driver’s license. Apprentices may be required to drive company vehicles. Proof will be required after selection and prior to enrollment in apprenticeship.",
+      "Must have a valid New York State driver’s license; apprentices may be required to drive company vehicles; proof will be required after selection and prior to enrollment in apprenticeship.",
       "Must take and pass an assessment written examination, including Math, Measurement and Reading.",
       "Must reside within the jurisdiction of Local Union #66 for at least six months prior to application, including Nassau and Suffolk counties.",
       "Must become a union member if accepted into the apprenticeship program."
     ],
-    "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalency, live in the Local 66 jurisdiction for at least six months, have reliable transportation and a valid NYS driver’s license, pass a written exam and drug test, and be physically able to do the work.",
+    "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalency, live in the Local Union #66 jurisdiction, have reliable transportation and a valid NYS driver’s license, pass a written exam and drug test, and meet physical work requirements.",
     "contactName": "JATC for General Building Laborers, Local Union #66",
     "contactPhone": "(631) 454-2330",
     "contactEmail": null,
     "contactWebsite": null,
-    "contactSummary": "Contact the JATC for General Building Laborers, Local Union #66 at (631) 454-2330 for more information."
+    "contactSummary": "For more information, contact the JATC for General Building Laborers, Local Union #66 at (631) 454-2330."
   },
   "oes": {
     "areaType": "10",
@@ -72,7 +75,7 @@
     "onetSocCode": "47-2061.00",
     "title": "Construction Laborers",
     "description": "Perform tasks involving physical labor at construction sites. May operate hand and power tools of all types: air hammers, earth tampers, cement mixers, small mechanical hoists, surveying and measuring equipment, and a variety of other equipment and instruments. May clean and prepare sites, dig trenches, set braces to support the sides of excavations, erect scaffolding, and clean up rubble, debris, and other waste materials. May assist other craft workers.",
-    "fetchedAt": "2026-05-23T21:49:41.015121+00:00",
+    "fetchedAt": "2026-06-11T15:35:08.391922+00:00",
     "source": {
       "name": "O*NET Web Services API v2",
       "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/47-2061.00"

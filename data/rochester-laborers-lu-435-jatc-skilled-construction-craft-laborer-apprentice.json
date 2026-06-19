@@ -5,11 +5,11 @@
     "id": "rochester-laborers-lu-435-jatc-skilled-construction-craft-laborer-apprentice",
     "sourceUrl": "https://dol.ny.gov/news/rochester-laborers-lu-435-jatc",
     "sourceTitle": "Rochester Laborers LU #435  JATC",
-    "jobTitle": "Skilled Construction Craft Laborer Apprentice",
+    "jobTitle": "Skilled Construction Craft Laborer apprentice",
     "socCode": "47-2061.00",
     "numberOfOpenings": 16,
-    "sponsorName": "Joint Apprenticeship and Training Committee for the Rochester Laborers, Local Union #435",
-    "unionName": "Rochester Laborers, Local Union #435",
+    "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for the Rochester Laborers, Local Union #435",
+    "unionName": "Local Union #435",
     "locationSummary": "Rochester, NY area",
     "regions": [],
     "recruitmentStartDate": "2026-03-15",
@@ -19,7 +19,7 @@
     "applicationMethods": [
       "in_person_application"
     ],
-    "applicationSummary": "Apply in person only at Local Union #435, 754 Lexington Ave, Rochester, NY 14613, Monday through Friday from 9:00 a.m. to 3:00 p.m. during the recruitment period. Applications must remain on the premises and be received by March 14, 2027.",
+    "applicationSummary": "Apply in person only at Local Union #435, 754 Lexington Ave, Rochester, NY, Monday through Friday from 9:00 a.m. to 3:00 p.m. during the recruitment period. Applications must stay on the premises and be received by March 14, 2027.",
     "applicationWebsite": null,
     "applicationEmail": null,
     "applicationPhone": null,
@@ -32,27 +32,27 @@
     "applicationFeeDetails": null,
     "ageRequirement": "Must be at least 18 years old.",
     "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
-    "residencyRequirement": null,
-    "transportationRequirement": "Must have a valid New York State driver's license to drive the company's vehicle, and must have reliable transportation to various work locations and required classes at approved classroom instruction locations.",
-    "drugTestRequirement": "Must pass a non-DOT drug screening after selection and before enrollment; the sponsor pays the cost.",
+    "residencyRequirement": "Must be legally able to work in the United States.",
+    "transportationRequirement": "Must have a valid NYS driver’s license to drive the company vehicle and reliable transportation to and from various work locations and required classes.",
+    "drugTestRequirement": "Must pass a Non-DOT drug screening, at the sponsor’s expense, after selection and before enrollment in apprenticeship.",
     "classRequirement": "Must be able to attend required classes at approved classroom instruction locations.",
     "allRequirements": [
       "Must be at least 18 years old.",
-      "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+      "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
       "Must attest that they are physically able to do the work of a skilled construction craft laborer, which may require consistently lifting up to 50 pounds.",
-      "Must pass a Non-Department of Transportation (DOT) drug screening, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+      "Must pass a Non-DOT drug screening, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
       "Must be willing to work outdoors and in a variety of weather conditions.",
       "Must be able to work in an environment with strong odors and loud noises.",
       "Must be legally able to work in the United States.",
       "Must possess a valid NYS driver’s license in order to drive company’s vehicle.",
       "Must have reliable transportation to and from various work locations and required classes at the approved classroom instruction locations."
     ],
-    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, be legally able to work in the U.S., pass a post-selection drug screen, and have a valid NYS driver's license with reliable transportation.",
+    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, be physically able to do the work, pass a sponsor-paid drug screen after selection, and have a valid NYS driver’s license with reliable transportation.",
     "contactName": "JATC for the Rochester Laborers, Local Union #435",
     "contactPhone": "(585) 546-8460",
     "contactEmail": null,
     "contactWebsite": "https://www.local435.com",
-    "contactSummary": "Contact the JATC for the Rochester Laborers, Local Union #435 at (585) 546-8460 for further information."
+    "contactSummary": "For further information, contact the JATC for the Rochester Laborers, Local Union #435 at (585) 546-8460 or visit www.local435.com."
   },
   "oes": {
     "areaType": "10",
@@ -72,7 +72,7 @@
     "onetSocCode": "47-2061.00",
     "title": "Construction Laborers",
     "description": "Perform tasks involving physical labor at construction sites. May operate hand and power tools of all types: air hammers, earth tampers, cement mixers, small mechanical hoists, surveying and measuring equipment, and a variety of other equipment and instruments. May clean and prepare sites, dig trenches, set braces to support the sides of excavations, erect scaffolding, and clean up rubble, debris, and other waste materials. May assist other craft workers.",
-    "fetchedAt": "2026-05-23T21:49:41.015121+00:00",
+    "fetchedAt": "2026-06-11T15:35:08.391922+00:00",
     "source": {
       "name": "O*NET Web Services API v2",
       "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/47-2061.00"

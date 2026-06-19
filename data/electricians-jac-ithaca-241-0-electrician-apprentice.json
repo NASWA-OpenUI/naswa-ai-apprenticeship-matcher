@@ -8,9 +8,9 @@
     "jobTitle": "Electrician Apprentice",
     "socCode": "47-2111.00",
     "numberOfOpenings": 12,
-    "sponsorName": "Electricians Joint Apprenticeship and Training Committee of Ithaca, Local Union #241",
+    "sponsorName": "Electricians Joint Apprenticeship and Training Committee of Ithaca",
     "unionName": "Local Union #241",
-    "locationSummary": "Ithaca, NY area; openings cover the Central, Finger Lakes, and Southern Tier regions",
+    "locationSummary": "Ithaca, NY area; Central, Finger Lakes, and Southern Tier regions",
     "regions": [
       "Central",
       "Finger Lakes",
@@ -23,7 +23,7 @@
     "applicationMethods": [
       "in_person_application"
     ],
-    "applicationSummary": "Pick up applications at Local Union #241 in Ithaca during posted office hours and return them so they are received by March 31, 2027.",
+    "applicationSummary": "Get an application at Local Union #241 in Ithaca during the recruitment period and make sure it is received by March 31, 2027.",
     "applicationWebsite": null,
     "applicationEmail": null,
     "applicationPhone": null,
@@ -35,11 +35,11 @@
     "applicationFee": null,
     "applicationFeeDetails": null,
     "ageRequirement": "Must be at least 18 years old.",
-    "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED) with one year of Elementary Algebra or Math I. An academic transcript will be required after acceptance into the program.",
-    "residencyRequirement": "Must have been employed or be a resident of Local #241 jurisdiction for 1 year before recruitment. The jurisdiction includes Cayuga, Schuyler, Seneca, Tioga, and Tompkins counties, plus all of Tompkins County except Groton Township; Genoa Township in Cayuga County; Catherine, Cayuta, and Hector townships in Schuyler County; Covert and Lodi townships in Seneca County; and Candor and Spencer townships in Tioga County.",
-    "transportationRequirement": "Must have reliable transportation and be willing to commute to any jobsite within the union’s geographic area, and must have reliable transportation to attend all related classroom training.",
-    "drugTestRequirement": "Must pass a drug/alcohol screening, at the expense of the sponsor, after acceptance into the program.",
-    "classRequirement": "Must have reliable transportation to attend all related classroom training, as required.",
+    "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED) with one year of Elementary Algebra or Math I.",
+    "residencyRequirement": "Must have been employed or a resident of Local #241 jurisdiction for 1 year prior to recruitment. The jurisdiction includes Cayuga, Schuyler, Seneca, Tioga, and Tompkins counties, with additional township limits listed in the posting.",
+    "transportationRequirement": "Must have reliable transportation to commute to any jobsite within the union’s geographic area and to attend all related classroom training.",
+    "drugTestRequirement": "Must pass a drug/alcohol screening after acceptance, at the sponsor’s expense.",
+    "classRequirement": "Must have reliable transportation to attend all related classroom training as required.",
     "allRequirements": [
       "Must be at least 18 years old.",
       "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED) with one year of Elementary Algebra or Math I.",
@@ -47,19 +47,17 @@
       "Must be physically able to perform the work required, as determined by a physical exam, at the expense of the sponsor, after acceptance into the program.",
       "Must pass a drug/alcohol screening, at the expense of the sponsor, after acceptance into the program.",
       "Must be able to climb and work from ladders, scaffolds, poles, or towers of various lengths and heights.",
-      "Must be willing and able to commute to any jobsite within the geographical jurisdiction of Local #241.",
-      "The jurisdiction includes all of Tompkins County except Groton Township; Genoa Township in Cayuga County; Catherine, Cayuta, and Hector townships in Schuyler County; Covert and Lodi townships in Seneca County; and Candor and Spencer townships in Tioga County.",
-      "Must have reliable transportation to and be willing to commute to any job site within the union’s geographic area.",
-      "Must have been employed or be a resident of Local #241 jurisdiction for 1 year prior to recruitment.",
-      "The jurisdiction is the counties of Cayuga, Schuyler, Seneca, Tioga and Tompkins.",
+      "Must be willing and able to commute to any jobsite within the geographical jurisdiction of Local #241. The jurisdiction includes all of Tompkins County except Groton Township; Genoa Township in Cayuga County; Catherine, Cayuta, and Hector townships in Schuyler County; Covert and Lodi townships in Seneca County; and Candor and Spencer townships in Tioga County.",
+      "Must have reliable transportation to and willing to commute to any job site within the union’s geographic area.",
+      "Must have been employed or be a resident of Local #241 jurisdiction for 1 year prior to recruitment. The jurisdiction is the counties of Cayuga, Schuyler, Seneca, Tioga and Tompkins.",
       "Must have reliable transportation to attend all related classroom training, as required."
     ],
-    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency with Algebra/Math I, meet residency/jurisdiction rules, and be able to commute with reliable transportation. Physical ability, ladder work, drug screening, and classroom training attendance are also required.",
+    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency with one year of algebra/math, and meet physical, drug screening, transportation, and residency/work-history requirements.",
     "contactName": "Electricians JAC Ithaca Local #241",
     "contactPhone": "(607) 272-2809",
     "contactEmail": null,
     "contactWebsite": null,
-    "contactSummary": "Contact Electricians JAC Ithaca Local #241 at (607) 272-2809 for further information."
+    "contactSummary": "Contact Electricians JAC Ithaca Local #241 for further information at (607) 272-2809."
   },
   "oes": {
     "areaType": "10",

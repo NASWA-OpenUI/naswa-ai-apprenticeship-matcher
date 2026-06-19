@@ -1,14 +1,14 @@
 {
   "id": "plumbers-steamfitters-local-union-7-jac-welder-industrial-apprentice",
-  "socCode": "",
+  "socCode": "51-4121.00",
   "posting": {
     "id": "plumbers-steamfitters-local-union-7-jac-welder-industrial-apprentice",
     "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-local-union-7-jac",
     "sourceTitle": "Plumbers & Steamfitters Local Union #7 JAC",
     "jobTitle": "Welder (Industrial) Apprentice",
-    "socCode": "",
+    "socCode": "51-4121.00",
     "numberOfOpenings": 5,
-    "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Plumbers & Steamfitters, Local Union #7",
+    "sponsorName": "Plumbers & Steamfitters Local Union #7 Joint Apprenticeship and Training Committee",
     "unionName": "Plumbers & Steamfitters Local Union #7",
     "locationSummary": "Latham, NY area",
     "regions": [],
@@ -19,37 +19,1187 @@
     "applicationMethods": [
       "in_person_application"
     ],
-    "applicationSummary": "Obtain applications in person at Local Union #7 in Latham during the first Thursday of each month, then make sure your application is received by September 1, 2026.",
+    "applicationSummary": "Obtain applications in person at Local Union #7, 18 Avis Drive, Latham, NY, on the first Thursday of each month from 9:00 a.m. to 4:00 p.m. during the recruitment period. Applications must be received by September 1, 2026.",
     "applicationWebsite": null,
     "applicationEmail": null,
     "applicationPhone": null,
     "applicationInPersonAddress": "Local Union #7, 18 Avis Drive, Latham, NY 12110",
     "applicationMailingAddress": null,
-    "applicationHours": "9:00 a.m. to 4:00 p.m. on the first Thursday of every month, excluding legal holidays, during the recruitment period.",
+    "applicationHours": "9:00 a.m. to 4:00 p.m. the first Thursday of every month, excluding legal holidays, during the recruitment period",
     "applicationLimit": null,
     "applicationLimitDetails": null,
     "applicationFee": null,
     "applicationFeeDetails": null,
-    "ageRequirement": "Must be at least 18 years old.",
-    "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+    "ageRequirement": "Applicants must be at least 18 years old.",
+    "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
     "residencyRequirement": null,
     "transportationRequirement": null,
-    "drugTestRequirement": "Must be physically able to perform the work required as determined by a physical exam and drug testing after selection and prior to enrollment, at the expense of the sponsor.",
+    "drugTestRequirement": "Applicants must be physically able to perform the work as determined by a physical exam and drug testing after selection and prior to enrollment, at the sponsor's expense.",
     "classRequirement": null,
     "allRequirements": [
       "Must be at least 18 years old.",
-      "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+      "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
       "Must be physically able to perform the work required as determined by a physical exam and drug testing after selection and prior to enrollment in apprenticeship, at the expense of the sponsor.",
       "Must take and pass the Wonderlic Basic Skills aptitude test and score 50 or higher on the exam to be interviewed.",
       "Must provide DD Form 214, Certificate of Release or Discharge from Active Duty, if applicable, after an offer of employment."
     ],
-    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, pass the Wonderlic Basic Skills test with a score of 50 or higher for an interview, and be physically able to work with post-selection physical and drug testing.",
+    "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalent, pass the Wonderlic Basic Skills test with a score of 50 or higher, and complete a physical exam and drug test after selection.",
     "contactName": "Plumbers & Steamfitters Local Union #7",
-    "contactPhone": "(518) 785-9844",
+    "contactPhone": "(518) 785-9844 or (518) 785-9808 Ext 22",
     "contactEmail": null,
     "contactWebsite": null,
-    "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 at (518) 785-9844 or (518) 785-9808 Ext. 22 for further information."
+    "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
   },
-  "oes": null,
-  "onet": null
+  "oes": {
+    "areaType": "10",
+    "area": "000010",
+    "areaName": "Western New York",
+    "socCode": "51-4121",
+    "socTitle": "Welders, Cutters, Solderers, and Brazers",
+    "socDescription": "Use hand-welding, flame-cutting, hand soldering, or brazing equipment to weld or join metal components or to fill holes, indentations, or seams of fabricated metal products.",
+    "employment": 1270,
+    "meanAnnualWage": 55335.91,
+    "medianAnnualWage": 54222.73,
+    "entryAnnualWage": 42518.42,
+    "experiencedAnnualWage": 61744.14
+  },
+  "onet": {
+    "socCode": "51-4121.00",
+    "onetSocCode": "51-4121.00",
+    "title": "Welders, Cutters, Solderers, and Brazers",
+    "description": "Use hand-welding, flame-cutting, hand-soldering, or brazing equipment to weld or join metal components or to fill holes, indentations, or seams of fabricated metal products.",
+    "fetchedAt": "2026-06-11T16:08:53.122202+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/51-4121.00"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/details/tasks",
+      "data": {
+        "start": 21,
+        "end": 30,
+        "total": 30,
+        "task": [
+          {
+            "id": "23583",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23583",
+            "title": "Operate safety equipment and use safe work habits.",
+            "importance": 90,
+            "category": "Core"
+          },
+          {
+            "id": "23584",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23584",
+            "title": "Examine workpieces for defects and measure workpieces with straightedges or templates to ensure conformance with specifications.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "23582",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23582",
+            "title": "Weld components in flat, vertical, or overhead positions.",
+            "importance": 79,
+            "category": "Core"
+          },
+          {
+            "id": "23600",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23600",
+            "title": "Detect faulty operation of equipment or defective materials and notify supervisors.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "23585",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23585",
+            "title": "Recognize, set up, and operate hand and power tools common to the welding trade, such as shielded metal arc and gas metal arc welding equipment.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "23587",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23587",
+            "title": "Select and install torches, torch tips, filler rods, and flux, according to welding chart specifications or types and thicknesses of metals.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "23592",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23592",
+            "title": "Mark or tag material with proper job number, piece marks, and other identifying marks as required.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "23590",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23590",
+            "title": "Determine required equipment and welding methods, applying knowledge of metallurgy, geometry, and welding techniques.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "23594",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23594",
+            "title": "Prepare all material surfaces to be welded, ensuring that there is no loose or thick scale, slag, rust, moisture, grease, or other foreign matter.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "23596",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23596",
+            "title": "Align and clamp workpieces together, using rules, squares, or hand tools, or position items in fixtures, jigs, or vises.",
+            "importance": 76,
+            "category": "Core"
+          },
+          {
+            "id": "23589",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23589",
+            "title": "Connect and turn regulator valves to activate and adjust gas flow and pressure so that desired flames are obtained.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "23599",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23599",
+            "title": "Position and secure workpieces, using hoists, cranes, wire, and banding machines or hand tools.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "23602",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23602",
+            "title": "Melt and apply solder along adjoining edges of workpieces to solder joints, using soldering irons, gas torches, or electric-ultrasonic equipment.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "23591",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23591",
+            "title": "Monitor the fitting, burning, and welding processes to avoid overheating of parts or warping, shrinking, distortion, or expansion of material.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "23603",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23603",
+            "title": "Grind, cut, buff, or bend edges of workpieces to be joined to ensure snug fit, using power grinders and hand tools.",
+            "importance": 72,
+            "category": "Core"
+          },
+          {
+            "id": "23586",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23586",
+            "title": "Weld separately or in combination, using aluminum, stainless steel, cast iron, and other alloys.",
+            "importance": 69,
+            "category": "Core"
+          },
+          {
+            "id": "23593",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23593",
+            "title": "Chip or grind off excess weld, slag, or spatter, using hand scrapers or power chippers, portable grinders, or arc-cutting equipment.",
+            "importance": 69,
+            "category": "Core"
+          },
+          {
+            "id": "23597",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23597",
+            "title": "Develop templates and models for welding projects, using mathematical calculations based on blueprint information.",
+            "importance": 67,
+            "category": "Core"
+          },
+          {
+            "id": "23604",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23604",
+            "title": "Repair products by dismantling, straightening, reshaping, and reassembling parts, using cutting torches, straightening presses, and hand tools.",
+            "importance": 64,
+            "category": "Core"
+          },
+          {
+            "id": "23601",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23601",
+            "title": "Clean or degrease parts, using wire brushes, portable grinders, or chemical baths.",
+            "importance": 62,
+            "category": "Core"
+          },
+          {
+            "id": "23608",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23608",
+            "title": "Hammer out bulges or bends in metal workpieces.",
+            "importance": 60,
+            "category": "Core"
+          },
+          {
+            "id": "23605",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23605",
+            "title": "Check grooves, angles, or gap allowances, using micrometers, calipers, and precision measuring instruments.",
+            "importance": 79,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23609",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23609",
+            "title": "Melt and apply solder to fill holes, indentations, or seams of fabricated metal products, using soldering equipment.",
+            "importance": 75,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23588",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23588",
+            "title": "Ignite torches or start power supplies and strike arcs by touching electrodes to metals being welded, completing electrical circuits.",
+            "importance": 72,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23598",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23598",
+            "title": "Guide and direct flames or electrodes on or across workpieces to straighten, bend, melt, or build up metal.",
+            "importance": 68,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23610",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23610",
+            "title": "Use fire suppression methods in industrial emergencies.",
+            "importance": 68,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23595",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23595",
+            "title": "Preheat workpieces prior to welding or bending, using torches or heating furnaces.",
+            "importance": 64,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23607",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23607",
+            "title": "Set up and use ladders and scaffolding as necessary to complete work.",
+            "importance": 62,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23606",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23606",
+            "title": "Operate metal shaping, straightening, and bending machines, such as brakes and shears.",
+            "importance": 56,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23611",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/tasks/23611",
+            "title": "Analyze engineering drawings, blueprints, specifications, sketches, work orders, and material safety data sheets to plan layout, assembly, and operations.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/details/detailed_work_activities",
+      "data": {
+        "start": 21,
+        "end": 30,
+        "total": 30,
+        "activity": [
+          {
+            "id": "4.A.3.a.1.k.13",
+            "title": "Maintain safety.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.1.k.13"
+          },
+          {
+            "id": "4.A.1.b.3.a.12",
+            "title": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.1.b.3.a.12"
+          },
+          {
+            "id": "4.A.3.a.2.ai.5",
+            "title": "Operate welding equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.ai.5"
+          },
+          {
+            "id": "4.A.4.a.2.g.2",
+            "title": "Notify others of equipment repair or maintenance needs.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.4.a.2.g.2"
+          },
+          {
+            "id": "4.A.1.a.2.a.7",
+            "title": "Watch operating equipment to detect malfunctions.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.1.a.2.a.7"
+          },
+          {
+            "id": "4.A.2.b.1.j.6",
+            "title": "Select production equipment according to product specifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.2.b.1.j.6"
+          },
+          {
+            "id": "4.A.3.a.1.h.5",
+            "title": "Clean workpieces or finished products.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.1.h.5"
+          },
+          {
+            "id": "4.A.2.b.1.d.1",
+            "title": "Determine metal or plastic production methods.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.2.b.1.d.1"
+          },
+          {
+            "id": "4.A.1.b.1.a.4",
+            "title": "Mark products, workpieces, or equipment with identifying information.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.1.b.1.a.4"
+          },
+          {
+            "id": "4.A.3.a.2.ao.4",
+            "title": "Align parts or workpieces to ensure proper assembly.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.ao.4"
+          },
+          {
+            "id": "4.A.3.a.2.m.6",
+            "title": "Melt metal, plastic, or other materials to prepare for production.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.m.6"
+          },
+          {
+            "id": "4.A.3.a.2.ai.1",
+            "title": "Solder parts or workpieces.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.ai.1"
+          },
+          {
+            "id": "4.A.3.a.2.i.2",
+            "title": "Adjust equipment controls to regulate gas flow.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.i.2"
+          },
+          {
+            "id": "4.A.1.a.2.a.10",
+            "title": "Monitor equipment operation to ensure that products are not flawed.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.1.a.2.a.10"
+          },
+          {
+            "id": "4.A.3.a.2.f.3",
+            "title": "Mount materials or workpieces onto production equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.f.3"
+          },
+          {
+            "id": "4.A.3.a.3.l.1",
+            "title": "Operate grinding equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.3.l.1"
+          },
+          {
+            "id": "4.A.3.a.2.g.1",
+            "title": "Reshape metal workpieces to established specifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.g.1"
+          },
+          {
+            "id": "4.A.3.a.2.l.4",
+            "title": "Cut industrial materials in preparation for fabrication or processing.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.l.4"
+          },
+          {
+            "id": "4.A.3.a.2.m.11",
+            "title": "Ignite fuel to activate heating equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.m.11"
+          },
+          {
+            "id": "4.A.3.a.2.l.2",
+            "title": "Trim excess material from workpieces.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.l.2"
+          },
+          {
+            "id": "4.A.3.a.1.b.1",
+            "title": "Operate firefighting equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.1.b.1"
+          },
+          {
+            "id": "4.A.2.b.2.k.1",
+            "title": "Design templates or patterns.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.2.b.2.k.1"
+          },
+          {
+            "id": "4.A.3.a.2.s.2",
+            "title": "Disassemble equipment for maintenance or repair.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.s.2"
+          },
+          {
+            "id": "4.A.3.b.4.b.4",
+            "title": "Repair parts or assemblies.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.b.4.b.4"
+          },
+          {
+            "id": "4.A.3.a.2.m.5",
+            "title": "Heat material or workpieces to prepare for or complete production.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.m.5"
+          },
+          {
+            "id": "4.A.3.a.1.c.21",
+            "title": "Clean production equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.1.c.21"
+          },
+          {
+            "id": "4.A.3.a.2.a.8",
+            "title": "Assemble temporary equipment or structures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.a.8"
+          },
+          {
+            "id": "4.A.3.a.2.g.5",
+            "title": "Shape metal workpieces with hammers or other small hand tools.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.2.g.5"
+          },
+          {
+            "id": "4.A.3.a.3.f.12",
+            "title": "Operate metal or plastic forming equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.3.a.3.f.12"
+          },
+          {
+            "id": "4.A.1.a.1.b.11",
+            "title": "Review blueprints or other instructions to determine operational methods or sequences.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/detailed_work_activities/4.A.1.a.1.b.11"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 50
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 44
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 41
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 38
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 35
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 31
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 25
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 19
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 16
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 60
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 35
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 35
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 6
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/details/work_styles",
+      "data": {
+        "start": 11,
+        "end": 15,
+        "total": 15,
+        "element": [
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 78
+          },
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 76
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 68
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 45
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 41
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 32
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 32
+          },
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 29
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 27
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 16
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 15
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 12
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 11
+          },
+          {
+            "id": "1.D.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.1.a",
+            "name": "Innovation",
+            "description": "A tendency to be inventive, to be imaginative, and to adopt new perspectives on ways to accomplish work.",
+            "importance": 11
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4121.00/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 3
+          }
+        ]
+      }
+    }
+  }
 }

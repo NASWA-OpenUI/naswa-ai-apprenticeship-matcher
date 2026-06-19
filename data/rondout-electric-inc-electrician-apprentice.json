@@ -10,7 +10,7 @@
     "numberOfOpenings": 4,
     "sponsorName": "Rondout Electric, Inc.",
     "unionName": null,
-    "locationSummary": "Highland, NY area",
+    "locationSummary": "Highland, NY",
     "regions": [],
     "recruitmentStartDate": "2025-09-02",
     "recruitmentEndDate": "2026-09-01",
@@ -19,21 +19,21 @@
     "applicationMethods": [
       "in_person_application"
     ],
-    "applicationSummary": "Apply in person at Rondout Electric, Inc. during the recruitment period. Applications are available and must be submitted by September 1, 2026.",
+    "applicationSummary": "Obtain and submit applications in person at Rondout Electric, Inc. in Highland during the recruitment period.",
     "applicationWebsite": null,
     "applicationEmail": null,
     "applicationPhone": null,
     "applicationInPersonAddress": "Rondout Electric, Inc., 225 Upper North Road, Highland, NY 12528",
     "applicationMailingAddress": null,
-    "applicationHours": "Monday through Friday, 9:00 a.m. to 4:00 p.m., during the recruitment period",
+    "applicationHours": "9:00 a.m. to 4:00 p.m., Monday through Friday, during the recruitment period.",
     "applicationLimit": null,
     "applicationLimitDetails": null,
     "applicationFee": null,
     "applicationFeeDetails": null,
     "ageRequirement": "Must be at least 18 years old.",
-    "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+    "educationRequirement": "Must have a high school diploma or a high school equivalency diploma, such as TASC or GED.",
     "residencyRequirement": null,
-    "transportationRequirement": "Must possess a valid driver's license; apprentices may be required to operate company vehicles on public roads.",
+    "transportationRequirement": "Must possess a valid driver’s license; apprentices may be required to operate company vehicles on public roads.",
     "drugTestRequirement": null,
     "classRequirement": null,
     "allRequirements": [
@@ -42,12 +42,12 @@
       "Must possess a valid driver’s license.",
       "Apprentices may be required to operate company vehicles on public roads."
     ],
-    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, and hold a valid driver's license.",
+    "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, and hold a valid driver’s license.",
     "contactName": "Rondout Electric, Inc.",
     "contactPhone": "(845) 471-4810",
     "contactEmail": null,
     "contactWebsite": null,
-    "contactSummary": "Contact Rondout Electric, Inc. at (845) 471-4810 for more information."
+    "contactSummary": "Contact Rondout Electric, Inc. at (845) 471-4810 for further information."
   },
   "oes": {
     "areaType": "10",
