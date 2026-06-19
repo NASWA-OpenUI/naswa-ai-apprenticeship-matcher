@@ -25,6 +25,7 @@ def test_chat_get_route_renders_chat_page(client):
     assert 'id="chat-form"' in response.text
     assert 'sse-connect="/chat/stream"' in response.text
 
+
 def test_chat_route_accepts_message_and_returns_user_bubble(client):
     response = client.post("/chat", data={"message": "Paul"})
 
@@ -134,6 +135,7 @@ def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
 
     # Stream endpoint only returns ranked cards/progress, not the full page shell.
     assert "Sheet Metal Worker Apprentice" not in body
+
 
 def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
     response = client.get(

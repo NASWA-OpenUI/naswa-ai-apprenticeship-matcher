@@ -19,7 +19,6 @@ from sse_starlette.sse import EventSourceResponse
 from strands import Agent
 from strands.models import BedrockModel
 
-
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
@@ -43,8 +42,9 @@ logger = logging.getLogger("naswa")
 logger.setLevel(getattr(logging, NASWA_LOG_LEVEL, logging.INFO))
 
 logging.getLogger("botocore").setLevel(
-        getattr(logging, BOTO_LOG_LEVEL, logging.WARNING)
-    )
+    getattr(logging, BOTO_LOG_LEVEL, logging.WARNING)
+)
+
 
 def _describe_exception(exc: Exception) -> str:
     """Return a compact message for logs and local/demo UI errors."""
@@ -83,7 +83,7 @@ def _format_date(iso: str | None) -> str:
     try:
         y, m, d = iso.split("-")
         return f"{_MONTHS[int(m) - 1]} {int(d)}, {y}"
-    except (ValueError, IndexError):
+    except ValueError, IndexError:
         return iso
 
 
@@ -124,6 +124,7 @@ def _extract_profile(text: str) -> dict | None:
     except json.JSONDecodeError:
         return None
 
+
 def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
     """Convert a profile into query params for ranked opportunities."""
     params = [("ranked", "true")]
@@ -140,6 +141,7 @@ def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
             params.append((key, value))
 
     return params
+
 
 # ── Agent setup ───────────────────────────────────────────────────────────────
 
@@ -301,6 +303,7 @@ def make_agent() -> Agent:
         callback_handler=None,
     )
 
+
 # ── Set up lightweight sessions ────────────────────────────────────────────────
 
 SESSION_COOKIE_NAME = "tyler_demo_session"
@@ -311,10 +314,12 @@ INITIAL_CHAT_MESSAGE = (
     "Let’s see if one might be right for you. What’s your name?"
 )
 
+
 @dataclass
 class ChatMessage:
     role: str
     content: str
+
 
 def _initial_messages() -> list[ChatMessage]:
     return [
@@ -323,6 +328,7 @@ def _initial_messages() -> list[ChatMessage]:
             content=INITIAL_CHAT_MESSAGE,
         )
     ]
+
 
 @dataclass
 class ChatSession:
@@ -441,11 +447,11 @@ def _build_ranked_items(
             }
         )
 
-
     return sorted(
         ranked,
         key=lambda item: (item["tier_order"], item["sort_index"]),
     )
+
 
 async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
     """One LLM call that tier-ranks all ONET jobs against user interests."""
@@ -454,20 +460,20 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
         o = job["onet"]
         try:
             skills = [s["name"] for s in (o["skills"]["data"]["element"] or [])[:5]]
-        except (KeyError, TypeError):
+        except KeyError, TypeError:
             skills = []
         try:
             activities = [
                 a["title"]
                 for a in (o["detailed_work_activities"]["data"]["activity"] or [])[:5]
             ]
-        except (KeyError, TypeError):
+        except KeyError, TypeError:
             activities = []
         try:
             styles = [
                 s["name"] for s in (o["work_styles"]["data"]["element"] or [])[:4]
             ]
-        except (KeyError, TypeError):
+        except KeyError, TypeError:
             styles = []
         summaries.append(
             {
@@ -476,7 +482,9 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
                 "location": job["posting"].get("locationSummary"),
                 "regions": job["posting"].get("regions", []),
                 "requirements_summary": job["posting"].get("requirementsSummary"),
-                "transportation_requirement": job["posting"].get("transportationRequirement"),
+                "transportation_requirement": job["posting"].get(
+                    "transportationRequirement"
+                ),
                 "description": (o.get("description") or "")[:300],
                 "skills": skills,
                 "activities": activities,
@@ -540,10 +548,12 @@ async def health():
 
 # ── Landing page ──────────────────────────────────────────────────────────────
 
+
 @app.get("/")
 async def index(request: Request):
     """Serve the public landing page."""
     return templates.TemplateResponse(request, "index.html")
+
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
@@ -555,7 +565,9 @@ async def chat_page(request: Request):
 
     ranked_url = None
     if session.profile and session.profile.get("confirmed"):
-        ranked_url = "/opportunities?" + urlencode(_profile_rank_params(session.profile))
+        ranked_url = "/opportunities?" + urlencode(
+            _profile_rank_params(session.profile)
+        )
 
     response = templates.TemplateResponse(
         request,
@@ -571,6 +583,7 @@ async def chat_page(request: Request):
         _set_session_cookie(response, session_id)
 
     return response
+
 
 @app.post("/chat/reset")
 async def reset_chat(request: Request):
@@ -680,7 +693,9 @@ async def chat_stream(request: Request):
             yield {"event": "clear-stream", "data": ""}
 
             if final_text:
-                session.messages.append(ChatMessage(role="assistant", content=final_text))
+                session.messages.append(
+                    ChatMessage(role="assistant", content=final_text)
+                )
                 msg_html = render("_message.html", role="assistant", content=final_text)
                 logger.debug("Sending assistant message event")
                 yield {"event": "assistant-message", "data": msg_html}
@@ -689,7 +704,9 @@ async def chat_stream(request: Request):
                 session.profile = profile
 
                 if profile.get("confirmed"):
-                    ranked_url = "/opportunities?" + urlencode(_profile_rank_params(profile))
+                    ranked_url = "/opportunities?" + urlencode(
+                        _profile_rank_params(profile)
+                    )
                     card_html = render(
                         "_profile_card.html", profile=profile, ranked_url=ranked_url
                     )
