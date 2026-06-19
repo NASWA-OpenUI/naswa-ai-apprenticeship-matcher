@@ -83,7 +83,7 @@ def _format_date(iso: str | None) -> str:
     try:
         y, m, d = iso.split("-")
         return f"{_MONTHS[int(m) - 1]} {int(d)}, {y}"
-    except ValueError, IndexError:
+    except (ValueError, IndexError):
         return iso
 
 
@@ -128,10 +128,10 @@ def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
     """Convert a profile into query params for ranked opportunities."""
     params = [("ranked", "true")]
 
-    for like in profile.get("likes", []) or []:
+    for like in profile.get("likes", []):
         params.append(("likes", like))
 
-    for dislike in profile.get("dislikes", []) or []:
+    for dislike in profile.get("dislikes", []):
         params.append(("dislikes", dislike))
 
     for key in ["location", "transportation"]:
@@ -454,20 +454,20 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
         o = job["onet"]
         try:
             skills = [s["name"] for s in (o["skills"]["data"]["element"] or [])[:5]]
-        except KeyError, TypeError:
+        except (KeyError, TypeError):
             skills = []
         try:
             activities = [
                 a["title"]
                 for a in (o["detailed_work_activities"]["data"]["activity"] or [])[:5]
             ]
-        except KeyError, TypeError:
+        except (KeyError, TypeError):
             activities = []
         try:
             styles = [
                 s["name"] for s in (o["work_styles"]["data"]["element"] or [])[:4]
             ]
-        except KeyError, TypeError:
+        except (KeyError, TypeError):
             styles = []
         summaries.append(
             {
