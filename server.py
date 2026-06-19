@@ -10,7 +10,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlencode
 
-from db import all_opportunities, get_opportunity, load as load_db
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
 from fastapi.staticfiles import StaticFiles
@@ -18,6 +17,9 @@ from fastapi.templating import Jinja2Templates
 from sse_starlette.sse import EventSourceResponse
 from strands import Agent
 from strands.models import BedrockModel
+
+from db import all_opportunities, get_opportunity
+from db import load as load_db
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
