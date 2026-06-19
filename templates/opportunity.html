@@ -3,350 +3,354 @@
 {% block title %}{{ opp.posting.jobTitle }} — Apprenticeship Opportunities{% endblock %}
 
 {#
-  The detail page uses its own service-page hero instead of the generic
-  title-band. The shared base still provides the beta banner, header, footer,
-  scripts, and the outer #main-content landmark.
+The detail page uses its own service-page hero instead of the generic
+title-band. The shared base still provides the beta banner, header, footer,
+scripts, and the outer #main-content landmark.
 #}
 {% block title_band %}
-  <div class="detail-crumb">
-    <div class="container">
-      <a id="detail-back-link" href="/opportunities">← All opportunities</a>
+<div class="detail-crumb">
+  <div class="container">
+    <a id="detail-back-link" href="/opportunities">← All opportunities</a>
+  </div>
+</div>
+
+<section class="detail-hero" aria-labelledby="opportunity-title">
+  <div class="container">
+    <h1 id="opportunity-title">{{ opp.posting.jobTitle }}</h1>
+    <p class="detail-hero__org">{{ opp.posting.sourceTitle }}</p>
+
+    <div class="detail-hero__meta" aria-label="Opportunity summary">
+      {% if opp.posting.locationSummary %}
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="2" />
+          <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" />
+        </svg>
+        {{ opp.posting.locationSummary }}
+      </span>
+      {% endif %}
+
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2" />
+          <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" />
+        </svg>
+        Closes {{ opp.posting.recruitmentEndDate | format_date }}
+      </span>
+
+      <span>
+        {% if opp.posting.numberOfOpenings %}
+        {{ opp.posting.numberOfOpenings }} opening{{ "" if opp.posting.numberOfOpenings == 1 else "s" }}
+        {% else %}
+        Openings not listed
+        {% endif %}
+      </span>
     </div>
   </div>
-
-  <section class="detail-hero" aria-labelledby="opportunity-title">
-    <div class="container">
-      <h1 id="opportunity-title">{{ opp.posting.jobTitle }}</h1>
-      <p class="detail-hero__org">{{ opp.posting.sourceTitle }}</p>
-
-      <div class="detail-hero__meta" aria-label="Opportunity summary">
-        {% if opp.posting.locationSummary %}
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          {{ opp.posting.locationSummary }}
-        </span>
-        {% endif %}
-
-        <span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-            <path d="M3 9h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"/>
-          </svg>
-          Closes {{ opp.posting.recruitmentEndDate | format_date }}
-        </span>
-
-        <span>
-          {% if opp.posting.numberOfOpenings %}
-            {{ opp.posting.numberOfOpenings }} opening{{ "" if opp.posting.numberOfOpenings == 1 else "s" }}
-          {% else %}
-            Openings not listed
-          {% endif %}
-        </span>
-      </div>
-    </div>
-  </section>
+</section>
 {% endblock %}
 
 {% block content %}
-  {% set activities = opp.onet.detailed_work_activities.data.activity if opp.onet and opp.onet.detailed_work_activities and opp.onet.detailed_work_activities.data else [] %}
-  {% set styles = opp.onet.work_styles.data.element if opp.onet and opp.onet.work_styles and opp.onet.work_styles.data else [] %}
-  {% set has_occupation = (opp.oes and opp.oes.entryAnnualWage) or activities or styles %}
-  {% set has_requirements = opp.posting.allRequirements %}
-  {% set has_contact = opp.posting.contactSummary or opp.posting.contactName or opp.posting.contactPhone or opp.posting.contactEmail or opp.posting.contactWebsite %}
+{% set activities = opp.onet.detailed_work_activities.data.activity if opp.onet and opp.onet.detailed_work_activities
+and opp.onet.detailed_work_activities.data else [] %}
+{% set styles = opp.onet.work_styles.data.element if opp.onet and opp.onet.work_styles and opp.onet.work_styles.data
+else [] %}
+{% set has_occupation = (opp.oes and opp.oes.entryAnnualWage) or activities or styles %}
+{% set has_requirements = opp.posting.allRequirements %}
+{% set has_contact = opp.posting.contactSummary or opp.posting.contactName or opp.posting.contactPhone or
+opp.posting.contactEmail or opp.posting.contactWebsite %}
 
-  <div class="opportunity-detail-page">
-    <div class="opportunity-detail-layout">
+<div class="opportunity-detail-page">
+  <div class="opportunity-detail-layout">
 
-      <div class="detail-content">
-        {#
-          Match section: initially hidden. If the user came from the ranked
-          results page, the script below pulls the explanation from sessionStorage
-          and reveals this section and the corresponding nav link.
-        #}
-        {% if opp.onet %}
-        <section class="detail-section" id="match" aria-label="Why this job matches your interests" hidden>
-          <h2 class="detail-section__heading">Why this matches you</h2>
-          <div class="detail-match surface" id="detail-match">
-            <div class="detail-match__inner">
-              <div class="detail-match__body">
-                <span id="detail-tier" class="chip">
-                  <span class="chip__dot" aria-hidden="true"></span>
-                  <span id="detail-tier-text" class="chip--label"></span>
-                </span>
-                <p id="detail-explanation"></p>
-              </div>
+    <div class="detail-content">
+      {#
+      Match section: initially hidden. If the user came from the ranked
+      results page, the script below pulls the explanation from sessionStorage
+      and reveals this section and the corresponding nav link.
+      #}
+      {% if opp.onet %}
+      <section class="detail-section" id="match" aria-label="Why this job matches your interests" hidden>
+        <h2 class="detail-section__heading">Why this matches you</h2>
+        <div class="detail-match surface" id="detail-match">
+          <div class="detail-match__inner">
+            <div class="detail-match__body">
+              <span id="detail-tier" class="chip">
+                <span class="chip__dot" aria-hidden="true"></span>
+                <span id="detail-tier-text" class="chip--label"></span>
+              </span>
+              <p id="detail-explanation"></p>
             </div>
           </div>
-        </section>
-        {% endif %}
+        </div>
+      </section>
+      {% endif %}
 
-        <section class="detail-section" id="details">
-          <h2 class="detail-section__heading">Key details</h2>
-          <dl class="detail-facts">
-            <div class="detail-fact surface surface--muted">
-              <dt>Recruitment opens</dt>
-              <dd>{{ opp.posting.recruitmentStartDate | format_date }}</dd>
-            </div>
-            <div class="detail-fact surface surface--muted">
-              <dt>Recruitment closes</dt>
-              <dd>{{ opp.posting.recruitmentEndDate | format_date }}</dd>
-            </div>
-            <div class="detail-fact surface surface--muted">
-              <dt>Openings</dt>
-              <dd>{{ opp.posting.numberOfOpenings or '—' }}</dd>
-            </div>
-          </dl>
-        </section>
-
-        {% if has_occupation %}
-        <section class="detail-section" id="occupation">
-          <h2 class="detail-section__heading">About the occupation</h2>
-
-          {% if opp.oes and opp.oes.entryAnnualWage %}
-          <h3 class="detail-subheading">Entry-level annual wage</h3>
-          <div class="detail-wage" aria-label="Entry-level annual wage: {{ opp.oes.entryAnnualWage | format_wage }}">
-            {{ opp.oes.entryAnnualWage | format_wage }}
+      <section class="detail-section" id="details">
+        <h2 class="detail-section__heading">Key details</h2>
+        <dl class="detail-facts">
+          <div class="detail-fact surface surface--muted">
+            <dt>Recruitment opens</dt>
+            <dd>{{ opp.posting.recruitmentStartDate | format_date }}</dd>
           </div>
-          {% if opp.oes.areaName %}
-          <div class="text-meta">{{ opp.oes.areaName }}</div>
-          {% endif %}
-          {% endif %}
+          <div class="detail-fact surface surface--muted">
+            <dt>Recruitment closes</dt>
+            <dd>{{ opp.posting.recruitmentEndDate | format_date }}</dd>
+          </div>
+          <div class="detail-fact surface surface--muted">
+            <dt>Openings</dt>
+            <dd>{{ opp.posting.numberOfOpenings or '—' }}</dd>
+          </div>
+        </dl>
+      </section>
 
-          {% if activities %}
-          <h3 class="detail-subheading">Common work activities</h3>
-          <ul class="detail-clean-list">
-            {% for act in activities[:5] %}
-            <li>{{ act.title }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+      {% if has_occupation %}
+      <section class="detail-section" id="occupation">
+        <h2 class="detail-section__heading">About the occupation</h2>
 
-          {% if styles %}
-          <h3 class="detail-subheading">Key work styles</h3>
-          <ul class="detail-clean-list">
-            {% for style in styles[:5] %}
-            <li>{{ style.name }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </section>
+        {% if opp.oes and opp.oes.entryAnnualWage %}
+        <h3 class="detail-subheading">Entry-level annual wage</h3>
+        <div class="detail-wage" aria-label="Entry-level annual wage: {{ opp.oes.entryAnnualWage | format_wage }}">
+          {{ opp.oes.entryAnnualWage | format_wage }}
+        </div>
+        {% if opp.oes.areaName %}
+        <div class="text-meta">{{ opp.oes.areaName }}</div>
+        {% endif %}
         {% endif %}
 
-        {% if opp.posting.applicationSummary %}
-        <section class="detail-section" id="apply">
-          <h2 class="detail-section__heading">How to apply</h2>
-          <p>{{ opp.posting.applicationSummary }}</p>
-        </section>
-        {% endif %}
-
-        {% if has_requirements %}
-        <section class="detail-section" id="requirements">
-          <h2 class="detail-section__heading">Requirements</h2>
-          <ul class="detail-clean-list">
-            {% for req in opp.posting.allRequirements %}
-            <li>{{ req }}</li>
-            {% endfor %}
-          </ul>
-        </section>
-        {% endif %}
-
-        {% if has_contact %}
-        <section class="detail-section" id="contact">
-          <h2 class="detail-section__heading">More information</h2>
-          {% if opp.posting.contactSummary %}
-          <p>{{ opp.posting.contactSummary }}</p>
-          {% endif %}
-
-          <dl class="detail-contact-row">
-            {% if opp.posting.contactName or opp.posting.sourceTitle %}
-            <div class="detail-contact-item">
-              <dt>Organization</dt>
-              <dd>{{ opp.posting.contactName or opp.posting.sourceTitle }}</dd>
-            </div>
-            {% endif %}
-
-            {% if opp.posting.contactPhone %}
-            <div class="detail-contact-item">
-              <dt>Phone</dt>
-              <dd><a href="tel:{{ opp.posting.contactPhone }}">{{ opp.posting.contactPhone }}</a></dd>
-            </div>
-            {% endif %}
-
-            {% if opp.posting.contactEmail %}
-            <div class="detail-contact-item">
-              <dt>Email</dt>
-              <dd><a href="mailto:{{ opp.posting.contactEmail }}">{{ opp.posting.contactEmail }}</a></dd>
-            </div>
-            {% endif %}
-
-            {% if opp.posting.contactWebsite %}
-            <div class="detail-contact-item">
-              <dt>Website</dt>
-              <dd><a href="{{ opp.posting.contactWebsite }}" rel="noopener noreferrer">Visit website</a></dd>
-            </div>
-            {% endif %}
-          </dl>
-        </section>
-        {% endif %}
-      </div>
-
-      <nav class="on-this-page" aria-label="On this page">
-        <p>On this page</p>
-        <ul>
-          {% if opp.onet %}
-          <li id="on-this-page-match" hidden><a href="#match">Why this matches you</a></li>
-          {% endif %}
-          <li><a class="active" href="#details">Key details</a></li>
-          {% if has_occupation %}<li><a href="#occupation">About the occupation</a></li>{% endif %}
-          {% if opp.posting.applicationSummary %}<li><a href="#apply">How to apply</a></li>{% endif %}
-          {% if has_requirements %}<li><a href="#requirements">Requirements</a></li>{% endif %}
-          {% if has_contact %}<li><a href="#contact">More information</a></li>{% endif %}
+        {% if activities %}
+        <h3 class="detail-subheading">Common work activities</h3>
+        <ul class="detail-clean-list">
+          {% for act in activities[:5] %}
+          <li>{{ act.title }}</li>
+          {% endfor %}
         </ul>
-      </nav>
+        {% endif %}
+
+        {% if styles %}
+        <h3 class="detail-subheading">Key work styles</h3>
+        <ul class="detail-clean-list">
+          {% for style in styles[:5] %}
+          <li>{{ style.name }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </section>
+      {% endif %}
+
+      {% if opp.posting.applicationSummary %}
+      <section class="detail-section" id="apply">
+        <h2 class="detail-section__heading">How to apply</h2>
+        <p>{{ opp.posting.applicationSummary }}</p>
+      </section>
+      {% endif %}
+
+      {% if has_requirements %}
+      <section class="detail-section" id="requirements">
+        <h2 class="detail-section__heading">Requirements</h2>
+        <ul class="detail-clean-list">
+          {% for req in opp.posting.allRequirements %}
+          <li>{{ req }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {% if has_contact %}
+      <section class="detail-section" id="contact">
+        <h2 class="detail-section__heading">More information</h2>
+        {% if opp.posting.contactSummary %}
+        <p>{{ opp.posting.contactSummary }}</p>
+        {% endif %}
+
+        <dl class="detail-contact-row">
+          {% if opp.posting.contactName or opp.posting.sourceTitle %}
+          <div class="detail-contact-item">
+            <dt>Organization</dt>
+            <dd>{{ opp.posting.contactName or opp.posting.sourceTitle }}</dd>
+          </div>
+          {% endif %}
+
+          {% if opp.posting.contactPhone %}
+          <div class="detail-contact-item">
+            <dt>Phone</dt>
+            <dd><a href="tel:{{ opp.posting.contactPhone }}">{{ opp.posting.contactPhone }}</a></dd>
+          </div>
+          {% endif %}
+
+          {% if opp.posting.contactEmail %}
+          <div class="detail-contact-item">
+            <dt>Email</dt>
+            <dd><a href="mailto:{{ opp.posting.contactEmail }}">{{ opp.posting.contactEmail }}</a></dd>
+          </div>
+          {% endif %}
+
+          {% if opp.posting.contactWebsite %}
+          <div class="detail-contact-item">
+            <dt>Website</dt>
+            <dd><a href="{{ opp.posting.contactWebsite }}" rel="noopener noreferrer">Visit website</a></dd>
+          </div>
+          {% endif %}
+        </dl>
+      </section>
+      {% endif %}
     </div>
+
+    <nav class="on-this-page" aria-label="On this page">
+      <p>On this page</p>
+      <ul>
+        {% if opp.onet %}
+        <li id="on-this-page-match" hidden><a href="#match">Why this matches you</a></li>
+        {% endif %}
+        <li><a class="active" href="#details">Key details</a></li>
+        {% if has_occupation %}<li><a href="#occupation">About the occupation</a></li>{% endif %}
+        {% if opp.posting.applicationSummary %}<li><a href="#apply">How to apply</a></li>{% endif %}
+        {% if has_requirements %}<li><a href="#requirements">Requirements</a></li>{% endif %}
+        {% if has_contact %}<li><a href="#contact">More information</a></li>{% endif %}
+      </ul>
+    </nav>
   </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
   (function () {
-    const slug = {{ opp.id | tojson }};
+    const slug = {{ opp.id | tojson
+  }};
 
-    let rankings = null;
-    try {
-      rankings = JSON.parse(sessionStorage.getItem('jobRankings') || 'null');
-    } catch {
-      rankings = null;
-    }
+  let rankings = null;
+  try {
+    rankings = JSON.parse(sessionStorage.getItem('jobRankings') || 'null');
+  } catch {
+    rankings = null;
+  }
 
-    /*
-      If the user came from the ranked opportunities page, make the breadcrumb
-      behave like the browser Back button. This avoids reloading the ranked URL
-      and re-running the expensive /api/rank-opportunities request.
-    */
-    const backLink = document.getElementById('detail-back-link');
-    const lastMode = sessionStorage.getItem('lastOpportunitiesMode');
+  /*
+    If the user came from the ranked opportunities page, make the breadcrumb
+    behave like the browser Back button. This avoids reloading the ranked URL
+    and re-running the expensive /api/rank-opportunities request.
+  */
+  const backLink = document.getElementById('detail-back-link');
+  const lastMode = sessionStorage.getItem('lastOpportunitiesMode');
 
-    let referrerUrl = null;
-    try {
-      referrerUrl = document.referrer ? new URL(document.referrer) : null;
-    } catch {
-      referrerUrl = null;
-    }
+  let referrerUrl = null;
+  try {
+    referrerUrl = document.referrer ? new URL(document.referrer) : null;
+  } catch {
+    referrerUrl = null;
+  }
 
-    const cameFromRankedPage =
-      lastMode === 'ranked' &&
-      referrerUrl &&
-      referrerUrl.origin === window.location.origin &&
-      referrerUrl.pathname === '/opportunities' &&
-      referrerUrl.searchParams.get('ranked') === 'true';
+  const cameFromRankedPage =
+    lastMode === 'ranked' &&
+    referrerUrl &&
+    referrerUrl.origin === window.location.origin &&
+    referrerUrl.pathname === '/opportunities' &&
+    referrerUrl.searchParams.get('ranked') === 'true';
 
-    if (backLink && cameFromRankedPage) {
-      backLink.textContent = '← Back to your matches';
+  if (backLink && cameFromRankedPage) {
+    backLink.textContent = '← Back to your matches';
 
-      backLink.addEventListener('click', function (event) {
-        event.preventDefault();
+    backLink.addEventListener('click', function (event) {
+      event.preventDefault();
 
-        if (window.history.length > 1) {
-          window.history.back();
-          return;
-        }
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
 
-        // Fallback for unusual cases like opening the detail page in a new tab.
-        window.location.href = '/opportunities';
-      });
-    }
+      // Fallback for unusual cases like opening the detail page in a new tab.
+      window.location.href = '/opportunities';
+    });
+  }
 
-    /*
-      Populate the match section from sessionStorage if the user came from
-      the ranked view and this opportunity has a stored match explanation.
-    */
-    const match = rankings?.ranked?.find(r => r.id === slug);
+  /*
+    Populate the match section from sessionStorage if the user came from
+    the ranked view and this opportunity has a stored match explanation.
+  */
+  const match = rankings?.ranked?.find(r => r.id === slug);
 
-    if (match) {
-      const section = document.getElementById('match');
-      const navItem = document.getElementById('on-this-page-match');
-      const tierContainerEl = document.getElementById('detail-match');
-      const tierEl = document.getElementById('detail-tier');
-      const tierTextEl = document.getElementById('detail-tier-text');
-      const expEl = document.getElementById('detail-explanation');
+  if (match) {
+    const section = document.getElementById('match');
+    const navItem = document.getElementById('on-this-page-match');
+    const tierContainerEl = document.getElementById('detail-match');
+    const tierEl = document.getElementById('detail-tier');
+    const tierTextEl = document.getElementById('detail-tier-text');
+    const expEl = document.getElementById('detail-explanation');
 
-      if (section && tierEl && tierTextEl && expEl) {
-        const tierClass = (match.tier || 'Weak').toLowerCase();
+    if (section && tierEl && tierTextEl && expEl) {
+      const tierClass = (match.tier || 'Weak').toLowerCase();
 
-        if (tierContainerEl) {
-          tierContainerEl.className = `detail-match surface detail-match--${tierClass}`;
-        }
-        tierEl.className = `chip chip--${tierClass}`;
-        tierTextEl.textContent = match.tier || 'Weak';
-        expEl.textContent = match.explanation || '';
+      if (tierContainerEl) {
+        tierContainerEl.className = `detail-match surface detail-match--${tierClass}`;
+      }
+      tierEl.className = `chip chip--${tierClass}`;
+      tierTextEl.textContent = match.tier || 'Weak';
+      expEl.textContent = match.explanation || '';
 
-        section.hidden = false;
+      section.hidden = false;
 
-        if (navItem) {
-          navItem.hidden = false;
-        }
+      if (navItem) {
+        navItem.hidden = false;
       }
     }
+  }
 
-    /*
-      Keep the "On this page" active link in sync with scroll position.
-      A section becomes active once it has crossed 50px from the top of
-      the viewport. Hidden sections, like the match section when no ranked
-      context exists, are ignored.
-    */
-    const scrollSpyOffset = 50;
-    const onThisPageNav = document.querySelector('.on-this-page');
+  /*
+    Keep the "On this page" active link in sync with scroll position.
+    A section becomes active once it has crossed 50px from the top of
+    the viewport. Hidden sections, like the match section when no ranked
+    context exists, are ignored.
+  */
+  const scrollSpyOffset = 50;
+  const onThisPageNav = document.querySelector('.on-this-page');
 
-    function getVisibleDetailSections() {
-      return Array.from(document.querySelectorAll('.detail-section[id]'))
-        .filter(section => !section.hidden);
-    }
+  function getVisibleDetailSections() {
+    return Array.from(document.querySelectorAll('.detail-section[id]'))
+      .filter(section => !section.hidden);
+  }
 
-    function setActiveOnThisPageLink(sectionId) {
-      if (!onThisPageNav) return;
+  function setActiveOnThisPageLink(sectionId) {
+    if (!onThisPageNav) return;
 
-      const links = onThisPageNav.querySelectorAll('a[href^="#"]');
+    const links = onThisPageNav.querySelectorAll('a[href^="#"]');
 
-      links.forEach(link => {
-        const isActive = link.getAttribute('href') === `#${sectionId}`;
+    links.forEach(link => {
+      const isActive = link.getAttribute('href') === `#${sectionId}`;
 
-        link.classList.toggle('active', isActive);
+      link.classList.toggle('active', isActive);
 
-        if (isActive) {
-          link.setAttribute('aria-current', 'true');
-        } else {
-          link.removeAttribute('aria-current');
-        }
-      });
-    }
+      if (isActive) {
+        link.setAttribute('aria-current', 'true');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
 
-    function updateActiveOnThisPageLink() {
-      const sections = getVisibleDetailSections();
-      if (!sections.length) return;
+  function updateActiveOnThisPageLink() {
+    const sections = getVisibleDetailSections();
+    if (!sections.length) return;
 
-      let activeSection = sections[0];
+    let activeSection = sections[0];
 
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
+    sections.forEach(section => {
+      const top = section.getBoundingClientRect().top;
 
-        if (top <= scrollSpyOffset) {
-          activeSection = section;
-        }
-      });
+      if (top <= scrollSpyOffset) {
+        activeSection = section;
+      }
+    });
 
-      setActiveOnThisPageLink(activeSection.id);
-    }
+    setActiveOnThisPageLink(activeSection.id);
+  }
 
-    if (onThisPageNav) {
-      window.addEventListener('scroll', updateActiveOnThisPageLink, { passive: true });
-      window.addEventListener('resize', updateActiveOnThisPageLink);
+  if (onThisPageNav) {
+    window.addEventListener('scroll', updateActiveOnThisPageLink, { passive: true });
+    window.addEventListener('resize', updateActiveOnThisPageLink);
 
-      updateActiveOnThisPageLink();
-    }
-  })();
+    updateActiveOnThisPageLink();
+  }
+  }) ();
 </script>
 {% endblock %}

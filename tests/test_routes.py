@@ -97,9 +97,9 @@ def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
 
 
 def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
-    async def fake_score_jobs(interests, onet_jobs):
-        assert interests == ["hands-on work", "problem solving"]
-        assert [job["id"] for job in onet_jobs] == ["electrician-apprentice-fixture"]
+    async def fake_score_jobs(profile, onet_jobs):
+        assert profile["likes"] == ["hands-on work", "problem solving"]
+        assert profile["location"] == "Buffalo area"
 
         return [
             {
@@ -115,8 +115,9 @@ def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
         "GET",
         "/api/rank-opportunities",
         params=[
-            ("interests", "hands-on work"),
-            ("interests", "problem solving"),
+            ("likes", "hands-on work"),
+            ("likes", "problem solving"),
+            ("location", "Buffalo area"),
         ],
     ) as response:
         assert response.status_code == 200
@@ -139,15 +140,16 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
         "/opportunities",
         params=[
             ("ranked", "true"),
-            ("interests", "hands-on work"),
-            ("interests", "problem solving"),
+            ("likes", "hands-on work"),
+            ("likes", "problem solving"),
+            ("location", "Buffalo area"),
         ],
     )
 
     assert response.status_code == 200
 
     # Ranked page shell.
-    assert "Matched to your interests" in response.text
+    assert "Matched to your profile" in response.text
     assert "hands-on work" in response.text
     assert "problem solving" in response.text
     assert "Analyzing opportunities…" in response.text
@@ -155,8 +157,8 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     # The page should connect to the streaming ranking endpoint.
     assert "sse-connect" in response.text
     assert "/api/rank-opportunities" in response.text
-    assert "interests=hands-on+work" in response.text
-    assert "interests=problem+solving" in response.text
+    assert "likes=hands-on+work" in response.text
+    assert "likes=problem+solving" in response.text
 
     # Non-O*NET opportunity still appears as unranked on the page shell.
     assert "More opportunities" in response.text

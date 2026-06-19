@@ -124,54 +124,117 @@ def _extract_profile(text: str) -> dict | None:
     except json.JSONDecodeError:
         return None
 
+def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
+    """Convert a profile into query params for ranked opportunities."""
+    params = [("ranked", "true")]
+
+    for like in profile.get("likes", []) or []:
+        params.append(("likes", like))
+
+    for dislike in profile.get("dislikes", []) or []:
+        params.append(("dislikes", dislike))
+
+    for key in ["location", "transportation"]:
+        value = profile.get(key)
+        if value:
+            params.append((key, value))
+
+    return params
 
 # ── Agent setup ───────────────────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """\
-You are conducting a short guided conversation to learn about a user
-so the app can suggest registered apprenticeships that may fit them.
+You are a friendly guide helping a user discover registered apprenticeships that may fit them.
+
 The user has already been greeted and asked for their name.
 
-Follow these steps exactly — do not skip steps or add extra conversation.
+Your job is to conduct a short, natural conversation and build a hidden profile
+that can be used to match the user to apprenticeship opportunities.
 
-STEP 1
-If the user's message is only their name, respond only with:
-"Hi [name]! Tell me a little about yourself — what you’re into, what you’re good at, or what kind of work sounds interesting to you."
+The visible conversation should feel like a real conversation, not a form.
+However, behind the scenes, you must collect useful profile information.
 
-Stop there. Do not continue to STEP 2 until the user sends a separate message describing themselves.
+PROFILE SCHEMA
 
-STEP 2
-When the user describes their interests, hobbies, strengths, or work preferences,
-identify 2-3 short underlying themes
-(e.g. "working with your hands", "helping people", "solving problems", "being outdoors", "creative work").
+After every assistant response, output a hidden profile tag on a new line:
 
-Write your analysis conversationally:
-"So it sounds like you enjoy [theme 1] and [theme 2] — is that right?"
+<profile>{
+  "name": string or null,
+  "likes": array of short strings,
+  "dislikes": array of short strings,
+  "location": string or null,
+  "transportation": string or null,
+  "confirmed": boolean
+}</profile>
 
-Then, on a new line by itself, output exactly (with real values filled in):
-<profile>{"name":"[name]","hobbies":"[their exact words]","interests":["theme 1","theme 2"],"confirmed":false}</profile>
+Rules for the profile:
+- The profile is a derived summary, not a raw transcript.
+- Do not store long raw user sentences.
+- Use short, plain-language phrases.
+- Put hobbies, interests, school subjects, strengths, and appealing work activities in "likes".
+- Put disliked subjects, disliked activities, and strong avoidances in "dislikes".
+- If the user metions an interest that is an academic subject, treat it as a useful like. Do not ask the same thing again as a school question.
+- Infer values from any answer, even if the user answered a later question early.
+- If something is unknown, use null for strings or [] for arrays.
+- All profile fields are optional except confirmed.
 
-Only run this step if the user's latest actual message describes their interests, hobbies, strengths, or work preferences.
-Do not invent details.
+CONVERSATION STRATEGY
 
-STEP 3
-If the user confirms (yes / correct / right / sounds good / etc.), respond briefly:
-"Great, that's all I need!"
+Ask one natural question at a time.
 
-Then on a new line by itself output:
-<profile>{"name":"[name]","hobbies":"[their exact words]","interests":["theme 1","theme 2"],"confirmed":true}</profile>
+Do not visibly explain your reasoning after each answer.
+Bad: "That gives me a good starting point: troubleshooting, electronics, and math."
+Good: "Nice. Where would you be looking for work?"
 
-STEP 4
-If the user does NOT confirm, ask what you got wrong, then return to STEP 2.
+Collect this information when possible:
+1. Name
+2. Likes / interests / strengths / hobbies / appealing work
+3. School subjects they enjoyed, if not already mentioned
+3. Location where they are looking for work
+4. Transportation or ability to get to job sites/classes
 
-Rules:
-- Keep all responses brief and friendly.
+Do not ask a question if the user already answered it earlier.
+
+LOCATION QUESTION STYLE
+
+Ask about where they are looking for work, not where they live.
+Use examples:
+"Where would you be looking for work? For example, Buffalo and the surrounding area, near Albany, or anywhere in New York."
+
+If the user gives a full street address, ignore the street address and only retain the city, ZIP, county, or region.
+If the user gives a location outside New York State, politely explain that this prototype is focused on New York State opportunities and ask if there is anywhere in New York they would consider.
+
+TRANSPORTATION QUESTION STYLE
+
+Ask practically and gently:
+"How would you usually get to job sites or classes — driving yourself, public transit, rides from family, or something else?"
+
+Do not make the user feel screened out.
+
+CONFIRMATION
+
+When you have enough information, summarize the profile briefly and ask if it looks right.
+
+Example:
+"Great — I’ll use this to look for matches: you like fixing electronics, math, and hands-on problem solving; you’re looking around Buffalo; and you’d mostly use transit or rides. Does that sound right?"
+
+Then output the profile with confirmed=false.
+
+If the user confirms, respond briefly:
+"Great, I have enough to show matches."
+
+Then output the same profile with confirmed=true.
+
+If the user corrects something, update the profile and continue naturally.
+
+RULES
+
+- Keep responses brief and friendly.
 - Only respond to the user's latest actual message.
 - Do not invent, assume, simulate, or write future user responses.
 - Never write text like "User's response:".
-- Never continue to the next step until the user has actually sent the required message.
 - Output exactly one assistant turn per user message.
-- Never mention, explain, or draw attention to the <profile> tag — it is invisible to the user.
+- Never mention, explain, or draw attention to the <profile> tag.
 - Do not output anything after the <profile> tag.
 """
 
@@ -243,6 +306,23 @@ def make_agent() -> Agent:
 SESSION_COOKIE_NAME = "tyler_demo_session"
 SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7  # 7 days
 
+INITIAL_CHAT_MESSAGE = (
+    "Registered apprenticeships let you earn while you learn. "
+    "Let’s see if one might be right for you. What’s your name?"
+)
+
+@dataclass
+class ChatMessage:
+    role: str
+    content: str
+
+def _initial_messages() -> list[ChatMessage]:
+    return [
+        ChatMessage(
+            role="assistant",
+            content=INITIAL_CHAT_MESSAGE,
+        )
+    ]
 
 @dataclass
 class ChatSession:
@@ -251,6 +331,7 @@ class ChatSession:
     agent: Agent = field(default_factory=make_agent)
     queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
     profile: dict | None = None
+    messages: list[ChatMessage] = field(default_factory=_initial_messages)
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
 
@@ -366,7 +447,7 @@ def _build_ranked_items(
         key=lambda item: (item["tier_order"], item["sort_index"]),
     )
 
-async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]:
+async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
     """One LLM call that tier-ranks all ONET jobs against user interests."""
     summaries = []
     for job in onet_jobs:
@@ -392,7 +473,11 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
             {
                 "id": job["id"],
                 "title": job["posting"]["jobTitle"],
-                "description": (o.get("description") or "")[:200],
+                "location": job["posting"].get("locationSummary"),
+                "regions": job["posting"].get("regions", []),
+                "requirements_summary": job["posting"].get("requirementsSummary"),
+                "transportation_requirement": job["posting"].get("transportationRequirement"),
+                "description": (o.get("description") or "")[:300],
                 "skills": skills,
                 "activities": activities,
                 "work_styles": styles,
@@ -400,8 +485,18 @@ async def _score_jobs(interests: list[str], onet_jobs: list[dict]) -> list[dict]
         )
 
     prompt = (
-        f"The user enjoys: {', '.join(interests)}.\n\n"
-        "Score each job as Strong, Moderate, or Weak match for someone with those interests.\n"
+        "You are ranking New York State registered apprenticeship opportunities "
+        "for a user based on a short derived profile.\n\n"
+        "User profile:\n"
+        f"{json.dumps(profile, indent=2)}\n\n"
+        "Score each job as Strong, Moderate, or Weak.\n\n"
+        "Guidance:\n"
+        "- Put the most weight on whether the occupation connects to the user's likes.\n"
+        "- Use dislikes only as a soft negative signal.\n"
+        "- Use location, travel preference, and transportation as soft fit signals, not hard disqualifiers.\n"
+        "- Do not reject a job only because a requirement may need to be checked later.\n"
+        "- If transportation or location may be an issue, mention it gently as a caveat.\n"
+        "- Keep explanations friendly and concrete.\n\n"
         "Return ONLY a JSON array — no markdown, no extra text:\n"
         '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences why"}]\n\n'
         f"Jobs:\n{json.dumps(summaries, indent=2)}"
@@ -458,10 +553,18 @@ async def chat_page(request: Request):
     """Serve the guided chat page."""
     session_id, session, needs_cookie = _get_or_create_session(request)
 
+    ranked_url = None
+    if session.profile and session.profile.get("confirmed"):
+        ranked_url = "/opportunities?" + urlencode(_profile_rank_params(session.profile))
+
     response = templates.TemplateResponse(
         request,
         "chat.html",
-        {"profile": session.profile},
+        {
+            "profile": session.profile,
+            "messages": session.messages,
+            "ranked_url": ranked_url,
+        },
     )
 
     if needs_cookie:
@@ -476,6 +579,7 @@ async def reset_chat(request: Request):
 
     session.agent = make_agent()
     session.profile = None
+    session.messages = _initial_messages()
 
     # Replace the queue entirely
     session.queue = asyncio.Queue()
@@ -495,6 +599,7 @@ async def chat(request: Request, message: str = Form(...)):
     session_id, session, needs_cookie = _get_or_create_session(request)
 
     await session.queue.put(message)
+    session.messages.append(ChatMessage(role="user", content=message))
     logger.debug("Chat message queued")
 
     response = templates.TemplateResponse(
@@ -564,7 +669,7 @@ async def chat_stream(request: Request):
                 )
 
                 yield {"event": "clear-stream", "data": ""}
-                yield {"event": "message", "data": msg_html}
+                yield {"event": "assistant-message", "data": msg_html}
                 continue
 
             logger.debug("Chat agent completed")
@@ -572,20 +677,19 @@ async def chat_stream(request: Request):
             profile = _extract_profile(full_text)
             final_text = _strip_profile(full_text)
 
-            msg_html = render("_message.html", role="assistant", content=final_text)
-            logger.debug("Sending assistant message event")
-
             yield {"event": "clear-stream", "data": ""}
-            yield {"event": "message", "data": msg_html}
+
+            if final_text:
+                session.messages.append(ChatMessage(role="assistant", content=final_text))
+                msg_html = render("_message.html", role="assistant", content=final_text)
+                logger.debug("Sending assistant message event")
+                yield {"event": "assistant-message", "data": msg_html}
 
             if profile:
                 session.profile = profile
 
                 if profile.get("confirmed"):
-                    interests = profile.get("interests", [])
-                    ranked_url = "/opportunities?" + urlencode(
-                        [("ranked", "true")] + [("interests", i) for i in interests]
-                    )
+                    ranked_url = "/opportunities?" + urlencode(_profile_rank_params(profile))
                     card_html = render(
                         "_profile_card.html", profile=profile, ranked_url=ranked_url
                     )
@@ -606,16 +710,26 @@ async def chat_stream(request: Request):
 async def opportunities_page(
     request: Request,
     ranked: bool = False,
-    interests: list[str] = Query(default=[]),
+    likes: list[str] = Query(default=[]),
+    dislikes: list[str] = Query(default=[]),
+    location: str | None = None,
+    transportation: str | None = None,
 ):
     """Serve the opportunities list, optionally in ranked mode."""
-    if ranked and interests:
+    profile = {
+        "likes": likes,
+        "dislikes": dislikes,
+        "location": location,
+        "transportation": transportation,
+    }
+
+    if ranked and likes:
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
 
         rank_stream_url = "/api/rank-opportunities?" + urlencode(
-            [("interests", i) for i in interests]
+            _profile_rank_params(profile)
         )
 
         unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
@@ -626,7 +740,8 @@ async def opportunities_page(
             {
                 "ranked": True,
                 "rank_stream_url": rank_stream_url,
-                "interests": interests,
+                "profile": profile,
+                "likes": likes,
                 "ranked_total": len(onet_jobs),
                 "unranked": unranked,
                 "completed_jobs": 0,
@@ -656,11 +771,21 @@ async def opportunity_detail_page(request: Request, slug: str):
 @app.get("/api/rank-opportunities")
 async def rank_opportunities_stream(
     request: Request,
-    interests: list[str] = Query(...),
+    likes: list[str] = Query(default=[]),
+    dislikes: list[str] = Query(default=[]),
+    location: str | None = None,
+    transportation: str | None = None,
 ):
     """
     Rank ONET jobs in parallel batches and stream result cards as each batch completes.
     """
+    profile = {
+        "likes": likes,
+        "dislikes": dislikes,
+        "location": location,
+        "transportation": transportation,
+    }
+
     benchmark_id = secrets.token_hex(4)
     request_started_at = time.perf_counter()
 
@@ -700,7 +825,7 @@ async def rank_opportunities_stream(
                 )
 
                 try:
-                    scores = await _score_jobs(interests, batch_jobs)
+                    scores = await _score_jobs(profile, batch_jobs)
 
                     if len(scores) != len(batch_jobs):
                         logger.warning(

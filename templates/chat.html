@@ -4,126 +4,98 @@
 
 {% block page_heading %}Find your apprenticeship match{% endblock %}
 {% block page_subhead %}
-  <p class="title-band-sub">Tell us a little about yourself and we'll suggest registered apprenticeships that fit.</p>
+<p class="title-band-sub">Tell us a little about yourself and we'll suggest registered apprenticeships that fit.</p>
 {% endblock %}
 
 {% block head_extra %}
-  <!-- SSE extension is only needed on the chat page -->
-  <script src="https://cdn.jsdelivr.net/npm/htmx-ext-sse@2.2.4"
-          integrity="sha384-A986SAtodyH8eg8x8irJnYUk7i9inVQqYigD6qZ9evobksGNIXfeFvDwLSHcp31N"
-          crossorigin="anonymous"></script>
+<!-- SSE extension is only needed on the chat page -->
+<script src="https://cdn.jsdelivr.net/npm/htmx-ext-sse@2.2.4"
+  integrity="sha384-A986SAtodyH8eg8x8irJnYUk7i9inVQqYigD6qZ9evobksGNIXfeFvDwLSHcp31N" crossorigin="anonymous"></script>
 {% endblock %}
 
 {% block content %}
 
-  <!--
+<!--
     The SSE connection wraps every sse-swap target below (chat log, streaming
     bubble, profile area, and the hidden clear/error targets). It is a flex
     column that grows with the conversation; the page scrolls, the composer
     sticks to the bottom.
   -->
-  <div class="chat-stream" hx-ext="sse" sse-connect="/chat/stream">
+<div class="chat-stream" hx-ext="sse" sse-connect="/chat/stream">
 
-    <!--
+  <!--
       role="log" is the correct ARIA landmark for a chat transcript.
       sse-swap="message" appends completed assistant messages here.
     -->
-    <ol
-      id="chat-log"
-      role="log"
-      aria-live="polite"
-      aria-relevant="additions"
-      aria-label="Chat history"
-      sse-swap="message"
-      hx-swap="beforeend"
-    >
-      <!-- Opening greeting pre-rendered server-side — no JS init call needed -->
-      <li class="message message--assistant">
-        <span class="message-role">Tyler</span>
-        <p class="message-content">Registered apprenticeships let you earn while you learn. Let’s see if one might be right for you. What’s your name?</p>
-      </li>
-    </ol>
+  <ol id="chat-log" role="log" aria-live="polite" aria-relevant="additions" aria-label="Chat history"
+    sse-swap="assistant-message" hx-swap="beforeend">
+    {% if messages %}
+    {% for msg in messages %}
+    <li class="message message--{{ msg.role }}">
+      <span class="message-role">{{ "You" if msg.role == "user" else "Tyler" }}</span>
+      <p class="message-content">{{ msg.content }}</p>
+    </li>
+    {% endfor %}
+    {% endif %}
+  </ol>
 
-    <!--
+  <!--
       Streaming bubble: tokens arrive via sse-swap="token" and accumulate.
       Cleared by JS when the message event fires.
       aria-hidden — screen readers get the final committed message instead.
     -->
-    <div id="streaming-bubble" class="message message--assistant" aria-hidden="true" hidden>
-      <span class="message-role">Tyler</span>
-      <p id="streaming-text" class="message-content" sse-swap="token" hx-swap="beforeend"></p>
-    </div>
-
-    <!-- Profile card injected here when conversation is confirmed -->
-    <div id="profile-area" sse-swap="profile-confirmed" hx-swap="innerHTML">
-      {% if profile and profile.confirmed %}
-        {% set ranked_url = "/opportunities?" ~
-          "ranked=true" ~
-          "&interests=" ~ profile.interests | join("&interests=")
-        %}
-        {% include "_profile_card.html" %}
-      {% endif %}
-    </div>
-
-    <!-- Hidden: gives HTMX a sse-swap target for 'clear-stream' so the JS handler fires -->
-    <div id="stream-clear-target" sse-swap="clear-stream" hx-swap="innerHTML" aria-hidden="true" hidden></div>
-
-    <!-- Hidden: hydrated in the event of AWS Strands errors -->
-    <div id="agent-error-target" sse-swap="agent-error" hx-swap="innerHTML" aria-hidden="true" hidden></div>
-
+  <div id="streaming-bubble" class="message message--assistant" aria-hidden="true" hidden>
+    <span class="message-role">Tyler</span>
+    <p id="streaming-text" class="message-content" sse-swap="token" hx-swap="beforeend"></p>
   </div>
 
-  <!-- Visually hidden live region for status announcements -->
-  <div
-    id="chat-status"
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-    class="visually-hidden"
-  ></div>
-
-  <div class="composer-wrap">
-    {% if not (profile and profile.confirmed) %}
-      <form
-        id="chat-form"
-        aria-label="Send a message"
-        hx-post="/chat"
-        hx-target="#chat-log"
-        hx-swap="beforeend"
-        hx-on::after-request="this.reset()"
-      >
-        <label for="user-input" class="visually-hidden">Message</label>
-        <input
-          type="text"
-          id="user-input"
-          name="message"
-          autocomplete="off"
-          spellcheck="true"
-          placeholder="Message Tyler…"
-        >
-        <button type="submit" id="send-button" class="btn btn--filled">Send</button>
-      </form>
-    {% else %}
-      <form id="chat-form" aria-label="Send a message">
-        <input type="text" id="user-input" placeholder="Conversation complete" disabled>
-        <button type="button" class="btn btn--filled" disabled>Done</button>
-      </form>
+  <!-- Profile card injected here when conversation is confirmed -->
+  <div id="profile-area" sse-swap="profile-confirmed" hx-swap="innerHTML">
+    {% if profile and profile.confirmed and ranked_url %}
+    {% include "_profile_card.html" %}
     {% endif %}
-    <p class="chat-disclaimer text-meta">This is an AI disclaimer.</p>
   </div>
+
+  <!-- Hidden: gives HTMX a sse-swap target for 'clear-stream' so the JS handler fires -->
+  <div id="stream-clear-target" sse-swap="clear-stream" hx-swap="innerHTML" aria-hidden="true" hidden></div>
+
+  <!-- Hidden: hydrated in the event of AWS Strands errors -->
+  <div id="agent-error-target" sse-swap="agent-error" hx-swap="innerHTML" aria-hidden="true" hidden></div>
+
+</div>
+
+<!-- Visually hidden live region for status announcements -->
+<div id="chat-status" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+
+<div class="composer-wrap">
+  {% if not (profile and profile.confirmed) %}
+  <form id="chat-form" aria-label="Send a message" hx-post="/chat" hx-target="#chat-log" hx-swap="beforeend"
+    hx-on::after-request="this.reset()">
+    <label for="user-input" class="visually-hidden">Message</label>
+    <input type="text" id="user-input" name="message" autocomplete="off" spellcheck="true" placeholder="Message Tyler…">
+    <button type="submit" id="send-button" class="btn btn--filled">Send</button>
+  </form>
+  {% else %}
+  <form id="chat-form" aria-label="Send a message">
+    <input type="text" id="user-input" placeholder="Conversation complete" disabled>
+    <button type="button" class="btn btn--filled" disabled>Done</button>
+  </form>
+  {% endif %}
+  <p class="chat-disclaimer text-meta">This is an AI disclaimer.</p>
+</div>
 
 {% endblock %}
 
 {% block scripts %}
 <script>
-  const chatForm        = document.getElementById('chat-form');
-  const userInput       = document.getElementById('user-input');
-  const sendButton      = document.getElementById('send-button');
+  const chatForm = document.getElementById('chat-form');
+  const userInput = document.getElementById('user-input');
+  const sendButton = document.getElementById('send-button');
   const streamingBubble = document.getElementById('streaming-bubble');
-  const streamingText   = document.getElementById('streaming-text');
-  const chatStatus      = document.getElementById('chat-status');
-  const chatLog         = document.getElementById('chat-log');
-  const profileArea     = document.getElementById('profile-area');
+  const streamingText = document.getElementById('streaming-text');
+  const chatStatus = document.getElementById('chat-status');
+  const chatLog = document.getElementById('chat-log');
+  const profileArea = document.getElementById('profile-area');
 
   let conversationComplete = false;
 
@@ -165,7 +137,7 @@
       streamingBubble.hidden = true;
     }
 
-    if (type === 'message') {
+    if (type === 'assistant-message') {
       scrollToLatestMessage();
       if (!conversationComplete) {
         setInputLocked(false);

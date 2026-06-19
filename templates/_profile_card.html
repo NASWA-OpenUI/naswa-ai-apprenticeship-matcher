@@ -1,30 +1,61 @@
 {#
-  Profile summary card — rendered server-side on load (chat.html) and swapped
-  in via SSE on "profile-confirmed". Expects `profile` (with .name and
-  .interests) and `ranked_url` in context.
+Profile summary card — rendered server-side on load (chat.html) and swapped
+in via SSE on "profile-confirmed". Expects `profile` (with .name and
+.interests) and `ranked_url` in context.
 #}
-<div class="profile-card surface surface--shadow surface--accent surface--clip" role="region" aria-label="Your profile summary">
+<div class="profile-card surface surface--shadow surface--accent surface--clip" role="region"
+  aria-label="Your profile summary">
   <div class="profile-card-head">
     <h2>Your Profile</h2>
   </div>
   <div class="profile-card-body">
     <dl>
+      {% if profile.name %}
       <dt>Name</dt>
       <dd>{{ profile.name }}</dd>
-      <dt>Interests</dt>
+      {% endif %}
+
+      {% if profile.likes %}
+      <dt>Likes</dt>
       <dd>
-        {% for interest in profile.interests %}
-        <span class="chip chip--theme chip--interest">{{ interest }}</span>
+        {% for like in profile.likes %}
+        <span class="chip chip--theme chip--interest">{{ like }}</span>
         {% endfor %}
       </dd>
+      {% endif %}
+
+      {% if profile.dislikes %}
+      <dt>Dislikes</dt>
+      <dd>
+        {% for dislike in profile.dislikes %}
+        <span class="chip chip--theme chip--interest">{{ dislike }}</span>
+        {% endfor %}
+      </dd>
+      {% endif %}
+
+      {% if profile.location %}
+      <dt>Looking near</dt>
+      <dd>{{ profile.location }}</dd>
+      {% endif %}
+
+      {% if profile.transportation %}
+      <dt>Transportation</dt>
+      <dd>{{ profile.transportation }}</dd>
+      {% endif %}
+
+      {% if profile.travel_preference %}
+      <dt>Travel</dt>
+      <dd>{{ profile.travel_preference }}</dd>
+      {% endif %}
+
+      {% if profile.timeline %}
+      <dt>Timeline</dt>
+      <dd>{{ profile.timeline }}</dd>
+      {% endif %}
     </dl>
+
     <div class="btn-row">
-      <button
-        type="button"
-        class="btn btn--outline"
-        hx-post="/chat/reset"
-        hx-swap="none"
-      >
+      <button type="button" class="btn btn--outline" hx-post="/chat/reset" hx-swap="none">
         Start over
       </button>
       <a href="{{ ranked_url }}" class="btn btn--filled">See relevant jobs →</a>

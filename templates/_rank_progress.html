@@ -5,11 +5,13 @@
 
 <div class="rank-progress__head">
   {% if is_done %}
-    <span class="rank-progress__check" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </span>
+  <span class="rank-progress__check" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </span>
   {% else %}
-    <span class="rank-progress__spinner" aria-hidden="true"></span>
+  <span class="rank-progress__spinner" aria-hidden="true"></span>
   {% endif %}
 
   <span class="rank-progress__title">
@@ -20,16 +22,15 @@
 </div>
 
 <div class="rank-progress__track">
-  <div
-    class="rank-progress__fill{% if indeterminate %} rank-progress__fill--indeterminate{% endif %}"
-    {% if not indeterminate %}style="width: {{ pct }}%;"{% endif %}
-  ></div>
+  <div class="rank-progress__fill{% if indeterminate %} rank-progress__fill--indeterminate{% endif %}" {% if not
+    indeterminate %}style="width: {{ pct }}%;" {% endif %}></div>
 </div>
 
 <p class="rank-progress__sub text-meta">
   {% if is_done %}
-    Analyzed all {{ total_jobs }} opportunities · ranked by best fit
+  Analyzed all {{ total_jobs }} opportunities · ranked by best fit
   {% else %}
-    {{ completed_jobs }} of {{ total_jobs }} checked{% if elapsed %} in {{ elapsed }}s{% endif %} · showing matches as they arrive
+  {{ completed_jobs }} of {{ total_jobs }} checked{% if elapsed %} in {{ elapsed }}s{% endif %} · showing matches as
+  they arrive
   {% endif %}
 </p>

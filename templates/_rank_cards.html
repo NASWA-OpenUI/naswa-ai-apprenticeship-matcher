@@ -2,14 +2,9 @@
 
 {% for item in ranked %}
 {% set tier_class = item.tier | lower %}
-<article
-  class="match-card match-card--{{ tier_class }} surface surface--shadow"
-  data-tier-order="{{ item.tier_order }}"
-  data-sort-index="{{ item.sort_index }}"
-  data-ranking-id="{{ item.id }}"
-  data-ranking-tier="{{ item.tier }}"
-  data-ranking-explanation="{{ item.explanation }}"
->
+<article class="match-card match-card--{{ tier_class }} surface surface--shadow" data-tier-order="{{ item.tier_order }}"
+  data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}" data-ranking-tier="{{ item.tier }}"
+  data-ranking-explanation="{{ item.explanation }}">
   <div class="match-card__inner">
     <div class="match-card__top">
       <span class="chip chip--{{ tier_class }}">
@@ -22,7 +17,8 @@
     </div>
 
     <div class="match-card__meta text-meta">
-      {{ item.posting.sourceTitle }}{% if item.posting.locationSummary %} · {{ item.posting.locationSummary }}{% endif %}
+      {{ item.posting.sourceTitle }}{% if item.posting.locationSummary %} · {{ item.posting.locationSummary }}{% endif
+      %}
     </div>
 
     {% if item.explanation %}

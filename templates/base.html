@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="business">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Apprenticeship Matcher{% endblock %}</title>
 
   {#
-    NYS Design System — full stylesheet (reset + tokens + typography + utilities).
-    Loaded from a CDN for now; pin the version. Verify this resolves (it should
-    return 200 and the bubbles/bands should pick up the teal Business theme).
-    When ready, vendor it into /static and point the link there instead.
+  NYS Design System — full stylesheet (reset + tokens + typography + utilities).
+  Loaded from a CDN for now; pin the version. Verify this resolves (it should
+  return 200 and the bubbles/bands should pick up the teal Business theme).
+  When ready, vendor it into /static and point the link there instead.
   #}
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@nysds/styles@1.18.3/dist/nysds-full.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nysds/styles@1.18.3/dist/nysds-full.min.css">
 
   <!-- App styles: our chrome, chat transcript, profile card, buttons -->
   <link rel="stylesheet" href="/static/css/app.css">
 
   <!-- HTMX core (pages add extensions, e.g. SSE, via head_extra) -->
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
-          integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
-          crossorigin="anonymous"></script>
+    integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
+    crossorigin="anonymous"></script>
 
   <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
 
@@ -28,7 +28,8 @@
 </head>
 
 {# data-theme is also set on <html> above so the band/header pick up the theme;
-   keeping it here too is harmless and explicit. #}
+keeping it here too is harmless and explicit. #}
+
 <body data-theme="business">
 
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -72,7 +73,7 @@
   {% endblock %}
 
   <main id="main-content" class="{% block main_class %}container{% endblock %}">
-      {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
   </main>
 
   <!-- Reverse footer (official component is <nys-globalfooter> / <nys-unavfooter>) -->
@@ -90,4 +91,5 @@
   {% block scripts %}{% endblock %}
 
 </body>
+
 </html>
