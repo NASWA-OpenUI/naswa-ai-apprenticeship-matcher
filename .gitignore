@@ -7,3 +7,5 @@ data/_opportunities.db
 llm-export*
 data-new/*
 data-old/*
+infra/COMMANDS.md
+infra/scripts/*
