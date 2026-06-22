@@ -2,7 +2,10 @@ import json
 import sqlite3
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent / "data"
+PACKAGE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = PACKAGE_DIR.parent
+
+DATA_DIR = PROJECT_ROOT / "data"
 DB_PATH = DATA_DIR / "_opportunities.db"
 
 

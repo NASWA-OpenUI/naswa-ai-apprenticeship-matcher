@@ -5,7 +5,7 @@
 - Feat: show "closes soon"
 - Feat: return to search
 - Feat: add new opportunities from crawler
-
+- Fix: UI problem when you send a message
 
 ## DONE
 

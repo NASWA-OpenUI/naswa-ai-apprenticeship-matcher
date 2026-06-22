@@ -28,6 +28,7 @@ def opportunities():
     fixture_names = [
         "apprenticeship-no-soccode.json",
         "apprenticeship-with-soccode.json",
+        "apprenticeship-local-with-soccode.json",
     ]
 
     return [

@@ -97,17 +97,27 @@ def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
     assert response.status_code == 404
 
 
-def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
+def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeypatch):
     async def fake_score_jobs(profile, onet_jobs):
         assert profile["likes"] == ["hands-on work", "problem solving"]
         assert profile["location"] == "Buffalo area"
+
+        job_ids = {job["id"] for job in onet_jobs}
+
+        assert "electrician-apprentice-fixture" in job_ids
+        assert "boilermaker-apprentice-local-fixture" in job_ids
 
         return [
             {
                 "id": "electrician-apprentice-fixture",
                 "tier": "Strong",
                 "explanation": "Good match for hands-on troubleshooting work.",
-            }
+            },
+            {
+                "id": "boilermaker-apprentice-local-fixture",
+                "tier": "Strong",
+                "explanation": "Good local match for fixing mechanical equipment.",
+            },
         ]
 
     monkeypatch.setattr(server, "_score_jobs", fake_score_jobs)
@@ -128,8 +138,15 @@ def test_rank_opportunities_stream_uses_mocked_scores(client, monkeypatch):
     assert "event: progress" in body
     assert "event: done" in body
 
-    # Ranked O*NET-backed opportunity.
+    print(body)
+    # Local Western NY opportunity can remain Strong.
     assert "Strong" in body
+    assert "Boilermaker Apprentice" in body
+    assert "Good local match for fixing mechanical equipment." in body
+
+    # Binghamton/Southern Tier opportunity is capped from Strong to Moderate
+    # for a Buffalo-area user.
+    assert "Moderate" in body
     assert "Electrician Apprentice" in body
     assert "Good match for hands-on troubleshooting work." in body
 

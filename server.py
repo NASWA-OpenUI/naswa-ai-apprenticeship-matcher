@@ -18,8 +18,13 @@ from sse_starlette.sse import EventSourceResponse
 from strands import Agent
 from strands.models import BedrockModel
 
-from db import all_opportunities, get_opportunity
-from db import load as load_db
+from naswa_matcher.db import all_opportunities, get_opportunity
+from naswa_matcher.db import load as load_db
+from naswa_matcher.location_matching import (
+    LOCATION_FIT_ORDER,
+    cap_tier_by_location,
+    location_fit,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -424,6 +429,7 @@ def _build_ranked_items(
     batch_jobs: list[dict],
     scores: list[dict],
     job_index: dict[str, int],
+    profile: dict,
 ) -> list[dict]:
     """Attach model scores back to jobs and sort this batch by tier."""
     score_map = {
@@ -436,7 +442,9 @@ def _build_ranked_items(
 
     for job in batch_jobs:
         score = score_map.get(job["id"], {})
-        tier = _normalize_tier(score.get("tier"))
+        _location_fit = location_fit(profile, job)
+        model_tier = _normalize_tier(score.get("tier"))
+        tier = cap_tier_by_location(model_tier, _location_fit)
 
         ranked.append(
             {
@@ -444,6 +452,7 @@ def _build_ranked_items(
                 "tier": tier,
                 "tier_order": TIER_ORDER.get(tier, 3),
                 "sort_index": job_index[job["id"]],
+                "location_fit": _location_fit,
                 "explanation": score.get("explanation", ""),
                 "posting": job["posting"],
             }
@@ -451,7 +460,11 @@ def _build_ranked_items(
 
     return sorted(
         ranked,
-        key=lambda item: (item["tier_order"], item["sort_index"]),
+        key=lambda item: (
+            item["tier_order"],
+            LOCATION_FIT_ORDER.get(item.get("location_fit"), 9),
+            item["sort_index"],
+        ),
     )
 
 
@@ -477,12 +490,14 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
             ]
         except KeyError, TypeError:
             styles = []
+
         summaries.append(
             {
                 "id": job["id"],
                 "title": job["posting"]["jobTitle"],
                 "location": job["posting"].get("locationSummary"),
                 "regions": job["posting"].get("regions", []),
+                "location_fit": location_fit(profile, job),
                 "requirements_summary": job["posting"].get("requirementsSummary"),
                 "transportation_requirement": job["posting"].get(
                     "transportationRequirement"
@@ -502,8 +517,13 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
         "Score each job as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
         "- Put the most weight on whether the occupation connects to the user's likes.\n"
+        "- Location is a major ranking factor, not a minor detail.\n"
+        "- A job should only be Strong if it fits both the user's interests and their location.\n"
+        "- If location_fit is far, do not rank the job as Strong.\n"
+        "- If location_fit is nearby, usually rank the job as Moderate.\n"
+        "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
+        "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
         "- Use dislikes only as a soft negative signal.\n"
-        "- Use location, travel preference, and transportation as soft fit signals, not hard disqualifiers.\n"
         "- Do not reject a job only because a requirement may need to be checked later.\n"
         "- If transportation or location may be an issue, mention it gently as a caveat.\n"
         "- Keep explanations friendly and concrete.\n\n"
@@ -861,6 +881,7 @@ async def rank_opportunities_stream(
                         batch_jobs=batch_jobs,
                         scores=scores,
                         job_index=job_index,
+                        profile=profile,
                     )
 
                     elapsed_ms = (time.perf_counter() - batch_started_at) * 1000

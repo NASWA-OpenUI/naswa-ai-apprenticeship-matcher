@@ -1,0 +1,92 @@
+{
+    "id": "boilermaker-apprentice-local-fixture",
+    "socCode": "47-2011.00",
+    "posting": {
+        "id": "boilermaker-apprentice-local-fixture",
+        "sourceUrl": "https://example.com/boilermaker",
+        "sourceTitle": "Boilermakers Local Fixture",
+        "jobTitle": "Boilermaker Apprentice",
+        "socCode": "47-2011.00",
+        "numberOfOpenings": 3,
+        "sponsorName": "Boilermakers Local Fixture",
+        "unionName": "Boilermakers Local Fixture",
+        "locationSummary": "Finger Lakes, Southern Tier, and Western regions of New York State",
+        "regions": [
+            "Finger Lakes",
+            "Southern Tier",
+            "Western"
+        ],
+        "recruitmentStartDate": "2025-11-26",
+        "recruitmentEndDate": "2026-11-25",
+        "applicationStartDate": "2025-11-26",
+        "applicationEndDate": "2026-11-25",
+        "applicationMethods": [
+            "online_application"
+        ],
+        "applicationSummary": "Apply online during the recruitment period.",
+        "applicationWebsite": "https://example.com/apply-boilermaker",
+        "applicationEmail": null,
+        "applicationPhone": null,
+        "applicationInPersonAddress": null,
+        "applicationMailingAddress": null,
+        "applicationHours": null,
+        "applicationLimit": null,
+        "applicationLimitDetails": null,
+        "applicationFee": null,
+        "applicationFeeDetails": null,
+        "ageRequirement": "Must be at least 18 years old.",
+        "educationRequirement": "Must have a high school diploma or equivalent.",
+        "residencyRequirement": null,
+        "transportationRequirement": "Must have reliable transportation.",
+        "drugTestRequirement": null,
+        "classRequirement": "Must attend required classes.",
+        "allRequirements": [
+            "Must be at least 18 years old.",
+            "Must have a high school diploma or equivalent.",
+            "Must have reliable transportation to and from various job sites and required classes at the approved school."
+        ],
+        "requirementsSummary": "Applicants must be at least 18 and have reliable transportation.",
+        "contactName": "Boilermakers Local Fixture",
+        "contactPhone": "(555) 555-1234",
+        "contactEmail": null,
+        "contactWebsite": null,
+        "contactSummary": "Contact Boilermakers Local Fixture for further information."
+    },
+    "oes": null,
+    "onet": {
+        "socCode": "47-2011.00",
+        "onetSocCode": "47-2011.00",
+        "title": "Boilermakers",
+        "description": "Construct, assemble, maintain, and repair boilers and related equipment.",
+        "detailed_work_activities": {
+            "data": {
+                "activity": [
+                    {
+                        "id": "fixture-activity-1",
+                        "title": "Maintain mechanical equipment."
+                    }
+                ]
+            }
+        },
+        "skills": {
+            "data": {
+                "element": [
+                    {
+                        "id": "fixture-skill-1",
+                        "name": "Repairing"
+                    }
+                ]
+            }
+        },
+        "work_styles": {
+            "data": {
+                "element": [
+                    {
+                        "id": "fixture-style-1",
+                        "name": "Dependability"
+                    }
+                ]
+            }
+        }
+    }
+}
