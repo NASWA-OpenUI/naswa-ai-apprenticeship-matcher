@@ -41,6 +41,24 @@ health check path: /health
 
 The app uses AWS Bedrock through the Strands Agents SDK. In ECS, the app should use an IAM task role for Bedrock access. Do not deploy AWS access keys as container environment variables.
 
+The deployed container currently receives these non-secret runtime environment variables:
+
+```
+AWS_DEFAULT_REGION
+AWS_REGION
+CHAT_MODEL_NAME
+SCORING_MODEL_NAME
+```
+
+The deployed container should not receive:
+
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN
+AWS_PROFILE
+```
+
 ## Local prerequisites
 
 Install and configure:
@@ -231,7 +249,7 @@ aws ecs create-express-gateway-service \
   --execution-role-arn "$EXECUTION_ROLE_ARN" \
   --infrastructure-role-arn "$INFRASTRUCTURE_ROLE_ARN" \
   --task-role-arn "$TASK_ROLE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"}]}" \
+  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"sonnet-4.6\"}]}" \
   --health-check-path "/health" \
   --monitor-resources \
   --region "$AWS_REGION" \
@@ -269,7 +287,7 @@ Use this flow when the ECS Express Mode service already exists and you want to d
 
 ```bash
 export AWS_PROFILE=your-profile-name
-export AWS_REGION=us-east-2
+export AWS_REGION=us-east-1
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity \
   --profile "$AWS_PROFILE" \
   --query Account \
@@ -323,7 +341,7 @@ Update the service to use the new image:
 ```bash
 aws ecs update-express-gateway-service \
   --service-arn "$SERVICE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"}]}" \
+  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"sonnet-4.6\"}]}" \
   --monitor-resources \
   --region "$AWS_REGION" \
   --profile "$AWS_PROFILE"
@@ -356,6 +374,8 @@ For ECS, this app should usually only need non-secret runtime config:
 ```text
 AWS_DEFAULT_REGION
 AWS_REGION
+CHAT_MODEL_NAME
+SCORING_MODEL_NAME
 ```
 
 Do not set these in ECS:
