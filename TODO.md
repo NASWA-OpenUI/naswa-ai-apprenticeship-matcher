@@ -9,6 +9,7 @@
 - Fix: Cache job results
 - Fix: Indicate links which go offsite
 - Fix: Add number of openings to list view
+- Fix: Date chip should change based on if the recruitment has started
 
 ## DONE
 

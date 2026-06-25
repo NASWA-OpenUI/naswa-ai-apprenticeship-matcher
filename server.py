@@ -742,7 +742,7 @@ async def chat_stream(request: Request):
     return response
 
 
-# ── Opportunities pages ───────────────────────────────────────────────────────
+# ── Opportunities page ────────────────────────────────────────────────────────
 
 
 @app.get("/opportunities")
@@ -794,6 +794,55 @@ async def opportunities_page(
         {"ranked": False, "opportunities": all_opportunities()},
     )
 
+# ── Single opportunity page ───────────────────────────────────────────────────
+
+
+def _application_fee(value) -> int | None:
+    """Return a positive application fee, or None when blank/free/missing."""
+    if value is None:
+        return None
+
+    if value == "":
+        return None
+
+    try:
+        fee = int(value)
+    except (TypeError, ValueError):
+        return None
+
+    return fee if fee > 0 else None
+
+def _build_opportunity_detail(opp: dict) -> dict:
+    posting = opp.get("posting", {})
+
+    application_close_date = (
+        posting.get("applicationEndDate") or posting.get("recruitmentEndDate")
+    )
+
+    application_fee = _application_fee(posting.get("applicationFee"))
+
+    transportation_requirement = posting.get("transportationRequirement") or ""
+
+    bottom_apply_parts = []
+
+    if application_fee:
+        bottom_apply_parts.append(f"${application_fee} application fee")
+
+    if application_close_date:
+        bottom_apply_parts.append(
+            f"applications open through {_format_date(application_close_date)}"
+        )
+
+    return {
+        "application_close_date": application_close_date,
+        "application_close_label": _format_date(application_close_date),
+        "number_of_openings": posting.get("numberOfOpenings"),
+        "application_fee": application_fee,
+        "license_required": "license" in transportation_requirement.lower(),
+        "source_url": posting.get("sourceUrl"),
+        "apply_url": "#",
+        "bottom_apply_note": " · ".join(bottom_apply_parts),
+    }
 
 @app.get("/opportunities/{slug}")
 async def opportunity_detail_page(request: Request, slug: str):
@@ -801,7 +850,17 @@ async def opportunity_detail_page(request: Request, slug: str):
     opp = get_opportunity(slug)
     if opp is None:
         raise HTTPException(status_code=404)
-    return templates.TemplateResponse(request, "opportunity.html", {"opp": opp})
+
+    detail = _build_opportunity_detail(opp)
+
+    return templates.TemplateResponse(
+        request,
+        "opportunity.html",
+        {
+            "opp": opp,
+            "detail": detail,
+        },
+    )
 
 
 # ── Ranking ───────────────────────────────────────────────────────────────────
