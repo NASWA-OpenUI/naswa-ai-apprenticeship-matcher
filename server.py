@@ -412,6 +412,8 @@ def _set_session_cookie(response, session_id: str) -> None:
 
 RANKING_BATCH_SIZE = int(os.getenv("RANKING_BATCH_SIZE", "10"))
 RANKING_MAX_CONCURRENCY = int(os.getenv("RANKING_MAX_CONCURRENCY", "3"))
+RANKING_MAX_ATTEMPTS = int(os.getenv("RANKING_MAX_ATTEMPTS", "3"))
+RANKING_RETRY_DELAY_SECONDS = float(os.getenv("RANKING_RETRY_DELAY_SECONDS", "1"))
 
 TIER_ORDER = {"Strong": 0, "Moderate": 1, "Weak": 2}
 
@@ -530,7 +532,11 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
         "- Do not reject a job only because a requirement may need to be checked later.\n"
         "- If transportation or location may be an issue, mention it gently as a caveat.\n"
         "- Keep explanations friendly and concrete.\n\n"
-        "Return ONLY a JSON array — no markdown, no extra text:\n"
+        "- Return ONLY a JSON array — no markdown, no extra text:\n"
+        "- The JSON must contain exactly one object for every job ID provided.\n"
+        "- Do not include trailing commas.\n"
+        "- Do not omit jobs.\n"
+        "- Do not invent job IDs.\n\n"
         '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences why"}]\n\n'
         f"Jobs:\n{json.dumps(summaries, indent=2)}"
     )
@@ -879,7 +885,34 @@ async def rank_opportunities_stream(
                 )
 
                 try:
-                    scores = await _score_jobs(profile, batch_jobs)
+                    scores = None
+
+                    for attempt in range(1, RANKING_MAX_ATTEMPTS + 1):
+                        try:
+                            scores = await _score_jobs(profile, batch_jobs)
+                            break
+
+                        except Exception as exc:
+                            error_message = _describe_exception(exc)
+
+                            if attempt == RANKING_MAX_ATTEMPTS:
+                                raise
+
+                            delay_seconds = RANKING_RETRY_DELAY_SECONDS * attempt
+
+                            logger.warning(
+                                "Ranking batch attempt failed; retrying id=%s batch=%s/%s jobs=%s attempt=%s/%s retry_in=%.2fs error=%s",
+                                benchmark_id,
+                                batch_number,
+                                total_batches,
+                                len(batch_jobs),
+                                attempt,
+                                RANKING_MAX_ATTEMPTS,
+                                delay_seconds,
+                                error_message,
+                            )
+
+                            await asyncio.sleep(delay_seconds)
 
                     if len(scores) != len(batch_jobs):
                         logger.warning(
