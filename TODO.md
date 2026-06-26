@@ -10,11 +10,11 @@
 - Fix: Indicate links which go offsite
 - Fix: Add number of openings to list view
 - Feat: AI disclosure text
-- Fix: cache latest search
 - Feat: Use NY town/county locator
 
 ## DONE
 
+- Fix: cache latest search
 - Fix: Date chip should change based on if the application has started
 - Feat: Load matched opportunities faster
   - When loading matched opportunities, show progress

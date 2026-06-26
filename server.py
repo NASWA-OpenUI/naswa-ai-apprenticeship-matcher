@@ -341,6 +341,19 @@ def _initial_messages() -> list[ChatMessage]:
 
 
 @dataclass
+class RankingCacheEntry:
+    """Cached ranked opportunities for one profile inside one browser session."""
+
+    profile: dict
+    ranked: list[dict] = field(default_factory=list)
+    completed_jobs: int = 0
+    total_jobs: int = 0
+    elapsed_seconds: int = 0
+    created_at: float = field(default_factory=time.time)
+    is_complete: bool = False
+
+
+@dataclass
 class ChatSession:
     """Ephemeral browser session for the internal demo."""
 
@@ -350,6 +363,7 @@ class ChatSession:
     messages: list[ChatMessage] = field(default_factory=_initial_messages)
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
+    ranking_cache: dict[str, RankingCacheEntry] = field(default_factory=dict)
 
 
 _sessions: dict[str, ChatSession] = {}
@@ -406,6 +420,70 @@ def _set_session_cookie(response, session_id: str) -> None:
         secure=False,  # TODO: Set to True when serving over HTTPS.
         path="/",
     )
+
+
+RANKING_CACHE_VERSION = "rank-cache-v1"
+
+
+def _normalized_profile_for_cache(profile: dict) -> dict:
+    """Return a stable, compact profile shape for ranking-cache keys."""
+
+    def clean_list(values) -> list[str]:
+        if not isinstance(values, list):
+            return []
+
+        cleaned = []
+        for value in values:
+            text = str(value).strip()
+            if text:
+                cleaned.append(text)
+        return cleaned
+
+    def clean_string(value) -> str | None:
+        if value is None:
+            return None
+
+        text = str(value).strip()
+        return text or None
+
+    return {
+        "likes": clean_list(profile.get("likes", [])),
+        "dislikes": clean_list(profile.get("dislikes", [])),
+        "location": clean_string(profile.get("location")),
+        "transportation": clean_string(profile.get("transportation")),
+    }
+
+
+def _ranking_cache_key(profile: dict) -> str:
+    """Build a deterministic cache key for one ranked-opportunities request."""
+    return json.dumps(
+        {
+            "version": RANKING_CACHE_VERSION,
+            "profile": _normalized_profile_for_cache(profile),
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+
+
+def _get_ranking_cache_entry(
+    session: ChatSession,
+    cache_key: str,
+) -> RankingCacheEntry | None:
+    """Return a complete, unexpired ranking cache entry if available."""
+    entry = session.ranking_cache.get(cache_key)
+
+    if entry is None:
+        return None
+
+    if time.time() - entry.created_at > SESSION_MAX_AGE_SECONDS:
+        del session.ranking_cache[cache_key]
+        return None
+
+    if not entry.is_complete:
+        return None
+
+    return entry
 
 
 # ── ONET scoring ──────────────────────────────────────────────────────────────
@@ -624,6 +702,7 @@ async def reset_chat(request: Request):
     session.agent = make_agent()
     session.profile = None
     session.messages = _initial_messages()
+    session.ranking_cache.clear()
 
     # Replace the queue entirely
     session.queue = asyncio.Queue()
@@ -772,9 +851,14 @@ async def opportunities_page(
     }
 
     if ranked and likes:
+        session_id, session, needs_cookie = _get_or_create_session(request)
+
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
+
+        cache_key = _ranking_cache_key(profile)
+        ranking_cached = _get_ranking_cache_entry(session, cache_key) is not None
 
         rank_stream_url = "/api/rank-opportunities?" + urlencode(
             _profile_rank_params(profile)
@@ -782,7 +866,7 @@ async def opportunities_page(
 
         unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
 
-        return templates.TemplateResponse(
+        response = templates.TemplateResponse(
             request,
             "opportunities.html",
             {
@@ -795,8 +879,15 @@ async def opportunities_page(
                 "completed_jobs": 0,
                 "total_jobs": len(onet_jobs),
                 "is_done": False,
+                "ranking_cached": ranking_cached,
             },
         )
+
+        if needs_cookie:
+            _set_session_cookie(response, session_id)
+
+        return response
+
     return templates.TemplateResponse(
         request,
         "opportunities.html",
@@ -838,13 +929,67 @@ async def rank_opportunities_stream(
 ):
     """
     Rank ONET jobs in parallel batches and stream result cards as each batch completes.
+
+    Completed rankings are cached inside the user's browser session so returning
+    to the same ranked opportunities URL does not rerun the AI scoring work.
     """
+    session_id, session, needs_cookie = _get_or_create_session(request)
+
     profile = {
         "likes": likes,
         "dislikes": dislikes,
         "location": location,
         "transportation": transportation,
     }
+
+    cache_key = _ranking_cache_key(profile)
+    cached = _get_ranking_cache_entry(session, cache_key)
+
+    if cached:
+        benchmark_id = secrets.token_hex(4)
+
+        logger.info(
+            "Streaming opportunity ranking cache hit id=%s jobs=%s elapsed_seconds=%s",
+            benchmark_id,
+            len(cached.ranked),
+            cached.elapsed_seconds,
+        )
+
+        async def generate_cached():
+            cards_html = render(
+                "_rank_cards.html",
+                ranked=cached.ranked,
+            )
+
+            if cards_html.strip():
+                yield {
+                    "event": "batch",
+                    "data": cards_html,
+                }
+
+            progress_html = render(
+                "_rank_progress.html",
+                completed_jobs=cached.completed_jobs,
+                total_jobs=cached.total_jobs,
+                is_done=True,
+            )
+
+            yield {
+                "event": "progress",
+                "data": progress_html,
+            }
+
+            yield {
+                "event": "done",
+                "data": str(cached.elapsed_seconds),
+            }
+
+        response = EventSourceResponse(generate_cached())
+
+        if needs_cookie:
+            _set_session_cookie(response, session_id)
+
+        return response
 
     benchmark_id = secrets.token_hex(4)
     request_started_at = time.perf_counter()
@@ -870,6 +1015,9 @@ async def rank_opportunities_stream(
         semaphore = asyncio.Semaphore(RANKING_MAX_CONCURRENCY)
         completed_batches = 0
         completed_jobs = 0
+        ranked_for_cache: list[dict] = []
+        had_batch_error = False
+        disconnected = False
 
         async def rank_batch(batch_number: int, batch_jobs: list[dict]) -> dict:
             async with semaphore:
@@ -913,6 +1061,9 @@ async def rank_opportunities_stream(
                             )
 
                             await asyncio.sleep(delay_seconds)
+
+                    if scores is None:
+                        raise RuntimeError("Ranking batch did not return scores.")
 
                     if len(scores) != len(batch_jobs):
                         logger.warning(
@@ -982,6 +1133,7 @@ async def rank_opportunities_stream(
         try:
             for task in asyncio.as_completed(tasks):
                 if await request.is_disconnected():
+                    disconnected = True
                     logger.info(
                         "Streaming opportunity ranking disconnected id=%s completed_batches=%s/%s",
                         benchmark_id,
@@ -995,6 +1147,8 @@ async def rank_opportunities_stream(
                 completed_jobs += len(result["jobs"])
 
                 if result["error"]:
+                    had_batch_error = True
+
                     yield {
                         "event": "batch-error",
                         "data": (
@@ -1004,6 +1158,8 @@ async def rank_opportunities_stream(
                         ),
                     }
                 else:
+                    ranked_for_cache.extend(result["ranked"])
+
                     cards_html = render(
                         "_rank_cards.html",
                         ranked=result["ranked"],
@@ -1028,7 +1184,11 @@ async def rank_opportunities_stream(
                     "data": progress_html,
                 }
 
+            if disconnected:
+                return
+
             total_elapsed_ms = (time.perf_counter() - request_started_at) * 1000
+            total_elapsed_seconds = round(total_elapsed_ms / 1000)
 
             logger.info(
                 "Streaming opportunity ranking completed id=%s jobs=%s batches=%s total_elapsed_ms=%.1f",
@@ -1037,6 +1197,32 @@ async def rank_opportunities_stream(
                 total_batches,
                 total_elapsed_ms,
             )
+
+            final_ranked = sorted(
+                ranked_for_cache,
+                key=lambda item: (
+                    item["tier_order"],
+                    LOCATION_FIT_ORDER.get(item.get("location_fit"), 9),
+                    item["sort_index"],
+                ),
+            )
+
+            if completed_jobs == len(onet_jobs) and not had_batch_error:
+                session.ranking_cache[cache_key] = RankingCacheEntry(
+                    profile=_normalized_profile_for_cache(profile),
+                    ranked=final_ranked,
+                    completed_jobs=completed_jobs,
+                    total_jobs=len(onet_jobs),
+                    elapsed_seconds=total_elapsed_seconds,
+                    is_complete=True,
+                )
+
+                logger.info(
+                    "Opportunity ranking cached id=%s jobs=%s elapsed_seconds=%s",
+                    benchmark_id,
+                    len(final_ranked),
+                    total_elapsed_seconds,
+                )
 
             final_progress_html = render(
                 "_rank_progress.html",
@@ -1052,7 +1238,7 @@ async def rank_opportunities_stream(
 
             yield {
                 "event": "done",
-                "data": str(round(total_elapsed_ms / 1000)),
+                "data": str(total_elapsed_seconds),
             }
 
         finally:
@@ -1060,4 +1246,9 @@ async def rank_opportunities_stream(
                 if not task.done():
                     task.cancel()
 
-    return EventSourceResponse(generate())
+    response = EventSourceResponse(generate())
+
+    if needs_cookie:
+        _set_session_cookie(response, session_id)
+
+    return response

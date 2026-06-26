@@ -42,7 +42,9 @@ opportunities{% endif %}{% endblock %}
       <a class="interests-banner__link" href="/chat">Change profile</a>
     </div>
 
-    <div id="rank-progress" class="surface surface--shadow rank-progress" sse-swap="progress" hx-swap="innerHTML">
+    <div id="rank-progress"
+      class="surface surface--shadow rank-progress{% if ranking_cached|default(false) %} is-collapsed{% endif %}" {% if
+      ranking_cached|default(false) %}hidden{% endif %} sse-swap="progress" hx-swap="innerHTML">
       {% include "_rank_progress.html" with context %}
     </div>
 
