@@ -6,7 +6,6 @@ import re
 import secrets
 import time
 from contextlib import asynccontextmanager
-from datetime import date, datetime
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlencode
@@ -28,6 +27,7 @@ from naswa_matcher.location_matching import (
     location_fit,
 )
 from naswa_matcher.opportunity_detail import build_opportunity_detail
+from naswa_matcher.ranking import score_jobs
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -313,6 +313,10 @@ def make_agent() -> Agent:
         callback_handler=None,
     )
 
+def make_scoring_model() -> BedrockModel:
+    """Create the non-streaming model used for opportunity scoring."""
+    return make_bedrock_model(SCORING_MODEL_NAME, streaming=False)
+
 
 # ── Set up lightweight sessions ────────────────────────────────────────────────
 
@@ -552,86 +556,15 @@ def _build_ranked_items(
 
 
 async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
-    """One LLM call that tier-ranks all ONET jobs against user interests."""
-    summaries = []
-    for job in onet_jobs:
-        o = job["onet"]
-        try:
-            skills = [s["name"] for s in (o["skills"]["data"]["element"] or [])[:5]]
-        except KeyError, TypeError:
-            skills = []
-        try:
-            activities = [
-                a["title"]
-                for a in (o["detailed_work_activities"]["data"]["activity"] or [])[:5]
-            ]
-        except KeyError, TypeError:
-            activities = []
-        try:
-            styles = [
-                s["name"] for s in (o["work_styles"]["data"]["element"] or [])[:4]
-            ]
-        except KeyError, TypeError:
-            styles = []
+    """Score jobs using the configured scoring model.
 
-        summaries.append(
-            {
-                "id": job["id"],
-                "title": job["posting"]["jobTitle"],
-                "location": job["posting"].get("locationSummary"),
-                "regions": job["posting"].get("regions", []),
-                "location_fit": location_fit(profile, job),
-                "requirements_summary": job["posting"].get("requirementsSummary"),
-                "transportation_requirement": job["posting"].get(
-                    "transportationRequirement"
-                ),
-                "description": (o.get("description") or "")[:300],
-                "skills": skills,
-                "activities": activities,
-                "work_styles": styles,
-            }
-        )
-
-    prompt = (
-        "You are ranking New York State registered apprenticeship opportunities "
-        "for a user based on a short derived profile.\n\n"
-        "User profile:\n"
-        f"{json.dumps(profile, indent=2)}\n\n"
-        "Score each job as Strong, Moderate, or Weak.\n\n"
-        "Guidance:\n"
-        "- Put the most weight on whether the occupation connects to the user's likes.\n"
-        "- Location is a major ranking factor, not a minor detail.\n"
-        "- A job should only be Strong if it fits both the user's interests and their location.\n"
-        "- If location_fit is far, do not rank the job as Strong.\n"
-        "- If location_fit is nearby, usually rank the job as Moderate.\n"
-        "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
-        "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
-        "- Use dislikes only as a soft negative signal.\n"
-        "- Do not reject a job only because a requirement may need to be checked later.\n"
-        "- If transportation or location may be an issue, mention it gently as a caveat.\n"
-        "- Keep explanations friendly and concrete.\n\n"
-        "- Return ONLY a JSON array — no markdown, no extra text:\n"
-        "- The JSON must contain exactly one object for every job ID provided.\n"
-        "- Do not include trailing commas.\n"
-        "- Do not omit jobs.\n"
-        "- Do not invent job IDs.\n\n"
-        '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences why"}]\n\n'
-        f"Jobs:\n{json.dumps(summaries, indent=2)}"
+    Kept as a thin wrapper so route tests can still monkeypatch this boundary.
+    """
+    return await score_jobs(
+        profile,
+        onet_jobs,
+        model_factory=make_scoring_model,
     )
-
-    scorer = Agent(
-        model=make_bedrock_model(SCORING_MODEL_NAME, streaming=False),
-        callback_handler=None,
-    )
-
-    result = await scorer.invoke_async(prompt)
-    raw = str(result)
-
-    raw = re.sub(r"```(?:json)?\s*", "", raw).strip().rstrip("`").strip()
-    m = re.search(r"\[.*\]", raw, re.DOTALL)
-    if m:
-        raw = m.group()
-    return json.loads(raw)
 
 
 # ── App setup ─────────────────────────────────────────────────────────────────

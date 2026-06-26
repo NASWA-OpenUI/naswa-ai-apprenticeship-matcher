@@ -1,0 +1,141 @@
+from __future__ import annotations
+
+import json
+import re
+from collections.abc import Callable
+from typing import Any
+
+from strands import Agent
+
+from naswa_matcher.location_matching import location_fit
+
+
+ModelFactory = Callable[[], Any]
+
+
+def _nested_list(data: dict, path: tuple[str, ...]) -> list:
+    """Safely read a nested list from O*NET data."""
+    value: object = data
+
+    for key in path:
+        if not isinstance(value, dict):
+            return []
+        value = value.get(key)
+
+    return value if isinstance(value, list) else []
+
+
+def _pluck(items: list, field: str, limit: int) -> list[str]:
+    """Return up to `limit` string values from a list of dicts."""
+    values = []
+
+    for item in items[:limit]:
+        if not isinstance(item, dict):
+            continue
+
+        value = item.get(field)
+        if value:
+            values.append(str(value))
+
+    return values
+
+
+def build_job_summary(profile: dict, job: dict) -> dict:
+    """Build the compact job summary sent to the scoring model."""
+    posting = job.get("posting", {})
+    onet = job.get("onet") or {}
+
+    skills = _pluck(
+        _nested_list(onet, ("skills", "data", "element")),
+        "name",
+        5,
+    )
+    activities = _pluck(
+        _nested_list(onet, ("detailed_work_activities", "data", "activity")),
+        "title",
+        5,
+    )
+    styles = _pluck(
+        _nested_list(onet, ("work_styles", "data", "element")),
+        "name",
+        4,
+    )
+
+    return {
+        "id": job["id"],
+        "title": posting.get("jobTitle"),
+        "location": posting.get("locationSummary"),
+        "regions": posting.get("regions", []),
+        "location_fit": location_fit(profile, job),
+        "requirements_summary": posting.get("requirementsSummary"),
+        "transportation_requirement": posting.get("transportationRequirement"),
+        "description": (onet.get("description") or "")[:300],
+        "skills": skills,
+        "activities": activities,
+        "work_styles": styles,
+    }
+
+
+def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
+    """Build the prompt used to score O*NET-backed opportunities."""
+    return (
+        "You are ranking New York State registered apprenticeship opportunities "
+        "for a user based on a short derived profile.\n\n"
+        "User profile:\n"
+        f"{json.dumps(profile, indent=2)}\n\n"
+        "Score each job as Strong, Moderate, or Weak.\n\n"
+        "Guidance:\n"
+        "- Put the most weight on whether the occupation connects to the user's likes.\n"
+        "- Location is a major ranking factor, not a minor detail.\n"
+        "- A job should only be Strong if it fits both the user's interests and their location.\n"
+        "- If location_fit is far, do not rank the job as Strong.\n"
+        "- If location_fit is nearby, usually rank the job as Moderate.\n"
+        "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
+        "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
+        "- Use dislikes only as a soft negative signal.\n"
+        "- Do not reject a job only because a requirement may need to be checked later.\n"
+        "- If transportation or location may be an issue, mention it gently as a caveat.\n"
+        "- Keep explanations friendly and concrete.\n\n"
+        "- Return ONLY a JSON array — no markdown, no extra text:\n"
+        "- The JSON must contain exactly one object for every job ID provided.\n"
+        "- Do not include trailing commas.\n"
+        "- Do not omit jobs.\n"
+        "- Do not invent job IDs.\n\n"
+        '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences why"}]\n\n'
+        f"Jobs:\n{json.dumps(job_summaries, indent=2)}"
+    )
+
+
+def parse_scoring_response(raw: str) -> list[dict]:
+    """Parse the model's JSON array response, tolerating markdown fences."""
+    cleaned = re.sub(r"```(?:json)?\s*", "", raw).strip().rstrip("`").strip()
+
+    match = re.search(r"\[.*\]", cleaned, re.DOTALL)
+    if match:
+        cleaned = match.group()
+
+    parsed = json.loads(cleaned)
+
+    if not isinstance(parsed, list):
+        raise ValueError("Scoring response was not a JSON array.")
+
+    return parsed
+
+
+async def score_jobs(
+    profile: dict,
+    onet_jobs: list[dict],
+    *,
+    model_factory: ModelFactory,
+) -> list[dict]:
+    """Score O*NET-backed jobs against a user profile."""
+    summaries = [build_job_summary(profile, job) for job in onet_jobs]
+    prompt = build_scoring_prompt(profile, summaries)
+
+    scorer = Agent(
+        model=model_factory(),
+        callback_handler=None,
+    )
+
+    result = await scorer.invoke_async(prompt)
+    return parse_scoring_response(str(result))
