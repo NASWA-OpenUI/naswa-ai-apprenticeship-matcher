@@ -33,7 +33,7 @@ def all_opportunities() -> list[dict]:
     conn.row_factory = sqlite3.Row
     rows = conn.execute(
         "SELECT data FROM opportunities "
-        "ORDER BY json_extract(data, '$.posting.recruitmentEndDate') ASC"
+        "ORDER BY json_extract(data, '$.posting.applicationEndDate') ASC"
     ).fetchall()
     conn.close()
     return [json.loads(r["data"]) for r in rows]

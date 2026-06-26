@@ -6,9 +6,11 @@ import re
 import secrets
 import time
 from contextlib import asynccontextmanager
+from datetime import date, datetime
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlencode
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
@@ -25,6 +27,7 @@ from naswa_matcher.location_matching import (
     cap_tier_by_location,
     location_fit,
 )
+from naswa_matcher.opportunity_detail import build_opportunity_detail
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -797,53 +800,6 @@ async def opportunities_page(
 # ── Single opportunity page ───────────────────────────────────────────────────
 
 
-def _application_fee(value) -> int | None:
-    """Return a positive application fee, or None when blank/free/missing."""
-    if value is None:
-        return None
-
-    if value == "":
-        return None
-
-    try:
-        fee = int(value)
-    except (TypeError, ValueError):
-        return None
-
-    return fee if fee > 0 else None
-
-def _build_opportunity_detail(opp: dict) -> dict:
-    posting = opp.get("posting", {})
-
-    application_close_date = (
-        posting.get("applicationEndDate") or posting.get("recruitmentEndDate")
-    )
-
-    application_fee = _application_fee(posting.get("applicationFee"))
-
-    transportation_requirement = posting.get("transportationRequirement") or ""
-
-    bottom_apply_parts = []
-
-    if application_fee:
-        bottom_apply_parts.append(f"${application_fee} application fee")
-
-    if application_close_date:
-        bottom_apply_parts.append(
-            f"applications open through {_format_date(application_close_date)}"
-        )
-
-    return {
-        "application_close_date": application_close_date,
-        "application_close_label": _format_date(application_close_date),
-        "number_of_openings": posting.get("numberOfOpenings"),
-        "application_fee": application_fee,
-        "license_required": "license" in transportation_requirement.lower(),
-        "source_url": posting.get("sourceUrl"),
-        "apply_url": "#",
-        "bottom_apply_note": " · ".join(bottom_apply_parts),
-    }
-
 @app.get("/opportunities/{slug}")
 async def opportunity_detail_page(request: Request, slug: str):
     """Serve the opportunity detail page."""
@@ -851,7 +807,7 @@ async def opportunity_detail_page(request: Request, slug: str):
     if opp is None:
         raise HTTPException(status_code=404)
 
-    detail = _build_opportunity_detail(opp)
+    detail = build_opportunity_detail(opp)
 
     return templates.TemplateResponse(
         request,

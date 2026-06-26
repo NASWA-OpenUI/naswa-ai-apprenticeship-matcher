@@ -9,10 +9,13 @@
 - Fix: Cache job results
 - Fix: Indicate links which go offsite
 - Fix: Add number of openings to list view
-- Fix: Date chip should change based on if the recruitment has started
+- Feat: AI disclosure text
+- Fix: cache latest search
+- Feat: Use NY town/county locator
 
 ## DONE
 
+- Fix: Date chip should change based on if the application has started
 - Feat: Load matched opportunities faster
   - When loading matched opportunities, show progress
   - Add a loading spinnner or something
