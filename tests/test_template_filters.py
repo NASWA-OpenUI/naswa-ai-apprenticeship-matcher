@@ -19,6 +19,8 @@ from naswa_matcher.template_filters import (
     ],
 )
 def test_format_date_formats_valid_dates(value, expected):
+    """Verifies that valid ISO date strings are formatted for display and that
+    missing values use the fallback dash."""
     assert format_date(value) == expected
 
 
@@ -29,10 +31,12 @@ def test_format_date_formats_valid_dates(value, expected):
         "2026-13-01",
         "2026-06-nope",
         "2026-06-29-extra",
-        "2026-00-01"
+        "2026-00-01",
     ],
 )
 def test_format_date_returns_original_value_for_invalid_dates(value):
+    """Verifies that invalid or unexpected date strings are returned unchanged
+    instead of raising an error."""
     assert format_date(value) == value
 
 
@@ -47,6 +51,8 @@ def test_format_date_returns_original_value_for_invalid_dates(value):
     ],
 )
 def test_format_wage(value, expected):
+    """Verifies that wage values are rounded to whole dollars, formatted with
+    commas, and missing values use the fallback dash."""
     assert format_wage(value) == expected
 
 
@@ -68,10 +74,14 @@ def test_format_wage(value, expected):
     ],
 )
 def test_percent_of(value, maximum, expected):
+    """Verifies that percent_of returns a clamped integer percentage and safely
+    handles invalid, missing, zero, or negative maximum values."""
     assert percent_of(value, maximum) == expected
 
 
 def test_template_filters_exports_expected_filters():
+    """Verifies that all template filter functions are exposed in the registry
+    used to register filters with Jinja."""
     assert TEMPLATE_FILTERS == {
         "format_date": format_date,
         "format_wage": format_wage,

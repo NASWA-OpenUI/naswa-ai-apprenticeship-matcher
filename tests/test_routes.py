@@ -2,6 +2,8 @@ import server
 
 
 def test_health_route(client):
+    """Verifies that the health check endpoint returns 200 and the expected
+    simple JSON response used by deployment health checks."""
     response = client.get("/health")
 
     assert response.status_code == 200
@@ -9,6 +11,8 @@ def test_health_route(client):
 
 
 def test_index_route_renders_index(client):
+    """Verifies that the landing page renders successfully with the expected
+    hero content and links into the chat flow."""
     response = client.get("/")
 
     assert response.status_code == 200
@@ -18,6 +22,8 @@ def test_index_route_renders_index(client):
 
 
 def test_chat_get_route_renders_chat_page(client):
+    """Verifies that the chat page renders the initial assistant message,
+    chat form, and SSE connection for streaming responses."""
     response = client.get("/chat")
 
     assert response.status_code == 200
@@ -27,6 +33,8 @@ def test_chat_get_route_renders_chat_page(client):
 
 
 def test_chat_route_accepts_message_and_returns_user_bubble(client):
+    """Verifies that posting a chat message returns the rendered user message
+    bubble without needing to wait for the assistant stream."""
     response = client.post("/chat", data={"message": "Paul"})
 
     assert response.status_code == 200
@@ -36,6 +44,8 @@ def test_chat_route_accepts_message_and_returns_user_bubble(client):
 
 
 def test_chat_reset_route_redirects_to_fresh_chat(client):
+    """Verifies that resetting the chat clears the session state and tells HTMX
+    to redirect the browser back to the fresh chat page."""
     response = client.post("/chat/reset")
 
     assert response.status_code == 204
@@ -43,6 +53,8 @@ def test_chat_reset_route_redirects_to_fresh_chat(client):
 
 
 def test_opportunities_route_renders_fixture_opportunities(client):
+    """Verifies that the unranked opportunities page renders fixture jobs and
+    displays their location and application close dates."""
     response = client.get("/opportunities")
 
     assert response.status_code == 200
@@ -58,6 +70,8 @@ def test_opportunities_route_renders_fixture_opportunities(client):
 
 
 def test_opportunity_detail_route_renders_enriched_opportunity(client):
+    """Verifies that an enriched opportunity detail page includes posting data,
+    wage data from OES, and work information from O*NET."""
     response = client.get("/opportunities/electrician-apprentice-fixture")
 
     assert response.status_code == 200
@@ -78,6 +92,8 @@ def test_opportunity_detail_route_renders_enriched_opportunity(client):
 
 
 def test_opportunity_detail_route_renders_non_enriched_opportunity(client):
+    """Verifies that a non-enriched opportunity detail page still renders, but
+    does not show OES, O*NET, or match-specific sections."""
     response = client.get("/opportunities/sheet-metal-worker-apprentice-fixture")
 
     assert response.status_code == 200
@@ -92,12 +108,16 @@ def test_opportunity_detail_route_renders_non_enriched_opportunity(client):
 
 
 def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
+    """Verifies that requesting an unknown opportunity slug returns a 404
+    instead of rendering an empty or broken detail page."""
     response = client.get("/opportunities/not-a-real-slug")
 
     assert response.status_code == 404
 
 
 def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeypatch):
+    """Verifies that the streaming rank endpoint caps far/non-local Strong
+    model scores to Moderate when location matching is enabled."""
     async def fake_score_jobs(profile, onet_jobs):
         assert profile["likes"] == ["hands-on work", "problem solving"]
         assert profile["location"] == "Buffalo area"
@@ -155,6 +175,8 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
 
 
 def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
+    """Verifies that the ranked opportunities page renders the streaming shell
+    and still includes non-O*NET jobs in the unranked section."""
     response = client.get(
         "/opportunities",
         params=[
@@ -182,3 +204,74 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     # Non-O*NET opportunity still appears as unranked on the page shell.
     assert "More opportunities" in response.text
     assert "Sheet Metal Worker Apprentice" in response.text
+
+
+def make_server_rank_job(location_summary: str) -> dict:
+    """Builds a minimal job object for testing server-side ranking behavior
+    without needing the full opportunity fixture shape."""
+    return {
+        "id": "nyc-electrician-fixture",
+        "posting": {
+            "jobTitle": "Electrician Apprentice",
+            "sourceTitle": "NYC Electricians Fixture",
+            "locationSummary": location_summary,
+            "regions": [],
+            "allRequirements": [],
+        },
+    }
+
+
+def test_build_ranked_items_caps_far_strong_match_when_location_matching_enabled():
+    """Verifies that _build_ranked_items applies the location cap when the user
+    has a local search preference and the job is far away."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    job = make_server_rank_job("New York City, NY area")
+    scores = [
+        {
+            "id": "nyc-electrician-fixture",
+            "tier": "Strong",
+            "explanation": "Strong interest fit.",
+        }
+    ]
+
+    ranked = server._build_ranked_items(
+        batch_jobs=[job],
+        scores=scores,
+        job_index={job["id"]: 0},
+        profile=profile,
+    )
+
+    assert ranked[0]["tier"] == "Moderate"
+    assert ranked[0]["location_fit"] == "far"
+
+
+def test_build_ranked_items_does_not_cap_far_match_when_location_matching_disabled():
+    """Verifies that _build_ranked_items skips the location cap when the user is
+    open to opportunities anywhere in New York."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": False,
+    }
+    job = make_server_rank_job("New York City, NY area")
+    scores = [
+        {
+            "id": "nyc-electrician-fixture",
+            "tier": "Strong",
+            "explanation": "Strong interest fit.",
+        }
+    ]
+
+    ranked = server._build_ranked_items(
+        batch_jobs=[job],
+        scores=scores,
+        job_index={job["id"]: 0},
+        profile=profile,
+    )
+
+    assert ranked[0]["tier"] == "Strong"
+    assert ranked[0]["location_fit"] is None

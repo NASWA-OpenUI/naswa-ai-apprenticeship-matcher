@@ -30,6 +30,8 @@ from naswa_matcher.opportunity_detail import (
     ],
 )
 def test_application_fee_returns_positive_integer_or_none(value, expected):
+    """Verifies that application fees are normalized to positive integers and
+    blank, zero, negative, or invalid values are treated as no fee."""
     assert _application_fee(value) == expected
 
 
@@ -42,6 +44,8 @@ def test_application_fee_returns_positive_integer_or_none(value, expected):
     ],
 )
 def test_format_chip_date(value, expected):
+    """Verifies that chip dates are formatted in the compact month/day/year
+    style used by the opportunity detail page."""
     assert _format_chip_date(value) == expected
 
 
@@ -66,6 +70,8 @@ def test_format_chip_date(value, expected):
     ],
 )
 def test_format_application_range(start, end, expected):
+    """Verifies that application date ranges collapse repeated months/years
+    while still showing enough context for cross-month or cross-year ranges."""
     assert _format_application_range(start, end) == expected
 
 
@@ -111,6 +117,8 @@ def test_format_application_range(start, end, expected):
     ],
 )
 def test_application_chip_label(today, start, end, expected):
+    """Verifies that the application chip label changes correctly for future,
+    open, boundary-day, and closed application periods."""
     assert (
         _application_chip_label(
             start,
@@ -135,6 +143,8 @@ def test_application_chip_label_returns_none_for_missing_or_invalid_dates(
     start,
     end,
 ):
+    """Verifies that missing or invalid application dates do not produce a chip
+    label, rather than raising an error or displaying misleading text."""
     assert _application_chip_label(start, end, today=date(2026, 6, 25)) is None
 
 
@@ -147,6 +157,8 @@ def make_opp(
     transportation="Must have a valid driver's license.",
     source_url="https://dol.ny.gov/example",
 ) -> dict:
+    """Builds a minimal opportunity fixture for testing detail-page derived
+    values without depending on full JSON opportunity files."""
     return {
         "posting": {
             "applicationStartDate": start,
@@ -160,6 +172,8 @@ def make_opp(
 
 
 def test_build_opportunity_detail_for_open_application_period():
+    """Verifies that build_opportunity_detail returns the expected template
+    fields for an opportunity whose application period is currently open."""
     detail = build_opportunity_detail(
         make_opp(fee="20"),
         today=date(2026, 6, 25),
@@ -179,6 +193,8 @@ def test_build_opportunity_detail_for_open_application_period():
 
 
 def test_build_opportunity_detail_for_future_application_period():
+    """Verifies that future application periods are labelled with the upcoming
+    application range and still include fee/license-derived details."""
     detail = build_opportunity_detail(
         make_opp(
             start="2026-07-01",
@@ -196,6 +212,8 @@ def test_build_opportunity_detail_for_future_application_period():
 
 
 def test_build_opportunity_detail_for_closed_application_period():
+    """Verifies that closed application periods are labelled as closed and that
+    the bottom apply note does not include a missing application fee."""
     detail = build_opportunity_detail(
         make_opp(
             start="2026-06-01",
@@ -212,6 +230,8 @@ def test_build_opportunity_detail_for_closed_application_period():
 
 @pytest.mark.parametrize("fee", [None, "", 0, "0"])
 def test_build_opportunity_detail_hides_blank_or_zero_application_fee(fee):
+    """Verifies that blank or zero application fees are hidden from the derived
+    detail values and bottom apply note."""
     detail = build_opportunity_detail(
         make_opp(fee=fee),
         today=date(2026, 6, 25),
