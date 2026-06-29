@@ -28,11 +28,22 @@ from naswa_matcher.location_matching import (
 )
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.ranking import score_jobs
+from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
+
+# ── Jinja2 setup ────────────────────────────────────────────────────────────────
+
+
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
+templates.env.filters.update(TEMPLATE_FILTERS)
+
+def render(name: str, **ctx) -> str:
+    """Render a template fragment to string (no Request needed)."""
+    return templates.env.get_template(name).render(**ctx)
+
 
 # ── Logging setup and filters ───────────────────────────────────────────────────
 
@@ -67,62 +78,6 @@ def _describe_exception(exc: Exception) -> str:
         return f"{code}: {message}"
 
     return f"{exc.__class__.__name__}: {exc}"
-
-
-# ── Jinja2 filters ────────────────────────────────────────────────────────────
-
-_MONTHS = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-]
-
-
-def _format_date(iso: str | None) -> str:
-    if not iso:
-        return "—"
-    try:
-        y, m, d = iso.split("-")
-        return f"{_MONTHS[int(m) - 1]} {int(d)}, {y}"
-    except ValueError, IndexError:
-        return iso
-
-
-def _format_wage(n: float | None) -> str:
-    if n is None:
-        return "—"
-    return "$" + f"{round(n):,}"
-
-def _percent_of(value: float | None, maximum: float | None) -> int:
-    """Return value as a clamped percentage of maximum."""
-    try:
-        value = float(value)
-        maximum = float(maximum)
-    except (TypeError, ValueError):
-        return 0
-
-    if maximum <= 0:
-        return 0
-
-    return max(0, min(100, round(value / maximum * 100)))
-
-templates.env.filters["format_date"] = _format_date
-templates.env.filters["format_wage"] = _format_wage
-templates.env.filters["percent_of"] = _percent_of
-
-
-def render(name: str, **ctx) -> str:
-    """Render a template fragment to string (no Request needed)."""
-    return templates.env.get_template(name).render(**ctx)
 
 
 # ── Profile helpers ───────────────────────────────────────────────────────────
