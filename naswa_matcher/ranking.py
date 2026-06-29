@@ -7,8 +7,7 @@ from typing import Any
 
 from strands import Agent
 
-from naswa_matcher.location_matching import location_fit
-
+from naswa_matcher.location_matching import location_fit, should_use_location_matching
 
 ModelFactory = Callable[[], Any]
 
@@ -61,23 +60,47 @@ def build_job_summary(profile: dict, job: dict) -> dict:
         4,
     )
 
-    return {
+    summary = {
         "id": job["id"],
         "title": posting.get("jobTitle"),
         "location": posting.get("locationSummary"),
         "regions": posting.get("regions", []),
-        "location_fit": location_fit(profile, job),
         "requirements_summary": posting.get("requirementsSummary"),
-        "transportation_requirement": posting.get("transportationRequirement"),
         "description": (onet.get("description") or "")[:300],
         "skills": skills,
         "activities": activities,
         "work_styles": styles,
     }
 
+    if should_use_location_matching(profile):
+        summary["location_fit"] = location_fit(profile, job)
+        summary["transportation_requirement"] = posting.get(
+            "transportationRequirement"
+        )
+
+    return summary
+
 
 def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
     """Build the prompt used to score O*NET-backed opportunities."""
+
+    def get_location_guidance(use_location_matching: bool) -> str:
+        if use_location_matching:
+            return (
+                "- Location is a major ranking factor, not a minor detail.\n"
+                "- A job should only be Strong if it fits both the user's interests and their location.\n"
+                "- If location_fit is far, do not rank the job as Strong.\n"
+                "- If location_fit is nearby, usually rank the job as Moderate.\n"
+                "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
+                "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
+                "- If transportation or location may be an issue, mention it gently as a caveat.\n"
+            )
+
+        return (
+            "- Do not use location or transportation as ranking factors for this user.\n"
+            "- Do not mention the user's statewide flexibility in every explanation.\n"
+        )
+
     return (
         "You are ranking New York State registered apprenticeship opportunities "
         "for a user based on a short derived profile.\n\n"
@@ -86,15 +109,9 @@ def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
         "Score each job as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
         "- Put the most weight on whether the occupation connects to the user's likes.\n"
-        "- Location is a major ranking factor, not a minor detail.\n"
-        "- A job should only be Strong if it fits both the user's interests and their location.\n"
-        "- If location_fit is far, do not rank the job as Strong.\n"
-        "- If location_fit is nearby, usually rank the job as Moderate.\n"
-        "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
-        "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
+        f"{get_location_guidance(should_use_location_matching(profile))}"
         "- Use dislikes only as a soft negative signal.\n"
         "- Do not reject a job only because a requirement may need to be checked later.\n"
-        "- If transportation or location may be an issue, mention it gently as a caveat.\n"
         "- Keep explanations friendly and concrete.\n\n"
         "- Return ONLY a JSON array — no markdown, no extra text:\n"
         "- The JSON must contain exactly one object for every job ID provided.\n"

@@ -38,6 +38,11 @@ in via SSE on "profile-confirmed". Expects `profile` (with .name and
       <dd>{{ profile.location }}</dd>
       {% endif %}
 
+      {% if profile.use_location_matching is sameas false %}
+      <dt>Location preference</dt>
+      <dd>Open to opportunities anywhere in New York</dd>
+      {% endif %}
+
       {% if profile.transportation %}
       <dt>Transportation</dt>
       <dd>{{ profile.transportation }}</dd>

@@ -9,7 +9,6 @@ from contextlib import asynccontextmanager
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlencode
-from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
@@ -25,6 +24,7 @@ from naswa_matcher.location_matching import (
     LOCATION_FIT_ORDER,
     cap_tier_by_location,
     location_fit,
+    should_use_location_matching,
 )
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.ranking import score_jobs
@@ -150,6 +150,9 @@ def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
         if value:
             params.append((key, value))
 
+    if not should_use_location_matching(profile):
+        params.append(("use_location_matching", "false"))
+
     return params
 
 
@@ -176,6 +179,7 @@ After every assistant response, output a hidden profile tag on a new line:
   "dislikes": array of short strings,
   "location": string or null,
   "transportation": string or null,
+  "use_location_matching": boolean,
   "confirmed": boolean
 }</profile>
 
@@ -186,6 +190,9 @@ Rules for the profile:
 - Put hobbies, interests, school subjects, strengths, and appealing work activities in "likes".
 - Put disliked subjects, disliked activities, and strong avoidances in "dislikes".
 - If the user metions an interest that is an academic subject, treat it as a useful like. Do not ask the same thing again as a school question.
+- Set use_location_matching to true by default.
+- Set use_location_matching to false if the user says they are open to opportunities anywhere in New York State, statewide, willing to relocate, or able to move for the right job.
+- If the user gives a specific location and also says they can look statewide or relocate, keep the specific location and set use_location_matching to false.
 - Infer values from any answer, even if the user answered a later question early.
 - If something is unknown, use null for strings or [] for arrays.
 - All profile fields are optional except confirmed.
@@ -229,6 +236,10 @@ When you have enough information, summarize the profile briefly and ask if it lo
 
 Example:
 "Great — I’ll use this to look for matches: you like fixing electronics, math, and hands-on problem solving; you’re looking around Buffalo; and you’d mostly use transit or rides. Does that sound right?"
+
+If use_location_matching is false, briefly reflect that back without making it sound like a problem.
+Example:
+"Great — I’ll use this to look for matches: you like fixing electronics, math, and hands-on problem solving; you’re looking around Buffalo but are open to opportunities anywhere in New York State. Does that sound right?"
 
 Then output the profile with confirmed=false.
 
@@ -455,6 +466,7 @@ def _normalized_profile_for_cache(profile: dict) -> dict:
         "dislikes": clean_list(profile.get("dislikes", [])),
         "location": clean_string(profile.get("location")),
         "transportation": clean_string(profile.get("transportation")),
+        "use_location_matching": should_use_location_matching(profile),
     }
 
 
@@ -526,12 +538,18 @@ def _build_ranked_items(
     }
 
     ranked = []
+    use_location_matching = should_use_location_matching(profile)
 
     for job in batch_jobs:
         score = score_map.get(job["id"], {})
-        _location_fit = location_fit(profile, job)
         model_tier = _normalize_tier(score.get("tier"))
-        tier = cap_tier_by_location(model_tier, _location_fit)
+        _location_fit = location_fit(profile, job) if use_location_matching else None
+
+        tier = (
+            cap_tier_by_location(model_tier, _location_fit)
+            if use_location_matching
+            else model_tier
+        )
 
         ranked.append(
             {
@@ -549,7 +567,11 @@ def _build_ranked_items(
         ranked,
         key=lambda item: (
             item["tier_order"],
-            LOCATION_FIT_ORDER.get(item.get("location_fit"), 9),
+            (
+                LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
+                if use_location_matching
+                else 0
+            ),
             item["sort_index"],
         ),
     )
@@ -774,6 +796,7 @@ async def opportunities_page(
     dislikes: list[str] = Query(default=[]),
     location: str | None = None,
     transportation: str | None = None,
+    use_location_matching: bool = True,
 ):
     """Serve the opportunities list, optionally in ranked mode."""
     profile = {
@@ -781,6 +804,7 @@ async def opportunities_page(
         "dislikes": dislikes,
         "location": location,
         "transportation": transportation,
+        "use_location_matching": use_location_matching,
     }
 
     if ranked and likes:
@@ -859,6 +883,7 @@ async def rank_opportunities_stream(
     dislikes: list[str] = Query(default=[]),
     location: str | None = None,
     transportation: str | None = None,
+    use_location_matching: bool = True,
 ):
     """
     Rank ONET jobs in parallel batches and stream result cards as each batch completes.
@@ -873,6 +898,7 @@ async def rank_opportunities_stream(
         "dislikes": dislikes,
         "location": location,
         "transportation": transportation,
+        "use_location_matching": use_location_matching,
     }
 
     cache_key = _ranking_cache_key(profile)
@@ -1135,7 +1161,11 @@ async def rank_opportunities_stream(
                 ranked_for_cache,
                 key=lambda item: (
                     item["tier_order"],
-                    LOCATION_FIT_ORDER.get(item.get("location_fit"), 9),
+                    (
+                        LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
+                        if should_use_location_matching(profile)
+                        else 0
+                    ),
                     item["sort_index"],
                 ),
             )
