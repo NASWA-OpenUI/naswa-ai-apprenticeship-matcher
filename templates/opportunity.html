@@ -130,13 +130,7 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
         <h2 class="detail-section__heading">About the occupation</h2>
 
         {% if opp.oes and opp.oes.entryAnnualWage %}
-        <h3 class="detail-subheading">Entry-level annual wage</h3>
-        <div class="detail-wage" aria-label="Entry-level annual wage: {{ opp.oes.entryAnnualWage | format_wage }}">
-          {{ opp.oes.entryAnnualWage | format_wage }}
-        </div>
-        {% if opp.oes.areaName %}
-        <div class="text-meta">{{ opp.oes.areaName }}</div>
-        {% endif %}
+        {% include "_earnings.html" %}
         {% endif %}
 
         {% if activities %}
@@ -194,7 +188,7 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
         <p>{{ opp.posting.contactSummary }}</p>
         {% endif %}
 
-        <dl class="detail-contact-row">
+        <dl class="surface surface--muted-border">
           {% if opp.posting.contactName or opp.posting.sourceTitle %}
           <div class="detail-contact-item">
             <dt>Organization</dt>

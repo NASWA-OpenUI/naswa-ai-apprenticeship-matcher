@@ -1,0 +1,62 @@
+{# templates/_earnings.html #}
+{% set oes = opp.oes %}
+
+{% if oes and oes.entryAnnualWage %}
+<h3 class="detail-subheading">Entry-level annual wage</h3>
+
+<div class="detail-wage" aria-label="Entry-level annual wage: {{ oes.entryAnnualWage | format_wage }}">
+    {{ oes.entryAnnualWage | format_wage }}
+</div>
+
+{% if oes.areaName %}
+<div class="text-meta">{{ oes.areaName }}</div>
+{% endif %}
+
+{% if oes.experiencedAnnualWage %}
+<details class="earnings surface surface--clip surface--muted-border">
+    <summary>
+        <span>Long-term earning potential</span>
+        <svg class="earnings__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </summary>
+
+    <div class="earnings__bars">
+        <div class="earnings__bar">
+            <div class="earnings__row">
+                <span class="earnings__label">Entry-level</span>
+                <span class="earnings__value">{{ oes.entryAnnualWage | format_wage }}</span>
+            </div>
+            <div class="progress-track earnings__track" aria-hidden="true">
+                <div class="progress-fill"
+                    style="width: {{ oes.entryAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
+            </div>
+        </div>
+
+        {% if oes.medianAnnualWage %}
+        <div class="earnings__bar">
+            <div class="earnings__row">
+                <span class="earnings__label">Mid-career</span>
+                <span class="earnings__value">{{ oes.medianAnnualWage | format_wage }}</span>
+            </div>
+            <div class="progress-track earnings__track" aria-hidden="true">
+                <div class="progress-fill"
+                    style="width: {{ oes.medianAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="earnings__bar">
+            <div class="earnings__row">
+                <span class="earnings__label">Experienced</span>
+                <span class="earnings__value">{{ oes.experiencedAnnualWage | format_wage }}</span>
+            </div>
+            <div class="progress-track earnings__track" aria-hidden="true">
+                <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+</details>
+{% endif %}
+{% endif %}

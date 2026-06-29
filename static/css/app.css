@@ -234,6 +234,10 @@ ol {
   border-radius: var(--app-radius-md);
 }
 
+.surface--muted-border {
+  border: 1px solid var(--nys-color-black-transparent-300)
+}
+
 .surface--muted {
   background: var(--app-surface-muted);
 }
@@ -1169,20 +1173,27 @@ a.btn--accent:focus {
   height: 11px;
 }
 
-/* bar */
-.rank-progress__track {
-  margin-top: 0.85rem;
+/* shared meter/progress bar visuals */
+.progress-track {
   height: 8px;
   background: var(--app-base-weak, #e4e8ea);
   border-radius: 999px;
   overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--nys-color-theme, #084b52);
+  border-radius: 999px;
+}
+
+/* ranking-specific layout/behaviour */
+.rank-progress__track {
+  margin-top: 0.85rem;
   cursor: progress;
 }
 
 .rank-progress__fill {
-  height: 100%;
-  background: var(--nys-color-theme, #084b52);
-  border-radius: 999px;
   transition: width 0.4s ease;
 }
 
@@ -1739,6 +1750,62 @@ body:has(.opportunity-detail-page) {
   color: var(--nys-color-theme, #084b52);
 }
 
+details.earnings {
+  margin-top: 1.1rem;
+}
+
+details.earnings summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+  color: var(--nys-color-theme, #084b52);
+  font-size: 0.95rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--app-surface-muted);
+}
+
+details.earnings[open] summary {
+  border-bottom: 1px solid var(--nys-color-black-transparent-300)
+}
+
+details.earnings summary::-webkit-details-marker {
+  display: none;
+}
+
+.earnings__chev {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+details.earnings[open] .earnings__chev {
+  transform: rotate(180deg);
+}
+
+.earnings__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1rem 1rem 1.25rem;
+}
+
+.earnings__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.earnings__value {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.earnings__track {
+  margin-top: 0.3rem;
+}
+
 .detail-clean-list {
   margin: 0.25rem 0 0;
   padding-left: 0;
@@ -1748,17 +1815,9 @@ body:has(.opportunity-detail-page) {
   margin: 0.35rem 0;
 }
 
-.detail-contact-row {
-  margin: 1rem 0 0;
-  background: var(--app-surface, #fff);
-  border: 1px solid var(--nys-color-black-transparent-300);
-  border-radius: var(--app-radius-md, 6px);
-  overflow: hidden;
-}
-
 .detail-contact-item {
   padding: 0.65rem .9rem;
-  border-top: 1px solid var(--app-base-weak, #e4e8ea);
+  border-top: 1px solid var(--app-surface-muted);
 }
 
 .detail-contact-item:first-of-type {

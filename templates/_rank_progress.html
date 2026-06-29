@@ -21,9 +21,9 @@
   <span class="rank-progress__pct">{{ pct }}%</span>
 </div>
 
-<div class="rank-progress__track">
-  <div class="rank-progress__fill{% if indeterminate %} rank-progress__fill--indeterminate{% endif %}" {% if not
-    indeterminate %}style="width: {{ pct }}%;" {% endif %}></div>
+<div class="rank-progress__track progress-track">
+  <div class="rank-progress__fill progress-fill{% if indeterminate %} rank-progress__fill--indeterminate{% endif %}" {%
+    if not indeterminate %}style="width: {{ pct }}%;" {% endif %}></div>
 </div>
 
 <p class="rank-progress__sub text-meta">

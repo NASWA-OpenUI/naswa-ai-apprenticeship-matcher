@@ -102,9 +102,22 @@ def _format_wage(n: float | None) -> str:
         return "—"
     return "$" + f"{round(n):,}"
 
+def _percent_of(value: float | None, maximum: float | None) -> int:
+    """Return value as a clamped percentage of maximum."""
+    try:
+        value = float(value)
+        maximum = float(maximum)
+    except (TypeError, ValueError):
+        return 0
+
+    if maximum <= 0:
+        return 0
+
+    return max(0, min(100, round(value / maximum * 100)))
 
 templates.env.filters["format_date"] = _format_date
 templates.env.filters["format_wage"] = _format_wage
+templates.env.filters["percent_of"] = _percent_of
 
 
 def render(name: str, **ctx) -> str:
