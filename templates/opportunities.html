@@ -52,12 +52,17 @@ opportunities{% endif %}{% endblock %}
     <h2 class="section-heading">Matched opportunities</h2>
 
     <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
-      <div class="count" id="rank-count" aria-live="polite" aria-atomic="true">
-        <span id="ranked-count">{{ cached_ranked|default([])|length if ranking_cached|default(false) else 0 }}</span>
-        <span class="visually-hidden">of {{ ranked_total }} </span>opportunities analyzed
+      <div class="count" id="rank-count" aria-live="polite" aria-atomic="true" sse-swap="rank-count"
+        hx-swap="innerHTML">
+        <span id="ranked-count" class="ranked-count">{{ completed_jobs }}</span> of {{ total_jobs }}
+        opportunit{{ "y" if total_jobs == 1 else "ies" }} analyzed
+        {% if completed_openings %}
+        <span aria-hidden="true"> · </span>
+        <span id="openings-count">{{ completed_openings }}</span>
+        opening{{ "" if completed_openings == 1 else "s" }}
+        {% endif %}
       </div>
-      <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches are
-        loading.</div>
+      <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches load.</div>
     </div>
 
     <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
@@ -232,7 +237,7 @@ opportunities{% endif %}{% endblock %}
 
   if (rankingCached) {
     if (rankStatus) {
-      rankStatus.textContent = 'Matches loaded from cached results. Matches generated using AI.';
+      rankStatus.textContent = 'Matches generated using AI. Matches loaded from cached results.';
     }
 
     revealUnranked();

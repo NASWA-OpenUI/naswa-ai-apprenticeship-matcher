@@ -331,6 +331,8 @@ class RankingCacheEntry:
     ranked: list[dict] = field(default_factory=list)
     completed_jobs: int = 0
     total_jobs: int = 0
+    completed_openings: int = 0
+    total_openings: int = 0
     elapsed_seconds: int = 0
     created_at: float = field(default_factory=time.time)
     is_complete: bool = False
@@ -469,6 +471,22 @@ def _get_ranking_cache_entry(
 
     return entry
 
+def _render_rank_count(
+    *,
+    completed_jobs: int,
+    total_jobs: int,
+    completed_openings: int,
+) -> str:
+    opportunity_label = "opportunity" if total_jobs == 1 else "opportunities"
+    opening_label = "opening" if completed_openings == 1 else "openings"
+
+    return (
+        f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> of {total_jobs} '
+        f'{opportunity_label} analyzed '
+        f'<span aria-hidden="true"> · </span>'
+        f'<span id="openings-count">{completed_openings}</span> {opening_label}'
+    )
+
 
 # ── ONET scoring ──────────────────────────────────────────────────────────────
 
@@ -483,6 +501,23 @@ TIER_ORDER = {"Strong": 0, "Moderate": 1, "Weak": 2}
 def _chunks(items: list[dict], size: int) -> list[list[dict]]:
     """Split a list into fixed-size chunks."""
     return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def _opening_count(job: dict) -> int:
+    """Return a safe integer opening count for one opportunity."""
+    value = job.get("posting", {}).get("numberOfOpenings")
+
+    try:
+        openings = int(value)
+    except (TypeError, ValueError):
+        return 0
+
+    return max(0, openings)
+
+
+def _sum_openings(jobs: list[dict]) -> int:
+    """Return total openings across opportunities."""
+    return sum(_opening_count(job) for job in jobs)
 
 
 def _normalize_tier(tier: str | None) -> str:
@@ -781,6 +816,7 @@ async def opportunities_page(
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
+        total_openings = _sum_openings(onet_jobs)
 
         cache_key = _ranking_cache_key(profile)
         cached = _get_ranking_cache_entry(session, cache_key)
@@ -805,6 +841,8 @@ async def opportunities_page(
                 "unranked": unranked,
                 "completed_jobs": cached.completed_jobs if cached else 0,
                 "total_jobs": cached.total_jobs if cached else len(onet_jobs),
+                "completed_openings": cached.completed_openings if cached else 0,
+                "total_openings": cached.total_openings if cached else total_openings,
                 "is_done": ranking_cached,
                 "ranking_cached": ranking_cached,
                 "cached_ranked": cached_ranked,
@@ -902,12 +940,23 @@ async def rank_opportunities_stream(
                 "_rank_progress.html",
                 completed_jobs=cached.completed_jobs,
                 total_jobs=cached.total_jobs,
+                completed_openings=cached.completed_openings,
+                total_openings=cached.total_openings,
                 is_done=True,
             )
 
             yield {
                 "event": "progress",
                 "data": progress_html,
+            }
+
+            yield {
+                "event": "rank-count",
+                "data": _render_rank_count(
+                    completed_jobs=cached.completed_jobs,
+                    total_jobs=cached.total_jobs,
+                    completed_openings=cached.completed_openings,
+                ),
             }
 
             yield {
@@ -927,6 +976,7 @@ async def rank_opportunities_stream(
 
     all_jobs = all_opportunities()
     onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
+    total_openings = _sum_openings(onet_jobs)
 
     job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
     batches = _chunks(onet_jobs, RANKING_BATCH_SIZE)
@@ -946,6 +996,7 @@ async def rank_opportunities_stream(
         semaphore = asyncio.Semaphore(RANKING_MAX_CONCURRENCY)
         completed_batches = 0
         completed_jobs = 0
+        completed_openings = 0
         ranked_for_cache: list[dict] = []
         had_batch_error = False
         disconnected = False
@@ -1076,6 +1127,7 @@ async def rank_opportunities_stream(
                 result = await task
                 completed_batches += 1
                 completed_jobs += len(result["jobs"])
+                completed_openings += _sum_openings(result["jobs"])
 
                 if result["error"]:
                     had_batch_error = True
@@ -1102,6 +1154,7 @@ async def rank_opportunities_stream(
                     }
 
                 elapsed_seconds = round(time.perf_counter() - request_started_at)
+
                 progress_html = render(
                     "_rank_progress.html",
                     completed_jobs=completed_jobs,
@@ -1113,6 +1166,15 @@ async def rank_opportunities_stream(
                 yield {
                     "event": "progress",
                     "data": progress_html,
+                }
+
+                yield {
+                    "event": "rank-count",
+                    "data": _render_rank_count(
+                        completed_jobs=completed_jobs,
+                        total_jobs=len(onet_jobs),
+                        completed_openings=completed_openings,
+                    ),
                 }
 
             if disconnected:
@@ -1148,6 +1210,8 @@ async def rank_opportunities_stream(
                     ranked=final_ranked,
                     completed_jobs=completed_jobs,
                     total_jobs=len(onet_jobs),
+                    completed_openings=completed_openings,
+                    total_openings=total_openings,
                     elapsed_seconds=total_elapsed_seconds,
                     is_complete=True,
                 )
@@ -1163,12 +1227,23 @@ async def rank_opportunities_stream(
                 "_rank_progress.html",
                 completed_jobs=completed_jobs,
                 total_jobs=len(onet_jobs),
+                completed_openings=completed_openings,
+                total_openings=total_openings,
                 is_done=True,
             )
 
             yield {
                 "event": "progress",
                 "data": final_progress_html,
+            }
+
+            yield {
+                "event": "rank-count",
+                "data": _render_rank_count(
+                    completed_jobs=completed_jobs,
+                    total_jobs=len(onet_jobs),
+                    completed_openings=completed_openings,
+                ),
             }
 
             yield {

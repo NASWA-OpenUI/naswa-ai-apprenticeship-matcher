@@ -1265,7 +1265,7 @@ a.btn--accent:focus {
   color: var(--app-text-weak);
 }
 
-.results-bar .count span {
+.results-bar .count span.ranked-count {
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--app-ink);
