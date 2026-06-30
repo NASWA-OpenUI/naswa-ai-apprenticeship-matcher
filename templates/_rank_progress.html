@@ -1,4 +1,3 @@
-{# templates/_rank_progress.html #}
 {% set pct = (completed_jobs / total_jobs * 100) | round | int if total_jobs else 0 %}
 {% set indeterminate = (not is_done) and completed_jobs == 0 %}
 {% set elapsed = elapsed_seconds | default(0) %}

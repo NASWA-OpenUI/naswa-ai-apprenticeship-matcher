@@ -86,6 +86,104 @@ keeping it here too is harmless and explicit. #}
     </div>
   </footer>
 
+  <script>
+    (function () {
+      const tooltipSelector = '.icon-tooltip';
+      const triggerSelector = '[data-tooltip-trigger]';
+
+      function tooltipForTrigger(trigger) {
+        const wrapper = trigger.closest(tooltipSelector);
+        const tooltipId = trigger.getAttribute('aria-describedby');
+        const bubble = tooltipId ? document.getElementById(tooltipId) : null;
+
+        return { wrapper, bubble };
+      }
+
+      function showTooltip(trigger) {
+        const { wrapper, bubble } = tooltipForTrigger(trigger);
+        if (!wrapper || !bubble) return;
+
+        wrapper.classList.add('is-open');
+        bubble.setAttribute('aria-hidden', 'false');
+      }
+
+      function hideTooltip(trigger) {
+        const { wrapper, bubble } = tooltipForTrigger(trigger);
+        if (!wrapper || !bubble) return;
+
+        wrapper.classList.remove('is-open');
+        bubble.setAttribute('aria-hidden', 'true');
+      }
+
+      function hideAllTooltips() {
+        document.querySelectorAll(tooltipSelector).forEach((wrapper) => {
+          wrapper.classList.remove('is-open');
+
+          const bubble = wrapper.querySelector('[role="tooltip"]');
+          if (bubble) {
+            bubble.setAttribute('aria-hidden', 'true');
+          }
+        });
+      }
+
+      document.addEventListener('focusin', function (event) {
+        const trigger = event.target.closest(triggerSelector);
+        if (trigger) {
+          showTooltip(trigger);
+        }
+      });
+
+      document.addEventListener('focusout', function (event) {
+        const trigger = event.target.closest(triggerSelector);
+        if (trigger) {
+          hideTooltip(trigger);
+        }
+      });
+
+      document.addEventListener('mouseover', function (event) {
+        const trigger = event.target.closest(triggerSelector);
+        if (trigger) {
+          showTooltip(trigger);
+        }
+      });
+
+      document.addEventListener('mouseout', function (event) {
+        const wrapper = event.target.closest(tooltipSelector);
+        if (!wrapper || wrapper.contains(event.relatedTarget)) return;
+
+        const trigger = wrapper.querySelector(triggerSelector);
+        if (trigger && document.activeElement !== trigger) {
+          hideTooltip(trigger);
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        const trigger = event.target.closest(triggerSelector);
+
+        if (trigger) {
+          showTooltip(trigger);
+          return;
+        }
+
+        hideAllTooltips();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key !== 'Escape') return;
+
+        const trigger = document.activeElement?.matches(triggerSelector)
+          ? document.activeElement
+          : null;
+
+        hideAllTooltips();
+
+        if (trigger) {
+          trigger.blur();
+        }
+      });
+    })();
+  </script>
+
   {% block scripts %}{% endblock %}
 
 </body>

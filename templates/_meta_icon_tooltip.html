@@ -1,0 +1,19 @@
+<span class="icon-tooltip">
+    <button type="button" class="icon-tooltip__trigger" aria-label="{{ label }}" aria-describedby="{{ tooltip_id }}"
+        data-tooltip-trigger>
+        {% if icon == "fee" %}
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+            <g transform="translate(0 0.9)">
+                <path
+                    d="M12 6.2v9.6M14.5 9.2c0-1.1-1.1-2-2.5-2s-2.5.9-2.5 2c0 2.5 5 1.3 5 3.6 0 1.1-1.1 2-2.5 2s-2.5-.9-2.5-2"
+                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+        </svg>
+        {% endif %}
+    </button>
+
+    <span id="{{ tooltip_id }}" class="icon-tooltip__bubble" role="tooltip" aria-hidden="true">
+        {{ label }}
+    </span>
+</span>

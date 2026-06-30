@@ -1466,6 +1466,13 @@ a.btn--accent:focus {
   font-size: 0.9rem;
 }
 
+.match-card__summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
 .match-card__openings {
   display: inline-flex;
   align-items: center;
@@ -1496,6 +1503,81 @@ a.btn--accent:focus {
   flex-shrink: 0;
 }
 
+.icon-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-tooltip__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--app-radius-pill);
+  background: transparent;
+  color: var(--app-text-weak);
+  cursor: pointer;
+}
+
+.icon-tooltip__trigger svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.icon-tooltip__trigger:hover,
+.icon-tooltip__trigger:focus {
+  color: var(--nys-color-theme);
+  background: var(--nys-color-theme-faint);
+}
+
+.icon-tooltip__bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.55rem);
+  z-index: 20;
+  transform: translateX(-50%) translateY(0.2rem);
+  width: max-content;
+  max-width: min(15rem, 80vw);
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-reverse);
+  color: var(--app-text-reverse);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: var(--app-shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.12s,
+    visibility 0.12s,
+    transform 0.12s;
+}
+
+.icon-tooltip__bubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: var(--app-surface-reverse);
+}
+
+.icon-tooltip:hover .icon-tooltip__bubble,
+.icon-tooltip:focus-within .icon-tooltip__bubble,
+.icon-tooltip.is-open .icon-tooltip__bubble {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
 @media (max-width: 640px) {
   .interests-banner__link {
     width: 100%;
@@ -1507,12 +1589,12 @@ a.btn--accent:focus {
     padding: 0.95rem 1rem;
   }
 
-  .match-card__why {
-    padding: 0.6rem;
-  }
-
   .match-card__footer {
     align-items: flex-start;
+  }
+
+  .match-card__summary {
+    gap: 0.55rem;
   }
 
   .match-card__details-link {

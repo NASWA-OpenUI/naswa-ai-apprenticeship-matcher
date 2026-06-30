@@ -31,21 +31,35 @@
     {% endif %}
 
     <div class="match-card__footer">
-      {% set openings = item.posting.numberOfOpenings %}
-      <span class="match-card__openings">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-          <path d="M4 21V8l8-4 8 4v13M3 21h18M9 21v-5h6v5" stroke="currentColor" stroke-width="2"
-            stroke-linejoin="round">
-          </path>
-        </svg>
-        <span>
-          <strong>{{ openings }}</strong>
-          opening{{ "" if openings == 1 else "s" }}
+      <div class="match-card__summary">
+        {% set openings = item.posting.numberOfOpenings %}
+        <span class="match-card__openings">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4 21V8l8-4 8 4v13M3 21h18M9 21v-5h6v5" stroke="currentColor" stroke-width="2"
+              stroke-linejoin="round">
+            </path>
+          </svg>
+          <span>
+            <strong>{{ openings }}</strong>
+            opening{{ "" if openings == 1 else "s" }}
+          </span>
         </span>
-      </span>
 
-      <a class="match-card__details-link with-svg" href="/opportunities/{{ item.id }}" tabindex="-1" aria-hidden="true">
-        <strong>View details</strong>
+        {% set application_fee = item.posting.applicationFee | int %}
+        {% if application_fee > 0 %}
+        {% with
+        tooltip_id="application-fee-tooltip-" ~ item.id,
+        label="$" ~ application_fee ~ " application fee",
+        icon="fee"
+        %}
+        {% include "_meta_icon_tooltip.html" %}
+        {% endwith %}
+        {% endif %}
+      </div>
+
+      <a class="match-card__details-link with-svg" href="/opportunities/{{ item.id }}"
+        aria-label="View details for {{ item.posting.jobTitle }}">
+        View details
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
