@@ -54,17 +54,17 @@
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-3011",
     "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
     "socDescription": "Help brickmasons, blockmasons, stonemasons, or tile and marble setters by performing duties requiring less skill.  Duties include using, supplying or holding materials or tools, and cleaning work area and equipment.  Construction laborers who do not primarily assist brickmasons, blockmasons, and stonemasons or tile and marble setters are classified under Construction Laborers (47-2061).  Apprentice workers are classified with the appropriate skilled construction trade occupation (47-2011 through 47-2231).",
-    "employment": null,
-    "meanAnnualWage": 57702.67,
-    "medianAnnualWage": 60101.15,
-    "entryAnnualWage": 50358.97,
-    "experiencedAnnualWage": 61374.51
+    "employment": 930,
+    "meanAnnualWage": 64485.34,
+    "medianAnnualWage": 63178.01,
+    "entryAnnualWage": 45514.64,
+    "experiencedAnnualWage": 73970.18
   },
   "onet": {
     "socCode": "47-3011.00",

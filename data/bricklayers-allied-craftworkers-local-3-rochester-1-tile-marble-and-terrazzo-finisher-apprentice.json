@@ -55,17 +55,17 @@
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2044",
     "socTitle": "Tile and Marble Setters",
     "socDescription": "Apply hard tile, marble, and wood tile to walls, floors, ceilings, and roof decks.",
-    "employment": 170,
-    "meanAnnualWage": 64126.08,
-    "medianAnnualWage": 63113.16,
-    "entryAnnualWage": 43290.12,
-    "experiencedAnnualWage": 74543.55
+    "employment": 3140,
+    "meanAnnualWage": 74719.58,
+    "medianAnnualWage": 65067.98,
+    "entryAnnualWage": 45043.18,
+    "experiencedAnnualWage": 89558.29
   },
   "onet": {
     "socCode": "47-2044.00",

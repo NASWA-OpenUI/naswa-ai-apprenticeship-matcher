@@ -60,17 +60,17 @@
     "contactSummary": "For further information or help with the online application, contact North Atlantic States Carpenters Training Fund at (585) 436-1110."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2042",
     "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tiles",
     "socDescription": "Apply blocks, strips, or sheets of shock-absorbing, sound-deadening, or decorative coverings to floors.",
-    "employment": 70,
-    "meanAnnualWage": 56311.96,
-    "medianAnnualWage": 50765.58,
-    "entryAnnualWage": 43534.09,
-    "experiencedAnnualWage": 62701.4
+    "employment": 770,
+    "meanAnnualWage": 68054.25,
+    "medianAnnualWage": 59409.4,
+    "entryAnnualWage": 48777.82,
+    "experiencedAnnualWage": 77692.46
   },
   "onet": {
     "socCode": "47-2042.00",

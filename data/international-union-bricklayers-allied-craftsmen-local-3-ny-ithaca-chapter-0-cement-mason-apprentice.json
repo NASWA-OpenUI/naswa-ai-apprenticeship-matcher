@@ -53,17 +53,17 @@
     "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2051",
     "socTitle": "Cement Masons and Concrete Finishers",
     "socDescription": "Smooth and finish surfaces of poured concrete, such as floors, walks, sidewalks, roads, or curbs using a variety of hand and power tools.  Align forms for sidewalks, curbs, or gutters; patch voids; and use saws to cut expansion joints.  Installers of mortarless segmental concrete masonry wall units are classified in Landscaping and Groundskeeping Workers (37- 3011).",
-    "employment": 600,
-    "meanAnnualWage": 61746.13,
-    "medianAnnualWage": 62773.46,
-    "entryAnnualWage": 45124.5,
-    "experiencedAnnualWage": 70057.45
+    "employment": 9960,
+    "meanAnnualWage": 74710.31,
+    "medianAnnualWage": 64876.51,
+    "entryAnnualWage": 50144.86,
+    "experiencedAnnualWage": 86993.04
   },
   "onet": {
     "socCode": "47-2051.00",

@@ -57,17 +57,17 @@
     "contactSummary": "Contact Ironworkers Local Union #417 for further information at (845) 566-8417."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2221",
     "socTitle": "Structural Iron and Steel Workers",
     "socDescription": "Raise, place, and unite iron or steel girders, columns, and other structural members to form completed structures or structural frameworks.  May erect metal storage tanks and assemble prefabricated metal buildings.  Excludes Reinforcing Iron and Rebar Workers (47-2171).",
-    "employment": 170,
-    "meanAnnualWage": 80146.54,
-    "medianAnnualWage": 77157.18,
-    "entryAnnualWage": 59092.35,
-    "experiencedAnnualWage": 90674.15
+    "employment": 3190,
+    "meanAnnualWage": 97150.06,
+    "medianAnnualWage": 98171.22,
+    "entryAnnualWage": 64032.41,
+    "experiencedAnnualWage": 113707.86
   },
   "onet": {
     "socCode": "47-2221.00",

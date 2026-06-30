@@ -60,17 +60,17 @@
     "contactSummary": "Contact Tile, Marble and Terrazzo BAC, Local Union #7 of NY & NJ at (718) 706-9294 for more information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000004",
-    "areaName": "Hudson Valley",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2053",
     "socTitle": "Terrazzo Workers and Finishers",
     "socDescription": "Apply a mixture of cement, sand, pigment, or marble chips to floors, stairways, and cabinet fixtures to fashion durable and decorative surfaces.",
     "employment": null,
-    "meanAnnualWage": 83900.74,
-    "medianAnnualWage": 75167.36,
-    "entryAnnualWage": 63240.81,
-    "experiencedAnnualWage": 94230.7
+    "meanAnnualWage": 77860.26,
+    "medianAnnualWage": 74705.16,
+    "entryAnnualWage": 58918.38,
+    "experiencedAnnualWage": 87330.68
   },
   "onet": {
     "socCode": "47-2053.00",

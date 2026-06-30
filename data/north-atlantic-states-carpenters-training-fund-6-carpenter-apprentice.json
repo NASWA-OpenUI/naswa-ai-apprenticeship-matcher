@@ -56,17 +56,17 @@
     "contactSummary": "Contact North Atlantic States Carpenters Training Fund at (845) 567-1810 for further information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2031",
     "socTitle": "Carpenters",
     "socDescription": "Construct, erect, install, or repair structures and fixtures made of wood, such as concrete forms; building frameworks, including partitions, joists, studding, and rafters; and wood stairways, window and door frames, and hardwood floors.  May also install cabinets, siding, drywall and batt or roll insulation. Includes brattice builders who build doors or brattices (ventilation walls or partitions) in underground passageways",
-    "employment": 2700,
-    "meanAnnualWage": 65031.95,
-    "medianAnnualWage": 60501.59,
-    "entryAnnualWage": 44779.66,
-    "experiencedAnnualWage": 75158.1
+    "employment": 44500,
+    "meanAnnualWage": 75341.33,
+    "medianAnnualWage": 65535.32,
+    "entryAnnualWage": 48182.83,
+    "experiencedAnnualWage": 88921.09
   },
   "onet": {
     "socCode": "47-2031.00",

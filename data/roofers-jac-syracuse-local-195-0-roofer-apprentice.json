@@ -59,17 +59,17 @@
     "contactSummary": "Contact the JATC for Roofers and Waterproofers, Local Union #195 for further information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2181",
     "socTitle": "Roofers",
     "socDescription": "Cover roofs of structures with shingles, slate, asphalt, aluminum, wood, or related materials.  May spray roofs, sidings, and walls with material to bind, seal, insulate, or soundproof sections of structures.",
-    "employment": 670,
-    "meanAnnualWage": 66708.83,
-    "medianAnnualWage": 64734.46,
-    "entryAnnualWage": 44971.12,
-    "experiencedAnnualWage": 77577.17
+    "employment": 4430,
+    "meanAnnualWage": 73509.01,
+    "medianAnnualWage": 65214.15,
+    "entryAnnualWage": 44987.6,
+    "experiencedAnnualWage": 87770.23
   },
   "onet": {
     "socCode": "47-2181.00",

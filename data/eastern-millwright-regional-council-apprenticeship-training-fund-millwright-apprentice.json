@@ -63,17 +63,17 @@
     "contactSummary": "For further information, contact Eastern Millwright Regional Council at (315) 277-7808."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "49-9044",
     "socTitle": "Millwrights",
     "socDescription": "Install, dismantle, or move machinery and heavy equipment according to layout plans, blueprints, or other drawings.",
-    "employment": 250,
-    "meanAnnualWage": 79526.93,
-    "medianAnnualWage": 85481.26,
-    "entryAnnualWage": 62187.7,
-    "experiencedAnnualWage": 88197.57
+    "employment": 780,
+    "meanAnnualWage": 81945.43,
+    "medianAnnualWage": 80880.47,
+    "entryAnnualWage": 61073.45,
+    "experiencedAnnualWage": 92382.44
   },
   "onet": {
     "socCode": "49-9044.00",

@@ -55,17 +55,17 @@
     "contactSummary": "For further information, contact the JATC for the Rochester Laborers, Local Union #435 at (585) 546-8460 or visit www.local435.com."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2061",
     "socTitle": "Construction Laborers",
     "socDescription": "Perform tasks involving physical labor at construction sites.  May operate hand and power tools of all types: air hammers, earth tampers, cement mixers, small mechanical hoists, surveying and measuring equipment, and a variety of other equipment and instruments.  May clean and prepare sites, dig trenches, set braces to support the sides of excavations, erect scaffolding, and clean up rubble, debris and other waste materials.  May assist other craft workers.  Construction laborers who primarily assist a particular craft worker are classified under Helpers, Construction Trades (47-3010).  Excludes Hazardous Materials Removal Workers (47-4041).",
-    "employment": 3300,
-    "meanAnnualWage": 57694.43,
-    "medianAnnualWage": 49778.39,
-    "entryAnnualWage": 39385.63,
-    "experiencedAnnualWage": 66847.8
+    "employment": 49890,
+    "meanAnnualWage": 67133.97,
+    "medianAnnualWage": 59371.31,
+    "entryAnnualWage": 42447.05,
+    "experiencedAnnualWage": 79477.43
   },
   "onet": {
     "socCode": "47-2061.00",

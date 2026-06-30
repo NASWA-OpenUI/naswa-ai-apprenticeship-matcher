@@ -58,17 +58,17 @@
     "contactSummary": "For more information, contact the Plumber-Pipefitters JAC Lo. #112 by phone."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2152",
     "socTitle": "Plumbers, Pipefitters, and Steamfitters",
     "socDescription": "Assemble, install, alter, and repair pipelines or pipe systems that carry water, steam, air, or other liquids or gases.  May install heating and cooling equipment and mechanical control systems.  Includes sprinklerfitters.",
-    "employment": 1540,
-    "meanAnnualWage": 75196.18,
-    "medianAnnualWage": 71497.57,
-    "entryAnnualWage": 45613.47,
-    "experiencedAnnualWage": 89987.54
+    "employment": 22630,
+    "meanAnnualWage": 86992.01,
+    "medianAnnualWage": 80770.35,
+    "entryAnnualWage": 52982.9,
+    "experiencedAnnualWage": 103996.56
   },
   "onet": {
     "socCode": "47-2152.00",

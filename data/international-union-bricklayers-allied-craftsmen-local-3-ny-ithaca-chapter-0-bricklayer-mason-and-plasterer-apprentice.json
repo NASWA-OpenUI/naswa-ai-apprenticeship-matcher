@@ -53,17 +53,17 @@
     "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2021",
     "socTitle": "Brickmasons and Blockmasons",
     "socDescription": "Lay and bind building materials, such as brick, structural tile, concrete block, cinder block, glass block, and terra-cotta block, with mortar and other substances to construct or repair walls, partitions, arches, sewers, and other structures.  Excludes Stonemasons (47-2022).  Installers of mortarless segmental concrete masonry wall units are classified in Landscaping and Groundskeeping Workers (37-3011).",
-    "employment": 220,
-    "meanAnnualWage": 72066.83,
-    "medianAnnualWage": 80000.36,
-    "entryAnnualWage": 53610.83,
-    "experiencedAnnualWage": 81295.34
+    "employment": 2280,
+    "meanAnnualWage": 83208.99,
+    "medianAnnualWage": 79876.84,
+    "entryAnnualWage": 56668.13,
+    "experiencedAnnualWage": 96479.93
   },
   "onet": {
     "socCode": "47-2021.00",

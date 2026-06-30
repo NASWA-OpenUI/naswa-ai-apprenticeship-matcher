@@ -54,17 +54,17 @@
     "contactSummary": "For more information, contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2141",
     "socTitle": "Painters, Construction and Maintenance",
     "socDescription": "Paint walls, equipment, buildings, bridges, and other structural surfaces, using brushes, rollers, and spray guns.  May remove old paint to prepare surface prior to painting.  May mix colors or oils to obtain desired color or consistency.  Excludes Paperhangers (47-2142).",
-    "employment": 820,
-    "meanAnnualWage": 55935.2,
-    "medianAnnualWage": 50598.82,
-    "entryAnnualWage": 42311.17,
-    "experiencedAnnualWage": 62747.73
+    "employment": 14670,
+    "meanAnnualWage": 60921.58,
+    "medianAnnualWage": 57663.55,
+    "entryAnnualWage": 41043.99,
+    "experiencedAnnualWage": 70860.38
   },
   "onet": {
     "socCode": "47-2141.00",

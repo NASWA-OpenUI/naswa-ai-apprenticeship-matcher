@@ -56,17 +56,17 @@
     "contactSummary": "For further information, contact Sheet Metal Workers of Rochester, Local Union #46 at (585) 254-9151."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "49-9021",
     "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
     "socDescription": "Install or repair heating, central air conditioning, or refrigeration systems, including oil burners, hot-air furnaces, and heating stoves.",
-    "employment": 1630,
-    "meanAnnualWage": 63311.2,
-    "medianAnnualWage": 61812.86,
-    "entryAnnualWage": 43913.93,
-    "experiencedAnnualWage": 73009.83
+    "employment": 22710,
+    "meanAnnualWage": 72385.43,
+    "medianAnnualWage": 68464.49,
+    "entryAnnualWage": 49704.97,
+    "experiencedAnnualWage": 83725.15
   },
   "onet": {
     "socCode": "49-9021.00",

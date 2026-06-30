@@ -58,17 +58,17 @@
     "contactSummary": "For further information, contact Electricians JATC of Watertown, Local Union #910 at (315) 782-1675."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2111",
     "socTitle": "Electricians",
     "socDescription": "Install, maintain, and repair electrical wiring, equipment, and fixtures.  Ensure that work is in accordance with relevant codes.  May install or service street lights, intercom systems, or electrical control systems.  Excludes Security and Fire Alarm Systems Installers (49-2098).",
-    "employment": 2490,
-    "meanAnnualWage": 76826.74,
-    "medianAnnualWage": 79307.58,
-    "entryAnnualWage": 49249.29,
-    "experiencedAnnualWage": 90614.44
+    "employment": 40380,
+    "meanAnnualWage": 85805.12,
+    "medianAnnualWage": 79733.75,
+    "entryAnnualWage": 53023.04,
+    "experiencedAnnualWage": 102196.15
   },
   "onet": {
     "socCode": "47-2111.00",

@@ -58,17 +58,17 @@
     "contactSummary": "For further information, contact the JATC for Heat and Frost Insulators and Allied Workers, Local Union #26 at (585) 323-1620."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2131",
     "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
     "socDescription": "Line and cover structures with insulating materials.  May work with batt, roll, or blown insulation materials.",
-    "employment": 130,
-    "meanAnnualWage": 65423.12,
-    "medianAnnualWage": 54096.7,
-    "entryAnnualWage": 43718.35,
-    "experiencedAnnualWage": 76276.02
+    "employment": 1890,
+    "meanAnnualWage": 81110.05,
+    "medianAnnualWage": 65370.62,
+    "entryAnnualWage": 47682.55,
+    "experiencedAnnualWage": 97823.29
   },
   "onet": {
     "socCode": "47-2131.00",

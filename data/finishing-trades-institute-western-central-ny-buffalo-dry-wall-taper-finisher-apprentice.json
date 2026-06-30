@@ -58,17 +58,17 @@
     "contactSummary": "Contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112 for further information or help with the online application."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000007",
-    "areaName": "New York City",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2082",
     "socTitle": "Tapers",
     "socDescription": "Seal joints between plasterboard or other wallboard to prepare wall surface for painting or papering.",
-    "employment": 430,
-    "meanAnnualWage": 85509.68,
-    "medianAnnualWage": 74771.04,
-    "entryAnnualWage": 63053.46,
-    "experiencedAnnualWage": 96737.28
+    "employment": null,
+    "meanAnnualWage": 81829.6,
+    "medianAnnualWage": 72208.88,
+    "entryAnnualWage": 61430.1,
+    "experiencedAnnualWage": 92028.83
   },
   "onet": {
     "socCode": "47-2082.00",

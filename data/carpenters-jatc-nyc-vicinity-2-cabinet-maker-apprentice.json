@@ -70,17 +70,17 @@
     "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "51-7011",
     "socTitle": "Cabinetmakers and Bench Carpenters",
     "socDescription": "Cut, shape, and assemble wooden articles or set up and operate a variety of woodworking machines, such as power saws, jointers, and mortisers to surface, cut, or shape lumber or to fabricate parts for wood products.  Excludes Woodworking Machine Setters, Operators, and Tenders (51-7040).",
-    "employment": 270,
-    "meanAnnualWage": 51505.95,
-    "medianAnnualWage": 49893.12,
-    "entryAnnualWage": 37545.52,
-    "experiencedAnnualWage": 58486.68
+    "employment": 3290,
+    "meanAnnualWage": 59413.13,
+    "medianAnnualWage": 59048.91,
+    "entryAnnualWage": 44465.71,
+    "experiencedAnnualWage": 66886.32
   },
   "onet": {
     "socCode": "51-7011.00",

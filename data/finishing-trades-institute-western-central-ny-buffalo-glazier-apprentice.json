@@ -58,17 +58,17 @@
     "contactSummary": "Contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112 for further information or help with the online application."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2121",
     "socTitle": "Glaziers",
     "socDescription": "Install glass in windows, skylights, store fronts, and display cases, or on surfaces, such as building fronts, interior walls, ceilings, and tabletops.",
-    "employment": 140,
-    "meanAnnualWage": 65538.41,
-    "medianAnnualWage": 63650.5,
-    "entryAnnualWage": 46854.92,
-    "experiencedAnnualWage": 74880.16
+    "employment": 2610,
+    "meanAnnualWage": 71835.21,
+    "medianAnnualWage": 61759.51,
+    "entryAnnualWage": 45244.94,
+    "experiencedAnnualWage": 85129.83
   },
   "onet": {
     "socCode": "47-2121.00",

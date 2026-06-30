@@ -51,17 +51,17 @@
     "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "51-4121",
     "socTitle": "Welders, Cutters, Solderers, and Brazers",
     "socDescription": "Use hand-welding, flame-cutting, hand soldering, or brazing equipment to weld or join metal components or to fill holes, indentations, or seams of fabricated metal products.",
-    "employment": 1270,
-    "meanAnnualWage": 55335.91,
-    "medianAnnualWage": 54222.73,
-    "entryAnnualWage": 42518.42,
-    "experiencedAnnualWage": 61744.14
+    "employment": 7810,
+    "meanAnnualWage": 62274.57,
+    "medianAnnualWage": 58715.47,
+    "entryAnnualWage": 44725.29,
+    "experiencedAnnualWage": 71048.7
   },
   "onet": {
     "socCode": "51-4121.00",

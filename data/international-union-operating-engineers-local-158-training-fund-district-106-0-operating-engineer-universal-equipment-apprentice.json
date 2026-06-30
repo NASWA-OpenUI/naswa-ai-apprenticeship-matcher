@@ -61,17 +61,17 @@
     "contactSummary": "For further information, contact JATC for Operating Engineers of Albany, Local Union #106 at (315) 299-6104."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2073",
     "socTitle": "Operating Engineers and Other Construction Equipment Operators",
     "socDescription": "Operate one or several types of power construction equipment, such as motor graders, bulldozers, scrapers, compressors, pumps, derricks, shovels, tractors, or front-end loaders to excavate, move, and grade earth, erect structures, or pour concrete or other hard surface pavement.  May repair and maintain equipment in addition to other duties.  Excludes Crane and Tower Operators (53-7021) and Extraction Workers (47-5000).",
-    "employment": 1410,
-    "meanAnnualWage": 76370.72,
-    "medianAnnualWage": 66904.42,
-    "entryAnnualWage": 49937.95,
-    "experiencedAnnualWage": 89587.11
+    "employment": 14700,
+    "meanAnnualWage": 96190.67,
+    "medianAnnualWage": 82620.17,
+    "entryAnnualWage": 54936.69,
+    "experiencedAnnualWage": 116818.69
   },
   "onet": {
     "socCode": "47-2073.00",

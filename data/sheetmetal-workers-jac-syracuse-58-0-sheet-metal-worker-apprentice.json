@@ -61,17 +61,17 @@
     "contactSummary": "For more information, contact Sheet Metal Workers, Local Union #58 at (315) 472-4411."
   },
   "oes": {
-    "areaType": "10",
-    "area": "000010",
-    "areaName": "Western New York",
+    "areaType": "01",
+    "area": "000036",
+    "areaName": "New York State",
     "socCode": "47-2211",
     "socTitle": "Sheet Metal Workers",
     "socDescription": "Fabricate, assemble, install, and repair sheet metal products and equipment, such as ducts, control boxes, drainpipes, and furnace casings.  Work may involve any of the following: setting up and operating fabricating machines to cut, bend, and straighten sheet metal; shaping metal over anvils, blocks, or forms using hammer; operating soldering and welding equipment to join sheet metal parts; or inspecting, assembling, and smoothing seams and joints of burred surfaces.  Includes sheet metal duct installers who install prefabricated sheet metal ducts used for heating, air conditioning, or other purposes.",
-    "employment": 510,
-    "meanAnnualWage": 69865.98,
-    "medianAnnualWage": 65083.42,
-    "entryAnnualWage": 45723.61,
-    "experiencedAnnualWage": 81937.68
+    "employment": 6190,
+    "meanAnnualWage": 77835.55,
+    "medianAnnualWage": 75625.44,
+    "entryAnnualWage": 49111.35,
+    "experiencedAnnualWage": 92197.65
   },
   "onet": {
     "socCode": "47-2211.00",
