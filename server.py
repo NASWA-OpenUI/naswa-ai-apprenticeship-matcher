@@ -19,12 +19,7 @@ from strands.models import BedrockModel
 
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
-from naswa_matcher.location_matching import (
-    LOCATION_FIT_ORDER,
-    cap_tier_by_location,
-    location_fit,
-    should_use_location_matching,
-)
+from naswa_matcher.location_matching import should_use_location_matching
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -33,7 +28,7 @@ from naswa_matcher.profile import (
     profile_rank_url,
     strip_profile,
 )
-from naswa_matcher.ranking import score_jobs
+from naswa_matcher.ranking import build_ranked_items, score_jobs, sort_ranked_items
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -463,72 +458,10 @@ RANKING_MAX_CONCURRENCY = int(os.getenv("RANKING_MAX_CONCURRENCY", "3"))
 RANKING_MAX_ATTEMPTS = int(os.getenv("RANKING_MAX_ATTEMPTS", "3"))
 RANKING_RETRY_DELAY_SECONDS = float(os.getenv("RANKING_RETRY_DELAY_SECONDS", "1"))
 
-TIER_ORDER = {"Strong": 0, "Moderate": 1, "Weak": 2}
-
 
 def _chunks(items: list[dict], size: int) -> list[list[dict]]:
     """Split a list into fixed-size chunks."""
     return [items[i : i + size] for i in range(0, len(items), size)]
-
-
-def _normalize_tier(tier: str | None) -> str:
-    """Keep unexpected model output from breaking CSS/classes/sorting."""
-    if tier in TIER_ORDER:
-        return tier
-    return "Weak"
-
-
-def _build_ranked_items(
-    batch_jobs: list[dict],
-    scores: list[dict],
-    job_index: dict[str, int],
-    profile: dict,
-) -> list[dict]:
-    """Attach model scores back to jobs and sort this batch by tier."""
-    score_map = {
-        score.get("id"): score
-        for score in scores
-        if isinstance(score, dict) and score.get("id")
-    }
-
-    ranked = []
-    use_location_matching = should_use_location_matching(profile)
-
-    for job in batch_jobs:
-        score = score_map.get(job["id"], {})
-        model_tier = _normalize_tier(score.get("tier"))
-        _location_fit = location_fit(profile, job) if use_location_matching else None
-
-        tier = (
-            cap_tier_by_location(model_tier, _location_fit)
-            if use_location_matching
-            else model_tier
-        )
-
-        ranked.append(
-            {
-                "id": job["id"],
-                "tier": tier,
-                "tier_order": TIER_ORDER.get(tier, 3),
-                "sort_index": job_index[job["id"]],
-                "location_fit": _location_fit,
-                "explanation": score.get("explanation", ""),
-                "posting": job["posting"],
-            }
-        )
-
-    return sorted(
-        ranked,
-        key=lambda item: (
-            item["tier_order"],
-            (
-                LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
-                if use_location_matching
-                else 0
-            ),
-            item["sort_index"],
-        ),
-    )
 
 
 async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
@@ -1006,7 +939,7 @@ async def rank_opportunities_stream(
                             SCORING_MODEL_NAME,
                         )
 
-                    ranked = _build_ranked_items(
+                    ranked = build_ranked_items(
                         batch_jobs=batch_jobs,
                         scores=scores,
                         job_index=job_index,
@@ -1139,18 +1072,7 @@ async def rank_opportunities_stream(
                 total_elapsed_ms,
             )
 
-            final_ranked = sorted(
-                ranked_for_cache,
-                key=lambda item: (
-                    item["tier_order"],
-                    (
-                        LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
-                        if should_use_location_matching(profile)
-                        else 0
-                    ),
-                    item["sort_index"],
-                ),
-            )
+            final_ranked = sort_ranked_items(ranked_for_cache, profile)
 
             if completed_jobs == len(onet_jobs) and not had_batch_error:
                 session.ranking_cache[cache_key] = RankingCacheEntry(

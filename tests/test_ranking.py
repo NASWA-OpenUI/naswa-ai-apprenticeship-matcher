@@ -2,8 +2,11 @@ import pytest
 
 from naswa_matcher.ranking import (
     build_job_summary,
+    build_ranked_items,
     build_scoring_prompt,
+    normalize_tier,
     parse_scoring_response,
+    sort_ranked_items,
 )
 
 
@@ -55,6 +58,34 @@ def make_rankable_job(
             },
         },
     }
+
+
+@pytest.mark.parametrize(
+    "tier",
+    [
+        "Strong",
+        "Moderate",
+        "Weak",
+    ],
+)
+def test_normalize_tier_returns_valid_tier(tier):
+    """Verifies that valid scoring tiers are returned unchanged."""
+    assert normalize_tier(tier) == tier
+
+
+@pytest.mark.parametrize(
+    "tier",
+    [
+        None,
+        "",
+        "strong",
+        "Excellent",
+        "Not a tier",
+    ],
+)
+def test_normalize_tier_defaults_unexpected_values_to_weak(tier):
+    """Verifies that missing or unexpected model tiers safely fall back to Weak."""
+    assert normalize_tier(tier) == "Weak"
 
 
 def test_build_job_summary_extracts_onet_fields():
@@ -266,3 +297,288 @@ def test_build_job_summary_omits_location_fit_when_location_matching_disabled():
     # Keep real job location context available, but not the derived ranking signal.
     assert summary["location"] == "Binghamton, NY area"
     assert summary["regions"] == ["Southern Tier"]
+
+
+def test_build_ranked_items_attaches_scores_to_jobs():
+    """Verifies that model scores are attached to jobs using each job ID."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    jobs = [
+        {
+            "id": "job-1",
+            "posting": {
+                "jobTitle": "Electrician Apprentice",
+                "locationSummary": "Buffalo, NY area",
+                "regions": ["Western New York"],
+            },
+        }
+    ]
+    scores = [
+        {
+            "id": "job-1",
+            "tier": "Strong",
+            "explanation": "Good fit for hands-on technical work.",
+        }
+    ]
+    job_index = {"job-1": 7}
+
+    ranked = build_ranked_items(
+        batch_jobs=jobs,
+        scores=scores,
+        job_index=job_index,
+        profile=profile,
+    )
+
+    assert ranked == [
+        {
+            "id": "job-1",
+            "tier": "Strong",
+            "tier_order": 0,
+            "sort_index": 7,
+            "location_fit": "local",
+            "explanation": "Good fit for hands-on technical work.",
+            "posting": jobs[0]["posting"],
+        }
+    ]
+
+
+def test_build_ranked_items_defaults_missing_scores_to_weak():
+    """Verifies that jobs missing from the model response are kept as Weak matches."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    jobs = [
+        {
+            "id": "job-1",
+            "posting": {
+                "jobTitle": "Electrician Apprentice",
+                "locationSummary": "Buffalo, NY area",
+                "regions": ["Western New York"],
+            },
+        }
+    ]
+
+    ranked = build_ranked_items(
+        batch_jobs=jobs,
+        scores=[],
+        job_index={"job-1": 0},
+        profile=profile,
+    )
+
+    assert ranked[0]["id"] == "job-1"
+    assert ranked[0]["tier"] == "Weak"
+    assert ranked[0]["tier_order"] == 2
+    assert ranked[0]["explanation"] == ""
+
+
+def test_build_ranked_items_caps_strong_tier_for_far_location():
+    """Verifies that location matching prevents far-away jobs from staying Strong."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    jobs = [
+        {
+            "id": "nyc-job",
+            "posting": {
+                "jobTitle": "Electrician Apprentice",
+                "locationSummary": "New York City, NY area",
+                "regions": ["New York City"],
+                "allRequirements": [],
+            },
+        }
+    ]
+    scores = [
+        {
+            "id": "nyc-job",
+            "tier": "Strong",
+            "explanation": "Good technical match.",
+        }
+    ]
+
+    ranked = build_ranked_items(
+        batch_jobs=jobs,
+        scores=scores,
+        job_index={"nyc-job": 0},
+        profile=profile,
+    )
+
+    assert ranked[0]["location_fit"] == "far"
+    assert ranked[0]["tier"] == "Moderate"
+    assert ranked[0]["tier_order"] == 1
+
+
+def test_build_ranked_items_does_not_cap_by_location_when_matching_disabled():
+    """Verifies that statewide users are not capped by derived location fit."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": False,
+    }
+    jobs = [
+        {
+            "id": "nyc-job",
+            "posting": {
+                "jobTitle": "Electrician Apprentice",
+                "locationSummary": "New York City, NY area",
+                "regions": ["New York City"],
+                "allRequirements": [],
+            },
+        }
+    ]
+    scores = [
+        {
+            "id": "nyc-job",
+            "tier": "Strong",
+            "explanation": "Good technical match.",
+        }
+    ]
+
+    ranked = build_ranked_items(
+        batch_jobs=jobs,
+        scores=scores,
+        job_index={"nyc-job": 0},
+        profile=profile,
+    )
+
+    assert ranked[0]["location_fit"] is None
+    assert ranked[0]["tier"] == "Strong"
+    assert ranked[0]["tier_order"] == 0
+
+
+def test_build_ranked_items_sorts_batch_by_tier_location_and_original_order():
+    """Verifies that ranked batch results are sorted by tier, location fit, and source order."""
+    profile = {
+        "likes": ["hands-on work"],
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    jobs = [
+        {
+            "id": "weak-local",
+            "posting": {
+                "jobTitle": "Weak Local Job",
+                "locationSummary": "Buffalo, NY area",
+                "regions": ["Western New York"],
+                "allRequirements": [],
+            },
+        },
+        {
+            "id": "strong-far",
+            "posting": {
+                "jobTitle": "Strong Far Job",
+                "locationSummary": "New York City, NY area",
+                "regions": ["New York City"],
+                "allRequirements": [],
+            },
+        },
+        {
+            "id": "strong-local",
+            "posting": {
+                "jobTitle": "Strong Local Job",
+                "locationSummary": "Buffalo, NY area",
+                "regions": ["Western New York"],
+                "allRequirements": [],
+            },
+        },
+    ]
+    scores = [
+        {"id": "weak-local", "tier": "Weak", "explanation": ""},
+        {"id": "strong-far", "tier": "Strong", "explanation": ""},
+        {"id": "strong-local", "tier": "Strong", "explanation": ""},
+    ]
+    job_index = {
+        "weak-local": 0,
+        "strong-far": 1,
+        "strong-local": 2,
+    }
+
+    ranked = build_ranked_items(
+        batch_jobs=jobs,
+        scores=scores,
+        job_index=job_index,
+        profile=profile,
+    )
+
+    assert [item["id"] for item in ranked] == [
+        "strong-local",
+        "strong-far",
+        "weak-local",
+    ]
+
+
+def test_sort_ranked_items_orders_by_tier_location_and_original_order():
+    """Verifies that final ranked results use tier, location fit, and source order."""
+    profile = {
+        "location": "Buffalo area",
+        "use_location_matching": True,
+    }
+    ranked = [
+        {"id": "weak-local", "tier_order": 2, "location_fit": "local", "sort_index": 0},
+        {"id": "strong-far", "tier_order": 0, "location_fit": "far", "sort_index": 1},
+        {
+            "id": "strong-local-later",
+            "tier_order": 0,
+            "location_fit": "local",
+            "sort_index": 3,
+        },
+        {
+            "id": "strong-local-earlier",
+            "tier_order": 0,
+            "location_fit": "local",
+            "sort_index": 2,
+        },
+        {
+            "id": "moderate-nearby",
+            "tier_order": 1,
+            "location_fit": "nearby",
+            "sort_index": 4,
+        },
+    ]
+
+    sorted_items = sort_ranked_items(ranked, profile)
+
+    assert [item["id"] for item in sorted_items] == [
+        "strong-local-earlier",
+        "strong-local-later",
+        "strong-far",
+        "moderate-nearby",
+        "weak-local",
+    ]
+
+
+def test_sort_ranked_items_ignores_location_when_matching_disabled():
+    """Verifies that location fit does not affect sort order for statewide users."""
+    profile = {
+        "location": "Buffalo area",
+        "use_location_matching": False,
+    }
+    ranked = [
+        {
+            "id": "strong-far-earlier",
+            "tier_order": 0,
+            "location_fit": "far",
+            "sort_index": 1,
+        },
+        {
+            "id": "strong-local-later",
+            "tier_order": 0,
+            "location_fit": "local",
+            "sort_index": 2,
+        },
+        {"id": "weak-local", "tier_order": 2, "location_fit": "local", "sort_index": 0},
+    ]
+
+    sorted_items = sort_ranked_items(ranked, profile)
+
+    assert [item["id"] for item in sorted_items] == [
+        "strong-far-earlier",
+        "strong-local-later",
+        "weak-local",
+    ]

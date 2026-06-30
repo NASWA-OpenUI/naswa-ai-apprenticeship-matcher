@@ -1,4 +1,5 @@
 import server
+from naswa_matcher.ranking import build_ranked_items
 
 
 def test_health_route(client):
@@ -239,7 +240,7 @@ def test_build_ranked_items_caps_far_strong_match_when_location_matching_enabled
         }
     ]
 
-    ranked = server._build_ranked_items(
+    ranked = server.build_ranked_items(
         batch_jobs=[job],
         scores=scores,
         job_index={job["id"]: 0},
@@ -267,7 +268,7 @@ def test_build_ranked_items_does_not_cap_far_match_when_location_matching_disabl
         }
     ]
 
-    ranked = server._build_ranked_items(
+    ranked = server.build_ranked_items(
         batch_jobs=[job],
         scores=scores,
         job_index={job["id"]: 0},

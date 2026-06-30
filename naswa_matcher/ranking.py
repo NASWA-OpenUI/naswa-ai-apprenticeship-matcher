@@ -7,9 +7,16 @@ from typing import Any
 
 from strands import Agent
 
-from naswa_matcher.location_matching import location_fit, should_use_location_matching
+from naswa_matcher.location_matching import (
+    LOCATION_FIT_ORDER,
+    cap_tier_by_location,
+    location_fit,
+    should_use_location_matching,
+)
 
 ModelFactory = Callable[[], Any]
+
+TIER_ORDER = {"Strong": 0, "Moderate": 1, "Weak": 2}
 
 
 def _nested_list(data: dict, path: tuple[str, ...]) -> list:
@@ -37,6 +44,14 @@ def _pluck(items: list, field: str, limit: int) -> list[str]:
             values.append(str(value))
 
     return values
+
+
+def normalize_tier(tier: str | None) -> str:
+    """Keep unexpected model output from breaking CSS/classes/sorting."""
+    if tier in TIER_ORDER:
+        return tier
+
+    return "Weak"
 
 
 def build_job_summary(profile: dict, job: dict) -> dict:
@@ -135,6 +150,66 @@ def parse_scoring_response(raw: str) -> list[dict]:
         raise ValueError("Scoring response was not a JSON array.")
 
     return parsed
+
+
+def build_ranked_items(
+    batch_jobs: list[dict],
+    scores: list[dict],
+    job_index: dict[str, int],
+    profile: dict,
+) -> list[dict]:
+    """Attach model scores back to jobs and sort this batch by rank."""
+    score_map = {
+        score.get("id"): score
+        for score in scores
+        if isinstance(score, dict) and score.get("id")
+    }
+
+    ranked = []
+    use_location_matching = should_use_location_matching(profile)
+
+    for job in batch_jobs:
+        score = score_map.get(job["id"], {})
+        model_tier = normalize_tier(score.get("tier"))
+        job_location_fit = location_fit(profile, job) if use_location_matching else None
+
+        tier = (
+            cap_tier_by_location(model_tier, job_location_fit)
+            if use_location_matching
+            else model_tier
+        )
+
+        ranked.append(
+            {
+                "id": job["id"],
+                "tier": tier,
+                "tier_order": TIER_ORDER.get(tier, 3),
+                "sort_index": job_index[job["id"]],
+                "location_fit": job_location_fit,
+                "explanation": score.get("explanation", ""),
+                "posting": job["posting"],
+            }
+        )
+
+    return sort_ranked_items(ranked, profile)
+
+
+def sort_ranked_items(ranked: list[dict], profile: dict) -> list[dict]:
+    """Sort ranked opportunities by tier, location fit, and original order."""
+    use_location_matching = should_use_location_matching(profile)
+
+    return sorted(
+        ranked,
+        key=lambda item: (
+            item["tier_order"],
+            (
+                LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
+                if use_location_matching
+                else 0
+            ),
+            item["sort_index"],
+        ),
+    )
 
 
 async def score_jobs(
