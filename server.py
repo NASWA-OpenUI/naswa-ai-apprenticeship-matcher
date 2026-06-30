@@ -2,7 +2,6 @@ import asyncio
 import json
 import logging
 import os
-import re
 import secrets
 import time
 from contextlib import asynccontextmanager
@@ -28,6 +27,12 @@ from naswa_matcher.location_matching import (
 )
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
+from naswa_matcher.profile import (
+    extract_profile,
+    profile_rank_params,
+    profile_rank_url,
+    strip_profile,
+)
 from naswa_matcher.ranking import score_jobs
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
@@ -45,6 +50,26 @@ templates.env.filters.update(TEMPLATE_FILTERS)
 def render(name: str, **ctx) -> str:
     """Render a template fragment to string (no Request needed)."""
     return templates.env.get_template(name).render(**ctx)
+
+
+# ── HTML fragment helpers ─────────────────────────────────────────────────────
+
+
+def _render_rank_count(
+    *,
+    completed_jobs: int,
+    total_jobs: int,
+    completed_openings: int,
+) -> str:
+    opportunity_label = "opportunity" if total_jobs == 1 else "opportunities"
+    opening_label = "opening" if completed_openings == 1 else "openings"
+
+    return (
+        f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> of {total_jobs} '
+        f"{opportunity_label} analyzed "
+        f'<span aria-hidden="true"> · </span>'
+        f'<span id="openings-count">{completed_openings}</span> {opening_label}'
+    )
 
 
 # ── Logging setup and filters ───────────────────────────────────────────────────
@@ -80,50 +105,6 @@ def _describe_exception(exc: Exception) -> str:
         return f"{code}: {message}"
 
     return f"{exc.__class__.__name__}: {exc}"
-
-
-# ── Profile helpers ───────────────────────────────────────────────────────────
-
-
-def _strip_profile(text: str) -> str:
-    """Remove <thinking> and <profile> XML from text so tokens display cleanly."""
-    text = re.sub(r"<thinking>[\s\S]*?</thinking>", "", text)
-    text = re.sub(r"<thinking>[\s\S]*$", "", text)  # partial tag mid-stream
-    text = re.sub(r"<profile>[\s\S]*?</profile>", "", text)
-    text = re.sub(r"<profile>[\s\S]*$", "", text)  # partial tag mid-stream
-    return text.strip()
-
-
-def _extract_profile(text: str) -> dict | None:
-    """Return parsed profile JSON from a completed agent response, or None."""
-    m = re.search(r"<profile>([\s\S]*?)</profile>", text)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(1))
-    except json.JSONDecodeError:
-        return None
-
-
-def _profile_rank_params(profile: dict) -> list[tuple[str, str]]:
-    """Convert a profile into query params for ranked opportunities."""
-    params = [("ranked", "true")]
-
-    for like in profile.get("likes", []):
-        params.append(("likes", like))
-
-    for dislike in profile.get("dislikes", []):
-        params.append(("dislikes", dislike))
-
-    for key in ["location", "transportation"]:
-        value = profile.get(key)
-        if value:
-            params.append((key, value))
-
-    if not should_use_location_matching(profile):
-        params.append(("use_location_matching", "false"))
-
-    return params
 
 
 # ── Agent setup ───────────────────────────────────────────────────────────────
@@ -475,23 +456,6 @@ def _get_ranking_cache_entry(
     return entry
 
 
-def _render_rank_count(
-    *,
-    completed_jobs: int,
-    total_jobs: int,
-    completed_openings: int,
-) -> str:
-    opportunity_label = "opportunity" if total_jobs == 1 else "opportunities"
-    opening_label = "opening" if completed_openings == 1 else "openings"
-
-    return (
-        f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> of {total_jobs} '
-        f"{opportunity_label} analyzed "
-        f'<span aria-hidden="true"> · </span>'
-        f'<span id="openings-count">{completed_openings}</span> {opening_label}'
-    )
-
-
 # ── ONET scoring ──────────────────────────────────────────────────────────────
 
 RANKING_BATCH_SIZE = int(os.getenv("RANKING_BATCH_SIZE", "10"))
@@ -619,9 +583,7 @@ async def chat_page(request: Request):
 
     ranked_url = None
     if session.profile and session.profile.get("confirmed"):
-        ranked_url = "/opportunities?" + urlencode(
-            _profile_rank_params(session.profile)
-        )
+        ranked_url = profile_rank_url(session.profile)
 
     response = templates.TemplateResponse(
         request,
@@ -716,7 +678,7 @@ async def chat_stream(request: Request):
                         continue
 
                     full_text += event["data"]
-                    display = _strip_profile(full_text)
+                    display = strip_profile(full_text)
                     new_chunk = display[prev_display_len:]
 
                     if new_chunk:
@@ -742,8 +704,8 @@ async def chat_stream(request: Request):
 
             logger.debug("Chat agent completed")
 
-            profile = _extract_profile(full_text)
-            final_text = _strip_profile(full_text)
+            profile = extract_profile(full_text)
+            final_text = strip_profile(full_text)
 
             yield {"event": "clear-stream", "data": ""}
 
@@ -759,9 +721,7 @@ async def chat_stream(request: Request):
                 session.profile = profile
 
                 if profile.get("confirmed"):
-                    ranked_url = "/opportunities?" + urlencode(
-                        _profile_rank_params(profile)
-                    )
+                    ranked_url = profile_rank_url(profile)
                     card_html = render(
                         "_profile_card.html", profile=profile, ranked_url=ranked_url
                     )
@@ -811,7 +771,7 @@ async def opportunities_page(
         cached_ranked = cached.ranked if cached else []
 
         rank_stream_url = "/api/rank-opportunities?" + urlencode(
-            _profile_rank_params(profile)
+            profile_rank_params(profile)
         )
 
         unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
