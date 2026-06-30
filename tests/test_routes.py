@@ -118,6 +118,7 @@ def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
 def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeypatch):
     """Verifies that the streaming rank endpoint caps far/non-local Strong
     model scores to Moderate when location matching is enabled."""
+
     async def fake_score_jobs(profile, onet_jobs):
         assert profile["likes"] == ["hands-on work", "problem solving"]
         assert profile["location"] == "Buffalo area"

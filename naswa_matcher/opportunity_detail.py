@@ -29,7 +29,7 @@ def _application_fee(value) -> int | None:
 
     try:
         fee = int(value)
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         return None
 
     return fee if fee > 0 else None

@@ -74,9 +74,7 @@ def build_job_summary(profile: dict, job: dict) -> dict:
 
     if should_use_location_matching(profile):
         summary["location_fit"] = location_fit(profile, job)
-        summary["transportation_requirement"] = posting.get(
-            "transportationRequirement"
-        )
+        summary["transportation_requirement"] = posting.get("transportationRequirement")
 
     return summary
 

@@ -26,7 +26,7 @@ def format_date(iso: str | None) -> str:
         if month < 1 or month > 12:
             return iso
         return f"{_MONTHS[month - 1]} {int(d)}, {y}"
-    except (ValueError, IndexError):
+    except ValueError, IndexError:
         return iso
 
 
@@ -42,7 +42,7 @@ def percent_of(value: float | None, maximum: float | None) -> int:
     try:
         value = float(value)
         maximum = float(maximum)
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         return 0
 
     if maximum <= 0:

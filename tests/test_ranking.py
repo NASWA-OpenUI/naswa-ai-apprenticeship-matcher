@@ -186,7 +186,9 @@ def test_build_scoring_prompt_removes_location_guidance_when_matching_disabled()
     prompt = build_scoring_prompt(profile, [{"id": "job-1"}])
 
     assert "Do not use location or transportation as ranking factors" in prompt
-    assert "Do not mention the user's statewide flexibility in every explanation" in prompt
+    assert (
+        "Do not mention the user's statewide flexibility in every explanation" in prompt
+    )
 
     assert "Location is a major ranking factor" not in prompt
     assert "If location_fit is far" not in prompt

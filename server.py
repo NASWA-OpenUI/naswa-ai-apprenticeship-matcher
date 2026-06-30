@@ -40,6 +40,7 @@ load_dotenv(BASE_DIR / ".env")
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 templates.env.filters.update(TEMPLATE_FILTERS)
 
+
 def render(name: str, **ctx) -> str:
     """Render a template fragment to string (no Request needed)."""
     return templates.env.get_template(name).render(**ctx)
@@ -292,6 +293,7 @@ def make_agent() -> Agent:
         callback_handler=None,
     )
 
+
 def make_scoring_model() -> BedrockModel:
     """Create the non-streaming model used for opportunity scoring."""
     return make_bedrock_model(SCORING_MODEL_NAME, streaming=False)
@@ -471,6 +473,7 @@ def _get_ranking_cache_entry(
 
     return entry
 
+
 def _render_rank_count(
     *,
     completed_jobs: int,
@@ -482,7 +485,7 @@ def _render_rank_count(
 
     return (
         f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> of {total_jobs} '
-        f'{opportunity_label} analyzed '
+        f"{opportunity_label} analyzed "
         f'<span aria-hidden="true"> · </span>'
         f'<span id="openings-count">{completed_openings}</span> {opening_label}'
     )
@@ -509,7 +512,7 @@ def _opening_count(job: dict) -> int:
 
     try:
         openings = int(value)
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         return 0
 
     return max(0, openings)
@@ -860,6 +863,7 @@ async def opportunities_page(
         "opportunities.html",
         {"ranked": False, "opportunities": all_opportunities()},
     )
+
 
 # ── Single opportunity page ───────────────────────────────────────────────────
 

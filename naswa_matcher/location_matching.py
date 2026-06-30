@@ -161,6 +161,7 @@ LOCATION_FIT_ORDER = {
 
 VALID_TIERS = {"Strong", "Moderate", "Weak"}
 
+
 def should_use_location_matching(profile: dict) -> bool:
     """Return whether location/transportation should affect ranking."""
     value = profile.get("use_location_matching", True)
@@ -169,6 +170,7 @@ def should_use_location_matching(profile: dict) -> bool:
         return value.strip().lower() not in {"false", "0", "no"}
 
     return value is not False
+
 
 def text_mentions_term(text: str, term: str) -> bool:
     """Return True if text contains term as a rough phrase match."""
