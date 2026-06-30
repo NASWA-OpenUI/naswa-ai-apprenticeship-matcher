@@ -27,6 +27,7 @@ from naswa_matcher.location_matching import (
     should_use_location_matching,
 )
 from naswa_matcher.opportunity_detail import build_opportunity_detail
+from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.ranking import score_jobs
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
@@ -506,23 +507,6 @@ def _chunks(items: list[dict], size: int) -> list[list[dict]]:
     return [items[i : i + size] for i in range(0, len(items), size)]
 
 
-def _opening_count(job: dict) -> int:
-    """Return a safe integer opening count for one opportunity."""
-    value = job.get("posting", {}).get("numberOfOpenings")
-
-    try:
-        openings = int(value)
-    except TypeError, ValueError:
-        return 0
-
-    return max(0, openings)
-
-
-def _sum_openings(jobs: list[dict]) -> int:
-    """Return total openings across opportunities."""
-    return sum(_opening_count(job) for job in jobs)
-
-
 def _normalize_tier(tier: str | None) -> str:
     """Keep unexpected model output from breaking CSS/classes/sorting."""
     if tier in TIER_ORDER:
@@ -819,7 +803,7 @@ async def opportunities_page(
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
-        total_openings = _sum_openings(onet_jobs)
+        total_openings = sum_openings(onet_jobs)
 
         cache_key = _ranking_cache_key(profile)
         cached = _get_ranking_cache_entry(session, cache_key)
@@ -980,7 +964,7 @@ async def rank_opportunities_stream(
 
     all_jobs = all_opportunities()
     onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
-    total_openings = _sum_openings(onet_jobs)
+    total_openings = sum_openings(onet_jobs)
 
     job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
     batches = _chunks(onet_jobs, RANKING_BATCH_SIZE)
@@ -1131,7 +1115,7 @@ async def rank_opportunities_stream(
                 result = await task
                 completed_batches += 1
                 completed_jobs += len(result["jobs"])
-                completed_openings += _sum_openings(result["jobs"])
+                completed_openings += sum_openings(result["jobs"])
 
                 if result["error"]:
                     had_batch_error = True
