@@ -783,7 +783,9 @@ async def opportunities_page(
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
 
         cache_key = _ranking_cache_key(profile)
-        ranking_cached = _get_ranking_cache_entry(session, cache_key) is not None
+        cached = _get_ranking_cache_entry(session, cache_key)
+        ranking_cached = cached is not None
+        cached_ranked = cached.ranked if cached else []
 
         rank_stream_url = "/api/rank-opportunities?" + urlencode(
             _profile_rank_params(profile)
@@ -801,10 +803,12 @@ async def opportunities_page(
                 "likes": likes,
                 "ranked_total": len(onet_jobs),
                 "unranked": unranked,
-                "completed_jobs": 0,
-                "total_jobs": len(onet_jobs),
-                "is_done": False,
+                "completed_jobs": cached.completed_jobs if cached else 0,
+                "total_jobs": cached.total_jobs if cached else len(onet_jobs),
+                "is_done": ranking_cached,
                 "ranking_cached": ranking_cached,
+                "cached_ranked": cached_ranked,
+                "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
             },
         )
 

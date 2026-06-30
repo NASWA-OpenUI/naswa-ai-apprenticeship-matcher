@@ -25,7 +25,8 @@ opportunities{% endif %}{% endblock %}
 <div class="opportunities-page">
   {% if ranked %}
 
-  <div id="ranked-content" hx-ext="sse" sse-connect="{{ rank_stream_url }}" sse-close="done">
+  <div id="ranked-content" {% if not ranking_cached|default(false) %} hx-ext="sse" sse-connect="{{ rank_stream_url }}"
+    sse-close="done" {% endif %}>
     <div class="interests-banner">
       <span class="interests-banner__lead">Matched to your profile:</span>
 
@@ -52,14 +53,20 @@ opportunities{% endif %}{% endblock %}
 
     <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
       <div class="count" id="rank-count" aria-live="polite" aria-atomic="true">
-        <span id="ranked-count">0</span> <span class="visually-hidden">of {{ ranked_total }} </span>opportunities
-        analyzed
+        <span id="ranked-count">{{ cached_ranked|default([])|length if ranking_cached|default(false) else 0 }}</span>
+        <span class="visually-hidden">of {{ ranked_total }} </span>opportunities analyzed
       </div>
       <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches are
         loading.</div>
     </div>
 
-    <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend"></div>
+    <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
+      {% if cached_ranked|default([]) %}
+      {% with ranked=cached_ranked %}
+      {% include "_rank_cards.html" %}
+      {% endwith %}
+      {% endif %}
+    </div>
 
     <div id="rank-errors" sse-swap="batch-error" hx-swap="beforeend"></div>
 
@@ -158,58 +165,78 @@ opportunities{% endif %}{% endblock %}
 {% block scripts %}
 {% if ranked|default(false) %}
 <script>
-  (function () {
+  {
     const matchList = document.getElementById('match-list');
     const rankedCount = document.getElementById('ranked-count');
     const rankStatus = document.getElementById('rank-status');
+    const rankingCached = {{ ranking_cached|default (false) | tojson
+  }};
 
-    sessionStorage.setItem('lastOpportunitiesMode', 'ranked');
-    sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);
-    sessionStorage.setItem('jobRankings', JSON.stringify({ ranked: [] }));
+  sessionStorage.setItem('lastOpportunitiesMode', 'ranked');
+  sessionStorage.setItem('lastOpportunitiesUrl', window.location.href);
 
-    function sortCards() {
-      if (!matchList) return;
+  function sortCards() {
+    if (!matchList) return;
 
-      const cards = Array.from(matchList.querySelectorAll('.match-card'));
+    const cards = Array.from(matchList.querySelectorAll('.match-card'));
 
-      cards.sort((a, b) => {
-        const tierA = Number(a.dataset.tierOrder || 3);
-        const tierB = Number(b.dataset.tierOrder || 3);
+    cards.sort((a, b) => {
+      const tierA = Number(a.dataset.tierOrder || 3);
+      const tierB = Number(b.dataset.tierOrder || 3);
 
-        if (tierA !== tierB) {
-          return tierA - tierB;
-        }
+      if (tierA !== tierB) {
+        return tierA - tierB;
+      }
 
-        const indexA = Number(a.dataset.sortIndex || 0);
-        const indexB = Number(b.dataset.sortIndex || 0);
+      const indexA = Number(a.dataset.sortIndex || 0);
+      const indexB = Number(b.dataset.sortIndex || 0);
 
-        return indexA - indexB;
-      });
+      return indexA - indexB;
+    });
 
-      cards.forEach(card => matchList.appendChild(card));
+    cards.forEach(card => matchList.appendChild(card));
+  }
+
+  function syncRankingsToSessionStorage() {
+    if (!matchList) return;
+
+    const rankings = Array.from(matchList.querySelectorAll('.match-card')).map(card => {
+      return {
+        id: card.dataset.rankingId,
+        tier: card.dataset.rankingTier,
+        explanation: card.dataset.rankingExplanation || ''
+      };
+    });
+
+    sessionStorage.setItem('jobRankings', JSON.stringify({ ranked: rankings }));
+  }
+
+  function updateCount() {
+    if (!matchList || !rankedCount) return;
+
+    const count = matchList.querySelectorAll('.match-card').length;
+    rankedCount.textContent = String(count);
+  }
+
+  function revealUnranked() {
+    const unranked = document.getElementById('unranked-opportunities');
+    if (unranked) {
+      unranked.hidden = false;
+      requestAnimationFrame(() => unranked.classList.add('is-revealed'));
+    }
+  }
+
+  sortCards();
+  updateCount();
+  syncRankingsToSessionStorage();
+
+  if (rankingCached) {
+    if (rankStatus) {
+      rankStatus.textContent = 'Matches loaded from cached results. Matches generated using AI.';
     }
 
-    function syncRankingsToSessionStorage() {
-      if (!matchList) return;
-
-      const rankings = Array.from(matchList.querySelectorAll('.match-card')).map(card => {
-        return {
-          id: card.dataset.rankingId,
-          tier: card.dataset.rankingTier,
-          explanation: card.dataset.rankingExplanation || ''
-        };
-      });
-
-      sessionStorage.setItem('jobRankings', JSON.stringify({ ranked: rankings }));
-    }
-
-    function updateCount() {
-      if (!matchList || !rankedCount) return;
-
-      const count = matchList.querySelectorAll('.match-card').length;
-      rankedCount.textContent = String(count);
-    }
-
+    revealUnranked();
+  } else {
     document.body.addEventListener('htmx:sseMessage', function (event) {
       const type = event.detail.type;
       if (type !== 'batch' && type !== 'done') return;
@@ -218,27 +245,28 @@ opportunities{% endif %}{% endblock %}
 
       requestAnimationFrame(() => {
         sortCards();
-        updateCount();              // updates #ranked-count → announced via the live .count region
+        updateCount();
         syncRankingsToSessionStorage();
 
         if (type === 'done') {
           const tail = Number.isFinite(secs) ? ` in ${secs}s` : '';
-          if (rankStatus) rankStatus.textContent = `Ranking complete${tail}. Matches generated using AI.`;
+          if (rankStatus) {
+            rankStatus.textContent = `Ranking complete${tail}. Matches generated using AI.`;
+          }
         }
       });
 
       if (type === 'done') {
         const panel = document.getElementById('rank-progress');
-        if (panel) setTimeout(() => panel.classList.add('is-collapsed'), 3000);
-
-        const unranked = document.getElementById('unranked-opportunities');
-        if (unranked) {
-          unranked.hidden = false;
-          requestAnimationFrame(() => unranked.classList.add('is-revealed'));
+        if (panel) {
+          setTimeout(() => panel.classList.add('is-collapsed'), 3000);
         }
+
+        revealUnranked();
       }
     });
-  })();
+  }
+  }
 </script>
 {% else %}
 <script>
