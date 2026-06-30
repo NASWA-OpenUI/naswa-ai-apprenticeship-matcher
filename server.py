@@ -37,7 +37,6 @@ load_dotenv(BASE_DIR / ".env")
 
 # ── Jinja2 setup ────────────────────────────────────────────────────────────────
 
-
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 templates.env.filters.update(TEMPLATE_FILTERS)
 
@@ -47,7 +46,7 @@ def render(name: str, **ctx) -> str:
     return templates.env.get_template(name).render(**ctx)
 
 
-# ── HTML fragment helpers ─────────────────────────────────────────────────────
+# ── HTML/SSE fragment helpers ────────────────────────────────────────────────
 
 
 def _render_rank_count(
@@ -276,7 +275,7 @@ def make_scoring_model() -> BedrockModel:
     return make_bedrock_model(SCORING_MODEL_NAME, streaming=False)
 
 
-# ── Set up lightweight sessions ────────────────────────────────────────────────
+# ── Session state ─────────────────────────────────────────────────────────────
 
 SESSION_COOKIE_NAME = "tyler_demo_session"
 SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7  # 7 days
@@ -386,6 +385,8 @@ def _set_session_cookie(response, session_id: str) -> None:
     )
 
 
+# ── Ranking cache helpers ────────────────────────────────────────────────────
+
 RANKING_CACHE_VERSION = "rank-cache-v1"
 
 
@@ -451,7 +452,7 @@ def _get_ranking_cache_entry(
     return entry
 
 
-# ── ONET scoring ──────────────────────────────────────────────────────────────
+# ── Ranking orchestration helpers ────────────────────────────────────────────
 
 RANKING_BATCH_SIZE = int(os.getenv("RANKING_BATCH_SIZE", "10"))
 RANKING_MAX_CONCURRENCY = int(os.getenv("RANKING_MAX_CONCURRENCY", "3"))
@@ -488,6 +489,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+
 
 # ── AWS Healthcheck ───────────────────────────────────────────────────────────
 
@@ -668,6 +670,27 @@ async def chat_stream(request: Request):
     return response
 
 
+# ── Opportunities request-shaping helpers ──────────────────────────────────────────────────
+
+
+def _rank_profile_from_query(
+    *,
+    likes: list[str],
+    dislikes: list[str],
+    location: str | None,
+    transportation: str | None,
+    use_location_matching: bool,
+) -> dict:
+    """Build the ranking profile from opportunity query parameters."""
+    return {
+        "likes": likes,
+        "dislikes": dislikes,
+        "location": location,
+        "transportation": transportation,
+        "use_location_matching": use_location_matching,
+    }
+
+
 # ── Opportunities page ────────────────────────────────────────────────────────
 
 
@@ -682,13 +705,13 @@ async def opportunities_page(
     use_location_matching: bool = True,
 ):
     """Serve the opportunities list, optionally in ranked mode."""
-    profile = {
-        "likes": likes,
-        "dislikes": dislikes,
-        "location": location,
-        "transportation": transportation,
-        "use_location_matching": use_location_matching,
-    }
+    profile = _rank_profile_from_query(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+    )
 
     if ranked and likes:
         session_id, session, needs_cookie = _get_or_create_session(request)
@@ -784,13 +807,13 @@ async def rank_opportunities_stream(
     """
     session_id, session, needs_cookie = _get_or_create_session(request)
 
-    profile = {
-        "likes": likes,
-        "dislikes": dislikes,
-        "location": location,
-        "transportation": transportation,
-        "use_location_matching": use_location_matching,
-    }
+    profile = _rank_profile_from_query(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+    )
 
     cache_key = _ranking_cache_key(profile)
     cached = _get_ranking_cache_entry(session, cache_key)
@@ -1040,6 +1063,8 @@ async def rank_opportunities_stream(
                     "_rank_progress.html",
                     completed_jobs=completed_jobs,
                     total_jobs=len(onet_jobs),
+                    completed_openings=completed_openings,
+                    total_openings=total_openings,
                     is_done=False,
                     elapsed_seconds=elapsed_seconds,
                 )
