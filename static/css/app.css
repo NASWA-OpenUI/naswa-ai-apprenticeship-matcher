@@ -1458,6 +1458,44 @@ a.btn--accent:focus {
   color: var(--nys-color-theme-stronger);
 }
 
+.match-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.match-card__openings {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-ink);
+}
+
+.match-card__openings svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--app-text-weak);
+}
+
+.match-card__details-link {
+  color: var(--nys-color-theme);
+  text-decoration: none;
+}
+
+.match-card__details-link:hover,
+.match-card__details-link:focus {
+  text-decoration: underline;
+}
+
+.match-card__details-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
 @media (max-width: 640px) {
   .interests-banner__link {
     width: 100%;
@@ -1471,6 +1509,14 @@ a.btn--accent:focus {
 
   .match-card__why {
     padding: 0.6rem;
+  }
+
+  .match-card__footer {
+    align-items: flex-start;
+  }
+
+  .match-card__details-link {
+    margin-left: 0;
   }
 }
 
