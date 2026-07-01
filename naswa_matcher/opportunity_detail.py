@@ -21,10 +21,7 @@ _MONTHS = [
 
 def _application_fee(value) -> int | None:
     """Return a positive application fee, or None when blank/free/missing."""
-    if value is None:
-        return None
-
-    if value == "":
+    if value is None or value == "":
         return None
 
     try:
@@ -33,6 +30,12 @@ def _application_fee(value) -> int | None:
         return None
 
     return fee if fee > 0 else None
+
+
+def _license_required(posting: dict) -> bool:
+    """Return whether the posting mentions a driver's license requirement."""
+    transportation_requirement = posting.get("transportationRequirement") or ""
+    return "license" in transportation_requirement.lower()
 
 
 def _today_in_new_york() -> date:
@@ -94,6 +97,17 @@ def _application_chip_label(
     return f"Applications closed {_format_chip_date(end)}"
 
 
+def build_opportunity_summary(opp: dict) -> dict:
+    """Build small reusable summary facts for opportunity cards and detail pages."""
+    posting = opp.get("posting", {})
+
+    return {
+        "number_of_openings": posting.get("numberOfOpenings"),
+        "application_fee": _application_fee(posting.get("applicationFee")),
+        "license_required": _license_required(posting),
+    }
+
+
 def build_opportunity_detail(
     opp: dict,
     *,
@@ -111,9 +125,8 @@ def build_opportunity_detail(
         today=today,
     )
 
-    application_fee = _application_fee(posting.get("applicationFee"))
-
-    transportation_requirement = posting.get("transportationRequirement") or ""
+    opportunity_summary = build_opportunity_summary(opp)
+    application_fee = opportunity_summary["application_fee"]
 
     bottom_apply_parts = []
 
@@ -127,9 +140,9 @@ def build_opportunity_detail(
         "application_start_date": application_start_date,
         "application_end_date": application_end_date,
         "application_chip_label": application_chip_label,
-        "number_of_openings": posting.get("numberOfOpenings"),
+        "number_of_openings": opportunity_summary["number_of_openings"],
         "application_fee": application_fee,
-        "license_required": "license" in transportation_requirement.lower(),
+        "license_required": opportunity_summary["license_required"],
         "source_url": posting.get("sourceUrl"),
         "apply_url": "#",
         "bottom_apply_note": " · ".join(bottom_apply_parts),

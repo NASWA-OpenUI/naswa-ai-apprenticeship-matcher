@@ -7,7 +7,9 @@ from naswa_matcher.opportunity_detail import (
     _application_fee,
     _format_application_range,
     _format_chip_date,
+    _license_required,
     build_opportunity_detail,
+    build_opportunity_summary,
 )
 
 
@@ -33,6 +35,41 @@ def test_application_fee_returns_positive_integer_or_none(value, expected):
     """Verifies that application fees are normalized to positive integers and
     blank, zero, negative, or invalid values are treated as no fee."""
     assert _application_fee(value) == expected
+
+
+@pytest.mark.parametrize(
+    ("transportation_requirement", "expected"),
+    [
+        (None, False),
+        ("", False),
+        ("Must have reliable transportation.", False),
+        (
+            "Must have a valid driver's license and reliable transportation.",
+            True,
+        ),
+        (
+            "Must have a valid New York State driver’s license to operate company vehicles.",
+            True,
+        ),
+        (
+            "Must possess a valid NYS driver's license.",
+            True,
+        ),
+        (
+            "Must have a valid DRIVER'S LICENSE and reliable transportation.",
+            True,
+        ),
+    ],
+)
+def test_license_required_checks_transportation_requirement(
+    transportation_requirement,
+    expected,
+):
+    """Verifies that driver's license requirements are derived from the
+    transportationRequirement text using the wording that appears in the data."""
+    posting = {"transportationRequirement": transportation_requirement}
+
+    assert _license_required(posting) is expected
 
 
 @pytest.mark.parametrize(
@@ -168,6 +205,54 @@ def make_opp(
             "transportationRequirement": transportation,
             "sourceUrl": source_url,
         }
+    }
+
+
+def test_build_opportunity_summary_returns_card_and_detail_facts():
+    """Verifies that reusable opportunity summary facts are derived from the
+    posting fields used by both ranked cards and detail pages."""
+    summary = build_opportunity_summary(
+        make_opp(
+            fee="25",
+            openings=4,
+            transportation="Must have a valid driver's license.",
+        )
+    )
+
+    assert summary == {
+        "number_of_openings": 4,
+        "application_fee": 25,
+        "license_required": True,
+    }
+
+
+def test_build_opportunity_summary_hides_missing_fee_and_license():
+    """Verifies that blank fees and transportation-only requirements do not
+    produce fee or license indicators."""
+    summary = build_opportunity_summary(
+        make_opp(
+            fee="",
+            openings=8,
+            transportation="Must have reliable transportation to job sites and classes.",
+        )
+    )
+
+    assert summary == {
+        "number_of_openings": 8,
+        "application_fee": None,
+        "license_required": False,
+    }
+
+
+def test_build_opportunity_summary_handles_missing_posting():
+    """Verifies that a malformed/minimal opportunity does not raise while
+    deriving summary values."""
+    summary = build_opportunity_summary({})
+
+    assert summary == {
+        "number_of_openings": None,
+        "application_fee": None,
+        "license_required": False,
     }
 
 

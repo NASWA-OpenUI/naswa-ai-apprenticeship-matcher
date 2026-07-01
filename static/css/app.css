@@ -1545,8 +1545,7 @@ a.btn--accent:focus {
   border-radius: var(--app-radius-md);
   background: var(--app-surface-reverse);
   color: var(--app-text-reverse);
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.9rem;
   line-height: 1.25;
   text-align: center;
   white-space: nowrap;

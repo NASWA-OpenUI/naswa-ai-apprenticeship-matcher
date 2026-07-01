@@ -13,6 +13,7 @@ from naswa_matcher.location_matching import (
     location_fit,
     should_use_location_matching,
 )
+from naswa_matcher.opportunity_detail import build_opportunity_summary
 
 ModelFactory = Callable[[], Any]
 
@@ -188,6 +189,7 @@ def build_ranked_items(
                 "location_fit": job_location_fit,
                 "explanation": score.get("explanation", ""),
                 "posting": job["posting"],
+                "summary": build_opportunity_summary(job),
             }
         )
 

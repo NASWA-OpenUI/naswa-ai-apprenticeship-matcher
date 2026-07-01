@@ -300,7 +300,8 @@ def test_build_job_summary_omits_location_fit_when_location_matching_disabled():
 
 
 def test_build_ranked_items_attaches_scores_to_jobs():
-    """Verifies that model scores are attached to jobs using each job ID."""
+    """Verifies that model scores and derived opportunity summary facts are
+    attached to jobs using each job ID."""
     profile = {
         "likes": ["hands-on work"],
         "location": "Buffalo area",
@@ -313,6 +314,11 @@ def test_build_ranked_items_attaches_scores_to_jobs():
                 "jobTitle": "Electrician Apprentice",
                 "locationSummary": "Buffalo, NY area",
                 "regions": ["Western New York"],
+                "numberOfOpenings": 3,
+                "applicationFee": "25",
+                "transportationRequirement": (
+                    "Must have a valid driver's license and reliable transportation."
+                ),
             },
         }
     ]
@@ -341,6 +347,11 @@ def test_build_ranked_items_attaches_scores_to_jobs():
             "location_fit": "local",
             "explanation": "Good fit for hands-on technical work.",
             "posting": jobs[0]["posting"],
+            "summary": {
+                "number_of_openings": 3,
+                "application_fee": 25,
+                "license_required": True,
+            },
         }
     ]
 

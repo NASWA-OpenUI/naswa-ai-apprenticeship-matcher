@@ -1,6 +1,7 @@
 {# templates/_rank_cards.html #}
 
 {% for item in ranked %}
+{% set summary = item.summary %}
 {% set tier_class = item.tier | lower %}
 <article class="match-card match-card--{{ tier_class }} surface surface--shadow" data-tier-order="{{ item.tier_order }}"
   data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}" data-ranking-tier="{{ item.tier }}"
@@ -32,7 +33,7 @@
 
     <div class="match-card__footer">
       <div class="match-card__summary">
-        {% set openings = item.posting.numberOfOpenings %}
+        {% set openings = summary.number_of_openings %}
         <span class="match-card__openings">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
             <path d="M4 21V8l8-4 8 4v13M3 21h18M9 21v-5h6v5" stroke="currentColor" stroke-width="2"
@@ -45,21 +46,29 @@
           </span>
         </span>
 
-        {% set application_fee = item.posting.applicationFee | int %}
-        {% if application_fee > 0 %}
+        {% if summary.application_fee %}
         {% with
         tooltip_id="application-fee-tooltip-" ~ item.id,
-        label="$" ~ application_fee ~ " application fee",
+        label="$" ~ summary.application_fee ~ " application fee",
         icon="fee"
+        %}
+        {% include "_meta_icon_tooltip.html" %}
+        {% endwith %}
+        {% endif %}
+
+        {% if summary.license_required %}
+        {% with
+        tooltip_id="license-tooltip-" ~ item.id,
+        label="Driver’s license required",
+        icon="license"
         %}
         {% include "_meta_icon_tooltip.html" %}
         {% endwith %}
         {% endif %}
       </div>
 
-      <a class="match-card__details-link with-svg" href="/opportunities/{{ item.id }}"
-        aria-label="View details for {{ item.posting.jobTitle }}">
-        View details
+      <a class="match-card__details-link with-svg" href="/opportunities/{{ item.id }}" aria-hidden="true" tabindex="-1">
+        <strong>View details</strong>
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
