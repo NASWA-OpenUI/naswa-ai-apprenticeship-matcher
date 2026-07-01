@@ -1,6 +1,10 @@
-<span class="icon-tooltip">
-    <button type="button" class="icon-tooltip__trigger" aria-label="{{ label }}" aria-describedby="{{ tooltip_id }}"
-        data-tooltip-trigger>
+{% set trigger_label = trigger_label | default(label) %}
+{% set tooltip_text = tooltip_text | default(label) %}
+{% set tooltip_class = tooltip_class | default("") %}
+
+<span class="icon-tooltip {{ tooltip_class }}">
+    <button type="button" class="icon-tooltip__trigger" aria-label="{{ trigger_label }}"
+        aria-describedby="{{ tooltip_id }}" data-tooltip-trigger>
         {% if icon == "fee" %}
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
@@ -16,10 +20,16 @@
             <circle cx="8.5" cy="12" r="2" stroke="currentColor" stroke-width="2" />
             <path d="M13 10h5M13 14h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
+        {% elif icon == "info" %}
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+            <path d="M12 10.5V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <circle cx="12" cy="7.7" r="1" fill="currentColor" />
+        </svg>
         {% endif %}
     </button>
 
     <span id="{{ tooltip_id }}" class="icon-tooltip__bubble" role="tooltip" aria-hidden="true">
-        {{ label }}
+        {{ tooltip_text }}
     </span>
 </span>

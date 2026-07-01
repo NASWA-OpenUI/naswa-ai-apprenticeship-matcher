@@ -12,7 +12,7 @@
 {% endif %}
 
 {% if oes.experiencedAnnualWage %}
-<details class="earnings surface surface--clip surface--muted-border">
+<details class="earnings surface surface--muted-border">
     <summary>
         <span>Long-term earning potential</span>
         <svg class="earnings__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
@@ -21,40 +21,94 @@
         </svg>
     </summary>
 
-    <div class="earnings__bars">
-        <div class="earnings__bar">
-            <div class="earnings__row">
-                <span class="earnings__label">Entry-level</span>
-                <span class="earnings__value">{{ oes.entryAnnualWage | format_wage }}</span>
+    <div class="earnings__container">
+        <div class="earnings__bars">
+            <div class="earnings__bar">
+                <div class="earnings__row">
+                    <div class="earnings__label-stack">
+                        <span class="earnings__label-group">
+                            <span class="earnings__label">Starting Wage</span>
+                            {% with
+                            tooltip_id="starting-wage-tooltip",
+                            trigger_label="More about Starting Wage",
+                            label="Starting Wage",
+                            tooltip_text="Lower-end pay for workers with minimal experience.",
+                            icon="info",
+                            tooltip_class="icon-tooltip--earnings"
+                            %}
+                            {% include "_meta_icon_tooltip.html" %}
+                            {% endwith %}
+                        </span>
+                        <span class="earnings__subtitle">Annual salary for workers just starting out.</span>
+                    </div>
+
+                    <span class="earnings__value">{{ oes.entryAnnualWage | format_wage }}</span>
+                </div>
+                <div class="progress-track earnings__track" aria-hidden="true">
+                    <div class="progress-fill"
+                        style="width: {{ oes.entryAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
+                </div>
             </div>
-            <div class="progress-track earnings__track" aria-hidden="true">
-                <div class="progress-fill"
-                    style="width: {{ oes.entryAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
+
+            <div class="earnings__bar">
+                <div class="earnings__row">
+                    <div class="earnings__label-stack">
+                        <span class="earnings__label-group">
+                            <span class="earnings__label">Median Wage</span>
+                            {% with
+                            tooltip_id="median-wage-tooltip",
+                            trigger_label="More about Median Wage",
+                            label="Median Wage",
+                            tooltip_text="Common earning level for established professionals.",
+                            icon="info",
+                            tooltip_class="icon-tooltip--earnings"
+                            %}
+                            {% include "_meta_icon_tooltip.html" %}
+                            {% endwith %}
+                        </span>
+                        <span class="earnings__subtitle">Annual salary of the typical worker in this occupation.</span>
+                    </div>
+
+                    <span class="earnings__value">{{ oes.medianAnnualWage | format_wage }}</span>
+                </div>
+                <div class="progress-track earnings__track" aria-hidden="true">
+                    <div class="progress-fill"
+                        style="width: {{ oes.medianAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
+                </div>
+            </div>
+
+            <div class="earnings__bar">
+                <div class="earnings__row">
+                    <div class="earnings__label-stack">
+                        <span class="earnings__label-group">
+                            <span class="earnings__label">Top Earner Wage</span>
+                            {% with
+                            tooltip_id="top-earner-wage-tooltip",
+                            trigger_label="More about Top Earner Wage",
+                            label="Top Earner Wage",
+                            tooltip_text="Higher-end pay for senior professionals at the peak of their careers.",
+                            icon="info",
+                            tooltip_class="icon-tooltip--earnings"
+                            %}
+                            {% include "_meta_icon_tooltip.html" %}
+                            {% endwith %}
+                        </span>
+                        <span class="earnings__subtitle">Annual salary for highly experienced workers.</span>
+                    </div>
+
+                    <span class="earnings__value">{{ oes.experiencedAnnualWage | format_wage }}</span>
+                </div>
+                <div class="progress-track earnings__track" aria-hidden="true">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
             </div>
         </div>
 
-        {% if oes.medianAnnualWage %}
-        <div class="earnings__bar">
-            <div class="earnings__row">
-                <span class="earnings__label">Mid-career</span>
-                <span class="earnings__value">{{ oes.medianAnnualWage | format_wage }}</span>
-            </div>
-            <div class="progress-track earnings__track" aria-hidden="true">
-                <div class="progress-fill"
-                    style="width: {{ oes.medianAnnualWage | percent_of(oes.experiencedAnnualWage) }}%;"></div>
-            </div>
-        </div>
-        {% endif %}
+        <p class="earnings__summary">The earning potential for <strong>{{ oes.socTitle }}</strong> typically ranges from
+            {{ oes.entryAnnualWage | format_wage }}
+            to {{ oes.experiencedAnnualWage | format_wage }} annually. <br>
+            The median salary, representing the typical worker, is {{ oes.medianAnnualWage | format_wage }}.</p>
 
-        <div class="earnings__bar">
-            <div class="earnings__row">
-                <span class="earnings__label">Experienced</span>
-                <span class="earnings__value">{{ oes.experiencedAnnualWage | format_wage }}</span>
-            </div>
-            <div class="progress-track earnings__track" aria-hidden="true">
-                <div class="progress-fill" style="width: 100%;"></div>
-            </div>
-        </div>
     </div>
 </details>
 {% endif %}
