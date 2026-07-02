@@ -1,9 +1,9 @@
 {% set oes = opp.oes %}
 
 {% if oes and oes.entryAnnualWage %}
-<h3 class="detail-subheading">Entry-level annual wage</h3>
+<h3 class="detail-subheading">Starting wage</h3>
 
-<div class="detail-wage" aria-label="Entry-level annual wage: {{ oes.entryAnnualWage | format_wage }}">
+<div class="detail-wage" aria-label="Starting wage: {{ oes.entryAnnualWage | format_wage }}">
     {{ oes.entryAnnualWage | format_wage }}
 </div>
 

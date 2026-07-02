@@ -94,7 +94,17 @@ scripts, and the outer #main-content landmark.
 and opp.onet.detailed_work_activities.data else [] %}
 {% set styles = opp.onet.work_styles.data.element if opp.onet and opp.onet.work_styles and opp.onet.work_styles.data
 else [] %}
-{% set has_occupation = (opp.oes and opp.oes.entryAnnualWage) or activities or styles %}
+
+{% set job_description_data = opp.jobDescription if opp.jobDescription else {} %}
+{% set job_display_title = job_description_data.displayJobTitle or opp.posting.jobTitle %}
+{% set job_description = job_description_data.description or (opp.onet.description if opp.onet and opp.onet.description
+else None) %}
+{% set first_letter = job_display_title[:1] | lower %}
+{% set article = "an" if first_letter in ["a", "e", "i", "o", "u"] else "a" %}
+
+{% set has_job_intro = job_description %}
+{% set has_pay = opp.oes and opp.oes.entryAnnualWage %}
+{% set has_about = activities or styles %}
 {% set has_requirements = opp.posting.allRequirements %}
 {% set has_contact = opp.posting.contactSummary or opp.posting.contactName or opp.posting.contactPhone or
 opp.posting.contactEmail or opp.posting.contactWebsite %}
@@ -125,16 +135,26 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
       </section>
       {% endif %}
 
-      {% if has_occupation %}
-      <section class="detail-section" id="occupation">
-        <h2 class="detail-section__heading">About the occupation</h2>
+      {% if has_job_intro %}
+      <section class="detail-section" id="job-intro">
+        <h2 class="detail-section__heading">What is {{ article }} {{ job_display_title }}?</h2>
+        <p>{{ job_description }}</p>
+      </section>
+      {% endif %}
 
-        {% if opp.oes and opp.oes.entryAnnualWage %}
+      {% if has_pay %}
+      <section class="detail-section" id="pay">
+        <h2 class="detail-section__heading">Pay &amp; earning potential</h2>
         {% include "_earnings.html" %}
-        {% endif %}
+      </section>
+      {% endif %}
+
+      {% if has_about %}
+      <section class="detail-section" id="about">
+        <h2 class="detail-section__heading">About this job</h2>
 
         {% if activities %}
-        <h3 class="detail-subheading">Common work activities</h3>
+        <h3 class="detail-subheading">What you might do day to day</h3>
         <ul class="detail-clean-list">
           {% for act in activities[:5] %}
           <li>{{ act.title }}</li>
@@ -143,7 +163,7 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
         {% endif %}
 
         {% if styles %}
-        <h3 class="detail-subheading">Key work styles</h3>
+        <h3 class="detail-subheading">Helpful traits for this job</h3>
         <ul class="detail-clean-list">
           {% for style in styles[:5] %}
           <li>{{ style.name }}</li>
@@ -172,7 +192,7 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
 
       {% if has_requirements %}
       <section class="detail-section" id="requirements">
-        <h2 class="detail-section__heading">Requirements</h2>
+        <h2 class="detail-section__heading">Job requirements</h2>
         <ul class="detail-clean-list">
           {% for req in opp.posting.allRequirements %}
           <li>{{ req }}</li>
@@ -249,9 +269,13 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
         {% if opp.onet %}
         <li id="on-this-page-match" hidden><a href="#match">Why this matches you</a></li>
         {% endif %}
-        {% if has_occupation %}<li><a class="active" href="#occupation">About the occupation</a></li>{% endif %} {% if
-        opp.posting.applicationSummary %}<li><a href="#apply">How to apply</a></li>{% endif %}
-        {% if has_requirements %}<li><a href="#requirements">Requirements</a></li>{% endif %}
+        {% if has_job_intro %}
+        <li><a class="active" href="#job-intro">What is {{ article }} {{ job_display_title }}?</a></li>
+        {% endif %}
+        {% if has_pay %}<li><a href="#pay">Pay &amp; earning potential</a></li>{% endif %}
+        {% if has_about %}<li><a href="#about">About this job</a></li>{% endif %}
+        {% if opp.posting.applicationSummary %}<li><a href="#apply">How to apply</a></li>{% endif %}
+        {% if has_requirements %}<li><a href="#requirements">Job requirements</a></li>{% endif %}
         {% if has_contact %}<li><a href="#contact">More information</a></li>{% endif %}
       </ul>
     </nav>
