@@ -68,6 +68,10 @@
     "contactWebsite": "https://www.nyccarpenterstrainingcenter.org",
     "contactSummary": "For further information, contact High Rise Concrete Carpenters of New York City at (212) 727-2224 Ext. “Admissions” when calling the training center."
   },
+  "jobDescription": {
+    "displayJobTitle": "Carpenter",
+    "description": "A Carpenter builds, installs, and repairs wooden parts of buildings and other structures. They measure and cut lumber, frame walls, hang doors, fit windows, build stairs, and install cabinets, floors, and trim using hand and power tools. Their work helps create solid spaces people can live in, work in, and use safely every day."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

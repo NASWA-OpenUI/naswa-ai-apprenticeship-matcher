@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "Call Plumbers & Steamfitters Local Union #22 for more information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Steamfitter",
+    "description": "A Steamfitter installs, repairs, and maintains the pipes, valves, and fittings that carry steam, gas, water, and other fluids in buildings and industrial sites. They measure and cut pipe, weld or bolt sections together, test for leaks, and troubleshoot systems. Their work keeps heating, cooling, and production equipment running safely and reliably."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

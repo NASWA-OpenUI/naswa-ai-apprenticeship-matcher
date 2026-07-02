@@ -56,6 +56,10 @@
     "contactWebsite": null,
     "contactSummary": "Call Plumbers and Steamfitters Local Union #773 at (518) 792-9157 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Heating, Ventilation, and Air Conditioning Mechanic",
+    "description": "A Heating, Ventilation, and Air Conditioning Mechanic installs, tests, repairs, and maintains furnaces, air conditioners, heat pumps, ventilation fans, and duct systems in homes and buildings. They handle tools, wiring, pipes, and gauges to find problems and keep equipment working properly. Their work keeps indoor air comfortable, systems efficient, and buildings safe to use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

@@ -63,6 +63,10 @@
     "contactWebsite": "https://www.smw112.org",
     "contactSummary": "Contact JATC for Area Sheet Metal Workers, Local Union #112 at (607) 733-3732 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Sheet Metal Worker",
+    "description": "A Sheet Metal Worker makes, installs, and repairs metal parts used in buildings and equipment. They measure and cut sheet metal, bend and shape it, and fasten ducts, vents, flashing, and panels using hand tools, power tools, and welding equipment. Their work helps heating, cooling, and building systems fit properly and keep running safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

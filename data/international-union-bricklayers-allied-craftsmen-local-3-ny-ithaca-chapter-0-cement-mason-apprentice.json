@@ -52,6 +52,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Cement Mason",
+    "description": "A Cement Mason works with wet concrete on sidewalks, floors, roads, curbs, and building foundations. They spread, level, smooth, and finish the surface using hand and power tools, and may add joints, patterns, or protective coatings. Their work helps concrete structures stay strong, even, durable, and safe for everyday use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

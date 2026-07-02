@@ -54,6 +54,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Boilermakers Northeast JATC, Local Union #5, Zone #7 at (716) 667-0861 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Boilermaker",
+    "description": "A Boilermaker in construction builds, installs, and repairs large metal tanks, boilers, and pressure vessels on job sites. They read blueprints, cut and fit steel plates, weld parts together, bolt sections in place, and test for leaks or pressure problems. Their work helps keep industrial buildings, heating systems, and heavy equipment running safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

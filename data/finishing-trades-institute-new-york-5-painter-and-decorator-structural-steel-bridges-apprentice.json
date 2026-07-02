@@ -52,6 +52,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Finishing Trades Institute of New York at (718) 937-7440 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Painter and Decorator",
+    "description": "A Painter and Decorator working on structural steel bridges cleans, sands, blasts, and coats steel beams, railings, and other bridge parts with protective paint systems. They set up equipment, prepare surfaces, and apply finishes that resist rust, weather, and wear, often high above the ground. Their work helps keep bridges strong, safe, and lasting longer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

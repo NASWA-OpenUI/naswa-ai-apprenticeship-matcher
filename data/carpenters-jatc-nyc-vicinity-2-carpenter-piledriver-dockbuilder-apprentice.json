@@ -69,6 +69,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
   },
+  "jobDescription": {
+    "displayJobTitle": "Carpenter",
+    "description": "A Carpenter who works as a piledriver or dockbuilder builds and repairs heavy wooden structures along shorelines and in the water. They drive piles deep into the ground, frame docks and piers, bolt timbers and steel parts together, and work from barges, cranes, and temporary platforms. Their work keeps waterfront structures strong, stable, and safe."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

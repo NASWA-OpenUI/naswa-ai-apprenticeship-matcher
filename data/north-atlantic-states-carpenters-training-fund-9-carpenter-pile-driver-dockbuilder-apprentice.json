@@ -54,6 +54,10 @@
     "contactWebsite": "https://www.nasctf.org",
     "contactSummary": "North Atlantic States Carpenters Training Fund, (631) 952-9555, for application help and further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Carpenter",
+    "description": "A Carpenter who works as a pile driver or dockbuilder builds and repairs heavy wooden structures along waterfronts and deep foundations. They drive piles into the ground, frame docks, bridges, and retaining walls, cut and fasten large timbers, and work around cranes, barges, and concrete forms. Their work supports structures, shorelines, and marine access areas safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

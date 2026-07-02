@@ -50,6 +50,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
   },
+  "jobDescription": {
+    "displayJobTitle": "Plumber and Pipefitter",
+    "description": "A Plumber and Pipefitter installs, repairs, and maintains pipes, fixtures, and systems that carry water, gas, steam, and waste through buildings and industrial sites. They cut and join pipe, fit valves, connect sinks and boilers, test for leaks, and troubleshoot problems. Their work keeps water flowing, waste moving, and heating and piping systems running safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

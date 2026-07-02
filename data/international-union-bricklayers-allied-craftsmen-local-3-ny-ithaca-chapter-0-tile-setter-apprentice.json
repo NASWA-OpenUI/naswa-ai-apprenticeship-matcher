@@ -52,6 +52,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile Setter",
+    "description": "A Tile Setter installs tile on floors, walls, showers, countertops, and other surfaces in homes and buildings. They measure spaces, cut tile to fit, spread mortar or adhesive, set each piece in place, grout the joints, and clean the finished surface. Their work creates durable, easy-to-clean surfaces that protect walls and floors from water and wear."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

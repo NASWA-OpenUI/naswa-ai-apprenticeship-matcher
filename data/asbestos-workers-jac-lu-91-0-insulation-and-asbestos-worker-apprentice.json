@@ -52,6 +52,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact Asbestos Workers, Local Union #91 at (914) 788-0500."
   },
+  "jobDescription": {
+    "displayJobTitle": "Insulation and Asbestos Worker",
+    "description": "An Insulation and Asbestos Worker installs and removes materials that cover pipes, ducts, boilers, walls, and ceilings. They measure, cut, fit, wrap, and fasten insulation, and in older buildings they seal off areas and safely remove asbestos-containing materials. Their work helps control heat and noise, save energy, and keep buildings safer for the people inside."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

@@ -54,6 +54,10 @@
     "contactWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile, Marble, and Terrazzo Finisher",
+    "description": "A Tile, Marble, and Terrazzo Finisher prepares floors, walls, countertops, and stairs for tile, marble, or terrazzo installation. They spread mortar, level surfaces, patch holes, grind edges, polish finishes, and clean away extra material so everything fits smoothly. Their work helps surfaces look neat, last longer, and stay safe and durable in everyday use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

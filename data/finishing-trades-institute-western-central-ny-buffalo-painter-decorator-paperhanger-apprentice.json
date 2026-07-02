@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112 for further information or help with the online application."
   },
+  "jobDescription": {
+    "displayJobTitle": "Painter, Decorator, and Paperhanger",
+    "description": "A Painter, Decorator, and Paperhanger finishes and updates indoor and outdoor surfaces in homes, offices, and other buildings. They prepare walls and woodwork, scrape and sand old finishes, fill holes, apply paint or stain, and hang wallpaper neatly and straight. Their work protects surfaces from wear and moisture and makes rooms cleaner, brighter, and easier to maintain."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

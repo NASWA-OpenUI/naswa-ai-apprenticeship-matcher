@@ -57,6 +57,10 @@
     "contactWebsite": "https://www.ibew325.net/",
     "contactSummary": "For further information, contact Local Union #325 at (607) 729-6171."
   },
+  "jobDescription": {
+    "displayJobTitle": "Electrician",
+    "description": "An Electrician installs, connects, tests, and repairs wiring, outlets, lights, circuit breakers, and electrical equipment in homes, buildings, and job sites. They read plans, run wire through walls and ceilings, use hand and power tools, and check that systems work safely. Their work keeps power flowing and buildings lit, working, and safer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

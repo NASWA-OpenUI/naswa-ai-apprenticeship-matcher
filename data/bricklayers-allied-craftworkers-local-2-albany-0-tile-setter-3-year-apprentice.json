@@ -56,6 +56,10 @@
     "contactWebsite": null,
     "contactSummary": "Call the JATC for Bricklayers & Allied Craftworkers, Local Union #2 at (518) 456-5477 for more information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile Setter",
+    "description": "A Tile Setter covers floors, walls, showers, and backsplashes with tile in homes and buildings. They measure spaces, cut tile, spread adhesive, set pieces in straight patterns, grout joints, and seal surfaces so they look neat and stay in place. Their work builds durable, easy-to-clean surfaces and helps keep rooms protected from wear and moisture."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

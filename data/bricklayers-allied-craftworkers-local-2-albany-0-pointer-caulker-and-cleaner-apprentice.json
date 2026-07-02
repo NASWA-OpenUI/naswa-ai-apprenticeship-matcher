@@ -56,6 +56,10 @@
     "contactWebsite": null,
     "contactSummary": "Call the JATC for Bricklayers & Allied Craftworkers, Local Union #2 at (518) 456-5477 for more information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Pointer, Caulker, and Cleaner",
+    "description": "A Pointer, Caulker, and Cleaner repairs and protects the outside of brick, stone, and concrete buildings. They rake out damaged mortar, pack in new mortar between joints, seal cracks and gaps with caulk, and wash or sandblast surfaces to remove grime and stains, often while working from scaffolds. This keeps walls strong, dry, clean, and safer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

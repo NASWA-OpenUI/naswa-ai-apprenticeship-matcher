@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Finishing Trades Institute of Western and Central New York at (716) 565-0112 for more information or help with the online application."
   },
+  "jobDescription": {
+    "displayJobTitle": "Glazier",
+    "description": "A Glazier installs, replaces, and repairs glass in windows, doors, storefronts, skylights, and display cases. They measure openings, cut and fit glass, set panels into frames, seal edges, and sometimes handle mirrors or metal framing. Their work helps buildings stay weather-tight, bright, secure, and safe for everyday use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

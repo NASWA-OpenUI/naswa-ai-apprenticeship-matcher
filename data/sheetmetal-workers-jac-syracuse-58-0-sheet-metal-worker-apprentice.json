@@ -60,6 +60,10 @@
     "contactWebsite": null,
     "contactSummary": "For more information, contact Sheet Metal Workers, Local Union #58 at (315) 472-4411."
   },
+  "jobDescription": {
+    "displayJobTitle": "Sheet Metal Worker",
+    "description": "A Sheet Metal Worker makes, installs, and repairs metal parts used in buildings and equipment. They measure and cut sheet metal, bend and shape it, and fasten ducts, vents, flashing, and panels using hand tools, power tools, and welding equipment. Their work helps heating, cooling, and building systems fit properly and keep running safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

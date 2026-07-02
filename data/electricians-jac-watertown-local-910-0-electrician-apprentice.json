@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact Electricians JATC of Watertown, Local Union #910 at (315) 782-1675."
   },
+  "jobDescription": {
+    "displayJobTitle": "Electrician",
+    "description": "An Electrician installs, connects, tests, and repairs wiring, outlets, lights, circuit breakers, and electrical equipment in homes, buildings, and job sites. They read plans, run wire through walls and ceilings, use hand and power tools, and check that systems work safely. Their work keeps power flowing and buildings lit, working, and safer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

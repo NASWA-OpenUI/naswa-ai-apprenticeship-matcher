@@ -53,6 +53,10 @@
     "contactWebsite": "http://www.baclocal2nyvt.org",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile Setter",
+    "description": "A Tile Setter covers floors, walls, showers, and backsplashes with tile in homes and buildings. They measure spaces, cut tile, spread adhesive, set pieces in straight patterns, grout joints, and seal surfaces so they look neat and stay in place. Their work builds durable, easy-to-clean surfaces and helps keep rooms protected from wear and moisture."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

@@ -55,6 +55,10 @@
     "contactWebsite": "https://www.SMW46.com",
     "contactSummary": "For further information, contact Sheet Metal Workers of Rochester, Local Union #46 at (585) 254-9151."
   },
+  "jobDescription": {
+    "displayJobTitle": "Heating, Ventilation, and Air Conditioning Mechanic",
+    "description": "A Heating, Ventilation, and Air Conditioning Mechanic installs, tests, repairs, and maintains furnaces, air conditioners, heat pumps, ventilation fans, and duct systems in homes and buildings. They handle tools, wiring, pipes, and gauges to find problems and keep equipment working properly. Their work keeps indoor air comfortable, systems efficient, and buildings safe to use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

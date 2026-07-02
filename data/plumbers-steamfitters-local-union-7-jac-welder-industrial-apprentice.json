@@ -50,6 +50,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
   },
+  "jobDescription": {
+    "displayJobTitle": "Welder",
+    "description": "An industrial Welder joins metal parts in factories, plants, and workshops using heat, filler metal, and welding equipment. They read drawings, prepare surfaces, cut and fit pieces, weld frames, pipes, tanks, or machinery, and check that joints are strong and clean. Their work builds and repairs equipment that keeps industrial systems running safely."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

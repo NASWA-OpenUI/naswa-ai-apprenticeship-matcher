@@ -56,6 +56,10 @@
     "contactWebsite": null,
     "contactSummary": "Call Plumbers and Steamfitters Local Union #773 at (518) 792-9157 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Plumber and Steamfitter",
+    "description": "A Plumber and Steamfitter installs, repairs, and maintains water pipes, drains, fixtures, boilers, and steam or heating lines in homes, buildings, and industrial sites. They cut and join pipe, test for leaks, read plans, and fit valves, pumps, and equipment. Their work keeps water, heat, and pressure systems running safely and reliably."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

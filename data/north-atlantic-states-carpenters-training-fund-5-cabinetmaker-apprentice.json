@@ -55,6 +55,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact North Atlantic States Carpenters Training Fund at (631) 952-9555 for help with the application."
   },
+  "jobDescription": {
+    "displayJobTitle": "Cabinet Maker",
+    "description": "A Cabinet Maker builds and repairs wooden cabinets, shelves, counters, and other fitted furniture for kitchens, bathrooms, stores, and offices. They measure spaces, cut and shape wood, assemble parts, install hardware, and fit finished pieces neatly into place. Their work creates useful storage and keeps rooms organized, durable, and attractive."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

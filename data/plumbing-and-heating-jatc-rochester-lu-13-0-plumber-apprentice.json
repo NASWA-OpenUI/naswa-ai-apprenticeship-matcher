@@ -61,6 +61,10 @@
     "contactWebsite": "https://ua13.kmrapplications.com/registration/",
     "contactSummary": "Contact Plumbing and Heating JATC Local Union #13 at (585) 338-2360 or use the online application site."
   },
+  "jobDescription": {
+    "displayJobTitle": "Plumber",
+    "description": "A Plumber installs, repairs, and maintains the pipes, drains, fixtures, and water heating systems that move water and waste through homes, buildings, and job sites. They cut and join pipe, clear blockages, test for leaks, and fit sinks, toilets, showers, and boilers. Their work keeps water flowing safely and buildings clean, dry, and working properly."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

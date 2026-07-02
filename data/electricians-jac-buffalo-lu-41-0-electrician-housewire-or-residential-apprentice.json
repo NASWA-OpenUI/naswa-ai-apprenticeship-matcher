@@ -60,6 +60,10 @@
     "contactWebsite": null,
     "contactSummary": "For more information, contact Electricians LU #41 at (716) 662-6111."
   },
+  "jobDescription": {
+    "displayJobTitle": "Electrician",
+    "description": "A residential Electrician installs, connects, tests, and repairs wiring, outlets, switches, breaker panels, and light fixtures in houses and apartments. They read plans, run cable through walls and ceilings, use hand and power tools, and check that electrical systems work properly and meet safety codes. Their work keeps homes powered, safe, and working reliably every day."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

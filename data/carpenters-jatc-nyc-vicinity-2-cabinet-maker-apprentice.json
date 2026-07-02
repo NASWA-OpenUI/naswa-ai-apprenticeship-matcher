@@ -69,6 +69,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
   },
+  "jobDescription": {
+    "displayJobTitle": "Cabinet Maker",
+    "description": "A Cabinet Maker builds and repairs cabinets, shelves, counters, and other wooden fixtures for homes, offices, and shops. They measure spaces, cut and shape wood, assemble parts, install hardware, and sand and finish surfaces for a clean fit. Their work creates sturdy storage and keeps kitchens, bathrooms, and workspaces practical and organized."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

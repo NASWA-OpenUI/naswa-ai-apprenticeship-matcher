@@ -60,6 +60,10 @@
     "contactWebsite": null,
     "contactSummary": "Call Plumbers & Steamfitters, Local Union #22 at (716) 668-8500 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Plumber",
+    "description": "A Plumber installs, repairs, and maintains the pipes, drains, fixtures, and water heating systems that move water and waste through homes, buildings, and job sites. They cut and join pipe, clear blockages, test for leaks, and fit sinks, toilets, showers, and boilers. Their work keeps water flowing safely and buildings clean, dry, and working properly."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

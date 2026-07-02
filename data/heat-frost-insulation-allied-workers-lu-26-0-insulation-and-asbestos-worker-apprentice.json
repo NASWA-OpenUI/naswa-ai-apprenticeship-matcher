@@ -57,6 +57,10 @@
     "contactWebsite": "https://www.insulators26.org",
     "contactSummary": "For further information, contact the JATC for Heat and Frost Insulators and Allied Workers, Local Union #26 at (585) 323-1620."
   },
+  "jobDescription": {
+    "displayJobTitle": "Insulation and Asbestos Worker",
+    "description": "An Insulation and Asbestos Worker installs and removes materials that cover pipes, ducts, boilers, walls, and ceilings. They measure, cut, fit, wrap, and fasten insulation, and in older buildings they seal off areas and safely remove asbestos-containing materials. Their work helps control heat and noise, save energy, and keep buildings safer for the people inside."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

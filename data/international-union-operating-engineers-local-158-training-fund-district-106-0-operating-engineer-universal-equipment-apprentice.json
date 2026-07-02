@@ -60,6 +60,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact JATC for Operating Engineers of Albany, Local Union #106 at (315) 299-6104."
   },
+  "jobDescription": {
+    "displayJobTitle": "Operating Engineer",
+    "description": "An Operating Engineer works with heavy equipment used on construction and industrial sites. They drive, steer, and control machines like bulldozers, loaders, excavators, and cranes to dig, lift, grade, move earth, and place materials. Their work helps build roads, foundations, and other structures, and keeps large projects moving safely and on schedule."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

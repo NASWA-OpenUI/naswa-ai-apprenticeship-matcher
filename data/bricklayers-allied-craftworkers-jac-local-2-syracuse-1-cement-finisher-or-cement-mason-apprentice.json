@@ -53,6 +53,10 @@
     "contactWebsite": "http://www.baclocal2nyvt.org",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
   },
+  "jobDescription": {
+    "displayJobTitle": "Cement Finisher or Cement Mason",
+    "description": "A Cement Finisher or Cement Mason works with wet concrete on sidewalks, floors, curbs, roads, and building foundations. They spread, level, smooth, edge, and texture the surface using hand and power tools, and may add joints or seal finishes as it sets. Their work helps concrete surfaces stay strong, even, safe to walk or drive on, and long-lasting."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112 for further information or help with the online application."
   },
+  "jobDescription": {
+    "displayJobTitle": "Drywall Taper",
+    "description": "A Drywall Taper, also called a finisher, smooths and prepares drywall walls and ceilings for painting or wallpaper. They spread joint compound over seams and screw holes, press tape into joints, sand rough spots, and blend corners until surfaces look flat and clean. Their work makes rooms look finished and keeps walls smooth, solid, and ready to use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

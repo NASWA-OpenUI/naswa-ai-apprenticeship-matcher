@@ -51,6 +51,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Roofers Local Union #203 JAC at (607) 722-4073 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Roofer",
+    "description": "A Roofer builds, repairs, and replaces roofs on homes, shops, and other buildings. They tear off old shingles, lay underlayment, fasten shingles, tiles, or metal panels, seal flashing around vents and chimneys, and work high up in changing weather. Their work keeps buildings dry, insulated, and protected from leaks and damage."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

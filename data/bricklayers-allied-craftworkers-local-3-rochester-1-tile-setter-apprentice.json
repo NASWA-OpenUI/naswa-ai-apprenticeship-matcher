@@ -54,6 +54,10 @@
     "contactWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile Setter",
+    "description": "A Tile Setter covers floors, walls, showers, and backsplashes with tile in homes and buildings. They measure spaces, cut tile to fit, spread mortar, set tiles in straight lines or patterns, and fill joints with grout. Their work creates durable, easy-to-clean surfaces and helps keep rooms finished, protected from moisture, and safe to use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

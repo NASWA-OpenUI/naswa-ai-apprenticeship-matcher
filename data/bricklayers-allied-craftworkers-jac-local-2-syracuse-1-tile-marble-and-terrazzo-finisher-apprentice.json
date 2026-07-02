@@ -53,6 +53,10 @@
     "contactWebsite": "http://www.baclocal2nyvt.org",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile, Marble, and Terrazzo Finisher",
+    "description": "A Tile, Marble, and Terrazzo Finisher prepares floors, walls, countertops, and stairs for tile, marble, or terrazzo installation. They spread mortar, level surfaces, patch holes, grind edges, polish finishes, and clean away extra material so everything fits smoothly. Their work helps surfaces look neat, last longer, and stay safe and durable in everyday use."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

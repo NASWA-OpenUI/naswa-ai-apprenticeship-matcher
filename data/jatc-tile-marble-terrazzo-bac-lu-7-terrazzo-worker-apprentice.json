@@ -59,6 +59,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Tile, Marble and Terrazzo BAC, Local Union #7 of NY & NJ at (718) 706-9294 for more information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Terrazzo Worker",
+    "description": "A Terrazzo Worker installs, repairs, and finishes terrazzo floors, stairs, and walls made from chips of marble, glass, or stone set in cement or resin. They mix materials, pour and spread them, level surfaces, and grind and polish them until smooth and shiny. Their work creates durable, easy-to-clean surfaces in schools, stores, and other busy buildings."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

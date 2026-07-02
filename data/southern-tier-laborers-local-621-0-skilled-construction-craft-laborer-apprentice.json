@@ -55,6 +55,10 @@
     "contactWebsite": "https://www.laborers621.com",
     "contactSummary": "For more information, contact Southern Tier Laborers JAC, Local Union #621 at (716) 372-2639 or visit laborers621.com."
   },
+  "jobDescription": {
+    "displayJobTitle": "Skilled Construction Craft Laborer",
+    "description": "A Skilled Construction Craft Laborer does hands-on work on building sites and supports many parts of a construction project. They load and move materials, dig and grade ground, use hand and power tools, help set forms, pour concrete, and clean work areas. Their work helps keep projects moving, sites safer, and structures built properly."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

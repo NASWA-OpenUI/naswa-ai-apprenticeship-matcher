@@ -57,6 +57,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact the Finishing Trades Institute of Western and Central New York at (716) 565-0112 for further information or help with the online application."
   },
+  "jobDescription": {
+    "displayJobTitle": "Painter and Decorator",
+    "description": "A Painter and Decorator working on structural steel and bridges prepares, paints, and coats large metal surfaces to protect them from weather and rust. They scrape old paint, sandblast steel, apply primers and finishes, and often work from lifts or scaffolds high above the ground. Their work helps keep bridges and steel structures strong, safe, and lasting longer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

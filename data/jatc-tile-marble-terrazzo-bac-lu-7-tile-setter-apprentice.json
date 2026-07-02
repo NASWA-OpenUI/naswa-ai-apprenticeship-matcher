@@ -59,6 +59,10 @@
     "contactWebsite": null,
     "contactSummary": "Contact Tile, Marble and Terrazzo BAC, Local Union #7 of NY & NJ at (718) 706-9294 for more information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Tile Setter",
+    "description": "A Tile Setter installs tile on floors, walls, showers, countertops, and other surfaces in homes and buildings. They measure spaces, cut tile to fit, spread mortar or adhesive, set each piece in place, grout the joints, and clean the finished surface. Their work creates durable, easy-to-clean surfaces that protect walls and floors from water and wear."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

@@ -54,6 +54,10 @@
     "contactWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Bricklayer and Mason",
+    "description": "A Bricklayer and Mason builds and repairs walls, chimneys, fireplaces, walkways, and other structures using brick, stone, and concrete blocks. They measure and cut materials, spread mortar, line up each course, and check that surfaces are level and solid. Their work helps create strong buildings and keeps homes, paths, and public spaces safe and lasting."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

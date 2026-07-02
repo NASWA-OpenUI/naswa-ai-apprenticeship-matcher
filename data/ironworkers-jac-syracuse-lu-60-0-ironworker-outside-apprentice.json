@@ -61,6 +61,10 @@
     "contactWebsite": "https://www.ironworkers60.org",
     "contactSummary": "Contact JATC for Ironworkers Local Union #60 for further information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Ironworker",
+    "description": "An outside Ironworker builds and repairs the steel skeletons of buildings, bridges, towers, and other large structures. They unload and line up steel beams, bolt and weld pieces together, guide cranes, and work high above the ground on columns and girders. Their work creates strong frames that support roads, buildings, and other everyday structures."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

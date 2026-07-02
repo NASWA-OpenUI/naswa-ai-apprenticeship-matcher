@@ -53,6 +53,10 @@
     "contactWebsite": "http://www.baclocal2nyvt.org",
     "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
   },
+  "jobDescription": {
+    "displayJobTitle": "Bricklayer, Mason, and Plasterer",
+    "description": "A Bricklayer, Mason, and Plasterer builds and finishes walls, floors, chimneys, and other surfaces using brick, stone, concrete blocks, mortar, and plaster. They measure, cut, spread, stack, smooth, and repair materials by hand, often working from scaffolds or ladders. Their work builds strong structures, protects surfaces, and keeps buildings safe and weather resistant."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

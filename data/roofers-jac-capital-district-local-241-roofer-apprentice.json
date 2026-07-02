@@ -55,6 +55,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact Roofers JAC of the Capital District, Local Union #241 at (518) 258-0521."
   },
+  "jobDescription": {
+    "displayJobTitle": "Roofer",
+    "description": "A Roofer builds, repairs, and replaces roofs on homes, shops, and other buildings. They tear off old shingles, lay underlayment, fasten shingles, tiles, or metal panels, seal flashing around vents and chimneys, and work high up in changing weather. Their work keeps buildings dry, insulated, and protected from leaks and damage."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

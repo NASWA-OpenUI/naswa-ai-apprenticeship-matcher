@@ -61,6 +61,10 @@
     "contactWebsite": "https://www.cnyeta.org/",
     "contactSummary": "Contact the Central New York Electrical Training Alliance at (315) 546-0221 or visit www.cnyeta.org for apprenticeship information."
   },
+  "jobDescription": {
+    "displayJobTitle": "Electrician",
+    "description": "An Electrician installs, connects, tests, and repairs wiring, outlets, lights, circuit breakers, and electrical equipment in homes, buildings, and job sites. They read plans, run wire through walls and ceilings, use hand and power tools, and check that systems work safely. Their work keeps power flowing and buildings lit, working, and safer."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",

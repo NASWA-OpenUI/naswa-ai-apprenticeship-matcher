@@ -69,6 +69,10 @@
     "contactWebsite": null,
     "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
   },
+  "jobDescription": {
+    "displayJobTitle": "Millwright",
+    "description": "A Millwright installs, takes apart, repairs, and moves heavy industrial machines in places like factories, mills, and power plants. They use hoists, measuring tools, hand tools, and precision parts to line up equipment, replace worn pieces, and get machines running smoothly. Their work keeps production equipment working safely, accurately, and with less downtime."
+  },
   "oes": {
     "areaType": "01",
     "area": "000036",
