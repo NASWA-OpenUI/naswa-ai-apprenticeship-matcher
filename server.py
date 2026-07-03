@@ -508,6 +508,15 @@ async def index(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 
+# ── AI disclosure page ───────────────────────────────────────────────────────
+
+
+@app.get("/ai-disclosure")
+async def ai_disclosure(request: Request):
+    """Serve the AI disclosure page."""
+    return templates.TemplateResponse(request, "ai_disclosure.html")
+
+
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
 

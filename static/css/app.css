@@ -204,8 +204,17 @@ ol {
 }
 
 .text-meta {
-  color: var(--app-text-weak);
   font-size: 0.85rem;
+}
+
+.text-meta>a {
+  color: var(--app-text-weak);
+  text-decoration: none;
+}
+
+.text-meta>a:hover,
+.text-meta>a:focus {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
@@ -1033,7 +1042,7 @@ a.btn--accent:focus {
   background: linear-gradient(to top,
       var(--app-surface-muted) 70%,
       transparent);
-  padding: 0.9rem 0 1rem;
+  padding: 0.9rem 0 .25rem;
   margin-top: var(--app-space-100);
 }
 
@@ -1089,6 +1098,41 @@ a.btn--accent:focus {
   color: var(--app-link-reverse);
   font-size: 0.85rem;
   text-decoration: underline;
+}
+
+/* ── AI disclosure page ───────────────────────────────────────────────────── */
+
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin: 1.25rem 0 .75rem 0;
+  padding: 1.5rem 1.75rem;
+  border: 2px dotted var(--app-border);
+  border-radius: var(--app-radius-md);
+}
+
+.about-cta__copy {
+  min-width: 0;
+}
+
+.about-cta__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--app-ink);
+}
+
+.about-cta__text {
+  margin: 0;
+  color: var(--app-text-weak);
+  font-size: 0.95rem;
+}
+
+.about-cta .btn {
+  flex: none;
 }
 
 /* ── Opportunities list and ranked results ───────────────────────────────── */

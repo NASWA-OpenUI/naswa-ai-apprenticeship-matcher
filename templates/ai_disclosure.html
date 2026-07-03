@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}AI disclosure — Apprenticeship Matcher{% endblock %}
+
+{% block page_heading %}AI Disclosure{% endblock %}
+
+{% block page_subhead %}
+<p class="title-band-sub">How this tool works, what info we ask you, and what happens to your answers.</p>
+{% endblock %}
+
+{% block content %}
+<div class="detail-content">
+
+    <section class="detail-section">
+        <h2 class="detail-section__heading">This tool uses AI</h2>
+        <p>
+            Heads up: this tool uses AI to suggest apprenticeships that might be a good fit for you.
+            It tries its best, but it’s not perfect. It occasionally gets things wrong, so treat
+            its suggestions as a starting point — not a final answer. When you’re ready to
+            apply, double-check the details on the official apprenticeship announcement.
+        </p>
+    </section>
+
+    <section class="detail-section">
+        <h2 class="detail-section__heading">What we ask you</h2>
+        <p>
+            To find your matches, we ask you a few casual questions in the chat: your first name, the
+            stuff you’re into (hobbies, school subjects you liked or didn’t, things you’re
+            good at, kinds of work that sound interesting), where you’d be looking for work, and how
+            you’d get to a job or classes. That’s it.
+        </p>
+    </section>
+
+    <section class="detail-section">
+        <h2 class="detail-section__heading">We don’t want your personal info</h2>
+        <p>
+            We’re not trying to collect anything that could identify you personally. We ask for a
+            first name just so the chat feels friendly — no last name, email, phone number, birthday,
+            or anything like that. Don’t share sensitive personal info in the chat; you don’t
+            need to, and this tool isn’t built to store it.
+        </p>
+    </section>
+
+    <section class="detail-section">
+        <h2 class="detail-section__heading">Where your info lives</h2>
+        <p>
+            Here’s where your info lives: your conversation, your profile, and your matches are held
+            in the app’s temporary memory on our server — not in a permanent database. If you
+            come back to the app, your conversation and match information will still be stored for about
+            7 days, but can disappear sooner if the app restarts or updates.
+        </p>
+        <p class="detail-apply-action">
+            Want a clean slate? Hit &ldquo;Start over&rdquo; any time and we’ll drop your profile and results.
+        </p>
+    </section>
+
+</div>
+
+<aside class="about-cta" aria-labelledby="about-cta-title">
+    <div class="about-cta__copy">
+        <h2 class="about-cta__title" id="about-cta-title">Ready to get started?</h2>
+        <p class="about-cta__text">If that all sounds okay, a short chat is the next step &mdash; less than five
+            minutes, no strings attached.</p>
+    </div>
+    <a class="btn btn--outline" href="/chat">Explore apprenticeships &rarr;</a>
+</aside>
+{% endblock %}

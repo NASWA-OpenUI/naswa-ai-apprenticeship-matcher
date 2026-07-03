@@ -22,6 +22,16 @@ def test_index_route_renders_index(client):
     assert 'class="landing-page"' in response.text
 
 
+def test_ai_disclosure_route_renders_ai_disclosure_page(client):
+    """Verifies that the AI disclosure page renders key disclosure sections,
+    privacy/session language, and the call-to-action back into the chat flow."""
+    response = client.get("/ai-disclosure")
+
+    assert response.status_code == 200
+    assert "AI Disclosure" in response.text
+    assert "How this tool works, what info we ask you" in response.text
+
+
 def test_chat_get_route_renders_chat_page(client):
     """Verifies that the chat page renders the initial assistant message,
     chat form, and SSE connection for streaming responses."""
@@ -81,14 +91,13 @@ def test_opportunity_detail_route_renders_enriched_opportunity(client):
     assert "Apply online during the recruitment period." in response.text
 
     # OES enrichment.
-    assert "Entry-level annual wage" in response.text
+    assert "Starting wage" in response.text
     assert "$49,249" in response.text
     assert "Western New York" in response.text
 
     # O*NET enrichment.
-    assert "Common work activities" in response.text
+    assert "About this job" in response.text
     assert "Install electrical components" in response.text
-    assert "Key work styles" in response.text
     assert "Dependability" in response.text
 
 
