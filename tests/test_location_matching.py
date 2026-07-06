@@ -54,11 +54,53 @@ def test_infer_location_groups_can_identify_multiple_regions():
 def test_infer_location_groups_identifies_city_based_job_locations():
     """Verifies that job location summaries using city names map to the correct
     broad New York location groups."""
-    assert infer_location_groups("Long Island City, NY area") == {"nyc_long_island"}
+    assert infer_location_groups("Long Island City, NY area") == {"new_york_city"}
     assert infer_location_groups("Albany, NY area") == {"capital"}
     assert infer_location_groups("Watertown, NY area") == {"north_country"}
     assert infer_location_groups("White Plains, NY area") == {"hudson_valley"}
 
+def test_infer_location_groups_splits_new_york_city_and_long_island():
+    assert infer_location_groups("New York City, NY area") == {"new_york_city"}
+    assert infer_location_groups("Brooklyn, NY area") == {"new_york_city"}
+    assert infer_location_groups("Long Island job sites") == {"long_island"}
+    assert infer_location_groups("Melville, NY area") == {"long_island"}
+
+
+def test_infer_location_groups_prefers_longest_location_match():
+    assert infer_location_groups("Long Island City, NY area") == {"new_york_city"}
+
+def test_infer_location_groups_does_not_treat_new_york_state_as_a_region():
+    assert infer_location_groups("New York State") == set()
+
+def test_infer_location_groups_does_not_add_region_from_york_in_new_york_state():
+    text = "Finger Lakes, Southern Tier, and Western regions of New York State"
+
+    assert infer_location_groups(text) == {
+        "finger_lakes",
+        "southern_tier",
+        "western",
+    }
+
+def test_infer_location_groups_can_identify_new_york_city_explicitly():
+    assert infer_location_groups("New York City, NY area") == {"new_york_city"}
+    assert infer_location_groups("NYC area") == {"new_york_city"}
+    assert infer_location_groups("New York County") == {"new_york_city"}
+
+def test_infer_location_groups_uses_county_to_region_lookup():
+    assert infer_location_groups("Erie County") == {"western"}
+    assert infer_location_groups("Monroe County") == {"finger_lakes"}
+    assert infer_location_groups("Broome County") == {"southern_tier"}
+    assert infer_location_groups("Queens County") == {"new_york_city"}
+    assert infer_location_groups("Nassau County") == {"long_island"}
+
+
+def test_infer_location_groups_uses_locality_to_region_lookup():
+    assert infer_location_groups("Buffalo, NY") == {"western"}
+    assert infer_location_groups("Rochester, NY") == {"finger_lakes"}
+    assert infer_location_groups("Binghamton, NY") == {"southern_tier"}
+    assert infer_location_groups("Albany, NY") == {"capital"}
+    assert infer_location_groups("Watertown, NY") == {"north_country"}
+    assert infer_location_groups("White Plains, NY") == {"hudson_valley"}
 
 def test_should_use_location_matching_defaults_to_true():
     """Verifies that location matching is enabled by default unless the profile

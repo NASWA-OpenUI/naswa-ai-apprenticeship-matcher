@@ -2,140 +2,7 @@ from __future__ import annotations
 
 import re
 
-LOCATION_GROUP_TERMS = {
-    "western": [
-        "western",
-        "western new york",
-        "southwestern ny",
-        "southwestern new york",
-        "buffalo",
-        "niagara",
-        "niagara falls",
-        "orchard park",
-        "west seneca",
-        "olean",
-        "erie",
-        "cattaraugus",
-        "chautauqua",
-        "allegany",
-        "genesee",
-        "orleans",
-        "wyoming",
-    ],
-    "finger_lakes": [
-        "finger lakes",
-        "rochester",
-        "geneva",
-        "monroe",
-        "ontario",
-        "wayne",
-        "seneca",
-        "yates",
-        "livingston",
-    ],
-    "southern_tier": [
-        "southern tier",
-        "binghamton",
-        "elmira",
-        "ithaca",
-        "olean",
-        "whitney point",
-        "horseheads",
-        "broome",
-        "chemung",
-        "chenango",
-        "delaware",
-        "schuyler",
-        "steuben",
-        "tioga",
-        "tompkins",
-    ],
-    "central": [
-        "central",
-        "central new york",
-        "syracuse",
-        "east syracuse",
-        "clay",
-        "liverpool",
-        "oswego",
-        "cayuga",
-        "cortland",
-        "madison",
-        "onondaga",
-    ],
-    "mohawk_valley": [
-        "mohawk valley",
-        "utica",
-        "rome",
-        "herkimer",
-        "oneida",
-        "montgomery",
-    ],
-    "capital": [
-        "capital district",
-        "capital region",
-        "albany",
-        "latham",
-        "queensbury",
-        "troy",
-        "schenectady",
-        "rensselaer",
-        "saratoga",
-        "schoharie",
-        "warren",
-        "washington",
-    ],
-    "north_country": [
-        "north country",
-        "watertown",
-        "plattsburgh",
-        "gouverneur",
-        "st. lawrence",
-        "st lawrence",
-        "clinton",
-        "essex",
-        "franklin",
-        "hamilton",
-        "jefferson",
-        "lewis",
-    ],
-    "hudson_valley": [
-        "hudson valley",
-        "white plains",
-        "newburgh",
-        "wallkill",
-        "highland",
-        "pearl river",
-        "briarcliff manor",
-        "rock tavern",
-        "dutchess",
-        "orange",
-        "putnam",
-        "rockland",
-        "sullivan",
-        "ulster",
-        "westchester",
-    ],
-    "nyc_long_island": [
-        "new york city",
-        "nyc",
-        "five boroughs",
-        "manhattan",
-        "brooklyn",
-        "queens",
-        "bronx",
-        "staten island",
-        "long island",
-        "long island city",
-        "college point",
-        "melville",
-        "hauppauge",
-        "nassau",
-        "suffolk",
-        "kings",
-        "richmond",
-    ],
-}
+from naswa_matcher.location_data import location_terms
 
 
 NEARBY_LOCATION_GROUPS = {
@@ -146,8 +13,9 @@ NEARBY_LOCATION_GROUPS = {
     "mohawk_valley": {"central", "southern_tier", "capital", "north_country"},
     "capital": {"mohawk_valley", "north_country", "hudson_valley"},
     "north_country": {"capital", "mohawk_valley", "central"},
-    "hudson_valley": {"capital", "nyc_long_island"},
-    "nyc_long_island": {"hudson_valley"},
+    "hudson_valley": {"capital", "new_york_city", "long_island"},
+    "new_york_city": {"hudson_valley", "long_island"},
+    "long_island": {"new_york_city", "hudson_valley"},
 }
 
 
@@ -172,23 +40,65 @@ def should_use_location_matching(profile: dict) -> bool:
     return value is not False
 
 
+def _term_match_spans(text: str, term: str) -> list[tuple[int, int]]:
+    """Return full-word phrase match spans for a location term."""
+    pattern = r"\b" + re.escape(term.lower()) + r"\b"
+    return [
+        (match.start(), match.end())
+        for match in re.finditer(pattern, text)
+    ]
+
+
 def text_mentions_term(text: str, term: str) -> bool:
     """Return True if text contains term as a rough phrase match."""
-    pattern = r"\b" + re.escape(term.lower()) + r"\b"
-    return re.search(pattern, text) is not None
+    return bool(_term_match_spans(text.lower(), term))
 
 
 def infer_location_groups(text: str | None) -> set[str]:
-    """Infer rough NY location groups from user text or posting text."""
+    """Infer NY labor market region groups from user text or posting text."""
     if not text:
         return set()
 
     normalized = text.lower()
-    groups = set()
+    matches = []
 
-    for group, terms in LOCATION_GROUP_TERMS.items():
-        if any(text_mentions_term(normalized, term) for term in terms):
-            groups.add(group)
+    for location_term in location_terms():
+        for start, end in _term_match_spans(normalized, location_term.term):
+            matches.append(
+                {
+                    "start": start,
+                    "end": end,
+                    "region_keys": location_term.region_keys,
+                }
+            )
+
+    # Prefer the longest match first. This is important for cases like:
+    # "Long Island City" should match New York City, not both New York City
+    # and Long Island.
+    matches.sort(
+        key=lambda match: (
+            -(match["end"] - match["start"]),
+            match["start"],
+        )
+    )
+
+    groups = set()
+    occupied_spans: list[tuple[int, int]] = []
+
+    for match in matches:
+        start = match["start"]
+        end = match["end"]
+
+        overlaps_existing_match = any(
+            not (end <= occupied_start or start >= occupied_end)
+            for occupied_start, occupied_end in occupied_spans
+        )
+
+        if overlaps_existing_match:
+            continue
+
+        groups.update(match["region_keys"])
+        occupied_spans.append((start, end))
 
     return groups
 
