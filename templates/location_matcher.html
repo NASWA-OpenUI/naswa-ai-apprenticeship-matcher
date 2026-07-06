@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Location Matcher [DEMO] — Apprenticeship Matcher{% endblock %}
+
+{% block page_heading %}Location Matcher [DEMO]{% endblock %}
+
+{% block page_subhead %}
+<p class="title-band-sub">
+    See how a city, town, county, or region maps to a New York labor market region.
+</p>
+{% endblock %}
+
+{% block content %}
+<div class="detail-content">
+
+    <section class="detail-section">
+        <form action="/location-matcher" method="get" class="surface surface--shadow" style="padding: 1rem;">
+            <label for="location" class="section-heading" style="display: block;">
+                Search for a location in New York
+            </label>
+
+            <div style="display: flex; gap: 0.6rem; align-items: stretch;">
+                <input id="location" name="location" type="text" value="{{ location }}"
+                    placeholder="Try NYC, Rochester, Niagara Falls"
+                    style="flex: 1; font: inherit; padding: 0.65rem 0.85rem; border: 1px solid var(--app-base); border-radius: var(--app-radius-md);">
+
+                <button type="submit" class="btn btn--filled">
+                    Search
+                </button>
+            </div>
+        </form>
+    </section>
+
+    {% if exact_result %}
+    <section class="detail-section">
+        <div class="surface surface--shadow" style="padding: 1rem;">
+            <h2 class="detail-section__heading">Result</h2>
+
+            <p>
+                <strong>Searched term:</strong>
+                "{{ raw_location_label }}"
+            </p>
+
+            <p>
+                <strong>Exact lookup:</strong>
+                {% if exact_result.region_names %}
+                {% for match in exact_result.matches %}
+                "{{ match.term }}" → {{ match.region_names | join(", ") }}{% if not loop.last %}; {% endif %}
+                {% endfor %}
+                {% else %}
+                No exact match
+                {% endif %}
+            </p>
+
+            {% if ai_error %}
+            <p>
+                <strong>AI interpretation:</strong>
+                unavailable
+            </p>
+            <p class="text-meta">
+                {{ ai_error }}
+            </p>
+            {% elif ai_result and ai_result.normalized_location %}
+            <p>
+                <strong>AI interpretation:</strong>
+                "{{ raw_location_label }}" → "{{ ai_location_label }}"
+            </p>
+            {% else %}
+            <p>
+                <strong>AI interpretation:</strong>
+                No confident New York location found
+            </p>
+            {% endif %}
+
+            <p>
+                <strong>Matched region:</strong>
+                {% if final_match_result and final_match_result.region_names %}
+                "{{ final_location_label }}{% if final_location_uses_ai %}*{% endif %}"
+                →
+                {{ final_match_result.region_names | join(", ") }}
+                {% else %}
+                No region found
+                {% endif %}
+            </p>
+
+            {% if final_location_uses_ai %}
+            <p class="text-meta">
+                * AI-normalized location used for this match.
+            </p>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="detail-section">
+        <h2 class="detail-section__heading">New York labor market regions</h2>
+
+        <p>
+            This matcher maps locations to New York State labor market regions. You can see them all on <a
+                href="https://data.ny.gov/Economic-Development/Labor-Market-Regions-Map/vnhn-dpxa" target="_blank"
+                rel="noopener noreferrer">the official Labor Market Regions Map from data.ny.gov</a>.
+        </p>
+    </section>
+
+</div>
+{% endblock %}

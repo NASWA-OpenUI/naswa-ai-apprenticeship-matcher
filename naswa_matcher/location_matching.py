@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import re
 
-from naswa_matcher.location_data import location_terms
+from naswa_matcher.location_data import REGION_KEY_TO_NAME, location_terms
 
 logger = logging.getLogger("naswa.location_matching")
 
@@ -76,6 +76,38 @@ def _format_match_details(matches: list[dict]) -> str:
     return "; ".join(parts) or "none"
 
 
+def _region_names(region_keys: set[str] | frozenset[str]) -> list[str]:
+    """Return display names for region keys."""
+    return [
+        REGION_KEY_TO_NAME.get(region_key, region_key)
+        for region_key in sorted(region_keys)
+    ]
+
+
+def _display_matches(matches: list[dict]) -> list[dict]:
+    """Return template-friendly match details."""
+    displayed = []
+    seen = set()
+
+    for match in matches:
+        region_keys = tuple(sorted(match["region_keys"]))
+        key = (match["term"], region_keys)
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        displayed.append(
+            {
+                "term": match["term"],
+                "groups": list(region_keys),
+                "region_names": _region_names(match["region_keys"]),
+            }
+        )
+
+    return displayed
+
+
 def _infer_location_groups_with_matches(
     text: str | None,
 ) -> tuple[set[str], list[dict]]:
@@ -134,6 +166,19 @@ def infer_location_groups(text: str | None) -> set[str]:
     """Infer NY labor market region groups from user text or posting text."""
     groups, _matches = _infer_location_groups_with_matches(text)
     return groups
+
+
+def explain_location_match(text: str | None) -> dict:
+    """Return display-friendly details for the location matcher demo page."""
+    query = (text or "").strip()
+    groups, matches = _infer_location_groups_with_matches(query)
+
+    return {
+        "query": query,
+        "groups": sorted(groups),
+        "region_names": _region_names(groups),
+        "matches": _display_matches(matches),
+    }
 
 
 def log_user_location_inference(location: str | None) -> None:
