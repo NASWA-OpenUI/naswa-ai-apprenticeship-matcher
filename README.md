@@ -53,7 +53,7 @@ Session handling is currently lightweight and in-memory.
 On startup, the app reads every `*.json` file in `data/` and loads it into:
 
 ```text
-data/_opportunities.db
+data/_database.db
 ```
 
 Each JSON file represents one apprenticeship opportunity. The app expects a top-level `id`, a `posting` object, and optional enrichment objects such as `oes` and `onet`.

@@ -48,5 +48,5 @@ Rename them to:
 - `New_York_State_Locality_Hierarchy_with_Websites.csv`
 
 Replace the files in this folder.
-Restart the app so `data/_opportunities.db` is rebuilt.
+Restart the app so `data/_database.db` is rebuilt.
 Run tests: `uv run pytest`

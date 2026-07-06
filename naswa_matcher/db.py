@@ -8,7 +8,8 @@ PACKAGE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PACKAGE_DIR.parent
 
 DATA_DIR = PROJECT_ROOT / "data"
-DB_PATH = DATA_DIR / "_opportunities.db"
+OPPORTUNITIES_DIR = DATA_DIR / "opportunities"
+DB_PATH = DATA_DIR / "_database.db"
 
 
 def load() -> None:
@@ -24,14 +25,14 @@ def load() -> None:
 
 
 def load_opportunities(conn: sqlite3.Connection) -> None:
-    """Read every opportunity JSON file in data/ into SQLite."""
+    """Read every opportunity JSON file in data/opportunities/ into SQLite."""
     conn.execute(
         "CREATE TABLE IF NOT EXISTS opportunities "
         "(id TEXT PRIMARY KEY, data TEXT NOT NULL)"
     )
     conn.execute("DELETE FROM opportunities")
 
-    for path in sorted(DATA_DIR.glob("*.json")):
+    for path in sorted(OPPORTUNITIES_DIR.glob("*.json")):
         with path.open() as f:
             raw = json.load(f)
 

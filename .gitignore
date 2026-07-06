@@ -3,7 +3,7 @@
 __pycache__/
 *.pyc
 .DS_Store
-data/_opportunities.db
+data/_database.db
 llm-export*
 data-new/*
 data-old/*

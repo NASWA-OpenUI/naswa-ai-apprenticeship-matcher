@@ -10,15 +10,14 @@ PACKAGE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PACKAGE_DIR.parent
 
 DATA_DIR = PROJECT_ROOT / "data"
-DB_PATH = DATA_DIR / "_opportunities.db"
-REFERENCE_DIR = DATA_DIR / "reference"
+DB_PATH = DATA_DIR / "_database.db"
+LOCATIONS_DIR = DATA_DIR / "locations"
 
-LABOR_MARKET_REGIONS_CSV = REFERENCE_DIR / "Labor_Market_Regions.csv"
+LABOR_MARKET_REGIONS_CSV = LOCATIONS_DIR / "Labor_Market_Regions.csv"
 LOCALITY_HIERARCHY_CSV = (
-    REFERENCE_DIR / "New_York_State_Locality_Hierarchy_with_Websites.csv"
+    LOCATIONS_DIR / "New_York_State_Locality_Hierarchy_with_Websites.csv"
 )
-LOCATION_ALIASES_CSV = REFERENCE_DIR / "location_aliases.csv"
-
+LOCATION_ALIASES_CSV = LOCATIONS_DIR / "location_aliases.csv"
 
 IGNORED_LOCATION_TERMS = {"new york", "york"}
 
@@ -64,8 +63,8 @@ def _region_key(region_name: str) -> str:
 def _require_csv(path: Path) -> None:
     if not path.exists():
         raise FileNotFoundError(
-            f"Missing location reference CSV: {path}. "
-            "See data/reference/README.md for download instructions."
+            f"Missing location CSV: {path}. "
+            "See data/locations/README.md for download instructions."
         )
 
 
@@ -147,7 +146,7 @@ def _locality_names(row: dict[str, str]) -> set[str]:
 def load_location_data(
     conn: sqlite3.Connection,
     *,
-    reference_dir: Path = REFERENCE_DIR,
+    locations_dir: Path = LOCATIONS_DIR,
 ) -> None:
     """
     Load static NY location reference CSVs into SQLite.
@@ -155,9 +154,9 @@ def load_location_data(
     This is called from db.load() on startup. The tables are rebuilt from the
     vendored CSV files each time the local app database is regenerated.
     """
-    labor_market_regions_csv = reference_dir / LABOR_MARKET_REGIONS_CSV.name
-    locality_hierarchy_csv = reference_dir / LOCALITY_HIERARCHY_CSV.name
-    location_aliases_csv = reference_dir / LOCATION_ALIASES_CSV.name
+    labor_market_regions_csv = locations_dir / LABOR_MARKET_REGIONS_CSV.name
+    locality_hierarchy_csv = locations_dir / LOCALITY_HIERARCHY_CSV.name
+    location_aliases_csv = locations_dir / LOCATION_ALIASES_CSV.name
 
     _require_csv(labor_market_regions_csv)
     _require_csv(locality_hierarchy_csv)
