@@ -20,10 +20,7 @@ LOCALITY_HIERARCHY_CSV = (
 LOCATION_ALIASES_CSV = REFERENCE_DIR / "location_aliases.csv"
 
 
-IGNORED_LOCATION_TERMS = {
-    "new york",
-    "york"
-}
+IGNORED_LOCATION_TERMS = {"new york", "york"}
 
 REGION_NAME_TO_KEY = {
     "Capital Region": "capital",
@@ -38,10 +35,7 @@ REGION_NAME_TO_KEY = {
     "Western New York": "western",
 }
 
-REGION_KEY_TO_NAME = {
-    key: name
-    for name, key in REGION_NAME_TO_KEY.items()
-}
+REGION_KEY_TO_NAME = {key: name for name, key in REGION_NAME_TO_KEY.items()}
 
 
 @dataclass(frozen=True)
@@ -76,27 +70,22 @@ def _require_csv(path: Path) -> None:
 
 
 def _create_tables(conn: sqlite3.Connection) -> None:
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS location_regions (
             region_key TEXT PRIMARY KEY,
             region_name TEXT NOT NULL UNIQUE
         )
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS location_counties (
             county_name TEXT PRIMARY KEY,
             county_name_norm TEXT NOT NULL UNIQUE,
             region_key TEXT NOT NULL
         )
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS location_localities (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             locality_name TEXT NOT NULL,
@@ -105,32 +94,25 @@ def _create_tables(conn: sqlite3.Connection) -> None:
             county_name TEXT NOT NULL,
             region_key TEXT NOT NULL
         )
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE TABLE IF NOT EXISTS location_aliases (
             alias TEXT PRIMARY KEY,
             alias_norm TEXT NOT NULL UNIQUE,
             region_key TEXT NOT NULL
         )
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE INDEX IF NOT EXISTS idx_location_localities_norm
         ON location_localities (locality_name_norm)
-        """
-    )
+        """)
 
-    conn.execute(
-        """
+    conn.execute("""
         CREATE INDEX IF NOT EXISTS idx_location_counties_norm
         ON location_counties (county_name_norm)
-        """
-    )
+        """)
 
 
 def _read_county_regions(path: Path) -> dict[str, str]:
@@ -276,14 +258,12 @@ def load_location_data(
 
 
 def _has_reference_tables(conn: sqlite3.Connection) -> bool:
-    row = conn.execute(
-        """
+    row = conn.execute("""
         SELECT name
         FROM sqlite_master
         WHERE type = 'table'
           AND name = 'location_regions'
-        """
-    ).fetchone()
+        """).fetchone()
 
     return row is not None
 
@@ -321,8 +301,7 @@ def _location_terms_from_db() -> tuple[LocationTerm, ...]:
         if not _has_reference_tables(conn):
             return tuple()
 
-        rows = conn.execute(
-            """
+        rows = conn.execute("""
             SELECT region_name AS term, region_key FROM location_regions
 
             UNION ALL
@@ -345,8 +324,7 @@ def _location_terms_from_db() -> tuple[LocationTerm, ...]:
             UNION ALL
 
             SELECT alias AS term, region_key FROM location_aliases
-            """
-        ).fetchall()
+            """).fetchall()
 
         return _merge_terms([(row[0], row[1]) for row in rows])
 

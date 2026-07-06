@@ -19,7 +19,10 @@ from strands.models import BedrockModel
 
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
-from naswa_matcher.location_matching import should_use_location_matching
+from naswa_matcher.location_matching import (
+    log_user_location_inference,
+    should_use_location_matching,
+)
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -327,6 +330,7 @@ class ChatSession:
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
     ranking_cache: dict[str, RankingCacheEntry] = field(default_factory=dict)
+    last_logged_location: str | None = None
 
 
 _sessions: dict[str, ChatSession] = {}
@@ -663,6 +667,14 @@ async def chat_stream(request: Request):
 
             if profile:
                 session.profile = profile
+
+                profile_location = profile.get("location")
+                if (
+                    profile_location
+                    and profile_location != session.last_logged_location
+                ):
+                    log_user_location_inference(profile_location)
+                    session.last_logged_location = profile_location
 
                 if profile.get("confirmed"):
                     ranked_url = profile_rank_url(profile)

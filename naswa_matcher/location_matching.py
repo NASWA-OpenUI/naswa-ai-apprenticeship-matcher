@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import logging
 import re
 
 from naswa_matcher.location_data import location_terms
 
+logger = logging.getLogger("naswa.location_matching")
 
 NEARBY_LOCATION_GROUPS = {
     "western": {"finger_lakes", "southern_tier"},
@@ -43,10 +45,7 @@ def should_use_location_matching(profile: dict) -> bool:
 def _term_match_spans(text: str, term: str) -> list[tuple[int, int]]:
     """Return full-word phrase match spans for a location term."""
     pattern = r"\b" + re.escape(term.lower()) + r"\b"
-    return [
-        (match.start(), match.end())
-        for match in re.finditer(pattern, text)
-    ]
+    return [(match.start(), match.end()) for match in re.finditer(pattern, text)]
 
 
 def text_mentions_term(text: str, term: str) -> bool:
@@ -54,10 +53,35 @@ def text_mentions_term(text: str, term: str) -> bool:
     return bool(_term_match_spans(text.lower(), term))
 
 
-def infer_location_groups(text: str | None) -> set[str]:
-    """Infer NY labor market region groups from user text or posting text."""
+def _format_region_keys(region_keys: set[str] | frozenset[str]) -> str:
+    """Format region keys for readable logs."""
+    return ", ".join(sorted(region_keys)) or "none"
+
+
+def _format_match_details(matches: list[dict]) -> str:
+    """Format matched location terms for readable logs."""
+    parts = []
+    seen = set()
+
+    for match in matches:
+        region_keys = tuple(sorted(match["region_keys"]))
+        key = (match["term"], region_keys)
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        parts.append(f"{match['term']} -> {', '.join(region_keys)}")
+
+    return "; ".join(parts) or "none"
+
+
+def _infer_location_groups_with_matches(
+    text: str | None,
+) -> tuple[set[str], list[dict]]:
+    """Infer location groups and keep the accepted term matches."""
     if not text:
-        return set()
+        return set(), []
 
     normalized = text.lower()
     matches = []
@@ -66,6 +90,7 @@ def infer_location_groups(text: str | None) -> set[str]:
         for start, end in _term_match_spans(normalized, location_term.term):
             matches.append(
                 {
+                    "term": location_term.term,
                     "start": start,
                     "end": end,
                     "region_keys": location_term.region_keys,
@@ -84,6 +109,7 @@ def infer_location_groups(text: str | None) -> set[str]:
 
     groups = set()
     occupied_spans: list[tuple[int, int]] = []
+    accepted_matches = []
 
     for match in matches:
         start = match["start"]
@@ -99,8 +125,30 @@ def infer_location_groups(text: str | None) -> set[str]:
 
         groups.update(match["region_keys"])
         occupied_spans.append((start, end))
+        accepted_matches.append(match)
 
+    return groups, accepted_matches
+
+
+def infer_location_groups(text: str | None) -> set[str]:
+    """Infer NY labor market region groups from user text or posting text."""
+    groups, _matches = _infer_location_groups_with_matches(text)
     return groups
+
+
+def log_user_location_inference(location: str | None) -> None:
+    """Log how a user's stated location maps to NY labor market regions."""
+    if not location:
+        return
+
+    groups, matches = _infer_location_groups_with_matches(location)
+
+    logger.info(
+        "User location inference location=%r; groups=%s; matches=%s",
+        location,
+        _format_region_keys(groups),
+        _format_match_details(matches),
+    )
 
 
 def job_location_text(job: dict) -> str:
