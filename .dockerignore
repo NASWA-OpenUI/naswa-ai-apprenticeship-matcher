@@ -1,7 +1,31 @@
+# Git / local environment
 .git
+.gitignore
+.claude
 .venv
 .env
+
+# Python caches / test artifacts
 __pycache__
+**/__pycache__
+.pytest_cache
 *.pyc
+
+# MacOS
 .DS_Store
+**/.DS_Store
+
+# Development-only files
+tests
+README.md
+TODO.md
+
+# LLM/export artifacts
+llm-export.txt
+llm-export.sh
+
+# Infra/deployment files
 infra
+
+# Generated runtime data
+data/_database.db

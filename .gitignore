@@ -8,4 +8,6 @@ llm-export*
 data-new/*
 data-old/*
 infra/COMMANDS.md
+infra/current/*
+infra/diagrams/*
 infra/scripts/*
