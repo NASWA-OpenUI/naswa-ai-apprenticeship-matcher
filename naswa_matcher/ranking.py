@@ -102,37 +102,42 @@ def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
         if use_location_matching:
             return (
                 "- Location is a major ranking factor, not a minor detail.\n"
-                "- A job should only be Strong if it fits both the user's interests and their location.\n"
+                "- A job should only be Strong if it fits both the profile interests and location.\n"
                 "- If location_fit is far, do not rank the job as Strong.\n"
                 "- If location_fit is nearby, usually rank the job as Moderate.\n"
-                "- Having a car helps with local travel, but it does not make a job across New York State feasible.\n"
-                "- Do not describe a long-distance commute as feasible just because the user has a car.\n"
+                "- Driving helps with local travel, but it does not make a job across New York State feasible.\n"
+                "- Do not describe a long-distance commute as feasible just because the profile says the person has a car.\n"
                 "- If transportation or location may be an issue, mention it gently as a caveat.\n"
             )
 
         return (
-            "- Do not use location or transportation as ranking factors for this user.\n"
-            "- Do not mention the user's statewide flexibility in every explanation.\n"
+            "- Do not use location or transportation as ranking factors.\n"
+            "- Do not mention statewide flexibility in every explanation.\n"
         )
 
     return (
         "You are ranking New York State registered apprenticeship opportunities "
-        "for a user based on a short derived profile.\n\n"
-        "User profile:\n"
+        "for the person who will read these results.\n\n"
+        "Profile:\n"
         f"{json.dumps(profile, indent=2)}\n\n"
         "Score each job as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
-        "- Put the most weight on whether the occupation connects to the user's likes.\n"
+        "- Put the most weight on whether the occupation connects to the profile's likes.\n"
         f"{get_location_guidance(should_use_location_matching(profile))}"
         "- Use dislikes only as a soft negative signal.\n"
         "- Do not reject a job only because a requirement may need to be checked later.\n"
-        "- Keep explanations friendly and concrete.\n\n"
+        "- Keep explanations friendly and concrete.\n"
+        "- Write every explanation directly to the person reading it.\n"
+        "- Use second person: you, your.\n"
+        "- Do not refer to the person as the user, the reader, the applicant, someone, they, or their.\n"
+        '- Do not write phrases like "the user\'s interests", "the user has a car", "their interests", or "someone who drives".\n'
+        '- It is okay to use "applicants" only when describing official program requirements.\n\n'
         "- Return ONLY a JSON array — no markdown, no extra text:\n"
         "- The JSON must contain exactly one object for every job ID provided.\n"
         "- Do not include trailing commas.\n"
         "- Do not omit jobs.\n"
         "- Do not invent job IDs.\n\n"
-        '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences why"}]\n\n'
+        '[{"id":"<id>","tier":"Strong|Moderate|Weak","explanation":"1-2 sentences addressed to you using you/your"}]\n\n'
         f"Jobs:\n{json.dumps(job_summaries, indent=2)}"
     )
 

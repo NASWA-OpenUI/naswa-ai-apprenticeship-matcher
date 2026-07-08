@@ -183,7 +183,7 @@ def test_build_scoring_prompt_includes_profile_and_jobs():
         ],
     )
 
-    assert "User profile:" in prompt
+    assert "Profile:" in prompt
     assert "hands-on work" in prompt
     assert "job-1" in prompt
     assert "Return ONLY a JSON array" in prompt
@@ -218,7 +218,7 @@ def test_build_scoring_prompt_removes_location_guidance_when_matching_disabled()
 
     assert "Do not use location or transportation as ranking factors" in prompt
     assert (
-        "Do not mention the user's statewide flexibility in every explanation" in prompt
+        "Do not mention statewide flexibility in every explanation" in prompt
     )
 
     assert "Location is a major ranking factor" not in prompt
