@@ -1,69 +1,79 @@
-{#
-Profile summary card — rendered server-side on load (chat.html) and swapped
-in via SSE on "profile-confirmed". Expects `profile` (with .name and
-.interests) and `ranked_url` in context.
-#}
+{% set use_location_matching = false if profile.use_location_matching is sameas false else true %}
+{% set editable_profile = {
+"name": profile.name | default("", true),
+"likes": profile.likes | default([], true),
+"dislikes": profile.dislikes | default([], true),
+"location": profile.location | default("", true),
+"transportation": profile.transportation | default("", true),
+"use_location_matching": use_location_matching
+} %}
+
 <div class="profile-card surface surface--shadow surface--accent surface--clip" role="region"
-  aria-label="Your profile summary">
+  aria-label="Your profile summary" data-profile-card>
+  <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
+
   <div class="profile-card-head">
     <h2>Your Profile</h2>
+
+    <button type="button" class="profile-card-edit btn btn--outline" data-profile-edit-open>
+      Edit
+    </button>
   </div>
+
   <div class="profile-card-body">
     <dl>
       {% if profile.name %}
       <dt>Name</dt>
-      <dd>{{ profile.name }}</dd>
+      <dd data-profile-value="name">{{ profile.name }}</dd>
       {% endif %}
 
-      {% if profile.likes %}
       <dt>Likes</dt>
       <dd>
-        {% for like in profile.likes %}
-        <span class="chip chip--theme chip--interest">{{ like }}</span>
-        {% endfor %}
+        <span data-profile-list="likes">
+          {% if profile.likes %}
+          {% for like in profile.likes %}
+          <span class="chip chip--theme chip--interest">{{ like }}</span>
+          {% endfor %}
+          {% else %}
+          <span class="profile-empty">None added</span>
+          {% endif %}
+        </span>
       </dd>
-      {% endif %}
 
-      {% if profile.dislikes %}
       <dt>Dislikes</dt>
       <dd>
-        {% for dislike in profile.dislikes %}
-        <span class="chip chip--theme chip--interest">{{ dislike }}</span>
-        {% endfor %}
+        <span data-profile-list="dislikes">
+          {% if profile.dislikes %}
+          {% for dislike in profile.dislikes %}
+          <span class="chip chip--theme chip--interest">{{ dislike }}</span>
+          {% endfor %}
+          {% else %}
+          <span class="profile-empty">None added</span>
+          {% endif %}
+        </span>
       </dd>
-      {% endif %}
 
-      {% if profile.location %}
       <dt>Looking near</dt>
-      <dd>{{ profile.location }}</dd>
-      {% endif %}
+      <dd data-profile-value="location">{{ profile.location or "—" }}</dd>
 
-      {% if profile.use_location_matching is sameas false %}
-      <dt>Location preference</dt>
-      <dd>Open to opportunities anywhere in New York State</dd>
-      {% endif %}
+      <dt data-profile-location-preference-label {% if use_location_matching %}hidden{% endif %}>
+        Location preference
+      </dt>
+      <dd data-profile-location-preference {% if use_location_matching %}hidden{% endif %}>
+        Open to opportunities anywhere in New York State
+      </dd>
 
-      {% if profile.transportation %}
       <dt>Transportation</dt>
-      <dd>{{ profile.transportation }}</dd>
-      {% endif %}
-
-      {% if profile.travel_preference %}
-      <dt>Travel</dt>
-      <dd>{{ profile.travel_preference }}</dd>
-      {% endif %}
-
-      {% if profile.timeline %}
-      <dt>Timeline</dt>
-      <dd>{{ profile.timeline }}</dd>
-      {% endif %}
+      <dd data-profile-value="transportation">{{ profile.transportation or "—" }}</dd>
     </dl>
 
     <div class="btn-row">
       <button type="button" class="btn btn--outline" hx-post="/chat/reset" hx-swap="none">
         Start over
       </button>
-      <a href="{{ ranked_url }}" class="btn btn--filled">See relevant jobs →</a>
+      <a href="{{ ranked_url }}" class="btn btn--filled" data-profile-ranked-link>
+        See relevant jobs →
+      </a>
     </div>
   </div>
 </div>

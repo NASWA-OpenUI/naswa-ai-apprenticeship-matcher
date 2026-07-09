@@ -1,0 +1,636 @@
+{# templates/_profile_edit_modal.html #}
+
+<div class="profile-modal-backdrop" data-profile-edit-modal hidden>
+    <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-edit-title"
+        aria-describedby="profile-edit-description" tabindex="-1">
+        <div class="profile-modal-head">
+            <div>
+                <h2 id="profile-edit-title">Edit your profile</h2>
+                <p id="profile-edit-description">
+                    Add or remove anything below. This is what we use to find your matches.
+                </p>
+            </div>
+
+            <button type="button" class="profile-modal-close" data-profile-modal-close aria-label="Close">
+                ×
+            </button>
+        </div>
+
+        <div class="profile-modal-body">
+            <div class="profile-edit-grid">
+                <div class="profile-edit-field">
+                    <label id="profile-likes-label" class="profile-edit-label">Likes</label>
+
+                    <div class="profile-edit-chips" data-edit-list="likes" role="list"
+                        aria-labelledby="profile-likes-label"></div>
+
+                    <div class="profile-add-row">
+                        <input class="form-control" type="text" data-edit-add-input aria-label="Add likes…"
+                            placeholder="Add likes">
+                        <button type="button" class="btn btn--outline" data-edit-add-button>Add</button>
+                    </div>
+                </div>
+
+                <div class="profile-edit-field">
+                    <label id="profile-dislikes-label" class="profile-edit-label">Dislikes</label>
+
+                    <div class="profile-edit-chips" data-edit-list="dislikes" role="list"
+                        aria-labelledby="profile-dislikes-label"></div>
+
+                    <div class="profile-add-row">
+                        <input class="form-control" type="text" data-edit-add-input aria-label="Add dislikes…"
+                            placeholder="Add dislikes">
+                        <button type="button" class="btn btn--outline" data-edit-add-button>Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="profile-modal-rule">
+
+            <div class="profile-edit-grid">
+                <div class="profile-edit-field">
+                    <label for="profile-edit-location" class="profile-edit-label">Looking near</label>
+                    <input id="profile-edit-location" class="form-control" type="text" data-edit-location
+                        placeholder="City, region, or ZIP">
+                </div>
+
+                <div class="profile-edit-field">
+                    <label for="profile-edit-transportation" class="profile-edit-label">Transportation</label>
+                    <input id="profile-edit-transportation" class="form-control" type="text" data-edit-transportation
+                        placeholder="e.g. drives self, transit">
+                </div>
+            </div>
+
+            <div class="profile-edit-field profile-match-field">
+                <div class="profile-check-row">
+                    <input id="profile-edit-location-match" type="checkbox" data-edit-location-match>
+                    <label for="profile-edit-location-match" class="profile-edit-label">Match by location</label>
+                </div>
+                <p class="profile-match-help text-meta" data-edit-location-help></p>
+            </div>
+        </div>
+
+        <div class="profile-modal-foot">
+            <button type="button" class="btn btn--outline" data-profile-modal-close>Cancel</button>
+            <button type="button" class="btn btn--filled" data-profile-save>Save changes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        if (window.profileEditModalInitialized) return;
+        window.profileEditModalInitialized = true;
+
+        const focusableSelector = [
+            'a[href]',
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            '[tabindex]:not([tabindex="-1"])'
+        ].join(',');
+
+        let lastModalTrigger = null;
+        let inertedElements = [];
+
+        function getModalBackdrop() {
+            return document.querySelector('[data-profile-edit-modal]');
+        }
+
+        function getModalDialog() {
+            return getModalBackdrop()?.querySelector('.profile-modal');
+        }
+
+        function getProfileCard() {
+            return document.querySelector('[data-profile-card]');
+        }
+
+        function getChatStatus() {
+            return document.getElementById('chat-status');
+        }
+
+        function escapeHtml(value) {
+            return String(value || '').replace(/[&<>"']/g, function (char) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[char];
+            });
+        }
+
+        function cleanProfileList(values) {
+            if (!Array.isArray(values)) return [];
+
+            const seen = new Set();
+            const cleaned = [];
+
+            values.forEach(function (value) {
+                const text = String(value || '').trim();
+                const key = text.toLowerCase();
+
+                if (!text || seen.has(key)) return;
+
+                seen.add(key);
+                cleaned.push(text);
+            });
+
+            return cleaned;
+        }
+
+        function readProfileFromCard() {
+            const card = getProfileCard();
+            const jsonEl = card?.querySelector('[data-profile-json]');
+
+            if (!jsonEl) {
+                return {
+                    name: '',
+                    likes: [],
+                    dislikes: [],
+                    location: '',
+                    transportation: '',
+                    use_location_matching: true
+                };
+            }
+
+            try {
+                const parsed = JSON.parse(jsonEl.textContent || '{}');
+
+                return {
+                    name: parsed.name || '',
+                    likes: cleanProfileList(parsed.likes),
+                    dislikes: cleanProfileList(parsed.dislikes),
+                    location: parsed.location || '',
+                    transportation: parsed.transportation || '',
+                    use_location_matching: parsed.use_location_matching !== false
+                };
+            } catch {
+                return {
+                    name: '',
+                    likes: [],
+                    dislikes: [],
+                    location: '',
+                    transportation: '',
+                    use_location_matching: true
+                };
+            }
+        }
+
+        function writeProfileJson(profile) {
+            const card = getProfileCard();
+            const jsonEl = card?.querySelector('[data-profile-json]');
+
+            if (jsonEl) {
+                jsonEl.textContent = JSON.stringify(profile);
+            }
+        }
+
+        function makeDisplayChip(text) {
+            const chip = document.createElement('span');
+            chip.className = 'chip chip--theme chip--interest';
+            chip.textContent = text;
+            return chip;
+        }
+
+        function renderCardList(key, values) {
+            const card = getProfileCard();
+            const target = card?.querySelector(`[data-profile-list="${key}"]`);
+
+            if (!target) return;
+
+            target.replaceChildren();
+
+            if (!values.length) {
+                const empty = document.createElement('span');
+                empty.className = 'profile-empty';
+                empty.textContent = 'None added';
+                target.appendChild(empty);
+                return;
+            }
+
+            values.forEach(function (value) {
+                target.appendChild(makeDisplayChip(value));
+            });
+        }
+
+        function buildRankedUrl(profile) {
+            const params = new URLSearchParams();
+
+            params.set('ranked', 'true');
+
+            profile.likes.forEach(function (like) {
+                params.append('likes', like);
+            });
+
+            profile.dislikes.forEach(function (dislike) {
+                params.append('dislikes', dislike);
+            });
+
+            if (profile.location) {
+                params.set('location', profile.location);
+            }
+
+            if (profile.transportation) {
+                params.set('transportation', profile.transportation);
+            }
+
+            if (profile.use_location_matching === false) {
+                params.set('use_location_matching', 'false');
+            }
+
+            return '/opportunities?' + params.toString();
+        }
+
+        function renderProfileCard(profile) {
+            const card = getProfileCard();
+            if (!card) return;
+
+            renderCardList('likes', profile.likes);
+            renderCardList('dislikes', profile.dislikes);
+
+            const locationEl = card.querySelector('[data-profile-value="location"]');
+            if (locationEl) locationEl.textContent = profile.location || '—';
+
+            const transportationEl = card.querySelector('[data-profile-value="transportation"]');
+            if (transportationEl) transportationEl.textContent = profile.transportation || '—';
+
+            const locationPreferenceLabel = card.querySelector('[data-profile-location-preference-label]');
+            const locationPreferenceValue = card.querySelector('[data-profile-location-preference]');
+
+            if (locationPreferenceLabel) {
+                locationPreferenceLabel.hidden = profile.use_location_matching !== false;
+            }
+
+            if (locationPreferenceValue) {
+                locationPreferenceValue.hidden = profile.use_location_matching !== false;
+            }
+
+            const rankedLink = card.querySelector('[data-profile-ranked-link]');
+            if (rankedLink) rankedLink.href = buildRankedUrl(profile);
+
+            writeProfileJson(profile);
+        }
+
+        function makeEditableChip(text) {
+            const chip = document.createElement('span');
+            chip.className = 'chip chip--theme chip--interest profile-chip-edit';
+            chip.dataset.value = text;
+            chip.setAttribute('role', 'listitem');
+
+            chip.innerHTML = `
+        <span>${escapeHtml(text)}</span>
+        <button
+          type="button"
+          class="profile-chip-remove"
+          data-edit-remove
+          aria-label="Remove ${escapeHtml(text)}"
+        >×</button>
+      `;
+
+            return chip;
+        }
+
+        function addEditableValues(listEl, rawValue) {
+            if (!listEl || !rawValue) return;
+
+            rawValue
+                .split(',')
+                .map(function (value) {
+                    return value.trim();
+                })
+                .filter(Boolean)
+                .forEach(function (value) {
+                    const exists = Array.from(listEl.querySelectorAll('.profile-chip-edit'))
+                        .some(function (chip) {
+                            return chip.dataset.value.toLowerCase() === value.toLowerCase();
+                        });
+
+                    if (!exists) {
+                        listEl.appendChild(makeEditableChip(value));
+                    }
+                });
+        }
+
+        function populateEditableList(key, values) {
+            const modal = getModalBackdrop();
+            const listEl = modal?.querySelector(`[data-edit-list="${key}"]`);
+
+            if (!listEl) return;
+
+            listEl.replaceChildren();
+
+            cleanProfileList(values).forEach(function (value) {
+                addEditableValues(listEl, value);
+            });
+        }
+
+        function updateLocationMatchHelp() {
+            const modal = getModalBackdrop();
+            if (!modal) return;
+
+            const locationInput = modal.querySelector('[data-edit-location]');
+            const checkbox = modal.querySelector('[data-edit-location-match]');
+            const help = modal.querySelector('[data-edit-location-help]');
+            const field = modal.querySelector('.profile-match-field');
+
+            if (!locationInput || !checkbox) return;
+
+            const location = String(locationInput.value || '').trim();
+
+            if (!location) {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+                field?.classList.add('is-disabled');
+
+                if (help) {
+                    help.textContent = 'Add a location above to match by area.';
+                }
+
+                return;
+            }
+
+            checkbox.disabled = false;
+            field?.classList.remove('is-disabled');
+
+            if (help) {
+                help.textContent = checkbox.checked
+                    ? `Prefer opportunities near ${location}.`
+                    : 'Equal weighting for all opportunities in New York State.';
+            }
+        }
+
+        function populateProfileModal() {
+            const modal = getModalBackdrop();
+            if (!modal) return;
+
+            const profile = readProfileFromCard();
+
+            populateEditableList('likes', profile.likes);
+            populateEditableList('dislikes', profile.dislikes);
+
+            const locationInput = modal.querySelector('[data-edit-location]');
+            const transportationInput = modal.querySelector('[data-edit-transportation]');
+            const checkbox = modal.querySelector('[data-edit-location-match]');
+
+            if (locationInput) locationInput.value = profile.location || '';
+            if (transportationInput) transportationInput.value = profile.transportation || '';
+            if (checkbox) checkbox.checked = profile.use_location_matching !== false;
+
+            updateLocationMatchHelp();
+        }
+
+        function flushTypedAddInputs() {
+            const modal = getModalBackdrop();
+            if (!modal) return;
+
+            modal.querySelectorAll('[data-edit-add-input]').forEach(function (input) {
+                const value = input.value.trim();
+                if (!value) return;
+
+                const field = input.closest('.profile-edit-field');
+                const listEl = field?.querySelector('[data-edit-list]');
+
+                addEditableValues(listEl, value);
+                input.value = '';
+            });
+        }
+
+        function readListFromModal(key) {
+            const modal = getModalBackdrop();
+            const listEl = modal?.querySelector(`[data-edit-list="${key}"]`);
+
+            if (!listEl) return [];
+
+            return cleanProfileList(
+                Array.from(listEl.querySelectorAll('.profile-chip-edit'))
+                    .map(function (chip) {
+                        return chip.dataset.value;
+                    })
+            );
+        }
+
+        function readProfileFromModal() {
+            const modal = getModalBackdrop();
+
+            flushTypedAddInputs();
+
+            const existing = readProfileFromCard();
+            const locationInput = modal?.querySelector('[data-edit-location]');
+            const transportationInput = modal?.querySelector('[data-edit-transportation]');
+            const checkbox = modal?.querySelector('[data-edit-location-match]');
+
+            const location = String(locationInput?.value || '').trim();
+            const transportation = String(transportationInput?.value || '').trim();
+            const useLocationMatching = Boolean(checkbox?.checked);
+
+            return {
+                name: existing.name,
+                likes: readListFromModal('likes'),
+                dislikes: readListFromModal('dislikes'),
+                location: location,
+                transportation: transportation,
+                use_location_matching: location ? useLocationMatching : false
+            };
+        }
+
+        function getFocusableElements() {
+            const dialog = getModalDialog();
+            if (!dialog) return [];
+
+            return Array.from(dialog.querySelectorAll(focusableSelector))
+                .filter(function (el) {
+                    return !el.disabled && el.offsetParent !== null;
+                });
+        }
+
+        function moveModalToBody() {
+            const backdrop = getModalBackdrop();
+
+            if (backdrop && backdrop.parentElement !== document.body) {
+                document.body.appendChild(backdrop);
+            }
+        }
+
+        function inertBackground() {
+            const backdrop = getModalBackdrop();
+            if (!backdrop) return;
+
+            inertedElements = Array.from(document.body.children)
+                .filter(function (el) {
+                    return el !== backdrop;
+                })
+                .map(function (el) {
+                    return {
+                        el: el,
+                        inert: el.inert
+                    };
+                });
+
+            inertedElements.forEach(function (item) {
+                item.el.inert = true;
+            });
+        }
+
+        function restoreBackground() {
+            inertedElements.forEach(function (item) {
+                item.el.inert = item.inert;
+            });
+
+            inertedElements = [];
+        }
+
+        function openProfileModal(trigger) {
+            const backdrop = getModalBackdrop();
+            const dialog = getModalDialog();
+
+            if (!backdrop || !dialog) return;
+
+            lastModalTrigger = trigger || document.activeElement;
+
+            moveModalToBody();
+            populateProfileModal();
+
+            backdrop.hidden = false;
+            document.body.classList.add('profile-modal-open');
+
+            dialog.focus({ preventScroll: true });
+
+            inertBackground();
+        }
+
+        function closeProfileModal() {
+            const backdrop = getModalBackdrop();
+
+            if (!backdrop || backdrop.hidden) return;
+
+            backdrop.hidden = true;
+            document.body.classList.remove('profile-modal-open');
+
+            restoreBackground();
+
+            if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+                lastModalTrigger.focus({ preventScroll: true });
+            }
+
+            lastModalTrigger = null;
+        }
+
+        function saveProfileModal() {
+            const profile = readProfileFromModal();
+            const chatStatus = getChatStatus();
+
+            renderProfileCard(profile);
+            closeProfileModal();
+
+            if (chatStatus) {
+                chatStatus.textContent = 'Profile updated.';
+            }
+        }
+
+        document.addEventListener('click', function (event) {
+            const openButton = event.target.closest('[data-profile-edit-open]');
+            if (openButton) {
+                openProfileModal(openButton);
+                return;
+            }
+
+            if (event.target.closest('[data-profile-modal-close]')) {
+                closeProfileModal();
+                return;
+            }
+
+            if (event.target.closest('[data-profile-save]')) {
+                saveProfileModal();
+                return;
+            }
+
+            const addButton = event.target.closest('[data-edit-add-button]');
+            if (addButton) {
+                const field = addButton.closest('.profile-edit-field');
+                const input = field?.querySelector('[data-edit-add-input]');
+                const listEl = field?.querySelector('[data-edit-list]');
+
+                if (input) {
+                    addEditableValues(listEl, input.value);
+                    input.value = '';
+                    input.focus();
+                }
+
+                return;
+            }
+
+            const removeButton = event.target.closest('[data-edit-remove]');
+            if (removeButton) {
+                removeButton.closest('.profile-chip-edit')?.remove();
+                return;
+            }
+
+            if (event.target.matches('[data-profile-edit-modal]')) {
+                closeProfileModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            const backdrop = getModalBackdrop();
+            const modalIsOpen = backdrop && !backdrop.hidden;
+
+            if (event.key === 'Enter' && event.target.matches('[data-edit-add-input]')) {
+                event.preventDefault();
+
+                const field = event.target.closest('.profile-edit-field');
+                const listEl = field?.querySelector('[data-edit-list]');
+
+                addEditableValues(listEl, event.target.value);
+                event.target.value = '';
+                return;
+            }
+
+            if (!modalIsOpen) return;
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeProfileModal();
+                return;
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const focusable = getFocusableElements();
+
+            if (!focusable.length) {
+                event.preventDefault();
+                getModalDialog()?.focus();
+                return;
+            }
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+                return;
+            }
+
+            if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        });
+
+        document.addEventListener('input', function (event) {
+            if (event.target.matches('[data-edit-location]')) {
+                updateLocationMatchHelp();
+            }
+        });
+
+        document.addEventListener('change', function (event) {
+            if (event.target.matches('[data-edit-location-match]')) {
+                updateLocationMatchHelp();
+            }
+        });
+    })();
+</script>

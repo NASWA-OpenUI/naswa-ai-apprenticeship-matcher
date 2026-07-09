@@ -86,6 +86,8 @@
   </p>
 </div>
 
+{% include "_profile_edit_modal.html" %}
+
 {% endblock %}
 
 {% block scripts %}
@@ -103,17 +105,17 @@
 
   sessionStorage.removeItem('jobRankings');
 
-  // Page-scroll layout: bring the newest content into view. scroll-margin-bottom
-  // on the messages/streaming bubble leaves room for the sticky composer.
   function scrollIntoViewSafe(el) {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }
+
   function scrollToLatestMessage() {
     scrollIntoViewSafe(chatLog && chatLog.lastElementChild);
   }
 
   function setInputLocked(locked) {
     if (!userInput || !sendButton) return;
+
     userInput.disabled = locked;
     sendButton.disabled = locked;
     sendButton.textContent = locked ? 'Sending…' : 'Send';
@@ -122,7 +124,10 @@
   if (chatForm) {
     chatForm.addEventListener('htmx:beforeRequest', function () {
       setInputLocked(true);
-      chatStatus.textContent = 'Tyler is responding…';
+
+      if (chatStatus) {
+        chatStatus.textContent = 'Tyler is responding…';
+      }
     });
   }
 
@@ -130,22 +135,28 @@
     const { type, data } = e.detail;
 
     if (type === 'token') {
-      streamingBubble.hidden = false;
-      scrollIntoViewSafe(streamingBubble);
+      if (streamingBubble) {
+        streamingBubble.hidden = false;
+        scrollIntoViewSafe(streamingBubble);
+      }
     }
 
     if (type === 'clear-stream') {
-      streamingText.textContent = '';
-      streamingBubble.hidden = true;
+      if (streamingText) streamingText.textContent = '';
+      if (streamingBubble) streamingBubble.hidden = true;
     }
 
     if (type === 'assistant-message') {
       scrollToLatestMessage();
+
       if (!conversationComplete) {
         setInputLocked(false);
         if (userInput) userInput.focus();
       }
-      chatStatus.textContent = 'Response received.';
+
+      if (chatStatus) {
+        chatStatus.textContent = 'Response received.';
+      }
     }
 
     if (type === 'profile-confirmed') {
@@ -158,7 +169,9 @@
         userInput.placeholder = 'Conversation complete';
       }
 
-      chatStatus.textContent = 'Conversation complete. Your profile summary is now shown.';
+      if (chatStatus) {
+        chatStatus.textContent = 'Conversation complete. Your profile summary is now shown.';
+      }
 
       requestAnimationFrame(() => {
         const profileCard = profileArea?.querySelector('.profile-card') || profileArea;
@@ -167,10 +180,14 @@
     }
 
     if (type === 'error' || type === 'agent-error') {
-      streamingText.textContent = '';
-      streamingBubble.hidden = true;
+      if (streamingText) streamingText.textContent = '';
+      if (streamingBubble) streamingBubble.hidden = true;
+
       setInputLocked(false);
-      chatStatus.textContent = data || 'Something went wrong.';
+
+      if (chatStatus) {
+        chatStatus.textContent = data || 'Something went wrong.';
+      }
     }
   });
 </script>
