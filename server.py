@@ -527,9 +527,51 @@ async def ai_disclosure(request: Request):
 
 
 @app.get("/chat")
-async def chat_page(request: Request):
+async def chat_page(
+    request: Request,
+    likes: list[str] = Query(default=[]),
+    dislikes: list[str] = Query(default=[]),
+    location: str | None = None,
+    transportation: str | None = None,
+    use_location_matching: bool | None = None,
+):
     """Serve the guided chat page."""
     session_id, session, needs_cookie = _get_or_create_session(request)
+
+    has_prefilled_profile = _has_profile_query_params(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+    )
+
+    logger.info("has_prefilled_profile=%s", has_prefilled_profile)
+
+    if has_prefilled_profile:
+        profile = _confirmed_profile_from_query(
+            likes=likes,
+            dislikes=dislikes,
+            location=location,
+            transportation=transportation,
+            use_location_matching=(
+                True if use_location_matching is None else use_location_matching
+            ),
+        )
+
+        session.profile = profile
+        session.ranking_cache.clear()
+        session.queue = asyncio.Queue()
+        session.agent = make_agent()
+        session.messages = [
+            ChatMessage(
+                role="assistant",
+                content=(
+                    "Here’s the profile I’ll use to suggest matches. "
+                    "You can edit it before seeing jobs."
+                ),
+            )
+        ]
 
     ranked_url = None
     if session.profile and session.profile.get("confirmed"):
@@ -711,6 +753,46 @@ def _rank_profile_from_query(
         "location": location,
         "transportation": transportation,
         "use_location_matching": use_location_matching,
+    }
+
+
+def _has_profile_query_params(
+    *,
+    likes: list[str],
+    dislikes: list[str],
+    location: str | None,
+    transportation: str | None,
+    use_location_matching: bool | None,
+) -> bool:
+    """Return whether the /chat request is trying to prefill a profile."""
+    return any(
+        [
+            likes,
+            dislikes,
+            location is not None,
+            transportation is not None,
+            use_location_matching is not None,
+        ]
+    )
+
+
+def _confirmed_profile_from_query(
+    *,
+    likes: list[str],
+    dislikes: list[str],
+    location: str | None,
+    transportation: str | None,
+    use_location_matching: bool,
+) -> dict:
+    """Build a confirmed chat profile from query parameters."""
+    return {
+        "name": None,
+        "likes": likes,
+        "dislikes": dislikes,
+        "location": location,
+        "transportation": transportation,
+        "use_location_matching": use_location_matching,
+        "confirmed": True,
     }
 
 

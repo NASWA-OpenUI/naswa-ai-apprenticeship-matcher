@@ -39,6 +39,7 @@ def test_chat_get_route_renders_chat_page(client):
 
     assert response.status_code == 200
     assert "What’s your name?" in response.text
+    assert "Here’s the profile I’ll use to suggest matches" not in response.text
     assert 'id="chat-form"' in response.text
     assert 'sse-connect="/chat/stream"' in response.text
 
@@ -52,6 +53,88 @@ def test_chat_route_accepts_message_and_returns_user_bubble(client):
     assert "Paul" in response.text
     assert "message--user" in response.text
     assert "You" in response.text
+
+
+def test_chat_get_route_prefills_confirmed_profile_from_query(client):
+    """Verifies that /chat can accept profile query params and render the
+    confirmed profile card immediately, without completing the AI chat flow."""
+    response = client.get(
+        "/chat",
+        params=[
+            ("likes", "art"),
+            ("likes", "fashion"),
+            ("dislikes", "office work"),
+            ("location", "Buffalo"),
+            ("transportation", "drives self"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    # The page should show the prefilled-profile state, not the initial chat prompt.
+    assert "Here’s the profile I’ll use to suggest matches" in response.text
+    assert "What’s your name?" not in response.text
+
+    # Confirmed profile card.
+    assert "Your Profile" in response.text
+    assert "data-profile-card" in response.text
+    assert "data-profile-json" in response.text
+    assert "data-profile-edit-open" in response.text
+
+    # Profile values.
+    assert "art" in response.text
+    assert "fashion" in response.text
+    assert "office work" in response.text
+    assert "Buffalo" in response.text
+    assert "drives self" in response.text
+
+    # The chat composer should be in the completed state.
+    assert "Conversation complete" in response.text
+    assert "disabled" in response.text
+    assert ">Done</button>" in response.text
+
+    # Modal partial should be available for editing.
+    assert "data-profile-edit-modal" in response.text
+    assert 'role="dialog"' in response.text
+    assert 'aria-modal="true"' in response.text
+    assert "data-profile-save" in response.text
+    assert 'data-edit-list="likes"' in response.text
+    assert 'data-edit-list="dislikes"' in response.text
+
+    # Ranked URL should be built from the prefilled profile.
+    assert "/opportunities?ranked=true" in response.text
+    assert "likes=art" in response.text
+    assert "likes=fashion" in response.text
+    assert "dislikes=office+work" in response.text
+    assert "location=Buffalo" in response.text
+    assert "transportation=drives+self" in response.text
+
+
+def test_chat_get_route_prefilled_profile_preserves_location_matching_false(client):
+    """Verifies that a prefilled chat profile can opt out of location-based
+    ranking and carries that preference into the ranked opportunities link."""
+    response = client.get(
+        "/chat",
+        params=[
+            ("likes", "art"),
+            ("location", "Buffalo"),
+            ("transportation", "drives self"),
+            ("use_location_matching", "false"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert "Your Profile" in response.text
+    assert "art" in response.text
+    assert "Buffalo" in response.text
+    assert "drives self" in response.text
+
+    # The JSON profile used by the client-side editor should preserve this too.
+    assert '"use_location_matching": false' in response.text
+
+    # The ranked URL should also preserve the false value.
+    assert "use_location_matching=false" in response.text
 
 
 def test_chat_reset_route_redirects_to_fresh_chat(client):
