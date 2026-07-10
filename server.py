@@ -2,7 +2,6 @@ import asyncio
 import json
 import logging
 import os
-import re
 import secrets
 import time
 from contextlib import asynccontextmanager
@@ -21,7 +20,6 @@ from strands.models import BedrockModel
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_matching import (
-    explain_location_match,
     log_user_location_inference,
     should_use_location_matching,
 )
@@ -1296,139 +1294,3 @@ async def rank_opportunities_stream(
         _set_session_cookie(response, session_id)
 
     return response
-
-
-# ── DEMO: Location matching ────────────────────────────────────────────────────────────────
-
-
-def _parse_location_interpretation(raw: str) -> dict:
-    """Parse the location-demo model response as a JSON object."""
-    cleaned = re.sub(r"```(?:json)?\s*", "", raw).strip().rstrip("`").strip()
-
-    match = re.search(r"\{.*\}", cleaned, re.DOTALL)
-    if match:
-        cleaned = match.group()
-
-    parsed = json.loads(cleaned)
-
-    if not isinstance(parsed, dict):
-        raise ValueError("Location interpretation response was not a JSON object.")
-
-    return parsed
-
-
-async def interpret_location_for_demo(location: str) -> dict:
-    """
-    Use the LLM to normalize a user-entered location string for the demo page.
-
-    The model does not choose the labor market region. It only returns a likely
-    cleaned-up NY location. Region mapping remains deterministic.
-    """
-    prompt = (
-        "You are helping normalize a location entered by a user looking for "
-        "New York State apprenticeship opportunities.\n\n"
-        "Return ONLY a JSON object with this field:\n"
-        '{ "normalized_location": string or null }\n\n'
-        "Rules:\n"
-        "- Correct obvious spelling mistakes in New York city, town, village, county, "
-        "borough, or region names.\n"
-        "- If the input is already clear, return the cleaned-up place name.\n"
-        "- If the input appears outside New York State or is too ambiguous, use null.\n"
-        "- Do not choose, mention, or infer a labor market region.\n"
-        "- Do not include explanations.\n\n"
-        f"User input: {location!r}"
-    )
-
-    interpreter = Agent(
-        model=make_bedrock_model(CHAT_MODEL_NAME, streaming=False, temperature=0.0),
-        callback_handler=None,
-    )
-
-    raw = str(await interpreter.invoke_async(prompt))
-    parsed = _parse_location_interpretation(raw)
-
-    normalized_location = parsed.get("normalized_location")
-    if normalized_location is not None:
-        normalized_location = str(normalized_location).strip() or None
-
-    return {
-        "normalized_location": normalized_location,
-    }
-
-
-def _demo_location_label(value: str | None) -> str:
-    """Return a compact display label for a demo location."""
-    text = (value or "").strip()
-
-    # Keep the demo output clean when the model returns "Buffalo, NY".
-    text = re.sub(r",?\s+(ny|new york)$", "", text, flags=re.IGNORECASE)
-
-    return text
-
-
-def _same_demo_location(a: str | None, b: str | None) -> bool:
-    """Return whether two demo location labels are effectively the same."""
-    return _demo_location_label(a).lower() == _demo_location_label(b).lower()
-
-
-@app.get("/location-matcher")
-async def location_matcher_page(request: Request, location: str | None = None):
-    """Demo page for mapping entered locations to NY labor market regions."""
-    raw_location = (location or "").strip()
-
-    exact_result = explain_location_match(raw_location) if raw_location else None
-    ai_result = None
-    ai_match_result = None
-    ai_error = None
-
-    final_match_result = exact_result
-    final_location = raw_location
-    final_location_uses_ai = False
-
-    if raw_location:
-        try:
-            ai_result = await interpret_location_for_demo(raw_location)
-            normalized_location = ai_result.get("normalized_location")
-
-            if normalized_location:
-                ai_match_result = explain_location_match(normalized_location)
-
-                # Prefer the exact result when it already works.
-                # Use the AI-normalized result when the raw input did not match
-                # but the normalized input does.
-                if (
-                    exact_result
-                    and not exact_result["region_names"]
-                    and ai_match_result["region_names"]
-                ):
-                    final_match_result = ai_match_result
-                    final_location = normalized_location
-                    final_location_uses_ai = not _same_demo_location(
-                        raw_location,
-                        normalized_location,
-                    )
-
-        except Exception as exc:
-            ai_error = _describe_exception(exc)
-            logger.exception(
-                "Location matcher demo AI interpretation failed: %s", ai_error
-            )
-
-    return templates.TemplateResponse(
-        request,
-        "location_matcher.html",
-        {
-            "location": raw_location,
-            "exact_result": exact_result,
-            "ai_result": ai_result,
-            "ai_match_result": ai_match_result,
-            "ai_error": ai_error,
-            "final_match_result": final_match_result,
-            "final_location_label": _demo_location_label(final_location),
-            "final_location_uses_ai": final_location_uses_ai,
-            "raw_location_label": _demo_location_label(raw_location),
-            "ai_location_label": _demo_location_label(
-                ai_result.get("normalized_location") if ai_result else None
-            ),
-        },
-    )

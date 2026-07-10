@@ -84,30 +84,6 @@ def _region_names(region_keys: set[str] | frozenset[str]) -> list[str]:
     ]
 
 
-def _display_matches(matches: list[dict]) -> list[dict]:
-    """Return template-friendly match details."""
-    displayed = []
-    seen = set()
-
-    for match in matches:
-        region_keys = tuple(sorted(match["region_keys"]))
-        key = (match["term"], region_keys)
-
-        if key in seen:
-            continue
-
-        seen.add(key)
-        displayed.append(
-            {
-                "term": match["term"],
-                "groups": list(region_keys),
-                "region_names": _region_names(match["region_keys"]),
-            }
-        )
-
-    return displayed
-
-
 def _infer_location_groups_with_matches(
     text: str | None,
 ) -> tuple[set[str], list[dict]]:
@@ -166,19 +142,6 @@ def infer_location_groups(text: str | None) -> set[str]:
     """Infer NY labor market region groups from user text or posting text."""
     groups, _matches = _infer_location_groups_with_matches(text)
     return groups
-
-
-def explain_location_match(text: str | None) -> dict:
-    """Return display-friendly details for the location matcher demo page."""
-    query = (text or "").strip()
-    groups, matches = _infer_location_groups_with_matches(query)
-
-    return {
-        "query": query,
-        "groups": sorted(groups),
-        "region_names": _region_names(groups),
-        "matches": _display_matches(matches),
-    }
 
 
 def log_user_location_inference(location: str | None) -> None:
