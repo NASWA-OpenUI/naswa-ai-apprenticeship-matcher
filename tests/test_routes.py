@@ -370,7 +370,7 @@ def test_build_ranked_items_caps_far_strong_match_when_location_matching_enabled
         }
     ]
 
-    ranked = server.build_ranked_items(
+    ranked = build_ranked_items(
         batch_jobs=[job],
         scores=scores,
         job_index={job["id"]: 0},
@@ -398,7 +398,7 @@ def test_build_ranked_items_does_not_cap_far_match_when_location_matching_disabl
         }
     ]
 
-    ranked = server.build_ranked_items(
+    ranked = build_ranked_items(
         batch_jobs=[job],
         scores=scores,
         job_index={job["id"]: 0},

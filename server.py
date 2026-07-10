@@ -5,7 +5,6 @@ import os
 import secrets
 import time
 from contextlib import asynccontextmanager
-from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -14,7 +13,6 @@ from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sse_starlette.sse import EventSourceResponse
-from strands import Agent
 
 from naswa_matcher.agents import (
     SCORING_MODEL_NAME,
@@ -39,6 +37,14 @@ from naswa_matcher.profile import (
     strip_profile,
 )
 from naswa_matcher.ranking import build_ranked_items, score_jobs, sort_ranked_items
+from naswa_matcher.sessions import (
+    SESSION_COOKIE_NAME,
+    SESSION_MAX_AGE_SECONDS,
+    ChatMessage,
+    RankingCacheEntry,
+    SessionStore,
+    set_session_cookie,
+)
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -113,114 +119,10 @@ def _describe_exception(exc: Exception) -> str:
 
 # ── Session state ─────────────────────────────────────────────────────────────
 
-SESSION_COOKIE_NAME = "tyler_demo_session"
-SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7  # 7 days
-
-INITIAL_CHAT_MESSAGE = (
-    "Registered apprenticeships let you earn while you learn. "
-    "Let’s see if one might be right for you. What’s your name?"
+session_store = SessionStore(
+    max_age_seconds=SESSION_MAX_AGE_SECONDS,
+    chat_agent_factory=make_chat_agent,
 )
-
-
-@dataclass
-class ChatMessage:
-    role: str
-    content: str
-
-
-def _initial_messages() -> list[ChatMessage]:
-    return [
-        ChatMessage(
-            role="assistant",
-            content=INITIAL_CHAT_MESSAGE,
-        )
-    ]
-
-
-@dataclass
-class RankingCacheEntry:
-    """Cached ranked opportunities for one profile inside one browser session."""
-
-    profile: dict
-    ranked: list[dict] = field(default_factory=list)
-    completed_jobs: int = 0
-    total_jobs: int = 0
-    completed_openings: int = 0
-    total_openings: int = 0
-    elapsed_seconds: int = 0
-    created_at: float = field(default_factory=time.time)
-    is_complete: bool = False
-
-
-@dataclass
-class ChatSession:
-    """Ephemeral browser session for the internal demo."""
-
-    agent: Agent = field(default_factory=make_chat_agent)
-    queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
-    profile: dict | None = None
-    messages: list[ChatMessage] = field(default_factory=_initial_messages)
-    last_seen: float = field(default_factory=time.time)
-    active_stream_id: str | None = None
-    ranking_cache: dict[str, RankingCacheEntry] = field(default_factory=dict)
-    last_logged_location: str | None = None
-
-
-_sessions: dict[str, ChatSession] = {}
-
-
-def _new_session_id() -> str:
-    """Create a browser-safe random session ID."""
-    return secrets.token_urlsafe(32)
-
-
-def _cleanup_sessions() -> None:
-    """Remove old in-memory sessions so the demo does not leak memory forever."""
-    now = time.time()
-    expired_session_ids = [
-        session_id
-        for session_id, session in _sessions.items()
-        if now - session.last_seen > SESSION_MAX_AGE_SECONDS
-    ]
-
-    for session_id in expired_session_ids:
-        del _sessions[session_id]
-
-
-def _get_or_create_session(request: Request) -> tuple[str, ChatSession, bool]:
-    """
-    Return the current browser session.
-
-    The bool indicates whether a new cookie needs to be set on the response.
-    """
-    _cleanup_sessions()
-
-    session_id = request.cookies.get(SESSION_COOKIE_NAME)
-    needs_cookie = False
-
-    if not session_id or session_id not in _sessions:
-        session_id = _new_session_id()
-        _sessions[session_id] = ChatSession()
-        needs_cookie = True
-
-    session = _sessions[session_id]
-    session.last_seen = time.time()
-
-    return session_id, session, needs_cookie
-
-
-def _set_session_cookie(response, session_id: str) -> None:
-    """Attach the demo session cookie to a response."""
-    response.set_cookie(
-        key=SESSION_COOKIE_NAME,
-        value=session_id,
-        max_age=SESSION_MAX_AGE_SECONDS,
-        httponly=True,
-        samesite="lax",
-        secure=False,  # TODO: Set to True when serving over HTTPS.
-        path="/",
-    )
-
 
 # ── Ranking cache helpers ────────────────────────────────────────────────────
 
@@ -372,7 +274,9 @@ async def chat_page(
     use_location_matching: bool | None = None,
 ):
     """Serve the guided chat page."""
-    session_id, session, needs_cookie = _get_or_create_session(request)
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
 
     has_prefilled_profile = has_profile_query_params(
         likes=likes,
@@ -394,27 +298,7 @@ async def chat_page(
             confirmed=True,
         )
 
-        has_prior_user_messages = _has_prior_user_messages(session)
-
-        # Always update the session profile from query params.
-        # This lets /opportunities link back to /chat with the edited profile.
-        session.profile = profile
-        session.ranking_cache.clear()
-        session.queue = asyncio.Queue()
-
-        # Only replace the transcript for preloaded/demo links where the user
-        # has not actually had a conversation yet.
-        if not has_prior_user_messages:
-            session.agent = make_chat_agent()
-            session.messages = [
-                ChatMessage(
-                    role="assistant",
-                    content=(
-                        "Here’s the profile I’ll use to suggest matches. "
-                        "You can edit it before seeing jobs."
-                    ),
-                )
-            ]
+        session.apply_confirmed_profile(profile)
 
     ranked_url = None
     if session.profile and session.profile.get("confirmed"):
@@ -431,29 +315,25 @@ async def chat_page(
     )
 
     if needs_cookie:
-        _set_session_cookie(response, session_id)
+        set_session_cookie(response, session_id)
 
     return response
 
 
 @app.post("/chat/reset")
 async def reset_chat(request: Request):
-    """Replace this browser session's agent and redirect to a fresh chat page."""
-    session_id, session, needs_cookie = _get_or_create_session(request)
+    """Reset this browser session and redirect to a fresh chat page."""
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
 
-    session.agent = make_chat_agent()
-    session.profile = None
-    session.messages = _initial_messages()
-    session.ranking_cache.clear()
-
-    # Replace the queue entirely
-    session.queue = asyncio.Queue()
+    session.reset()
 
     response = Response(status_code=204)
     response.headers["HX-Redirect"] = "/chat"
 
     if needs_cookie:
-        _set_session_cookie(response, session_id)
+        set_session_cookie(response, session_id)
 
     return response
 
@@ -461,7 +341,9 @@ async def reset_chat(request: Request):
 @app.post("/chat")
 async def chat(request: Request, message: str = Form(...)):
     """Accept a user message, enqueue it for this browser, return user bubble HTML."""
-    session_id, session, needs_cookie = _get_or_create_session(request)
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
 
     await session.queue.put(message)
     session.messages.append(ChatMessage(role="user", content=message))
@@ -472,7 +354,7 @@ async def chat(request: Request, message: str = Form(...)):
     )
 
     if needs_cookie:
-        _set_session_cookie(response, session_id)
+        set_session_cookie(response, session_id)
 
     return response
 
@@ -480,7 +362,9 @@ async def chat(request: Request, message: str = Form(...)):
 @app.get("/chat/stream")
 async def chat_stream(request: Request):
     """SSE endpoint: waits for this browser's messages and streams agent tokens."""
-    session_id, session, needs_cookie = _get_or_create_session(request)
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
 
     stream_queue = session.queue
     stream_id = secrets.token_urlsafe(16)
@@ -573,7 +457,7 @@ async def chat_stream(request: Request):
     response = EventSourceResponse(generate())
 
     if needs_cookie:
-        _set_session_cookie(response, session_id)
+        set_session_cookie(response, session_id)
 
     return response
 
@@ -601,7 +485,9 @@ async def opportunities_page(
     )
 
     if ranked and likes:
-        session_id, session, needs_cookie = _get_or_create_session(request)
+        session_id, session, needs_cookie = session_store.get_or_create(
+            request.cookies.get(SESSION_COOKIE_NAME)
+        )
 
         session.profile = build_profile(
             name=session.profile.get("name") if session.profile else None,
@@ -652,7 +538,7 @@ async def opportunities_page(
         )
 
         if needs_cookie:
-            _set_session_cookie(response, session_id)
+            set_session_cookie(response, session_id)
 
         return response
 
@@ -703,7 +589,9 @@ async def rank_opportunities_stream(
     Completed rankings are cached inside the user's browser session so returning
     to the same ranked opportunities URL does not rerun the AI scoring work.
     """
-    session_id, session, needs_cookie = _get_or_create_session(request)
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
 
     profile = build_profile(
         likes=likes,
@@ -769,7 +657,7 @@ async def rank_opportunities_stream(
         response = EventSourceResponse(generate_cached())
 
         if needs_cookie:
-            _set_session_cookie(response, session_id)
+            set_session_cookie(response, session_id)
 
         return response
 
@@ -1052,6 +940,6 @@ async def rank_opportunities_stream(
     response = EventSourceResponse(generate())
 
     if needs_cookie:
-        _set_session_cookie(response, session_id)
+        set_session_cookie(response, session_id)
 
     return response

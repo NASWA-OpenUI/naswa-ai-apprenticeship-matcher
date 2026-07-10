@@ -5,6 +5,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 import server
+from naswa_matcher.sessions import SESSION_MAX_AGE_SECONDS, SessionStore
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
@@ -41,7 +42,15 @@ def opportunities():
 def client(monkeypatch, opportunities):
     """FastAPI test client with AWS, DB loading, and live data patched out."""
 
-    monkeypatch.setattr(server, "Agent", DummyAgent)
+    monkeypatch.setattr(
+        server,
+        "session_store",
+        SessionStore(
+            max_age_seconds=SESSION_MAX_AGE_SECONDS,
+            chat_agent_factory=DummyAgent,
+        ),
+    )
+
     monkeypatch.setattr(server, "load_db", lambda: None)
     monkeypatch.setattr(server, "all_opportunities", lambda: opportunities)
 
@@ -50,10 +59,5 @@ def client(monkeypatch, opportunities):
 
     monkeypatch.setattr(server, "get_opportunity", fake_get_opportunity)
 
-    # Keep route tests isolated from sessions created by previous tests.
-    server._sessions.clear()
-
     with TestClient(server.app) as test_client:
         yield test_client
-
-    server._sessions.clear()
