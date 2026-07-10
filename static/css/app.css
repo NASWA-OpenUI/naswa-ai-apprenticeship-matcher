@@ -1690,31 +1690,132 @@ body.profile-modal-open {
   margin: 0 0 0.75rem;
 }
 
-/* ── Ranked opportunity cards ────────────────────────────────────────────── */
+/* ── Matched profile summary widget ──────────────────────────────────────── */
 
-.interests-banner {
-  background: var(--nys-color-theme-faint);
-  border: 1px solid var(--nys-color-theme-weaker);
-  border-radius: var(--app-radius-md);
-  padding: 0.8rem 1rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.95rem;
-  color: var(--app-ink);
+.matched-profile-widget {
+  padding: 1.35rem 1.6rem;
+  margin-bottom: var(--app-space-300);
+}
+
+.matched-profile-widget__main {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: var(--app-space-150);
 }
 
-.interests-banner__lead {
-  font-weight: 700;
-  margin-right: 0.2rem;
+.matched-profile-widget__title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 800;
 }
 
-.interests-banner__link {
-  margin-left: auto;
-  font-weight: 700;
+.matched-profile-widget__tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--app-space-100);
 }
+
+.profile-summary-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: var(--nys-radius-round, 1776px);
+  padding: 0.32rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.2;
+  border: 1px solid var(--app-border);
+  background: var(--app-surface);
+  white-space: nowrap;
+}
+
+.profile-summary-tag--like {
+  background: var(--nys-color-theme-faint, #eef5f5);
+  border-color: var(--nys-color-theme-weak, #a8cccd);
+  color: var(--nys-color-theme-strong, #06393f);
+}
+
+.profile-summary-tag--dislike {
+  background: #fbece9;
+  border-color: #e7b4ab;
+  color: #8f3a2e;
+}
+
+.profile-summary-tag--location {
+  background: var(--app-surface);
+  border-color: var(--app-border);
+  color: var(--app-ink);
+}
+
+.profile-summary-tag--location svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--app-text-weak);
+}
+
+.profile-summary-tag__sign {
+  font-weight: 900;
+}
+
+.matched-profile-widget__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--app-space-200);
+  margin-top: var(--app-space-300);
+  padding-top: var(--app-space-200);
+  border-top: 1px solid var(--app-border-weak);
+}
+
+.matched-profile-widget__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--app-space-100);
+  color: var(--nys-color-theme, #084b52);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.matched-profile-widget__back:hover,
+.matched-profile-widget__back:focus {
+  text-decoration: underline;
+}
+
+.matched-profile-widget__back svg,
+.matched-profile-widget__edit svg {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.matched-profile-widget__edit {
+  flex: none;
+}
+
+@media (max-width: 720px) {
+  .matched-profile-widget {
+    padding: 1.1rem 1.25rem;
+  }
+
+  .matched-profile-widget__main {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .matched-profile-widget__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .matched-profile-widget__edit {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/* ── Ranked opportunity cards ────────────────────────────────────────────── */
 
 .match-list {
   display: flex;

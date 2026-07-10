@@ -27,21 +27,8 @@ opportunities{% endif %}{% endblock %}
 
   <div id="ranked-content" {% if not ranking_cached|default(false) %} hx-ext="sse" sse-connect="{{ rank_stream_url }}"
     sse-close="done" {% endif %}>
-    <div class="interests-banner">
-      <span class="interests-banner__lead">Matched to your profile:</span>
 
-      <span class="interests-banner__chip-container">
-        {% for like in profile.likes %}
-        <span class="chip chip--theme chip--bg-white">{{ like }}</span>
-        {% endfor %}
-
-        {% if profile.location %}
-        <span class="chip chip--theme chip--bg-white">{{ profile.location }}</span>
-        {% endif %}
-      </span>
-
-      <a class="interests-banner__link" href="/chat">Change profile</a>
-    </div>
+    {% include "_matched_profile_widget.html" %}
 
     <div id="rank-progress"
       class="surface surface--shadow rank-progress{% if ranking_cached|default(false) %} is-collapsed{% endif %}" {% if
@@ -77,6 +64,10 @@ opportunities{% endif %}{% endblock %}
 
     <div id="rank-done" sse-swap="done" hx-swap="innerHTML" hidden></div>
   </div>
+
+
+  {% set profile_save_mode = "redirect" %}
+  {% include "_profile_edit_modal.html" %}
 
 
   {% if unranked %}
@@ -159,6 +150,7 @@ opportunities{% endif %}{% endblock %}
       </tbody>
     </table>
   </div>
+
   {% else %}
   <p class="empty-state surface surface--shadow">No apprenticeship opportunities are available right now.</p>
   {% endif %}

@@ -1,6 +1,7 @@
 {# templates/_profile_edit_modal.html #}
 
-<div class="profile-modal-backdrop" data-profile-edit-modal hidden>
+<div class="profile-modal-backdrop" data-profile-edit-modal
+    data-profile-save-mode="{{ profile_save_mode | default('local') }}" hidden>
     <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-edit-title"
         aria-describedby="profile-edit-description" tabindex="-1">
         <div class="profile-modal-head">
@@ -103,7 +104,11 @@
         }
 
         function getProfileCard() {
-            return document.querySelector('[data-profile-card]');
+            return document.querySelector('[data-profile-card], [data-profile-summary]');
+        }
+
+        function getProfileSummary() {
+            return document.querySelector('[data-profile-summary]');
         }
 
         function getChatStatus() {
@@ -244,6 +249,101 @@
             return '/opportunities?' + params.toString();
         }
 
+        function buildChatUrl(profile) {
+            const params = new URLSearchParams();
+
+            profile.likes.forEach(function (like) {
+                params.append('likes', like);
+            });
+
+            profile.dislikes.forEach(function (dislike) {
+                params.append('dislikes', dislike);
+            });
+
+            if (profile.location) {
+                params.set('location', profile.location);
+            }
+
+            if (profile.transportation) {
+                params.set('transportation', profile.transportation);
+            }
+
+            if (profile.use_location_matching === false) {
+                params.set('use_location_matching', 'false');
+            }
+
+            const query = params.toString();
+            return query ? '/chat?' + query : '/chat';
+        }
+
+        function makeSummaryTag(kind, text) {
+            const tag = document.createElement('span');
+            tag.className = `profile-summary-tag profile-summary-tag--${kind}`;
+
+            if (kind === 'like') {
+                tag.setAttribute('aria-label', `Interest: ${text}`);
+                tag.innerHTML = `
+      <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
+      ${escapeHtml(text)}
+    `;
+                return tag;
+            }
+
+            if (kind === 'dislike') {
+                tag.setAttribute('aria-label', `Avoiding: ${text}`);
+                tag.innerHTML = `
+      <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
+      ${escapeHtml(text)}
+    `;
+                return tag;
+            }
+
+            tag.innerHTML = `
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
+        stroke="currentColor" stroke-width="2" />
+      <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
+    </svg>
+    ${escapeHtml(text)}
+  `;
+
+            return tag;
+        }
+
+        function renderProfileSummary(profile) {
+            const summary = getProfileSummary();
+            if (!summary) return;
+
+            const tags = summary.querySelector('[data-profile-summary-tags]');
+            if (tags) {
+                tags.replaceChildren();
+
+                profile.likes.forEach(function (like) {
+                    tags.appendChild(makeSummaryTag('like', like));
+                });
+
+                profile.dislikes.forEach(function (dislike) {
+                    tags.appendChild(makeSummaryTag('dislike', dislike));
+                });
+
+                if (profile.location) {
+                    tags.appendChild(makeSummaryTag('location', profile.location));
+                } else if (profile.use_location_matching === false) {
+                    tags.appendChild(makeSummaryTag('location', 'Anywhere in New York'));
+                }
+            }
+
+            const chatLink = summary.querySelector('[data-profile-chat-link]');
+            if (chatLink) {
+                chatLink.href = buildChatUrl(profile);
+            }
+        }
+
+        function shouldRedirectAfterProfileSave() {
+            const modal = getModalBackdrop();
+            return modal?.dataset.profileSaveMode === 'redirect';
+        }
+
         function renderProfileCard(profile) {
             const card = getProfileCard();
             if (!card) return;
@@ -271,6 +371,7 @@
             const rankedLink = card.querySelector('[data-profile-ranked-link]');
             if (rankedLink) rankedLink.href = buildRankedUrl(profile);
 
+            renderProfileSummary(profile);
             writeProfileJson(profile);
         }
 
@@ -524,6 +625,11 @@
 
             renderProfileCard(profile);
             closeProfileModal();
+
+            if (shouldRedirectAfterProfileSave()) {
+                window.location.assign(buildRankedUrl(profile));
+                return;
+            }
 
             if (chatStatus) {
                 chatStatus.textContent = 'Profile updated.';

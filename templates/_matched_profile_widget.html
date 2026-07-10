@@ -1,0 +1,73 @@
+{# templates/_matched_profile_widget.html #}
+
+{% set use_location_matching = false if profile.use_location_matching is sameas false else true %}
+{% set editable_profile = {
+"name": profile.name | default("", true),
+"likes": profile.likes | default([], true),
+"dislikes": profile.dislikes | default([], true),
+"location": profile.location | default("", true),
+"transportation": profile.transportation | default("", true),
+"use_location_matching": use_location_matching
+} %}
+
+<section class="matched-profile-widget surface surface--shadow" data-profile-summary>
+    <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
+
+    <div class="matched-profile-widget__main">
+        <h2 class="matched-profile-widget__title">Matched to your profile:</h2>
+
+        <div class="matched-profile-widget__tags" data-profile-summary-tags>
+            {% for like in profile.likes %}
+            <span class="profile-summary-tag profile-summary-tag--like" aria-label="Interest: {{ like }}">
+                <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
+                {{ like }}
+            </span>
+            {% endfor %}
+
+            {% for dislike in profile.dislikes %}
+            <span class="profile-summary-tag profile-summary-tag--dislike" aria-label="Avoiding: {{ dislike }}">
+                <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
+                {{ dislike }}
+            </span>
+            {% endfor %}
+
+            {% if profile.location %}
+            <span class="profile-summary-tag profile-summary-tag--location">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
+                        stroke-width="2" />
+                    <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
+                </svg>
+                {{ profile.location }}
+            </span>
+            {% elif not use_location_matching %}
+            <span class="profile-summary-tag profile-summary-tag--location">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
+                        stroke-width="2" />
+                    <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Anywhere in New York
+            </span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="matched-profile-widget__actions">
+        <a class="matched-profile-widget__back" href="{{ chat_profile_url | default('/chat') }}" data-profile-chat-link>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            Back to conversation
+        </a>
+
+        <button type="button" class="btn btn--outline matched-profile-widget__edit" data-profile-edit-open>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M4 20h4L18.5 9.5a2.12 2.12 0 0 0-3-3L5 17v3Z" stroke="currentColor" stroke-width="2"
+                    stroke-linejoin="round" />
+            </svg>
+            Edit profile
+        </button>
+    </div>
+</section>

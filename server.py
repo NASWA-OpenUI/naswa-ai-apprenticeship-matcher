@@ -844,6 +844,16 @@ async def opportunities_page(
     if ranked and likes:
         session_id, session, needs_cookie = _get_or_create_session(request)
 
+        session.profile = {
+            "name": session.profile.get("name") if session.profile else None,
+            "likes": likes,
+            "dislikes": dislikes,
+            "location": location,
+            "transportation": transportation,
+            "use_location_matching": use_location_matching,
+            "confirmed": True,
+        }
+
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
@@ -867,6 +877,7 @@ async def opportunities_page(
                 "ranked": True,
                 "rank_stream_url": rank_stream_url,
                 "profile": profile,
+                "chat_profile_url": _profile_chat_url(profile),
                 "likes": likes,
                 "ranked_total": len(onet_jobs),
                 "unranked": unranked,

@@ -300,6 +300,44 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     assert "Sheet Metal Worker Apprentice" in response.text
 
 
+def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
+    """Verifies that the ranked opportunities page renders the streaming shell,
+    profile summary widget, and non-O*NET jobs in the unranked section."""
+    response = client.get(
+        "/opportunities",
+        params=[
+            ("ranked", "true"),
+            ("likes", "hands-on work"),
+            ("likes", "problem solving"),
+            ("dislikes", "desk work"),
+            ("location", "Buffalo area"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert "Matched to your profile" in response.text
+    assert "hands-on work" in response.text
+    assert "problem solving" in response.text
+    assert "desk work" in response.text
+    assert "Buffalo area" in response.text
+
+    assert "Back to conversation" in response.text
+    assert "Edit profile" in response.text
+    assert "data-profile-summary" in response.text
+    assert "data-profile-edit-modal" in response.text
+    assert 'data-profile-save-mode="redirect"' in response.text
+
+    assert "sse-connect" in response.text
+    assert "/api/rank-opportunities" in response.text
+    assert "likes=hands-on+work" in response.text
+    assert "likes=problem+solving" in response.text
+    assert "dislikes=desk+work" in response.text
+
+    assert "More opportunities" in response.text
+    assert "Sheet Metal Worker Apprentice" in response.text
+
+
 def make_server_rank_job(location_summary: str) -> dict:
     """Builds a minimal job object for testing server-side ranking behavior
     without needing the full opportunity fixture shape."""
