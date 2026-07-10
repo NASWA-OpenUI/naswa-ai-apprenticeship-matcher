@@ -546,8 +546,6 @@ async def chat_page(
         use_location_matching=use_location_matching,
     )
 
-    logger.info("has_prefilled_profile=%s", has_prefilled_profile)
-
     if has_prefilled_profile:
         profile = _confirmed_profile_from_query(
             likes=likes,
