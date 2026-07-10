@@ -26,7 +26,10 @@ from naswa_matcher.location_matching import (
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
+    build_profile,
     extract_profile,
+    has_profile_query_params,
+    profile_chat_url,
     profile_rank_params,
     profile_rank_url,
     strip_profile,
@@ -524,6 +527,11 @@ async def ai_disclosure(request: Request):
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
 
+def _has_prior_user_messages(session: ChatSession) -> bool:
+    """Return whether the user has already participated in this chat session."""
+    return any(message.role == "user" for message in session.messages)
+
+
 @app.get("/chat")
 async def chat_page(
     request: Request,
@@ -536,7 +544,7 @@ async def chat_page(
     """Serve the guided chat page."""
     session_id, session, needs_cookie = _get_or_create_session(request)
 
-    has_prefilled_profile = _has_profile_query_params(
+    has_prefilled_profile = has_profile_query_params(
         likes=likes,
         dislikes=dislikes,
         location=location,
@@ -545,7 +553,7 @@ async def chat_page(
     )
 
     if has_prefilled_profile:
-        profile = _confirmed_profile_from_query(
+        profile = build_profile(
             likes=likes,
             dislikes=dislikes,
             location=location,
@@ -553,6 +561,7 @@ async def chat_page(
             use_location_matching=(
                 True if use_location_matching is None else use_location_matching
             ),
+            confirmed=True,
         )
 
         has_prior_user_messages = _has_prior_user_messages(session)
@@ -739,84 +748,6 @@ async def chat_stream(request: Request):
     return response
 
 
-# ── Opportunities request-shaping helpers ──────────────────────────────────────────────────
-
-
-def _rank_profile_from_query(
-    *,
-    likes: list[str],
-    dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool,
-) -> dict:
-    """Build the ranking profile from opportunity query parameters."""
-    return {
-        "likes": likes,
-        "dislikes": dislikes,
-        "location": location,
-        "transportation": transportation,
-        "use_location_matching": use_location_matching,
-    }
-
-
-def _has_profile_query_params(
-    *,
-    likes: list[str],
-    dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool | None,
-) -> bool:
-    """Return whether the /chat request is trying to prefill a profile."""
-    return any(
-        [
-            likes,
-            dislikes,
-            location is not None,
-            transportation is not None,
-            use_location_matching is not None,
-        ]
-    )
-
-
-def _confirmed_profile_from_query(
-    *,
-    likes: list[str],
-    dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool,
-) -> dict:
-    """Build a confirmed chat profile from query parameters."""
-    return {
-        "name": None,
-        "likes": likes,
-        "dislikes": dislikes,
-        "location": location,
-        "transportation": transportation,
-        "use_location_matching": use_location_matching,
-        "confirmed": True,
-    }
-
-
-def _has_prior_user_messages(session: ChatSession) -> bool:
-    """Return whether the user has already participated in this chat session."""
-    return any(message.role == "user" for message in session.messages)
-
-
-def _profile_chat_url(profile: dict) -> str:
-    """Return a /chat URL that preloads the current profile."""
-    params = [
-        (key, value) for key, value in profile_rank_params(profile) if key != "ranked"
-    ]
-
-    if not params:
-        return "/chat"
-
-    return "/chat?" + urlencode(params)
-
-
 # ── Opportunities page ────────────────────────────────────────────────────────
 
 
@@ -831,7 +762,7 @@ async def opportunities_page(
     use_location_matching: bool = True,
 ):
     """Serve the opportunities list, optionally in ranked mode."""
-    profile = _rank_profile_from_query(
+    profile = build_profile(
         likes=likes,
         dislikes=dislikes,
         location=location,
@@ -842,15 +773,15 @@ async def opportunities_page(
     if ranked and likes:
         session_id, session, needs_cookie = _get_or_create_session(request)
 
-        session.profile = {
-            "name": session.profile.get("name") if session.profile else None,
-            "likes": likes,
-            "dislikes": dislikes,
-            "location": location,
-            "transportation": transportation,
-            "use_location_matching": use_location_matching,
-            "confirmed": True,
-        }
+        session.profile = build_profile(
+            name=session.profile.get("name") if session.profile else None,
+            likes=likes,
+            dislikes=dislikes,
+            location=location,
+            transportation=transportation,
+            use_location_matching=use_location_matching,
+            confirmed=True,
+        )
 
         all_jobs = all_opportunities()
         onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
@@ -875,7 +806,7 @@ async def opportunities_page(
                 "ranked": True,
                 "rank_stream_url": rank_stream_url,
                 "profile": profile,
-                "chat_profile_url": _profile_chat_url(profile),
+                "chat_profile_url": profile_chat_url(profile),
                 "likes": likes,
                 "ranked_total": len(onet_jobs),
                 "unranked": unranked,
@@ -944,7 +875,7 @@ async def rank_opportunities_stream(
     """
     session_id, session, needs_cookie = _get_or_create_session(request)
 
-    profile = _rank_profile_from_query(
+    profile = profile = build_profile(
         likes=likes,
         dislikes=dislikes,
         location=location,
