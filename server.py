@@ -1,5 +1,4 @@
 import asyncio
-import json
 import logging
 import os
 import secrets
@@ -21,10 +20,7 @@ from naswa_matcher.agents import (
 )
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
-from naswa_matcher.location_matching import (
-    log_user_location_inference,
-    should_use_location_matching,
-)
+from naswa_matcher.location_matching import log_user_location_inference
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -37,11 +33,11 @@ from naswa_matcher.profile import (
     strip_profile,
 )
 from naswa_matcher.ranking import build_ranked_items, score_jobs, sort_ranked_items
+from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import (
     SESSION_COOKIE_NAME,
     SESSION_MAX_AGE_SECONDS,
     ChatMessage,
-    RankingCacheEntry,
     SessionStore,
     set_session_cookie,
 )
@@ -123,73 +119,6 @@ session_store = SessionStore(
     max_age_seconds=SESSION_MAX_AGE_SECONDS,
     chat_agent_factory=make_chat_agent,
 )
-
-# ── Ranking cache helpers ────────────────────────────────────────────────────
-
-RANKING_CACHE_VERSION = "rank-cache-v1"
-
-
-def _normalized_profile_for_cache(profile: dict) -> dict:
-    """Return a stable, compact profile shape for ranking-cache keys."""
-
-    def clean_list(values) -> list[str]:
-        if not isinstance(values, list):
-            return []
-
-        cleaned = []
-        for value in values:
-            text = str(value).strip()
-            if text:
-                cleaned.append(text)
-        return cleaned
-
-    def clean_string(value) -> str | None:
-        if value is None:
-            return None
-
-        text = str(value).strip()
-        return text or None
-
-    return {
-        "likes": clean_list(profile.get("likes", [])),
-        "dislikes": clean_list(profile.get("dislikes", [])),
-        "location": clean_string(profile.get("location")),
-        "transportation": clean_string(profile.get("transportation")),
-        "use_location_matching": should_use_location_matching(profile),
-    }
-
-
-def _ranking_cache_key(profile: dict) -> str:
-    """Build a deterministic cache key for one ranked-opportunities request."""
-    return json.dumps(
-        {
-            "version": RANKING_CACHE_VERSION,
-            "profile": _normalized_profile_for_cache(profile),
-        },
-        sort_keys=True,
-        separators=(",", ":"),
-    )
-
-
-def _get_ranking_cache_entry(
-    session: ChatSession,
-    cache_key: str,
-) -> RankingCacheEntry | None:
-    """Return a complete, unexpired ranking cache entry if available."""
-    entry = session.ranking_cache.get(cache_key)
-
-    if entry is None:
-        return None
-
-    if time.time() - entry.created_at > SESSION_MAX_AGE_SECONDS:
-        del session.ranking_cache[cache_key]
-        return None
-
-    if not entry.is_complete:
-        return None
-
-    return entry
-
 
 # ── Ranking orchestration helpers ────────────────────────────────────────────
 
@@ -504,8 +433,7 @@ async def opportunities_page(
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
         total_openings = sum_openings(onet_jobs)
 
-        cache_key = _ranking_cache_key(profile)
-        cached = _get_ranking_cache_entry(session, cache_key)
+        cached = session.ranking_cache.get(profile)
         ranking_cached = cached is not None
         cached_ranked = cached.ranked if cached else []
 
@@ -601,8 +529,7 @@ async def rank_opportunities_stream(
         use_location_matching=use_location_matching,
     )
 
-    cache_key = _ranking_cache_key(profile)
-    cached = _get_ranking_cache_entry(session, cache_key)
+    cached = session.ranking_cache.get(profile)
 
     if cached:
         benchmark_id = secrets.token_hex(4)
@@ -886,15 +813,18 @@ async def rank_opportunities_stream(
             final_ranked = sort_ranked_items(ranked_for_cache, profile)
 
             if completed_jobs == len(onet_jobs) and not had_batch_error:
-                session.ranking_cache[cache_key] = RankingCacheEntry(
-                    profile=_normalized_profile_for_cache(profile),
-                    ranked=final_ranked,
-                    completed_jobs=completed_jobs,
-                    total_jobs=len(onet_jobs),
-                    completed_openings=completed_openings,
-                    total_openings=total_openings,
-                    elapsed_seconds=total_elapsed_seconds,
-                    is_complete=True,
+                session.ranking_cache.put(
+                    profile,
+                    RankingCacheEntry(
+                        profile=profile,
+                        ranked=final_ranked,
+                        completed_jobs=completed_jobs,
+                        total_jobs=len(onet_jobs),
+                        completed_openings=completed_openings,
+                        total_openings=total_openings,
+                        elapsed_seconds=total_elapsed_seconds,
+                        is_complete=True,
+                    ),
                 )
 
                 logger.info(

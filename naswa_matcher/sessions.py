@@ -7,8 +7,18 @@ from dataclasses import dataclass, field
 from starlette.responses import Response
 from strands import Agent
 
+from naswa_matcher.ranking_cache import RankingCache
+
 SESSION_COOKIE_NAME = "tyler_session_cookie"
 SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7  # 7 days
+
+
+def _new_ranking_cache() -> RankingCache:
+    """Create a ranking cache with the same lifetime as its browser session."""
+    return RankingCache(
+        max_age_seconds=SESSION_MAX_AGE_SECONDS,
+    )
+
 
 INITIAL_CHAT_MESSAGE = (
     "Registered apprenticeships let you earn while you learn. "
@@ -42,21 +52,6 @@ def initial_messages() -> list[ChatMessage]:
 
 
 @dataclass
-class RankingCacheEntry:
-    """Cached ranked opportunities for one profile inside one browser session."""
-
-    profile: dict
-    ranked: list[dict] = field(default_factory=list)
-    completed_jobs: int = 0
-    total_jobs: int = 0
-    completed_openings: int = 0
-    total_openings: int = 0
-    elapsed_seconds: int = 0
-    created_at: float = field(default_factory=time.time)
-    is_complete: bool = False
-
-
-@dataclass
 class ChatSession:
     """Ephemeral browser session for the internal demo."""
 
@@ -67,7 +62,7 @@ class ChatSession:
     messages: list[ChatMessage] = field(default_factory=initial_messages)
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
-    ranking_cache: dict[str, RankingCacheEntry] = field(default_factory=dict)
+    ranking_cache: RankingCache = field(default_factory=_new_ranking_cache)
     last_logged_location: str | None = None
 
     def __post_init__(self) -> None:

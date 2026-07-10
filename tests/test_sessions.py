@@ -1,5 +1,6 @@
 from starlette.responses import Response
 
+from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import (
     INITIAL_CHAT_MESSAGE,
     PREFILLED_PROFILE_MESSAGE,
@@ -7,7 +8,6 @@ from naswa_matcher.sessions import (
     SESSION_MAX_AGE_SECONDS,
     ChatMessage,
     ChatSession,
-    RankingCacheEntry,
     SessionStore,
     set_session_cookie,
 )
@@ -104,7 +104,7 @@ def test_session_reset_restores_fresh_state():
     session.queue.put_nowait("stale message")
     session.active_stream_id = "active-stream"
     session.last_logged_location = "Buffalo"
-    session.ranking_cache["cache-key"] = RankingCacheEntry(profile={})
+    session.ranking_cache.entries["cache-key"] = RankingCacheEntry(profile={})
 
     session.reset()
 
@@ -120,7 +120,7 @@ def test_session_reset_restores_fresh_state():
         )
     ]
     assert session.active_stream_id is None
-    assert session.ranking_cache == {}
+    assert session.ranking_cache.entries == {}
     assert session.last_logged_location is None
 
 
@@ -131,7 +131,7 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
     original_agent = session.agent
     original_queue = session.queue
 
-    session.ranking_cache["cache-key"] = RankingCacheEntry(profile={})
+    session.ranking_cache.entries["cache-key"] = RankingCacheEntry(profile={})
     session.active_stream_id = "active-stream"
     session.last_logged_location = "Albany"
 
@@ -158,7 +158,7 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
         )
     ]
     assert session.active_stream_id is None
-    assert session.ranking_cache == {}
+    assert session.ranking_cache.entries == {}
     assert session.last_logged_location is None
 
 
