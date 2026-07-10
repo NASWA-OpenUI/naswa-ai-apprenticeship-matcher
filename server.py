@@ -15,8 +15,12 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sse_starlette.sse import EventSourceResponse
 from strands import Agent
-from strands.models import BedrockModel
 
+from naswa_matcher.agents import (
+    SCORING_MODEL_NAME,
+    make_chat_agent,
+    make_scoring_model,
+)
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_matching import (
@@ -107,180 +111,6 @@ def _describe_exception(exc: Exception) -> str:
     return f"{exc.__class__.__name__}: {exc}"
 
 
-# ── Agent setup ───────────────────────────────────────────────────────────────
-
-SYSTEM_PROMPT = """\
-You are a friendly guide helping a user discover registered apprenticeships that may fit them.
-
-The user has already been greeted and asked for their name.
-
-Your job is to conduct a short, natural conversation and build a hidden profile
-that can be used to match the user to apprenticeship opportunities.
-
-The visible conversation should feel like a real conversation, not a form.
-However, behind the scenes, you must collect useful profile information.
-
-PROFILE SCHEMA
-
-After every assistant response, output a hidden profile tag on a new line:
-
-<profile>{
-  "name": string or null,
-  "likes": array of short strings,
-  "dislikes": array of short strings,
-  "location": string or null,
-  "transportation": string or null,
-  "use_location_matching": boolean,
-  "confirmed": boolean
-}</profile>
-
-Rules for the profile:
-- The profile is a derived summary, not a raw transcript.
-- Do not store long raw user sentences.
-- Use short, plain-language phrases.
-- Put hobbies, interests, school subjects, strengths, and appealing work activities in "likes".
-- Put disliked subjects, disliked activities, and strong avoidances in "dislikes".
-- If the user metions an interest that is an academic subject, treat it as a useful like. Do not ask the same thing again as a school question.
-- Set use_location_matching to true by default.
-- Set use_location_matching to false if the user says they are open to opportunities anywhere in New York State, statewide, willing to relocate, or able to move for the right job.
-- If the user gives a specific location and also says they can look statewide or relocate, keep the specific location and set use_location_matching to false.
-- Infer values from any answer, even if the user answered a later question early.
-- If something is unknown, use null for strings or [] for arrays.
-- All profile fields are optional except confirmed.
-
-CONVERSATION STRATEGY
-
-Ask one natural question at a time.
-
-Do not visibly explain your reasoning after each answer.
-Bad: "That gives me a good starting point: troubleshooting, electronics, and math."
-Good: "Nice. Where would you be looking for work?"
-
-Collect this information when possible:
-1. Name
-2. Likes / interests / strengths / hobbies / appealing work
-3. School subjects they enjoyed, if not already mentioned
-3. Location where they are looking for work
-4. Transportation or ability to get to job sites/classes
-
-Do not ask a question if the user already answered it earlier.
-
-LOCATION QUESTION STYLE
-
-Ask about where they are looking for work, not where they live.
-Use examples:
-"Where would you be looking for work? For example, Buffalo and the surrounding area, near Albany, or anywhere in New York."
-
-If the user gives a full street address, ignore the street address and only retain the city, ZIP, county, or region.
-If the user gives a location outside New York State, politely explain that this prototype is focused on New York State opportunities and ask if there is anywhere in New York they would consider.
-
-TRANSPORTATION QUESTION STYLE
-
-Ask practically and gently:
-"How would you usually get to job sites or classes — driving yourself, public transit, rides from family, or something else?"
-
-Do not make the user feel screened out.
-
-CONFIRMATION
-
-When you have enough information, summarize the profile briefly and ask if it looks right.
-
-Example:
-"Great — I’ll use this to look for matches: you like fixing electronics, math, and hands-on problem solving; you’re looking around Buffalo; and you’d mostly use transit or rides. Does that sound right?"
-
-If use_location_matching is false, briefly reflect that back without making it sound like a problem.
-Example:
-"Great — I’ll use this to look for matches: you like fixing electronics, math, and hands-on problem solving; you’re looking around Buffalo but are open to opportunities anywhere in New York State. Does that sound right?"
-
-Then output the profile with confirmed=false.
-
-If the user confirms, respond briefly:
-"Great, I have enough to show matches."
-
-Then output the same profile with confirmed=true.
-
-If the user corrects something, update the profile and continue naturally.
-
-RULES
-
-- Keep responses brief and friendly.
-- Only respond to the user's latest actual message.
-- Do not invent, assume, simulate, or write future user responses.
-- Never write text like "User's response:".
-- Output exactly one assistant turn per user message.
-- Never mention, explain, or draw attention to the <profile> tag.
-- Do not output anything after the <profile> tag.
-"""
-
-REQUESTED_MAX_OUTPUT_TOKENS = 16_384
-
-
-@dataclass(frozen=True)
-class ModelConfig:
-    model_id: str
-    max_output_tokens: int
-    temperature: float = 0.0
-
-
-MODEL_CONFIGS = {
-    "sonnet-4.6": ModelConfig(
-        model_id="us.anthropic.claude-sonnet-4-6",
-        max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
-    ),
-    "nova-lite": ModelConfig(
-        model_id="us.amazon.nova-lite-v1:0",
-        # Nova Lite v1 max output is 10K, so don't send 16K here.
-        max_output_tokens=10_000,
-    ),
-    "nova-2-lite": ModelConfig(
-        model_id="us.amazon.nova-2-lite-v1:0",
-        max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
-    ),
-}
-
-
-# change model name here
-CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "sonnet-4.6")
-SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", "nova-2-lite")
-
-
-def make_bedrock_model(
-    model_name: str,
-    *,
-    streaming: bool = True,
-    temperature: float | None = None,
-) -> BedrockModel:
-    """Create a configured Bedrock model for Strands.
-
-    Supported model_name values:
-    - sonnet-4.6
-    - nova-lite
-    - nova-2-lite
-    """
-    config = MODEL_CONFIGS[model_name]
-
-    return BedrockModel(
-        model_id=config.model_id,
-        max_tokens=config.max_output_tokens,
-        temperature=config.temperature if temperature is None else temperature,
-        streaming=streaming,
-    )
-
-
-def make_agent() -> Agent:
-    """Create a fresh agent instance with the guided conversation prompt."""
-    return Agent(
-        model=make_bedrock_model(CHAT_MODEL_NAME, streaming=True),
-        system_prompt=SYSTEM_PROMPT,
-        callback_handler=None,
-    )
-
-
-def make_scoring_model() -> BedrockModel:
-    """Create the non-streaming model used for opportunity scoring."""
-    return make_bedrock_model(SCORING_MODEL_NAME, streaming=False)
-
-
 # ── Session state ─────────────────────────────────────────────────────────────
 
 SESSION_COOKIE_NAME = "tyler_demo_session"
@@ -326,7 +156,7 @@ class RankingCacheEntry:
 class ChatSession:
     """Ephemeral browser session for the internal demo."""
 
-    agent: Agent = field(default_factory=make_agent)
+    agent: Agent = field(default_factory=make_chat_agent)
     queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
     profile: dict | None = None
     messages: list[ChatMessage] = field(default_factory=_initial_messages)
@@ -575,7 +405,7 @@ async def chat_page(
         # Only replace the transcript for preloaded/demo links where the user
         # has not actually had a conversation yet.
         if not has_prior_user_messages:
-            session.agent = make_agent()
+            session.agent = make_chat_agent()
             session.messages = [
                 ChatMessage(
                     role="assistant",
@@ -611,7 +441,7 @@ async def reset_chat(request: Request):
     """Replace this browser session's agent and redirect to a fresh chat page."""
     session_id, session, needs_cookie = _get_or_create_session(request)
 
-    session.agent = make_agent()
+    session.agent = make_chat_agent()
     session.profile = None
     session.messages = _initial_messages()
     session.ranking_cache.clear()
@@ -875,7 +705,7 @@ async def rank_opportunities_stream(
     """
     session_id, session, needs_cookie = _get_or_create_session(request)
 
-    profile = profile = build_profile(
+    profile = build_profile(
         likes=likes,
         dislikes=dislikes,
         location=location,
