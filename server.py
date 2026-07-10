@@ -557,19 +557,27 @@ async def chat_page(
             ),
         )
 
+        has_prior_user_messages = _has_prior_user_messages(session)
+
+        # Always update the session profile from query params.
+        # This lets /opportunities link back to /chat with the edited profile.
         session.profile = profile
         session.ranking_cache.clear()
         session.queue = asyncio.Queue()
-        session.agent = make_agent()
-        session.messages = [
-            ChatMessage(
-                role="assistant",
-                content=(
-                    "Here’s the profile I’ll use to suggest matches. "
-                    "You can edit it before seeing jobs."
-                ),
-            )
-        ]
+
+        # Only replace the transcript for preloaded/demo links where the user
+        # has not actually had a conversation yet.
+        if not has_prior_user_messages:
+            session.agent = make_agent()
+            session.messages = [
+                ChatMessage(
+                    role="assistant",
+                    content=(
+                        "Here’s the profile I’ll use to suggest matches. "
+                        "You can edit it before seeing jobs."
+                    ),
+                )
+            ]
 
     ranked_url = None
     if session.profile and session.profile.get("confirmed"):
@@ -792,6 +800,23 @@ def _confirmed_profile_from_query(
         "use_location_matching": use_location_matching,
         "confirmed": True,
     }
+
+
+def _has_prior_user_messages(session: ChatSession) -> bool:
+    """Return whether the user has already participated in this chat session."""
+    return any(message.role == "user" for message in session.messages)
+
+
+def _profile_chat_url(profile: dict) -> str:
+    """Return a /chat URL that preloads the current profile."""
+    params = [
+        (key, value) for key, value in profile_rank_params(profile) if key != "ranked"
+    ]
+
+    if not params:
+        return "/chat"
+
+    return "/chat?" + urlencode(params)
 
 
 # ── Opportunities page ────────────────────────────────────────────────────────
