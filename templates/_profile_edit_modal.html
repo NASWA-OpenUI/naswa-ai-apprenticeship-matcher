@@ -22,7 +22,7 @@
                 <div class="profile-edit-field">
                     <label id="profile-likes-label" class="profile-edit-label">Likes</label>
 
-                    <div class="profile-edit-chips" data-edit-list="likes" role="list"
+                    <div class="profile-edit-chips flex-center-wrap" data-edit-list="likes" role="list"
                         aria-labelledby="profile-likes-label"></div>
 
                     <div class="profile-add-row">
@@ -35,7 +35,7 @@
                 <div class="profile-edit-field">
                     <label id="profile-dislikes-label" class="profile-edit-label">Dislikes</label>
 
-                    <div class="profile-edit-chips" data-edit-list="dislikes" role="list"
+                    <div class="profile-edit-chips flex-center-wrap" data-edit-list="dislikes" role="list"
                         aria-labelledby="profile-dislikes-label"></div>
 
                     <div class="profile-add-row">
@@ -50,7 +50,7 @@
 
             <div class="profile-edit-grid">
                 <div class="profile-edit-field">
-                    <label for="profile-edit-location" class="profile-edit-label">Looking near</label>
+                    <label for="profile-edit-location" class="profile-edit-label">Location</label>
                     <input id="profile-edit-location" class="form-control" type="text" data-edit-location
                         placeholder="City, region, or ZIP">
                 </div>
@@ -193,10 +193,32 @@
             }
         }
 
-        function makeDisplayChip(text) {
+        function makeProfileCardListChip(key, text) {
             const chip = document.createElement('span');
-            chip.className = 'chip chip--theme chip--interest';
-            chip.textContent = text;
+            const isDislike = key === 'dislikes';
+
+            chip.className = [
+                'chip',
+                isDislike ? 'chip--danger' : 'chip--theme',
+                'profile-card-chip'
+            ].join(' ');
+
+            chip.setAttribute('role', 'listitem');
+            chip.setAttribute(
+                'aria-label',
+                `${isDislike ? 'Avoiding' : 'Interest'}: ${text}`
+            );
+
+            const sign = document.createElement('span');
+            sign.className = 'chip__sign';
+            sign.setAttribute('aria-hidden', 'true');
+            sign.textContent = isDislike ? '−' : '+';
+
+            const label = document.createElement('span');
+            label.textContent = text;
+
+            chip.append(sign, label);
+
             return chip;
         }
 
@@ -217,8 +239,72 @@
             }
 
             values.forEach(function (value) {
-                target.appendChild(makeDisplayChip(value));
+                target.appendChild(makeProfileCardListChip(key, value));
             });
+        }
+
+        function makeProfileCardValueChip(key, text) {
+            const chip = document.createElement('span');
+
+            chip.className = [
+                'chip',
+                'chip--neutral',
+                'profile-card-value-chip'
+            ].join(' ');
+
+            if (key === 'location') {
+                chip.innerHTML = `
+            <svg
+                class="chip__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path
+                    d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
+                <circle
+                    cx="12"
+                    cy="10"
+                    r="2.2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                />
+            </svg>
+        `;
+            } else if (key === 'transportation') {
+                chip.setAttribute('aria-label', `Transportation: ${text}`);
+            }
+
+            const label = document.createElement('span');
+            label.textContent = text;
+            chip.appendChild(label);
+
+            return chip;
+        }
+
+        function renderProfileCardValue(key, rawValue) {
+            const card = getProfileCard();
+            const target = card?.querySelector(`[data-profile-value="${key}"]`);
+
+            if (!target) return;
+
+            target.replaceChildren();
+
+            const value = String(rawValue || '').trim();
+
+            if (!value) {
+                const empty = document.createElement('span');
+                empty.className = 'profile-empty';
+                empty.textContent = '—';
+                target.appendChild(empty);
+                return;
+            }
+
+            target.appendChild(makeProfileCardValueChip(key, value));
         }
 
         function buildRankedUrl(profile) {
@@ -278,34 +364,58 @@
 
         function makeSummaryTag(kind, text) {
             const tag = document.createElement('span');
-            tag.className = `profile-summary-tag profile-summary-tag--${kind}`;
+
+            const classes = [
+                'profile-summary-tag',
+                'chip'
+            ];
+
+            if (kind === 'like') {
+                classes.push('chip--theme');
+            } else if (kind === 'dislike') {
+                classes.push('chip--danger');
+            } else {
+                classes.push('profile-summary-tag--location');
+            }
+
+            tag.className = classes.join(' ');
 
             if (kind === 'like') {
                 tag.setAttribute('aria-label', `Interest: ${text}`);
                 tag.innerHTML = `
-      <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
-      ${escapeHtml(text)}
-    `;
+            <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
+            ${escapeHtml(text)}
+        `;
                 return tag;
             }
 
             if (kind === 'dislike') {
                 tag.setAttribute('aria-label', `Avoiding: ${text}`);
                 tag.innerHTML = `
-      <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
-      ${escapeHtml(text)}
-    `;
+            <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
+            ${escapeHtml(text)}
+        `;
                 return tag;
             }
 
             tag.innerHTML = `
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-      <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
-        stroke="currentColor" stroke-width="2" />
-      <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
-    </svg>
-    ${escapeHtml(text)}
-  `;
+        <svg viewBox="0 0 24 24" fill="none"
+            aria-hidden="true" focusable="false">
+            <path
+                d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
+                stroke="currentColor"
+                stroke-width="2"
+            />
+            <circle
+                cx="12"
+                cy="10"
+                r="2.2"
+                stroke="currentColor"
+                stroke-width="2"
+            />
+        </svg>
+        ${escapeHtml(text)}
+    `;
 
             return tag;
         }
@@ -351,11 +461,8 @@
             renderCardList('likes', profile.likes);
             renderCardList('dislikes', profile.dislikes);
 
-            const locationEl = card.querySelector('[data-profile-value="location"]');
-            if (locationEl) locationEl.textContent = profile.location || '—';
-
-            const transportationEl = card.querySelector('[data-profile-value="transportation"]');
-            if (transportationEl) transportationEl.textContent = profile.transportation || '—';
+            renderProfileCardValue('location', profile.location);
+            renderProfileCardValue('transportation', profile.transportation);
 
             const locationPreferenceLabel = card.querySelector('[data-profile-location-preference-label]');
             const locationPreferenceValue = card.querySelector('[data-profile-location-preference]');
@@ -375,27 +482,33 @@
             writeProfileJson(profile);
         }
 
-        function makeEditableChip(text) {
+        function makeEditableChip(kind, text) {
             const chip = document.createElement('span');
-            chip.className = 'chip chip--theme chip--interest profile-chip-edit';
+            const variantClass = kind === 'dislikes'
+                ? 'chip--danger'
+                : 'chip--theme';
+
+            chip.className = `chip ${variantClass} profile-chip-edit`;
             chip.dataset.value = text;
             chip.setAttribute('role', 'listitem');
 
             chip.innerHTML = `
         <span>${escapeHtml(text)}</span>
         <button
-          type="button"
-          class="profile-chip-remove"
-          data-edit-remove
-          aria-label="Remove ${escapeHtml(text)}"
+            type="button"
+            class="profile-chip-remove"
+            data-edit-remove
+            aria-label="Remove ${escapeHtml(text)}"
         >×</button>
-      `;
+    `;
 
             return chip;
         }
 
         function addEditableValues(listEl, rawValue) {
             if (!listEl || !rawValue) return;
+
+            const kind = listEl.dataset.editList;
 
             rawValue
                 .split(',')
@@ -404,13 +517,14 @@
                 })
                 .filter(Boolean)
                 .forEach(function (value) {
-                    const exists = Array.from(listEl.querySelectorAll('.profile-chip-edit'))
-                        .some(function (chip) {
-                            return chip.dataset.value.toLowerCase() === value.toLowerCase();
-                        });
+                    const exists = Array.from(
+                        listEl.querySelectorAll('.profile-chip-edit')
+                    ).some(function (chip) {
+                        return chip.dataset.value.toLowerCase() === value.toLowerCase();
+                    });
 
                     if (!exists) {
-                        listEl.appendChild(makeEditableChip(value));
+                        listEl.appendChild(makeEditableChip(kind, value));
                     }
                 });
         }

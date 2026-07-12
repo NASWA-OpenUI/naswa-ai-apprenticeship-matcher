@@ -7,7 +7,7 @@
   data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}" data-ranking-tier="{{ item.tier }}"
   data-ranking-explanation="{{ item.explanation }}">
   <div class="match-card__inner">
-    <div class="match-card__top">
+    <div class="match-card__top flex-center-wrap">
       <span class="chip chip--{{ tier_class }}">
         <span class="chip__dot" aria-hidden="true"></span>
         <span class="chip--label">{{ item.tier }}</span>
@@ -32,7 +32,7 @@
     {% endif %}
 
     <div class="match-card__footer">
-      <div class="match-card__summary">
+      <div class="match-card__summary flex-center-wrap">
         {% set openings = summary.number_of_openings %}
         <span class="match-card__openings">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">

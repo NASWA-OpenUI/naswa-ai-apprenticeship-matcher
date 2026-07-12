@@ -29,10 +29,13 @@
 
       <dt>Likes</dt>
       <dd>
-        <span data-profile-list="likes">
+        <span class="profile-card-chips" data-profile-list="likes" role="list" aria-label="Likes">
           {% if profile.likes %}
           {% for like in profile.likes %}
-          <span class="chip chip--theme chip--interest">{{ like }}</span>
+          <span class="chip chip--theme profile-card-chip" role="listitem" aria-label="Interest: {{ like }}">
+            <span class="chip__sign" aria-hidden="true">+</span>
+            <span>{{ like }}</span>
+          </span>
           {% endfor %}
           {% else %}
           <span class="profile-empty">None added</span>
@@ -42,10 +45,13 @@
 
       <dt>Dislikes</dt>
       <dd>
-        <span data-profile-list="dislikes">
+        <span class="profile-card-chips" data-profile-list="dislikes" role="list" aria-label="Dislikes">
           {% if profile.dislikes %}
           {% for dislike in profile.dislikes %}
-          <span class="chip chip--theme chip--interest">{{ dislike }}</span>
+          <span class="chip chip--danger profile-card-chip" role="listitem" aria-label="Avoiding: {{ dislike }}">
+            <span class="chip__sign" aria-hidden="true">−</span>
+            <span>{{ dislike }}</span>
+          </span>
           {% endfor %}
           {% else %}
           <span class="profile-empty">None added</span>
@@ -53,8 +59,20 @@
         </span>
       </dd>
 
-      <dt>Looking near</dt>
-      <dd data-profile-value="location">{{ profile.location or "—" }}</dd>
+      <dt>Location</dt>
+      <dd data-profile-value="location">
+        {% if profile.location %}
+        <span class="chip chip--neutral profile-card-value-chip">
+          <svg class="chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="2" />
+            <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
+          </svg>
+          <span>{{ profile.location }}</span>
+        </span>
+        {% else %}
+        <span class="profile-empty">—</span>
+        {% endif %}
+      </dd>
 
       <dt data-profile-location-preference-label {% if use_location_matching %}hidden{% endif %}>
         Location preference
@@ -64,13 +82,23 @@
       </dd>
 
       <dt>Transportation</dt>
-      <dd data-profile-value="transportation">{{ profile.transportation or "—" }}</dd>
+      <dd data-profile-value="transportation">
+        {% if profile.transportation %}
+        <span class="chip chip--neutral profile-card-value-chip"
+          aria-label="Transportation: {{ profile.transportation }}">
+          <span>{{ profile.transportation }}</span>
+        </span>
+        {% else %}
+        <span class="profile-empty">—</span>
+        {% endif %}
+      </dd>
     </dl>
 
     <div class="btn-row">
       <button type="button" class="btn btn--outline" hx-post="/chat/reset" hx-swap="none">
         Start over
       </button>
+
       <a href="{{ ranked_url }}" class="btn btn--filled" data-profile-ranked-link>
         See relevant jobs →
       </a>

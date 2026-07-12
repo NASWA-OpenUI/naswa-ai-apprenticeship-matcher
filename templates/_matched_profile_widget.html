@@ -13,26 +13,26 @@
 <section class="matched-profile-widget surface surface--shadow" data-profile-summary>
     <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
 
-    <div class="matched-profile-widget__main">
+    <div class="matched-profile-widget__main flex-center-wrap">
         <h2 class="matched-profile-widget__title">Matched to your profile:</h2>
 
-        <div class="matched-profile-widget__tags" data-profile-summary-tags>
+        <div class="matched-profile-widget__tags flex-center-wrap" data-profile-summary-tags>
             {% for like in profile.likes %}
-            <span class="profile-summary-tag profile-summary-tag--like" aria-label="Interest: {{ like }}">
+            <span class="profile-summary-tag chip chip--theme" aria-label="Interest: {{ like }}">
                 <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
                 {{ like }}
             </span>
             {% endfor %}
 
             {% for dislike in profile.dislikes %}
-            <span class="profile-summary-tag profile-summary-tag--dislike" aria-label="Avoiding: {{ dislike }}">
+            <span class="profile-summary-tag  chip chip--danger" aria-label="Avoiding: {{ dislike }}">
                 <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
                 {{ dislike }}
             </span>
             {% endfor %}
 
             {% if profile.location %}
-            <span class="profile-summary-tag profile-summary-tag--location">
+            <span class="profile-summary-tag profile-summary-tag--location chip chip--neutral">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
                         stroke-width="2" />
@@ -41,7 +41,7 @@
                 {{ profile.location }}
             </span>
             {% elif not use_location_matching %}
-            <span class="profile-summary-tag profile-summary-tag--location">
+            <span class="profile-summary-tag profile-summary-tag--location chip chip--neutral">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
                         stroke-width="2" />

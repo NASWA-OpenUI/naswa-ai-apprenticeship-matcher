@@ -176,6 +176,13 @@ ol {
   top: var(--app-space-100);
 }
 
+.flex-center-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--app-space-150);
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -311,6 +318,29 @@ ol {
   background: var(--app-glass-on-theme);
   border: 1px solid var(--nys-color-business-teal-300);
   color: var(--app-text-on-theme);
+}
+
+.chip--danger {
+  background: #fbece9;
+  border: 1px solid #e7b4ab;
+  color: #8f3a2e;
+}
+
+.chip--neutral {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  color: var(--app-ink);
+}
+
+.chip__sign {
+  font-weight: 800;
+  line-height: 1;
+}
+
+.chip__icon {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
 }
 
 .chip--strong {
@@ -517,8 +547,6 @@ body:has(.landing-page) .site-footer {
   list-style: none;
   margin: 1.5rem 0 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.4rem 1rem;
   font-size: 0.9rem;
   color: var(--nys-color-theme-weaker, #d7e8e9);
@@ -772,10 +800,7 @@ body:has(.landing-page) .site-footer {
 }
 
 .landing-final-cta__buttons {
-  display: flex;
   gap: 0.75rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .landing-final-cta .btn--outline {
@@ -797,11 +822,8 @@ body:has(.landing-page) .site-footer {
 }
 
 .landing-trust__row {
-  display: flex;
-  align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  flex-wrap: wrap;
   font-size: 0.9rem;
   color: var(--app-text-weak);
 }
@@ -1004,6 +1026,18 @@ body:has(.landing-page) .site-footer {
   font-size: 0.97rem;
 }
 
+.profile-card-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+
+.profile-card-chip,
+.profile-card-value-chip {
+  margin: 0;
+}
+
 .chip--interest {
   margin: 0 0.25rem 0.3rem 0;
 }
@@ -1128,8 +1162,6 @@ a.btn--accent:focus {
 }
 
 .footer-links {
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.25rem 1.5rem;
   margin-left: auto;
 }
@@ -1250,8 +1282,6 @@ a.btn--accent:focus {
 }
 
 .profile-edit-chips {
-  display: flex;
-  flex-wrap: wrap;
   gap: var(--app-space-100);
   margin-bottom: var(--app-space-100);
 
@@ -1298,21 +1328,27 @@ a.btn--accent:focus {
 .profile-chip-remove {
   width: 1.35rem;
   height: 1.35rem;
-  border: .5px solid var(--nys-color-theme-weak, #a8cccd);
+  padding: 0;
+  display: inline-flex;
+  justify-content: center;
+
+  border: 1px solid currentColor;
   border-radius: var(--nys-radius-round, 1776px);
-  background: var(--app-base-weak);
-  color: var(--app-text-weak);
+  background: transparent;
+  color: inherit;
+
+  font-family: inherit;
+  font-size: 1rem;
   line-height: 1;
   cursor: pointer;
-  font-size: 1rem;
-  padding: .1px;
+  padding-top: 0.5px;
 }
 
 .profile-chip-remove:hover,
 .profile-chip-remove:focus {
   background: var(--nys-color-danger, #b52c2c);
+  border-color: var(--nys-color-danger, #b52c2c);
   color: var(--app-text-on-theme);
-  border: .5px solid var(--nys-color-danger, #b52c2c);
 }
 
 .profile-check-row {
@@ -1394,10 +1430,6 @@ body.profile-modal-open {
 /* ── AI disclosure page ───────────────────────────────────────────────────── */
 
 .about-cta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
   gap: 1rem 1.5rem;
   margin: 1.25rem 0 .75rem 0;
   padding: 1.5rem 1.75rem;
@@ -1693,48 +1725,31 @@ body.profile-modal-open {
 /* ── Matched profile summary widget ──────────────────────────────────────── */
 
 .matched-profile-widget {
-  padding: 1.35rem 1.6rem;
+  padding: 1rem 1.15rem;
   margin-bottom: var(--app-space-300);
+  margin-top: calc(-1* var(--app-space-100));
 }
 
 .matched-profile-widget__main {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   gap: var(--app-space-150);
 }
 
 .matched-profile-widget__title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.08rem;
   line-height: 1.25;
-  font-weight: 800;
 }
 
 .matched-profile-widget__tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   gap: var(--app-space-100);
 }
 
 .profile-summary-tag {
-  display: inline-flex;
-  align-items: center;
   gap: 0.35rem;
-  border-radius: var(--nys-radius-round, 1776px);
   padding: 0.32rem 0.75rem;
   font-size: 1rem;
   line-height: 1.2;
-  border: 1px solid var(--app-border);
-  background: var(--app-surface);
   white-space: nowrap;
-}
-
-.profile-summary-tag--like {
-  background: var(--nys-color-theme-faint, #eef5f5);
-  border-color: var(--nys-color-theme-weak, #a8cccd);
-  color: var(--nys-color-theme-strong, #06393f);
 }
 
 .profile-summary-tag--dislike {
@@ -1745,7 +1760,7 @@ body.profile-modal-open {
 
 .profile-summary-tag--location {
   background: var(--app-surface);
-  border-color: var(--app-border);
+  border: 1px solid var(--app-border);
   color: var(--app-ink);
 }
 
@@ -1755,18 +1770,14 @@ body.profile-modal-open {
   color: var(--app-text-weak);
 }
 
-.profile-summary-tag__sign {
-  font-weight: 900;
-}
-
 .matched-profile-widget__actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--app-space-200);
-  margin-top: var(--app-space-300);
+  margin-top: var(--app-space-200);
   padding-top: var(--app-space-200);
-  border-top: 1px solid var(--app-border-weak);
+  border-top: 1px solid var(--nys-color-black-transparent-100);
 }
 
 .matched-profile-widget__back {
@@ -1776,6 +1787,7 @@ body.profile-modal-open {
   color: var(--nys-color-theme, #084b52);
   font-weight: 700;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .matched-profile-widget__back:hover,
@@ -1806,7 +1818,7 @@ body.profile-modal-open {
 
   .matched-profile-widget__actions {
     align-items: stretch;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .matched-profile-widget__edit {
@@ -1851,10 +1863,7 @@ body.profile-modal-open {
 }
 
 .match-card__top {
-  display: flex;
-  align-items: center;
   gap: 0.6rem;
-  flex-wrap: wrap;
   margin-bottom: 0.15rem;
 }
 
@@ -1903,10 +1912,7 @@ body.profile-modal-open {
 }
 
 .match-card__summary {
-  display: inline-flex;
-  align-items: center;
   gap: 0.65rem;
-  flex-wrap: wrap;
 }
 
 .match-card__openings {
@@ -2104,8 +2110,6 @@ body:has(.opportunity-detail-page) {
 }
 
 .detail-hero__chips {
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1.15rem;
 }
