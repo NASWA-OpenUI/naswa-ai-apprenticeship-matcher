@@ -200,7 +200,6 @@
             chip.className = [
                 'chip',
                 isDislike ? 'chip--danger' : 'chip--theme',
-                'profile-card-chip'
             ].join(' ');
 
             chip.setAttribute('role', 'listitem');
@@ -375,7 +374,7 @@
             } else if (kind === 'dislike') {
                 classes.push('chip--danger');
             } else {
-                classes.push('profile-summary-tag--location');
+                classes.push('chip--neutral');
             }
 
             tag.className = classes.join(' ');
@@ -383,7 +382,7 @@
             if (kind === 'like') {
                 tag.setAttribute('aria-label', `Interest: ${text}`);
                 tag.innerHTML = `
-            <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
+            <span class="chip__sign" aria-hidden="true">+</span>
             ${escapeHtml(text)}
         `;
                 return tag;
@@ -392,7 +391,7 @@
             if (kind === 'dislike') {
                 tag.setAttribute('aria-label', `Avoiding: ${text}`);
                 tag.innerHTML = `
-            <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
+            <span class="chip__sign" aria-hidden="true">−</span>
             ${escapeHtml(text)}
         `;
                 return tag;

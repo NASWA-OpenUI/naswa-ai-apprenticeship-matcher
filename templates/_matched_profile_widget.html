@@ -19,21 +19,21 @@
         <div class="matched-profile-widget__tags flex-center-wrap" data-profile-summary-tags>
             {% for like in profile.likes %}
             <span class="profile-summary-tag chip chip--theme" aria-label="Interest: {{ like }}">
-                <span class="profile-summary-tag__sign" aria-hidden="true">+</span>
+                <span class="chip__sign" aria-hidden="true">+</span>
                 {{ like }}
             </span>
             {% endfor %}
 
             {% for dislike in profile.dislikes %}
             <span class="profile-summary-tag  chip chip--danger" aria-label="Avoiding: {{ dislike }}">
-                <span class="profile-summary-tag__sign" aria-hidden="true">−</span>
+                <span class="chip__sign" aria-hidden="true">−</span>
                 {{ dislike }}
             </span>
             {% endfor %}
 
             {% if profile.location %}
-            <span class="profile-summary-tag profile-summary-tag--location chip chip--neutral">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <span class="profile-summary-tag chip chip--neutral">
+                <svg class="chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
                         stroke-width="2" />
                     <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
@@ -41,8 +41,8 @@
                 {{ profile.location }}
             </span>
             {% elif not use_location_matching %}
-            <span class="profile-summary-tag profile-summary-tag--location chip chip--neutral">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <span class="profile-summary-tag chip chip--neutral">
+                <svg class="chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
                         stroke-width="2" />
                     <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />

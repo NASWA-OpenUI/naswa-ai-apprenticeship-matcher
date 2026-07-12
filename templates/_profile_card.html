@@ -32,7 +32,7 @@
         <span class="profile-card-chips" data-profile-list="likes" role="list" aria-label="Likes">
           {% if profile.likes %}
           {% for like in profile.likes %}
-          <span class="chip chip--theme profile-card-chip" role="listitem" aria-label="Interest: {{ like }}">
+          <span class="chip chip--theme" role="listitem" aria-label="Interest: {{ like }}">
             <span class="chip__sign" aria-hidden="true">+</span>
             <span>{{ like }}</span>
           </span>
@@ -48,7 +48,7 @@
         <span class="profile-card-chips" data-profile-list="dislikes" role="list" aria-label="Dislikes">
           {% if profile.dislikes %}
           {% for dislike in profile.dislikes %}
-          <span class="chip chip--danger profile-card-chip" role="listitem" aria-label="Avoiding: {{ dislike }}">
+          <span class="chip chip--danger" role="listitem" aria-label="Avoiding: {{ dislike }}">
             <span class="chip__sign" aria-hidden="true">−</span>
             <span>{{ dislike }}</span>
           </span>
