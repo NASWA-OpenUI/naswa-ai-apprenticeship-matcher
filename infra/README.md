@@ -85,7 +85,7 @@ Set common environment variables:
 
 ```bash
 export AWS_PROFILE=your-profile-name
-export AWS_REGION=us-east-2
+export AWS_REGION=us-east-1
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity \
   --profile "$AWS_PROFILE" \
   --query Account \

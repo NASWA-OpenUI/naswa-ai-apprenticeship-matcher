@@ -73,7 +73,7 @@ Configure AWS credentials and a Bedrock-supported region in your environment or 
 Example `.env`:
 
 ```bash
-AWS_DEFAULT_REGION=us-east-2
+AWS_DEFAULT_REGION=us-east-1
 
 # Optional. Defaults shown here.
 CHAT_MODEL_NAME=sonnet-4.6

@@ -1148,14 +1148,14 @@ a.btn--accent:focus {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 3vh 1rem;
+  padding: 3vh 1rem 7vh 1rem;
   background: rgba(17, 24, 28, 0.58);
   overflow: auto;
 }
 
 .profile-modal {
   width: min(100%, 960px);
-  max-height: 94vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   background: var(--app-surface);
