@@ -3,16 +3,16 @@
 - Harmonize the design on opportunities page
 - Feat: show "closes soon"
 - Feat: return to search
-- Fix: UI problem when you send a message
-- Fix: Cache job results
 - Fix: Indicate links which go offsite
-- Fix: Add number of openings to list view
-- Feat: AI disclosure text
-- Feat: Use NY town/county locator
-- Feat: July 3: add new opportunities from crawler
+- Feat: July 18: add new opportunities from crawler
 
 ## DONE
 
+- Fix: UI problem when you send a message
+- Fix: Cache job results
+- Feat: AI disclosure text
+- Fix: Add number of openings to list view
+- Feat: Use NY town/county locator
 - Feat: add long-term earning potential widget
 - Fix: cache latest search
 - Fix: Date chip should change based on if the application has started

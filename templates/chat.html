@@ -113,6 +113,14 @@
     scrollIntoViewSafe(chatLog && chatLog.lastElementChild);
   }
 
+  document.body.addEventListener('htmx:afterSwap', function (e) {
+    const swapTarget = e.detail.target || e.target;
+
+    if (swapTarget === chatLog) {
+      requestAnimationFrame(scrollToLatestMessage);
+    }
+  });
+
   function setInputLocked(locked) {
     if (!userInput || !sendButton) return;
 
@@ -147,8 +155,6 @@
     }
 
     if (type === 'assistant-message') {
-      scrollToLatestMessage();
-
       if (!conversationComplete) {
         setInputLocked(false);
         if (userInput) userInput.focus();
