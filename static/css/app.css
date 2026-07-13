@@ -278,7 +278,6 @@ ol {
 
 .surface--muted-border {
   border: 1px solid var(--nys-color-black-transparent-300);
-  background: var(--app-surface-muted);
 }
 
 .surface--shadow {
@@ -792,6 +791,7 @@ body:has(.landing-page) .site-footer {
 
 .landing-final-cta__buttons {
   gap: 0.75rem;
+  justify-content: center;
 }
 
 .landing-final-cta .btn--outline {
@@ -2356,7 +2356,7 @@ p.earnings__summary {
 
 .detail-contact-item {
   padding: 0.65rem .9rem;
-  border-top: 1px solid var(--app-surface-muted);
+  border-top: 1px solid var(--nys-color-black-transparent-100);
 }
 
 .detail-contact-item:first-of-type {
