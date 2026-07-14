@@ -1,0 +1,178 @@
+name: Test and deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python 3.14 tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.3.2
+        with:
+          enable-cache: true
+
+      - name: Install Python 3.14
+        run: uv python install 3.14
+
+      - name: Install dependencies
+        run: uv sync --locked --dev
+
+      - name: Run pytest
+        run: uv run pytest
+
+  deploy:
+    name: Deploy to ECS
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: read
+      id-token: write
+
+    concurrency:
+      group: production-deployment
+      cancel-in-progress: false
+
+    env:
+      AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
+      ECS_SERVICE_ARN: ${{ secrets.ECS_SERVICE_ARN }}
+      APP_URL: ${{ secrets.APP_URL }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Configure temporary AWS credentials
+        uses: aws-actions/configure-aws-credentials@v6.2.2
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          allowed-account-ids: ${{ env.AWS_ACCOUNT_ID }}
+          role-session-name: github-actions-${{ github.run_id }}
+
+      - name: Log in to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2.1.6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4.2.0
+
+      - name: Set image URI
+        id: image
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          IMAGE_URI="${{ steps.login-ecr.outputs.registry }}/${ECR_REPOSITORY}:${GITHUB_SHA}"
+
+          # The full URI is derived from sensitive operational values.
+          echo "::add-mask::$IMAGE_URI"
+          echo "uri=$IMAGE_URI" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push container image
+        uses: docker/build-push-action@v7.3.0
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.image.outputs.uri }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Verify image exists in ECR
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          aws ecr describe-images \
+            --repository-name "$ECR_REPOSITORY" \
+            --image-ids imageTag="$GITHUB_SHA" \
+            --region "$AWS_REGION" \
+            --query "imageDetails[0].imageDigest" \
+            --output text \
+            >/dev/null
+
+          echo "Container image was found in ECR."
+
+      - name: Install latest AWS CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" \
+            -o awscliv2.zip
+
+          unzip -q awscliv2.zip
+          sudo ./aws/install --update
+          aws --version
+
+      - name: Update ECS Express Mode service
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          IMAGE_URI="${{ steps.image.outputs.uri }}"
+
+          PRIMARY_CONTAINER="$(
+            jq -nc \
+              --arg image "$IMAGE_URI" \
+              --arg region "$AWS_REGION" \
+              '{
+                image: $image,
+                containerPort: 8000,
+                environment: [
+                  {
+                    name: "AWS_DEFAULT_REGION",
+                    value: $region
+                  },
+                  {
+                    name: "AWS_REGION",
+                    value: $region
+                  },
+                  {
+                    name: "CHAT_MODEL_NAME",
+                    value: "sonnet-4.6"
+                  },
+                  {
+                    name: "SCORING_MODEL_NAME",
+                    value: "sonnet-4.6"
+                  }
+                ]
+              }'
+          )"
+
+          TARGET_IMAGE="$(
+            aws ecs update-express-gateway-service \
+              --service-arn "$ECS_SERVICE_ARN" \
+              --primary-container "$PRIMARY_CONTAINER" \
+              --scaling-target '{"minTaskCount":1,"maxTaskCount":1}' \
+              --health-check-path "/health" \
+              --region "$AWS_REGION" \
+              --query "service.targetConfiguration.primaryContainer.image" \
+              --output text
+          )"
+
+          if [ "$TARGET_IMAGE" != "$IMAGE_URI" ]; then
+            echo "ECS returned an unexpected target image."
+            exit 1
+          fi
+
+          echo "ECS accepted the requested deployment image."
