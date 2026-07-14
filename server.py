@@ -49,8 +49,16 @@ load_dotenv(BASE_DIR / ".env")
 
 # ── Jinja2 setup ────────────────────────────────────────────────────────────────
 
+
+def get_github_sha() -> str | None:
+    """Return the deployed Git commit SHA when supplied by the environment."""
+    value = os.getenv("GITHUB_SHA", "").strip()
+    return value or None
+
+
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 templates.env.filters.update(TEMPLATE_FILTERS)
+templates.env.globals["get_github_sha"] = get_github_sha
 
 
 def render(name: str, **ctx) -> str:

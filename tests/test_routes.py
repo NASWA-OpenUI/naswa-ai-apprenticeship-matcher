@@ -22,6 +22,27 @@ def test_index_route_renders_index(client):
     assert 'class="landing-page"' in response.text
 
 
+def test_page_includes_github_sha_when_configured(client, monkeypatch):
+    """The shared page head exposes the deployed commit when configured."""
+    github_sha = "12337f07bd6a1213015b1e2ea3673bc1dee223ed"
+    monkeypatch.setenv("GITHUB_SHA", github_sha)
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert f'<meta name="github-sha" content="{github_sha}">' in response.text
+
+
+def test_page_omits_github_sha_when_not_configured(client, monkeypatch):
+    """Local pages do not emit an empty deployment metadata tag."""
+    monkeypatch.delenv("GITHUB_SHA", raising=False)
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert 'meta name="github-sha"' not in response.text
+
+
 def test_ai_disclosure_route_renders_ai_disclosure_page(client):
     """Verifies that the AI disclosure page renders key disclosure sections,
     privacy/session language, and the call-to-action back into the chat flow."""

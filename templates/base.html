@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {%- set github_sha = get_github_sha() %}
+  {%- if github_sha %}
+  <meta name="github-sha" content="{{ github_sha }}">
+  {%- endif %}
+
   <title>{% block title %}Apprenticeship Matcher{% endblock %}</title>
 
   {#
