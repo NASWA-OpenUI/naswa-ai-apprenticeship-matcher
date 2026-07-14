@@ -135,6 +135,7 @@ jobs:
             jq -nc \
               --arg image "$IMAGE_URI" \
               --arg region "$AWS_REGION" \
+              --arg github_sha "$GITHUB_SHA" \
               '{
                 image: $image,
                 containerPort: 8000,
@@ -153,7 +154,11 @@ jobs:
                   },
                   {
                     name: "SCORING_MODEL_NAME",
-                    value: "sonnet-4.6"
+                    value: "nova-2-lite"
+                  },
+                  {
+                    name: "GITHUB_SHA",
+                    value: $github_sha
                   }
                 ]
               }'
