@@ -140,6 +140,12 @@ Run tests:
 uv run pytest
 ```
 
+### Accessibility testing
+
+Application pages and important interaction states are also tested for accessibility using the [axe DevTools browser extension](https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd).
+
+These browser-based scans complement the automated Python test suite and are used to identify issues involving page structure, accessible names, color contrast, form controls, keyboard interaction, and ARIA usage.
+
 ## Development notes
 
 Current assumptions:
