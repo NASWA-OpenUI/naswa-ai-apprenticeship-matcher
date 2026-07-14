@@ -377,6 +377,7 @@ ol {
 .dev-banner--notice {
   background: var(--nys-color-warning-weak, #fbf1cf);
   color: var(--app-warning-dark);
+  border-top: 1px solid var(--app-warning-border);
   border-bottom: 1px solid var(--app-warning-border);
 }
 

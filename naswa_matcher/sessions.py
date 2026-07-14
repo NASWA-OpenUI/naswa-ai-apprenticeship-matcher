@@ -1,4 +1,5 @@
 import asyncio
+import os
 import secrets
 import time
 from collections.abc import Callable
@@ -11,6 +12,25 @@ from naswa_matcher.ranking_cache import RankingCache
 
 SESSION_COOKIE_NAME = "tyler_session_cookie"
 SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7  # 7 days
+
+_TRUE_ENV_VALUES = {"1", "true", "yes", "on"}
+_FALSE_ENV_VALUES = {"0", "false", "no", "off"}
+
+
+def _session_cookie_secure() -> bool:
+    """Return whether cookies should be restricted to HTTPS connections."""
+    value = os.getenv("SESSION_COOKIE_SECURE", "false").strip().lower()
+
+    if value in _TRUE_ENV_VALUES:
+        return True
+
+    if value in _FALSE_ENV_VALUES:
+        return False
+
+    raise ValueError(
+        "SESSION_COOKIE_SECURE must be one of: "
+        "true, false, 1, 0, yes, no, on, or off."
+    )
 
 
 def _new_ranking_cache() -> RankingCache:
@@ -182,6 +202,6 @@ def set_session_cookie(response: Response, session_id: str) -> None:
         max_age=SESSION_MAX_AGE_SECONDS,
         httponly=True,
         samesite="lax",
-        secure=False,  # TODO: Make environment-aware for deployed HTTPS.
+        secure=_session_cookie_secure(),
         path="/",
     )

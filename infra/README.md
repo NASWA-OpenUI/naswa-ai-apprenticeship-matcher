@@ -249,7 +249,7 @@ aws ecs create-express-gateway-service \
   --execution-role-arn "$EXECUTION_ROLE_ARN" \
   --infrastructure-role-arn "$INFRASTRUCTURE_ROLE_ARN" \
   --task-role-arn "$TASK_ROLE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"sonnet-4.6\"}]}" \
+  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"nova-2-lite\"}]}" \
   --health-check-path "/health" \
   --monitor-resources \
   --region "$AWS_REGION" \
@@ -341,7 +341,7 @@ Update the service to use the new image:
 ```bash
 aws ecs update-express-gateway-service \
   --service-arn "$SERVICE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"sonnet-4.6\"}]}" \
+  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"nova-2-lite\"}]}" \
   --monitor-resources \
   --region "$AWS_REGION" \
   --profile "$AWS_PROFILE"

@@ -206,7 +206,8 @@ def test_has_user_messages_detects_user_participation():
     assert session.has_user_messages() is True
 
 
-def test_set_session_cookie_uses_expected_settings():
+def test_set_session_cookie_uses_expected_settings(monkeypatch):
+    monkeypatch.setenv("SESSION_COOKIE_SECURE", "false")
     response = Response()
 
     set_session_cookie(response, "session-123")
@@ -219,3 +220,12 @@ def test_set_session_cookie_uses_expected_settings():
     assert "Path=/" in cookie
     assert "SameSite=lax" in cookie
     assert "Secure" not in cookie
+
+
+def test_set_session_cookie_is_secure_when_configured(monkeypatch):
+    monkeypatch.setenv("SESSION_COOKIE_SECURE", "true")
+    response = Response()
+
+    set_session_cookie(response, "session-123")
+
+    assert "Secure" in response.headers["set-cookie"]
