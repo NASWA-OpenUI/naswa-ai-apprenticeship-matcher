@@ -40,9 +40,10 @@ def _new_ranking_cache() -> RankingCache:
     )
 
 
-INITIAL_CHAT_MESSAGE = (
-    "Registered apprenticeships let you earn while you learn. "
-    "Let’s see if one might be right for you. What’s your name?"
+INITIAL_CHAT_MESSAGES = (
+    "Registered apprenticeships let you earn while you learn. Let’s see if one might be right for you.",
+    "I’ll ask a few questions to find relevant matches. Please don’t share sensitive personal information.",
+    "To start, what’s your first name?",
 )
 
 PREFILLED_PROFILE_MESSAGE = (
@@ -66,8 +67,9 @@ def initial_messages() -> list[ChatMessage]:
     return [
         ChatMessage(
             role="assistant",
-            content=INITIAL_CHAT_MESSAGE,
+            content=content,
         )
+        for content in INITIAL_CHAT_MESSAGES
     ]
 
 

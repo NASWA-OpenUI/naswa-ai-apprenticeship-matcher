@@ -59,7 +59,7 @@ def test_chat_get_route_renders_chat_page(client):
     response = client.get("/chat")
 
     assert response.status_code == 200
-    assert "What’s your name?" in response.text
+    assert "To start, what’s your first name?" in response.text
     assert "Here’s the profile I’ll use to suggest matches" not in response.text
     assert 'id="chat-form"' in response.text
     assert 'sse-connect="/chat/stream"' in response.text
@@ -94,7 +94,7 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
 
     # The page should show the prefilled-profile state, not the initial chat prompt.
     assert "Here’s the profile I’ll use to suggest matches" in response.text
-    assert "What’s your name?" not in response.text
+    assert "To start, what’s your first name?" not in response.text
 
     # Confirmed profile card.
     assert "Your Profile" in response.text

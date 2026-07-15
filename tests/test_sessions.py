@@ -2,7 +2,7 @@ from starlette.responses import Response
 
 from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import (
-    INITIAL_CHAT_MESSAGE,
+    INITIAL_CHAT_MESSAGES,
     PREFILLED_PROFILE_MESSAGE,
     SESSION_COOKIE_NAME,
     SESSION_MAX_AGE_SECONDS,
@@ -41,10 +41,8 @@ def test_session_store_creates_session_when_session_id_is_missing():
     assert session.agent is created_agents[0]
     assert session.last_seen == 50.0
     assert session.messages == [
-        ChatMessage(
-            role="assistant",
-            content=INITIAL_CHAT_MESSAGE,
-        )
+        ChatMessage(role="assistant", content=content)
+        for content in INITIAL_CHAT_MESSAGES
     ]
 
 
@@ -114,10 +112,8 @@ def test_session_reset_restores_fresh_state():
     assert session.queue.empty()
     assert session.profile is None
     assert session.messages == [
-        ChatMessage(
-            role="assistant",
-            content=INITIAL_CHAT_MESSAGE,
-        )
+        ChatMessage(role="assistant", content=content)
+        for content in INITIAL_CHAT_MESSAGES
     ]
     assert session.active_stream_id is None
     assert session.ranking_cache.entries == {}

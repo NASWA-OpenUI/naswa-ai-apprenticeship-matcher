@@ -885,7 +885,7 @@ body:has(.landing-page) .site-footer {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--app-space-100);
+  gap: var(--app-space-50);
 }
 
 .message {
@@ -913,6 +913,21 @@ body:has(.landing-page) .site-footer {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--app-text-weak);
+}
+
+/* Visually hide the speaker name when the previous message has the same author. */
+.message--assistant+.message--assistant>.message-role,
+.message--user+.message--user>.message-role {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .message-content {
