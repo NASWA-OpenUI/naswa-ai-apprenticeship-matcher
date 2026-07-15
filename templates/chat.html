@@ -69,8 +69,7 @@
 
 <div class="composer-wrap">
   {% if not (profile and profile.confirmed) %}
-  <form id="chat-form" aria-label="Send a message" hx-post="/chat" hx-target="#chat-log" hx-swap="beforeend"
-    hx-on::after-request="this.reset()">
+  <form id="chat-form" aria-label="Send a message" hx-post="/chat" hx-target="#chat-log" hx-swap="beforeend">
     <label for="user-input" class="visually-hidden">Message</label>
     <input type="text" id="user-input" name="message" autocomplete="off" spellcheck="true" placeholder="Message Tyler…">
     <button type="submit" id="send-button" class="btn btn--filled">Send</button>
@@ -130,11 +129,39 @@
   }
 
   if (chatForm) {
-    chatForm.addEventListener('htmx:beforeRequest', function () {
+    chatForm.addEventListener('htmx:beforeRequest', function (event) {
+      if (!userInput.value.trim()) {
+        event.preventDefault();
+        userInput.focus();
+        return;
+      }
+
       setInputLocked(true);
 
       if (chatStatus) {
         chatStatus.textContent = 'Tyler is responding…';
+      }
+    });
+  }
+
+  if (chatForm) {
+    chatForm.addEventListener('htmx:afterRequest', function (event) {
+      const status = event.detail.xhr.status;
+
+      if (event.detail.successful && status !== 204) {
+        chatForm.reset();
+      }
+
+      if (!event.detail.successful || status === 204) {
+        setInputLocked(false);
+
+        if (userInput) {
+          userInput.focus();
+        }
+
+        if (chatStatus && !event.detail.successful) {
+          chatStatus.textContent = 'The message could not be sent. Please try again.';
+        }
       }
     });
   }

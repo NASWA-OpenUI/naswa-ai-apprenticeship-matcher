@@ -276,8 +276,16 @@ async def reset_chat(request: Request):
 
 
 @app.post("/chat")
-async def chat(request: Request, message: str = Form(...)):
-    """Accept a user message, enqueue it for this browser, return user bubble HTML."""
+async def chat(
+    request: Request,
+    message: str | None = Form(default=None),
+):
+    """Accept and enqueue a non-empty user message."""
+    message = (message or "").strip()
+
+    if not message:
+        return Response(status_code=204)
+
     session_id, session, needs_cookie = session_store.get_or_create(
         request.cookies.get(SESSION_COOKIE_NAME)
     )

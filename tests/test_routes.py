@@ -1,3 +1,4 @@
+import pytest
 import server
 from naswa_matcher.ranking import build_ranked_items
 
@@ -74,6 +75,29 @@ def test_chat_route_accepts_message_and_returns_user_bubble(client):
     assert "Paul" in response.text
     assert "message--user" in response.text
     assert "You" in response.text
+
+
+@pytest.mark.parametrize("message", ["", " ", "   ", "\t\n"])
+def test_chat_route_ignores_blank_messages(client, message):
+    """Blank messages should return successfully without changing the chat."""
+    client.get("/chat")
+
+    response = client.post("/chat", data={"message": message})
+
+    assert response.status_code == 204
+    assert response.content == b""
+
+    page = client.get("/chat")
+
+    assert "message--user" not in page.text
+
+
+def test_chat_route_ignores_missing_message(client):
+    """A missing message field should not produce a validation error."""
+    response = client.post("/chat", data={})
+
+    assert response.status_code == 204
+    assert response.content == b""
 
 
 def test_chat_get_route_prefills_confirmed_profile_from_query(client):
