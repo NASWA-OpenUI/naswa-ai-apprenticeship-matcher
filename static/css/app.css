@@ -1046,6 +1046,44 @@ body:has(.landing-page) .site-footer {
   flex-wrap: wrap;
 }
 
+.profile-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--app-space-150);
+}
+
+.profile-card-actions__left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--app-space-100);
+}
+
+.profile-card-actions>[data-profile-ranked-link] {
+  margin-left: auto;
+}
+
+@media (max-width: 620px) {
+
+  .profile-card-actions,
+  .profile-card-actions__left {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile-card-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .profile-card-actions>[data-profile-ranked-link] {
+    margin-left: 0;
+  }
+}
+
 /* ── Buttons (app-owned; styled with theme tokens) ───────────────────────────
    Named .btn rather than .nys-btn so we don't shadow any class the design
    system itself may ship; the official equivalent is the <nys-button> web

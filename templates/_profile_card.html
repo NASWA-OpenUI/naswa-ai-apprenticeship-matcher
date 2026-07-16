@@ -94,13 +94,19 @@
       </dd>
     </dl>
 
-    <div class="btn-row">
-      <button type="button" class="btn btn--outline" hx-post="/chat/reset" hx-swap="none">
-        Start over
-      </button>
+    <div class="profile-card-actions">
+      <div class="profile-card-actions__left">
+        <button type="button" class="btn btn--outline" data-chat-continue hx-post="/chat/continue" hx-swap="none">
+          Keep chatting
+        </button>
+
+        <button type="button" class="btn btn--outline" hx-post="/chat/reset" hx-swap="none">
+          Start over
+        </button>
+      </div>
 
       <a href="{{ ranked_url }}" class="btn btn--filled" data-profile-ranked-link>
-        See relevant jobs →
+        See my matches →
       </a>
     </div>
   </div>

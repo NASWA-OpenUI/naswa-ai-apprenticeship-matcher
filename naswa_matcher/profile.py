@@ -48,6 +48,24 @@ def build_profile(
     }
 
 
+def clean_profile_values(values: list[str]) -> list[str]:
+    """Return trimmed, non-empty, case-insensitively unique profile values."""
+    cleaned: list[str] = []
+    seen: set[str] = set()
+
+    for value in values:
+        text = str(value).strip()
+        key = text.casefold()
+
+        if not text or key in seen:
+            continue
+
+        seen.add(key)
+        cleaned.append(text)
+
+    return cleaned
+
+
 def has_profile_query_params(
     *,
     likes: list[str],

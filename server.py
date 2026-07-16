@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from naswa_matcher.agents import (
@@ -25,6 +26,7 @@ from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
     build_profile,
+    clean_profile_values,
     extract_profile,
     has_profile_query_params,
     profile_chat_url,
@@ -196,9 +198,15 @@ async def ai_disclosure(request: Request):
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
 
-def _has_prior_user_messages(session: ChatSession) -> bool:
-    """Return whether the user has already participated in this chat session."""
-    return any(message.role == "user" for message in session.messages)
+class ChatProfileUpdate(BaseModel):
+    """Profile values submitted from the profile-edit modal."""
+
+    name: str | None = None
+    likes: list[str] = Field(default_factory=list)
+    dislikes: list[str] = Field(default_factory=list)
+    location: str | None = None
+    transportation: str | None = None
+    use_location_matching: bool = True
 
 
 @app.get("/chat")
@@ -225,10 +233,11 @@ async def chat_page(
 
     if has_prefilled_profile:
         profile = build_profile(
-            likes=likes,
-            dislikes=dislikes,
-            location=location,
-            transportation=transportation,
+            name=session.profile.get("name") if session.profile else None,
+            likes=clean_profile_values(likes),
+            dislikes=clean_profile_values(dislikes),
+            location=(location or "").strip() or None,
+            transportation=(transportation or "").strip() or None,
             use_location_matching=(
                 True if use_location_matching is None else use_location_matching
             ),
@@ -268,6 +277,61 @@ async def reset_chat(request: Request):
 
     response = Response(status_code=204)
     response.headers["HX-Redirect"] = "/chat"
+
+    if needs_cookie:
+        set_session_cookie(response, session_id)
+
+    return response
+
+
+@app.post("/chat/profile")
+async def update_chat_profile(
+    request: Request,
+    update: ChatProfileUpdate,
+):
+    """Persist a modal-edited profile and synchronize Tyler's hidden context."""
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
+
+    existing_name = session.profile.get("name") if session.profile else None
+
+    if update.name is None:
+        name = existing_name
+    else:
+        name = update.name.strip() or None
+
+    profile = build_profile(
+        name=name,
+        likes=clean_profile_values(update.likes),
+        dislikes=clean_profile_values(update.dislikes),
+        location=(update.location or "").strip() or None,
+        transportation=(update.transportation or "").strip() or None,
+        use_location_matching=update.use_location_matching,
+        confirmed=True,
+    )
+
+    session.sync_confirmed_profile(profile)
+
+    response = Response(status_code=204)
+
+    if needs_cookie:
+        set_session_cookie(response, session_id)
+
+    return response
+
+
+@app.post("/chat/continue")
+async def continue_chat(request: Request):
+    """Resume conversation using the session's current profile as context."""
+    session_id, session, needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
+
+    if session.begin_profile_revision():
+        response = Response(status_code=204)
+    else:
+        response = Response(status_code=409)
 
     if needs_cookie:
         set_session_cookie(response, session_id)

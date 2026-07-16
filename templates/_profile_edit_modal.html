@@ -732,20 +732,73 @@
             lastModalTrigger = null;
         }
 
-        function saveProfileModal() {
+        async function saveProfileModal() {
             const profile = readProfileFromModal();
             const chatStatus = getChatStatus();
+            const saveButton =
+                getModalBackdrop()?.querySelector('[data-profile-save]');
 
-            renderProfileCard(profile);
-            closeProfileModal();
-
-            if (shouldRedirectAfterProfileSave()) {
-                window.location.assign(buildRankedUrl(profile));
-                return;
+            if (saveButton) {
+                saveButton.disabled = true;
+                saveButton.textContent = 'Saving…';
             }
 
-            if (chatStatus) {
-                chatStatus.textContent = 'Profile updated.';
+            try {
+                /*
+                 * On the matches page, preserve the existing behavior:
+                 * rebuild the ranked-results URL and navigate to it.
+                 *
+                 * The updated profile will be synchronized into Tyler's context if the
+                 * user later follows the updated Back to chat link.
+                 */
+                if (shouldRedirectAfterProfileSave()) {
+                    renderProfileCard(profile);
+                    closeProfileModal();
+                    window.location.assign(buildRankedUrl(profile));
+                    return;
+                }
+
+                /*
+                 * On the chat page, persist the edited profile into the server-side
+                 * session before changing the visible profile card.
+                 */
+                const response = await fetch('/chat/profile', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(profile)
+                });
+
+                if (!response.ok) {
+                    throw new Error(
+                        `Profile save failed with status ${response.status}`
+                    );
+                }
+
+                renderProfileCard(profile);
+                closeProfileModal();
+
+                /*
+                 * This is announced through the visually hidden status region.
+                 * It does not add a Tyler message to the transcript.
+                 */
+                if (chatStatus) {
+                    chatStatus.textContent = 'Profile changes saved.';
+                }
+            } catch (error) {
+                console.error('Unable to save profile changes:', error);
+
+                if (chatStatus) {
+                    chatStatus.textContent =
+                        'The profile changes could not be saved. Please try again.';
+                }
+            } finally {
+                if (saveButton) {
+                    saveButton.disabled = false;
+                    saveButton.textContent = 'Save changes';
+                }
             }
         }
 
@@ -762,7 +815,7 @@
             }
 
             if (event.target.closest('[data-profile-save]')) {
-                saveProfileModal();
+                void saveProfileModal();
                 return;
             }
 

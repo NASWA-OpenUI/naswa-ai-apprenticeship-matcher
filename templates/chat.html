@@ -67,21 +67,25 @@
 <!-- Visually hidden live region for status announcements -->
 <div id="chat-status" role="status" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
 
+{% set conversation_complete = profile and profile.confirmed %}
+
 <div class="composer-wrap">
-  {% if not (profile and profile.confirmed) %}
   <form id="chat-form" aria-label="Send a message" hx-post="/chat" hx-target="#chat-log" hx-swap="beforeend">
     <label for="user-input" class="visually-hidden">Message</label>
-    <input type="text" id="user-input" name="message" autocomplete="off" spellcheck="true" placeholder="Message Tyler…">
-    <button type="submit" id="send-button" class="btn btn--filled">Send</button>
+
+    <input type="text" id="user-input" name="message" autocomplete="off" spellcheck="true"
+      placeholder="{{ 'Conversation complete' if conversation_complete else 'Message Tyler…' }}" {% if
+      conversation_complete %}disabled{% endif %}>
+
+    <button type="submit" id="send-button" class="btn btn--filled" {% if conversation_complete %}disabled{% endif %}>
+      {{ "Done" if conversation_complete else "Send" }}
+    </button>
   </form>
-  {% else %}
-  <form id="chat-form" aria-label="Send a message">
-    <input type="text" id="user-input" placeholder="Conversation complete" disabled>
-    <button type="button" class="btn btn--filled" disabled>Done</button>
-  </form>
-  {% endif %}
+
   <p class="chat-disclaimer text-meta">
-    <a href="/ai-disclosure">Powered by AI. Verify important info before acting.</a>
+    <a href="/ai-disclosure">
+      Powered by AI. Verify important info before acting.
+    </a>
   </p>
 </div>
 
@@ -100,7 +104,8 @@
   const chatLog = document.getElementById('chat-log');
   const profileArea = document.getElementById('profile-area');
 
-  let conversationComplete = false;
+  let conversationComplete =
+    {{ (profile is not none and profile.confirmed) | tojson }};
 
   sessionStorage.removeItem('jobRankings');
 
@@ -112,13 +117,26 @@
     scrollIntoViewSafe(chatLog && chatLog.lastElementChild);
   }
 
-  document.body.addEventListener('htmx:afterSwap', function (e) {
-    const swapTarget = e.detail.target || e.target;
+  document.body.addEventListener('htmx:afterSwap', function (event) {
+    const swapTarget = event.detail.target || event.target;
 
     if (swapTarget === chatLog) {
       requestAnimationFrame(scrollToLatestMessage);
     }
   });
+
+  function setConversationComplete(complete) {
+    conversationComplete = complete;
+
+    if (!userInput || !sendButton) return;
+
+    userInput.disabled = complete;
+    sendButton.disabled = complete;
+    sendButton.textContent = complete ? 'Done' : 'Send';
+    userInput.placeholder = complete
+      ? 'Conversation complete'
+      : 'Message Tyler…';
+  }
 
   function setInputLocked(locked) {
     if (!userInput || !sendButton) return;
@@ -127,6 +145,92 @@
     sendButton.disabled = locked;
     sendButton.textContent = locked ? 'Sending…' : 'Send';
   }
+
+  function removeProfileCard() {
+    if (!profileArea) return;
+
+    const card = profileArea.querySelector('.profile-card');
+
+    if (!card) {
+      profileArea.replaceChildren();
+      return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      profileArea.replaceChildren();
+      return;
+    }
+
+    const startingHeight = profileArea.getBoundingClientRect().height;
+
+    profileArea.style.overflow = 'hidden';
+
+    const animation = profileArea.animate(
+      [
+        {
+          height: `${startingHeight}px`,
+          opacity: 1,
+          transform: 'translateY(0)'
+        },
+        {
+          height: '0px',
+          opacity: 0,
+          transform: 'translateY(-0.5rem)'
+        }
+      ],
+      {
+        duration: 250,
+        easing: 'ease',
+        fill: 'forwards'
+      }
+    );
+
+    animation.finished
+      .catch(() => {
+        // Ignore cancellation if the page changes during the animation.
+      })
+      .finally(() => {
+        profileArea.replaceChildren();
+        animation.cancel();
+        profileArea.style.removeProperty('overflow');
+      });
+  }
+
+  document.body.addEventListener('htmx:beforeRequest', function (event) {
+    const continueButton =
+      event.detail.elt?.closest?.('[data-chat-continue]');
+
+    if (continueButton) {
+      continueButton.disabled = true;
+    }
+  });
+
+  document.body.addEventListener('htmx:afterRequest', function (event) {
+    const continueButton =
+      event.detail.elt?.closest?.('[data-chat-continue]');
+
+    if (!continueButton) return;
+
+    if (!event.detail.successful) {
+      continueButton.disabled = false;
+
+      if (chatStatus) {
+        chatStatus.textContent =
+          'The conversation could not be resumed. Please try again.';
+      }
+
+      return;
+    }
+
+    removeProfileCard();
+    setConversationComplete(false);
+    userInput?.focus();
+
+    if (chatStatus) {
+      chatStatus.textContent =
+        'Conversation resumed. You can add or change profile information.';
+    }
+  });
 
   if (chatForm) {
     chatForm.addEventListener('htmx:beforeRequest', function (event) {
@@ -193,21 +297,17 @@
     }
 
     if (type === 'profile-confirmed') {
-      conversationComplete = true;
-
-      if (userInput && sendButton) {
-        userInput.disabled = true;
-        sendButton.disabled = true;
-        sendButton.textContent = 'Done';
-        userInput.placeholder = 'Conversation complete';
-      }
+      setConversationComplete(true);
 
       if (chatStatus) {
-        chatStatus.textContent = 'Conversation complete. Your profile summary is now shown.';
+        chatStatus.textContent =
+          'Conversation complete. Your profile summary is now shown.';
       }
 
       requestAnimationFrame(() => {
-        const profileCard = profileArea?.querySelector('.profile-card') || profileArea;
+        const profileCard =
+          profileArea?.querySelector('.profile-card') || profileArea;
+
         scrollIntoViewSafe(profileCard);
       });
     }

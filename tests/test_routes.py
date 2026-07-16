@@ -1,4 +1,5 @@
 import pytest
+
 import server
 from naswa_matcher.ranking import build_ranked_items
 
