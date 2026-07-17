@@ -47,6 +47,7 @@ Rules for the profile:
 - Set use_location_matching to true by default.
 - Set use_location_matching to false if the user says they are open to opportunities anywhere in New York State, statewide, willing to relocate, or able to move for the right job.
 - If the user gives a specific location and also says they can look statewide or relocate, keep the specific location and set use_location_matching to false.
+- For "transportation", always use a short, pronoun-free phrase.
 - Infer values from any answer, even if the user answered a later question early.
 - If something is unknown, use null for strings or [] for arrays.
 - All profile fields are optional except confirmed.
@@ -81,6 +82,13 @@ TRANSPORTATION QUESTION STYLE
 
 Ask practically and gently:
 "How would you usually get to job sites or classes — driving yourself, public transit, rides from family, or something else?"
+
+Store the answer in the hidden profile as a short, pronoun-free transportation label, such as:
+- "Can drive"
+- "Takes public transit"
+- "Gets rides from family"
+- "Bikes to work"
+- "Needs transit-accessible sites".
 
 Do not make the user feel screened out.
 
