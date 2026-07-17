@@ -328,10 +328,33 @@ async def continue_chat(request: Request):
         request.cookies.get(SESSION_COOKIE_NAME)
     )
 
-    if session.begin_profile_revision():
-        response = Response(status_code=204)
-    else:
+    if not session.begin_profile_revision():
         response = Response(status_code=409)
+
+        if needs_cookie:
+            set_session_cookie(response, session_id)
+
+        return response
+
+    content = (
+        "Sure — let’s keep chatting. What would you like to change about your profile?"
+    )
+
+    session.messages.append(
+        ChatMessage(
+            role="assistant",
+            content=content,
+        )
+    )
+
+    response = templates.TemplateResponse(
+        request,
+        "_message.html",
+        {
+            "role": "assistant",
+            "content": content,
+        },
+    )
 
     if needs_cookie:
         set_session_cookie(response, session_id)

@@ -96,7 +96,8 @@
 
     <div class="profile-card-actions">
       <div class="profile-card-actions__left">
-        <button type="button" class="btn btn--outline" data-chat-continue hx-post="/chat/continue" hx-swap="none">
+        <button type="button" class="btn btn--outline" data-chat-continue hx-post="/chat/continue" hx-target="#chat-log"
+          hx-swap="beforeend">
           Keep chatting
         </button>
 
