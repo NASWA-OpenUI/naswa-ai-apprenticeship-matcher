@@ -117,6 +117,26 @@
     scrollIntoViewSafe(chatLog && chatLog.lastElementChild);
   }
 
+  function scrollToConversationEndOnLoad() {
+    const profileCard = profileArea?.querySelector('.profile-card');
+    const latestMessage = chatLog?.lastElementChild;
+    const target = profileCard || latestMessage;
+
+    if (!target) return;
+
+    requestAnimationFrame(() => {
+      target.scrollIntoView({
+        behavior: 'auto',
+        block: 'end'
+      });
+    });
+  }
+
+  window.addEventListener(
+    'pageshow',
+    scrollToConversationEndOnLoad
+  );
+
   document.body.addEventListener('htmx:afterSwap', function (event) {
     const swapTarget = event.detail.target || event.target;
 
