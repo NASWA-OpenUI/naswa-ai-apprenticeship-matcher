@@ -1,4 +1,8 @@
-# naswa_matcher/template_filters.py
+from markdown_it import MarkdownIt
+from markupsafe import Markup
+
+_MARKDOWN = MarkdownIt("js-default").disable("image")
+
 
 _MONTHS = [
     "January",
@@ -14,6 +18,12 @@ _MONTHS = [
     "November",
     "December",
 ]
+
+
+def chat_markdown(value: str | None) -> Markup:
+    """Render safe, limited Markdown for chat messages."""
+    rendered = _MARKDOWN.render(value or "")
+    return Markup(rendered)
 
 
 def format_date(iso: str | None) -> str:
@@ -55,4 +65,5 @@ TEMPLATE_FILTERS = {
     "format_date": format_date,
     "format_wage": format_wage,
     "percent_of": percent_of,
+    "chat_markdown": chat_markdown,
 }

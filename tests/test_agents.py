@@ -131,6 +131,7 @@ def test_make_chat_agent_uses_streaming_chat_model_and_system_prompt(monkeypatch
         "callback_handler": None,
     }
 
+
 def test_make_chat_agent_passes_initial_messages(monkeypatch):
     fake_model = object()
     captured = {}
@@ -156,6 +157,7 @@ def test_make_chat_agent_passes_initial_messages(monkeypatch):
 
     assert result is not None
     assert captured["agent_kwargs"]["messages"] is messages
+
 
 def test_make_scoring_model_uses_non_streaming_scoring_model(monkeypatch):
     fake_model = object()

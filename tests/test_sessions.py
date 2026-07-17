@@ -250,6 +250,7 @@ def test_begin_profile_revision_replaces_agent_with_revision_context():
     assert "CONVERSATION_MODE: PROFILE_REVISION" in context_text
     assert '"name": "Taylor"' in context_text
 
+
 def test_begin_profile_revision_returns_false_without_profile():
     agent_factory, _created_agents = agent_factory_with_history()
     session = ChatSession(agent_factory=agent_factory)
@@ -261,6 +262,7 @@ def test_begin_profile_revision_returns_false_without_profile():
     assert result is False
     assert session.agent is original_agent
     assert session.profile is None
+
 
 def test_has_user_messages_detects_user_participation():
     agent_factory, _created_agents = agent_factory_with_history()

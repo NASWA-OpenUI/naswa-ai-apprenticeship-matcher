@@ -2,6 +2,7 @@ import pytest
 
 from naswa_matcher.template_filters import (
     TEMPLATE_FILTERS,
+    chat_markdown,
     format_date,
     format_wage,
     percent_of,
@@ -86,4 +87,42 @@ def test_template_filters_exports_expected_filters():
         "format_date": format_date,
         "format_wage": format_wage,
         "percent_of": percent_of,
+        "chat_markdown": chat_markdown,
     }
+
+
+def test_chat_markdown_renders_paragraphs_lists_and_bold_text():
+    """Verifies that chat Markdown is converted into the expected HTML."""
+    value = """\
+Just to confirm:
+
+- **Likes:** computers, pizza, soccer
+"""
+
+    assert str(chat_markdown(value)) == (
+        "<p>Just to confirm:</p>\n"
+        "<ul>\n"
+        "<li><strong>Likes:</strong> computers, pizza, soccer</li>\n"
+        "</ul>\n"
+    )
+
+
+def test_chat_markdown_escapes_raw_html():
+    """Verifies that raw HTML in chat content is displayed rather than executed."""
+    value = "<script>alert('hello')</script>"
+
+    assert str(chat_markdown(value)) == (
+        "<p>&lt;script&gt;alert('hello')&lt;/script&gt;</p>\n"
+    )
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        (None, ""),
+        ("", ""),
+    ],
+)
+def test_chat_markdown_handles_missing_content(value, expected):
+    """Verifies that missing or empty chat content produces no HTML."""
+    assert str(chat_markdown(value)) == expected

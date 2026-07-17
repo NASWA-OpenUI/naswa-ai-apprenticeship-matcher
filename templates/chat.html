@@ -31,10 +31,9 @@
     sse-swap="assistant-message" hx-swap="beforeend">
     {% if messages %}
     {% for msg in messages %}
-    <li class="message message--{{ msg.role }}">
-      <span class="message-role">{{ "You" if msg.role == "user" else "Tyler" }}</span>
-      <p class="message-content">{{ msg.content }}</p>
-    </li>
+    {% with role=msg.role, content=msg.content %}
+    {% include "_message.html" %}
+    {% endwith %}
     {% endfor %}
     {% endif %}
   </ol>

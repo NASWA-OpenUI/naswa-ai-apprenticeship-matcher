@@ -1,4 +1,9 @@
 <li class="message message--{{ role }}">
-  <span class="message-role">{{ "You" if role == "user" else "Tyler" }}</span>
-  <p class="message-content">{{ content }}</p>
+  <span class="message-role">
+    {{ "You" if role == "user" else "Tyler" }}
+  </span>
+
+  <div class="message-content message-content--markdown">
+    {{ content | chat_markdown }}
+  </div>
 </li>

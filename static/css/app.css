@@ -141,6 +141,10 @@ ol {
   list-style-type: decimal;
 }
 
+ol#chat-log ol {
+  list-style-type: decimal;
+}
+
 [hidden] {
   display: none !important;
 }
@@ -947,6 +951,32 @@ body:has(.landing-page) .site-footer {
 .message--user .message-content {
   background: var(--nys-color-theme, #084b52);
   color: var(--app-text-on-theme);
+}
+
+.message-content--markdown {
+  white-space: normal;
+}
+
+.message-content--markdown> :first-child {
+  margin-top: 0;
+}
+
+.message-content--markdown> :last-child {
+  margin-bottom: 0;
+}
+
+.message-content--markdown p {
+  margin: 0 0 0.65rem;
+}
+
+.message-content--markdown ul,
+.message-content--markdown ol {
+  margin: 0.5rem 0;
+  padding-left: 1.4rem;
+}
+
+.message-content--markdown li+li {
+  margin-top: 0.25rem;
 }
 
 /* streaming bubble */
