@@ -1819,7 +1819,7 @@ body.profile-modal-open {
     flex-direction: column-reverse;
   }
 
-  .matched-profile-widget__edit {
+  .matched-profile-widget .matched-profile-widget__edit {
     justify-content: center;
     width: 100%;
   }
