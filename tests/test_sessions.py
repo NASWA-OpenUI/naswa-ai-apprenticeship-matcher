@@ -16,10 +16,18 @@ from naswa_matcher.sessions import (
 def agent_factory_with_history():
     created_agents = []
 
-    def factory():
+    def factory(*, messages=None):
         agent = object()
         created_agents.append(agent)
+        factory.calls.append(
+            {
+                "agent": agent,
+                "messages": messages,
+            }
+        )
         return agent
+
+    factory.calls = []
 
     return factory, created_agents
 
@@ -143,7 +151,8 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
 
     session.apply_confirmed_profile(profile)
 
-    assert session.profile is profile
+    assert session.profile == profile
+    assert session.profile is not profile
     assert session.agent is not original_agent
     assert session.queue is not original_queue
     assert session.queue.empty()
@@ -157,6 +166,14 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
     assert session.ranking_cache.entries == {}
     assert session.last_logged_location is None
 
+    context_messages = agent_factory.calls[-1]["messages"]
+
+    assert context_messages is not None
+    assert (
+        "CONVERSATION_MODE: PROFILE_CONFIRMED"
+        in context_messages[0]["content"][0]["text"]
+    )
+
 
 def test_apply_confirmed_profile_preserves_real_conversation():
     agent_factory, _created_agents = agent_factory_with_history()
@@ -165,7 +182,10 @@ def test_apply_confirmed_profile_preserves_real_conversation():
     session.messages.extend(
         [
             ChatMessage(role="user", content="My name is Taylor."),
-            ChatMessage(role="assistant", content="What kinds of work do you like?"),
+            ChatMessage(
+                role="assistant",
+                content="What kinds of work do you like?",
+            ),
         ]
     )
 
@@ -185,11 +205,62 @@ def test_apply_confirmed_profile_preserves_real_conversation():
 
     session.apply_confirmed_profile(profile)
 
-    assert session.profile is profile
-    assert session.agent is original_agent
+    assert session.profile == profile
+    assert session.profile is not profile
+    assert session.agent is not original_agent
     assert session.messages == original_messages
     assert session.queue is not original_queue
+    assert session.queue.empty()
 
+    context_messages = agent_factory.calls[-1]["messages"]
+
+    assert context_messages is not None
+    assert (
+        "CONVERSATION_MODE: PROFILE_CONFIRMED"
+        in context_messages[0]["content"][0]["text"]
+    )
+    assert '"name": "Taylor"' in context_messages[0]["content"][0]["text"]
+
+
+def test_begin_profile_revision_replaces_agent_with_revision_context():
+    agent_factory, _created_agents = agent_factory_with_history()
+    session = ChatSession(agent_factory=agent_factory)
+
+    session.profile = {
+        "name": "Taylor",
+        "likes": ["working with tools"],
+        "dislikes": [],
+        "location": "Buffalo",
+        "transportation": "public transit",
+        "use_location_matching": True,
+        "confirmed": True,
+    }
+
+    original_agent = session.agent
+
+    result = session.begin_profile_revision()
+
+    assert result is True
+    assert session.profile["confirmed"] is False
+    assert session.agent is not original_agent
+
+    context_messages = agent_factory.calls[-1]["messages"]
+    context_text = context_messages[0]["content"][0]["text"]
+
+    assert "CONVERSATION_MODE: PROFILE_REVISION" in context_text
+    assert '"name": "Taylor"' in context_text
+
+def test_begin_profile_revision_returns_false_without_profile():
+    agent_factory, _created_agents = agent_factory_with_history()
+    session = ChatSession(agent_factory=agent_factory)
+
+    original_agent = session.agent
+
+    result = session.begin_profile_revision()
+
+    assert result is False
+    assert session.agent is original_agent
+    assert session.profile is None
 
 def test_has_user_messages_detects_user_participation():
     agent_factory, _created_agents = agent_factory_with_history()

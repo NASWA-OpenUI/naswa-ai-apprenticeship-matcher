@@ -126,10 +126,36 @@ def test_make_chat_agent_uses_streaming_chat_model_and_system_prompt(monkeypatch
     assert captured["temperature"] is None
     assert captured["agent_kwargs"] == {
         "model": fake_model,
+        "messages": None,
         "system_prompt": CHAT_SYSTEM_PROMPT,
         "callback_handler": None,
     }
 
+def test_make_chat_agent_passes_initial_messages(monkeypatch):
+    fake_model = object()
+    captured = {}
+
+    def fake_make_bedrock_model(model_name, *, streaming, temperature=None):
+        return fake_model
+
+    def fake_agent(**kwargs):
+        captured["agent_kwargs"] = kwargs
+        return object()
+
+    monkeypatch.setattr(agents, "make_bedrock_model", fake_make_bedrock_model)
+    monkeypatch.setattr(agents, "Agent", fake_agent)
+
+    messages = [
+        {
+            "role": "user",
+            "content": [{"text": "Existing profile context"}],
+        }
+    ]
+
+    result = make_chat_agent(messages=messages)
+
+    assert result is not None
+    assert captured["agent_kwargs"]["messages"] is messages
 
 def test_make_scoring_model_uses_non_streaming_scoring_model(monkeypatch):
     fake_model = object()

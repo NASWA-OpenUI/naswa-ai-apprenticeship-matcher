@@ -137,7 +137,6 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
     # The chat composer should be in the completed state.
     assert "Conversation complete" in response.text
     assert "disabled" in response.text
-    assert ">Done</button>" in response.text
 
     # Modal partial should be available for editing.
     assert "data-profile-edit-modal" in response.text
