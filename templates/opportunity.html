@@ -10,7 +10,7 @@ scripts, and the outer #main-content landmark.
 {% block title_band %}
 <div class="detail-crumb">
   <div class="container">
-    <a id="detail-back-link" href="/opportunities">← All opportunities</a>
+    <a id="detail-back-link" class="chip chip--theme" href="/opportunities">← All opportunities</a>
   </div>
 </div>
 
@@ -416,6 +416,17 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
   }
 
   if (onThisPageNav) {
+    onThisPageNav.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href^="#"]');
+
+      if (!link || !onThisPageNav.contains(link)) {
+        return;
+      }
+
+      event.preventDefault();
+      window.location.replace(link.hash);
+    });
+
     window.addEventListener('scroll', updateActiveOnThisPageLink, { passive: true });
     window.addEventListener('resize', updateActiveOnThisPageLink);
 

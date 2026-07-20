@@ -2358,6 +2358,13 @@ body:has(.opportunity-detail-page) {
 
 .detail-crumb a {
   font-weight: 700;
+  padding: 0.4rem 1rem;
+  text-decoration: none;
+}
+
+.detail-crumb a:hover,
+.detail-crumb a:focus {
+  text-decoration: underline;
 }
 
 .detail-hero {
