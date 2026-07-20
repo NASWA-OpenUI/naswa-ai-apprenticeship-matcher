@@ -1,6 +1,6 @@
 # NASWA AI Apprenticeship Matcher
 
-A prototype web application for exploring apprenticeship opportunities and matching users to relevant jobs based on a short guided conversation. This project is funded by support from the GitLab Foundation and built in partnership between the National Association of State Workforce Agencies and the New York State Department of Labor. This is currently running on a limited dataset and should not be used to make career or other life decisions. If you have questions or suggestions for improvement, please email ajohnson@naswa.org or p.craig@bloomworks.digital. 
+A prototype web application for exploring apprenticeship opportunities and matching users to relevant jobs based on a short guided conversation. This project is funded with support from the GitLab Foundation and built in partnership between the National Association of State Workforce Agencies and the New York State Department of Labor. This tool is currently running on a limited dataset and should not be used to make career or other life decisions. If you have questions or suggestions for improvement, please email ajohnson@naswa.org or p.craig@bloomworks.digital. 
 
 The app uses AWS Strands and Bedrock to collect a simple user profile, then rank apprenticeship opportunities against that profile.
 
