@@ -1,0 +1,433 @@
+{# templates/_match_filters.html #}
+{% set filters_ready = ranking_cached|default(false) %}
+
+<aside id="match-filters" class="match-filters surface surface--shadow" data-match-filters
+    data-ranking-cached="{% if filters_ready %}true{% else %}false{% endif %}"
+    data-filters-ready="{% if filters_ready %}true{% else %}false{% endif %}"
+    aria-busy="{% if filters_ready %}false{% else %}true{% endif %}" aria-labelledby="match-filters-title">
+    <div class="match-filters__head">
+        <h3 id="match-filters-title" class="match-filters__title">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            Filters
+        </h3>
+
+        <div class="match-filters__head-actions">
+            <button type="button" class="match-filters__clear" data-match-filters-clear disabled>
+                Clear all
+            </button>
+
+            <button type="button" class="profile-modal-close match-filters__close" data-match-filters-close
+                aria-label="Close filters">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <form class="match-filters__form" data-match-filters-form autocomplete="off">
+        <fieldset class="match-filter-group">
+            <legend>Match strength</legend>
+
+            {% for value, label in [
+            ("all", "All matches"),
+            ("strong", "Strong"),
+            ("moderate", "Moderate"),
+            ("weak", "Weak")
+            ] %}
+            <label class="match-filter-option">
+                <input type="radio" name="match-strength" value="{{ value }}" {% if value=="all" %}checked{% endif %} {%
+                    if not filters_ready %}disabled{% endif %}>
+                <span class="match-filter-option__label">{{ label }}</span>
+                <span class="match-filter-option__count" data-match-filter-count="{{ value }}">0</span>
+            </label>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset class="match-filter-group">
+            <legend>Driver’s license</legend>
+
+            <label class="match-filter-option">
+                <input type="checkbox" name="no-license-required" value="true" {% if not filters_ready %}disabled{%
+                    endif %}>
+                <span class="match-filter-option__label">
+                    No license required
+                </span>
+                <span class="match-filter-option__count" data-match-filter-count="no-license">0</span>
+            </label>
+        </fieldset>
+    </form>
+
+    <p class="match-filters__summary" data-match-filters-summary aria-live="polite" aria-atomic="true">
+        {% if filters_ready %}
+        Showing all matches
+        {% else %}
+        Filters available when ranking is complete.
+        {% endif %}
+    </p>
+</aside>
+
+<button type="button" class="match-filters-backdrop" data-match-filters-backdrop aria-label="Close filters"
+    tabindex="-1" hidden></button>
+
+<script>
+    (() => {
+        function initMatchFilters() {
+            const panel = document.querySelector('[data-match-filters]');
+            const form = document.querySelector('[data-match-filters-form]');
+            const matchList = document.getElementById('match-list');
+
+            if (!panel || !form || !matchList) {
+                return;
+            }
+
+            const clearButton = document.querySelector(
+                '[data-match-filters-clear]'
+            );
+            const openButton = document.querySelector(
+                '[data-match-filters-open]'
+            );
+            const closeButton = document.querySelector(
+                '[data-match-filters-close]'
+            );
+            const backdrop = document.querySelector(
+                '[data-match-filters-backdrop]'
+            );
+            const summary = document.querySelector(
+                '[data-match-filters-summary]'
+            );
+            const emptyState = document.getElementById('match-filter-empty');
+            const controls = Array.from(form.elements);
+            const rankingCached = panel.dataset.rankingCached === 'true';
+
+            let filtersReady = panel.dataset.filtersReady === 'true';
+
+            function getCards() {
+                return Array.from(
+                    matchList.querySelectorAll('.match-card')
+                );
+            }
+
+            function pluralizeMatches(count) {
+                return count === 1 ? 'match' : 'matches';
+            }
+
+            function selectedTier() {
+                return (
+                    form.querySelector(
+                        '[name="match-strength"]:checked'
+                    )?.value || 'all'
+                );
+            }
+
+            function noLicenseRequired() {
+                return Boolean(
+                    form.elements['no-license-required']?.checked
+                );
+            }
+
+            function refreshCounts() {
+                const cards = getCards();
+
+                const counts = {
+                    all: cards.length,
+                    strong: 0,
+                    moderate: 0,
+                    weak: 0,
+                    'no-license': 0
+                };
+
+                cards.forEach(card => {
+                    const tier = (
+                        card.dataset.rankingTier || ''
+                    ).toLowerCase();
+
+                    if (Object.hasOwn(counts, tier)) {
+                        counts[tier] += 1;
+                    }
+
+                    if (card.dataset.licenseRequired !== 'true') {
+                        counts['no-license'] += 1;
+                    }
+                });
+
+                Object.entries(counts).forEach(([key, count]) => {
+                    const output = panel.querySelector(
+                        `[data-match-filter-count="${key}"]`
+                    );
+
+                    if (output) {
+                        output.textContent = String(count);
+                    }
+                });
+            }
+
+            function updateSelectedStyles() {
+                panel
+                    .querySelectorAll('.match-filter-option')
+                    .forEach(option => {
+                        const input = option.querySelector('input');
+
+                        option.classList.toggle(
+                            'is-selected',
+                            Boolean(input?.checked)
+                        );
+                    });
+            }
+
+            function updateSummary(
+                visibleCount,
+                totalCount,
+                tier,
+                noLicense
+            ) {
+                if (!summary) {
+                    return;
+                }
+
+                const labels = [];
+
+                if (tier !== 'all') {
+                    labels.push(
+                        tier.charAt(0).toUpperCase() + tier.slice(1)
+                    );
+                }
+
+                if (noLicense) {
+                    labels.push('No license required');
+                }
+
+                if (!labels.length) {
+                    summary.textContent =
+                        `Showing all ${totalCount} ` +
+                        pluralizeMatches(totalCount);
+                    return;
+                }
+
+                summary.textContent =
+                    `Showing ${visibleCount} of ${totalCount} · ` +
+                    labels.join(' · ');
+            }
+
+            function applyFilters() {
+                if (!filtersReady) {
+                    return;
+                }
+
+                const cards = getCards();
+                const tier = selectedTier();
+                const noLicense = noLicenseRequired();
+
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cardTier = (
+                        card.dataset.rankingTier || ''
+                    ).toLowerCase();
+
+                    const matchesTier =
+                        tier === 'all' || cardTier === tier;
+
+                    const matchesLicense =
+                        !noLicense ||
+                        card.dataset.licenseRequired !== 'true';
+
+                    const isVisible =
+                        matchesTier && matchesLicense;
+
+                    card.hidden = !isVisible;
+
+                    if (isVisible) {
+                        visibleCount += 1;
+                    }
+                });
+
+                if (clearButton) {
+                    clearButton.disabled =
+                        tier === 'all' && !noLicense;
+                }
+
+                if (emptyState) {
+                    emptyState.hidden = visibleCount !== 0;
+                }
+
+                updateSelectedStyles();
+
+                updateSummary(
+                    visibleCount,
+                    cards.length,
+                    tier,
+                    noLicense
+                );
+            }
+
+            function enableFilters() {
+                filtersReady = true;
+
+                panel.dataset.filtersReady = 'true';
+                panel.setAttribute('aria-busy', 'false');
+
+                controls.forEach(control => {
+                    control.disabled = false;
+                });
+
+                if (openButton) {
+                    openButton.disabled = false;
+                }
+
+                refreshCounts();
+                applyFilters();
+            }
+
+            function clearFilters() {
+                form.reset();
+                applyFilters();
+            }
+
+            function openFilters() {
+                panel.classList.add('is-open');
+                panel.setAttribute('role', 'dialog');
+                panel.setAttribute('aria-modal', 'true');
+
+                document.body.classList.add(
+                    'match-filters-shelf-open'
+                );
+
+                if (backdrop) {
+                    backdrop.hidden = false;
+                }
+
+                if (openButton) {
+                    openButton.setAttribute(
+                        'aria-expanded',
+                        'true'
+                    );
+                }
+
+                closeButton?.focus();
+            }
+
+            function closeFilters() {
+                panel.classList.remove('is-open');
+                panel.removeAttribute('role');
+                panel.removeAttribute('aria-modal');
+
+                document.body.classList.remove(
+                    'match-filters-shelf-open'
+                );
+
+                if (backdrop) {
+                    backdrop.hidden = true;
+                }
+
+                if (openButton) {
+                    openButton.setAttribute(
+                        'aria-expanded',
+                        'false'
+                    );
+                    openButton.focus();
+                }
+            }
+
+            form.addEventListener('change', applyFilters);
+            clearButton?.addEventListener(
+                'click',
+                clearFilters
+            );
+            openButton?.addEventListener(
+                'click',
+                openFilters
+            );
+            closeButton?.addEventListener(
+                'click',
+                closeFilters
+            );
+            backdrop?.addEventListener(
+                'click',
+                closeFilters
+            );
+
+            document.addEventListener('keydown', event => {
+                if (!panel.classList.contains('is-open')) {
+                    return;
+                }
+
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeFilters();
+                    return;
+                }
+
+                if (event.key !== 'Tab') {
+                    return;
+                }
+
+                const focusable = Array.from(
+                    panel.querySelectorAll(
+                        'button:not([disabled]), input:not([disabled])'
+                    )
+                );
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (!first || !last) {
+                    event.preventDefault();
+                    panel.focus();
+                    return;
+                }
+
+                if (
+                    event.shiftKey &&
+                    document.activeElement === first
+                ) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (
+                    !event.shiftKey &&
+                    document.activeElement === last
+                ) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            });
+
+            /*
+             * Reset browser-restored form values. This keeps filters
+             * intentionally temporary when returning through browser history.
+             */
+            window.addEventListener('pageshow', () => {
+                form.reset();
+
+                if (filtersReady) {
+                    applyFilters();
+                }
+            });
+
+            if (rankingCached) {
+                requestAnimationFrame(enableFilters);
+            } else {
+                document.body.addEventListener(
+                    'htmx:sseMessage',
+                    event => {
+                        if (event.detail.type === 'done') {
+                            requestAnimationFrame(enableFilters);
+                        }
+                    }
+                );
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener(
+                'DOMContentLoaded',
+                initMatchFilters,
+                { once: true }
+            );
+        } else {
+            initMatchFilters();
+        }
+    })();
+</script>

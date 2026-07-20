@@ -50,17 +50,36 @@ opportunities{% endif %}{% endblock %}
         {% endif %}
       </div>
       <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches load.</div>
+
+      <button type="button" class="btn btn--outline match-filters-open" data-match-filters-open
+        aria-controls="match-filters" aria-expanded="false" {% if not ranking_cached|default(false) %}disabled{% endif
+        %}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        Filters
+      </button>
     </div>
 
-    <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
-      {% if cached_ranked|default([]) %}
-      {% with ranked=cached_ranked %}
-      {% include "_rank_cards.html" %}
-      {% endwith %}
-      {% endif %}
-    </div>
+    <div class="matched-results-layout">
+      {% include "_match_filters.html" %}
 
-    <div id="rank-errors" sse-swap="batch-error" hx-swap="beforeend"></div>
+      <div class="matched-results-main">
+        <p id="match-filter-empty" class="match-filter-empty empty-state surface surface--shadow" hidden>
+          No matches meet those filters. Try clearing one or more filters.
+        </p>
+
+        <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
+          {% if cached_ranked|default([]) %}
+          {% with ranked=cached_ranked %}
+          {% include "_rank_cards.html" %}
+          {% endwith %}
+          {% endif %}
+        </div>
+
+        <div id="rank-errors" sse-swap="batch-error" hx-swap="beforeend"></div>
+      </div>
+    </div>
 
     <div id="rank-done" sse-swap="done" hx-swap="innerHTML" hidden></div>
   </div>

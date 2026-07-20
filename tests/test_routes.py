@@ -297,7 +297,6 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
     assert "event: progress" in body
     assert "event: done" in body
 
-    print(body)
     # Local Western NY opportunity can remain Strong.
     assert "Strong" in body
     assert "Boilermaker Apprentice" in body
@@ -311,6 +310,9 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
 
     # Stream endpoint only returns ranked cards/progress, not the full page shell.
     assert "Sheet Metal Worker Apprentice" not in body
+
+    # Cards expose the same driver's-license classification used by the icon.
+    assert 'data-license-required="' in body
 
 
 def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
@@ -382,6 +384,18 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     assert "More opportunities" in response.text
     assert "Sheet Metal Worker Apprentice" in response.text
 
+    # Ranked-result filters are present but disabled until streaming completes.
+    assert 'id="match-filters"' in response.text
+    assert "data-match-filters-open" in response.text
+    assert "data-match-filters-clear" in response.text
+
+    assert 'name="match-strength"' in response.text
+    assert 'value="all"' in response.text
+    assert 'value="strong"' in response.text
+    assert 'value="moderate"' in response.text
+    assert 'value="weak"' in response.text
+
+    assert 'name="no-license-required"' in response.text
 
 def make_server_rank_job(location_summary: str) -> dict:
     """Builds a minimal job object for testing server-side ranking behavior
