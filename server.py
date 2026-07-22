@@ -21,6 +21,7 @@ from naswa_matcher.agents import (
 )
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
+from naswa_matcher.location_data import REGION_KEY_TO_NAME
 from naswa_matcher.location_matching import log_user_location_inference
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
@@ -48,6 +49,7 @@ from naswa_matcher.template_filters import TEMPLATE_FILTERS
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
+REGION_FILTER_OPTIONS = tuple(REGION_KEY_TO_NAME.values())
 
 # ── Jinja2 setup ────────────────────────────────────────────────────────────────
 
@@ -565,6 +567,7 @@ async def opportunities_page(
                 "ranking_cached": ranking_cached,
                 "cached_ranked": cached_ranked,
                 "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
+                "region_filter_options": REGION_FILTER_OPTIONS,
             },
         )
 

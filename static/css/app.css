@@ -1887,8 +1887,6 @@ body.profile-modal-open {
 }
 
 .match-filters {
-  position: sticky;
-  top: var(--app-space-200);
   padding: var(--app-card-padding);
   transition: opacity 0.15s ease;
 }
@@ -1989,9 +1987,9 @@ body.profile-modal-open {
   display: flex;
   align-items: center;
   gap: var(--app-space-100);
-  min-height: 2.75rem;
+  min-height: 2.35rem;
   margin: 0 -0.35rem;
-  padding: 0.55rem 0.65rem;
+  padding: 0rem 0.65rem;
   border: 1px solid transparent;
   border-radius: var(--app-radius-md);
   cursor: pointer;
@@ -2079,12 +2077,14 @@ body.profile-modal-open {
     z-index: 1100;
     inset: auto 0 0;
     top: auto;
+    display: flex;
+    flex-direction: column;
     max-height: min(82dvh, 44rem);
     padding:
       1.1rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
     border-radius:
       var(--nys-radius-xxl, 1rem) var(--nys-radius-xxl, 1rem) 0 0;
-    overflow-y: auto;
+    overflow: hidden;
     visibility: hidden;
     pointer-events: none;
     transform: translateY(105%);
@@ -2097,6 +2097,28 @@ body.profile-modal-open {
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .match-filters__head {
+    flex: none;
+  }
+
+  .match-filters__form {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: var(--app-space-50);
+    padding-bottom: var(--app-space-50);
+  }
+
+  .match-filters__summary {
+    flex: none;
+    margin: 0;
+    padding-top: var(--app-space-200);
+    padding-bottom: 0;
+    background: var(--app-surface);
+    box-shadow: 0 -10px 14px -16px rgba(17, 24, 28, 0.7);
   }
 
   .match-filters__close {

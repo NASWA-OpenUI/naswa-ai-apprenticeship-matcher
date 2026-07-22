@@ -47,6 +47,21 @@
         </fieldset>
 
         <fieldset class="match-filter-group">
+            <legend>Regions</legend>
+
+            {% for region in region_filter_options %}
+            <label class="match-filter-option">
+                <input type="checkbox" name="regions" value="{{ region }}" {% if not filters_ready %}disabled{% endif
+                    %}>
+                <span class="match-filter-option__label">
+                    {{ region }}
+                </span>
+                <span class="match-filter-option__count" data-match-region-count="{{ region }}">0</span>
+            </label>
+            {% endfor %}
+        </fieldset>
+
+        <fieldset class="match-filter-group">
             <legend>Driver’s license</legend>
 
             <label class="match-filter-option">
@@ -128,6 +143,22 @@
                 );
             }
 
+            function selectedRegions() {
+                return Array.from(
+                    form.querySelectorAll(
+                        '[name="regions"]:checked'
+                    ),
+                    input => input.value
+                );
+            }
+
+            function getCardRegions(card) {
+                return (card.dataset.regions || '')
+                    .split(',')
+                    .map(region => region.trim())
+                    .filter(Boolean);
+            }
+
             function refreshCounts() {
                 const cards = getCards();
 
@@ -138,6 +169,17 @@
                     weak: 0,
                     'no-license': 0
                 };
+
+                const regionCounts = new Map();
+
+                panel
+                    .querySelectorAll('[data-match-region-count]')
+                    .forEach(output => {
+                        regionCounts.set(
+                            output.dataset.matchRegionCount,
+                            0
+                        );
+                    });
 
                 cards.forEach(card => {
                     const tier = (
@@ -151,6 +193,25 @@
                     if (card.dataset.licenseRequired !== 'true') {
                         counts['no-license'] += 1;
                     }
+
+                    /*
+                     * Use a Set so an accidentally duplicated region in one
+                     * posting cannot increment the same count twice.
+                     */
+                    const cardRegions = new Set(
+                        getCardRegions(card)
+                    );
+
+                    cardRegions.forEach(region => {
+                        if (!regionCounts.has(region)) {
+                            return;
+                        }
+
+                        regionCounts.set(
+                            region,
+                            regionCounts.get(region) + 1
+                        );
+                    });
                 });
 
                 Object.entries(counts).forEach(([key, count]) => {
@@ -162,6 +223,17 @@
                         output.textContent = String(count);
                     }
                 });
+
+                panel
+                    .querySelectorAll('[data-match-region-count]')
+                    .forEach(output => {
+                        const region =
+                            output.dataset.matchRegionCount;
+
+                        output.textContent = String(
+                            regionCounts.get(region) || 0
+                        );
+                    });
             }
 
             function updateSelectedStyles() {
@@ -181,6 +253,7 @@
                 visibleCount,
                 totalCount,
                 tier,
+                regions,
                 noLicense
             ) {
                 if (!summary) {
@@ -191,7 +264,16 @@
 
                 if (tier !== 'all') {
                     labels.push(
-                        tier.charAt(0).toUpperCase() + tier.slice(1)
+                        tier.charAt(0).toUpperCase() +
+                        tier.slice(1)
+                    );
+                }
+
+                if (regions.length === 1) {
+                    labels.push(regions[0]);
+                } else if (regions.length > 1) {
+                    labels.push(
+                        `Regions: ${regions.join(', ')}`
                     );
                 }
 
@@ -218,6 +300,7 @@
 
                 const cards = getCards();
                 const tier = selectedTier();
+                const regions = selectedRegions();
                 const noLicense = noLicenseRequired();
 
                 let visibleCount = 0;
@@ -227,15 +310,32 @@
                         card.dataset.rankingTier || ''
                     ).toLowerCase();
 
+                    const cardRegions = new Set(
+                        getCardRegions(card)
+                    );
+
                     const matchesTier =
-                        tier === 'all' || cardTier === tier;
+                        tier === 'all' ||
+                        cardTier === tier;
+
+                    /*
+                     * No selected regions means all regions.
+                     * Multiple selected regions use OR logic.
+                     */
+                    const matchesRegion =
+                        regions.length === 0 ||
+                        regions.some(region =>
+                            cardRegions.has(region)
+                        );
 
                     const matchesLicense =
                         !noLicense ||
                         card.dataset.licenseRequired !== 'true';
 
                     const isVisible =
-                        matchesTier && matchesLicense;
+                        matchesTier &&
+                        matchesRegion &&
+                        matchesLicense;
 
                     card.hidden = !isVisible;
 
@@ -246,7 +346,9 @@
 
                 if (clearButton) {
                     clearButton.disabled =
-                        tier === 'all' && !noLicense;
+                        tier === 'all' &&
+                        regions.length === 0 &&
+                        !noLicense;
                 }
 
                 if (emptyState) {
@@ -259,6 +361,7 @@
                     visibleCount,
                     cards.length,
                     tier,
+                    regions,
                     noLicense
                 );
             }

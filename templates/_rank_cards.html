@@ -2,11 +2,13 @@
 
 {% for item in ranked %}
 {% set summary = item.summary %}
+{% set regions = item.posting.regions | default([], true) %}
 {% set tier_class = item.tier | lower %}
 <article class="match-card match-card--{{ tier_class }} surface surface--shadow" data-tier-order="{{ item.tier_order }}"
   data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}" data-ranking-tier="{{ item.tier }}"
   data-ranking-explanation="{{ item.explanation }}"
-  data-license-required="{{ 'true' if summary.license_required else 'false' }}">
+  data-license-required="{{ 'true' if summary.license_required else 'false' }}"
+  data-regions="{{ regions | join(',') }}">
   <div class="match-card__inner">
     <div class="match-card__top flex-center-wrap">
       <span class="chip chip--{{ tier_class }}">
