@@ -397,6 +397,7 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
 
     assert 'name="no-license-required"' in response.text
 
+
 def make_server_rank_job(location_summary: str) -> dict:
     """Builds a minimal job object for testing server-side ranking behavior
     without needing the full opportunity fixture shape."""

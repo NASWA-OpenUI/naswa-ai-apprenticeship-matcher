@@ -117,6 +117,8 @@
             const controls = Array.from(form.elements);
             const rankingCached = panel.dataset.rankingCached === 'true';
 
+            const storageKey = `match-filters:${window.location.pathname}${window.location.search}`;
+
             let filtersReady = panel.dataset.filtersReady === 'true';
 
             function getCards() {
@@ -141,6 +143,120 @@
                 return Boolean(
                     form.elements['no-license-required']?.checked
                 );
+            }
+
+            function currentFilterState() {
+                return {
+                    tier: selectedTier(),
+                    regions: selectedRegions(),
+                    noLicense: noLicenseRequired()
+                };
+            }
+
+            function saveFilters() {
+                const state = currentFilterState();
+
+                const isDefaultState =
+                    state.tier === 'all' &&
+                    state.regions.length === 0 &&
+                    !state.noLicense;
+
+                try {
+                    if (isDefaultState) {
+                        sessionStorage.removeItem(storageKey);
+                        return;
+                    }
+
+                    sessionStorage.setItem(
+                        storageKey,
+                        JSON.stringify(state)
+                    );
+                } catch {
+                    /*
+                     * Filtering should still work when browser storage is
+                     * unavailable or disabled.
+                     */
+                }
+            }
+
+            function restoreFilters() {
+                /*
+                 * Begin from the HTML defaults so stale browser-restored
+                 * control values cannot leak into a different state.
+                 */
+                form.reset();
+
+                let savedState;
+
+                try {
+                    const storedValue =
+                        sessionStorage.getItem(storageKey);
+
+                    if (!storedValue) {
+                        updateSelectedStyles();
+                        return;
+                    }
+
+                    savedState = JSON.parse(storedValue);
+                } catch {
+                    /*
+                     * Remove malformed state when possible, then continue
+                     * with the default form values.
+                     */
+                    try {
+                        sessionStorage.removeItem(storageKey);
+                    } catch {
+                        // Browser storage is unavailable.
+                    }
+
+                    updateSelectedStyles();
+                    return;
+                }
+
+                if (
+                    !savedState ||
+                    typeof savedState !== 'object'
+                ) {
+                    updateSelectedStyles();
+                    return;
+                }
+
+                const tierInputs = Array.from(
+                    form.querySelectorAll(
+                        '[name="match-strength"]'
+                    )
+                );
+
+                const savedTierInput = tierInputs.find(
+                    input => input.value === savedState.tier
+                );
+
+                if (savedTierInput) {
+                    savedTierInput.checked = true;
+                }
+
+                const savedRegions = new Set(
+                    Array.isArray(savedState.regions)
+                        ? savedState.regions
+                        : []
+                );
+
+                form
+                    .querySelectorAll('[name="regions"]')
+                    .forEach(input => {
+                        input.checked =
+                            savedRegions.has(input.value);
+                    });
+
+                const licenseInput =
+                    form.elements['no-license-required'];
+
+                if (licenseInput) {
+                    licenseInput.checked =
+                        savedState.noLicense === true;
+                }
+
+                updateSelectedStyles();
             }
 
             function selectedRegions() {
@@ -386,6 +502,7 @@
 
             function clearFilters() {
                 form.reset();
+                saveFilters();
                 applyFilters();
             }
 
@@ -434,7 +551,11 @@
                 }
             }
 
-            form.addEventListener('change', applyFilters);
+            form.addEventListener('change', () => {
+                saveFilters();
+                applyFilters();
+            });
+
             clearButton?.addEventListener(
                 'click',
                 clearFilters
@@ -498,16 +619,22 @@
             });
 
             /*
-             * Reset browser-restored form values. This keeps filters
-             * intentionally temporary when returning through browser history.
+             * A page restored from the back-forward cache does not rerun
+             * this script, so reapply the saved state on pageshow.
              */
-            window.addEventListener('pageshow', () => {
-                form.reset();
+            window.addEventListener('pageshow', event => {
+                if (!event.persisted) {
+                    return;
+                }
+
+                restoreFilters();
 
                 if (filtersReady) {
                     applyFilters();
                 }
             });
+
+            restoreFilters();
 
             if (rankingCached) {
                 requestAnimationFrame(enableFilters);
