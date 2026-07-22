@@ -11,7 +11,14 @@
     "sponsorName": "North Atlantic States Carpenters Training Fund",
     "unionName": null,
     "locationSummary": "Upstate New York counties in the NASCTF jurisdiction; information sessions at multiple locations including Rochester, Syracuse, Buffalo, Horseheads, Binghamton, Utica, and Jamestown",
-    "regions": [],
+    "regions": [
+      "Central New York",
+      "Finger Lakes",
+      "Mohawk Valley",
+      "North Country",
+      "Southern Tier",
+      "Western New York"
+    ],
     "recruitmentStartDate": "2026-06-08",
     "recruitmentEndDate": "2027-06-07",
     "applicationStartDate": "2026-06-08",

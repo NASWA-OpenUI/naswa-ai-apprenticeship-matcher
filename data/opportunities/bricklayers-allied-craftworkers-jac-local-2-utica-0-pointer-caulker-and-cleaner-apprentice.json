@@ -11,7 +11,12 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Bricklayers & Allied Craftworkers, Local Union #2 (Utica)",
     "unionName": "Bricklayers & Allied Craftworkers, Local Union #2 (Utica)",
     "locationSummary": "Local Union #2 jurisdiction in central and eastern New York",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Central New York",
+      "Mohawk Valley",
+      "North Country"
+    ],
     "recruitmentStartDate": "2026-05-01",
     "recruitmentEndDate": "2027-04-30",
     "applicationStartDate": "2026-05-01",

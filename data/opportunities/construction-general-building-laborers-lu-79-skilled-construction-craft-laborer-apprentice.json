@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Construction and General Building Laborers, Local Union #79",
     "unionName": "Local Union #79",
     "locationSummary": "Long Island City, NY area",
-    "regions": [],
+    "regions": [
+      "Long Island"
+    ],
     "recruitmentStartDate": "2026-07-10",
     "recruitmentEndDate": "2026-07-23",
     "applicationStartDate": "2026-07-10",

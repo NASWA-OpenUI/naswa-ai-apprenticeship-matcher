@@ -11,7 +11,9 @@
     "sponsorName": "JATC for Heat and Frost Insulators and Allied Workers, Local Union #26",
     "unionName": "Heat and Frost Insulators and Allied Workers, Local Union #26",
     "locationSummary": "Rochester, NY",
-    "regions": [],
+    "regions": [
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2026-04-01",
     "recruitmentEndDate": "2027-03-31",
     "applicationStartDate": "2026-04-01",

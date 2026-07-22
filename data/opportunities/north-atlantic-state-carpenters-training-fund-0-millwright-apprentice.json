@@ -12,13 +12,16 @@
     "unionName": "Eastern Millwright Regional Council",
     "locationSummary": "Multiple regions across New York State, including the Capital District, Central, Finger Lakes, Mohawk Valley, North Country, Southern Tier, and Western regions",
     "regions": [
-      "Capital District",
-      "Central",
+      "Capital Region",
+      "Central New York",
       "Finger Lakes",
+      "Hudson Valley",
+      "Long Island",
       "Mohawk Valley",
+      "New York City",
       "North Country",
       "Southern Tier",
-      "Western"
+      "Western New York"
     ],
     "recruitmentStartDate": "2026-06-01",
     "recruitmentEndDate": "2027-05-30",

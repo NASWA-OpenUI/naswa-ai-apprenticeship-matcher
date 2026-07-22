@@ -11,7 +11,11 @@
     "sponsorName": "Joint Apprenticeship Committee for Capital District Sheet Metal Workers, Local Union #83",
     "unionName": "Local Union #83",
     "locationSummary": "Albany, NY area",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Mohawk Valley",
+      "North Country"
+    ],
     "recruitmentStartDate": "2026-04-06",
     "recruitmentEndDate": "2027-04-05",
     "applicationStartDate": "2026-04-06",

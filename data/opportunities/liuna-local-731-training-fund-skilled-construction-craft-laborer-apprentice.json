@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Laborers, Local Union #731",
     "unionName": "LIUNA Local 731",
     "locationSummary": "College Point, NY area",
-    "regions": [],
+    "regions": [
+      "New York City"
+    ],
     "recruitmentStartDate": "2026-06-30",
     "recruitmentEndDate": "2026-07-14",
     "applicationStartDate": "2026-06-30",

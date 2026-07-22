@@ -11,7 +11,9 @@
     "sponsorName": "Roofers Local Union #203 JAC",
     "unionName": "Roofers Local Union #203",
     "locationSummary": "Binghamton, NY",
-    "regions": [],
+    "regions": [
+      "Southern Tier"
+    ],
     "recruitmentStartDate": "2026-02-01",
     "recruitmentEndDate": "2027-01-31",
     "applicationStartDate": "2026-02-01",

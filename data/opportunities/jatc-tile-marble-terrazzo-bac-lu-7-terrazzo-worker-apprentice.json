@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Tile, Marble and Terrazzo BAC, Local Union #7 of NY & NJ",
     "unionName": "Tile, Marble and Terrazzo BAC, Local Union #7 of NY & NJ",
     "locationSummary": "Long Island City, NY area",
-    "regions": [],
+    "regions": [
+      "Long Island"
+    ],
     "recruitmentStartDate": "2026-04-13",
     "recruitmentEndDate": "2026-10-23",
     "applicationStartDate": "2026-04-13",

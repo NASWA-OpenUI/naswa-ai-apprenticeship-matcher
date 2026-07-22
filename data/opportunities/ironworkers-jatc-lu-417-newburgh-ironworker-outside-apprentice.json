@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship Committee for Ironworkers, Local Union #417",
     "unionName": "Ironworkers Local Union #417",
     "locationSummary": "Wallkill, NY; Local Union #417 jurisdiction in Dutchess, Orange, Putman, Rockland, Sullivan, and Ulster counties",
-    "regions": [],
+    "regions": [
+      "Hudson Valley"
+    ],
     "recruitmentStartDate": "2025-10-14",
     "recruitmentEndDate": "2026-10-13",
     "applicationStartDate": "2025-10-14",

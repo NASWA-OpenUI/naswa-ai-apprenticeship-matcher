@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Construction and General Laborers, Local Union #633",
     "unionName": "Local Union #633",
     "locationSummary": "East Syracuse, NY area",
-    "regions": [],
+    "regions": [
+      "Central New York"
+    ],
     "recruitmentStartDate": "2026-05-20",
     "recruitmentEndDate": "2027-04-21",
     "applicationStartDate": "2026-05-20",

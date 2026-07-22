@@ -11,7 +11,9 @@
     "sponsorName": "JATC for the Roofing Industry of Rochester, Local Union #22",
     "unionName": "Local Union #22",
     "locationSummary": "Rochester, NY area; jurisdiction includes Livingston, Monroe, Ontario, Wayne, and Yates counties",
-    "regions": [],
+    "regions": [
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2026-02-06",
     "recruitmentEndDate": "2027-02-05",
     "applicationStartDate": "2026-02-06",

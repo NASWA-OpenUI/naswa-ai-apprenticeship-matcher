@@ -11,7 +11,9 @@
     "sponsorName": "Boilermakers Northeast JATC, Local Union #5, Zone #197",
     "unionName": "Local Union #5, Zone #197",
     "locationSummary": "Albany, NY",
-    "regions": [],
+    "regions": [
+      "Capital Region"
+    ],
     "recruitmentStartDate": "2026-05-12",
     "recruitmentEndDate": "2027-05-11",
     "applicationStartDate": "2026-05-12",

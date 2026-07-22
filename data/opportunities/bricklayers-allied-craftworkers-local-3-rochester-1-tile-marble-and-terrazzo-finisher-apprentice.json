@@ -11,7 +11,9 @@
     "sponsorName": "JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester)",
     "unionName": "Bricklayers & Allied Craftworkers, Local #3 (Rochester)",
     "locationSummary": "Rochester, NY area",
-    "regions": [],
+    "regions": [
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2025-10-04",
     "recruitmentEndDate": "2026-10-03",
     "applicationStartDate": "2025-10-04",

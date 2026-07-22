@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for the Rochester Laborers, Local Union #435",
     "unionName": "Local Union #435",
     "locationSummary": "Rochester, NY area",
-    "regions": [],
+    "regions": [
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2026-03-15",
     "recruitmentEndDate": "2027-03-14",
     "applicationStartDate": "2026-03-15",

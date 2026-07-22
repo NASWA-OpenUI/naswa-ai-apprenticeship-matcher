@@ -11,7 +11,10 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
     "unionName": "Electricians, LU #41",
     "locationSummary": "Orchard Park, NY area",
-    "regions": [],
+    "regions": [
+      "Finger Lakes",
+      "Western New York"
+    ],
     "recruitmentStartDate": "2025-10-01",
     "recruitmentEndDate": "2026-09-30",
     "applicationStartDate": "2025-10-01",

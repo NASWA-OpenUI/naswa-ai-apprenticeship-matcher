@@ -11,7 +11,9 @@
     "sponsorName": "North Atlantic States Carpenters Training Fund",
     "unionName": null,
     "locationSummary": "Nassau and Suffolk counties, NY",
-    "regions": [],
+    "regions": [
+      "Long Island"
+    ],
     "recruitmentStartDate": "2025-11-03",
     "recruitmentEndDate": "2026-11-02",
     "applicationStartDate": "2025-11-03",

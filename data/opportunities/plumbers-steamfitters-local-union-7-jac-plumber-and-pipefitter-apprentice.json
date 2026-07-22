@@ -11,7 +11,9 @@
     "sponsorName": "Plumbers & Steamfitters Local Union #7 Joint Apprenticeship and Training Committee",
     "unionName": "Plumbers & Steamfitters Local Union #7",
     "locationSummary": "Latham, NY area",
-    "regions": [],
+    "regions": [
+      "Capital Region"
+    ],
     "recruitmentStartDate": "2025-10-01",
     "recruitmentEndDate": "2026-09-30",
     "applicationStartDate": "2025-10-01",

@@ -11,7 +11,10 @@
     "sponsorName": "Laborers International Union of North America, Local Union #785",
     "unionName": "Local Union #785",
     "locationSummary": "Ithaca, NY area and Local 785 jurisdiction",
-    "regions": [],
+    "regions": [
+      "Central New York",
+      "Southern Tier"
+    ],
     "recruitmentStartDate": "2026-04-01",
     "recruitmentEndDate": "2027-03-31",
     "applicationStartDate": "2026-04-01",

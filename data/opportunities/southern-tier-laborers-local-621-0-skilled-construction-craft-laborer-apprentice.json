@@ -11,7 +11,9 @@
     "sponsorName": "Southern Tier Laborers JAC, Local Union #621",
     "unionName": "Local Union #621",
     "locationSummary": "Olean, NY area; job sites in Southwestern New York",
-    "regions": [],
+    "regions": [
+      "Western New York"
+    ],
     "recruitmentStartDate": "2026-03-16",
     "recruitmentEndDate": "2026-12-31",
     "applicationStartDate": "2026-03-16",

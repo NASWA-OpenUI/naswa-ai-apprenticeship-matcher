@@ -11,7 +11,10 @@
     "sponsorName": "Rochester Electrical JATC Local Union #86",
     "unionName": "Rochester Electrical Local Union #86",
     "locationSummary": "Rochester, NY area; Local Union #86 geographic jurisdiction",
-    "regions": [],
+    "regions": [
+      "Finger Lakes",
+      "New York City"
+    ],
     "recruitmentStartDate": "2026-04-01",
     "recruitmentEndDate": "2027-03-31",
     "applicationStartDate": "2026-04-01",

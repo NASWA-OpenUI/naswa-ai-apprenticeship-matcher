@@ -11,7 +11,11 @@
     "sponsorName": "North Atlantic States Carpenters Training Fund",
     "unionName": null,
     "locationSummary": "Albany, NY area and the counties in the training fund's geographic jurisdiction",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Mohawk Valley",
+      "North Country"
+    ],
     "recruitmentStartDate": "2026-05-04",
     "recruitmentEndDate": "2027-04-30",
     "applicationStartDate": "2026-05-04",

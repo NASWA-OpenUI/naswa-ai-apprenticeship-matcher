@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Electricians of Watertown, Local Union #910",
     "unionName": "Local Union #910",
     "locationSummary": "Watertown, NY area",
-    "regions": [],
+    "regions": [
+      "North Country"
+    ],
     "recruitmentStartDate": "2026-05-15",
     "recruitmentEndDate": "2027-04-14",
     "applicationStartDate": "2026-05-15",

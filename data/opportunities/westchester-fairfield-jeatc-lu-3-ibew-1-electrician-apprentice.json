@@ -11,7 +11,9 @@
     "sponsorName": "Westchester-Fairfield Joint Electrical Apprenticeship Training Committee (WFJEATC)",
     "unionName": "Local Union #3 IBEW",
     "locationSummary": "White Plains, NY area",
-    "regions": [],
+    "regions": [
+      "Hudson Valley"
+    ],
     "recruitmentStartDate": "2026-07-01",
     "recruitmentEndDate": "2027-06-30",
     "applicationStartDate": "2026-07-01",

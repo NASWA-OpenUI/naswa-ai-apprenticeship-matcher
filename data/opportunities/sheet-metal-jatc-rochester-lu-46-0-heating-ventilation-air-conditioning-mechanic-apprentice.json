@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Sheet Metal Workers of Rochester, Local Union #46",
     "unionName": "Sheet Metal Workers of Rochester, Local Union #46",
     "locationSummary": "Rochester, NY area; applicants must live within the Local Union #46 jurisdiction.",
-    "regions": [],
+    "regions": [
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2026-04-08",
     "recruitmentEndDate": "2027-04-07",
     "applicationStartDate": "2026-04-08",

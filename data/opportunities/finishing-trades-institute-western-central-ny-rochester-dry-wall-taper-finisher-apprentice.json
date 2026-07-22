@@ -11,7 +11,9 @@
     "sponsorName": "Finishing Trades Institute of Western and Central New York",
     "unionName": null,
     "locationSummary": "Rochester; Western and Central New York",
-    "regions": [],
+    "regions": [
+      "Central New York"
+    ],
     "recruitmentStartDate": "2026-01-05",
     "recruitmentEndDate": "2027-01-04",
     "applicationStartDate": "2026-01-05",

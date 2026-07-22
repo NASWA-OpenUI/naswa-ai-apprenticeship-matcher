@@ -11,7 +11,9 @@
     "sponsorName": "JATC for General Building Laborers, Local Union #66",
     "unionName": "General Building Laborers, Local Union #66",
     "locationSummary": "Melville, NY; applicants must live within the Local Union #66 jurisdiction, including Nassau and Suffolk counties",
-    "regions": [],
+    "regions": [
+      "Long Island"
+    ],
     "recruitmentStartDate": "2025-08-13",
     "recruitmentEndDate": "2026-08-12",
     "applicationStartDate": "2025-08-13",

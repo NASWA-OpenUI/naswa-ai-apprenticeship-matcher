@@ -11,7 +11,17 @@
     "sponsorName": "North Atlantic States Carpenters Training Fund",
     "unionName": null,
     "locationSummary": "NASCTF jurisdiction across much of New York State",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Central New York",
+      "Finger Lakes",
+      "Hudson Valley",
+      "Long Island",
+      "Mohawk Valley",
+      "North Country",
+      "Southern Tier",
+      "Western New York"
+    ],
     "recruitmentStartDate": "2026-02-02",
     "recruitmentEndDate": "2027-02-01",
     "applicationStartDate": "2026-02-02",

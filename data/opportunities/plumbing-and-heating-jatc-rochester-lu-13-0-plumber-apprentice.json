@@ -11,7 +11,11 @@
     "sponsorName": "Plumbing and Heating Joint Apprenticeship and Training Council, Local Union #13",
     "unionName": "Local Union #13",
     "locationSummary": "Rochester, NY area and Local Union #13 jurisdiction",
-    "regions": [],
+    "regions": [
+      "Finger Lakes",
+      "Southern Tier",
+      "Western New York"
+    ],
     "recruitmentStartDate": "2026-03-04",
     "recruitmentEndDate": "2027-03-03",
     "applicationStartDate": "2026-03-04",

@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Bricklayers & Allied Craftworkers",
     "unionName": "Bricklayers & Allied Craftworkers, Local Union #5",
     "locationSummary": "Newburgh, NY area",
-    "regions": [],
+    "regions": [
+      "Hudson Valley"
+    ],
     "recruitmentStartDate": "2026-03-02",
     "recruitmentEndDate": "2027-03-01",
     "applicationStartDate": "2026-03-02",

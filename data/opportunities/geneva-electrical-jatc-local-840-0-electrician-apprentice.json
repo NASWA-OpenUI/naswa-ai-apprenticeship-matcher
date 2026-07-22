@@ -11,7 +11,10 @@
     "sponsorName": "Geneva Electrical Joint Apprenticeship and Training Committee, Local Union #840",
     "unionName": "IBEW Local Union #840",
     "locationSummary": "Geneva, NY area and Local Union #840 jurisdiction",
-    "regions": [],
+    "regions": [
+      "Central New York",
+      "Finger Lakes"
+    ],
     "recruitmentStartDate": "2025-09-11",
     "recruitmentEndDate": "2026-09-10",
     "applicationStartDate": "2025-09-11",

@@ -11,7 +11,12 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Bricklayers & Allied Craftworkers, Local Union #2 (Ogdensburg)",
     "unionName": "Bricklayers & Allied Craftworkers Local #2 (Ogdensburg)",
     "locationSummary": "Local Union #2 jurisdiction in upstate New York; applications in Liverpool, NY",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Central New York",
+      "Mohawk Valley",
+      "North Country"
+    ],
     "recruitmentStartDate": "2026-05-01",
     "recruitmentEndDate": "2027-04-30",
     "applicationStartDate": "2026-05-01",

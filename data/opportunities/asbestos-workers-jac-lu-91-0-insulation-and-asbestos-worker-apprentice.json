@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Asbestos Workers, Local Union #91",
     "unionName": "Asbestos Workers, Local Union #91",
     "locationSummary": "Briarcliff Manor, NY; job sites in Dutchess, Orange, Putnam, Rockland, and Westchester counties",
-    "regions": [],
+    "regions": [
+      "Hudson Valley"
+    ],
     "recruitmentStartDate": "2026-07-06",
     "recruitmentEndDate": "2026-07-17",
     "applicationStartDate": "2026-07-06",

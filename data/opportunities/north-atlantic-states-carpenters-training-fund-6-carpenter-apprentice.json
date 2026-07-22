@@ -11,7 +11,9 @@
     "sponsorName": "North Atlantic States Carpenters Training Fund",
     "unionName": null,
     "locationSummary": "Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, and Westchester counties; information sessions in Rock Tavern, NY",
-    "regions": [],
+    "regions": [
+      "Hudson Valley"
+    ],
     "recruitmentStartDate": "2026-03-09",
     "recruitmentEndDate": "2027-03-08",
     "applicationStartDate": "2026-03-09",

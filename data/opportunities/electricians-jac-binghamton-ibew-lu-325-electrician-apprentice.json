@@ -11,7 +11,12 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #325",
     "unionName": "IBEW Local Union #325",
     "locationSummary": "Binghamton, NY area; Local Union #325 jurisdiction in Broome, Chenango, Delaware, Otsego, and Tioga counties",
-    "regions": [],
+    "regions": [
+      "Capital Region",
+      "Mohawk Valley",
+      "North Country",
+      "Southern Tier"
+    ],
     "recruitmentStartDate": "2025-08-01",
     "recruitmentEndDate": "2026-07-31",
     "applicationStartDate": "2025-08-01",

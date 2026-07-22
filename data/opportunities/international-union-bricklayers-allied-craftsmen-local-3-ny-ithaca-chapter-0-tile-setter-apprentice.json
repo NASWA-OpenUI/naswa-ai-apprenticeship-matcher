@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship Committee for the International Union of Bricklayers & Allied Craftsmen (IUBAC), Local Union #3",
     "unionName": "IUBAC Local Union #3",
     "locationSummary": "Whitney Point, NY area",
-    "regions": [],
+    "regions": [
+      "Southern Tier"
+    ],
     "recruitmentStartDate": "2026-01-08",
     "recruitmentEndDate": "2027-01-07",
     "applicationStartDate": "2026-01-08",

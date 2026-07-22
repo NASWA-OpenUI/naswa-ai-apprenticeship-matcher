@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for the New York City District Council of Carpenters",
     "unionName": "New York City District Council of Carpenters",
     "locationSummary": "New York City, NY area",
-    "regions": [],
+    "regions": [
+      "New York City"
+    ],
     "recruitmentStartDate": "2025-09-10",
     "recruitmentEndDate": "2026-09-09",
     "applicationStartDate": "2025-09-10",

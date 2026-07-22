@@ -11,7 +11,9 @@
     "sponsorName": "Finishing Trades Institute of New York",
     "unionName": null,
     "locationSummary": "Long Island City, NY",
-    "regions": [],
+    "regions": [
+      "Long Island"
+    ],
     "recruitmentStartDate": "2026-03-30",
     "recruitmentEndDate": "2026-04-10",
     "applicationStartDate": "2026-03-30",

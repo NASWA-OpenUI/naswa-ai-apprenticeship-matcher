@@ -11,7 +11,9 @@
     "sponsorName": "Joint Apprenticeship and Training Committee for the High Rise Concrete Carpenters of New York City",
     "unionName": null,
     "locationSummary": "New York City, NY",
-    "regions": [],
+    "regions": [
+      "New York City"
+    ],
     "recruitmentStartDate": "2026-02-11",
     "recruitmentEndDate": "2027-02-10",
     "applicationStartDate": "2026-02-11",
