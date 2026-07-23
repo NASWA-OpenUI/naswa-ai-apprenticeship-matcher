@@ -279,23 +279,18 @@ class SessionStore:
     def get_or_create(
         self,
         session_id: str | None,
-    ) -> tuple[str, ChatSession, bool]:
+    ) -> tuple[str, ChatSession]:
         """
         Return an existing session or create a new one.
 
         A valid session ID supplied by the browser is preserved even when its
         in-memory session no longer exists, allowing the browser identity to
         survive application restarts and deployments.
-
-        The boolean indicates whether the caller needs to set a new cookie because
-        the request did not contain a valid session ID.
         """
         now = self._clock()
         self._cleanup_expired(now)
 
-        needs_cookie = not is_valid_session_id(session_id)
-
-        if needs_cookie:
+        if not is_valid_session_id(session_id):
             session_id = self._session_id_factory()
 
         if session_id not in self._sessions:
@@ -307,7 +302,7 @@ class SessionStore:
         session = self._sessions[session_id]
         session.last_seen = now
 
-        return session_id, session, needs_cookie
+        return session_id, session
 
     def cleanup(self) -> None:
         """Remove expired sessions."""

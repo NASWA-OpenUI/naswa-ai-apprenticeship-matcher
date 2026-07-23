@@ -202,7 +202,7 @@ async def application_request_context(request: Request, call_next):
 
     request_id = str(uuid.uuid4())
 
-    session_id, session, _needs_cookie = session_store.get_or_create(
+    session_id, session = session_store.get_or_create(
         request.cookies.get(SESSION_COOKIE_NAME)
     )
 

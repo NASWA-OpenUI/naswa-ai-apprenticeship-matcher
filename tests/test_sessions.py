@@ -78,10 +78,9 @@ def test_session_store_creates_session_when_session_id_is_missing():
         session_id_factory=lambda: SESSION_ID_A,
     )
 
-    session_id, session, needs_cookie = store.get_or_create(None)
+    session_id, session = store.get_or_create(None)
 
     assert session_id == SESSION_ID_A
-    assert needs_cookie is True
     assert session.agent is created_agents[0]
     assert session.last_seen == 50.0
     assert session.messages == [
@@ -101,15 +100,14 @@ def test_session_store_returns_existing_session():
         session_id_factory=lambda: SESSION_ID_A,
     )
 
-    session_id, original_session, _needs_cookie = store.get_or_create(None)
+    session_id, original_session = store.get_or_create(None)
 
     now[0] = 75.0
-    returned_id, returned_session, needs_cookie = store.get_or_create(session_id)
+    returned_id, returned_session = store.get_or_create(session_id)
 
     assert returned_id == SESSION_ID_A
     assert returned_session is original_session
     assert returned_session.last_seen == 75.0
-    assert needs_cookie is False
 
 
 def test_session_store_reuses_id_for_expired_session():
@@ -123,15 +121,14 @@ def test_session_store_reuses_id_for_expired_session():
         session_id_factory=lambda: SESSION_ID_A,
     )
 
-    first_id, first_session, _needs_cookie = store.get_or_create(None)
+    first_id, first_session = store.get_or_create(None)
 
     now[0] = 111.0
-    returned_id, replacement_session, needs_cookie = store.get_or_create(first_id)
+    returned_id, replacement_session = store.get_or_create(first_id)
 
     assert returned_id == SESSION_ID_A
     assert replacement_session is not first_session
     assert replacement_session.last_seen == 111.0
-    assert needs_cookie is False
 
 
 def test_session_store_reuses_valid_unknown_session_id():
@@ -144,10 +141,9 @@ def test_session_store_reuses_valid_unknown_session_id():
         session_id_factory=lambda: SESSION_ID_B,
     )
 
-    session_id, session, needs_cookie = store.get_or_create(SESSION_ID_A)
+    session_id, session = store.get_or_create(SESSION_ID_A)
 
     assert session_id == SESSION_ID_A
-    assert needs_cookie is False
     assert session.agent is created_agents[0]
     assert session.last_seen == 50.0
 
@@ -197,10 +193,9 @@ def test_session_store_replaces_invalid_session_id():
         session_id_factory=lambda: SESSION_ID_A,
     )
 
-    session_id, session, needs_cookie = store.get_or_create("not-a-valid-session-id")
+    session_id, session = store.get_or_create("not-a-valid-session-id")
 
     assert session_id == SESSION_ID_A
-    assert needs_cookie is True
     assert session.agent is created_agents[0]
     assert session.last_seen == 50.0
 

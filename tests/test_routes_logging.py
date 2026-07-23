@@ -34,7 +34,7 @@ def current_chat_session(client):
 
     assert session_id is not None
 
-    _session_id, session, _needs_cookie = server.session_store.get_or_create(session_id)
+    _session_id, session = server.session_store.get_or_create(session_id)
 
     return session
 
