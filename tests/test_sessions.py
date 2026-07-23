@@ -9,8 +9,8 @@ from naswa_matcher.sessions import (
     ChatMessage,
     ChatSession,
     SessionStore,
+    is_valid_session_id,
     set_session_cookie,
-    is_valid_session_id
 )
 
 
@@ -28,6 +28,7 @@ def test_is_valid_session_id_rejects_invalid_values():
 
 SESSION_ID_A = "a" * 43
 SESSION_ID_B = "b" * 43
+
 
 def agent_factory_with_history():
     created_agents = []

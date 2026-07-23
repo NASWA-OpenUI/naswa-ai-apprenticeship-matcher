@@ -171,6 +171,35 @@ app = FastAPI(lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
+def _should_manage_browser_session(request: Request) -> bool:
+    """Return whether this request should participate in browser sessions."""
+    path = request.url.path
+
+    return path != "/health" and not path.startswith("/static/")
+
+
+@app.middleware("http")
+async def browser_session_middleware(request: Request, call_next):
+    """Resolve the browser session and refresh its cookie on each app request."""
+    if not _should_manage_browser_session(request):
+        return await call_next(request)
+
+    session_id, session, _needs_cookie = session_store.get_or_create(
+        request.cookies.get(SESSION_COOKIE_NAME)
+    )
+
+    request.state.session_id = session_id
+    request.state.session = session
+
+    response = await call_next(request)
+
+    # Reissuing the same cookie value resets its Max-Age, making the
+    # seven-day lifetime sliding rather than fixed from first creation.
+    set_session_cookie(response, session_id)
+
+    return response
+
+
 # ── AWS Healthcheck ───────────────────────────────────────────────────────────
 
 
@@ -221,9 +250,7 @@ async def chat_page(
     use_location_matching: bool | None = None,
 ):
     """Serve the guided chat page."""
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     has_prefilled_profile = has_profile_query_params(
         likes=likes,
@@ -252,7 +279,7 @@ async def chat_page(
     if session.profile and session.profile.get("confirmed"):
         ranked_url = profile_rank_url(session.profile)
 
-    response = templates.TemplateResponse(
+    return templates.TemplateResponse(
         request,
         "chat.html",
         {
@@ -262,26 +289,16 @@ async def chat_page(
         },
     )
 
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
-
 
 @app.post("/chat/reset")
 async def reset_chat(request: Request):
     """Reset this browser session and redirect to a fresh chat page."""
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     session.reset()
 
     response = Response(status_code=204)
     response.headers["HX-Redirect"] = "/chat"
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
 
     return response
 
@@ -292,9 +309,7 @@ async def update_chat_profile(
     update: ChatProfileUpdate,
 ):
     """Persist a modal-edited profile and synchronize Tyler's hidden context."""
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     existing_name = session.profile.get("name") if session.profile else None
 
@@ -315,28 +330,16 @@ async def update_chat_profile(
 
     session.sync_confirmed_profile(profile)
 
-    response = Response(status_code=204)
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
+    return Response(status_code=204)
 
 
 @app.post("/chat/continue")
 async def continue_chat(request: Request):
     """Resume conversation using the session's current profile as context."""
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     if not session.begin_profile_revision():
-        response = Response(status_code=409)
-
-        if needs_cookie:
-            set_session_cookie(response, session_id)
-
-        return response
+        return Response(status_code=409)
 
     content = (
         "Sure — let’s keep chatting. What would you like to change about your profile?"
@@ -349,7 +352,7 @@ async def continue_chat(request: Request):
         )
     )
 
-    response = templates.TemplateResponse(
+    return templates.TemplateResponse(
         request,
         "_message.html",
         {
@@ -357,11 +360,6 @@ async def continue_chat(request: Request):
             "content": content,
         },
     )
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
 
 
 @app.post("/chat")
@@ -375,30 +373,21 @@ async def chat(
     if not message:
         return Response(status_code=204)
 
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     await session.queue.put(message)
     session.messages.append(ChatMessage(role="user", content=message))
     logger.debug("Chat message queued")
 
-    response = templates.TemplateResponse(
+    return templates.TemplateResponse(
         request, "_message.html", {"role": "user", "content": message}
     )
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
 
 
 @app.get("/chat/stream")
 async def chat_stream(request: Request):
     """SSE endpoint: waits for this browser's messages and streams agent tokens."""
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     stream_queue = session.queue
     stream_id = secrets.token_urlsafe(16)
@@ -488,12 +477,7 @@ async def chat_stream(request: Request):
                     )
                     yield {"event": "profile-confirmed", "data": card_html}
 
-    response = EventSourceResponse(generate())
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
+    return EventSourceResponse(generate())
 
 
 # ── Opportunities page ────────────────────────────────────────────────────────
@@ -519,9 +503,7 @@ async def opportunities_page(
     )
 
     if ranked and likes:
-        session_id, session, needs_cookie = session_store.get_or_create(
-            request.cookies.get(SESSION_COOKIE_NAME)
-        )
+        session = request.state.session
 
         session.profile = build_profile(
             name=session.profile.get("name") if session.profile else None,
@@ -548,7 +530,7 @@ async def opportunities_page(
 
         unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
 
-        response = templates.TemplateResponse(
+        return templates.TemplateResponse(
             request,
             "opportunities.html",
             {
@@ -570,11 +552,6 @@ async def opportunities_page(
                 "region_filter_options": REGION_FILTER_OPTIONS,
             },
         )
-
-        if needs_cookie:
-            set_session_cookie(response, session_id)
-
-        return response
 
     return templates.TemplateResponse(
         request,
@@ -623,9 +600,7 @@ async def rank_opportunities_stream(
     Completed rankings are cached inside the user's browser session so returning
     to the same ranked opportunities URL does not rerun the AI scoring work.
     """
-    session_id, session, needs_cookie = session_store.get_or_create(
-        request.cookies.get(SESSION_COOKIE_NAME)
-    )
+    session = request.state.session
 
     profile = build_profile(
         likes=likes,
@@ -688,9 +663,6 @@ async def rank_opportunities_stream(
             }
 
         response = EventSourceResponse(generate_cached())
-
-        if needs_cookie:
-            set_session_cookie(response, session_id)
 
         return response
 
@@ -973,9 +945,4 @@ async def rank_opportunities_stream(
                 if not task.done():
                     task.cancel()
 
-    response = EventSourceResponse(generate())
-
-    if needs_cookie:
-        set_session_cookie(response, session_id)
-
-    return response
+    return EventSourceResponse(generate())

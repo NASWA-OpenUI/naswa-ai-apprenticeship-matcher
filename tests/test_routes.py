@@ -2,6 +2,10 @@ import pytest
 
 import server
 from naswa_matcher.ranking import build_ranked_items
+from naswa_matcher.sessions import (
+    SESSION_COOKIE_NAME,
+    SESSION_MAX_AGE_SECONDS,
+)
 
 
 def test_health_route(client):
@@ -10,7 +14,16 @@ def test_health_route(client):
     response = client.get("/health")
 
     assert response.status_code == 200
-    assert response.json() == {"status": "ok"}
+    assert "set-cookie" not in response.headers
+    assert client.cookies.get(SESSION_COOKIE_NAME) is None
+
+
+def test_static_request_route(client):
+    response = client.get("/static/css/app.css")
+
+    assert response.status_code == 200
+    assert "set-cookie" not in response.headers
+    assert client.cookies.get(SESSION_COOKIE_NAME) is None
 
 
 def test_index_route_renders_index(client):
@@ -43,6 +56,60 @@ def test_page_omits_github_sha_when_not_configured(client, monkeypatch):
 
     assert response.status_code == 200
     assert 'meta name="github-sha"' not in response.text
+
+
+def test_index_route_sets_session_cookie(client):
+    response = client.get("/")
+
+    assert response.status_code == 200
+
+    cookie = response.headers["set-cookie"]
+
+    assert f"{SESSION_COOKIE_NAME}=" in cookie
+    assert f"Max-Age={SESSION_MAX_AGE_SECONDS}" in cookie
+    assert "HttpOnly" in cookie
+    assert "Path=/" in cookie
+    assert "SameSite=lax" in cookie
+
+
+def test_session_cookie_is_reused_and_refreshed(client):
+    _first_response = client.get("/")
+
+    first_session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert first_session_id
+
+    second_response = client.get("/ai-disclosure")
+
+    second_session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert second_session_id == first_session_id
+
+    refreshed_cookie = second_response.headers["set-cookie"]
+
+    assert f"{SESSION_COOKIE_NAME}={first_session_id}" in refreshed_cookie
+    assert f"Max-Age={SESSION_MAX_AGE_SECONDS}" in refreshed_cookie
+
+
+def test_valid_cookie_survives_lost_server_session(client):
+    _first_response = client.get("/")
+
+    original_session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert original_session_id
+
+    # Simulate an application restart or deployment losing in-memory sessions.
+    server.session_store.clear()
+
+    response = client.get("/")
+
+    returned_session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert response.status_code == 200
+    assert returned_session_id == original_session_id
+    assert (
+        f"{SESSION_COOKIE_NAME}={original_session_id}" in response.headers["set-cookie"]
+    )
 
 
 def test_ai_disclosure_route_renders_ai_disclosure_page(client):

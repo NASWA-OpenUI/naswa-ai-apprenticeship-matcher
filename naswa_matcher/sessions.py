@@ -251,6 +251,7 @@ def _new_session_id() -> str:
     """Create a browser-safe random session ID."""
     return secrets.token_urlsafe(32)
 
+
 class SessionStore:
     """Manage the application's in-memory browser sessions."""
 
