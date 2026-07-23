@@ -2,6 +2,7 @@ import asyncio
 import os
 import secrets
 import time
+import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
 from urllib.parse import urlencode
@@ -18,7 +19,11 @@ from naswa_matcher.agents import (
     make_chat_agent,
     make_scoring_model,
 )
-from naswa_matcher.app_logging import configure_logging
+from naswa_matcher.app_logging import (
+    configure_logging,
+    log_request,
+    visitor_id_from_session_id,
+)
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
@@ -168,31 +173,72 @@ app = FastAPI(lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
-def _should_manage_browser_session(request: Request) -> bool:
-    """Return whether this request should participate in browser sessions."""
+def _should_handle_application_request(request: Request) -> bool:
+    """Return whether this request should receive app session/log context."""
     path = request.url.path
 
     return path != "/health" and not path.startswith("/static/")
 
 
+def _request_action(request: Request) -> str:
+    """Return the high-level action used for request logs."""
+    if request.method == "GET" and not request.url.path.startswith(
+        ("/api/", "/chat/stream")
+    ):
+        return "pageview"
+
+    return "request"
+
+
 @app.middleware("http")
-async def browser_session_middleware(request: Request, call_next):
-    """Resolve the browser session and refresh its cookie on each app request."""
-    if not _should_manage_browser_session(request):
+async def application_request_context(request: Request, call_next):
+    """Add session, visitor, request, timing, and logging context."""
+    if not _should_handle_application_request(request):
         return await call_next(request)
+
+    request_id = str(uuid.uuid4())
 
     session_id, session, _needs_cookie = session_store.get_or_create(
         request.cookies.get(SESSION_COOKIE_NAME)
     )
 
+    request.state.request_id = request_id
+    request.state.visitor_id = visitor_id_from_session_id(session_id)
     request.state.session_id = session_id
     request.state.session = session
 
-    response = await call_next(request)
+    started_at = time.perf_counter()
+    action = _request_action(request)
 
-    # Reissuing the same cookie value resets its Max-Age, making the
-    # seven-day lifetime sliding rather than fixed from first creation.
+    try:
+        response = await call_next(request)
+
+    except Exception:
+        elapsed_ms = (time.perf_counter() - started_at) * 1000
+
+        log_request(
+            request,
+            action=action,
+            status_code=500,
+            duration_ms=elapsed_ms,
+        )
+
+        raise
+
+    elapsed_ms = (time.perf_counter() - started_at) * 1000
+
+    # Refresh the same seven-day session cookie on every meaningful request.
     set_session_cookie(response, session_id)
+
+    # Useful for correlating a browser/network request with its server logs.
+    response.headers["X-Request-ID"] = request_id
+
+    log_request(
+        request,
+        action=action,
+        status_code=response.status_code,
+        duration_ms=elapsed_ms,
+    )
 
     return response
 
