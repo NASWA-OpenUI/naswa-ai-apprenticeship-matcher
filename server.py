@@ -1,5 +1,4 @@
 import asyncio
-import logging
 import os
 import secrets
 import time
@@ -19,6 +18,7 @@ from naswa_matcher.agents import (
     make_chat_agent,
     make_scoring_model,
 )
+from naswa_matcher.app_logging import configure_logging
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
@@ -44,7 +44,6 @@ from naswa_matcher.sessions import (
     SessionStore,
     set_session_cookie,
 )
-from naswa_matcher.structured_logging import configure_logging
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
 BASE_DIR = Path(__file__).resolve().parent
