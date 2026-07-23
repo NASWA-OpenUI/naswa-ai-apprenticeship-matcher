@@ -44,6 +44,7 @@ from naswa_matcher.sessions import (
     SessionStore,
     set_session_cookie,
 )
+from naswa_matcher.structured_logging import configure_logging
 from naswa_matcher.template_filters import TEMPLATE_FILTERS
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -99,16 +100,13 @@ BOTO_LOG_LEVEL = os.getenv(
     "DEBUG" if ROOT_LOG_LEVEL == "DEBUG" else "WARNING",
 ).upper()
 
-logging.basicConfig(
-    level=getattr(logging, ROOT_LOG_LEVEL, logging.INFO),
-    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
-)
-
-logger = logging.getLogger("naswa")
-logger.setLevel(getattr(logging, NASWA_LOG_LEVEL, logging.INFO))
-
-logging.getLogger("botocore").setLevel(
-    getattr(logging, BOTO_LOG_LEVEL, logging.WARNING)
+print("BOTO_LOG_LEVEL", BOTO_LOG_LEVEL)
+logger = configure_logging(
+    root_level=ROOT_LOG_LEVEL,
+    logger_levels={
+        "naswa": NASWA_LOG_LEVEL,
+        "botocore": BOTO_LOG_LEVEL,
+    },
 )
 
 
