@@ -49,6 +49,25 @@ def agent_factory_with_history():
     return factory, created_agents
 
 
+def test_chat_session_message_sequence_starts_at_zero():
+    agent_factory, _created_agents = agent_factory_with_history()
+
+    session = ChatSession(agent_factory=agent_factory)
+
+    assert session.chat_message_sequence == 0
+
+
+def test_chat_session_next_message_sequence_increments():
+    agent_factory, _created_agents = agent_factory_with_history()
+
+    session = ChatSession(agent_factory=agent_factory)
+
+    assert session.next_chat_message_sequence() == 1
+    assert session.next_chat_message_sequence() == 2
+    assert session.next_chat_message_sequence() == 3
+    assert session.chat_message_sequence == 3
+
+
 def test_session_store_creates_session_when_session_id_is_missing():
     agent_factory, created_agents = agent_factory_with_history()
 
@@ -147,6 +166,10 @@ def test_session_reset_restores_fresh_state():
     session.last_logged_location = "Buffalo"
     session.ranking_cache.entries["cache-key"] = RankingCacheEntry(profile={})
 
+    session.next_chat_message_sequence()
+    session.next_chat_message_sequence()
+    assert session.chat_message_sequence == 2
+
     session.reset()
 
     assert session.agent is not original_agent
@@ -161,6 +184,7 @@ def test_session_reset_restores_fresh_state():
     assert session.active_stream_id is None
     assert session.ranking_cache.entries == {}
     assert session.last_logged_location is None
+    assert session.chat_message_sequence == 0
 
 
 def test_session_store_replaces_invalid_session_id():

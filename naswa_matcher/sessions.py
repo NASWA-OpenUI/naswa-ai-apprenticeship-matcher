@@ -144,6 +144,7 @@ class ChatSession:
     queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
     profile: dict | None = None
     messages: list[ChatMessage] = field(default_factory=initial_messages)
+    chat_message_sequence: int = 0
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
     ranking_cache: RankingCache = field(default_factory=_new_ranking_cache)
@@ -156,12 +157,18 @@ class ChatSession:
         """Return whether the user has participated in this conversation."""
         return any(message.role == "user" for message in self.messages)
 
+    def next_chat_message_sequence(self) -> int:
+        """Return the next sequence number for a logged chat message."""
+        self.chat_message_sequence += 1
+        return self.chat_message_sequence
+
     def reset(self) -> None:
         """Restore the session to a fresh chat state."""
         self.agent = self.agent_factory()
         self.queue = asyncio.Queue()
         self.profile = None
         self.messages = initial_messages()
+        self.chat_message_sequence = 0
         self.active_stream_id = None
         self.ranking_cache.clear()
         self.last_logged_location = None
