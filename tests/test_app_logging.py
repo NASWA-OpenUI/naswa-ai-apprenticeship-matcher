@@ -9,6 +9,7 @@ from naswa_matcher.app_logging import (
     JsonFormatter,
     configure_logging,
     log_event,
+    log_exception,
     log_request,
     request_url,
     visitor_id_from_session_id,
@@ -245,3 +246,27 @@ def test_log_request_writes_structured_request():
         "status_code": 200,
         "duration_ms": 18.4,
     }
+
+
+def test_log_exception_includes_request_context():
+    request = make_request()
+
+    with patch("naswa_matcher.app_logging.logger.exception") as log_exception_mock:
+        try:
+            raise RuntimeError("Bedrock unavailable")
+        except RuntimeError:
+            log_exception(
+                request,
+                "chat_agent_failed",
+                error="RuntimeError: Bedrock unavailable",
+                model="test-model",
+            )
+
+    payload = log_exception_mock.call_args.kwargs["extra"]["structured"]
+
+    assert payload["record_type"] == "error"
+    assert payload["action"] == "chat_agent_failed"
+    assert payload["request_id"] == "request-123"
+    assert payload["visitor_id"] == "visitor-456"
+    assert payload["error"] == "RuntimeError: Bedrock unavailable"
+    assert payload["model"] == "test-model"

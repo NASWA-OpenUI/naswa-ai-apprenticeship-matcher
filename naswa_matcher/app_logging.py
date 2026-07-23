@@ -67,9 +67,7 @@ def configure_logging(
     root_logger.addHandler(handler)
 
     for logger_name, level in (logger_levels or {}).items():
-        logging.getLogger(logger_name).setLevel(
-            getattr(logging, level, logging.INFO)
-        )
+        logging.getLogger(logger_name).setLevel(getattr(logging, level, logging.INFO))
 
     for logger_name in disabled_loggers or set():
         logging.getLogger(logger_name).disabled = True
@@ -109,6 +107,25 @@ def log_event(
     }
 
     logger.info("", extra={"structured": payload})
+
+
+def log_exception(
+    request: Request,
+    action: str,
+    *,
+    error: str,
+    **fields,
+) -> None:
+    """Write a structured application error with the current traceback."""
+    payload = {
+        **fields,
+        "record_type": "error",
+        **_request_fields(request),
+        "action": action,
+        "error": error,
+    }
+
+    logger.exception("", extra={"structured": payload})
 
 
 def log_request(

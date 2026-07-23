@@ -23,6 +23,7 @@ from naswa_matcher.agents import (
 from naswa_matcher.app_logging import (
     configure_logging,
     log_event,
+    log_exception,
     log_request,
     visitor_id_from_session_id,
 )
@@ -499,7 +500,13 @@ async def chat_stream(request: Request):
 
             except Exception as exc:
                 error_message = _describe_exception(exc)
-                logger.exception("Chat agent failed: %s", error_message)
+
+                log_exception(
+                    request,
+                    "chat_agent_failed",
+                    error=error_message,
+                    model=CHAT_MODEL_NAME,
+                )
 
                 msg_html = render(
                     "_message.html",
@@ -884,14 +891,16 @@ async def rank_opportunities_stream(
                     elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
                     error_message = _describe_exception(exc)
 
-                    logger.exception(
-                        "Ranking batch failed id=%s batch=%s/%s jobs=%s elapsed_ms=%.1f error=%s",
-                        benchmark_id,
-                        batch_number,
-                        total_batches,
-                        len(batch_jobs),
-                        elapsed_ms,
-                        error_message,
+                    log_exception(
+                        request,
+                        "ranking_batch_failed",
+                        error=error_message,
+                        ranking_id=benchmark_id,
+                        model=SCORING_MODEL_NAME,
+                        batch=batch_number,
+                        total_batches=total_batches,
+                        jobs=len(batch_jobs),
+                        elapsed_ms=round(elapsed_ms, 1),
                     )
 
                     return {
