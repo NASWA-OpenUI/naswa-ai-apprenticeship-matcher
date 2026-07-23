@@ -10,8 +10,24 @@ from naswa_matcher.sessions import (
     ChatSession,
     SessionStore,
     set_session_cookie,
+    is_valid_session_id
 )
 
+
+def test_is_valid_session_id_accepts_generated_shape():
+    assert is_valid_session_id("a" * 43) is True
+
+
+def test_is_valid_session_id_rejects_invalid_values():
+    assert is_valid_session_id(None) is False
+    assert is_valid_session_id("") is False
+    assert is_valid_session_id("too-short") is False
+    assert is_valid_session_id("a" * 44) is False
+    assert is_valid_session_id("!" * 43) is False
+
+
+SESSION_ID_A = "a" * 43
+SESSION_ID_B = "b" * 43
 
 def agent_factory_with_history():
     created_agents = []
@@ -39,12 +55,12 @@ def test_session_store_creates_session_when_session_id_is_missing():
         max_age_seconds=100,
         chat_agent_factory=agent_factory,
         clock=lambda: 50.0,
-        session_id_factory=lambda: "new-session",
+        session_id_factory=lambda: SESSION_ID_A,
     )
 
     session_id, session, needs_cookie = store.get_or_create(None)
 
-    assert session_id == "new-session"
+    assert session_id == SESSION_ID_A
     assert needs_cookie is True
     assert session.agent is created_agents[0]
     assert session.last_seen == 50.0
@@ -62,7 +78,7 @@ def test_session_store_returns_existing_session():
         max_age_seconds=100,
         chat_agent_factory=agent_factory,
         clock=lambda: now[0],
-        session_id_factory=lambda: "existing-session",
+        session_id_factory=lambda: SESSION_ID_A,
     )
 
     session_id, original_session, _needs_cookie = store.get_or_create(None)
@@ -70,32 +86,50 @@ def test_session_store_returns_existing_session():
     now[0] = 75.0
     returned_id, returned_session, needs_cookie = store.get_or_create(session_id)
 
-    assert returned_id == session_id
+    assert returned_id == SESSION_ID_A
     assert returned_session is original_session
     assert returned_session.last_seen == 75.0
     assert needs_cookie is False
 
 
-def test_session_store_replaces_expired_session():
+def test_session_store_reuses_id_for_expired_session():
     now = [100.0]
-    generated_ids = iter(["first-session", "replacement-session"])
     agent_factory, _created_agents = agent_factory_with_history()
 
     store = SessionStore(
         max_age_seconds=10,
         chat_agent_factory=agent_factory,
         clock=lambda: now[0],
-        session_id_factory=lambda: next(generated_ids),
+        session_id_factory=lambda: SESSION_ID_A,
     )
 
     first_id, first_session, _needs_cookie = store.get_or_create(None)
 
     now[0] = 111.0
-    replacement_id, replacement_session, needs_cookie = store.get_or_create(first_id)
+    returned_id, replacement_session, needs_cookie = store.get_or_create(first_id)
 
-    assert replacement_id == "replacement-session"
+    assert returned_id == SESSION_ID_A
     assert replacement_session is not first_session
-    assert needs_cookie is True
+    assert replacement_session.last_seen == 111.0
+    assert needs_cookie is False
+
+
+def test_session_store_reuses_valid_unknown_session_id():
+    agent_factory, created_agents = agent_factory_with_history()
+
+    store = SessionStore(
+        max_age_seconds=100,
+        chat_agent_factory=agent_factory,
+        clock=lambda: 50.0,
+        session_id_factory=lambda: SESSION_ID_B,
+    )
+
+    session_id, session, needs_cookie = store.get_or_create(SESSION_ID_A)
+
+    assert session_id == SESSION_ID_A
+    assert needs_cookie is False
+    assert session.agent is created_agents[0]
+    assert session.last_seen == 50.0
 
 
 def test_session_reset_restores_fresh_state():
@@ -126,6 +160,24 @@ def test_session_reset_restores_fresh_state():
     assert session.active_stream_id is None
     assert session.ranking_cache.entries == {}
     assert session.last_logged_location is None
+
+
+def test_session_store_replaces_invalid_session_id():
+    agent_factory, created_agents = agent_factory_with_history()
+
+    store = SessionStore(
+        max_age_seconds=100,
+        chat_agent_factory=agent_factory,
+        clock=lambda: 50.0,
+        session_id_factory=lambda: SESSION_ID_A,
+    )
+
+    session_id, session, needs_cookie = store.get_or_create("not-a-valid-session-id")
+
+    assert session_id == SESSION_ID_A
+    assert needs_cookie is True
+    assert session.agent is created_agents[0]
+    assert session.last_seen == 50.0
 
 
 def test_apply_confirmed_profile_replaces_initial_transcript():
