@@ -383,38 +383,6 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
 
 
 def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
-    """Verifies that the ranked opportunities page renders the streaming shell
-    and still includes non-O*NET jobs in the unranked section."""
-    response = client.get(
-        "/opportunities",
-        params=[
-            ("ranked", "true"),
-            ("likes", "hands-on work"),
-            ("likes", "problem solving"),
-            ("location", "Buffalo area"),
-        ],
-    )
-
-    assert response.status_code == 200
-
-    # Ranked page shell.
-    assert "Matched to your profile" in response.text
-    assert "hands-on work" in response.text
-    assert "problem solving" in response.text
-    assert "Analyzing opportunities…" in response.text
-
-    # The page should connect to the streaming ranking endpoint.
-    assert "sse-connect" in response.text
-    assert "/api/rank-opportunities" in response.text
-    assert "likes=hands-on+work" in response.text
-    assert "likes=problem+solving" in response.text
-
-    # Non-O*NET opportunity still appears as unranked on the page shell.
-    assert "More opportunities" in response.text
-    assert "Sheet Metal Worker Apprentice" in response.text
-
-
-def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
     """Verifies that the ranked opportunities page renders the streaming shell,
     profile summary widget, and non-O*NET jobs in the unranked section."""
     response = client.get(

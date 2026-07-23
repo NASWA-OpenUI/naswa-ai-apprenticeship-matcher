@@ -21,6 +21,7 @@ from naswa_matcher.agents import (
 )
 from naswa_matcher.app_logging import (
     configure_logging,
+    log_event,
     log_request,
     visitor_id_from_session_id,
 )
@@ -417,6 +418,17 @@ async def chat(
         return Response(status_code=204)
 
     session = request.state.session
+
+    sequence = session.next_chat_message_sequence()
+
+    log_event(
+        request,
+        "user_message_sent",
+        message_role="user",
+        message_sequence=sequence,
+        message=message,
+        character_count=len(message),
+    )
 
     await session.queue.put(message)
     session.messages.append(ChatMessage(role="user", content=message))
