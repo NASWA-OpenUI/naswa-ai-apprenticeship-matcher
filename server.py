@@ -29,7 +29,7 @@ from naswa_matcher.app_logging import (
 from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
-from naswa_matcher.location_matching import log_user_location_inference
+from naswa_matcher.location_matching import location_inference_details
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -556,7 +556,11 @@ async def chat_stream(request: Request):
                     profile_location
                     and profile_location != session.last_logged_location
                 ):
-                    log_user_location_inference(profile_location)
+                    log_event(
+                        request,
+                        "location_inferred",
+                        **location_inference_details(profile_location),
+                    )
                     session.last_logged_location = profile_location
 
                 if profile.get("confirmed"):

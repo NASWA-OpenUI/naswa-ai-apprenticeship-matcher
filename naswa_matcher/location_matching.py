@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-import logging
 import re
 
 from naswa_matcher.location_data import REGION_KEY_TO_NAME, location_terms
-
-logger = logging.getLogger("naswa.location_matching")
 
 NEARBY_LOCATION_GROUPS = {
     "western": {"finger_lakes", "southern_tier"},
@@ -53,14 +50,9 @@ def text_mentions_term(text: str, term: str) -> bool:
     return bool(_term_match_spans(text.lower(), term))
 
 
-def _format_region_keys(region_keys: set[str] | frozenset[str]) -> str:
-    """Format region keys for readable logs."""
-    return ", ".join(sorted(region_keys)) or "none"
-
-
-def _format_match_details(matches: list[dict]) -> str:
-    """Format matched location terms for readable logs."""
-    parts = []
+def _match_details(matches: list[dict]) -> list[str]:
+    """Return unique readable descriptions of accepted location matches."""
+    details = []
     seen = set()
 
     for match in matches:
@@ -71,17 +63,9 @@ def _format_match_details(matches: list[dict]) -> str:
             continue
 
         seen.add(key)
-        parts.append(f"{match['term']} -> {', '.join(region_keys)}")
+        details.append(f"{match['term']} -> {', '.join(region_keys)}")
 
-    return "; ".join(parts) or "none"
-
-
-def _region_names(region_keys: set[str] | frozenset[str]) -> list[str]:
-    """Return display names for region keys."""
-    return [
-        REGION_KEY_TO_NAME.get(region_key, region_key)
-        for region_key in sorted(region_keys)
-    ]
+    return details
 
 
 def _infer_location_groups_with_matches(
@@ -144,19 +128,16 @@ def infer_location_groups(text: str | None) -> set[str]:
     return groups
 
 
-def log_user_location_inference(location: str | None) -> None:
-    """Log how a user's stated location maps to NY labor market regions."""
-    if not location:
-        return
+def location_inference_details(location: str | None) -> dict:
+    """Return structured details about how a location maps to NY regions."""
 
     groups, matches = _infer_location_groups_with_matches(location)
 
-    logger.info(
-        "User location inference location=%r; groups=%s; matches=%s",
-        location,
-        _format_region_keys(groups),
-        _format_match_details(matches),
-    )
+    return {
+        "location": location,
+        "groups": sorted(groups),
+        "matches": _match_details(matches),
+    }
 
 
 def job_location_text(job: dict) -> str:

@@ -4,6 +4,7 @@ from naswa_matcher.location_matching import (
     infer_location_groups,
     job_location_text,
     location_fit,
+    location_inference_details,
     should_use_location_matching,
     text_mentions_term,
 )
@@ -303,3 +304,11 @@ def test_location_fit_order_sorts_local_before_nearby_unknown_and_far():
     assert LOCATION_FIT_ORDER["local"] < LOCATION_FIT_ORDER["nearby"]
     assert LOCATION_FIT_ORDER["nearby"] < LOCATION_FIT_ORDER["unknown"]
     assert LOCATION_FIT_ORDER["unknown"] < LOCATION_FIT_ORDER["far"]
+
+
+def test_location_inference_details_returns_groups_and_matches():
+    details = location_inference_details("Buffalo, NY")
+
+    assert details["location"] == "Buffalo, NY"
+    assert details["groups"] == ["western"]
+    assert "buffalo -> western" in details["matches"]
