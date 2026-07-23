@@ -342,6 +342,8 @@ async def reset_chat(request: Request):
 
     session.reset()
 
+    log_event(request, "chat_reset")
+
     response = Response(status_code=204)
     response.headers["HX-Redirect"] = "/chat"
 
@@ -375,6 +377,8 @@ async def update_chat_profile(
 
     session.sync_confirmed_profile(profile)
 
+    log_event(request, "edit_profile")
+
     return Response(status_code=204)
 
 
@@ -385,6 +389,8 @@ async def continue_chat(request: Request):
 
     if not session.begin_profile_revision():
         return Response(status_code=409)
+
+    log_event(request, "keep_chatting")
 
     content = (
         "Sure — let’s keep chatting. What would you like to change about your profile?"
@@ -554,6 +560,8 @@ async def chat_stream(request: Request):
                     session.last_logged_location = profile_location
 
                 if profile.get("confirmed"):
+                    log_event(request, "profile_confirmed")
+
                     ranked_url = profile_rank_url(profile)
                     card_html = render(
                         "_profile_card.html", profile=profile, ranked_url=ranked_url

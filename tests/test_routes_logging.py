@@ -39,6 +39,25 @@ def current_chat_session(client):
     return session
 
 
+def assert_event_logged(log_info, action):
+    events = event_payloads(log_info, action)
+
+    assert len(events) == 1
+
+    return events[0]
+
+
+def confirm_profile_from_query(client):
+    client.get(
+        "/chat",
+        params=[
+            ("likes", "art"),
+            ("location", "Buffalo"),
+            ("transportation", "can drive"),
+        ],
+    )
+
+
 def test_chat_post_logs_user_message_sent(client):
     message = "I love to make websites!"
 
@@ -217,3 +236,61 @@ def test_chat_stream_does_not_log_hidden_only_assistant_response(client):
     assert assistant_events == []
 
     assert session.chat_message_sequence == 1
+
+
+def test_chat_reset_logs_event(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post("/chat/reset")
+
+    assert response.status_code == 204
+    assert_event_logged(log_info, "chat_reset")
+
+
+def test_chat_continue_logs_keep_chatting(client):
+    confirm_profile_from_query(client)
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post("/chat/continue")
+
+    assert response.status_code == 200
+    assert_event_logged(log_info, "keep_chatting")
+
+
+def test_chat_continue_does_not_log_when_revision_cannot_start(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post("/chat/continue")
+
+    assert response.status_code == 409
+    assert event_payloads(log_info, "keep_chatting") == []
+
+
+def test_chat_profile_logs_edit_profile(client):
+    confirm_profile_from_query(client)
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post(
+            "/chat/profile",
+            json={
+                "likes": ["art"],
+                "dislikes": [],
+                "location": "Buffalo",
+                "transportation": "can drive",
+                "use_location_matching": True,
+            },
+        )
+
+    assert response.status_code == 204
+    assert_event_logged(log_info, "edit_profile")
+
+
+def test_chat_reset_preserves_visitor_id(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        client.post("/chat", data={"message": "Hello"})
+        client.post("/chat/reset")
+        client.post("/chat", data={"message": "Hello again"})
+
+    user_events = event_payloads(log_info, "user_message_sent")
+    reset_event = assert_event_logged(log_info, "chat_reset")
+
+    assert user_events[0]["visitor_id"] == reset_event["visitor_id"]
+    assert user_events[1]["visitor_id"] == reset_event["visitor_id"]
