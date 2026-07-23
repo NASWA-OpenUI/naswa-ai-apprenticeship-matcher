@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from naswa_matcher.agents import (
+    CHAT_MODEL_NAME,
     SCORING_MODEL_NAME,
     make_chat_agent,
     make_scoring_model,
@@ -466,6 +467,8 @@ async def chat_stream(request: Request):
 
             full_text = ""
             prev_display_len = 0
+            chat_started_at = time.perf_counter()
+            first_token_ms: float | None = None
 
             try:
                 logger.debug("Chat agent started")
@@ -479,6 +482,10 @@ async def chat_stream(request: Request):
                     new_chunk = display[prev_display_len:]
 
                     if new_chunk:
+                        if first_token_ms is None:
+                            first_token_ms = (
+                                time.perf_counter() - chat_started_at
+                            ) * 1000
                         yield {"event": "token", "data": new_chunk}
                         prev_display_len = len(display)
 
@@ -499,6 +506,8 @@ async def chat_stream(request: Request):
                 yield {"event": "assistant-message", "data": msg_html}
                 continue
 
+            elapsed_ms = (time.perf_counter() - chat_started_at) * 1000
+
             logger.debug("Chat agent completed")
 
             profile = extract_profile(full_text)
@@ -511,8 +520,27 @@ async def chat_stream(request: Request):
                     ChatMessage(role="assistant", content=final_text)
                 )
                 msg_html = render("_message.html", role="assistant", content=final_text)
+
+                log_event(
+                    request,
+                    "assistant_message_received",
+                    message_role="assistant",
+                    message_sequence=session.next_chat_message_sequence(),
+                    message=final_text,
+                    character_count=len(final_text),
+                    model=CHAT_MODEL_NAME,
+                    first_token_ms=(
+                        round(first_token_ms, 1) if first_token_ms is not None else None
+                    ),
+                    elapsed_ms=round(elapsed_ms, 1),
+                )
+
                 logger.debug("Sending assistant message event")
-                yield {"event": "assistant-message", "data": msg_html}
+
+                yield {
+                    "event": "assistant-message",
+                    "data": msg_html,
+                }
 
             if profile:
                 session.profile = profile

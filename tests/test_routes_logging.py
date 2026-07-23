@@ -1,6 +1,9 @@
 from unittest.mock import patch
 from uuid import UUID
 
+import server
+from naswa_matcher.sessions import SESSION_COOKIE_NAME
+
 
 def structured_payloads(log_info):
     """Return structured payloads written through the application logger."""
@@ -23,6 +26,17 @@ def event_payloads(log_info, action):
         for payload in structured_payloads(log_info)
         if payload.get("record_type") == "event" and payload.get("action") == action
     ]
+
+
+def current_chat_session(client):
+    """Return the server-side session belonging to the test browser."""
+    session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert session_id is not None
+
+    _session_id, session, _needs_cookie = server.session_store.get_or_create(session_id)
+
+    return session
 
 
 def test_chat_post_logs_user_message_sent(client):
@@ -120,3 +134,86 @@ def test_chat_post_does_not_log_empty_user_message(client):
     assert len(events) == 1
     assert events[0]["message"] == "Paulo"
     assert events[0]["message_sequence"] == 1
+
+
+def test_chat_stream_logs_assistant_message_received(client):
+    user_message = "Paulo"
+    assistant_message = "Nice to meet you, Paulo!"
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        post_response = client.post(
+            "/chat",
+            data={"message": user_message},
+        )
+
+        assert post_response.status_code == 200
+
+        session = current_chat_session(client)
+
+        async def fake_stream_async(message):
+            assert message == user_message
+
+            yield {"data": assistant_message}
+            yield {"data": ('<profile>{"name":"Paulo","confirmed":false}</profile>')}
+
+            # Make the outer SSE generator close after this response instead
+            # of waiting forever for another queued chat message.
+            session.active_stream_id = "test-complete"
+
+        session.agent.stream_async = fake_stream_async
+
+        stream_response = client.get("/chat/stream")
+
+    assert stream_response.status_code == 200
+
+    events = event_payloads(
+        log_info,
+        "assistant_message_received",
+    )
+
+    assert len(events) == 1
+
+    event = events[0]
+
+    assert event["message_role"] == "assistant"
+    assert event["message_sequence"] == 2
+    assert event["message"] == assistant_message
+    assert event["character_count"] == len(assistant_message)
+    assert event["model"] == server.CHAT_MODEL_NAME
+
+    assert event["first_token_ms"] is not None
+    assert event["first_token_ms"] >= 0
+
+    assert event["elapsed_ms"] >= 0
+
+
+def test_chat_stream_does_not_log_hidden_only_assistant_response(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        post_response = client.post(
+            "/chat",
+            data={"message": "Paulo"},
+        )
+
+        assert post_response.status_code == 200
+
+        session = current_chat_session(client)
+
+        async def fake_stream_async(message):
+            yield {"data": ('<profile>{"name":"Paulo","confirmed":false}</profile>')}
+
+            session.active_stream_id = "test-complete"
+
+        session.agent.stream_async = fake_stream_async
+
+        stream_response = client.get("/chat/stream")
+
+    assert stream_response.status_code == 200
+
+    assistant_events = event_payloads(
+        log_info,
+        "assistant_message_received",
+    )
+
+    assert assistant_events == []
+
+    assert session.chat_message_sequence == 1
