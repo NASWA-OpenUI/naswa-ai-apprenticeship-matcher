@@ -54,8 +54,9 @@ def configure_logging(
     *,
     root_level: str,
     logger_levels: dict[str, str] | None = None,
+    disabled_loggers: set[str] | None = None,
 ) -> logging.Logger:
-    """Configure JSON logging and optional named logger levels."""
+    """Configure JSON logging and optional named logger behavior."""
     root_logger = logging.getLogger()
     root_logger.setLevel(getattr(logging, root_level, logging.INFO))
 
@@ -66,7 +67,12 @@ def configure_logging(
     root_logger.addHandler(handler)
 
     for logger_name, level in (logger_levels or {}).items():
-        logging.getLogger(logger_name).setLevel(getattr(logging, level, logging.INFO))
+        logging.getLogger(logger_name).setLevel(
+            getattr(logging, level, logging.INFO)
+        )
+
+    for logger_name in disabled_loggers or set():
+        logging.getLogger(logger_name).disabled = True
 
     return logging.getLogger("naswa")
 

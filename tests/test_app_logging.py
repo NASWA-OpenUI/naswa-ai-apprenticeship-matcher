@@ -7,11 +7,30 @@ from starlette.requests import Request
 
 from naswa_matcher.app_logging import (
     JsonFormatter,
+    configure_logging,
     log_event,
     log_request,
     request_url,
     visitor_id_from_session_id,
 )
+
+
+def test_configure_logging_can_disable_named_logger():
+    logger_name = "test.disabled.logger"
+    target_logger = logging.getLogger(logger_name)
+
+    original_disabled = target_logger.disabled
+
+    try:
+        configure_logging(
+            root_level="INFO",
+            disabled_loggers={logger_name},
+        )
+
+        assert target_logger.disabled is True
+
+    finally:
+        target_logger.disabled = original_disabled
 
 
 def make_request(

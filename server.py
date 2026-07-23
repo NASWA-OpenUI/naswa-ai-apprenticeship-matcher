@@ -106,12 +106,14 @@ BOTO_LOG_LEVEL = os.getenv(
     "DEBUG" if ROOT_LOG_LEVEL == "DEBUG" else "WARNING",
 ).upper()
 
-print("BOTO_LOG_LEVEL", BOTO_LOG_LEVEL)
 logger = configure_logging(
     root_level=ROOT_LOG_LEVEL,
     logger_levels={
         "naswa": NASWA_LOG_LEVEL,
         "botocore": BOTO_LOG_LEVEL,
+    },
+    disabled_loggers={
+        "uvicorn.access",
     },
 )
 
