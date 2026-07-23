@@ -706,11 +706,14 @@ async def rank_opportunities_stream(
     if cached:
         benchmark_id = secrets.token_hex(4)
 
-        logger.info(
-            "Streaming opportunity ranking cache hit id=%s jobs=%s elapsed_seconds=%s",
-            benchmark_id,
-            len(cached.ranked),
-            cached.elapsed_seconds,
+        log_event(
+            request,
+            "ranking_cache_hit",
+            ranking_id=benchmark_id,
+            model=SCORING_MODEL_NAME,
+            jobs=len(cached.ranked),
+            cached=True,
+            original_elapsed_seconds=cached.elapsed_seconds,
         )
 
         async def generate_cached():
@@ -971,14 +974,6 @@ async def rank_opportunities_stream(
             total_elapsed_ms = (time.perf_counter() - request_started_at) * 1000
             total_elapsed_seconds = round(total_elapsed_ms / 1000)
 
-            logger.info(
-                "Streaming opportunity ranking completed id=%s jobs=%s batches=%s total_elapsed_ms=%.1f",
-                benchmark_id,
-                len(onet_jobs),
-                total_batches,
-                total_elapsed_ms,
-            )
-
             final_ranked = sort_ranked_items(ranked_for_cache, profile)
 
             if completed_jobs == len(onet_jobs) and not had_batch_error:
@@ -996,12 +991,20 @@ async def rank_opportunities_stream(
                     ),
                 )
 
-                logger.info(
-                    "Opportunity ranking cached id=%s jobs=%s elapsed_seconds=%s",
-                    benchmark_id,
-                    len(final_ranked),
-                    total_elapsed_seconds,
-                )
+            log_event(
+                request,
+                "ranking_completed",
+                ranking_id=benchmark_id,
+                model=SCORING_MODEL_NAME,
+                jobs=len(onet_jobs),
+                completed_jobs=completed_jobs,
+                batches=total_batches,
+                batch_size=RANKING_BATCH_SIZE,
+                concurrency=RANKING_MAX_CONCURRENCY,
+                elapsed_ms=round(total_elapsed_ms, 1),
+                had_batch_error=had_batch_error,
+                cached=False,
+            )
 
             final_progress_html = render(
                 "_rank_progress.html",

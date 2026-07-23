@@ -58,6 +58,17 @@ def confirm_profile_from_query(client):
     )
 
 
+async def fake_score_jobs(profile, jobs):
+    return [
+        {
+            "id": job["id"],
+            "tier": "Moderate",
+            "explanation": "Test explanation.",
+        }
+        for job in jobs
+    ]
+
+
 def test_chat_post_logs_user_message_sent(client):
     message = "I love to make websites!"
 
@@ -294,3 +305,55 @@ def test_chat_reset_preserves_visitor_id(client):
 
     assert user_events[0]["visitor_id"] == reset_event["visitor_id"]
     assert user_events[1]["visitor_id"] == reset_event["visitor_id"]
+
+
+def test_ranking_completion_logs_event(client, monkeypatch):
+    monkeypatch.setattr(server, "_score_jobs", fake_score_jobs)
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        with client.stream(
+            "GET",
+            "/api/rank-opportunities",
+            params={"likes": "hands-on work"},
+        ) as response:
+            assert response.status_code == 200
+            _body = "".join(response.iter_text())
+
+    event = assert_event_logged(log_info, "ranking_completed")
+
+    assert event["model"] == server.SCORING_MODEL_NAME
+    assert event["jobs"] > 0
+    assert event["batches"] > 0
+    assert event["elapsed_ms"] >= 0
+    assert event["cached"] is False
+
+
+def test_ranking_cache_hit_logs_event(client, monkeypatch):
+    monkeypatch.setattr(server, "_score_jobs", fake_score_jobs)
+
+    params = {"likes": "hands-on work"}
+
+    # Populate the session cache.
+    with client.stream(
+        "GET",
+        "/api/rank-opportunities",
+        params=params,
+    ) as response:
+        assert response.status_code == 200
+        _body = "".join(response.iter_text())
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        with client.stream(
+            "GET",
+            "/api/rank-opportunities",
+            params=params,
+        ) as response:
+            assert response.status_code == 200
+            _body = "".join(response.iter_text())
+
+    event = assert_event_logged(log_info, "ranking_cache_hit")
+
+    assert event["model"] == server.SCORING_MODEL_NAME
+    assert event["jobs"] > 0
+    assert event["cached"] is True
+    assert event["original_elapsed_seconds"] >= 0
