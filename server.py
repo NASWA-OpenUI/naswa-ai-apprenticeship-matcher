@@ -1,4 +1,3 @@
-import asyncio
 import os
 import secrets
 import time
@@ -22,6 +21,7 @@ from naswa_matcher.agents import (
 )
 from naswa_matcher.app_logging import (
     configure_logging,
+    describe_exception,
     log_event,
     log_exception,
     log_request,
@@ -43,8 +43,13 @@ from naswa_matcher.profile import (
     profile_rank_url,
     strip_profile,
 )
-from naswa_matcher.ranking import build_ranked_items, score_jobs, sort_ranked_items
-from naswa_matcher.ranking_cache import RankingCacheEntry
+from naswa_matcher.ranking import score_jobs
+from naswa_matcher.ranking_stream import (
+    RankingStreamConfig,
+    chunk_opportunities,
+    stream_cached_ranking,
+    stream_ranking,
+)
 from naswa_matcher.sessions import (
     SESSION_COOKIE_NAME,
     SESSION_MAX_AGE_SECONDS,
@@ -119,19 +124,6 @@ logger = configure_logging(
 )
 
 
-def _describe_exception(exc: Exception) -> str:
-    """Return a compact message for logs and local/demo UI errors."""
-    response = getattr(exc, "response", None)
-
-    if isinstance(response, dict):
-        error = response.get("Error", {})
-        code = error.get("Code", exc.__class__.__name__)
-        message = error.get("Message", str(exc))
-        return f"{code}: {message}"
-
-    return f"{exc.__class__.__name__}: {exc}"
-
-
 # ── Session state ─────────────────────────────────────────────────────────────
 
 session_store = SessionStore(
@@ -146,10 +138,12 @@ RANKING_MAX_CONCURRENCY = int(os.getenv("RANKING_MAX_CONCURRENCY", "3"))
 RANKING_MAX_ATTEMPTS = int(os.getenv("RANKING_MAX_ATTEMPTS", "3"))
 RANKING_RETRY_DELAY_SECONDS = float(os.getenv("RANKING_RETRY_DELAY_SECONDS", "1"))
 
-
-def _chunks(items: list[dict], size: int) -> list[list[dict]]:
-    """Split a list into fixed-size chunks."""
-    return [items[i : i + size] for i in range(0, len(items), size)]
+RANKING_STREAM_CONFIG = RankingStreamConfig(
+    batch_size=RANKING_BATCH_SIZE,
+    max_concurrency=RANKING_MAX_CONCURRENCY,
+    max_attempts=RANKING_MAX_ATTEMPTS,
+    retry_delay_seconds=RANKING_RETRY_DELAY_SECONDS,
+)
 
 
 async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
@@ -499,7 +493,7 @@ async def chat_stream(request: Request):
                         prev_display_len = len(display)
 
             except Exception as exc:
-                error_message = _describe_exception(exc)
+                error_message = describe_exception(exc)
 
                 log_exception(
                     request,
@@ -717,63 +711,17 @@ async def rank_opportunities_stream(
     cached = session.ranking_cache.get(profile)
 
     if cached:
-        benchmark_id = secrets.token_hex(4)
-
         log_event(
             request,
             "ranking_cache_hit",
-            ranking_id=benchmark_id,
             model=SCORING_MODEL_NAME,
             jobs=len(cached.ranked),
             cached=True,
             original_elapsed_seconds=cached.elapsed_seconds,
         )
 
-        async def generate_cached():
-            cards_html = render(
-                "_rank_cards.html",
-                ranked=cached.ranked,
-            )
+        return EventSourceResponse(stream_cached_ranking(cached, render=render))
 
-            if cards_html.strip():
-                yield {
-                    "event": "batch",
-                    "data": cards_html,
-                }
-
-            progress_html = render(
-                "_rank_progress.html",
-                completed_jobs=cached.completed_jobs,
-                total_jobs=cached.total_jobs,
-                completed_openings=cached.completed_openings,
-                total_openings=cached.total_openings,
-                is_done=True,
-            )
-
-            yield {
-                "event": "progress",
-                "data": progress_html,
-            }
-
-            yield {
-                "event": "rank-count",
-                "data": _render_rank_count(
-                    completed_jobs=cached.completed_jobs,
-                    total_jobs=cached.total_jobs,
-                    completed_openings=cached.completed_openings,
-                ),
-            }
-
-            yield {
-                "event": "done",
-                "data": str(cached.elapsed_seconds),
-            }
-
-        response = EventSourceResponse(generate_cached())
-
-        return response
-
-    benchmark_id = secrets.token_hex(4)
     request_started_at = time.perf_counter()
 
     all_jobs = all_opportunities()
@@ -781,277 +729,32 @@ async def rank_opportunities_stream(
     total_openings = sum_openings(onet_jobs)
 
     job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
-    batches = _chunks(onet_jobs, RANKING_BATCH_SIZE)
+    batches = chunk_opportunities(onet_jobs, RANKING_STREAM_CONFIG.batch_size)
     total_batches = len(batches)
 
-    logger.info(
-        "Streaming opportunity ranking started id=%s model=%s jobs=%s batches=%s batch_size=%s concurrency=%s",
-        benchmark_id,
-        SCORING_MODEL_NAME,
-        len(onet_jobs),
-        total_batches,
-        RANKING_BATCH_SIZE,
-        RANKING_MAX_CONCURRENCY,
+    log_event(
+        request,
+        "ranking_started",
+        model=SCORING_MODEL_NAME,
+        jobs=len(onet_jobs),
+        batches=total_batches,
+        batch_size=RANKING_STREAM_CONFIG.batch_size,
+        concurrency=RANKING_STREAM_CONFIG.max_concurrency,
+        cached=False,
     )
 
-    async def generate():
-        semaphore = asyncio.Semaphore(RANKING_MAX_CONCURRENCY)
-        completed_batches = 0
-        completed_jobs = 0
-        completed_openings = 0
-        ranked_for_cache: list[dict] = []
-        had_batch_error = False
-        disconnected = False
-
-        async def rank_batch(batch_number: int, batch_jobs: list[dict]) -> dict:
-            async with semaphore:
-                batch_started_at = time.perf_counter()
-
-                logger.debug(
-                    "Ranking batch started id=%s batch=%s/%s jobs=%s model=%s",
-                    benchmark_id,
-                    batch_number,
-                    total_batches,
-                    len(batch_jobs),
-                    SCORING_MODEL_NAME,
-                )
-
-                try:
-                    scores = None
-
-                    for attempt in range(1, RANKING_MAX_ATTEMPTS + 1):
-                        try:
-                            scores = await _score_jobs(profile, batch_jobs)
-                            break
-
-                        except Exception as exc:
-                            error_message = _describe_exception(exc)
-
-                            if attempt == RANKING_MAX_ATTEMPTS:
-                                raise
-
-                            delay_seconds = RANKING_RETRY_DELAY_SECONDS * attempt
-
-                            logger.warning(
-                                "Ranking batch attempt failed; retrying id=%s batch=%s/%s jobs=%s attempt=%s/%s retry_in=%.2fs error=%s",
-                                benchmark_id,
-                                batch_number,
-                                total_batches,
-                                len(batch_jobs),
-                                attempt,
-                                RANKING_MAX_ATTEMPTS,
-                                delay_seconds,
-                                error_message,
-                            )
-
-                            await asyncio.sleep(delay_seconds)
-
-                    if scores is None:
-                        raise RuntimeError("Ranking batch did not return scores.")
-
-                    if len(scores) != len(batch_jobs):
-                        logger.warning(
-                            "Ranking batch returned unexpected score count id=%s batch=%s/%s jobs=%s scores=%s model=%s",
-                            benchmark_id,
-                            batch_number,
-                            total_batches,
-                            len(batch_jobs),
-                            len(scores),
-                            SCORING_MODEL_NAME,
-                        )
-
-                    ranked = build_ranked_items(
-                        batch_jobs=batch_jobs,
-                        scores=scores,
-                        job_index=job_index,
-                        profile=profile,
-                    )
-
-                    elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
-
-                    logger.debug(
-                        "Ranking batch completed id=%s batch=%s/%s jobs=%s scores=%s elapsed_ms=%.1f",
-                        benchmark_id,
-                        batch_number,
-                        total_batches,
-                        len(batch_jobs),
-                        len(scores),
-                        elapsed_ms,
-                    )
-
-                    return {
-                        "batch_number": batch_number,
-                        "jobs": batch_jobs,
-                        "ranked": ranked,
-                        "error": None,
-                        "elapsed_ms": elapsed_ms,
-                    }
-
-                except Exception as exc:
-                    elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
-                    error_message = _describe_exception(exc)
-
-                    log_exception(
-                        request,
-                        "ranking_batch_failed",
-                        error=error_message,
-                        ranking_id=benchmark_id,
-                        model=SCORING_MODEL_NAME,
-                        batch=batch_number,
-                        total_batches=total_batches,
-                        jobs=len(batch_jobs),
-                        elapsed_ms=round(elapsed_ms, 1),
-                    )
-
-                    return {
-                        "batch_number": batch_number,
-                        "jobs": batch_jobs,
-                        "ranked": [],
-                        "error": error_message,
-                        "elapsed_ms": elapsed_ms,
-                    }
-
-        tasks = [
-            asyncio.create_task(rank_batch(batch_number, batch_jobs))
-            for batch_number, batch_jobs in enumerate(batches, start=1)
-        ]
-
-        try:
-            for task in asyncio.as_completed(tasks):
-                if await request.is_disconnected():
-                    disconnected = True
-                    logger.info(
-                        "Streaming opportunity ranking disconnected id=%s completed_batches=%s/%s",
-                        benchmark_id,
-                        completed_batches,
-                        total_batches,
-                    )
-                    break
-
-                result = await task
-                completed_batches += 1
-                completed_jobs += len(result["jobs"])
-                completed_openings += sum_openings(result["jobs"])
-
-                if result["error"]:
-                    had_batch_error = True
-
-                    yield {
-                        "event": "batch-error",
-                        "data": (
-                            f"<p class='empty-state surface surface--shadow'>"
-                            f"One ranking batch failed: {result['error']}"
-                            f"</p>"
-                        ),
-                    }
-                else:
-                    ranked_for_cache.extend(result["ranked"])
-
-                    cards_html = render(
-                        "_rank_cards.html",
-                        ranked=result["ranked"],
-                    )
-
-                    yield {
-                        "event": "batch",
-                        "data": cards_html,
-                    }
-
-                elapsed_seconds = round(time.perf_counter() - request_started_at)
-
-                progress_html = render(
-                    "_rank_progress.html",
-                    completed_jobs=completed_jobs,
-                    total_jobs=len(onet_jobs),
-                    completed_openings=completed_openings,
-                    total_openings=total_openings,
-                    is_done=False,
-                    elapsed_seconds=elapsed_seconds,
-                )
-
-                yield {
-                    "event": "progress",
-                    "data": progress_html,
-                }
-
-                yield {
-                    "event": "rank-count",
-                    "data": _render_rank_count(
-                        completed_jobs=completed_jobs,
-                        total_jobs=len(onet_jobs),
-                        completed_openings=completed_openings,
-                    ),
-                }
-
-            if disconnected:
-                return
-
-            total_elapsed_ms = (time.perf_counter() - request_started_at) * 1000
-            total_elapsed_seconds = round(total_elapsed_ms / 1000)
-
-            final_ranked = sort_ranked_items(ranked_for_cache, profile)
-
-            if completed_jobs == len(onet_jobs) and not had_batch_error:
-                session.ranking_cache.put(
-                    profile,
-                    RankingCacheEntry(
-                        profile=profile,
-                        ranked=final_ranked,
-                        completed_jobs=completed_jobs,
-                        total_jobs=len(onet_jobs),
-                        completed_openings=completed_openings,
-                        total_openings=total_openings,
-                        elapsed_seconds=total_elapsed_seconds,
-                        is_complete=True,
-                    ),
-                )
-
-            log_event(
-                request,
-                "ranking_completed",
-                ranking_id=benchmark_id,
-                model=SCORING_MODEL_NAME,
-                jobs=len(onet_jobs),
-                completed_jobs=completed_jobs,
-                batches=total_batches,
-                batch_size=RANKING_BATCH_SIZE,
-                concurrency=RANKING_MAX_CONCURRENCY,
-                elapsed_ms=round(total_elapsed_ms, 1),
-                had_batch_error=had_batch_error,
-                cached=False,
-            )
-
-            final_progress_html = render(
-                "_rank_progress.html",
-                completed_jobs=completed_jobs,
-                total_jobs=len(onet_jobs),
-                completed_openings=completed_openings,
-                total_openings=total_openings,
-                is_done=True,
-            )
-
-            yield {
-                "event": "progress",
-                "data": final_progress_html,
-            }
-
-            yield {
-                "event": "rank-count",
-                "data": _render_rank_count(
-                    completed_jobs=completed_jobs,
-                    total_jobs=len(onet_jobs),
-                    completed_openings=completed_openings,
-                ),
-            }
-
-            yield {
-                "event": "done",
-                "data": str(total_elapsed_seconds),
-            }
-
-        finally:
-            for task in tasks:
-                if not task.done():
-                    task.cancel()
-
-    return EventSourceResponse(generate())
+    return EventSourceResponse(
+        stream_ranking(
+            request=request,
+            session=session,
+            profile=profile,
+            request_started_at=request_started_at,
+            onet_jobs=onet_jobs,
+            total_openings=total_openings,
+            job_index=job_index,
+            batches=batches,
+            score_jobs=_score_jobs,
+            render=render,
+            config=RANKING_STREAM_CONFIG,
+        )
+    )
