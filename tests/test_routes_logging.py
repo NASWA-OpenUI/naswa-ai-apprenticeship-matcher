@@ -4,6 +4,8 @@ from uuid import UUID
 import server
 from naswa_matcher.sessions import SESSION_COOKIE_NAME
 
+# ── Structured logging test helpers ───────────────────────────────────────────
+
 
 def structured_payloads(log_info):
     """Return structured payloads written through the application logger."""
@@ -28,6 +30,18 @@ def event_payloads(log_info, action):
     ]
 
 
+def assert_event_logged(log_info, action):
+    """Assert that exactly one event was logged and return its payload."""
+    events = event_payloads(log_info, action)
+
+    assert len(events) == 1
+
+    return events[0]
+
+
+# ── Chat test helpers ─────────────────────────────────────────────────────────
+
+
 def current_chat_session(client):
     """Return the server-side session belonging to the test browser."""
     session_id = client.cookies.get(SESSION_COOKIE_NAME)
@@ -39,15 +53,8 @@ def current_chat_session(client):
     return session
 
 
-def assert_event_logged(log_info, action):
-    events = event_payloads(log_info, action)
-
-    assert len(events) == 1
-
-    return events[0]
-
-
 def confirm_profile_from_query(client):
+    """Load a confirmed profile into the current browser session."""
     client.get(
         "/chat",
         params=[
@@ -58,7 +65,11 @@ def confirm_profile_from_query(client):
     )
 
 
+# ── Ranking test helpers ──────────────────────────────────────────────────────
+
+
 async def fake_score_jobs(profile, jobs):
+    """Return deterministic ranking results without calling the scoring model."""
     return [
         {
             "id": job["id"],
@@ -67,6 +78,9 @@ async def fake_score_jobs(profile, jobs):
         }
         for job in jobs
     ]
+
+
+# ── User message logging ──────────────────────────────────────────────────────
 
 
 def test_chat_post_logs_user_message_sent(client):
@@ -80,11 +94,7 @@ def test_chat_post_logs_user_message_sent(client):
 
     assert response.status_code == 200
 
-    events = event_payloads(log_info, "user_message_sent")
-
-    assert len(events) == 1
-
-    event = events[0]
+    event = assert_event_logged(log_info, "user_message_sent")
 
     assert event["record_type"] == "event"
     assert event["action"] == "user_message_sent"
@@ -166,6 +176,9 @@ def test_chat_post_does_not_log_empty_user_message(client):
     assert events[0]["message_sequence"] == 1
 
 
+# ── Assistant message logging ─────────────────────────────────────────────────
+
+
 def test_chat_stream_logs_assistant_message_received(client):
     user_message = "Paulo"
     assistant_message = "Nice to meet you, Paulo!"
@@ -184,7 +197,7 @@ def test_chat_stream_logs_assistant_message_received(client):
             assert message == user_message
 
             yield {"data": assistant_message}
-            yield {"data": ('<profile>{"name":"Paulo","confirmed":false}</profile>')}
+            yield {"data": '<profile>{"name":"Paulo","confirmed":false}</profile>'}
 
             # Make the outer SSE generator close after this response instead
             # of waiting forever for another queued chat message.
@@ -196,14 +209,10 @@ def test_chat_stream_logs_assistant_message_received(client):
 
     assert stream_response.status_code == 200
 
-    events = event_payloads(
+    event = assert_event_logged(
         log_info,
         "assistant_message_received",
     )
-
-    assert len(events) == 1
-
-    event = events[0]
 
     assert event["message_role"] == "assistant"
     assert event["message_sequence"] == 2
@@ -213,7 +222,6 @@ def test_chat_stream_logs_assistant_message_received(client):
 
     assert event["first_token_ms"] is not None
     assert event["first_token_ms"] >= 0
-
     assert event["elapsed_ms"] >= 0
 
 
@@ -229,7 +237,7 @@ def test_chat_stream_does_not_log_hidden_only_assistant_response(client):
         session = current_chat_session(client)
 
         async def fake_stream_async(message):
-            yield {"data": ('<profile>{"name":"Paulo","confirmed":false}</profile>')}
+            yield {"data": '<profile>{"name":"Paulo","confirmed":false}</profile>'}
 
             session.active_stream_id = "test-complete"
 
@@ -239,14 +247,18 @@ def test_chat_stream_does_not_log_hidden_only_assistant_response(client):
 
     assert stream_response.status_code == 200
 
-    assistant_events = event_payloads(
-        log_info,
-        "assistant_message_received",
+    assert (
+        event_payloads(
+            log_info,
+            "assistant_message_received",
+        )
+        == []
     )
 
-    assert assistant_events == []
-
     assert session.chat_message_sequence == 1
+
+
+# ── Chat and profile lifecycle logging ────────────────────────────────────────
 
 
 def test_chat_reset_logs_event(client):
@@ -255,6 +267,19 @@ def test_chat_reset_logs_event(client):
 
     assert response.status_code == 204
     assert_event_logged(log_info, "chat_reset")
+
+
+def test_chat_reset_preserves_visitor_id(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        client.post("/chat", data={"message": "Hello"})
+        client.post("/chat/reset")
+        client.post("/chat", data={"message": "Hello again"})
+
+    user_events = event_payloads(log_info, "user_message_sent")
+    reset_event = assert_event_logged(log_info, "chat_reset")
+
+    assert user_events[0]["visitor_id"] == reset_event["visitor_id"]
+    assert user_events[1]["visitor_id"] == reset_event["visitor_id"]
 
 
 def test_chat_continue_logs_keep_chatting(client):
@@ -294,17 +319,7 @@ def test_chat_profile_logs_edit_profile(client):
     assert_event_logged(log_info, "edit_profile")
 
 
-def test_chat_reset_preserves_visitor_id(client):
-    with patch("naswa_matcher.app_logging.logger.info") as log_info:
-        client.post("/chat", data={"message": "Hello"})
-        client.post("/chat/reset")
-        client.post("/chat", data={"message": "Hello again"})
-
-    user_events = event_payloads(log_info, "user_message_sent")
-    reset_event = assert_event_logged(log_info, "chat_reset")
-
-    assert user_events[0]["visitor_id"] == reset_event["visitor_id"]
-    assert user_events[1]["visitor_id"] == reset_event["visitor_id"]
+# ── Ranking logging ───────────────────────────────────────────────────────────
 
 
 def test_ranking_completion_logs_event(client, monkeypatch):
@@ -317,7 +332,7 @@ def test_ranking_completion_logs_event(client, monkeypatch):
             params={"likes": "hands-on work"},
         ) as response:
             assert response.status_code == 200
-            _body = "".join(response.iter_text())
+            "".join(response.iter_text())
 
     event = assert_event_logged(log_info, "ranking_completed")
 
@@ -340,7 +355,7 @@ def test_ranking_cache_hit_logs_event(client, monkeypatch):
         params=params,
     ) as response:
         assert response.status_code == 200
-        _body = "".join(response.iter_text())
+        "".join(response.iter_text())
 
     with patch("naswa_matcher.app_logging.logger.info") as log_info:
         with client.stream(
@@ -349,7 +364,7 @@ def test_ranking_cache_hit_logs_event(client, monkeypatch):
             params=params,
         ) as response:
             assert response.status_code == 200
-            _body = "".join(response.iter_text())
+            "".join(response.iter_text())
 
     event = assert_event_logged(log_info, "ranking_cache_hit")
 
