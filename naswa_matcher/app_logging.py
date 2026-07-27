@@ -118,6 +118,27 @@ def _request_fields(request: Request) -> dict:
     }
 
 
+def _structured_fields(
+    request: Request,
+    *,
+    record_type: str,
+    action: str,
+    fields: dict,
+) -> dict:
+    """Build consistently ordered fields for a request-associated log."""
+    payload = {
+        "record_type": record_type,
+        "action": action,
+        **_request_fields(request),
+    }
+
+    for key, value in fields.items():
+        if key not in payload:
+            payload[key] = value
+
+    return payload
+
+
 # ── Structured log helpers ────────────────────────────────────────────────────
 
 
@@ -131,8 +152,8 @@ def log_request(
     """Write a structured record for a completed HTTP request."""
     payload = {
         "record_type": "request",
-        **_request_fields(request),
         "action": action,
+        **_request_fields(request),
         "status_code": status_code,
         "duration_ms": round(duration_ms, 1),
     }
@@ -146,12 +167,12 @@ def log_event(
     **fields,
 ) -> None:
     """Write a structured application event associated with a request."""
-    payload = {
-        **fields,
-        "record_type": "event",
-        **_request_fields(request),
-        "action": action,
-    }
+    payload = _structured_fields(
+        request,
+        record_type="event",
+        action=action,
+        fields=fields,
+    )
 
     logger.info("", extra={"structured": payload})
 
@@ -164,12 +185,14 @@ def log_exception(
     **fields,
 ) -> None:
     """Write a structured application error with the current traceback."""
-    payload = {
-        **fields,
-        "record_type": "error",
-        **_request_fields(request),
-        "action": action,
-        "error": error,
-    }
+    payload = _structured_fields(
+        request,
+        record_type="error",
+        action=action,
+        fields={
+            "error": error,
+            **fields,
+        },
+    )
 
     logger.exception("", extra={"structured": payload})
