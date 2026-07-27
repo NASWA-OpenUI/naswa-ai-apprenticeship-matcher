@@ -232,12 +232,13 @@ async def application_request_context(request: Request, call_next):
     # Useful for correlating a browser/network request with its server logs.
     response.headers["X-Request-ID"] = request_id
 
-    log_request(
-        request,
-        action=action,
-        status_code=response.status_code,
-        duration_ms=elapsed_ms,
-    )
+    if action == "pageview" or response.status_code >= 400:
+        log_request(
+            request,
+            action=action,
+            status_code=response.status_code,
+            duration_ms=elapsed_ms,
+        )
 
     return response
 

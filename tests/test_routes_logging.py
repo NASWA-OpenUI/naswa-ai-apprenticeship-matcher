@@ -80,6 +80,47 @@ async def fake_score_jobs(profile, jobs):
     ]
 
 
+# ── Generic request logging ───────────────────────────────────────────────────
+
+
+def test_successful_internal_request_is_not_logged(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post(
+            "/chat",
+            data={"message": "Paulo"},
+        )
+
+    assert response.status_code == 200
+
+    request_logs = [
+        payload
+        for payload in structured_payloads(log_info)
+        if payload.get("record_type") == "request"
+        and payload.get("method") == "POST"
+        and payload.get("url") == "/chat"
+    ]
+
+    assert request_logs == []
+
+
+def test_failed_internal_request_is_logged(client):
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        response = client.post("/chat/continue")
+
+    assert response.status_code == 409
+
+    request_logs = [
+        payload
+        for payload in structured_payloads(log_info)
+        if payload.get("record_type") == "request"
+        and payload.get("method") == "POST"
+        and payload.get("url") == "/chat/continue"
+    ]
+
+    assert len(request_logs) == 1
+    assert request_logs[0]["status_code"] == 409
+
+
 # ── User message logging ──────────────────────────────────────────────────────
 
 
@@ -107,26 +148,10 @@ def test_chat_post_logs_user_message_sent(client):
     assert event["character_count"] == len(message)
 
     request_id = UUID(event["request_id"])
-
     assert request_id.version == 4
 
     assert len(event["visitor_id"]) == 64
     assert all(character in "0123456789abcdef" for character in event["visitor_id"])
-
-    request_logs = [
-        payload
-        for payload in structured_payloads(log_info)
-        if payload.get("record_type") == "request"
-        and payload.get("url") == "/chat"
-        and payload.get("method") == "POST"
-    ]
-
-    assert len(request_logs) == 1
-
-    request_log = request_logs[0]
-
-    assert request_log["request_id"] == event["request_id"]
-    assert request_log["visitor_id"] == event["visitor_id"]
 
 
 def test_chat_post_increments_user_message_sequence(client):
