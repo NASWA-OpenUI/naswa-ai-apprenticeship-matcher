@@ -319,6 +319,12 @@ ol#chat-log ol {
   color: var(--app-text-on-theme);
 }
 
+.chip--warning {
+  background: var(--nys-color-warning-weak);
+  color: var(--app-warning-dark);
+  border: 1px solid var(--app-warning-dark);
+}
+
 .chip--danger {
   background: #fbece9;
   border: 1px solid #e7b4ab;
