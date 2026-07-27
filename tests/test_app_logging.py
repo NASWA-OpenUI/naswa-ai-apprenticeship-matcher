@@ -15,23 +15,7 @@ from naswa_matcher.app_logging import (
     visitor_id_from_session_id,
 )
 
-
-def test_configure_logging_can_disable_named_logger():
-    logger_name = "test.disabled.logger"
-    target_logger = logging.getLogger(logger_name)
-
-    original_disabled = target_logger.disabled
-
-    try:
-        configure_logging(
-            root_level="INFO",
-            disabled_loggers={logger_name},
-        )
-
-        assert target_logger.disabled is True
-
-    finally:
-        target_logger.disabled = original_disabled
+# ── Test helpers ──────────────────────────────────────────────────────────────
 
 
 def make_request(
@@ -60,6 +44,9 @@ def make_request(
     return request
 
 
+# ── Identity helpers ──────────────────────────────────────────────────────────
+
+
 def test_visitor_id_from_session_id_is_deterministic():
     session_id = "a" * 43
 
@@ -82,6 +69,9 @@ def test_visitor_id_from_session_id_uses_sha256():
     expected = hashlib.sha256(session_id.encode("utf-8")).hexdigest()
 
     assert visitor_id_from_session_id(session_id) == expected
+
+
+# ── JSON formatting ───────────────────────────────────────────────────────────
 
 
 def test_json_formatter_formats_application_log():
@@ -155,6 +145,30 @@ def test_json_formatter_preserves_unicode():
     assert "\\u00e5" not in formatted
 
 
+# ── Logging configuration ─────────────────────────────────────────────────────
+
+
+def test_configure_logging_can_disable_named_logger():
+    logger_name = "test.disabled.logger"
+    target_logger = logging.getLogger(logger_name)
+
+    original_disabled = target_logger.disabled
+
+    try:
+        configure_logging(
+            root_level="INFO",
+            disabled_loggers={logger_name},
+        )
+
+        assert target_logger.disabled is True
+
+    finally:
+        target_logger.disabled = original_disabled
+
+
+# ── Request context helpers ───────────────────────────────────────────────────
+
+
 def test_request_url_preserves_query_string():
     request = make_request(
         path="/opportunities",
@@ -164,6 +178,36 @@ def test_request_url_preserves_query_string():
     assert request_url(request) == (
         "/opportunities" "?ranked=true&likes=computers&location=Buffalo%2C+NY"
     )
+
+
+# ── Structured log helpers ────────────────────────────────────────────────────
+
+
+def test_log_request_writes_structured_request():
+    request = make_request(
+        path="/opportunities/example-job",
+    )
+
+    with patch("naswa_matcher.app_logging.logger.info") as log_info:
+        log_request(
+            request,
+            action="pageview",
+            status_code=200,
+            duration_ms=18.437,
+        )
+
+    payload = log_info.call_args.kwargs["extra"]["structured"]
+
+    assert payload == {
+        "record_type": "request",
+        "request_id": "request-123",
+        "visitor_id": "visitor-456",
+        "method": "GET",
+        "url": "/opportunities/example-job",
+        "action": "pageview",
+        "status_code": 200,
+        "duration_ms": 18.4,
+    }
 
 
 def test_log_event_writes_structured_event():
@@ -182,7 +226,6 @@ def test_log_event_writes_structured_event():
 
     log_info.assert_called_once()
 
-    (_message,) = log_info.call_args.args
     payload = log_info.call_args.kwargs["extra"]["structured"]
 
     assert payload == {
@@ -219,33 +262,6 @@ def test_log_event_does_not_allow_context_fields_to_be_overridden():
     assert payload["url"] == "/chat"
     assert payload["action"] == "chat_reset"
     assert payload["record_type"] == "event"
-
-
-def test_log_request_writes_structured_request():
-    request = make_request(
-        path="/opportunities/example-job",
-    )
-
-    with patch("naswa_matcher.app_logging.logger.info") as log_info:
-        log_request(
-            request,
-            action="pageview",
-            status_code=200,
-            duration_ms=18.437,
-        )
-
-    payload = log_info.call_args.kwargs["extra"]["structured"]
-
-    assert payload == {
-        "record_type": "request",
-        "request_id": "request-123",
-        "visitor_id": "visitor-456",
-        "method": "GET",
-        "url": "/opportunities/example-job",
-        "action": "pageview",
-        "status_code": 200,
-        "duration_ms": 18.4,
-    }
 
 
 def test_log_exception_includes_request_context():

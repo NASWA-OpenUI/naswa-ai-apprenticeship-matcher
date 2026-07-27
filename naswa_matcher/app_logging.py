@@ -8,6 +8,22 @@ from fastapi import Request
 logger = logging.getLogger("naswa")
 
 
+def describe_exception(exc: Exception) -> str:
+    """Return a compact exception description for logs and local/demo UI errors."""
+    response = getattr(exc, "response", None)
+
+    if isinstance(response, dict):
+        error = response.get("Error", {})
+        code = error.get("Code", exc.__class__.__name__)
+        message = error.get("Message", str(exc))
+        return f"{code}: {message}"
+
+    return f"{exc.__class__.__name__}: {exc}"
+
+
+# ── Identity and timestamp helpers ────────────────────────────────────────────
+
+
 def visitor_id_from_session_id(session_id: str) -> str:
     """Return a stable, non-reversible logging ID for a browser session."""
     return hashlib.sha256(session_id.encode("utf-8")).hexdigest()
@@ -16,6 +32,9 @@ def visitor_id_from_session_id(session_id: str) -> str:
 def utc_timestamp() -> str:
     """Return the current UTC time as an ISO 8601 timestamp."""
     return datetime.now(UTC).isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+
+# ── JSON formatting ───────────────────────────────────────────────────────────
 
 
 class JsonFormatter(logging.Formatter):
@@ -50,6 +69,9 @@ class JsonFormatter(logging.Formatter):
         )
 
 
+# ── Logging configuration ─────────────────────────────────────────────────────
+
+
 def configure_logging(
     *,
     root_level: str,
@@ -75,6 +97,9 @@ def configure_logging(
     return logging.getLogger("naswa")
 
 
+# ── Request context helpers ───────────────────────────────────────────────────
+
+
 def request_url(request: Request) -> str:
     """Return the request path with its original query string."""
     path = request.url.path
@@ -84,13 +109,35 @@ def request_url(request: Request) -> str:
 
 
 def _request_fields(request: Request) -> dict:
-    """Return structured fields shared by request and event logs."""
+    """Return structured fields shared by request-associated logs."""
     return {
         "request_id": request.state.request_id,
         "visitor_id": request.state.visitor_id,
         "method": request.method,
         "url": request_url(request),
     }
+
+
+# ── Structured log helpers ────────────────────────────────────────────────────
+
+
+def log_request(
+    request: Request,
+    *,
+    action: str,
+    status_code: int,
+    duration_ms: float,
+) -> None:
+    """Write a structured record for a completed HTTP request."""
+    payload = {
+        "record_type": "request",
+        **_request_fields(request),
+        "action": action,
+        "status_code": status_code,
+        "duration_ms": round(duration_ms, 1),
+    }
+
+    logger.info("", extra={"structured": payload})
 
 
 def log_event(
@@ -126,22 +173,3 @@ def log_exception(
     }
 
     logger.exception("", extra={"structured": payload})
-
-
-def log_request(
-    request: Request,
-    *,
-    action: str,
-    status_code: int,
-    duration_ms: float,
-) -> None:
-    """Write a structured record for a completed HTTP request."""
-    payload = {
-        "record_type": "request",
-        **_request_fields(request),
-        "action": action,
-        "status_code": status_code,
-        "duration_ms": round(duration_ms, 1),
-    }
-
-    logger.info("", extra={"structured": payload})
