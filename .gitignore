@@ -11,3 +11,5 @@ infra/COMMANDS.md
 infra/current/*
 infra/diagrams/*
 infra/scripts/*
+naswa_logs/*.csv
+naswa_logs/**/*.csv
