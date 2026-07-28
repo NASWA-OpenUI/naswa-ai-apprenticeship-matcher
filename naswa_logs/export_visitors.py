@@ -146,7 +146,7 @@ def friendly_details(event: dict) -> str:
         if elapsed_ms not in (None, ""):
             try:
                 parts.append(f"{float(elapsed_ms) / 1000:.1f} seconds")
-            except (TypeError, ValueError):
+            except TypeError, ValueError:
                 parts.append(f"{clean_text(elapsed_ms)} ms")
 
         if "cached" in event:
@@ -154,8 +154,7 @@ def friendly_details(event: dict) -> str:
 
         if "had_batch_error" in event:
             parts.append(
-                "batch error: "
-                f"{yes_no(bool(event.get('had_batch_error'))).lower()}"
+                "batch error: " f"{yes_no(bool(event.get('had_batch_error'))).lower()}"
             )
 
         return " | ".join(parts)
@@ -395,10 +394,7 @@ def main() -> None:
     print(f"Qualifying journeys: {included_journeys}")
     print(f"Visitor events included: {included_events}")
     print(f"Earlier generated visitor files removed: {stale_removed}")
-    print(
-        "Rows skipped without visitor_id: "
-        f"{stats.get('without_visitor_id', 0)}"
-    )
+    print("Rows skipped without visitor_id: " f"{stats.get('without_visitor_id', 0)}")
     print(f"Invalid JSON rows skipped: {stats.get('invalid_json', 0)}")
     print(
         "Rows skipped without a usable timestamp: "

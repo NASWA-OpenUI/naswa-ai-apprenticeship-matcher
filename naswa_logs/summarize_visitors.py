@@ -114,7 +114,7 @@ def parse_json_message(raw: str) -> dict | None:
     """Parse a JSON log object, tolerating literal control characters."""
     try:
         parsed = json.loads(raw, strict=False)
-    except (json.JSONDecodeError, TypeError):
+    except json.JSONDecodeError, TypeError:
         return None
 
     return parsed if isinstance(parsed, dict) else None
@@ -146,7 +146,7 @@ def parse_datetime(value: object) -> datetime | None:
 
     try:
         return datetime.fromtimestamp(numeric, tz=UTC)
-    except (OverflowError, OSError, ValueError):
+    except OverflowError, OSError, ValueError:
         return None
 
 
@@ -164,9 +164,7 @@ def url_parts(url: str) -> tuple[str, dict[str, list[str]]]:
 
 def joined_query(query: dict[str, list[str]], key: str) -> str:
     return "; ".join(
-        clean_text(unquote_plus(value))
-        for value in query.get(key, [])
-        if value
+        clean_text(unquote_plus(value)) for value in query.get(key, []) if value
     )
 
 
@@ -302,14 +300,9 @@ def load_events(
 
 
 def combine_stats(stats_items: list[dict[str, int]]) -> dict[str, int]:
-    keys = {
-        key
-        for stats in stats_items
-        for key in stats
-    }
+    keys = {key for stats in stats_items for key in stats}
     return {
-        key: sum(stats.get(key, 0) for stats in stats_items)
-        for key in sorted(keys)
+        key: sum(stats.get(key, 0) for stats in stats_items) for key in sorted(keys)
     }
 
 
@@ -343,14 +336,10 @@ def qualifying_journeys(
     selected: dict[str, list[list[dict]]] = {}
 
     for visitor_id, visitor_events in grouped_events.items():
-        visitor_events.sort(
-            key=lambda event: (event["_dt"], event["_source_sort"])
-        )
+        visitor_events.sort(key=lambda event: (event["_dt"], event["_source_sort"]))
         journeys = split_journeys(visitor_events)
         matching = [
-            journey
-            for journey in journeys
-            if journey[0]["_dt"].date() == target_date
+            journey for journey in journeys if journey[0]["_dt"].date() == target_date
         ]
         if matching:
             selected[visitor_id] = matching
@@ -458,22 +447,17 @@ def build_summary_rows(
                     event.get("action") == "pageview" for event in events
                 ),
                 "user_messages": sum(
-                    event.get("action") == "user_message_sent"
-                    for event in events
+                    event.get("action") == "user_message_sent" for event in events
                 ),
                 "assistant_messages": sum(
                     event.get("action") == "assistant_message_received"
                     for event in events
                 ),
                 "profile_confirmed": yes_no(
-                    any(
-                        event.get("action") == "profile_confirmed"
-                        for event in events
-                    )
+                    any(event.get("action") == "profile_confirmed" for event in events)
                 ),
                 "rankings_completed": sum(
-                    event.get("action") == "ranking_completed"
-                    for event in events
+                    event.get("action") == "ranking_completed" for event in events
                 ),
                 "opportunities_viewed": count_opportunity_views(events),
                 "latest_likes": profile["likes"],
@@ -581,9 +565,7 @@ def main() -> None:
             all_events.extend(events)
             all_stats.append(stats)
 
-        all_events.sort(
-            key=lambda event: (event["_dt"], event["_source_sort"])
-        )
+        all_events.sort(key=lambda event: (event["_dt"], event["_source_sort"]))
         selected = qualifying_journeys(all_events, target_date=target_date)
         summary_rows = build_summary_rows(selected)
 
@@ -596,9 +578,7 @@ def main() -> None:
     stats = combine_stats(all_stats)
     included_journeys = sum(len(journeys) for journeys in selected.values())
     included_events = sum(
-        len(journey)
-        for journeys in selected.values()
-        for journey in journeys
+        len(journey) for journeys in selected.values() for journey in journeys
     )
 
     print(f"Target UTC date: {target_date.isoformat()}")
@@ -615,10 +595,7 @@ def main() -> None:
     print(f"Visitors summarized: {len(summary_rows)}")
     print(f"Qualifying journeys: {included_journeys}")
     print(f"Visitor events included: {included_events}")
-    print(
-        "Rows skipped without visitor_id: "
-        f"{stats.get('without_visitor_id', 0)}"
-    )
+    print("Rows skipped without visitor_id: " f"{stats.get('without_visitor_id', 0)}")
     print(f"Invalid JSON rows skipped: {stats.get('invalid_json', 0)}")
     print(
         "Rows skipped without a usable timestamp: "
