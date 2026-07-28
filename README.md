@@ -1,6 +1,6 @@
 # NASWA AI Apprenticeship Matcher
 
-A prototype web application for exploring apprenticeship opportunities and matching users to relevant jobs based on a short guided conversation. This project is funded with support from the GitLab Foundation and built in partnership between the National Association of State Workforce Agencies and the New York State Department of Labor. This tool is currently running on a limited dataset and should not be used to make career or other life decisions. If you have questions or suggestions for improvement, please email ajohnson@naswa.org or p.craig@bloomworks.digital. 
+A prototype web application for exploring apprenticeship opportunities and matching users to relevant jobs based on a short guided conversation. This project is funded with support from the GitLab Foundation and built in partnership between the National Association of State Workforce Agencies and the New York State Department of Labor. This tool is currently running on a limited dataset and should not be used to make career or other life decisions. If you have questions or suggestions for improvement, please email [ajohnson@naswa.org](mailto:ajohnson@naswa.org) or [p.craig@bloomworks.digital](mailto:p.craig@bloomworks.digital).
 
 The app uses AWS Strands and Bedrock to collect a simple user profile, then rank apprenticeship opportunities against that profile.
 
@@ -8,14 +8,15 @@ The app uses AWS Strands and Bedrock to collect a simple user profile, then rank
 
 * Shows a landing page at `/`
 * Runs a guided chat flow at `/chat` that asks about the user’s interests, location, and transportation
-* Extracts a simple profile with name, likes, dislikes, location, transportation, and confirmation status
+* Builds an editable profile with name, likes, dislikes, location, and transportation
 * Lists apprenticeship opportunities at `/opportunities`
 * Shows individual opportunity detail pages at `/opportunities/{slug}`
 * Displays O*NET and OES enrichment data when available
-* Ranks O*NET-backed opportunities as `Strong`, `Moderate`, or `Weak` matches
+* Streams ranked opportunities as `Strong`, `Moderate`, or `Weak` matches
+* Filters ranked results by match strength, region, and driver’s licence requirement
 * Uses NYS Design System styles and app-specific CSS for the prototype UI
 
-Session handling is currently lightweight and in-memory.
+Browser sessions and completed ranking results are stored in memory.
 
 ## Tech stack
 
@@ -28,21 +29,21 @@ Session handling is currently lightweight and in-memory.
 * AWS Bedrock
 * NYS Design System
 * `uv` for dependency management
-* `pytest` for route tests
-* `black` for Python formatting
-* `isort` for import sorting
+* `pytest` for automated tests
+* `black` and `isort` for formatting
 
 ## Repository layout
 
 ```text
 .
-├── data/                 # Apprenticeship opportunity JSON files and generated SQLite DB
-├── infra/                # AWS ECS Express Mode deployment notes and IAM policy files
+├── data/                 # Opportunity and location source data plus generated SQLite DB
+├── infra/                # AWS ECS Express Mode deployment notes, policies, and scripts
+├── naswa_logs/           # Local scripts for exporting and summarizing server logs
+├── naswa_matcher/        # Application helpers, models, ranking, sessions, and logging
 ├── static/               # App CSS, images, and favicon
 ├── templates/            # Jinja2 pages and partials
-├── tests/                # Route tests and fixtures
-├── db.py                 # Loads and queries opportunity data
-├── server.py             # FastAPI app, routes, chat flow, and ranking logic
+├── tests/                # Automated tests and fixtures
+├── server.py             # FastAPI app, routes, chat flow, and ranking orchestration
 ├── Dockerfile            # Container build for deployment
 ├── pyproject.toml        # Python dependencies and tool config
 └── README.md
@@ -50,15 +51,21 @@ Session handling is currently lightweight and in-memory.
 
 ## Data loading
 
-On startup, the app reads every `*.json` file in `data/` and loads it into:
+On startup, the app reads opportunity JSON files from:
+
+```text
+data/opportunities/
+```
+
+It also reads the location reference CSVs under `data/locations/`. The data is loaded into the generated database:
 
 ```text
 data/_database.db
 ```
 
-Each JSON file represents one apprenticeship opportunity. The app expects a top-level `id`, a `posting` object, and optional enrichment objects such as `oes` and `onet`.
+Each opportunity file expects a top-level `id`, a `posting` object, and optional enrichment objects such as `jobDescription`, `oes`, and `onet`.
 
-To add or update opportunity data, add JSON files to `data/` and restart the server.
+To refresh the data, replace the source files and restart the server so the database is rebuilt.
 
 ## Setup
 
@@ -110,12 +117,13 @@ http://localhost:8000
 
 ```text
 /                         Landing page
-/chat                     Guided chat flow
-/health                   Health check
+/ai-disclosure            AI disclosure page
+/chat                     Guided chat and profile editing
 /chat/stream              Server-Sent Events stream for chat responses
-/opportunities            All apprenticeship opportunities
+/opportunities            Opportunity listing and ranked results
 /opportunities/{slug}     Detail page for one opportunity
-/api/rank-opportunities   HTMX endpoint for ranked opportunity results
+/api/rank-opportunities   Server-Sent Events stream for opportunity ranking
+/health                   Health check
 ```
 
 ## Development commands
