@@ -1,6 +1,6 @@
 # Opportunity data
 
-This folder contains the merged apprenticeship opportunity JSON files used by the NASWA AI Apprenticeship Matcher.
+This folder contains the merged apprenticeship opportunity JSON files used by the NASWA AI Registered Apprenticeship Finder.
 
 Each `*.json` file represents one apprenticeship opportunity. These files are loaded into the generated SQLite database at startup:
 

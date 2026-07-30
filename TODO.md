@@ -24,7 +24,7 @@
 - Theme-coloured links
 - Mobile
   - Beta: text should not be under beta banner
-  - Apprenticeship Matcher, line height is too big
+  - Registered Apprenticeship Finder, line height is too big
   - Lower gap spacing between chat messages
   - Reduced horizontal padding for profile panel
   - "Matched to your interests": put tags on their own line

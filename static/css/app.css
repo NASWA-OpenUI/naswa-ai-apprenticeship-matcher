@@ -1,5 +1,5 @@
 /* ============================================================================
-   app.css — Apprenticeship Matcher
+   app.css — Registered Apprenticeship Finder
    ----------------------------------------------------------------------------
    Layered on top of the NYSDS "full" stylesheet (nysds-full.min.css), which
    provides the reset, base typography, design tokens, and utility classes.
@@ -246,6 +246,92 @@ ol#chat-log ol {
   }
 }
 
+
+/* ── Buttons (app-owned; styled with theme tokens) ───────────────────────────
+   Named .btn rather than .nys-btn so we don't shadow any class the design
+   system itself may ship; the official equivalent is the <nys-button> web
+   component, which you can adopt later without touching these rules. */
+.btn {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--app-radius-lg);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1.5px solid transparent;
+  transition:
+    background 0.12s,
+    border-color 0.12s,
+    color 0.12s;
+}
+
+.btn--filled {
+  background: var(--nys-color-theme, #084b52);
+  color: var(--app-text-on-theme);
+}
+
+.btn--filled:hover {
+  background: var(--nys-color-theme-strong, #06393f);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--nys-color-theme, #084b52);
+  border-color: var(--nys-color-theme, #084b52);
+}
+
+.btn--outline:hover {
+  background: var(--nys-color-theme-faint, #eef5f5);
+}
+
+.btn--accent {
+  background: var(--app-accent);
+  color: var(--app-ink);
+  border-color: var(--app-accent);
+}
+
+.btn--accent:hover,
+.btn--accent:focus,
+a.btn--accent:hover,
+a.btn--accent:focus {
+  background: color-mix(in srgb, var(--app-accent), #000 10%);
+  border-color: color-mix(in srgb, var(--app-accent), #000 10%);
+  color: var(--app-ink);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn--jumbo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 1rem 2.15rem;
+  border-radius: var(--app-radius-lg);
+  box-shadow: 0 10px 24px -8px rgba(16, 24, 40, 0.4), 0 2px 4px rgba(16, 24, 40, 0.12);
+  transition: background 0.12s, transform 0.12s, box-shadow 0.12s;
+}
+
+.btn--jumbo:hover,
+.btn--jumbo:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -8px rgba(16, 24, 40, 0.45);
+}
+
+.btn--jumbo .j-arrow {
+  transition: transform 0.15s;
+}
+
+.btn--jumbo:hover .j-arrow,
+.btn--jumbo:focus-visible .j-arrow {
+  transform: translateX(3px);
+}
+
 /* ── Shared form control ────────────────────────────────────────────────── */
 
 #user-input,
@@ -489,6 +575,7 @@ main {
 }
 
 /* ── Landing page ───────────────────────────────────────────────────────── */
+
 body:has(.landing-page) {
   background: var(--app-surface);
 }
@@ -509,6 +596,12 @@ body:has(.landing-page) .site-footer {
   margin: 0;
 }
 
+/* ── Hero ────────────────────────────────────────────────────────────────── */
+
+.landing-section {
+  padding: 2.5rem 0;
+}
+
 .landing-hero {
   background: var(--nys-color-theme, #084b52);
   color: var(--app-text-on-theme);
@@ -516,16 +609,9 @@ body:has(.landing-page) .site-footer {
   background-image: radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.06), transparent 55%);
 }
 
-.landing-hero__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: 3rem;
-  align-items: center;
-}
-
-.landing-hero .chip {
-  padding: 0.3rem 0.7rem;
-  margin-bottom: 1rem;
+.landing-hero--centered {
+  text-align: center;
+  padding-bottom: 2.75rem;
 }
 
 .landing-hero h1 {
@@ -538,26 +624,82 @@ body:has(.landing-page) .site-footer {
   color: var(--app-text-on-theme);
 }
 
-.landing-hero__subhead {
-  margin: 1.1rem 0 0;
-  font-size: 1.12rem;
-  color: var(--nys-color-theme-weaker, #d7e8e9);
-  max-width: 34ch;
+.landing-hero--centered h1 {
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-hero__eyebrow {
+  display: block;
+  margin: 2rem 0 1.15rem;
+  color: var(--app-accent, #face00);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.landing-hero-steps {
+  list-style: none;
+  margin: 1.9rem 150px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 0;
+  row-gap: 1.25rem;
+  position: relative;
+}
+
+.landing-hero-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.landing-hero-step__num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--app-surface, #ffffff);
+  color: var(--nys-color-theme, #084b52);
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.14);
+}
+
+.landing-hero-step__label {
+  color: var(--app-text-on-theme, #ffffff);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.3;
 }
 
 .landing-reassure {
   list-style: none;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  gap: 0.4rem 1rem;
-  font-size: 0.9rem;
-  color: var(--nys-color-theme-weaker, #d7e8e9);
+  margin: 1.9rem 0 0;
+  padding: .4rem 1rem .5rem 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--app-text-on-theme, #ffffff);
 }
 
 .landing-reassure li {
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.3rem;
+  margin: 0;
 }
 
 .landing-reassure span {
@@ -565,120 +707,48 @@ body:has(.landing-page) .site-footer {
   font-weight: 800;
 }
 
-.landing-paths {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.landing-path-card {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  border-radius: var(--app-radius-lg);
-  padding: 1.3rem 1.4rem;
-  transition:
-    transform 0.12s,
-    box-shadow 0.12s,
-}
-
-.landing-path-card:hover,
-.landing-path-card:focus {
-  transform: translateY(-2px);
-  box-shadow: var(--app-shadow-md);
-  text-decoration: none;
-}
-
-.landing-path-card__body {
-  flex: 1;
-  min-width: 0;
-}
-
-.landing-path-card__kicker {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin: 0 0 0.15rem;
-}
-
-.landing-path-card__title {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin: 0;
-}
-
-.landing-path-card__desc {
-  font-size: 0.92rem;
-  margin: 0.3rem 0 0;
-  line-height: 1.4;
-}
-
-.landing-path-card__arrow {
-  flex-shrink: 0;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.landing-path-card--primary {
-  border-color: var(--app-surface);
-}
-
-.landing-path-card--primary .landing-path-card__kicker {
-  color: var(--nys-color-theme-mid, #3f8186);
-}
-
-.landing-path-card--primary .landing-path-card__title {
-  color: var(--nys-color-theme-stronger, #042a2e);
-}
-
-.landing-path-card--primary .landing-path-card__desc {
-  color: var(--app-text-weak);
-}
-
-.landing-path-card--primary .landing-path-card__arrow {
-  background: var(--app-accent);
-  color: var(--app-ink);
-}
-
-.landing-path-card--secondary {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.landing-path-card--secondary .landing-path-card__kicker {
-  color: var(--nys-color-theme-weak, #a8cccd);
-}
-
-.landing-path-card--secondary .landing-path-card__title {
-  color: var(--app-text-on-theme);
-}
-
-.landing-path-card--secondary .landing-path-card__desc {
-  color: var(--nys-color-theme-weaker, #d7e8e9);
-}
-
-.landing-path-card--secondary .landing-path-card__arrow {
-  background: rgba(255, 255, 255, 0.16);
-  color: var(--app-text-on-theme);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.landing-section {
-  padding: 2.5rem 0;
-}
-
-.landing-section__title {
+.landing-start-cta {
   text-align: center;
+  padding-top: 2.5rem;
+  padding-bottom: 1.25rem;
+}
+
+a.btn--jumbo:hover,
+a.btn--jumbo:focus {
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .btn--jumbo,
+  .btn--jumbo .j-arrow {
+    transition: none;
+  }
+
+  .btn--jumbo:hover,
+  .btn--jumbo:focus-visible {
+    transform: none;
+  }
+}
+
+.landing-intro {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.landing-intro__title {
+  margin: 0 0 1rem;
   font-size: 1.9rem;
   font-weight: 800;
-  color: var(--app-ink);
-  margin: 0 0 2rem;
+  color: var(--nys-color-theme, #084b52);
+}
+
+.landing-intro__lede {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: var(--app-text-weak, #4a4f54);
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 
 .landing-card-grid {
@@ -687,49 +757,24 @@ body:has(.landing-page) .site-footer {
   gap: 1.25rem;
 }
 
-.landing-card-grid--loose {
-  gap: 2rem;
-}
-
-.landing-step {
-  text-align: center;
-}
-
-.landing-step__num {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--nys-color-theme, #084b52);
-  color: var(--app-text-on-theme);
-  font-size: 1.2rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 0.8rem;
-}
-
-.landing-step h3,
-.landing-benefit-card h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--app-ink);
-}
-
-.landing-step p,
-.landing-benefit-card p {
-  margin: 0;
-  color: var(--app-text-weak);
-  font-size: 0.9rem;
-}
-
-.landing-step p {
-  text-wrap: balance;
-}
-
 .landing-benefits {
   background: var(--app-surface-muted);
+}
+
+.landing-benefits__title {
+  text-align: center;
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--nys-color-theme, #084b52);
+}
+
+.landing-benefits__rule {
+  width: 52px;
+  height: 3px;
+  margin: 0 auto 2rem;
+  background: var(--app-accent, #face00);
+  border-radius: 2px;
 }
 
 .landing-benefit-card {
@@ -737,10 +782,24 @@ body:has(.landing-page) .site-footer {
   border-radius: var(--nys-radius-xl);
 }
 
+.landing-benefit-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--app-ink);
+}
+
+.landing-benefit-card p {
+  margin: 0;
+  color: var(--app-text-weak);
+  font-size: 0.9rem;
+}
+
 .landing-benefit-card__icon {
   width: 46px;
   height: 46px;
-  border-radius: var(--app-radius-md);
+  border-radius: 50%;
+  /* was --app-radius-md; now a circle (Concept C) */
   background: var(--nys-color-theme-faint, #eef5f5);
   color: var(--nys-color-theme, #084b52);
   display: flex;
@@ -754,32 +813,46 @@ body:has(.landing-page) .site-footer {
   height: 26px;
 }
 
-.landing-quote {
-  text-align: center;
+.landing-learn-more {
+  position: relative;
+  min-height: clamp(150px, 25vw, 220px);
+  display: flex;
+  align-items: center;
+  background-color: var(--nys-color-theme-stronger, #042a2e);
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.landing-quote__mark {
-  font-size: 3rem;
-  line-height: 0.5;
-  color: var(--app-accent);
-  font-weight: 800;
+.landing-learn-more::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
 }
 
-.landing-quote blockquote {
-  margin: 0.5rem auto 0;
-  max-width: 24ch;
-  font-size: 1.65rem;
-  font-weight: 800;
-  color: var(--app-ink);
-  line-height: 1.25;
+.landing-learn-more .container {
+  position: relative;
+  z-index: 1;
 }
 
-.landing-quote cite {
-  display: block;
-  margin-top: 1rem;
-  font-style: normal;
-  color: var(--app-text-weak);
-  font-size: 0.95rem;
+.landing-learn-more__overlay {
+  max-width: 26rem;
+  margin: 1.25rem 0;
+  padding: 1.1rem 1.35rem;
+  background: color-mix(in srgb, var(--nys-color-theme, #084b52) 92%, transparent);
+  color: var(--app-text-on-theme, #ffffff);
+  border-radius: var(--app-radius-md, 6px);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.landing-learn-more__overlay a {
+  color: var(--app-text-on-theme, #ffffff);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .landing-final-cta {
@@ -841,34 +914,39 @@ body:has(.landing-page) .site-footer {
   color: var(--app-ink);
 }
 
-@media (max-width: 1020px) {
-  .landing-hero__inner {
-    grid-template-columns: minmax(0, 1fr) 400px;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 880px) {
-  .landing-hero__inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+@media (max-width: 900px) and (min-width: 761px) {
+  .landing-hero-steps {
+    margin: 1.9rem 0 0;
   }
 
-  .landing-hero h1 {
-    max-width: 14ch;
+  .landing-benefit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 640px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 760px) {
+  .landing-hero-steps {
+    margin: 1.9rem 50px 0;
+  }
+
   .landing-card-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
     max-width: 330px;
     margin: 0 auto;
   }
+
+  .landing-hero-steps::before {
+    display: none;
+  }
 }
 
 @media (max-width: 520px) {
+  .landing-hero-steps {
+    margin: 1.9rem 0 0;
+  }
 
   .landing-hero,
   .landing-section {
@@ -876,8 +954,8 @@ body:has(.landing-page) .site-footer {
     padding-right: 1rem;
   }
 
-  .landing-path-card {
-    padding: 1.1rem 1rem;
+  .landing-learn-more__overlay {
+    max-width: none;
   }
 }
 
@@ -1118,67 +1196,6 @@ body:has(.landing-page) .site-footer {
   .profile-card-actions>[data-profile-ranked-link] {
     margin-left: 0;
   }
-}
-
-/* ── Buttons (app-owned; styled with theme tokens) ───────────────────────────
-   Named .btn rather than .nys-btn so we don't shadow any class the design
-   system itself may ship; the official equivalent is the <nys-button> web
-   component, which you can adopt later without touching these rules. */
-.btn {
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 0.55rem 1.15rem;
-  border-radius: var(--app-radius-lg);
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border: 1.5px solid transparent;
-  transition:
-    background 0.12s,
-    border-color 0.12s,
-    color 0.12s;
-}
-
-.btn--filled {
-  background: var(--nys-color-theme, #084b52);
-  color: var(--app-text-on-theme);
-}
-
-.btn--filled:hover {
-  background: var(--nys-color-theme-strong, #06393f);
-}
-
-.btn--outline {
-  background: transparent;
-  color: var(--nys-color-theme, #084b52);
-  border-color: var(--nys-color-theme, #084b52);
-}
-
-.btn--outline:hover {
-  background: var(--nys-color-theme-faint, #eef5f5);
-}
-
-.btn--accent {
-  background: var(--app-accent);
-  color: var(--app-ink);
-  border-color: var(--app-accent);
-}
-
-.btn--accent:hover,
-.btn--accent:focus,
-a.btn--accent:hover,
-a.btn--accent:focus {
-  background: color-mix(in srgb, var(--app-accent), #000 10%);
-  border-color: color-mix(in srgb, var(--app-accent), #000 10%);
-  color: var(--app-ink);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: default;
 }
 
 /* ── Composer ────────────────────────────────────────────────────────────── */

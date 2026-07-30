@@ -1,6 +1,6 @@
 # Infrastructure README
 
-This folder contains notes and helper files for deploying the NASWA AI Apprenticeship Matcher to AWS using Amazon ECS Express Mode.
+This folder contains notes and helper files for deploying the NASWA AI Registered Apprenticeship Finder to AWS using Amazon ECS Express Mode.
 
 The current deployment flow is intentionally CLI-driven and lightweight. It supports two common workflows:
 

@@ -1,6 +1,6 @@
 # Location reference data
 
-This folder contains static New York State location reference CSVs used by the Apprenticeship Matcher.
+This folder contains static New York State location reference CSVs used by the Registered Apprenticeship Finder.
 
 The app loads these files into the local SQLite database on startup. They are not pulled live from data.ny.gov at runtime.
 

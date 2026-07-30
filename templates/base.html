@@ -10,7 +10,7 @@
   <meta name="github-sha" content="{{ github_sha }}">
   {%- endif %}
 
-  <title>{% block title %}Apprenticeship Matcher{% endblock %}</title>
+  <title>{% block title %}Registered Apprenticeship Finder{% endblock %}</title>
 
   {#
   NYS Design System — full stylesheet (reset + tokens + typography + utilities).
@@ -53,12 +53,12 @@ keeping it here too is harmless and explicit. #}
   <!-- Site header (light chrome; official component is <nys-globalheader>) -->
   <header class="site-header">
     <div class="container container-flex">
-      <a class="app-logo" href="/" aria-label="Apprenticeship Matcher homepage">
+      <a class="app-logo" href="/" aria-label="Registered Apprenticeship Finder homepage">
         <img src="/static/img/dol-black-short.png" alt="New York Department of Labor logo" />
       </a>
       <span class="app-name">
         <a href="/">
-          {% block app_name %}Apprenticeship Matcher{% endblock %}
+          {% block app_name %}Registered Apprenticeship Finder{% endblock %}
         </a>
       </span>
       <span class="chip chip--theme chip--phase-tag">
@@ -72,7 +72,7 @@ keeping it here too is harmless and explicit. #}
   {% block title_band %}
   <div class="title-band">
     <div class="container">
-      <h1 class="title-band-h">{% block page_heading %}Apprenticeship Matcher{% endblock %}</h1>
+      <h1 class="title-band-h">{% block page_heading %}Registered Apprenticeship Finder{% endblock %}</h1>
       {% block page_subhead %}{% endblock %}
     </div>
   </div>

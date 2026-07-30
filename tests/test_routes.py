@@ -32,7 +32,9 @@ def test_index_route_renders_index(client):
     response = client.get("/")
 
     assert response.status_code == 200
-    assert "Get matched with a career you’ll love" in response.text
+    assert (
+        "Find an apprenticeship that matches your skills and interests" in response.text
+    )
     assert 'href="/chat"' in response.text
     assert 'class="landing-page"' in response.text
 

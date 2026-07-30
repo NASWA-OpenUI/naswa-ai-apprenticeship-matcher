@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Apprenticeship Matcher{% endblock %}
+{% block title %}Registered Apprenticeship Finder{% endblock %}
 
 {# The landing page provides its own hero, so it does not use the generic title band. #}
 {% block title_band %}{% endblock %}
@@ -10,126 +10,161 @@
 
 {% block content %}
 <div class="landing-page">
-  <section class="landing-hero" aria-labelledby="landing-title">
+  {# ── Hero: centered headline, the three steps, and the checkmark highlights ── #}
+  <section class="landing-hero landing-hero--centered" aria-labelledby="landing-title">
     <div class="container">
-      <div class="landing-hero__inner">
-        <div class="landing-hero__copy">
-          <span class="chip chip--theme-alt">
-            <span class="chip__label">New York State Department of Labor</span>
-          </span>
-          <h1 id="landing-title">Get matched with a career you’ll love.</h1>
-          <p class="landing-hero__subhead">Tell us what you’re interested in and we’ll match you to registered
-            apprenticeships across New York State. No résumé required.</p>
-          <ul class="landing-reassure flex-center-wrap" aria-label="Service highlights">
-            <li><span aria-hidden="true">✓</span> Free</li>
-            <li><span aria-hidden="true">✓</span> Takes 5 minutes</li>
-            <li><span aria-hidden="true">✓</span> Works on any device</li>
-          </ul>
-        </div>
+      <h1 id="landing-title">Find an apprenticeship that matches your skills and interests.</h1>
 
-        <div class="landing-paths" aria-label="Start matching">
-          <a class="landing-path-card landing-path-card--primary surface surface--shadow" href="/chat">
-            <div class="landing-path-card__body">
-              <p class="landing-path-card__kicker">Start here</p>
-              <p class="landing-path-card__title">Explore apprenticeships</p>
-              <p class="landing-path-card__desc">Tell us what you like and see apprenticeship options that fit.</p>
-            </div>
-            <span class="landing-path-card__arrow" aria-hidden="true">→</span>
-          </a>
+      {# Optional eyebrow (came with Concept A). Delete this line + the
+      .landing-hero__eyebrow rule if you'd rather not label the steps. #}
+      <span class="landing-hero__eyebrow">How it works</span>
 
-          <a class="landing-path-card landing-path-card--secondary" href="/chat">
-            <div class="landing-path-card__body">
-              <p class="landing-path-card__kicker">Hiring now</p>
-              <p class="landing-path-card__title">Find a job</p>
-              <p class="landing-path-card__desc">Start with a short chat, then review apprenticeships currently
-                recruiting.</p>
-            </div>
-            <span class="landing-path-card__arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
+      <ol class="landing-hero-steps" aria-label="How it works">
+        <li class="landing-hero-step">
+          <span class="landing-hero-step__num" aria-hidden="true">1</span>
+          <span class="landing-hero-step__label">Tell us your skills and interests</span>
+        </li>
+        <li class="landing-hero-step">
+          <span class="landing-hero-step__num" aria-hidden="true">2</span>
+          <span class="landing-hero-step__label">See your matches</span>
+        </li>
+        <li class="landing-hero-step">
+          <span class="landing-hero-step__num" aria-hidden="true">3</span>
+          <span class="landing-hero-step__label">Take the next step</span>
+        </li>
+      </ol>
+
+      {# Was a plain <p class="landing-hero__tagline"> middot line — now gold checkmarks. #}
+      <ul class="landing-reassure chip chip--theme-alt" aria-label="Highlights">
+        <li><span aria-hidden="true">✓</span> Free</li>
+        <li><span aria-hidden="true">✓</span> Fast</li>
+        <li><span aria-hidden="true">✓</span> No account needed</li>
+        <li><span aria-hidden="true">✓</span> Works on any device</li>
+      </ul>
     </div>
   </section>
 
-  <section class="landing-section" aria-labelledby="how-it-works-title">
+  {# ── Single primary call to action ── #}
+  <section class="landing-section landing-start-cta">
     <div class="container">
-      <h2 class="landing-section__title" id="how-it-works-title">How it works</h2>
-      <div class="landing-card-grid landing-card-grid--loose landing-steps">
-        <div class="landing-step">
-          <div class="landing-step__num">1</div>
-          <h3>Tell us about you</h3>
-          <p>Chat about your interests, what you were good at in school, and what you’re looking for in a job.</p>
-        </div>
-        <div class="landing-step">
-          <div class="landing-step__num">2</div>
-          <h3>See your matches</h3>
-          <p>Get matched to a personalized list of registered apprenticeships that fit what you told us.</p>
-        </div>
-        <div class="landing-step">
-          <div class="landing-step__num">3</div>
-          <h3>Take the next step</h3>
-          <p>Review job descriptions, recruiting deadlines, and get directions on how to apply.</p>
-        </div>
-      </div>
+      <a class="btn btn--accent btn--jumbo" href="/chat">Start your journey <span class="j-arrow"
+          aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
-  <section class="landing-section landing-benefits" aria-label="Benefits of apprenticeship">
+  {# ── Intro: what a registered apprenticeship is ── #}
+  <section class="landing-section landing-intro" aria-labelledby="landing-intro-title">
     <div class="container">
+      <h2 class="landing-intro__title" id="landing-intro-title">Earn while you learn</h2>
+      <p class="landing-intro__lede">Registered apprenticeships are paid jobs that prepare you for
+        highly skilled roles. You get on-the-job training from experts while completing supplemental
+        coursework — building real skills and a career without the burden of student loans, while
+        employers gain a pipeline of qualified workers.</p>
+    </div>
+  </section>
+
+  {# ── Benefits: six reasons an apprenticeship is worth it ── #}
+  <section class="landing-section landing-benefits" aria-labelledby="landing-benefits-title">
+    <div class="container">
+      <h2 class="landing-benefits__title" id="landing-benefits-title">Why an apprenticeship?</h2>
+      <div class="landing-benefits__rule" aria-hidden="true"></div>
       <div class="landing-card-grid landing-benefit-grid">
         <article class="landing-benefit-card surface surface--shadow">
           <div class="landing-benefit-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" fill="none" focusable="false">
-              <path d="M24 4.7v36" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-              <path
-                d="M33 15.5c-.6-4.4-4.2-6.8-9.1-6.8-5.3 0-9 2.8-9 6.8 0 9.8 18.2 4.4 18.2 14 0 4.4-3.8 7.1-9.4 7.1-5.1 0-8.7-2.4-9.7-6.7"
-                stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+              <path d="M12 7v10M14.4 10.3a2.4 2 0 0 0 -4.8 0c0 2.4 4.8 1.3 4.8 3.5a2.4 2 0 0 1 -4.8 0"
+                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
             </svg>
           </div>
           <h3>Earn while you learn</h3>
-          <p>Get paid from day one with registered apprenticeships — learn real skills, no student debt.</p>
+          <p>Get paid for your work and training from day one.</p>
         </article>
 
         <article class="landing-benefit-card surface surface--shadow">
           <div class="landing-benefit-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" focusable="false">
-              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="2" />
-              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" />
+              <path d="M15 6.5a4 4 0 0 0-5.3 5.1L4 17.4V20h2.6l5.8-5.7A4 4 0 0 0 17.5 9l-2.4 2.4-2.5-2.5L15 6.5Z"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
             </svg>
           </div>
-          <h3>Real jobs near you</h3>
-          <p>Discover local employers looking for people like you, within driving distance of home.</p>
+          <h3>Gain valuable skills</h3>
+          <p>Develop in-demand skills directly from industry professionals.</p>
         </article>
 
         <article class="landing-benefit-card surface surface--shadow">
           <div class="landing-benefit-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" focusable="false">
-              <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              <circle cx="12" cy="9" r="5" stroke="currentColor" stroke-width="2" />
+              <path d="M9 13.2 8 21l4-2.2 4 2.2-1-7.8" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Get a credential</h3>
+          <p>Earn a nationally recognized credential when you complete the program.</p>
+        </article>
+
+        <article class="landing-benefit-card surface surface--shadow">
+          <div class="landing-benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <path d="M12 3l7 3v6c0 4.2-3 6.7-7 9-4-2.3-7-4.8-7-9V6l7-3Z" stroke="currentColor" stroke-width="2"
+                stroke-linejoin="round" />
+              <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
           </div>
-          <h3>No account needed</h3>
-          <p>No need to create an account to see jobs. A short conversation is all it takes to get started.</p>
+          <h3>Little to no student debt</h3>
+          <p>Avoid the loans that come with traditional higher education.</p>
+        </article>
+
+        <article class="landing-benefit-card surface surface--shadow">
+          <div class="landing-benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="2" />
+              <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7M3 12.5h18" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Real-world experience</h3>
+          <p>Gain practical experience that makes you a competitive candidate.</p>
+        </article>
+
+        <article class="landing-benefit-card surface surface--shadow">
+          <div class="landing-benefit-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" focusable="false">
+              <path d="M4 17l6-6 4 4 6-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M15 8h5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Career advancement</h3>
+          <p>Move into well-paying, in-demand roles with room to grow.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section class="landing-section" aria-labelledby="landing-quote-title">
-    <div class="container landing-quote">
-      <h2 class="visually-hidden" id="landing-quote-title">User quote</h2>
-      <div class="landing-quote__mark" aria-hidden="true">&ldquo;</div>
-      <blockquote>I didn’t know jobs like this existed 20 minutes from my house.</blockquote>
-      <cite>— Recent user, Niagara County</cite>
+  {# ── Learn more: image band with an overlay panel ──
+  Replace the background-image path below with a real, appropriately
+  licensed photo asset (served from your static directory). #}
+  <section class="landing-learn-more" aria-label="Registered Apprenticeship program"
+    style="background-image:url('/static/img/hero-apprenticeships.jpg');">
+    <div class="container">
+      <div class="landing-learn-more__overlay">
+        Learn more about the
+        <a href="https://dol.ny.gov/apprenticeship" target="_blank" rel="noopener">NYS Registered
+          Apprenticeship program</a>.
+      </div>
     </div>
   </section>
 
+  {# ── Final call to action ── #}
   <section class="landing-section landing-final-cta" aria-labelledby="landing-final-title">
     <div class="container">
       <h2 id="landing-final-title">Ready to start?</h2>
       <p>It takes less than five minutes. No strings attached.</p>
-      <div class="landing-final-cta__buttons flex-center-wrap ">
-        <a class="btn btn--accent" href="/chat">Explore apprenticeships →</a>
+      <div class="landing-final-cta__buttons flex-center-wrap">
+        <a class="btn btn--accent" href="/chat">Explore apprenticeships &rarr;</a>
         <a class="btn btn--outline" href="/chat">Find a job</a>
       </div>
     </div>
