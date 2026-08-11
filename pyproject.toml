@@ -19,6 +19,7 @@ dependencies = [
 dev = [
     "black",
     "httpx>=0.28.1",
+    "httpx2>=2,<3",
     "isort>=8.0.1",
     "pytest>=9.1.1",
 ]
