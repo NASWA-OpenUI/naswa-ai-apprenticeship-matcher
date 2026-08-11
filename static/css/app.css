@@ -228,6 +228,12 @@ ol#chat-log ol {
   text-decoration: underline;
 }
 
+@media (max-width: 520px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -733,7 +739,7 @@ a.btn--jumbo:focus {
 
 .landing-intro {
   text-align: center;
-  padding-bottom: 1rem;
+  padding-bottom: 2.5rem;
 }
 
 .landing-intro__title {
@@ -780,6 +786,7 @@ a.btn--jumbo:focus {
 .landing-benefit-card {
   padding: 1.5rem;
   border-radius: var(--nys-radius-xl);
+  border: 2px solid var(--nys-color-business-teal-50);
 }
 
 .landing-benefit-card h3 {
