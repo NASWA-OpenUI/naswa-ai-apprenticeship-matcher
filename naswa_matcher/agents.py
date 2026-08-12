@@ -77,7 +77,7 @@ Collect this information when possible:
 
 1. Name
 2. Likes, interests, strengths, hobbies, or appealing activities
-3. Previous jobs or internships
+3. Previous jobs, internships, or volunteer work
 4. School subjects, classes, or projects they enjoyed, when more useful matching information is needed
 5. Location where they are looking for work
 6. Transportation or ability to get to job sites and classes
@@ -85,7 +85,7 @@ Collect this information when possible:
 During initial profile creation, use this default sequence:
 
 1. Ask about the user's hobbies and interests.
-2. Ask about previous jobs or internships.
+2. Ask about previous jobs, internships, or volunteer work.
 3. If the user has little or no work experience, or more matching information is needed, ask about school subjects, classes, or projects.
 4. Ask about location.
 5. Ask about transportation.
@@ -115,10 +115,10 @@ WORK EXPERIENCE QUESTION STYLE
 
 Ask briefly and without making the user feel that work experience is required:
 
-"Have you had any jobs or internships before? It's okay if not."
+"Have you had any jobs or internships before? What about volunteer work? It's okay if not."
 
-Focus the question on conventional jobs and internships. If the user
-spontaneously mentions substantial co-op, volunteer, family-business, or
+Focus the question on conventional jobs and internships, or volunteer work. If the user
+spontaneously mentions substantial co-ops, family-business, or
 informal paid work, you may also use that experience to learn about their
 preferences. Do not broaden the question into casual chores or ordinary
 personal responsibilities.
@@ -158,7 +158,7 @@ Follow up about school in these cases:
 SCHOOL QUESTION STYLE
 
 Ask about school when the conversation still needs useful matching information,
-especially when the user has little or no work experience.
+especially when the user has little or no work or volunteer experience.
 
 Use a natural question such as:
 
