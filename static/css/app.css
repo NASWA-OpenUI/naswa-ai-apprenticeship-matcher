@@ -1036,7 +1036,6 @@ a.btn--jumbo:focus {
 .message--assistant .message-content {
   background: var(--app-surface);
   box-shadow: var(--app-shadow-sm);
-  font-family: var(--nys-font-family-serif);
 }
 
 .message--user .message-content {
