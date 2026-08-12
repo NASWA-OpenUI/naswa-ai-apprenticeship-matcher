@@ -532,6 +532,10 @@ a.btn--accent:focus {
   text-decoration: none;
 }
 
+.app-name a:hover {
+  text-decoration: underline;
+}
+
 .chip--phase-tag {
   margin-left: auto;
   color: var(--nys-color-theme);
