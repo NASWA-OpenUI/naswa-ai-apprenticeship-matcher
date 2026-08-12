@@ -1139,9 +1139,9 @@ a.btn--jumbo:focus {
 .profile-card dl {
   margin: 0 0 1.1rem;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 0.45rem 1.25rem;
-  align-items: baseline;
+  align-items: start;
 }
 
 .profile-card dt {
@@ -1154,6 +1154,7 @@ a.btn--jumbo:focus {
 
 .profile-card dd {
   margin: 0;
+  min-width: 0;
   font-size: 0.97rem;
 }
 
@@ -1205,6 +1206,17 @@ a.btn--jumbo:focus {
 
   .profile-card-actions>[data-profile-ranked-link] {
     margin-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .profile-card dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+
+  .profile-card dt:not(:first-child) {
+    margin-top: 0.75rem;
   }
 }
 
