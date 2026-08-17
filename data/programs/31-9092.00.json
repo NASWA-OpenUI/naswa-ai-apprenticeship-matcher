@@ -1,0 +1,1164 @@
+{
+  "socCode": "31-9092.00",
+  "socTitle": "Medical Assistants",
+  "programCount": 3,
+  "regions": [
+    "Hudson Valley",
+    "Mohawk Valley",
+    "New York City"
+  ],
+  "onet": {
+    "socCode": "31-9092.00",
+    "onetSocCode": "31-9092.00",
+    "title": "Medical Assistants",
+    "description": "Perform administrative and certain clinical duties under the direction of a physician. Administrative duties may include scheduling appointments, maintaining medical records, billing, and coding information for insurance purposes. Clinical duties may include taking and recording vital signs and medical histories, preparing patients for examination, drawing blood, and administering medications as directed by physician.",
+    "fetchedAt": "2026-08-15T02:03:55.145333+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/31-9092.00"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/details/tasks",
+      "data": {
+        "start": 11,
+        "end": 20,
+        "total": 20,
+        "task": [
+          {
+            "id": "2024",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2024",
+            "title": "Interview patients to obtain medical information and measure their vital signs, weight, and height.",
+            "importance": 94,
+            "category": "Core"
+          },
+          {
+            "id": "2033",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2033",
+            "title": "Clean and sterilize instruments and dispose of contaminated supplies.",
+            "importance": 94,
+            "category": "Core"
+          },
+          {
+            "id": "2026",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2026",
+            "title": "Record patients' medical history, vital statistics, or information such as test results in medical records.",
+            "importance": 93,
+            "category": "Core"
+          },
+          {
+            "id": "2029",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2029",
+            "title": "Explain treatment procedures, medications, diets, or physicians' instructions to patients.",
+            "importance": 93,
+            "category": "Core"
+          },
+          {
+            "id": "2032",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2032",
+            "title": "Prepare treatment rooms for patient examinations, keeping the rooms neat and clean.",
+            "importance": 92,
+            "category": "Core"
+          },
+          {
+            "id": "2028",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2028",
+            "title": "Collect blood, tissue, or other laboratory specimens, log the specimens, and prepare them for testing.",
+            "importance": 92,
+            "category": "Core"
+          },
+          {
+            "id": "2025",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2025",
+            "title": "Show patients to examination rooms and prepare them for the physician.",
+            "importance": 91,
+            "category": "Core"
+          },
+          {
+            "id": "2030",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2030",
+            "title": "Help physicians examine and treat patients, handing them instruments or materials or performing such tasks as giving injections or removing sutures.",
+            "importance": 91,
+            "category": "Core"
+          },
+          {
+            "id": "2040",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2040",
+            "title": "Perform routine laboratory tests and sample analyses.",
+            "importance": 90,
+            "category": "Core"
+          },
+          {
+            "id": "2036",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2036",
+            "title": "Greet and log in patients arriving at office or clinic.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "2038",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2038",
+            "title": "Perform general office duties, such as answering telephones, taking dictation, or completing insurance forms.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "2027",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2027",
+            "title": "Prepare and administer medications as directed by a physician.",
+            "importance": 87,
+            "category": "Core"
+          },
+          {
+            "id": "2031",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2031",
+            "title": "Authorize drug refills and provide prescription information to pharmacies.",
+            "importance": 86,
+            "category": "Core"
+          },
+          {
+            "id": "2035",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2035",
+            "title": "Change dressings on wounds.",
+            "importance": 84,
+            "category": "Core"
+          },
+          {
+            "id": "2034",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2034",
+            "title": "Schedule appointments for patients.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "2039",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2039",
+            "title": "Inventory and order medical, lab, or office supplies or equipment.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "2037",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2037",
+            "title": "Contact medical facilities or departments to schedule patients for tests or admission.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "2043",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2043",
+            "title": "Operate x-ray, electrocardiogram (EKG), or other equipment to administer routine diagnostic tests.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "2041",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2041",
+            "title": "Set up medical laboratory equipment.",
+            "importance": 69,
+            "category": "Core"
+          },
+          {
+            "id": "2042",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/tasks/2042",
+            "title": "Keep financial records or perform other bookkeeping duties, such as handling credit or collections or mailing monthly statements to patients.",
+            "importance": 64,
+            "category": "Supplemental"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/details/detailed_work_activities",
+      "data": {
+        "start": 21,
+        "end": 25,
+        "total": 25,
+        "activity": [
+          {
+            "id": "4.A.2.a.1.f.1",
+            "title": "Assess physical conditions of patients to aid in diagnosis or treatment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.2.a.1.f.1"
+          },
+          {
+            "id": "4.A.3.a.1.i.2",
+            "title": "Clean medical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.1.i.2"
+          },
+          {
+            "id": "4.A.3.a.1.e.1",
+            "title": "Dispose of biomedical waste in accordance with standards.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.1.e.1"
+          },
+          {
+            "id": "4.A.1.a.1.w.6",
+            "title": "Interview patients to gather medical information.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.1.a.1.w.6"
+          },
+          {
+            "id": "4.A.3.b.6.k.3",
+            "title": "Record vital statistics or other health information.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.b.6.k.3"
+          },
+          {
+            "id": "4.A.4.a.1.e.4",
+            "title": "Explain technical medical information to patients.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.1.e.4"
+          },
+          {
+            "id": "4.A.3.a.1.c.7",
+            "title": "Clean patient rooms or patient treatment rooms.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.1.c.7"
+          },
+          {
+            "id": "4.A.3.a.2.al.1",
+            "title": "Collect biological specimens from patients.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.2.al.1"
+          },
+          {
+            "id": "4.A.3.a.2.k.3",
+            "title": "Prepare patient treatment areas for use.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.2.k.3"
+          },
+          {
+            "id": "4.A.4.a.5.c.1",
+            "title": "Give medications or immunizations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.c.1"
+          },
+          {
+            "id": "4.A.4.a.5.c.2",
+            "title": "Administer basic health care or medical treatments.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.c.2"
+          },
+          {
+            "id": "4.A.4.a.5.k.1",
+            "title": "Assist practitioners to perform medical procedures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.k.1"
+          },
+          {
+            "id": "4.A.3.a.1.m.2",
+            "title": "Move patients to or from treatment areas.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.1.m.2"
+          },
+          {
+            "id": "4.A.4.a.5.k.7",
+            "title": "Prepare patients physically for medical procedures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.k.7"
+          },
+          {
+            "id": "4.A.1.b.2.a.5",
+            "title": "Conduct diagnostic tests to determine patient health.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.1.b.2.a.5"
+          },
+          {
+            "id": "4.A.4.c.1.c.3",
+            "title": "Process medical billing information.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.c.1.c.3"
+          },
+          {
+            "id": "4.A.4.a.5.j.2",
+            "title": "Greet customers, patrons, or visitors.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.j.2"
+          },
+          {
+            "id": "4.A.4.c.1.a.6",
+            "title": "Perform clerical work in medical settings.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.c.1.a.6"
+          },
+          {
+            "id": "4.A.4.a.3.c.5",
+            "title": "Provide customer service to clients or users.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.3.c.5"
+          },
+          {
+            "id": "4.A.4.c.3.f.2",
+            "title": "Control prescription refills or authorizations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.c.3.f.2"
+          },
+          {
+            "id": "4.A.4.a.5.c.11",
+            "title": "Apply bandages, dressings, or splints.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.a.5.c.11"
+          },
+          {
+            "id": "4.A.2.b.5.c.2",
+            "title": "Schedule patient procedures or appointments.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.2.b.5.c.2"
+          },
+          {
+            "id": "4.A.4.c.3.g.3",
+            "title": "Inventory medical supplies or equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.4.c.3.g.3"
+          },
+          {
+            "id": "4.A.3.a.3.d.5",
+            "title": "Operate medical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.3.d.5"
+          },
+          {
+            "id": "4.A.3.a.2.k.2",
+            "title": "Prepare medical instruments or equipment for use.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/detailed_work_activities/4.A.3.a.2.k.2"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 75
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 69
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 66
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 63
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 63
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 63
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 60
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 44
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 41
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 35
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 35
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 35
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 72
+          },
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 72
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 72
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 13
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 13
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 10
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 6
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 6
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 6
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 6
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/details/work_styles",
+      "data": {
+        "start": 21,
+        "end": 21,
+        "total": 21,
+        "element": [
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 92
+          },
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 88
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 82
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 74
+          },
+          {
+            "id": "1.D.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.c",
+            "name": "Empathy",
+            "description": "A tendency to show concern for others and be sensitive to others' needs and feelings at work.",
+            "importance": 72
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 70
+          },
+          {
+            "id": "1.D.2.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.f",
+            "name": "Social Orientation",
+            "description": "A tendency to seek out, enjoy, and be energized by social interaction at work.",
+            "importance": 69
+          },
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 66
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 59
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 57
+          },
+          {
+            "id": "1.D.2.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.e",
+            "name": "Optimism",
+            "description": "A tendency to exhibit a positive attitude and positive emotions at work, even under difficult circumstances.",
+            "importance": 56
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 47
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 43
+          },
+          {
+            "id": "1.D.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.2.a",
+            "name": "Humility",
+            "description": "A tendency to be modest and humble when interacting with others at work.",
+            "importance": 38
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 37
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 36
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 34
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 27
+          },
+          {
+            "id": "1.D.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.d",
+            "name": "Tolerance for Ambiguity",
+            "description": "A tendency to be comfortable with ambiguity and uncertainty at work.",
+            "importance": 21
+          },
+          {
+            "id": "1.D.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.a",
+            "name": "Innovation",
+            "description": "A tendency to be inventive, to be imaginative, and to adopt new perspectives on ways to accomplish work.",
+            "importance": 1
+          },
+          {
+            "id": "1.D.1.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/31-9092.00/related/work_styles/1.D.1.i",
+            "name": "Leadership Orientation",
+            "description": "A tendency to lead, take charge, offer opinions, and provide direction at work.",
+            "importance": 1
+          }
+        ]
+      }
+    }
+  },
+  "trades": [
+    {
+      "tradeName": "Medical Assistant",
+      "displayTradeName": "Medical Assistant",
+      "description": "A Medical Assistant supports doctors and nurses in clinics, offices, and other healthcare settings. They greet patients, take blood pressure and temperature, prepare exam rooms, update medical records, schedule appointments, and may collect samples or give basic instructions. Their work helps visits run smoothly, keeps records accurate, and makes patient care safer and more organized.",
+      "programCount": 3,
+      "programs": [
+        {
+          "programAk": 10688,
+          "sponsorName": "Mvhs Inc",
+          "tradeName": "Medical Assistant",
+          "addressLine1": "111 Hospital Drive",
+          "addressLine2": null,
+          "addressCity": "Utica",
+          "addressState": "NY",
+          "addressPostalCode": "13502",
+          "region": "Mohawk Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-03-20",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "31-9092.00",
+          "socTitle": "Medical Assistants"
+        },
+        {
+          "programAk": 12715,
+          "sponsorName": "Premier Medical Group of the Hudson Valley",
+          "tradeName": "Medical Assistant",
+          "addressLine1": "82 Washington Street",
+          "addressLine2": null,
+          "addressCity": "Poughkeepsie",
+          "addressState": "NY",
+          "addressPostalCode": "12601",
+          "region": "Hudson Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-09-11",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "31-9092.00",
+          "socTitle": "Medical Assistants"
+        },
+        {
+          "programAk": 13325,
+          "sponsorName": "Community Health Care Association Of New York State",
+          "tradeName": "Medical Assistant",
+          "addressLine1": "111 Broadway, Suite 1402",
+          "addressLine2": null,
+          "addressCity": "New York",
+          "addressState": "NY",
+          "addressPostalCode": "10006",
+          "region": "New York City",
+          "programStatus": "Active",
+          "programApprovalDate": "2024-04-05",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "31-9092.00",
+          "socTitle": "Medical Assistants"
+        }
+      ]
+    }
+  ]
+}

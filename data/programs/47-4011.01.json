@@ -1,0 +1,930 @@
+{
+  "socCode": "47-4011.01",
+  "socTitle": "Energy Auditors",
+  "programCount": 1,
+  "regions": [
+    "Finger Lakes"
+  ],
+  "onet": {
+    "socCode": "47-4011.01",
+    "onetSocCode": "47-4011.01",
+    "title": "Energy Auditors",
+    "description": "Conduct energy audits of buildings, building systems, or process systems. May also conduct investment grade audits of buildings or systems.",
+    "fetchedAt": "2026-08-15T01:42:08.733687+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/47-4011.01"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/details/tasks",
+      "data": {
+        "start": 21,
+        "end": 22,
+        "total": 22,
+        "task": [
+          {
+            "id": "18082",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18082",
+            "title": "Identify and prioritize energy-saving measures.",
+            "importance": 87,
+            "category": "Core"
+          },
+          {
+            "id": "18074",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18074",
+            "title": "Prepare audit reports containing energy analysis results or recommendations for energy cost savings.",
+            "importance": 85,
+            "category": "Core"
+          },
+          {
+            "id": "19561",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/19561",
+            "title": "Identify any health or safety issues related to planned weatherization projects.",
+            "importance": 85,
+            "category": "Core"
+          },
+          {
+            "id": "18083",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18083",
+            "title": "Identify opportunities to improve the operation, maintenance, or energy efficiency of building or process systems.",
+            "importance": 85,
+            "category": "Core"
+          },
+          {
+            "id": "18077",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18077",
+            "title": "Calculate potential for energy savings.",
+            "importance": 85,
+            "category": "Core"
+          },
+          {
+            "id": "18073",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18073",
+            "title": "Inspect or evaluate building envelopes, mechanical systems, electrical systems, or process systems to determine the energy consumption of each system.",
+            "importance": 84,
+            "category": "Core"
+          },
+          {
+            "id": "18076",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18076",
+            "title": "Analyze technical feasibility of energy-saving measures, using knowledge of engineering, energy production, energy use, construction, maintenance, system operation, or process systems.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "19560",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/19560",
+            "title": "Examine commercial sites to determine the feasibility of installing equipment that allows building management systems to reduce electricity consumption during peak demand periods.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "18087",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18087",
+            "title": "Recommend energy-efficient technologies or alternate energy sources.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "18078",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18078",
+            "title": "Collect and analyze field data related to energy usage.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "18071",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18071",
+            "title": "Measure energy usage with devices such as data loggers, universal data recorders, light meters, sling psychrometers, psychrometric charts, flue gas analyzers, amp probes, watt meters, volt meters, thermometers, or utility meters.",
+            "importance": 76,
+            "category": "Core"
+          },
+          {
+            "id": "18081",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18081",
+            "title": "Educate customers on energy efficiency or answer questions on topics such as the costs of running household appliances or the selection of energy-efficient appliances.",
+            "importance": 72,
+            "category": "Core"
+          },
+          {
+            "id": "18072",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18072",
+            "title": "Perform tests such as blower-door tests to locate air leaks.",
+            "importance": 72,
+            "category": "Core"
+          },
+          {
+            "id": "18086",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18086",
+            "title": "Prepare job specification sheets for home energy improvements, such as attic insulation, window retrofits, or heating system upgrades.",
+            "importance": 72,
+            "category": "Core"
+          },
+          {
+            "id": "19562",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/19562",
+            "title": "Inspect newly installed energy-efficient equipment to ensure that it was installed properly and is performing according to specifications.",
+            "importance": 71,
+            "category": "Core"
+          },
+          {
+            "id": "18075",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18075",
+            "title": "Analyze energy bills, including utility rates or tariffs, to gather historical energy usage data.",
+            "importance": 68,
+            "category": "Core"
+          },
+          {
+            "id": "18084",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18084",
+            "title": "Quantify energy consumption to establish baselines for energy use or need.",
+            "importance": 67,
+            "category": "Core"
+          },
+          {
+            "id": "18080",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18080",
+            "title": "Determine patterns of building use to show annual or monthly needs for heating, cooling, lighting, or other energy needs.",
+            "importance": 65,
+            "category": "Core"
+          },
+          {
+            "id": "18079",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18079",
+            "title": "Compare existing energy consumption levels to normative data.",
+            "importance": 64,
+            "category": "Core"
+          },
+          {
+            "id": "18085",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/18085",
+            "title": "Oversee installation of equipment such as water heater wraps, pipe insulation, weatherstripping, door sweeps, or low-flow showerheads to improve energy efficiency.",
+            "importance": 57,
+            "category": "Core"
+          },
+          {
+            "id": "19563",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/19563",
+            "title": "Verify income eligibility of participants in publicly financed weatherization programs.",
+            "importance": 49,
+            "category": "Supplemental"
+          },
+          {
+            "id": "1001380",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/tasks/1001380",
+            "title": "Evaluate the energy performance of buildings using modeling software.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/details/detailed_work_activities",
+      "data": {
+        "start": 11,
+        "end": 15,
+        "total": 15,
+        "activity": [
+          {
+            "id": "4.A.1.b.1.b.6",
+            "title": "Identify opportunities to improve operational efficiency.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.1.b.1.b.6"
+          },
+          {
+            "id": "4.A.2.a.4.g.17",
+            "title": "Analyze energy usage data.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.4.g.17"
+          },
+          {
+            "id": "4.A.2.a.4.c.2",
+            "title": "Analyze risks related to investments in green technology.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.4.c.2"
+          },
+          {
+            "id": "4.A.2.a.4.g.1",
+            "title": "Calculate data to inform organizational operations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.4.g.1"
+          },
+          {
+            "id": "4.A.3.b.6.a.2",
+            "title": "Prepare financial documents, reports, or budgets.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.3.b.6.a.2"
+          },
+          {
+            "id": "4.A.1.b.2.e.8",
+            "title": "Inspect facilities or equipment to ensure specifications are met.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.1.b.2.e.8"
+          },
+          {
+            "id": "4.A.2.a.1.g.1",
+            "title": "Assess the cost effectiveness of products, projects, or services.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.1.g.1"
+          },
+          {
+            "id": "4.A.2.a.1.i.1",
+            "title": "Evaluate condition of properties.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.1.i.1"
+          },
+          {
+            "id": "4.A.4.b.6.e.10",
+            "title": "Advise others on business or operational matters.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.4.b.6.e.10"
+          },
+          {
+            "id": "4.A.1.a.1.j.2",
+            "title": "Research issues related to the environment or sustainable business practices.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.1.a.1.j.2"
+          },
+          {
+            "id": "4.A.4.a.8.c.6",
+            "title": "Correspond with customers to answer questions or resolve complaints.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.4.a.8.c.6"
+          },
+          {
+            "id": "4.A.3.b.2.a.4",
+            "title": "Develop technical specifications for systems or equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.3.b.2.a.4"
+          },
+          {
+            "id": "4.A.1.b.2.c.4",
+            "title": "Test characteristics of materials or structures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.1.b.2.c.4"
+          },
+          {
+            "id": "4.A.4.b.4.j.8",
+            "title": "Oversee business processes.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.4.b.4.j.8"
+          },
+          {
+            "id": "4.A.2.a.2.e.3",
+            "title": "Verify application data to determine program eligibility.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/detailed_work_activities/4.A.2.a.2.e.3"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 69
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 69
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 66
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 66
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 60
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 60
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 56
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 50
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 6
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 66
+          },
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 13
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 6
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/47-4011.01/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "work_styles": null
+  },
+  "trades": [
+    {
+      "tradeName": "Energy Efficiency Technician",
+      "displayTradeName": "Energy Efficiency Technician",
+      "description": "An Energy Efficiency Technician checks buildings and equipment to find where energy is being wasted. They test heating and cooling systems, inspect insulation, windows, and lighting, read meters, and suggest or help install upgrades that use less power. Their work lowers energy costs, improves comfort, and keeps homes and buildings running more efficiently.",
+      "programCount": 1,
+      "programs": [
+        {
+          "programAk": 16353,
+          "sponsorName": "Halcyon, Inc.   (Dba Halco Plumbing And Heating)",
+          "tradeName": "Energy Efficiency Technician",
+          "addressLine1": "865 County Road #6",
+          "addressLine2": null,
+          "addressCity": "Phelps",
+          "addressState": "NY",
+          "addressPostalCode": "14532",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2012-03-15",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "47-4011.01",
+          "socTitle": "Energy Auditors"
+        }
+      ]
+    }
+  ]
+}

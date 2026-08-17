@@ -1,0 +1,1048 @@
+{
+  "socCode": "19-4051.02",
+  "socTitle": "Nuclear Monitoring Technicians",
+  "programCount": 1,
+  "regions": [
+    "Central New York"
+  ],
+  "onet": {
+    "socCode": "19-4051.02",
+    "onetSocCode": "19-4051.02",
+    "title": "Nuclear Monitoring Technicians",
+    "description": "Collect and test samples to monitor results of nuclear experiments and contamination of humans, facilities, and environment.",
+    "fetchedAt": "2026-08-15T02:14:18.916405+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/19-4051.02"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/details/tasks",
+      "data": {
+        "start": 11,
+        "end": 19,
+        "total": 19,
+        "task": [
+          {
+            "id": "20539",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/20539",
+            "title": "Brief workers on radiation levels in work areas.",
+            "importance": 91,
+            "category": "Core"
+          },
+          {
+            "id": "7597",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7597",
+            "title": "Calculate safe radiation exposure times for personnel using plant contamination readings and prescribed safe levels of radiation.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "7599",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7599",
+            "title": "Monitor personnel to determine the amounts and intensities of radiation exposure.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "7600",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7600",
+            "title": "Inform supervisors when individual exposures or area radiation levels approach maximum permissible limits.",
+            "importance": 88,
+            "category": "Core"
+          },
+          {
+            "id": "7598",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7598",
+            "title": "Provide initial response to abnormal events or to alarms from radiation monitoring equipment.",
+            "importance": 88,
+            "category": "Core"
+          },
+          {
+            "id": "7602",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7602",
+            "title": "Determine intensities and types of radiation in work areas, equipment, or materials, using radiation detectors or other instruments.",
+            "importance": 87,
+            "category": "Core"
+          },
+          {
+            "id": "7601",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7601",
+            "title": "Instruct personnel in radiation safety procedures and demonstrate use of protective clothing and equipment.",
+            "importance": 86,
+            "category": "Core"
+          },
+          {
+            "id": "7603",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7603",
+            "title": "Collect samples of air, water, gases, or solids to determine radioactivity levels of contamination.",
+            "importance": 85,
+            "category": "Core"
+          },
+          {
+            "id": "20540",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/20540",
+            "title": "Analyze samples, such as air or water samples, for contaminants or other elements.",
+            "importance": 83,
+            "category": "Core"
+          },
+          {
+            "id": "7605",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7605",
+            "title": "Determine or recommend radioactive decontamination procedures, according to the size and nature of equipment and the degree of contamination.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "7604",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7604",
+            "title": "Set up equipment that automatically detects area radiation deviations and test detection equipment to ensure its accuracy.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "7612",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7612",
+            "title": "Prepare reports describing contamination tests, material or equipment decontaminated, or methods used in decontamination processes.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "20541",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/20541",
+            "title": "Place radioactive waste, such as sweepings or broken sample bottles, into containers for shipping or disposal.",
+            "importance": 73,
+            "category": "Core"
+          },
+          {
+            "id": "7606",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7606",
+            "title": "Decontaminate objects by cleaning with soap or solvents or by abrading with wire brushes, buffing wheels, or sandblasting machines.",
+            "importance": 71,
+            "category": "Core"
+          },
+          {
+            "id": "7610",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7610",
+            "title": "Enter data into computers to record characteristics of nuclear events or to locate coordinates of particles.",
+            "importance": 78,
+            "category": "Supplemental"
+          },
+          {
+            "id": "7608",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/7608",
+            "title": "Calibrate and maintain chemical instrumentation sensing elements and sampling system equipment, using calibration instruments and hand tools.",
+            "importance": 76,
+            "category": "Supplemental"
+          },
+          {
+            "id": "1001145",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/1001145",
+            "title": "Document results from radiation and contamination surveys.",
+            "category": "New"
+          },
+          {
+            "id": "1001146",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/1001146",
+            "title": "Inspect, test, and maintain respiratory protection equipment.",
+            "category": "New"
+          },
+          {
+            "id": "1001147",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/tasks/1001147",
+            "title": "Write radiological work permits.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/details/detailed_work_activities",
+      "data": {
+        "start": 11,
+        "end": 16,
+        "total": 16,
+        "activity": [
+          {
+            "id": "4.A.4.a.2.c.21",
+            "title": "Communicate safety or hazard information to others.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.4.a.2.c.21"
+          },
+          {
+            "id": "4.A.1.b.3.a.5",
+            "title": "Measure radiation levels.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.1.b.3.a.5"
+          },
+          {
+            "id": "4.A.1.a.2.g.8",
+            "title": "Monitor alarm systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.1.a.2.g.8"
+          },
+          {
+            "id": "4.A.4.a.5.e.2",
+            "title": "Respond to emergencies to provide assistance.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.4.a.5.e.2"
+          },
+          {
+            "id": "4.A.4.b.3.d.15",
+            "title": "Train personnel in technical or scientific procedures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.4.b.3.d.15"
+          },
+          {
+            "id": "4.A.3.a.2.al.5",
+            "title": "Collect environmental data or samples.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.2.al.5"
+          },
+          {
+            "id": "4.A.2.a.4.a.4",
+            "title": "Analyze environmental data.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.2.a.4.a.4"
+          },
+          {
+            "id": "4.A.3.b.6.h.18",
+            "title": "Record research or operational data.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.b.6.h.18"
+          },
+          {
+            "id": "4.A.4.b.6.i.1",
+            "title": "Advise others on management of emergencies or hazardous situations or materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.4.b.6.i.1"
+          },
+          {
+            "id": "4.A.3.a.2.at.10",
+            "title": "Set up laboratory or field equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.2.at.10"
+          },
+          {
+            "id": "4.A.3.a.2.i.4",
+            "title": "Calibrate scientific or technical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.2.i.4"
+          },
+          {
+            "id": "4.A.3.b.5.c.5",
+            "title": "Maintain laboratory or technical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.b.5.c.5"
+          },
+          {
+            "id": "4.A.3.b.6.o.4",
+            "title": "Prepare operational reports.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.b.6.o.4"
+          },
+          {
+            "id": "4.A.3.a.1.e.2",
+            "title": "Dispose of hazardous materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.1.e.2"
+          },
+          {
+            "id": "4.A.3.a.1.e.7",
+            "title": "Dispose of trash or waste materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.1.e.7"
+          },
+          {
+            "id": "4.A.3.a.1.h.6",
+            "title": "Clean objects.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/detailed_work_activities/4.A.3.a.1.h.6"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 72
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 69
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 69
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 63
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 60
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 6
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 78
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 72
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 72
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 3
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 0
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 0
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 0
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 0
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/details/work_styles",
+      "data": {
+        "start": 11,
+        "end": 18,
+        "total": 18,
+        "element": [
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 100
+          },
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 98
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 95
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 87
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 85
+          },
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 81
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 66
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 59
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 56
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 54
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 54
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 43
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 37
+          },
+          {
+            "id": "1.D.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.2.a",
+            "name": "Humility",
+            "description": "A tendency to be modest and humble when interacting with others at work.",
+            "importance": 26
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 24
+          },
+          {
+            "id": "1.D.2.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.2.f",
+            "name": "Social Orientation",
+            "description": "A tendency to seek out, enjoy, and be energized by social interaction at work.",
+            "importance": 16
+          },
+          {
+            "id": "1.D.1.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.1.i",
+            "name": "Leadership Orientation",
+            "description": "A tendency to lead, take charge, offer opinions, and provide direction at work.",
+            "importance": 14
+          },
+          {
+            "id": "1.D.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/19-4051.02/related/work_styles/1.D.2.c",
+            "name": "Empathy",
+            "description": "A tendency to show concern for others and be sensitive to others' needs and feelings at work.",
+            "importance": 8
+          }
+        ]
+      }
+    }
+  },
+  "trades": [
+    {
+      "tradeName": "Radiation Protection Technician",
+      "displayTradeName": "Radiation Protection Technician",
+      "description": "A Radiation Protection Technician checks workplaces for unsafe radiation levels and makes sure safety rules are followed. They use meters and monitors, test air, surfaces, and equipment, track exposure records, and help control access to hazardous areas in places like hospitals, labs, or power plants. Their work keeps people, equipment, and work sites safer.",
+      "programCount": 1,
+      "programs": [
+        {
+          "programAk": 5452,
+          "sponsorName": "Constellation Energy Corporation",
+          "tradeName": "Radiation Protection Technician",
+          "addressLine1": "268 Lake Road",
+          "addressLine2": null,
+          "addressCity": "Oswego",
+          "addressState": "NY",
+          "addressPostalCode": "13126",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-09-25",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "19-4051.02",
+          "socTitle": "Nuclear Monitoring Technicians"
+        }
+      ]
+    }
+  ]
+}

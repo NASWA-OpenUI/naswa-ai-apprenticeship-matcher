@@ -1,0 +1,1748 @@
+{
+  "socCode": "51-4111.00",
+  "socTitle": "Tool and Die Makers",
+  "programCount": 36,
+  "regions": [
+    "Capital Region",
+    "Central New York",
+    "Finger Lakes",
+    "Hudson Valley",
+    "Long Island",
+    "Mohawk Valley",
+    "Southern Tier",
+    "Western New York"
+  ],
+  "onet": {
+    "socCode": "51-4111.00",
+    "onetSocCode": "51-4111.00",
+    "title": "Tool and Die Makers",
+    "description": "Analyze specifications, lay out metal stock, set up and operate machine tools, and fit and assemble parts to make and repair dies, cutting tools, jigs, fixtures, gauges, and machinists' hand tools.",
+    "fetchedAt": "2026-08-15T01:16:58.664912+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/51-4111.00"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/details/tasks",
+      "data": {
+        "start": 11,
+        "end": 18,
+        "total": 18,
+        "task": [
+          {
+            "id": "8490",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8490",
+            "title": "Verify dimensions, alignments, and clearances of finished parts for conformance to specifications, using measuring instruments such as calipers, gauge blocks, micrometers, or dial indicators.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "8492",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8492",
+            "title": "Set up and operate conventional or computer numerically controlled machine tools such as lathes, milling machines, or grinders to cut, bore, grind, or otherwise shape parts to prescribed dimensions and finishes.",
+            "importance": 84,
+            "category": "Core"
+          },
+          {
+            "id": "8491",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8491",
+            "title": "Visualize and compute dimensions, sizes, shapes, and tolerances of assemblies, based on specifications.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "8489",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8489",
+            "title": "Study blueprints, sketches, models, or specifications to plan sequences of operations for fabricating tools, dies, or assemblies.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "23938",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/23938",
+            "title": "Fit and assemble parts to make, repair, or modify dies, jigs, gauges, and tools, using machine tools, hand tools, or welders.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "8496",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8496",
+            "title": "Inspect finished dies for smoothness, contour conformity, and defects.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "8502",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8502",
+            "title": "Select metals to be used from a range of metals and alloys, based on properties such as hardness or heat tolerance.",
+            "importance": 76,
+            "category": "Core"
+          },
+          {
+            "id": "8498",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8498",
+            "title": "Lift, position, and secure machined parts on surface plates or worktables, using hoists, vises, v-blocks, or angle plates.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "8493",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8493",
+            "title": "File, grind, shim, and adjust different parts to properly fit them together.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "8497",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8497",
+            "title": "Smooth and polish flat and contoured surfaces of parts or tools, using scrapers, abrasive stones, files, emery cloths, or power grinders.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "8499",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8499",
+            "title": "Measure, mark, and scribe metal or plastic stock to lay out machining, using instruments such as protractors, micrometers, scribes, or rulers.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "8495",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8495",
+            "title": "Conduct test runs with completed tools or dies to ensure that parts meet specifications, making adjustments as necessary.",
+            "importance": 73,
+            "category": "Core"
+          },
+          {
+            "id": "8501",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8501",
+            "title": "Design jigs, fixtures, and templates for use as work aids in the fabrication of parts or products.",
+            "importance": 69,
+            "category": "Core"
+          },
+          {
+            "id": "8500",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8500",
+            "title": "Cut, shape, and trim blanks or blocks to specified lengths or shapes, using power saws, power shears, rules, and hand tools.",
+            "importance": 68,
+            "category": "Core"
+          },
+          {
+            "id": "8503",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8503",
+            "title": "Set up and operate drill presses to drill and tap holes in parts for assembly.",
+            "importance": 67,
+            "category": "Core"
+          },
+          {
+            "id": "8504",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8504",
+            "title": "Develop and design new tools and dies, using computer-aided design software.",
+            "importance": 67,
+            "category": "Supplemental"
+          },
+          {
+            "id": "8505",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/8505",
+            "title": "Set pyrometer controls of heat-treating furnaces and feed or place parts, tools, or assemblies into furnaces to harden.",
+            "importance": 65,
+            "category": "Supplemental"
+          },
+          {
+            "id": "1001376",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/tasks/1001376",
+            "title": "Troubleshoot malfunctions in manufacturing equipment.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/details/detailed_work_activities",
+      "data": {
+        "start": 21,
+        "end": 22,
+        "total": 22,
+        "activity": [
+          {
+            "id": "4.A.1.b.3.a.12",
+            "title": "Measure dimensions of completed products or workpieces to verify conformance to specifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.b.3.a.12"
+          },
+          {
+            "id": "4.A.3.a.3.l.1",
+            "title": "Operate grinding equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.3.l.1"
+          },
+          {
+            "id": "4.A.3.a.3.f.12",
+            "title": "Operate metal or plastic forming equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.3.f.12"
+          },
+          {
+            "id": "4.A.1.b.3.a.2",
+            "title": "Calculate dimensions of workpieces, products, or equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.b.3.a.2"
+          },
+          {
+            "id": "4.A.1.a.1.b.11",
+            "title": "Review blueprints or other instructions to determine operational methods or sequences.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.a.1.b.11"
+          },
+          {
+            "id": "4.A.1.b.2.f.5",
+            "title": "Inspect metal, plastic, or composite products.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.b.2.f.5"
+          },
+          {
+            "id": "4.A.3.a.2.d.5",
+            "title": "Assemble machine tools, parts, or fixtures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.d.5"
+          },
+          {
+            "id": "4.A.3.a.2.ai.5",
+            "title": "Operate welding equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.ai.5"
+          },
+          {
+            "id": "4.A.3.b.4.b.4",
+            "title": "Repair parts or assemblies.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.b.4.b.4"
+          },
+          {
+            "id": "4.A.2.b.1.j.5",
+            "title": "Select production input materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.2.b.1.j.5"
+          },
+          {
+            "id": "4.A.3.a.2.o.5",
+            "title": "Smooth metal surfaces or edges.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.o.5"
+          },
+          {
+            "id": "4.A.3.a.3.h.2",
+            "title": "Lift materials or workpieces using cranes or other lifting equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.3.h.2"
+          },
+          {
+            "id": "4.A.3.a.2.f.3",
+            "title": "Mount materials or workpieces onto production equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.f.3"
+          },
+          {
+            "id": "4.A.1.b.3.a.1",
+            "title": "Measure materials to mark reference points, cutting lines, or other indicators.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.b.3.a.1"
+          },
+          {
+            "id": "4.A.3.a.2.o.4",
+            "title": "Polish materials, workpieces, or finished products.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.o.4"
+          },
+          {
+            "id": "4.A.1.b.2.l.8",
+            "title": "Conduct test runs of production equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.1.b.2.l.8"
+          },
+          {
+            "id": "4.A.3.b.2.c.5",
+            "title": "Design tools, fixtures, or other devices for production equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.b.2.c.5"
+          },
+          {
+            "id": "4.A.3.a.2.l.4",
+            "title": "Cut industrial materials in preparation for fabrication or processing.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.l.4"
+          },
+          {
+            "id": "4.A.3.a.2.g.5",
+            "title": "Shape metal workpieces with hammers or other small hand tools.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.g.5"
+          },
+          {
+            "id": "4.A.3.a.2.ad.3",
+            "title": "Drill holes in parts, equipment, or materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.ad.3"
+          },
+          {
+            "id": "4.A.3.a.2.i.7",
+            "title": "Adjust temperature controls of ovens or other heating equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.i.7"
+          },
+          {
+            "id": "4.A.3.a.2.f.1",
+            "title": "Feed materials or products into or through equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/detailed_work_activities/4.A.3.a.2.f.1"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 56
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 50
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 35
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 28
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 22
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 22
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 16
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 10
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 31
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 31
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 13
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 13
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/details/work_styles",
+      "data": {
+        "start": 11,
+        "end": 15,
+        "total": 15,
+        "element": [
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 100
+          },
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 87
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 74
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 58
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 55
+          },
+          {
+            "id": "1.D.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.a",
+            "name": "Innovation",
+            "description": "A tendency to be inventive, to be imaginative, and to adopt new perspectives on ways to accomplish work.",
+            "importance": 43
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 39
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 38
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 33
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 30
+          },
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 28
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 25
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 23
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 12
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/51-4111.00/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 3
+          }
+        ]
+      }
+    }
+  },
+  "trades": [
+    {
+      "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
+      "displayTradeName": "Mold Maker, Die-Casting, and Plastic Molding",
+      "description": "A Mold Maker, Die-Casting, and Plastic Molding builds, repairs, and adjusts the metal molds used to shape plastic parts and die-cast products. They read drawings, machine and polish mold pieces, fit parts together, and test for smooth opening, closing, and cooling. Their work helps factories make accurate parts and keeps production running safely.",
+      "programCount": 3,
+      "programs": [
+        {
+          "programAk": 4947,
+          "sponsorName": "Epp Team Inc Dba Empire Precision Plastics",
+          "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
+          "addressLine1": "500 Lee Road Ste 400",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14606",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2015-11-18",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 11366,
+          "sponsorName": "Atalys, Llc",
+          "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
+          "addressLine1": "85 Pixley Industrial Parkway",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14624",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2014-06-11",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 14589,
+          "sponsorName": "Century Mold Company, Inc",
+          "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
+          "addressLine1": "25 Vantage Point Drive",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14624",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-08-09",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        }
+      ]
+    },
+    {
+      "tradeName": "Moldmaker",
+      "displayTradeName": "Moldmaker",
+      "description": "A Moldmaker builds and repairs the metal molds used to shape plastic, rubber, or metal parts in factories. They read drawings, machine and polish mold pieces, fit them together with great accuracy, and test how they open, close, and form parts. Their work helps everyday products come out the right size, shape, and quality.",
+      "programCount": 6,
+      "programs": [
+        {
+          "programAk": 3282,
+          "sponsorName": "Nalge Nunc Int'L Corp Dba Thermo Fisher Scientific",
+          "tradeName": "Moldmaker",
+          "addressLine1": "75 Panorama Creek Drive",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14625",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-11-16",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 6188,
+          "sponsorName": "Tessy Plastics Corp",
+          "tradeName": "Moldmaker",
+          "addressLine1": "700 Visions Dr",
+          "addressLine2": null,
+          "addressCity": "Skaneateles",
+          "addressState": "NY",
+          "addressPostalCode": "13152",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2022-10-18",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 7043,
+          "sponsorName": "Rtma, The Rochester Technology And Manufacturing Association",
+          "tradeName": "Moldmaker",
+          "addressLine1": "2024 W. Henrietta Road Ste 3J",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14623",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-11",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 9529,
+          "sponsorName": "Majestic Mold & Tool  Inc.",
+          "tradeName": "Moldmaker",
+          "addressLine1": "177 Volney Street",
+          "addressLine2": null,
+          "addressCity": "Phoenix",
+          "addressState": "NY",
+          "addressPostalCode": "13135",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2013-09-18",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 9800,
+          "sponsorName": "Assured Quality Tool And Mold, Inc.",
+          "tradeName": "Moldmaker",
+          "addressLine1": "14 Turner Drive",
+          "addressLine2": null,
+          "addressCity": "Spencerport",
+          "addressState": "NY",
+          "addressPostalCode": "14559",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2009-09-24",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 17388,
+          "sponsorName": "Anchor Glass Container Corp.",
+          "tradeName": "Moldmaker",
+          "addressLine1": "151 E. Mccann'S Boulevard",
+          "addressLine2": null,
+          "addressCity": "Elmira Heights",
+          "addressState": "NY",
+          "addressPostalCode": "14903",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "2001-10-17",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        }
+      ]
+    },
+    {
+      "tradeName": "Tool and Die Maker",
+      "displayTradeName": "Tool and Die Maker",
+      "description": "A Tool and Die Maker builds and repairs the metal tools, molds, and dies used to shape parts in factories. They read drawings, measure precisely, cut and grind metal, and fit pieces together using machines and hand tools. Their work keeps manufacturing equipment accurate, products consistent, and production lines running smoothly.",
+      "programCount": 10,
+      "programs": [
+        {
+          "programAk": 107,
+          "sponsorName": "Trident Precision Manufacturing, Inc.",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "734 Salt Road",
+          "addressLine2": null,
+          "addressCity": "Webster",
+          "addressState": "NY",
+          "addressPostalCode": "14580",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "1994-01-20",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 510,
+          "sponsorName": "RJS Machine Works, Inc",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "1611 Electric Ave",
+          "addressLine2": null,
+          "addressCity": "Lackawanna",
+          "addressState": "NY",
+          "addressPostalCode": "14216",
+          "region": "Western New York",
+          "programStatus": "Probation",
+          "programApprovalDate": "2026-02-26",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 1439,
+          "sponsorName": "Gm Components Holdings, Llc",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "200 Upper Mountain Road",
+          "addressLine2": null,
+          "addressCity": "Lockport",
+          "addressState": "NY",
+          "addressPostalCode": "14094",
+          "region": "Western New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-08-22",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 2913,
+          "sponsorName": "Wrightcut Edm & Machine Inc",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "951 Carl St",
+          "addressLine2": null,
+          "addressCity": "Elmira",
+          "addressState": "NY",
+          "addressPostalCode": "14904",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "2013-05-22",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 7265,
+          "sponsorName": "Precision Process Inc",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "2111 Liberty Drive",
+          "addressLine2": null,
+          "addressCity": "Niagara Falls",
+          "addressState": "NY",
+          "addressPostalCode": "14304",
+          "region": "Western New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2022-08-09",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 8353,
+          "sponsorName": "Charles A. Rogers Enterprises",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "100 Rawson Road Ste 210",
+          "addressLine2": null,
+          "addressCity": "Victor",
+          "addressState": "NY",
+          "addressPostalCode": "14564",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "1992-10-01",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 11289,
+          "sponsorName": "Rolite Manufacturing, Inc.",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "10 Wendling Court",
+          "addressLine2": null,
+          "addressCity": "Lancaster",
+          "addressState": "NY",
+          "addressPostalCode": "14086",
+          "region": "Western New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-02-09",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 13574,
+          "sponsorName": "MACNY, The Manufacturers Association",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "5788 Widewaters Parkway",
+          "addressLine2": null,
+          "addressCity": "Syracuse",
+          "addressState": "NY",
+          "addressPostalCode": "13214",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-04-20",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 13689,
+          "sponsorName": "Check-Mate Industries, Inc.",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "370 Wyandanch Avenue",
+          "addressLine2": null,
+          "addressCity": "W. Babylon",
+          "addressState": "NY",
+          "addressPostalCode": "11704",
+          "region": "Long Island",
+          "programStatus": "Active",
+          "programApprovalDate": "1993-11-01",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 15922,
+          "sponsorName": "Southco Incorporated",
+          "tradeName": "Tool and Die Maker",
+          "addressLine1": "250 East Street",
+          "addressLine2": null,
+          "addressCity": "Honeoye Falls",
+          "addressState": "NY",
+          "addressPostalCode": "14472",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2001-08-23",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        }
+      ]
+    },
+    {
+      "tradeName": "Toolmaker",
+      "displayTradeName": "Toolmaker",
+      "description": "A Toolmaker makes, repairs, and adjusts the metal tools used to shape parts in factories, such as molds, dies, jigs, and gauges. They read drawings, measure with precision tools, cut and grind metal, and fit pieces together by hand or machine. Their work keeps production accurate, machines running, and finished products consistent.",
+      "programCount": 17,
+      "programs": [
+        {
+          "programAk": 1606,
+          "sponsorName": "Orafol Americas Inc",
+          "tradeName": "Toolmaker",
+          "addressLine1": "200 Park Centre Drive",
+          "addressLine2": null,
+          "addressCity": "West Henrietta",
+          "addressState": "NY",
+          "addressPostalCode": "14586",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2014-03-27",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 4975,
+          "sponsorName": "MACNY, The Manufacturers Association",
+          "tradeName": "Toolmaker",
+          "addressLine1": "5788 Widewaters Parkway",
+          "addressLine2": null,
+          "addressCity": "Syracuse",
+          "addressState": "NY",
+          "addressPostalCode": "13214",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-07-10",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 5356,
+          "sponsorName": "Cummins Inc.",
+          "tradeName": "Toolmaker",
+          "addressLine1": "4720 Baker Street Ext.",
+          "addressLine2": null,
+          "addressCity": "Lakewood",
+          "addressState": "NY",
+          "addressPostalCode": "14750",
+          "region": "Western New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2008-10-15",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 6551,
+          "sponsorName": "Marquardt Switches, Inc.",
+          "tradeName": "Toolmaker",
+          "addressLine1": "2711 Route 20 East",
+          "addressLine2": null,
+          "addressCity": "Cazenovia",
+          "addressState": "NY",
+          "addressPostalCode": "13035",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "1991-07-22",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 7467,
+          "sponsorName": "Corning Tropel Corporation",
+          "tradeName": "Toolmaker",
+          "addressLine1": "60 O'Connor Road",
+          "addressLine2": null,
+          "addressCity": "Fairport",
+          "addressState": "NY",
+          "addressPostalCode": "14450",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-02-16",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 7549,
+          "sponsorName": "Atlas Copco Comptec, Llc",
+          "tradeName": "Toolmaker",
+          "addressLine1": "46 School Road",
+          "addressLine2": null,
+          "addressCity": "Voorheesville",
+          "addressState": "NY",
+          "addressPostalCode": "12186",
+          "region": "Capital Region",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-04-17",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 8377,
+          "sponsorName": "Rtma, The Rochester Technology And Manufacturing Association",
+          "tradeName": "Toolmaker",
+          "addressLine1": "2024 W. Henrietta Road Ste 3J",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14623",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-11",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 10123,
+          "sponsorName": "John Mezzalingua Associates Llc Dba Jma Wireless",
+          "tradeName": "Toolmaker",
+          "addressLine1": "7645 Henry Clay Blvd",
+          "addressLine2": null,
+          "addressCity": "Liverpool",
+          "addressState": "NY",
+          "addressPostalCode": "13088",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-01-08",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 10413,
+          "sponsorName": "Oneida Molded Plastics, Llc",
+          "tradeName": "Toolmaker",
+          "addressLine1": "104 South Warner Street",
+          "addressLine2": null,
+          "addressCity": "Oneida",
+          "addressState": "NY",
+          "addressPostalCode": "13421",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2016-10-05",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 10647,
+          "sponsorName": "Micro Instrument Corporation",
+          "tradeName": "Toolmaker",
+          "addressLine1": "1199 Emerson Street",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14606",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2005-11-08",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 13483,
+          "sponsorName": "Peko Precision Products, Inc.",
+          "tradeName": "Toolmaker",
+          "addressLine1": "1400 Emerson Street",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14606",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "1991-03-27",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 16016,
+          "sponsorName": "Revere Copper Products, Inc.",
+          "tradeName": "Toolmaker",
+          "addressLine1": "One Revere Park",
+          "addressLine2": null,
+          "addressCity": "Rome",
+          "addressState": "NY",
+          "addressPostalCode": "13440",
+          "region": "Mohawk Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2024-06-21",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 16150,
+          "sponsorName": "Council Of Industry",
+          "tradeName": "Toolmaker",
+          "addressLine1": "263 Route 17K Suite 106",
+          "addressLine2": null,
+          "addressCity": "Newburgh",
+          "addressState": "NY",
+          "addressPostalCode": "12550",
+          "region": "Hudson Valley",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-29",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 16399,
+          "sponsorName": "Hilliard Corporation",
+          "tradeName": "Toolmaker",
+          "addressLine1": "100 West Fourth St",
+          "addressLine2": null,
+          "addressCity": "Elmira",
+          "addressState": "NY",
+          "addressPostalCode": "14902",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "2022-03-21",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 16431,
+          "sponsorName": "Progressive Machine And Design Llc",
+          "tradeName": "Toolmaker",
+          "addressLine1": "727 Rowley Road",
+          "addressLine2": null,
+          "addressCity": "Victor",
+          "addressState": "NY",
+          "addressPostalCode": "14564",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2012-05-16",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 16947,
+          "sponsorName": "Amphenol Aerospace",
+          "tradeName": "Toolmaker",
+          "addressLine1": "191 Delaware Avenue",
+          "addressLine2": null,
+          "addressCity": "Sidney",
+          "addressState": "NY",
+          "addressPostalCode": "13838",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-01-31",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        },
+        {
+          "programAk": 17168,
+          "sponsorName": "Fermer Precision, Inc",
+          "tradeName": "Toolmaker",
+          "addressLine1": "114 Johnson Road",
+          "addressLine2": null,
+          "addressCity": "Ilion",
+          "addressState": "NY",
+          "addressPostalCode": "13357",
+          "region": "Mohawk Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2024-11-13",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4111.00",
+          "socTitle": "Tool and Die Makers"
+        }
+      ]
+    }
+  ]
+}

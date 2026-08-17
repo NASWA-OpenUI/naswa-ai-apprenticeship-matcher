@@ -1,0 +1,156 @@
+{
+  "socCode": "51-2099.00",
+  "socTitle": "Assemblers and Fabricators, All Other",
+  "programCount": 6,
+  "regions": [
+    "Finger Lakes"
+  ],
+  "onet": {
+    "socCode": "51-2099.00",
+    "onetSocCode": "51-2099.00",
+    "title": "Assemblers and Fabricators, All Other",
+    "description": "All assemblers and fabricators not listed separately.",
+    "fetchedAt": "2026-08-15T01:27:38.501590+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/51-2099.00"
+    },
+    "tasks": null,
+    "detailed_work_activities": null,
+    "skills": null,
+    "abilities": null,
+    "work_styles": null
+  },
+  "trades": [
+    {
+      "tradeName": "Precision Imaging / Nanolithography Technician",
+      "displayTradeName": "Precision Imaging/Nanolithography Technician",
+      "description": "A Precision Imaging/Nanolithography Technician works with highly detailed imaging and pattern-making equipment used to create tiny features on materials or electronic parts. They set up machines, prepare surfaces, align samples, run tests, inspect patterns under microscopes, and record results in clean work areas. Their work helps build and improve the small components inside modern devices.",
+      "programCount": 1,
+      "programs": [
+        {
+          "programAk": 10876,
+          "sponsorName": "Applied Image, Inc",
+          "tradeName": "Precision Imaging / Nanolithography Technician",
+          "addressLine1": "1653 East Main Street",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14609",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-03-09",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 24,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        }
+      ]
+    },
+    {
+      "tradeName": "Precision Optics Manufacturing Technician",
+      "displayTradeName": "Precision Optics Manufacturing Technician",
+      "description": "A Precision Optics Manufacturing Technician makes high-precision glass or crystal parts used in devices like microscopes, cameras, lasers, and medical tools. They cut, grind, polish, coat, clean, and inspect lenses, mirrors, and prisms using specialized machines and measuring tools. Their work helps optical equipment stay accurate, reliable, and safe for everyday use.",
+      "programCount": 5,
+      "programs": [
+        {
+          "programAk": 3759,
+          "sponsorName": "Rtma, The Rochester Technology And Manufacturing Association",
+          "tradeName": "Precision Optics Manufacturing Technician",
+          "addressLine1": "2024 W. Henrietta Road Ste 3J",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14623",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-11",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        },
+        {
+          "programAk": 6399,
+          "sponsorName": "Corning Tropel Corporation",
+          "tradeName": "Precision Optics Manufacturing Technician",
+          "addressLine1": "60 O'Connor Road",
+          "addressLine2": null,
+          "addressCity": "Fairport",
+          "addressState": "NY",
+          "addressPostalCode": "14450",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-02-16",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        },
+        {
+          "programAk": 8043,
+          "sponsorName": "Rochester Precision Optics, Llc",
+          "tradeName": "Precision Optics Manufacturing Technician",
+          "addressLine1": "850 John Street",
+          "addressLine2": null,
+          "addressCity": "West Henrietta",
+          "addressState": "NY",
+          "addressPostalCode": "14586",
+          "region": "Finger Lakes",
+          "programStatus": "Probation",
+          "programApprovalDate": "2024-03-19",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        },
+        {
+          "programAk": 12291,
+          "sponsorName": "Optimax Systems, Inc.",
+          "tradeName": "Precision Optics Manufacturing Technician",
+          "addressLine1": "6367 Dean Parkway",
+          "addressLine2": null,
+          "addressCity": "Ontario",
+          "addressState": "NY",
+          "addressPostalCode": "14519",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2016-12-20",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        },
+        {
+          "programAk": 18110,
+          "sponsorName": "Sydor Optics, Inc",
+          "tradeName": "Precision Optics Manufacturing Technician",
+          "addressLine1": "31 Jetview Drive",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14624",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2020-09-23",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "51-2099.00",
+          "socTitle": "Assemblers and Fabricators, All Other"
+        }
+      ]
+    }
+  ]
+}

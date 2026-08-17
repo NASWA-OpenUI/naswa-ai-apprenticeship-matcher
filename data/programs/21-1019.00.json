@@ -1,0 +1,73 @@
+{
+  "socCode": "21-1019.00",
+  "socTitle": "Counselors, All Other",
+  "programCount": 2,
+  "regions": [
+    "Central New York",
+    "Mohawk Valley"
+  ],
+  "onet": {
+    "socCode": "21-1019.00",
+    "onetSocCode": "21-1019.00",
+    "title": "Counselors, All Other",
+    "description": "All counselors not listed separately.",
+    "fetchedAt": "2026-08-15T02:07:56.397252+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/21-1019.00"
+    },
+    "tasks": null,
+    "detailed_work_activities": null,
+    "skills": null,
+    "abilities": null,
+    "work_styles": null
+  },
+  "trades": [
+    {
+      "tradeName": "Workforce Development Specialist",
+      "displayTradeName": "Workforce Development Specialist",
+      "description": "A Workforce Development Specialist helps people prepare for jobs and helps employers find workers with the right skills. They meet with job seekers, assess interests, connect people to training, workshops, and support services, and work with schools, agencies, and businesses to plan programs. Their work helps people build careers and keeps local workplaces staffed and running.",
+      "programCount": 2,
+      "programs": [
+        {
+          "programAk": 7731,
+          "sponsorName": "Macny, The Manufacturers Association",
+          "tradeName": "Workforce Development Specialist",
+          "addressLine1": "5788 Widewater Parkway",
+          "addressLine2": null,
+          "addressCity": "Syracuse",
+          "addressState": "NY",
+          "addressPostalCode": "13214",
+          "region": "Central New York",
+          "programStatus": "Probation",
+          "programApprovalDate": "2024-04-12",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "21-1019.00",
+          "socTitle": "Counselors, All Other"
+        },
+        {
+          "programAk": 13545,
+          "sponsorName": "Mvhs Inc",
+          "tradeName": "Workforce Development Specialist",
+          "addressLine1": "111 Hospital Drive",
+          "addressLine2": null,
+          "addressCity": "Utica",
+          "addressState": "NY",
+          "addressPostalCode": "13502",
+          "region": "Mohawk Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-03-20",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "21-1019.00",
+          "socTitle": "Counselors, All Other"
+        }
+      ]
+    }
+  ]
+}

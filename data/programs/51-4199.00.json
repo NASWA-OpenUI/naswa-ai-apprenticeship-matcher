@@ -1,0 +1,53 @@
+{
+  "socCode": "51-4199.00",
+  "socTitle": "Metal Workers and Plastic Workers, All Other",
+  "programCount": 1,
+  "regions": [
+    "Central New York"
+  ],
+  "onet": {
+    "socCode": "51-4199.00",
+    "onetSocCode": "51-4199.00",
+    "title": "Metal Workers and Plastic Workers, All Other",
+    "description": "All metal workers and plastic workers not listed separately.",
+    "fetchedAt": "2026-08-15T01:19:25.663557+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/51-4199.00"
+    },
+    "tasks": null,
+    "detailed_work_activities": null,
+    "skills": null,
+    "abilities": null,
+    "work_styles": null
+  },
+  "trades": [
+    {
+      "tradeName": "Electronic Discharge Machine (EDM) - Wire & Sinker Programmer/Operator",
+      "displayTradeName": "Electronic Discharge Machine - Wire and Sinker Programmer/Operator",
+      "description": "An Electronic Discharge Machine Wire and Sinker Programmer/Operator sets up and runs EDM machines that cut metal parts with wire or shaped electrodes. They read blueprints, program machine paths, clamp workpieces, monitor sparks and fluid, and check finished parts for accuracy. Their work makes precise tools, molds, and machine parts that keep manufacturing equipment running properly.",
+      "programCount": 1,
+      "programs": [
+        {
+          "programAk": 9819,
+          "sponsorName": "Majestic Mold & Tool  Inc.",
+          "tradeName": "Electronic Discharge Machine (EDM) - Wire & Sinker Programmer/Operator",
+          "addressLine1": "177 Volney Street",
+          "addressLine2": null,
+          "addressCity": "Phoenix",
+          "addressState": "NY",
+          "addressPostalCode": "13135",
+          "region": "Central New York",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-08-12",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "51-4199.00",
+          "socTitle": "Metal Workers and Plastic Workers, All Other"
+        }
+      ]
+    }
+  ]
+}

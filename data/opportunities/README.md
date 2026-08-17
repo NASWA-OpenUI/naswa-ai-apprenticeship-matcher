@@ -38,4 +38,4 @@ uv run python -c "from naswa_matcher.db import load; load(); print('loaded')"
 uv run pytest
 ```
 
-Do not edit `data/_database.db` directly. It is generated from the source files in `data/opportunities/` and `data/locations/`.
+Do not edit `data/_database.db` directly. It is generated from the source files in `data/opportunities/`, `data/programs/`, and `data/locations/`.

@@ -1,0 +1,1359 @@
+{
+  "socCode": "17-3024.00",
+  "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+  "programCount": 10,
+  "regions": [
+    "Capital Region",
+    "Central New York",
+    "Finger Lakes",
+    "Hudson Valley",
+    "Mohawk Valley",
+    "Western New York"
+  ],
+  "onet": {
+    "socCode": "17-3024.00",
+    "onetSocCode": "17-3024.00",
+    "title": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+    "description": "Operate, test, maintain, or adjust unmanned, automated, servomechanical, or electromechanical equipment. May operate unmanned submarines, aircraft, or other equipment to observe or record visual information at sites such as oil rigs, crop fields, buildings, or for similar infrastructure, deep ocean exploration, or hazardous waste removal. May assist engineers in testing and designing robotics equipment.",
+    "fetchedAt": "2026-08-16T20:33:22.765184+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/17-3024.00"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/details/tasks",
+      "data": {
+        "start": 21,
+        "end": 29,
+        "total": 29,
+        "task": [
+          {
+            "id": "10892",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10892",
+            "title": "Test performance of electromechanical assemblies, using test instruments such as oscilloscopes, electronic voltmeters, or bridges.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "22014",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22014",
+            "title": "Install or program computer hardware or machine or instrumentation software in microprocessor-based systems.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "10893",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10893",
+            "title": "Read blueprints, schematics, diagrams, or technical orders to determine methods and sequences of assembly.",
+            "importance": 81,
+            "category": "Core"
+          },
+          {
+            "id": "22015",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22015",
+            "title": "Modify, maintain, or repair electrical, electronic, or mechanical components, equipment, or systems to ensure proper functioning.",
+            "importance": 81,
+            "category": "Core"
+          },
+          {
+            "id": "10896",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10896",
+            "title": "Inspect parts for surface defects.",
+            "importance": 78,
+            "category": "Core"
+          },
+          {
+            "id": "10894",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10894",
+            "title": "Install electrical or electronic parts and hardware in housings or assemblies, using soldering equipment and hand tools.",
+            "importance": 77,
+            "category": "Core"
+          },
+          {
+            "id": "10898",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10898",
+            "title": "Verify part dimensions or clearances to ensure conformance to specifications, using precision measuring instruments.",
+            "importance": 75,
+            "category": "Core"
+          },
+          {
+            "id": "22012",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22012",
+            "title": "Fabricate or assemble mechanical, electrical, or electronic components or assemblies.",
+            "importance": 73,
+            "category": "Core"
+          },
+          {
+            "id": "10895",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10895",
+            "title": "Align, fit, or assemble component parts, using hand or power tools, fixtures, templates, or microscopes.",
+            "importance": 72,
+            "category": "Core"
+          },
+          {
+            "id": "22016",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22016",
+            "title": "Produce electrical, electronic, or mechanical drawings or other related documents or graphics necessary for electromechanical design, using computer-aided design (CAD) software.",
+            "importance": 69,
+            "category": "Core"
+          },
+          {
+            "id": "22018",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22018",
+            "title": "Select electromechanical equipment, materials, components, or systems to meet functional specifications.",
+            "importance": 66,
+            "category": "Core"
+          },
+          {
+            "id": "22011",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22011",
+            "title": "Establish and maintain inventory, records, or documentation systems.",
+            "importance": 64,
+            "category": "Core"
+          },
+          {
+            "id": "10902",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10902",
+            "title": "Develop, test, or program new robots.",
+            "importance": 83,
+            "category": "Supplemental"
+          },
+          {
+            "id": "20743",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/20743",
+            "title": "Prepare written documentation of electromechanical test results.",
+            "importance": 80,
+            "category": "Supplemental"
+          },
+          {
+            "id": "10900",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10900",
+            "title": "Repair, rework, or calibrate hydraulic or pneumatic assemblies or systems to meet operational specifications or tolerances.",
+            "importance": 74,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22017",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22017",
+            "title": "Select and use laboratory, operational, or diagnostic techniques or test equipment to assess electromechanical circuits, equipment, processes, systems, or subsystems.",
+            "importance": 70,
+            "category": "Supplemental"
+          },
+          {
+            "id": "19683",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/19683",
+            "title": "Operate, test, or maintain robotic equipment used for green production applications, such as waste-to-energy conversion systems, minimization of material waste, or replacement of human operators in dangerous work environments.",
+            "importance": 69,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22009",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22009",
+            "title": "Determine whether selected electromechanical components comply with environmental standards and regulations.",
+            "importance": 67,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22010",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22010",
+            "title": "Develop or implement programs related to the environmental impact of engineering activities.",
+            "importance": 66,
+            "category": "Supplemental"
+          },
+          {
+            "id": "10901",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10901",
+            "title": "Train others to install, use, or maintain robots.",
+            "importance": 64,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22005",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22005",
+            "title": "Analyze engineering designs of logic or digital circuitry, motor controls, instrumentation, or data acquisition for implementation into new or existing automated, servomechanical, or other electromechanical systems.",
+            "importance": 63,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22007",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22007",
+            "title": "Conduct statistical studies to analyze or compare production costs for sustainable and nonsustainable designs.",
+            "importance": 61,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22019",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22019",
+            "title": "Specify, coordinate, or conduct quality-control or quality-assurance programs and procedures.",
+            "importance": 60,
+            "category": "Supplemental"
+          },
+          {
+            "id": "10899",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/10899",
+            "title": "Operate metalworking machines to fabricate housings, jigs, fittings, or fixtures.",
+            "importance": 58,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22021",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22021",
+            "title": "Translate electromechanical drawings into design specifications, applying principles of engineering, thermal or fluid sciences, mathematics, or statistics.",
+            "importance": 56,
+            "category": "Supplemental"
+          },
+          {
+            "id": "22013",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22013",
+            "title": "Identify energy-conserving production or fabrication methods, such as by bending metal rather than cutting and welding or casting metal.",
+            "importance": 53,
+            "category": "Supplemental"
+          },
+          {
+            "id": "23943",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/23943",
+            "title": "Assist engineers to implement electromechanical designs in industrial or other settings.",
+            "category": "New"
+          },
+          {
+            "id": "22008",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/22008",
+            "title": "Consult with machinists to ensure that electromechanical equipment or systems meet design specifications.",
+            "category": "New"
+          },
+          {
+            "id": "1001459",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/tasks/1001459",
+            "title": "Program and calibrate drones for specific missions or tasks, ensuring proper functionality and performance.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/details/detailed_work_activities",
+      "data": {
+        "start": 21,
+        "end": 29,
+        "total": 29,
+        "activity": [
+          {
+            "id": "4.A.1.b.2.l.2",
+            "title": "Test performance of electrical, electronic, mechanical, or integrated systems or equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.1.b.2.l.2"
+          },
+          {
+            "id": "4.A.3.b.2.e.1",
+            "title": "Design electromechanical equipment or systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.2.e.1"
+          },
+          {
+            "id": "4.A.3.b.1.a.4",
+            "title": "Program robotic equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.1.a.4"
+          },
+          {
+            "id": "4.A.2.b.2.b.1",
+            "title": "Develop software or computer applications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.2.b.1"
+          },
+          {
+            "id": "4.A.3.b.5.a.18",
+            "title": "Maintain electromechanical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.5.a.18"
+          },
+          {
+            "id": "4.A.3.b.5.c.4",
+            "title": "Maintain electronic equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.5.c.4"
+          },
+          {
+            "id": "4.A.1.a.1.b.8",
+            "title": "Review technical documents to plan work.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.1.a.1.b.8"
+          },
+          {
+            "id": "4.A.3.b.6.i.7",
+            "title": "Document design or operational test results.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.6.i.7"
+          },
+          {
+            "id": "4.A.1.b.2.f.8",
+            "title": "Inspect finished products to locate flaws.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.1.b.2.f.8"
+          },
+          {
+            "id": "4.A.3.a.2.t.5",
+            "title": "Install instrumentation or electronic equipment or systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.2.t.5"
+          },
+          {
+            "id": "4.A.3.a.2.i.4",
+            "title": "Calibrate scientific or technical equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.2.i.4"
+          },
+          {
+            "id": "4.A.3.a.2.d.2",
+            "title": "Assemble equipment or components.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.2.d.2"
+          },
+          {
+            "id": "4.A.3.a.2.aa.1",
+            "title": "Fabricate devices or components.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.2.aa.1"
+          },
+          {
+            "id": "4.A.2.b.2.o.8",
+            "title": "Create schematic drawings for electronics.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.2.o.8"
+          },
+          {
+            "id": "4.A.3.a.3.f.13",
+            "title": "Operate industrial equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.3.f.13"
+          },
+          {
+            "id": "4.A.2.a.1.g.7",
+            "title": "Evaluate characteristics of equipment or systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.a.1.g.7"
+          },
+          {
+            "id": "4.A.2.b.1.j.2",
+            "title": "Select project materials.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.1.j.2"
+          },
+          {
+            "id": "4.A.2.b.1.d.3",
+            "title": "Determine operational methods.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.1.d.3"
+          },
+          {
+            "id": "4.A.3.b.2.f.14",
+            "title": "Develop technical methods or processes.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.2.f.14"
+          },
+          {
+            "id": "4.A.3.b.6.h.21",
+            "title": "Maintain operational records or records systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.6.h.21"
+          },
+          {
+            "id": "4.A.4.b.3.d.2",
+            "title": "Train personnel on proper operational procedures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.4.b.3.d.2"
+          },
+          {
+            "id": "4.A.2.a.4.e.2",
+            "title": "Analyze design requirements for computer or electronics systems.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.a.4.e.2"
+          },
+          {
+            "id": "4.A.2.a.4.e.8",
+            "title": "Analyze costs and benefits of proposed designs or projects.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.a.4.e.8"
+          },
+          {
+            "id": "4.A.4.b.4.g.1",
+            "title": "Direct quality control activities.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.4.b.4.g.1"
+          },
+          {
+            "id": "4.A.3.a.2.aa.3",
+            "title": "Fabricate products or components using machine tools.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.a.2.aa.3"
+          },
+          {
+            "id": "4.A.3.b.2.a.1",
+            "title": "Determine design criteria or specifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.3.b.2.a.1"
+          },
+          {
+            "id": "4.A.2.b.2.q.5",
+            "title": "Develop operational methods or processes that use green materials or emphasize sustainability.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.2.q.5"
+          },
+          {
+            "id": "4.A.4.a.2.h.6",
+            "title": "Discuss design or technical features of products or services with technical personnel.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.4.a.2.h.6"
+          },
+          {
+            "id": "4.A.2.b.1.i.6",
+            "title": "Implement design or process improvements.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/detailed_work_activities/4.A.2.b.1.i.6"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 75
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 72
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 69
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 69
+          },
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 66
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 66
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 63
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 60
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 56
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 56
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 53
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 44
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 44
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 38
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 28
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 19
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 75
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 72
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 44
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 28
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 25
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 22
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 19
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 16
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 0
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/details/work_styles",
+      "data": {
+        "start": 11,
+        "end": 18,
+        "total": 18,
+        "element": [
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 89
+          },
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 82
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 68
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 64
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 55
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 54
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 52
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 50
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 43
+          },
+          {
+            "id": "1.D.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.a",
+            "name": "Innovation",
+            "description": "A tendency to be inventive, to be imaginative, and to adopt new perspectives on ways to accomplish work.",
+            "importance": 42
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 35
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 31
+          },
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 28
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 23
+          },
+          {
+            "id": "1.D.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.1.d",
+            "name": "Tolerance for Ambiguity",
+            "description": "A tendency to be comfortable with ambiguity and uncertainty at work.",
+            "importance": 18
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 6
+          },
+          {
+            "id": "1.D.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.2.a",
+            "name": "Humility",
+            "description": "A tendency to be modest and humble when interacting with others at work.",
+            "importance": 4
+          },
+          {
+            "id": "1.D.2.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/17-3024.00/related/work_styles/1.D.2.e",
+            "name": "Optimism",
+            "description": "A tendency to exhibit a positive attitude and positive emotions at work, even under difficult circumstances.",
+            "importance": 2
+          }
+        ]
+      }
+    }
+  },
+  "trades": [
+    {
+      "tradeName": "Electro-Mechanical Technician",
+      "displayTradeName": "Electro-Mechanical Technician",
+      "description": "An Electro-Mechanical Technician installs, tests, repairs, and maintains machines that use both electrical parts and moving mechanical systems. They trace wiring, replace sensors or motors, adjust belts and gears, and use meters and tools to find problems. Their work keeps equipment running safely and smoothly in factories, buildings, and other workplaces.",
+      "programCount": 10,
+      "programs": [
+        {
+          "programAk": 2692,
+          "sponsorName": "Upstate Niagara Cooperative",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "368 Pleasant View Drive",
+          "addressLine2": null,
+          "addressCity": "Lancaster",
+          "addressState": "NY",
+          "addressPostalCode": "14086",
+          "region": "Western New York",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-02-25",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 4059,
+          "sponsorName": "MACNY, The Manufacturers Association",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "5788 Widewaters Parkway",
+          "addressLine2": null,
+          "addressCity": "Syracuse",
+          "addressState": "NY",
+          "addressPostalCode": "13214",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-07-05",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 6119,
+          "sponsorName": "The Gleason Works",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "1000 University Ave",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14607",
+          "region": "Finger Lakes",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-01-30",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 6822,
+          "sponsorName": "Rtma, The Rochester Technology And Manufacturing Association",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "2024 W. Henrietta Road Ste 3J",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14623",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-14",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 7651,
+          "sponsorName": "Haleon Us Holding, Llc",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "3169 Route 145",
+          "addressLine2": null,
+          "addressCity": "East Durham",
+          "addressState": "NY",
+          "addressPostalCode": "12423",
+          "region": "Capital Region",
+          "programStatus": "Active",
+          "programApprovalDate": "2021-01-28",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 8686,
+          "sponsorName": "Ultrafab, Inc.",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "1050 Hook Road",
+          "addressLine2": null,
+          "addressCity": "Farmington",
+          "addressState": "NY",
+          "addressPostalCode": "14425",
+          "region": "Finger Lakes",
+          "programStatus": "Active",
+          "programApprovalDate": "2019-12-09",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 13983,
+          "sponsorName": "Worthington Steel Rome Llc",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "530 Henry Street",
+          "addressLine2": null,
+          "addressCity": "Rome",
+          "addressState": "NY",
+          "addressPostalCode": "13440",
+          "region": "Mohawk Valley",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-06-22",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 14948,
+          "sponsorName": "Rotork Controls, Inc",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "675 Mile Crossing Blvd",
+          "addressLine2": null,
+          "addressCity": "Rochester",
+          "addressState": "NY",
+          "addressPostalCode": "14624",
+          "region": "Finger Lakes",
+          "programStatus": "Probation",
+          "programApprovalDate": "2024-07-26",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 15964,
+          "sponsorName": "Council Of Industry",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "263 Route 17K Suite 106",
+          "addressLine2": null,
+          "addressCity": "Newburgh",
+          "addressState": "NY",
+          "addressPostalCode": "12550",
+          "region": "Hudson Valley",
+          "programStatus": "Active",
+          "programApprovalDate": "2018-06-29",
+          "programGroupType": "Group - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        },
+        {
+          "programAk": 149883,
+          "sponsorName": "Rolite Manufacturing, Inc.",
+          "tradeName": "Electro-Mechanical Technician",
+          "addressLine1": "10 Wendling Court",
+          "addressLine2": null,
+          "addressCity": "Lancaster",
+          "addressState": "NY",
+          "addressPostalCode": "14086",
+          "region": "Western New York",
+          "programStatus": "Probation",
+          "programApprovalDate": "2026-07-16",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "17-3024.00",
+          "socTitle": "Electro-Mechanical and Mechatronics Technologists and Technicians"
+        }
+      ]
+    }
+  ]
+}

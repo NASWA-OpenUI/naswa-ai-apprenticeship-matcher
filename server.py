@@ -164,7 +164,7 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     load_db()
-    logger.info("Application started and opportunity data loaded")
+    logger.info("Application started and local data loaded")
     yield
 
 

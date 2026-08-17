@@ -1,0 +1,1269 @@
+{
+  "socCode": "33-2011.00",
+  "socTitle": "Firefighters",
+  "programCount": 4,
+  "regions": [
+    "Central New York",
+    "Mohawk Valley",
+    "Southern Tier",
+    "Western New York"
+  ],
+  "onet": {
+    "socCode": "33-2011.00",
+    "onetSocCode": "33-2011.00",
+    "title": "Firefighters",
+    "description": "Control and extinguish fires or respond to emergency situations where life, property, or the environment is at risk. Duties may include fire prevention, emergency medical service, hazardous material response, search and rescue, and disaster assistance.",
+    "fetchedAt": "2026-08-16T20:25:15.978651+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/33-2011.00"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "href": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/details/tasks",
+      "data": {
+        "start": 21,
+        "end": 30,
+        "total": 30,
+        "task": [
+          {
+            "id": "22961",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22961",
+            "title": "Rescue survivors from burning buildings, accident sites, and water hazards.",
+            "importance": 93,
+            "category": "Core"
+          },
+          {
+            "id": "22962",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22962",
+            "title": "Dress with equipment such as fire-resistant clothing and breathing apparatus.",
+            "importance": 91,
+            "category": "Core"
+          },
+          {
+            "id": "22963",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22963",
+            "title": "Assess fires and situations and report conditions to superiors to receive instructions, using two-way radios.",
+            "importance": 90,
+            "category": "Core"
+          },
+          {
+            "id": "22964",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22964",
+            "title": "Move toward the source of a fire, using knowledge of types of fires, construction design, building materials, and physical layout of properties.",
+            "importance": 90,
+            "category": "Core"
+          },
+          {
+            "id": "22965",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22965",
+            "title": "Respond to fire alarms and other calls for assistance, such as automobile and industrial accidents.",
+            "importance": 90,
+            "category": "Core"
+          },
+          {
+            "id": "22966",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22966",
+            "title": "Create openings in buildings for ventilation or entrance, using axes, chisels, crowbars, electric saws, or core cutters.",
+            "importance": 89,
+            "category": "Core"
+          },
+          {
+            "id": "22967",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22967",
+            "title": "Drive and operate fire fighting vehicles and equipment.",
+            "importance": 88,
+            "category": "Core"
+          },
+          {
+            "id": "22968",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22968",
+            "title": "Inspect fire sites after flames have been extinguished to ensure that there is no further danger.",
+            "importance": 88,
+            "category": "Core"
+          },
+          {
+            "id": "22969",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22969",
+            "title": "Position and climb ladders to gain access to upper levels of buildings, or to rescue individuals from burning structures.",
+            "importance": 87,
+            "category": "Core"
+          },
+          {
+            "id": "22970",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22970",
+            "title": "Select and attach hose nozzles, depending on fire type, and direct streams of water or chemicals onto fires.",
+            "importance": 87,
+            "category": "Core"
+          },
+          {
+            "id": "22988",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22988",
+            "title": "Operate pumps connected to high-pressure hoses.",
+            "importance": 86,
+            "category": "Core"
+          },
+          {
+            "id": "22971",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22971",
+            "title": "Maintain contact with fire dispatchers at all times to notify them of the need for additional firefighters and supplies, or to detail any difficulties encountered.",
+            "importance": 84,
+            "category": "Core"
+          },
+          {
+            "id": "22972",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22972",
+            "title": "Collaborate with other firefighters as a member of a firefighting crew.",
+            "importance": 84,
+            "category": "Core"
+          },
+          {
+            "id": "22973",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22973",
+            "title": "Patrol burned areas after fires to locate and eliminate hot spots that may restart fires.",
+            "importance": 83,
+            "category": "Core"
+          },
+          {
+            "id": "22974",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22974",
+            "title": "Collaborate with police to respond to accidents, disasters, and arson investigation calls.",
+            "importance": 83,
+            "category": "Core"
+          },
+          {
+            "id": "22975",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22975",
+            "title": "Participate in fire drills and demonstrations of fire fighting techniques.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "22977",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22977",
+            "title": "Prepare written reports that detail specifics of fire incidents.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "22976",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22976",
+            "title": "Maintain knowledge of current firefighting practices by participating in drills and by attending seminars, conventions, and conferences.",
+            "importance": 82,
+            "category": "Core"
+          },
+          {
+            "id": "22978",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22978",
+            "title": "Participate in physical training activities to maintain a high level of physical fitness.",
+            "importance": 81,
+            "category": "Core"
+          },
+          {
+            "id": "22979",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22979",
+            "title": "Protect property from water and smoke, using waterproof salvage covers, smoke ejectors, and deodorants.",
+            "importance": 81,
+            "category": "Core"
+          },
+          {
+            "id": "22980",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22980",
+            "title": "Inform and educate the public on fire prevention.",
+            "importance": 81,
+            "category": "Core"
+          },
+          {
+            "id": "22981",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22981",
+            "title": "Salvage property by removing broken glass, pumping out water, and ventilating buildings to remove smoke.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "22982",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22982",
+            "title": "Orient self in relation to fire, using compass and map, and collect supplies and equipment dropped by parachute.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "22983",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22983",
+            "title": "Clean and maintain fire stations and fire fighting equipment and apparatus.",
+            "importance": 80,
+            "category": "Core"
+          },
+          {
+            "id": "22984",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22984",
+            "title": "Inspect buildings for fire hazards and compliance with fire prevention ordinances, testing and checking smoke alarms and fire suppression equipment as necessary.",
+            "importance": 79,
+            "category": "Core"
+          },
+          {
+            "id": "22985",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22985",
+            "title": "Take action to contain any hazardous chemicals that could catch fire, leak, or spill.",
+            "importance": 76,
+            "category": "Core"
+          },
+          {
+            "id": "22986",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22986",
+            "title": "Extinguish flames and embers to suppress fires, using shovels or engine- or hand-driven water or chemical pumps.",
+            "importance": 74,
+            "category": "Core"
+          },
+          {
+            "id": "22987",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22987",
+            "title": "Administer first aid and cardiopulmonary resuscitation to injured persons or provide emergency medical care such as basic or advanced life support.",
+            "category": "New"
+          },
+          {
+            "id": "22989",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22989",
+            "title": "Search to locate fire survivors.",
+            "category": "New"
+          },
+          {
+            "id": "22990",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/tasks/22990",
+            "title": "Train new employees to control and suppress fires.",
+            "category": "New"
+          }
+        ]
+      }
+    },
+    "detailed_work_activities": {
+      "title": "Detailed Work Activities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/details/detailed_work_activities",
+      "data": {
+        "start": 21,
+        "end": 27,
+        "total": 27,
+        "activity": [
+          {
+            "id": "4.A.4.a.5.e.1",
+            "title": "Rescue people from hazardous situations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.5.e.1"
+          },
+          {
+            "id": "4.A.2.b.1.j.1",
+            "title": "Select tools, equipment, or technologies for use in operations or projects.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.2.b.1.j.1"
+          },
+          {
+            "id": "4.A.1.a.2.g.10",
+            "title": "Locate fires or fire danger areas.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.a.2.g.10"
+          },
+          {
+            "id": "4.A.1.a.2.i.5",
+            "title": "Assess characteristics of fires.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.a.2.i.5"
+          },
+          {
+            "id": "4.A.4.a.2.g.6",
+            "title": "Relay information about incidents or emergencies to personnel using phones or two-way radios.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.2.g.6"
+          },
+          {
+            "id": "4.A.4.a.5.e.2",
+            "title": "Respond to emergencies to provide assistance.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.5.e.2"
+          },
+          {
+            "id": "4.A.3.a.1.b.1",
+            "title": "Operate firefighting equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.a.1.b.1"
+          },
+          {
+            "id": "4.A.1.a.1.u.2",
+            "title": "Examine debris to obtain information about causes of fires.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.a.1.u.2"
+          },
+          {
+            "id": "4.A.3.a.2.at.7",
+            "title": "Prepare hoses or water supplies to fight fires.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.a.2.at.7"
+          },
+          {
+            "id": "4.A.4.a.2.c.1",
+            "title": "Communicate with other workers to coordinate activities.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.2.c.1"
+          },
+          {
+            "id": "4.A.4.a.2.g.3",
+            "title": "Request emergency personnel.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.2.g.3"
+          },
+          {
+            "id": "4.A.4.b.1.c.10",
+            "title": "Collaborate with law enforcement or security agencies to respond to incidents.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.b.1.c.10"
+          },
+          {
+            "id": "4.A.1.a.2.g.12",
+            "title": "Patrol natural areas to ensure safety or enforce regulations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.a.2.g.12"
+          },
+          {
+            "id": "4.A.2.b.3.a.14",
+            "title": "Attend training to learn new skills or update knowledge.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.2.b.3.a.14"
+          },
+          {
+            "id": "4.A.4.b.3.e.6",
+            "title": "Demonstrate activity techniques or equipment use.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.b.3.e.6"
+          },
+          {
+            "id": "4.A.2.b.3.a.16",
+            "title": "Maintain professional knowledge or certifications.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.2.b.3.a.16"
+          },
+          {
+            "id": "4.A.3.b.6.b.6",
+            "title": "Prepare investigation or incident reports.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.b.6.b.6"
+          },
+          {
+            "id": "4.A.3.a.1.b.2",
+            "title": "Protect property from fire or water damage.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.a.1.b.2"
+          },
+          {
+            "id": "4.A.4.b.3.c.1",
+            "title": "Educate the public about fire safety or prevention.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.b.3.c.1"
+          },
+          {
+            "id": "4.A.3.a.1.p.2",
+            "title": "Participate in physical training to maintain fitness.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.a.1.p.2"
+          },
+          {
+            "id": "4.A.3.b.5.a.15",
+            "title": "Maintain fire fighting tools or equipment.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.3.b.5.a.15"
+          },
+          {
+            "id": "4.A.1.b.2.g.14",
+            "title": "Inspect equipment to ensure safety or proper functioning.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.b.2.g.14"
+          },
+          {
+            "id": "4.A.1.b.2.e.10",
+            "title": "Inspect facilities to ensure compliance with fire regulations.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.1.b.2.e.10"
+          },
+          {
+            "id": "4.A.4.a.5.g.4",
+            "title": "Implement advanced life support techniques.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.5.g.4"
+          },
+          {
+            "id": "4.A.4.a.5.g.1",
+            "title": "Provide first aid or rescue assistance in emergencies.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.5.g.1"
+          },
+          {
+            "id": "4.A.4.b.3.d.2",
+            "title": "Train personnel on proper operational procedures.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.b.3.d.2"
+          },
+          {
+            "id": "4.A.4.a.5.g.3",
+            "title": "Treat medical emergencies.",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/detailed_work_activities/4.A.4.a.5.g.3"
+          }
+        ]
+      }
+    },
+    "skills": {
+      "title": "Skills",
+      "href": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/details/skills",
+      "data": {
+        "start": 31,
+        "end": 35,
+        "total": 35,
+        "element": [
+          {
+            "id": "2.A.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.2.a",
+            "name": "Critical Thinking",
+            "description": "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
+            "importance": 72
+          },
+          {
+            "id": "2.B.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.b",
+            "name": "Coordination",
+            "description": "Adjusting actions in relation to others' actions.",
+            "importance": 66
+          },
+          {
+            "id": "2.B.4.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.4.e",
+            "name": "Judgment and Decision Making",
+            "description": "Considering the relative costs and benefits of potential actions to choose the most appropriate one.",
+            "importance": 66
+          },
+          {
+            "id": "2.B.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.f",
+            "name": "Service Orientation",
+            "description": "Actively looking for ways to help people.",
+            "importance": 66
+          },
+          {
+            "id": "2.A.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.2.b",
+            "name": "Active Learning",
+            "description": "Understanding the implications of new information for both current and future problem-solving and decision-making.",
+            "importance": 63
+          },
+          {
+            "id": "2.A.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.b",
+            "name": "Active Listening",
+            "description": "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
+            "importance": 63
+          },
+          {
+            "id": "2.A.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.2.d",
+            "name": "Monitoring",
+            "description": "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
+            "importance": 63
+          },
+          {
+            "id": "2.A.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.d",
+            "name": "Speaking",
+            "description": "Talking to others to convey information effectively.",
+            "importance": 63
+          },
+          {
+            "id": "2.B.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.a",
+            "name": "Social Perceptiveness",
+            "description": "Being aware of others' reactions and understanding why they react as they do.",
+            "importance": 60
+          },
+          {
+            "id": "2.B.2.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.2.i",
+            "name": "Complex Problem Solving",
+            "description": "Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.3.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.h",
+            "name": "Operation and Control",
+            "description": "Controlling operations of equipment or systems.",
+            "importance": 56
+          },
+          {
+            "id": "2.B.3.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.g",
+            "name": "Operations Monitoring",
+            "description": "Watching gauges, dials, or other indicators to make sure a machine is working properly.",
+            "importance": 56
+          },
+          {
+            "id": "2.A.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.a",
+            "name": "Reading Comprehension",
+            "description": "Understanding written sentences and paragraphs in work-related documents.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.5.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.5.a",
+            "name": "Time Management",
+            "description": "Managing one's own time and the time of others.",
+            "importance": 53
+          },
+          {
+            "id": "2.B.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.e",
+            "name": "Instructing",
+            "description": "Teaching others how to do something.",
+            "importance": 50
+          },
+          {
+            "id": "2.B.3.j",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.j",
+            "name": "Equipment Maintenance",
+            "description": "Performing routine maintenance on equipment and determining when and what kind of maintenance is needed.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.c",
+            "name": "Equipment Selection",
+            "description": "Determining the kind of tools and equipment needed to do a job.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.2.c",
+            "name": "Learning Strategies",
+            "description": "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.c",
+            "name": "Persuasion",
+            "description": "Persuading others to change their minds or behavior.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.3.m",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.m",
+            "name": "Quality Control Analysis",
+            "description": "Conducting tests and inspections of products, services, or processes to evaluate quality or performance.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.4.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.4.g",
+            "name": "Systems Analysis",
+            "description": "Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.",
+            "importance": 47
+          },
+          {
+            "id": "2.B.4.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.4.h",
+            "name": "Systems Evaluation",
+            "description": "Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.c",
+            "name": "Writing",
+            "description": "Communicating effectively in writing as appropriate for the needs of the audience.",
+            "importance": 47
+          },
+          {
+            "id": "2.A.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.e",
+            "name": "Mathematics",
+            "description": "Using mathematics to solve problems.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.1.d",
+            "name": "Negotiation",
+            "description": "Bringing others together and trying to reconcile differences.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.3.k",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.k",
+            "name": "Troubleshooting",
+            "description": "Determining causes of operating errors and deciding what to do about it.",
+            "importance": 41
+          },
+          {
+            "id": "2.B.5.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.5.d",
+            "name": "Management of Personnel Resources",
+            "description": "Motivating, developing, and directing people as they work, identifying the best people for the job.",
+            "importance": 35
+          },
+          {
+            "id": "2.B.3.l",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.l",
+            "name": "Repairing",
+            "description": "Repairing machines or systems using the needed tools.",
+            "importance": 31
+          },
+          {
+            "id": "2.B.5.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.5.c",
+            "name": "Management of Material Resources",
+            "description": "Obtaining and seeing to the appropriate use of equipment, facilities, and materials needed to do certain work.",
+            "importance": 28
+          },
+          {
+            "id": "2.A.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.A.1.f",
+            "name": "Science",
+            "description": "Using scientific rules and methods to solve problems.",
+            "importance": 25
+          },
+          {
+            "id": "2.B.5.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.5.b",
+            "name": "Management of Financial Resources",
+            "description": "Determining how money will be spent to get the work done, and accounting for these expenditures.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.b",
+            "name": "Technology Design",
+            "description": "Generating or adapting equipment and technology to serve user needs.",
+            "importance": 19
+          },
+          {
+            "id": "2.B.3.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.e",
+            "name": "Programming",
+            "description": "Writing computer programs for various purposes.",
+            "importance": 13
+          },
+          {
+            "id": "2.B.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.d",
+            "name": "Installation",
+            "description": "Installing equipment, machines, wiring, or programs to meet specifications.",
+            "importance": 10
+          },
+          {
+            "id": "2.B.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/skills/2.B.3.a",
+            "name": "Operations Analysis",
+            "description": "Analyzing needs and product requirements to create a design.",
+            "importance": 10
+          }
+        ]
+      }
+    },
+    "abilities": {
+      "title": "Abilities",
+      "href": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/details/abilities",
+      "data": {
+        "start": 51,
+        "end": 52,
+        "total": 52,
+        "element": [
+          {
+            "id": "1.A.1.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.3",
+            "name": "Problem Sensitivity",
+            "description": "The ability to tell when something is wrong or is likely to go wrong. It does not involve solving the problem, only recognizing that there is a problem.",
+            "importance": 78
+          },
+          {
+            "id": "1.A.1.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.a.1",
+            "name": "Oral Comprehension",
+            "description": "The ability to listen to and understand information and ideas presented through spoken words and sentences.",
+            "importance": 72
+          },
+          {
+            "id": "1.A.2.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.a.1",
+            "name": "Arm-Hand Steadiness",
+            "description": "The ability to keep your hand and arm steady while moving your arm or while holding your arm and hand in one position.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.4",
+            "name": "Deductive Reasoning",
+            "description": "The ability to apply general rules to specific problems to produce answers that make sense.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.4.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.2",
+            "name": "Far Vision",
+            "description": "The ability to see details at a distance.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.1.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.a.3",
+            "name": "Oral Expression",
+            "description": "The ability to communicate information and ideas in speaking so others will understand.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.3.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.a.1",
+            "name": "Static Strength",
+            "description": "The ability to exert maximum muscle force to lift, push, pull, or carry objects.",
+            "importance": 69
+          },
+          {
+            "id": "1.A.2.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.b.1",
+            "name": "Control Precision",
+            "description": "The ability to quickly and repeatedly adjust the controls of a machine or a vehicle to exact positions.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.1.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.5",
+            "name": "Inductive Reasoning",
+            "description": "The ability to combine pieces of information to form general rules or conclusions (includes finding a relationship among seemingly unrelated events).",
+            "importance": 66
+          },
+          {
+            "id": "1.A.2.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.b.2",
+            "name": "Multilimb Coordination",
+            "description": "The ability to coordinate two or more limbs (for example, two arms, two legs, or one leg and one arm) while sitting, standing, or lying down. It does not involve performing the activities while the whole body is in motion.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.4.a.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.1",
+            "name": "Near Vision",
+            "description": "The ability to see details at close range (within a few feet of the observer).",
+            "importance": 66
+          },
+          {
+            "id": "1.A.4.b.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.b.5",
+            "name": "Speech Clarity",
+            "description": "The ability to speak clearly so others can understand you.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.3.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.b.1",
+            "name": "Stamina",
+            "description": "The ability to exert yourself physically over long periods of time without getting winded or out of breath.",
+            "importance": 66
+          },
+          {
+            "id": "1.A.3.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.a.3",
+            "name": "Dynamic Strength",
+            "description": "The ability to exert muscle force repeatedly or continuously over time. This involves muscular endurance and resistance to muscle fatigue.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.e.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.e.2",
+            "name": "Flexibility of Closure",
+            "description": "The ability to identify or detect a known pattern (a figure, object, word, or sound) that is hidden in other distracting material.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.1.b.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.6",
+            "name": "Information Ordering",
+            "description": "The ability to arrange things or actions in a certain order or pattern according to a specific rule or set of rules (e.g., patterns of numbers, letters, words, pictures, mathematical operations).",
+            "importance": 63
+          },
+          {
+            "id": "1.A.2.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.a.2",
+            "name": "Manual Dexterity",
+            "description": "The ability to quickly move your hand, your hand together with your arm, or your two hands to grasp, manipulate, or assemble objects.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.2.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.c.1",
+            "name": "Reaction Time",
+            "description": "The ability to quickly respond (with the hand, finger, or foot) to a signal (sound, light, picture) when it appears.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.4.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.b.4",
+            "name": "Speech Recognition",
+            "description": "The ability to identify and understand the speech of another person.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.3.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.a.4",
+            "name": "Trunk Strength",
+            "description": "The ability to use your abdominal and lower back muscles to support part of the body repeatedly or continuously over time without \"giving out\" or fatiguing.",
+            "importance": 63
+          },
+          {
+            "id": "1.A.4.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.b.2",
+            "name": "Auditory Attention",
+            "description": "The ability to focus on a single source of sound in the presence of other distracting sounds.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.3.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.c.1",
+            "name": "Extent Flexibility",
+            "description": "The ability to bend, stretch, twist, or reach with your body, arms, and/or legs.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.e.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.e.3",
+            "name": "Perceptual Speed",
+            "description": "The ability to quickly and accurately compare similarities and differences among sets of letters, numbers, objects, pictures, or patterns. The things to be compared may be presented at the same time or one after the other. This ability also includes comparing a presented object with a remembered object.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.a.2",
+            "name": "Written Comprehension",
+            "description": "The ability to read and understand information and ideas presented in writing.",
+            "importance": 60
+          },
+          {
+            "id": "1.A.1.f.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.f.1",
+            "name": "Spatial Orientation",
+            "description": "The ability to know your location in relation to the environment or to know where other objects are in relation to you.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.f.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.f.2",
+            "name": "Visualization",
+            "description": "The ability to imagine how something will look after it is moved around or when its parts are moved or rearranged.",
+            "importance": 56
+          },
+          {
+            "id": "1.A.1.b.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.7",
+            "name": "Category Flexibility",
+            "description": "The ability to generate or use different sets of rules for combining or grouping things in different ways.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.4.a.6",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.6",
+            "name": "Depth Perception",
+            "description": "The ability to judge which of several objects is closer or farther away from you, or to judge the distance between you and an object.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.3.a.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.a.2",
+            "name": "Explosive Strength",
+            "description": "The ability to use short bursts of muscle force to propel oneself (as in jumping or sprinting), or to throw an object.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.3.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.c.3",
+            "name": "Gross Body Coordination",
+            "description": "The ability to coordinate the movement of your arms, legs, and torso together when the whole body is in motion.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.g.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.g.1",
+            "name": "Selective Attention",
+            "description": "The ability to concentrate on a task over a period of time without being distracted.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.1.e.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.e.1",
+            "name": "Speed of Closure",
+            "description": "The ability to quickly make sense of, combine, and organize information into meaningful patterns.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.4.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.3",
+            "name": "Visual Color Discrimination",
+            "description": "The ability to match or detect differences between colors, including shades of color and brightness.",
+            "importance": 53
+          },
+          {
+            "id": "1.A.2.a.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.a.3",
+            "name": "Finger Dexterity",
+            "description": "The ability to make precisely coordinated movements of the fingers of one or both hands to grasp, manipulate, or assemble very small objects.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.3.c.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.c.4",
+            "name": "Gross Body Equilibrium",
+            "description": "The ability to keep or regain your body balance or stay upright when in an unstable position.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.2.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.b.3",
+            "name": "Response Orientation",
+            "description": "The ability to choose quickly between two or more movements in response to two or more different signals (lights, sounds, pictures). It includes the speed with which the correct response is started with the hand, foot, or other body part.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.a.4",
+            "name": "Written Expression",
+            "description": "The ability to communicate information and ideas in writing so others will understand.",
+            "importance": 50
+          },
+          {
+            "id": "1.A.1.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.1",
+            "name": "Fluency of Ideas",
+            "description": "The ability to come up with a number of ideas about a topic (the number of ideas is important, not their quality, correctness, or creativity).",
+            "importance": 47
+          },
+          {
+            "id": "1.A.4.b.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.b.1",
+            "name": "Hearing Sensitivity",
+            "description": "The ability to detect or tell the differences between sounds that vary in pitch and loudness.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.d.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.d.1",
+            "name": "Memorization",
+            "description": "The ability to remember information such as words, numbers, pictures, and procedures.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.b.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.b.4",
+            "name": "Rate Control",
+            "description": "The ability to time your movements or the movement of a piece of equipment in anticipation of changes in the speed and/or direction of a moving object or scene.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.2.c.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.c.3",
+            "name": "Speed of Limb Movement",
+            "description": "The ability to quickly move the arms and legs.",
+            "importance": 47
+          },
+          {
+            "id": "1.A.1.g.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.g.2",
+            "name": "Time Sharing",
+            "description": "The ability to shift back and forth between two or more activities or sources of information (such as speech, sounds, touch, or other sources).",
+            "importance": 44
+          },
+          {
+            "id": "1.A.4.a.7",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.7",
+            "name": "Glare Sensitivity",
+            "description": "The ability to see objects in the presence of a glare or bright lighting.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.1.c.1",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.c.1",
+            "name": "Mathematical Reasoning",
+            "description": "The ability to choose the right mathematical methods or formulas to solve a problem.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.1.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.c.2",
+            "name": "Number Facility",
+            "description": "The ability to add, subtract, multiply, or divide quickly and correctly.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.1.b.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.1.b.2",
+            "name": "Originality",
+            "description": "The ability to come up with unusual or clever ideas about a given topic or situation, or to develop creative ways to solve a problem.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.a.5",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.5",
+            "name": "Peripheral Vision",
+            "description": "The ability to see objects or movement of objects to one's side when the eyes are looking ahead.",
+            "importance": 41
+          },
+          {
+            "id": "1.A.4.b.3",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.b.3",
+            "name": "Sound Localization",
+            "description": "The ability to tell the direction from which a sound originated.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.2.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.2.c.2",
+            "name": "Wrist-Finger Speed",
+            "description": "The ability to make fast, simple, repeated movements of the fingers, hands, and wrists.",
+            "importance": 38
+          },
+          {
+            "id": "1.A.4.a.4",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.4.a.4",
+            "name": "Night Vision",
+            "description": "The ability to see under low-light conditions.",
+            "importance": 35
+          },
+          {
+            "id": "1.A.3.c.2",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/abilities/1.A.3.c.2",
+            "name": "Dynamic Flexibility",
+            "description": "The ability to quickly and repeatedly bend, stretch, twist, or reach out with your body, arms, and/or legs.",
+            "importance": 28
+          }
+        ]
+      }
+    },
+    "work_styles": {
+      "title": "Work Styles",
+      "href": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/details/work_styles",
+      "data": {
+        "start": 21,
+        "end": 21,
+        "total": 21,
+        "element": [
+          {
+            "id": "1.D.4.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.4.b",
+            "name": "Self-Control",
+            "description": "A tendency to remain calm and composed and to manage emotions effectively in response to criticism or difficult situations at work.",
+            "importance": 100
+          },
+          {
+            "id": "1.D.4.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.4.a",
+            "name": "Stress Tolerance",
+            "description": "A tendency to cope and function effectively in stressful situations at work.",
+            "importance": 100
+          },
+          {
+            "id": "1.D.3.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.3.c",
+            "name": "Dependability",
+            "description": "A tendency to be reliable, responsible, and consistent in meeting work-related obligations.",
+            "importance": 98
+          },
+          {
+            "id": "1.D.2.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.d",
+            "name": "Cooperation",
+            "description": "A tendency to be pleasant, helpful, and willing to assist others at work.",
+            "importance": 94
+          },
+          {
+            "id": "1.D.1.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.f",
+            "name": "Adaptability",
+            "description": "A tendency to be open to and comfortable with change, new experiences, or ideas at work.",
+            "importance": 87
+          },
+          {
+            "id": "1.D.3.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.3.d",
+            "name": "Integrity",
+            "description": "A tendency to be honest and ethical at work.",
+            "importance": 85
+          },
+          {
+            "id": "1.D.1.h",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.h",
+            "name": "Perseverance",
+            "description": "A tendency to exhibit determination and resolve to perform or complete tasks in the face of difficult circumstances or obstacles at work.",
+            "importance": 83
+          },
+          {
+            "id": "1.D.1.g",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.g",
+            "name": "Self-Confidence",
+            "description": "A tendency to believe in one's work-related capabilities and ability to control one's work-related outcomes.",
+            "importance": 77
+          },
+          {
+            "id": "1.D.1.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.e",
+            "name": "Initiative",
+            "description": "A tendency to be proactive and take on extra responsibilities and tasks that may fall outside of one's required work role.",
+            "importance": 70
+          },
+          {
+            "id": "1.D.1.i",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.i",
+            "name": "Leadership Orientation",
+            "description": "A tendency to lead, take charge, offer opinions, and provide direction at work.",
+            "importance": 64
+          },
+          {
+            "id": "1.D.3.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.3.b",
+            "name": "Attention to Detail",
+            "description": "A tendency to be detail-oriented, organized, and thorough in completing work.",
+            "importance": 63
+          },
+          {
+            "id": "1.D.1.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.b",
+            "name": "Achievement Orientation",
+            "description": "A tendency to establish and maintain personally challenging work-related goals, set high work-related standards, and exert high effort toward meeting those goals and standards.",
+            "importance": 61
+          },
+          {
+            "id": "1.D.2.b",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.b",
+            "name": "Sincerity",
+            "description": "A tendency to be genuine and sincere in interactions with others at work, without concern for personal gain or self-interest.",
+            "importance": 56
+          },
+          {
+            "id": "1.D.1.d",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.d",
+            "name": "Tolerance for Ambiguity",
+            "description": "A tendency to be comfortable with ambiguity and uncertainty at work.",
+            "importance": 47
+          },
+          {
+            "id": "1.D.2.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.c",
+            "name": "Empathy",
+            "description": "A tendency to show concern for others and be sensitive to others' needs and feelings at work.",
+            "importance": 46
+          },
+          {
+            "id": "1.D.2.e",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.e",
+            "name": "Optimism",
+            "description": "A tendency to exhibit a positive attitude and positive emotions at work, even under difficult circumstances.",
+            "importance": 46
+          },
+          {
+            "id": "1.D.2.f",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.f",
+            "name": "Social Orientation",
+            "description": "A tendency to seek out, enjoy, and be energized by social interaction at work.",
+            "importance": 44
+          },
+          {
+            "id": "1.D.2.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.2.a",
+            "name": "Humility",
+            "description": "A tendency to be modest and humble when interacting with others at work.",
+            "importance": 38
+          },
+          {
+            "id": "1.D.3.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.3.a",
+            "name": "Cautiousness",
+            "description": "A tendency to be careful, deliberate, and risk-avoidant when making work-related decisions or doing work.",
+            "importance": 36
+          },
+          {
+            "id": "1.D.1.c",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.c",
+            "name": "Intellectual Curiosity",
+            "description": "A tendency to seek out and acquire new work-related knowledge and obtain a deep understanding of work-related subjects.",
+            "importance": 25
+          },
+          {
+            "id": "1.D.1.a",
+            "related": "https://api-v2.onetcenter.org/online/occupations/33-2011.00/related/work_styles/1.D.1.a",
+            "name": "Innovation",
+            "description": "A tendency to be inventive, to be imaginative, and to adopt new perspectives on ways to accomplish work.",
+            "importance": 15
+          }
+        ]
+      }
+    }
+  },
+  "trades": [
+    {
+      "tradeName": "Fire Fighter",
+      "displayTradeName": "Fire Fighter",
+      "description": "A Fire Fighter responds to fires, medical emergencies, vehicle crashes, and rescue calls. They drive or ride in fire trucks, carry hoses and tools, enter smoke-filled buildings, operate ladders, control flames, help injured people, and check buildings for danger. Their work protects lives, property, and public spaces, and helps keep emergencies from getting worse.",
+      "programCount": 2,
+      "programs": [
+        {
+          "programAk": 7643,
+          "sponsorName": "City Of Elmira Fire Department",
+          "tradeName": "Fire Fighter",
+          "addressLine1": "101-109 Second Street",
+          "addressLine2": null,
+          "addressCity": "Elmira",
+          "addressState": "NY",
+          "addressPostalCode": "14901",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "1989-12-26",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "33-2011.00",
+          "socTitle": "Firefighters"
+        },
+        {
+          "programAk": 10264,
+          "sponsorName": "City Of Buffalo Fire Department",
+          "tradeName": "Fire Fighter",
+          "addressLine1": "500 Southside Parkway",
+          "addressLine2": null,
+          "addressCity": "Buffalo",
+          "addressState": "NY",
+          "addressPostalCode": "14210",
+          "region": "Western New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2001-09-19",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 36,
+          "ratio": "1:1,1:1",
+          "socCode": "33-2011.00",
+          "socTitle": "Firefighters"
+        }
+      ]
+    },
+    {
+      "tradeName": "Fire Fighter-EMT",
+      "displayTradeName": "Fire Fighter-EMT",
+      "description": "A Fire Fighter-EMT responds to fires, medical emergencies, car crashes, and rescue calls. They drive emergency vehicles, carry hoses and tools, enter smoke-filled spaces, give first aid, use oxygen and heart monitors, and help move injured people to ambulances. Their work puts out fires, treats injuries, and helps keep people, homes, and public places safer.",
+      "programCount": 2,
+      "programs": [
+        {
+          "programAk": 728,
+          "sponsorName": "City Of Rome Fire Department",
+          "tradeName": "Fire Fighter-EMT",
+          "addressLine1": "158 Black River Rd",
+          "addressLine2": null,
+          "addressCity": "Rome",
+          "addressState": "NY",
+          "addressPostalCode": "13440",
+          "region": "Mohawk Valley",
+          "programStatus": "Active",
+          "programApprovalDate": "1967-01-21",
+          "programGroupType": "Individual - Joint",
+          "programApproach": "Time",
+          "programLength": 42,
+          "ratio": "1:1,1:1",
+          "socCode": "33-2011.00",
+          "socTitle": "Firefighters"
+        },
+        {
+          "programAk": 3477,
+          "sponsorName": "City Of Auburn Fire Department",
+          "tradeName": "Fire Fighter-EMT",
+          "addressLine1": "31 Seminary",
+          "addressLine2": null,
+          "addressCity": "Auburn",
+          "addressState": "NY",
+          "addressPostalCode": "13021",
+          "region": "Central New York",
+          "programStatus": "Active",
+          "programApprovalDate": "2017-05-18",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 42,
+          "ratio": "1:1,1:1",
+          "socCode": "33-2011.00",
+          "socTitle": "Firefighters"
+        }
+      ]
+    }
+  ]
+}
