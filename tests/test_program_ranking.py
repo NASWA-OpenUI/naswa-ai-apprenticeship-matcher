@@ -65,6 +65,20 @@ def make_program_group(*, trades: list[dict] | None = None) -> dict:
     }
 
 
+def make_profile(
+    *,
+    location: str | None = "Buffalo",
+    use_location_matching: bool = True,
+) -> dict:
+    return {
+        "likes": ["helping people"],
+        "dislikes": [],
+        "location": location,
+        "transportation": None,
+        "use_location_matching": use_location_matching,
+    }
+
+
 def test_program_group_title_uses_trade_name_for_single_trade():
     group = make_program_group()
 
@@ -93,7 +107,7 @@ def test_program_group_title_uses_soc_title_for_multiple_trades():
 def test_build_program_summary_extracts_program_and_onet_fields():
     group = make_program_group()
 
-    summary = build_program_summary(group)
+    summary = build_program_summary(make_profile(), group)
 
     assert summary == {
         "id": "21-1093.00",
@@ -126,13 +140,14 @@ def test_build_program_summary_extracts_program_and_onet_fields():
                 ),
             }
         ],
+        "location_fit": "local",
     }
 
 
 def test_build_program_summary_excludes_individual_program_records():
     group = make_program_group()
 
-    summary = build_program_summary(group)
+    summary = build_program_summary(make_profile(), group)
 
     assert "programs" not in summary["trades"][0]
     assert "programCount" not in summary["trades"][0]
@@ -160,7 +175,7 @@ def test_build_program_summary_includes_every_trade_description():
         ]
     )
 
-    summary = build_program_summary(group)
+    summary = build_program_summary(make_profile(), group)
 
     assert summary["trades"] == [
         {
@@ -176,3 +191,28 @@ def test_build_program_summary_includes_every_trade_description():
             "description": "Description C.",
         },
     ]
+
+
+def test_build_program_summary_includes_location_fit_when_enabled():
+    group = make_program_group()
+
+    summary = build_program_summary(
+        make_profile(location="Buffalo"),
+        group,
+    )
+
+    assert summary["location_fit"] == "local"
+
+
+def test_build_program_summary_omits_location_fit_when_disabled():
+    group = make_program_group()
+
+    summary = build_program_summary(
+        make_profile(
+            location="Buffalo",
+            use_location_matching=False,
+        ),
+        group,
+    )
+
+    assert "location_fit" not in summary

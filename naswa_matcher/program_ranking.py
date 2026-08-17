@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+from naswa_matcher.location_matching import (
+    location_fit_for_regions,
+    should_use_location_matching,
+)
 from naswa_matcher.ranking import build_onet_ranking_fields
 
 
@@ -26,7 +30,7 @@ def program_group_title(program_group: dict) -> str:
     )
 
 
-def build_program_summary(program_group: dict) -> dict:
+def build_program_summary(profile: dict, program_group: dict) -> dict:
     """Build the compact SOC-group summary sent to the scoring model."""
     onet = program_group.get("onet") or {}
     onet_fields = build_onet_ranking_fields(onet)
@@ -49,7 +53,7 @@ def build_program_summary(program_group: dict) -> dict:
             }
         )
 
-    return {
+    summary = {
         "id": program_group["socCode"],
         "title": program_group_title(program_group),
         "soc_title": program_group.get("socTitle"),
@@ -60,3 +64,11 @@ def build_program_summary(program_group: dict) -> dict:
         "work_styles": onet_fields["work_styles"],
         "trades": trades,
     }
+
+    if should_use_location_matching(profile):
+        summary["location_fit"] = location_fit_for_regions(
+            profile,
+            program_group.get("regions"),
+        )
+
+    return summary

@@ -4,6 +4,7 @@ from naswa_matcher.location_matching import (
     infer_location_groups,
     job_location_text,
     location_fit,
+    location_fit_for_regions,
     location_inference_details,
     should_use_location_matching,
     text_mentions_term,
@@ -312,3 +313,86 @@ def test_location_inference_details_returns_groups_and_matches():
     assert details["location"] == "Buffalo, NY"
     assert details["groups"] == ["western"]
     assert "buffalo -> western" in details["matches"]
+
+
+def test_location_fit_for_regions_returns_local_for_matching_region():
+    profile = {"location": "Buffalo"}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            ["Western New York"],
+        )
+        == "local"
+    )
+
+
+def test_location_fit_for_regions_returns_local_when_any_region_matches():
+    profile = {"location": "Buffalo"}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            [
+                "Capital Region",
+                "New York City",
+                "Western New York",
+            ],
+        )
+        == "local"
+    )
+
+
+def test_location_fit_for_regions_returns_nearby_for_neighboring_region():
+    profile = {"location": "Buffalo"}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            ["Finger Lakes"],
+        )
+        == "nearby"
+    )
+
+
+def test_location_fit_for_regions_returns_far_for_distant_region():
+    profile = {"location": "Buffalo"}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            ["New York City"],
+        )
+        == "far"
+    )
+
+
+def test_location_fit_for_regions_returns_unknown_for_missing_user_location():
+    profile = {"location": None}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            ["Western New York"],
+        )
+        == "unknown"
+    )
+
+
+def test_location_fit_for_regions_returns_unknown_for_missing_regions():
+    profile = {"location": "Buffalo"}
+
+    assert location_fit_for_regions(profile, []) == "unknown"
+    assert location_fit_for_regions(profile, None) == "unknown"
+
+
+def test_location_fit_for_regions_ignores_unknown_region_names():
+    profile = {"location": "Buffalo"}
+
+    assert (
+        location_fit_for_regions(
+            profile,
+            ["Definitely Not A Region"],
+        )
+        == "unknown"
+    )

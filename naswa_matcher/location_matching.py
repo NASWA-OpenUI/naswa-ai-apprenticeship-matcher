@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import re
 
-from naswa_matcher.location_data import REGION_KEY_TO_NAME, location_terms
+from naswa_matcher.location_data import (
+    REGION_KEY_TO_NAME,
+    REGION_NAME_TO_KEY,
+    location_terms,
+)
 
 NEARBY_LOCATION_GROUPS = {
     "western": {"finger_lakes", "southern_tier"},
@@ -169,35 +173,65 @@ def job_location_text(job: dict) -> str:
     )
 
 
-def location_fit(profile: dict, job: dict) -> str:
+def _location_fit_from_groups(
+    user_groups: set[str],
+    target_groups: set[str],
+) -> str:
     """
-    Return a rough location fit:
-    - local: job appears to include the user's region
-    - nearby: job appears to include a neighboring region
-    - far: known user/job regions do not overlap
-    - unknown: not enough info
-    """
-    user_groups = infer_location_groups(profile.get("location"))
-    job_groups = infer_location_groups(job_location_text(job))
+    Compare inferred NY labor-market region groups.
 
-    if not user_groups or not job_groups:
+    Returns:
+    - local: at least one target region overlaps the user's region
+    - nearby: no local overlap, but at least one target region is neighboring
+    - far: both sides are known but do not overlap or neighbor
+    - unknown: either side has no known regions
+    """
+    if not user_groups or not target_groups:
         return "unknown"
 
-    if user_groups & job_groups:
+    if user_groups & target_groups:
         return "local"
 
     nearby_groups = set()
+
     for group in user_groups:
         nearby_groups.update(NEARBY_LOCATION_GROUPS.get(group, set()))
 
-    if nearby_groups & job_groups:
+    if nearby_groups & target_groups:
         return "nearby"
 
     return "far"
 
 
+def location_fit(profile: dict, job: dict) -> str:
+    """Return the location fit between a user profile and an opportunity."""
+    user_groups = infer_location_groups(profile.get("location"))
+    job_groups = infer_location_groups(job_location_text(job))
+
+    return _location_fit_from_groups(user_groups, job_groups)
+
+
+def location_fit_for_regions(
+    profile: dict,
+    regions: list[str] | None,
+) -> str:
+    """
+    Return the location fit between a user profile and canonical NY
+    labor-market regions.
+    """
+    user_groups = infer_location_groups(profile.get("location"))
+
+    region_groups = {
+        region_key
+        for region in regions or []
+        if (region_key := REGION_NAME_TO_KEY.get(str(region).strip()))
+    }
+
+    return _location_fit_from_groups(user_groups, region_groups)
+
+
 def cap_tier_by_location(tier: str | None, location_fit: str) -> str:
-    """Prevent far-away jobs from being ranked as Strong."""
+    """Prevent non-local matches from being ranked as Strong."""
     if tier not in VALID_TIERS:
         tier = "Weak"
 
