@@ -10,7 +10,8 @@
 "use_location_matching": use_location_matching
 } %}
 
-<section class="matched-profile-widget surface surface--shadow" data-profile-summary>
+<section class="matched-profile-widget surface surface--shadow" data-profile-summary
+    data-match-target="{{ match_target }}">
     <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
 
     <div class="matched-profile-widget__main flex-center-wrap">

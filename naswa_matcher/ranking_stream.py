@@ -13,20 +13,24 @@ from naswa_matcher.app_logging import (
     log_exception,
 )
 from naswa_matcher.match_target import MatchTarget
-from naswa_matcher.opportunity_stats import sum_openings
-from naswa_matcher.ranking import build_ranked_items, sort_ranked_items
+from naswa_matcher.ranking import sort_ranked_items
 from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import ChatSession
 
 logger = logging.getLogger("naswa.ranking_stream")
 
-ScoreJobs = Callable[[dict, list[dict]], Awaitable[list[dict]]]
+ScoreItems = Callable[[dict, list[dict]], Awaitable[list[dict]]]
+BuildRankedItems = Callable[
+    [list[dict], list[dict], dict[str, int], dict],
+    list[dict],
+]
+CountUnits = Callable[[list[dict]], int]
 Render = Callable[..., str]
 
 
 @dataclass(frozen=True)
 class RankingStreamConfig:
-    """Operational settings for streamed opportunity ranking."""
+    """Operational settings for streamed ranking."""
 
     batch_size: int = 10
     max_concurrency: int = 3
@@ -34,12 +38,25 @@ class RankingStreamConfig:
     retry_delay_seconds: float = 1.0
 
 
+@dataclass(frozen=True)
+class RankingStreamAdapter:
+    """Domain-specific behavior and labels used by shared ranking orchestration."""
+
+    cards_template: str
+    item_singular: str
+    item_plural: str
+    unit_singular: str
+    unit_plural: str
+    build_ranked_items: BuildRankedItems
+    count_units: CountUnits
+
+
 @dataclass
 class RankingBatchResult:
-    """Result of ranking one batch of opportunities."""
+    """Result of ranking one batch of items."""
 
     batch_number: int
-    jobs: list[dict]
+    items: list[dict]
     ranked: list[dict]
     elapsed_ms: float
     error: str | None = None
@@ -47,19 +64,24 @@ class RankingBatchResult:
 
 @dataclass
 class RankingProgress:
-    """Accumulated progress for one opportunity ranking run."""
+    """Accumulated progress for one ranking run."""
 
     completed_batches: int = 0
-    completed_jobs: int = 0
-    completed_openings: int = 0
+    completed_items: int = 0
+    completed_units: int = 0
     ranked: list[dict] = field(default_factory=list)
     had_batch_error: bool = False
 
-    def record(self, result: RankingBatchResult) -> None:
+    def record(
+        self,
+        result: RankingBatchResult,
+        *,
+        count_units: CountUnits,
+    ) -> None:
         """Record the outcome of one completed ranking batch."""
         self.completed_batches += 1
-        self.completed_jobs += len(result.jobs)
-        self.completed_openings += sum_openings(result.jobs)
+        self.completed_items += len(result.items)
+        self.completed_units += count_units(result.items)
 
         if result.error:
             self.had_batch_error = True
@@ -67,29 +89,33 @@ class RankingProgress:
             self.ranked.extend(result.ranked)
 
 
-def chunk_opportunities(
+def chunk_items(
     items: list[dict],
     size: int,
 ) -> list[list[dict]]:
-    """Split opportunities into fixed-size ranking batches."""
+    """Split ranking items into fixed-size batches."""
     return [items[i : i + size] for i in range(0, len(items), size)]
 
 
 def _render_rank_count(
     *,
-    completed_jobs: int,
-    total_jobs: int,
-    completed_openings: int,
+    completed_items: int,
+    total_items: int,
+    completed_units: int,
+    adapter: RankingStreamAdapter,
 ) -> str:
-    """Render the compact opportunity/opening count used by ranking SSE events."""
-    opportunity_label = "opportunity" if total_jobs == 1 else "opportunities"
-    opening_label = "opening" if completed_openings == 1 else "openings"
+    """Render the compact item/unit count used by ranking SSE events."""
+    item_label = adapter.item_singular if total_items == 1 else adapter.item_plural
+
+    unit_label = adapter.unit_singular if completed_units == 1 else adapter.unit_plural
 
     return (
-        f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> '
-        f"of {total_jobs} {opportunity_label} analyzed "
+        f'<span id="ranked-count" class="ranked-count">'
+        f"{completed_items}</span> "
+        f"of {total_items} {item_label} analyzed "
         f'<span aria-hidden="true"> · </span>'
-        f'<span id="openings-count">{completed_openings}</span> {opening_label}'
+        f'<span id="units-count">{completed_units}</span> '
+        f"{unit_label}"
     )
 
 
@@ -97,10 +123,11 @@ async def stream_cached_ranking(
     cached: RankingCacheEntry,
     *,
     render: Render,
+    adapter: RankingStreamAdapter,
 ):
     """Yield SSE events for a completed ranking loaded from session cache."""
     cards_html = render(
-        "_rank_cards.html",
+        adapter.cards_template,
         ranked=cached.ranked,
     )
 
@@ -112,11 +139,15 @@ async def stream_cached_ranking(
 
     progress_html = render(
         "_rank_progress.html",
-        completed_jobs=cached.completed_jobs,
-        total_jobs=cached.total_jobs,
-        completed_openings=cached.completed_openings,
-        total_openings=cached.total_openings,
+        completed_items=cached.completed_items,
+        total_items=cached.total_items,
+        completed_units=cached.completed_units,
+        total_units=cached.total_units,
         is_done=True,
+        item_singular=adapter.item_singular,
+        item_plural=adapter.item_plural,
+        unit_singular=adapter.unit_singular,
+        unit_plural=adapter.unit_plural,
     )
 
     yield {
@@ -127,9 +158,10 @@ async def stream_cached_ranking(
     yield {
         "event": "rank-count",
         "data": _render_rank_count(
-            completed_jobs=cached.completed_jobs,
-            total_jobs=cached.total_jobs,
-            completed_openings=cached.completed_openings,
+            completed_items=cached.completed_items,
+            total_items=cached.total_items,
+            completed_units=cached.completed_units,
+            adapter=adapter,
         ),
     }
 
@@ -139,23 +171,24 @@ async def stream_cached_ranking(
     }
 
 
-async def _score_jobs_with_retry(
+async def _score_items_with_retry(
     *,
     profile: dict,
-    batch_jobs: list[dict],
+    batch_items: list[dict],
     request_id: str,
+    target: MatchTarget,
     batch_number: int,
     total_batches: int,
-    score_jobs: ScoreJobs,
+    score_items: ScoreItems,
     config: RankingStreamConfig,
 ) -> list[dict]:
     """Score one batch, retrying failed scoring attempts."""
-    scores = None
-
     for attempt in range(1, config.max_attempts + 1):
         try:
-            scores = await score_jobs(profile, batch_jobs)
-            break
+            return await score_items(
+                profile,
+                batch_items,
+            )
 
         except Exception as exc:
             error_message = describe_exception(exc)
@@ -167,12 +200,13 @@ async def _score_jobs_with_retry(
 
             logger.warning(
                 "Ranking batch attempt failed; retrying "
-                "request_id=%s batch=%s/%s jobs=%s attempt=%s/%s "
-                "retry_in=%.2fs error=%s",
+                "request_id=%s target=%s batch=%s/%s items=%s "
+                "attempt=%s/%s retry_in=%.2fs error=%s",
                 request_id,
+                target.value,
                 batch_number,
                 total_batches,
-                len(batch_jobs),
+                len(batch_items),
                 attempt,
                 config.max_attempts,
                 delay_seconds,
@@ -181,107 +215,115 @@ async def _score_jobs_with_retry(
 
             await asyncio.sleep(delay_seconds)
 
-    if scores is None:
-        raise RuntimeError("Ranking batch did not return scores.")
-
-    return scores
+    raise RuntimeError("Ranking batch did not return scores.")
 
 
 async def _rank_batch(
     *,
     request: Request,
+    target: MatchTarget,
     profile: dict,
     batch_number: int,
-    batch_jobs: list[dict],
+    batch_items: list[dict],
     total_batches: int,
-    job_index: dict[str, int],
+    item_index: dict[str, int],
     semaphore: asyncio.Semaphore,
-    score_jobs: ScoreJobs,
+    score_items: ScoreItems,
+    adapter: RankingStreamAdapter,
     config: RankingStreamConfig,
 ) -> RankingBatchResult:
-    """Rank one batch of opportunities, returning success or error details."""
+    """Rank one batch of items, returning success or error details."""
     request_id = request.state.request_id
 
     async with semaphore:
         batch_started_at = time.perf_counter()
 
         logger.debug(
-            "Ranking batch started request_id=%s batch=%s/%s jobs=%s model=%s",
+            "Ranking batch started "
+            "request_id=%s target=%s batch=%s/%s items=%s model=%s",
             request_id,
+            target.value,
             batch_number,
             total_batches,
-            len(batch_jobs),
+            len(batch_items),
             SCORING_MODEL_NAME,
         )
 
         try:
-            scores = await _score_jobs_with_retry(
+            scores = await _score_items_with_retry(
                 profile=profile,
-                batch_jobs=batch_jobs,
+                batch_items=batch_items,
                 request_id=request_id,
+                target=target,
                 batch_number=batch_number,
                 total_batches=total_batches,
-                score_jobs=score_jobs,
+                score_items=score_items,
                 config=config,
             )
 
-            if len(scores) != len(batch_jobs):
+            if len(scores) != len(batch_items):
                 logger.warning(
                     "Ranking batch returned unexpected score count "
-                    "request_id=%s batch=%s/%s jobs=%s scores=%s model=%s",
+                    "request_id=%s target=%s batch=%s/%s "
+                    "items=%s scores=%s model=%s",
                     request_id,
+                    target.value,
                     batch_number,
                     total_batches,
-                    len(batch_jobs),
+                    len(batch_items),
                     len(scores),
                     SCORING_MODEL_NAME,
                 )
 
-            ranked = build_ranked_items(
-                batch_jobs=batch_jobs,
-                scores=scores,
-                job_index=job_index,
-                profile=profile,
+            ranked = adapter.build_ranked_items(
+                batch_items,
+                scores,
+                item_index,
+                profile,
             )
 
             elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
 
             logger.debug(
                 "Ranking batch completed "
-                "request_id=%s batch=%s/%s jobs=%s scores=%s elapsed_ms=%.1f",
+                "request_id=%s target=%s batch=%s/%s "
+                "items=%s scores=%s elapsed_ms=%.1f",
                 request_id,
+                target.value,
                 batch_number,
                 total_batches,
-                len(batch_jobs),
+                len(batch_items),
                 len(scores),
                 elapsed_ms,
             )
 
             return RankingBatchResult(
                 batch_number=batch_number,
-                jobs=batch_jobs,
+                items=batch_items,
                 ranked=ranked,
                 elapsed_ms=elapsed_ms,
             )
 
         except Exception as exc:
             elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
+
             error_message = describe_exception(exc)
 
             log_exception(
                 request,
                 "ranking_batch_failed",
                 error=error_message,
+                target=target.value,
                 model=SCORING_MODEL_NAME,
                 batch=batch_number,
                 total_batches=total_batches,
-                jobs=len(batch_jobs),
+                items=len(batch_items),
                 elapsed_ms=round(elapsed_ms, 1),
             )
 
             return RankingBatchResult(
                 batch_number=batch_number,
-                jobs=batch_jobs,
+                items=batch_items,
                 ranked=[],
                 elapsed_ms=elapsed_ms,
                 error=error_message,
@@ -295,15 +337,16 @@ async def stream_ranking(
     target: MatchTarget,
     profile: dict,
     request_started_at: float,
-    onet_jobs: list[dict],
-    total_openings: int,
-    job_index: dict[str, int],
+    items: list[dict],
+    total_units: int,
+    item_index: dict[str, int],
     batches: list[list[dict]],
-    score_jobs: ScoreJobs,
+    score_items: ScoreItems,
+    adapter: RankingStreamAdapter,
     render: Render,
     config: RankingStreamConfig,
 ):
-    """Rank opportunity batches concurrently and yield SSE ranking events."""
+    """Rank batches concurrently and yield shared SSE ranking events."""
     total_batches = len(batches)
     semaphore = asyncio.Semaphore(config.max_concurrency)
 
@@ -314,17 +357,22 @@ async def stream_ranking(
         asyncio.create_task(
             _rank_batch(
                 request=request,
+                target=target,
                 profile=profile,
                 batch_number=batch_number,
-                batch_jobs=batch_jobs,
+                batch_items=batch_items,
                 total_batches=total_batches,
-                job_index=job_index,
+                item_index=item_index,
                 semaphore=semaphore,
-                score_jobs=score_jobs,
+                score_items=score_items,
+                adapter=adapter,
                 config=config,
             )
         )
-        for batch_number, batch_jobs in enumerate(batches, start=1)
+        for batch_number, batch_items in enumerate(
+            batches,
+            start=1,
+        )
     ]
 
     try:
@@ -333,16 +381,23 @@ async def stream_ranking(
                 disconnected = True
 
                 logger.info(
-                    "Streaming opportunity ranking disconnected "
-                    "request_id=%s completed_batches=%s/%s",
+                    "Streaming ranking disconnected "
+                    "request_id=%s target=%s "
+                    "completed_batches=%s/%s",
                     request.state.request_id,
+                    target.value,
                     progress.completed_batches,
                     total_batches,
                 )
+
                 break
 
             result = await task
-            progress.record(result)
+
+            progress.record(
+                result,
+                count_units=adapter.count_units,
+            )
 
             if result.error:
                 yield {
@@ -356,7 +411,7 @@ async def stream_ranking(
 
             else:
                 cards_html = render(
-                    "_rank_cards.html",
+                    adapter.cards_template,
                     ranked=result.ranked,
                 )
 
@@ -369,12 +424,16 @@ async def stream_ranking(
 
             progress_html = render(
                 "_rank_progress.html",
-                completed_jobs=progress.completed_jobs,
-                total_jobs=len(onet_jobs),
-                completed_openings=progress.completed_openings,
-                total_openings=total_openings,
+                completed_items=progress.completed_items,
+                total_items=len(items),
+                completed_units=progress.completed_units,
+                total_units=total_units,
                 is_done=False,
                 elapsed_seconds=elapsed_seconds,
+                item_singular=adapter.item_singular,
+                item_plural=adapter.item_plural,
+                unit_singular=adapter.unit_singular,
+                unit_plural=adapter.unit_plural,
             )
 
             yield {
@@ -385,9 +444,10 @@ async def stream_ranking(
             yield {
                 "event": "rank-count",
                 "data": _render_rank_count(
-                    completed_jobs=progress.completed_jobs,
-                    total_jobs=len(onet_jobs),
-                    completed_openings=progress.completed_openings,
+                    completed_items=progress.completed_items,
+                    total_items=len(items),
+                    completed_units=progress.completed_units,
+                    adapter=adapter,
                 ),
             }
 
@@ -395,21 +455,25 @@ async def stream_ranking(
             return
 
         total_elapsed_ms = (time.perf_counter() - request_started_at) * 1000
+
         total_elapsed_seconds = round(total_elapsed_ms / 1000)
 
-        final_ranked = sort_ranked_items(progress.ranked, profile)
+        final_ranked = sort_ranked_items(
+            progress.ranked,
+            profile,
+        )
 
-        if progress.completed_jobs == len(onet_jobs) and not progress.had_batch_error:
+        if progress.completed_items == len(items) and not progress.had_batch_error:
             session.ranking_cache.put(
                 profile,
                 target,
                 RankingCacheEntry(
                     profile=profile,
                     ranked=final_ranked,
-                    completed_jobs=progress.completed_jobs,
-                    total_jobs=len(onet_jobs),
-                    completed_openings=progress.completed_openings,
-                    total_openings=total_openings,
+                    completed_items=progress.completed_items,
+                    total_items=len(items),
+                    completed_units=progress.completed_units,
+                    total_units=total_units,
                     elapsed_seconds=total_elapsed_seconds,
                     is_complete=True,
                 ),
@@ -418,9 +482,12 @@ async def stream_ranking(
         log_event(
             request,
             "ranking_completed",
+            target=target.value,
             model=SCORING_MODEL_NAME,
-            jobs=len(onet_jobs),
-            completed_jobs=progress.completed_jobs,
+            items=len(items),
+            completed_items=progress.completed_items,
+            units=total_units,
+            completed_units=progress.completed_units,
             batches=total_batches,
             batch_size=config.batch_size,
             concurrency=config.max_concurrency,
@@ -431,11 +498,15 @@ async def stream_ranking(
 
         final_progress_html = render(
             "_rank_progress.html",
-            completed_jobs=progress.completed_jobs,
-            total_jobs=len(onet_jobs),
-            completed_openings=progress.completed_openings,
-            total_openings=total_openings,
+            completed_items=progress.completed_items,
+            total_items=len(items),
+            completed_units=progress.completed_units,
+            total_units=total_units,
             is_done=True,
+            item_singular=adapter.item_singular,
+            item_plural=adapter.item_plural,
+            unit_singular=adapter.unit_singular,
+            unit_plural=adapter.unit_plural,
         )
 
         yield {
@@ -446,9 +517,10 @@ async def stream_ranking(
         yield {
             "event": "rank-count",
             "data": _render_rank_count(
-                completed_jobs=progress.completed_jobs,
-                total_jobs=len(onet_jobs),
-                completed_openings=progress.completed_openings,
+                completed_items=progress.completed_items,
+                total_items=len(items),
+                completed_units=progress.completed_units,
+                adapter=adapter,
             ),
         }
 

@@ -224,7 +224,7 @@ def build_ranked_items(
 
 
 def sort_ranked_items(ranked: list[dict], profile: dict) -> list[dict]:
-    """Sort ranked opportunities by tier, location fit, and original order."""
+    """Sort ranked items by tier, location fit, and original order."""
     use_location_matching = should_use_location_matching(profile)
 
     return sorted(

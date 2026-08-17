@@ -39,7 +39,7 @@ def opportunities():
 
 
 @pytest.fixture
-def client(monkeypatch, opportunities):
+def client(monkeypatch, opportunities, program_groups):
     """FastAPI test client with AWS, DB loading, and live data patched out."""
 
     monkeypatch.setattr(
@@ -54,6 +54,8 @@ def client(monkeypatch, opportunities):
     monkeypatch.setattr(server, "load_db", lambda: None)
     monkeypatch.setattr(server, "all_opportunities", lambda: opportunities)
 
+    monkeypatch.setattr(server, "all_program_groups", lambda: program_groups)
+
     def fake_get_opportunity(slug: str):
         return next((opp for opp in opportunities if opp["id"] == slug), None)
 
@@ -61,3 +63,58 @@ def client(monkeypatch, opportunities):
 
     with TestClient(server.app) as test_client:
         yield test_client
+
+
+@pytest.fixture
+def program_groups():
+    """Return stable SOC-grouped program data for route tests."""
+    return [
+        {
+            "socCode": "47-2111.00",
+            "socTitle": "Electricians",
+            "programCount": 4,
+            "regions": [
+                "Western New York",
+            ],
+            "onet": {
+                "description": "Install and maintain electrical systems.",
+            },
+            "trades": [
+                {
+                    "tradeName": "Electrician",
+                    "displayTradeName": "Electrician",
+                    "description": (
+                        "Electricians install, maintain, and repair "
+                        "electrical wiring and equipment."
+                    ),
+                    "programCount": 4,
+                    "programs": [],
+                }
+            ],
+        },
+        {
+            "socCode": "11-1021.00",
+            "socTitle": "General and Operations Managers",
+            "programCount": 2,
+            "regions": [
+                "New York City",
+            ],
+            "onet": {
+                "description": (
+                    "Plan, direct, or coordinate organizational operations."
+                ),
+            },
+            "trades": [
+                {
+                    "tradeName": "Business Operations Associate",
+                    "displayTradeName": "Business Operations Associate",
+                    "description": (
+                        "Business Operations Associates help organizations "
+                        "coordinate daily business operations."
+                    ),
+                    "programCount": 2,
+                    "programs": [],
+                }
+            ],
+        },
+    ]

@@ -13,14 +13,14 @@ Clock = Callable[[], float]
 
 @dataclass
 class RankingCacheEntry:
-    """Cached ranking results for one normalized profile."""
+    """Cached completed ranking for one target and normalized profile."""
 
     profile: dict
     ranked: list[dict] = field(default_factory=list)
-    completed_jobs: int = 0
-    total_jobs: int = 0
-    completed_openings: int = 0
-    total_openings: int = 0
+    completed_items: int = 0
+    total_items: int = 0
+    completed_units: int = 0
+    total_units: int = 0
     elapsed_seconds: int = 0
     created_at: float = field(default_factory=time.time)
     is_complete: bool = False

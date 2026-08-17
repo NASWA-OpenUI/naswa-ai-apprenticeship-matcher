@@ -8,6 +8,7 @@ from urllib.parse import urlencode
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
@@ -27,7 +28,11 @@ from naswa_matcher.app_logging import (
     log_request,
     visitor_id_from_session_id,
 )
-from naswa_matcher.db import all_opportunities, get_opportunity
+from naswa_matcher.db import (
+    all_opportunities,
+    all_program_groups,
+    get_opportunity,
+)
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
 from naswa_matcher.location_matching import location_inference_details
@@ -41,14 +46,22 @@ from naswa_matcher.profile import (
     has_profile_query_params,
     profile_chat_url,
     profile_match_url,
-    profile_rank_params,
-    profile_rank_url,
+    profile_query_params,
     strip_profile,
 )
-from naswa_matcher.ranking import score_jobs
+from naswa_matcher.program_ranking import (
+    build_ranked_program_items,
+    score_program_groups,
+    sum_programs,
+)
+from naswa_matcher.ranking import (
+    build_ranked_items,
+    score_jobs,
+)
 from naswa_matcher.ranking_stream import (
+    RankingStreamAdapter,
     RankingStreamConfig,
-    chunk_opportunities,
+    chunk_items,
     stream_cached_ranking,
     stream_ranking,
 )
@@ -83,26 +96,6 @@ templates.env.globals["get_github_sha"] = get_github_sha
 def render(name: str, **ctx) -> str:
     """Render a template fragment to string (no Request needed)."""
     return templates.env.get_template(name).render(**ctx)
-
-
-# ── HTML/SSE fragment helpers ────────────────────────────────────────────────
-
-
-def _render_rank_count(
-    *,
-    completed_jobs: int,
-    total_jobs: int,
-    completed_openings: int,
-) -> str:
-    opportunity_label = "opportunity" if total_jobs == 1 else "opportunities"
-    opening_label = "opening" if completed_openings == 1 else "openings"
-
-    return (
-        f'<span id="ranked-count" class="ranked-count">{completed_jobs}</span> of {total_jobs} '
-        f"{opportunity_label} analyzed "
-        f'<span aria-hidden="true"> · </span>'
-        f'<span id="openings-count">{completed_openings}</span> {opening_label}'
-    )
 
 
 # ── Logging setup and filters ───────────────────────────────────────────────────
@@ -147,6 +140,26 @@ RANKING_STREAM_CONFIG = RankingStreamConfig(
     retry_delay_seconds=RANKING_RETRY_DELAY_SECONDS,
 )
 
+OPPORTUNITY_RANKING_ADAPTER = RankingStreamAdapter(
+    cards_template="_rank_cards.html",
+    item_singular="opportunity",
+    item_plural="opportunities",
+    unit_singular="opening",
+    unit_plural="openings",
+    build_ranked_items=build_ranked_items,
+    count_units=sum_openings,
+)
+
+PROGRAM_RANKING_ADAPTER = RankingStreamAdapter(
+    cards_template="_program_rank_cards.html",
+    item_singular="career",
+    item_plural="careers",
+    unit_singular="registered program",
+    unit_plural="registered programs",
+    build_ranked_items=build_ranked_program_items,
+    count_units=sum_programs,
+)
+
 
 async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
     """Score jobs using the configured scoring model.
@@ -156,6 +169,18 @@ async def _score_jobs(profile: dict, onet_jobs: list[dict]) -> list[dict]:
     return await score_jobs(
         profile,
         onet_jobs,
+        model_factory=make_scoring_model,
+    )
+
+
+async def _score_program_groups(
+    profile: dict,
+    program_groups: list[dict],
+) -> list[dict]:
+    """Score program groups using the configured scoring model."""
+    return await score_program_groups(
+        profile,
+        program_groups,
         model_factory=make_scoring_model,
     )
 
@@ -629,9 +654,11 @@ async def opportunities_page(
         ranking_cached = cached is not None
         cached_ranked = cached.ranked if cached else []
 
-        rank_stream_url = "/api/rank-opportunities?" + urlencode(
-            profile_rank_params(profile)
-        )
+        params = profile_query_params(profile)
+
+        rank_stream_url = "/api/rank-opportunities"
+        if params:
+            rank_stream_url += "?" + urlencode(params)
 
         unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
 
@@ -642,18 +669,22 @@ async def opportunities_page(
                 "ranked": True,
                 "rank_stream_url": rank_stream_url,
                 "profile": profile,
+                "match_target": MatchTarget.OPPORTUNITIES.value,
                 "chat_profile_url": profile_chat_url(profile),
                 "likes": likes,
-                "ranked_total": len(onet_jobs),
                 "unranked": unranked,
-                "completed_jobs": cached.completed_jobs if cached else 0,
-                "total_jobs": cached.total_jobs if cached else len(onet_jobs),
-                "completed_openings": cached.completed_openings if cached else 0,
-                "total_openings": cached.total_openings if cached else total_openings,
+                "completed_items": cached.completed_items if cached else 0,
+                "total_items": cached.total_items if cached else len(onet_jobs),
+                "completed_units": cached.completed_units if cached else 0,
+                "total_units": cached.total_units if cached else total_openings,
                 "is_done": ranking_cached,
                 "ranking_cached": ranking_cached,
                 "cached_ranked": cached_ranked,
                 "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
+                "item_singular": "opportunity",
+                "item_plural": "opportunities",
+                "unit_singular": "opening",
+                "unit_plural": "openings",
                 "region_filter_options": REGION_FILTER_OPTIONS,
             },
         )
@@ -687,7 +718,7 @@ async def opportunity_detail_page(request: Request, slug: str):
     )
 
 
-# ── Ranking ───────────────────────────────────────────────────────────────────
+# ── Opportunity ranking ───────────────────────────────────────────────────────
 
 
 @app.get("/api/rank-opportunities")
@@ -721,30 +752,44 @@ async def rank_opportunities_stream(
         log_event(
             request,
             "ranking_cache_hit",
+            target=MatchTarget.OPPORTUNITIES.value,
             model=SCORING_MODEL_NAME,
-            jobs=len(cached.ranked),
+            items=len(cached.ranked),
             cached=True,
             original_elapsed_seconds=cached.elapsed_seconds,
         )
 
-        return EventSourceResponse(stream_cached_ranking(cached, render=render))
+        return EventSourceResponse(
+            stream_cached_ranking(
+                cached,
+                render=render,
+                adapter=OPPORTUNITY_RANKING_ADAPTER,
+            )
+        )
 
     request_started_at = time.perf_counter()
 
     all_jobs = all_opportunities()
-    onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
+    onet_jobs = [job for job in all_jobs if job.get("onet") is not None]
+
     total_openings = sum_openings(onet_jobs)
 
     job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
-    batches = chunk_opportunities(onet_jobs, RANKING_STREAM_CONFIG.batch_size)
+
+    batches = chunk_items(
+        onet_jobs,
+        RANKING_STREAM_CONFIG.batch_size,
+    )
     total_batches = len(batches)
 
     log_event(
         request,
         "ranking_started",
+        target=MatchTarget.OPPORTUNITIES.value,
         model=SCORING_MODEL_NAME,
-        jobs=len(onet_jobs),
-        batches=total_batches,
+        items=len(onet_jobs),
+        units=total_openings,
+        batches=len(batches),
         batch_size=RANKING_STREAM_CONFIG.batch_size,
         concurrency=RANKING_STREAM_CONFIG.max_concurrency,
         cached=False,
@@ -757,11 +802,195 @@ async def rank_opportunities_stream(
             target=MatchTarget.OPPORTUNITIES,
             profile=profile,
             request_started_at=request_started_at,
-            onet_jobs=onet_jobs,
-            total_openings=total_openings,
-            job_index=job_index,
+            items=onet_jobs,
+            total_units=total_openings,
+            item_index=job_index,
             batches=batches,
-            score_jobs=_score_jobs,
+            score_items=_score_jobs,
+            adapter=OPPORTUNITY_RANKING_ADAPTER,
+            render=render,
+            config=RANKING_STREAM_CONFIG,
+        )
+    )
+
+
+# ── Programs page ─────────────────────────────────────────────────────────────
+
+
+@app.get("/programs")
+async def programs_page(
+    request: Request,
+    likes: list[str] = Query(default=[]),
+    dislikes: list[str] = Query(default=[]),
+    location: str | None = None,
+    transportation: str | None = None,
+    use_location_matching: bool | None = None,
+):
+    """Serve AI-ranked registered apprenticeship career groups."""
+    has_profile = has_profile_query_params(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+    )
+
+    if not has_profile:
+        return RedirectResponse("/chat", status_code=303)
+
+    use_location_matching_value = (
+        True if use_location_matching is None else use_location_matching
+    )
+
+    profile = build_profile(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching_value,
+    )
+
+    session = request.state.session
+
+    session.profile = build_profile(
+        name=session.profile.get("name") if session.profile else None,
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching_value,
+        confirmed=True,
+    )
+
+    program_groups = all_program_groups()
+    total_programs = sum_programs(program_groups)
+
+    cached = session.ranking_cache.get(
+        profile,
+        MatchTarget.PROGRAMS,
+    )
+
+    ranking_cached = cached is not None
+    cached_ranked = cached.ranked if cached else []
+
+    params = profile_query_params(profile)
+
+    rank_stream_url = "/api/rank-programs"
+    if params:
+        rank_stream_url += "?" + urlencode(params)
+
+    return templates.TemplateResponse(
+        request,
+        "programs.html",
+        {
+            "profile": profile,
+            "match_target": MatchTarget.PROGRAMS.value,
+            "chat_profile_url": profile_chat_url(profile),
+            "rank_stream_url": rank_stream_url,
+            "ranking_cached": ranking_cached,
+            "cached_ranked": cached_ranked,
+            "completed_items": cached.completed_items if cached else 0,
+            "total_items": (cached.total_items if cached else len(program_groups)),
+            "completed_units": cached.completed_units if cached else 0,
+            "total_units": (cached.total_units if cached else total_programs),
+            "is_done": ranking_cached,
+            "cached_elapsed_seconds": (cached.elapsed_seconds if cached else 0),
+            "item_singular": "career",
+            "item_plural": "careers",
+            "unit_singular": "registered program",
+            "unit_plural": "registered programs",
+            "region_filter_options": REGION_FILTER_OPTIONS,
+        },
+    )
+
+
+# ── Program ranking ───────────────────────────────────────────────────────────
+
+
+@app.get("/api/rank-programs")
+async def rank_programs_stream(
+    request: Request,
+    likes: list[str] = Query(default=[]),
+    dislikes: list[str] = Query(default=[]),
+    location: str | None = None,
+    transportation: str | None = None,
+    use_location_matching: bool = True,
+):
+    """Rank registered apprenticeship career groups and stream results."""
+    session = request.state.session
+
+    profile = build_profile(
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+    )
+
+    cached = session.ranking_cache.get(
+        profile,
+        MatchTarget.PROGRAMS,
+    )
+
+    if cached:
+        log_event(
+            request,
+            "ranking_cache_hit",
+            target=MatchTarget.PROGRAMS.value,
+            model=SCORING_MODEL_NAME,
+            items=len(cached.ranked),
+            cached=True,
+            original_elapsed_seconds=cached.elapsed_seconds,
+        )
+
+        return EventSourceResponse(
+            stream_cached_ranking(
+                cached,
+                render=render,
+                adapter=PROGRAM_RANKING_ADAPTER,
+            )
+        )
+
+    request_started_at = time.perf_counter()
+
+    program_groups = all_program_groups()
+    total_programs = sum_programs(program_groups)
+
+    group_index = {
+        group["socCode"]: index for index, group in enumerate(program_groups)
+    }
+
+    batches = chunk_items(
+        program_groups,
+        RANKING_STREAM_CONFIG.batch_size,
+    )
+
+    log_event(
+        request,
+        "ranking_started",
+        target=MatchTarget.PROGRAMS.value,
+        model=SCORING_MODEL_NAME,
+        items=len(program_groups),
+        units=total_programs,
+        batches=len(batches),
+        batch_size=RANKING_STREAM_CONFIG.batch_size,
+        concurrency=RANKING_STREAM_CONFIG.max_concurrency,
+        cached=False,
+    )
+
+    return EventSourceResponse(
+        stream_ranking(
+            request=request,
+            session=session,
+            target=MatchTarget.PROGRAMS,
+            profile=profile,
+            request_started_at=request_started_at,
+            items=program_groups,
+            total_units=total_programs,
+            item_index=group_index,
+            batches=batches,
+            score_items=_score_program_groups,
+            adapter=PROGRAM_RANKING_ADAPTER,
             render=render,
             config=RANKING_STREAM_CONFIG,
         )

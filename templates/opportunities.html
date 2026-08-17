@@ -41,12 +41,14 @@ opportunities{% endif %}{% endblock %}
     <div id="results-bar" class="results-bar" aria-label="Opportunity results summary">
       <div class="count" id="rank-count" aria-live="polite" aria-atomic="true" sse-swap="rank-count"
         hx-swap="innerHTML">
-        <span id="ranked-count" class="ranked-count">{{ completed_jobs }}</span> of {{ total_jobs }}
-        opportunit{{ "y" if total_jobs == 1 else "ies" }} analyzed
-        {% if completed_openings %}
+        <span id="ranked-count" class="ranked-count">{{ completed_items }}</span>
+        of {{ total_items }}
+        {{ item_singular if total_items == 1 else item_plural }} analyzed
+
+        {% if completed_units %}
         <span aria-hidden="true"> · </span>
-        <span id="openings-count">{{ completed_openings }}</span>
-        opening{{ "" if completed_openings == 1 else "s" }}
+        <span id="units-count">{{ completed_units }}</span>
+        {{ unit_singular if completed_units == 1 else unit_plural }}
         {% endif %}
       </div>
       <div id="rank-status" class="text-meta">Matches generated using AI. Results may re-order while matches load.</div>
@@ -132,7 +134,8 @@ opportunities{% endif %}{% endblock %}
 
   {% else %}
 
-  <div id="results-bar" class="results-bar" data-total="{{ ranked_total }}" aria-label="Opportunity results summary">
+  <div id="results-bar" class="results-bar" data-total="{{ opportunities|length }}"
+    aria-label="Opportunity results summary">
     <div class="count">
       <span>{{ opportunities|length }}</span> opportunit{{ "y" if opportunities|length == 1 else "ies" }}
     </div>

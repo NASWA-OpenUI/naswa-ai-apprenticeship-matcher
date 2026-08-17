@@ -2,6 +2,7 @@ from unittest.mock import patch
 from uuid import UUID
 
 import server
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.sessions import SESSION_COOKIE_NAME
 
 # ── Structured logging test helpers ───────────────────────────────────────────
@@ -361,11 +362,15 @@ def test_ranking_completion_logs_event(client, monkeypatch):
 
     event = assert_event_logged(log_info, "ranking_completed")
 
+    assert event["target"] == MatchTarget.OPPORTUNITIES.value
     assert event["model"] == server.SCORING_MODEL_NAME
-    assert event["jobs"] > 0
+    assert event["items"] > 0
+    assert event["completed_items"] == event["items"]
+    assert event["units"] > 0
+    assert event["completed_units"] == event["units"]
+    assert event["cached"] is False
     assert event["batches"] > 0
     assert event["elapsed_ms"] >= 0
-    assert event["cached"] is False
 
 
 def test_ranking_cache_hit_logs_event(client, monkeypatch):
@@ -394,6 +399,6 @@ def test_ranking_cache_hit_logs_event(client, monkeypatch):
     event = assert_event_logged(log_info, "ranking_cache_hit")
 
     assert event["model"] == server.SCORING_MODEL_NAME
-    assert event["jobs"] > 0
+    assert event["items"] > 0
     assert event["cached"] is True
     assert event["original_elapsed_seconds"] >= 0

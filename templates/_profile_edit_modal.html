@@ -582,8 +582,8 @@
 
             if (help) {
                 help.textContent = checkbox.checked
-                    ? `Prefer opportunities near ${location}.`
-                    : 'Equal weighting for all opportunities in New York State.';
+                    ? `Prefer matches near ${location}.`
+                    : 'Equal weighting for matches across New York State.';
             }
         }
 
@@ -756,16 +756,23 @@
 
             try {
                 /*
-                 * On the matches page, preserve the existing behavior:
-                 * rebuild the ranked-results URL and navigate to it.
-                 *
-                 * The updated profile will be synchronized into Tyler's context if the
-                 * user later follows the updated Back to chat link.
+                  * On a matches page, rebuild the results URL for the current
+                    * match target and navigate to it.
+                    *
+                    * The updated profile will be synchronized into Tyler's context if the
+                    * user later follows the updated Back to conversation link.
                  */
                 if (shouldRedirectAfterProfileSave()) {
                     renderProfileCard(profile);
                     closeProfileModal();
-                    window.location.assign(buildRankedUrl(profile));
+
+                    const card = getProfileCard();
+                    const target = card?.dataset.matchTarget || 'programs';
+
+                    window.location.assign(
+                        buildMatchesUrl(profile, target)
+                    );
+
                     return;
                 }
 

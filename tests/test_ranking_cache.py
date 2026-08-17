@@ -78,8 +78,8 @@ def test_complete_fresh_entry_is_returned():
         RankingCacheEntry(
             profile=profile,
             ranked=[{"id": "electrician"}],
-            completed_jobs=1,
-            total_jobs=1,
+            completed_items=1,
+            total_items=1,
             created_at=95.0,
             is_complete=True,
         ),
@@ -89,8 +89,8 @@ def test_complete_fresh_entry_is_returned():
 
     assert cached is not None
     assert cached.ranked == [{"id": "electrician"}]
-    assert cached.completed_jobs == 1
-    assert cached.total_jobs == 1
+    assert cached.completed_items == 1
+    assert cached.total_items == 1
 
 
 def test_put_stores_normalized_profile_snapshot():

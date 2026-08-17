@@ -1,6 +1,7 @@
-{% set pct = (completed_jobs / total_jobs * 100) | round | int if total_jobs else 0 %}
-{% set indeterminate = (not is_done) and completed_jobs == 0 %}
+{% set pct = (completed_items / total_items * 100) | round | int if total_items else 0 %}
+{% set indeterminate = (not is_done) and completed_items == 0 %}
 {% set elapsed = elapsed_seconds | default(0) %}
+{% set item_label = item_singular if total_items == 1 else item_plural %}
 
 <div class="rank-progress__head">
   {% if is_done %}
@@ -14,7 +15,11 @@
   {% endif %}
 
   <span class="rank-progress__title">
-    {% if is_done %}Ranking complete{% else %}Analyzing opportunities…{% endif %}
+    {% if is_done %}
+    Ranking complete
+    {% else %}
+    Analyzing {{ item_plural }}…
+    {% endif %}
   </span>
 
   <span class="rank-progress__pct">{{ pct }}%</span>
@@ -27,9 +32,10 @@
 
 <p class="rank-progress__sub text-meta">
   {% if is_done %}
-  Analyzed all {{ total_jobs }} opportunities · ranked by best fit
+  Analyzed all {{ total_items }} {{ item_label }} · ranked by best fit
   {% else %}
-  {{ completed_jobs }} of {{ total_jobs }} checked{% if elapsed %} in {{ elapsed }}s{% endif %} · showing matches as
-  they arrive
+  {{ completed_items }} of {{ total_items }} checked
+  {% if elapsed %} in {{ elapsed }}s{% endif %}
+  · showing matches as they arrive
   {% endif %}
 </p>

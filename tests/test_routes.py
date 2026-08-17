@@ -1,6 +1,8 @@
 import pytest
 
 import server
+from naswa_matcher.match_target import MatchTarget
+from naswa_matcher.profile import build_profile
 from naswa_matcher.ranking import build_ranked_items
 from naswa_matcher.sessions import (
     SESSION_COOKIE_NAME,
@@ -507,3 +509,236 @@ def test_build_ranked_items_does_not_cap_far_match_when_location_matching_disabl
 
     assert ranked[0]["tier"] == "Strong"
     assert ranked[0]["location_fit"] is None
+
+
+def test_programs_page_redirects_to_chat_without_profile(client):
+    """Verifies that programs are only shown as personalized matches and
+    cannot be browsed without profile query parameters."""
+    response = client.get(
+        "/programs",
+        follow_redirects=False,
+    )
+
+    assert response.status_code == 303
+    assert response.headers["location"] == "/chat"
+
+
+def test_programs_page_renders_ranking_shell(client):
+    """Verifies that a profile-backed programs page renders the program
+    ranking shell and connects it to the program ranking SSE endpoint."""
+    response = client.get(
+        "/programs",
+        params=[
+            ("likes", "hands-on work"),
+            ("likes", "problem solving"),
+            ("dislikes", "office work"),
+            ("location", "Buffalo"),
+            ("transportation", "car"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert 'id="ranked-content"' in response.text
+    assert 'sse-connect="/api/rank-programs?' in response.text
+    assert "likes=hands-on+work" in response.text
+    assert "likes=problem+solving" in response.text
+    assert "dislikes=office+work" in response.text
+    assert "location=Buffalo" in response.text
+    assert "transportation=car" in response.text
+
+    assert "ranked=true" not in response.text
+
+    assert 'data-match-target="programs"' in response.text
+    assert 'id="rank-progress"' in response.text
+    assert 'id="match-list"' in response.text
+
+
+def test_rank_programs_stream_caps_non_local_strong_matches(
+    client,
+    monkeypatch,
+):
+    """Verifies that program ranking streams SOC-group cards and caps a
+    far-away Strong model score to Moderate."""
+
+    async def fake_score_program_groups(
+        profile,
+        program_groups,
+    ):
+        assert profile["likes"] == [
+            "hands-on work",
+            "problem solving",
+        ]
+        assert profile["location"] == "Buffalo"
+
+        soc_codes = {group["socCode"] for group in program_groups}
+
+        assert soc_codes == {
+            "47-2111.00",
+            "11-1021.00",
+        }
+
+        return [
+            {
+                "id": "47-2111.00",
+                "tier": "Strong",
+                "explanation": ("You may enjoy hands-on electrical troubleshooting."),
+            },
+            {
+                "id": "11-1021.00",
+                "tier": "Strong",
+                "explanation": (
+                    "Your problem-solving interests could connect "
+                    "with business operations."
+                ),
+            },
+        ]
+
+    monkeypatch.setattr(
+        server,
+        "_score_program_groups",
+        fake_score_program_groups,
+    )
+
+    with client.stream(
+        "GET",
+        "/api/rank-programs",
+        params=[
+            ("likes", "hands-on work"),
+            ("likes", "problem solving"),
+            ("location", "Buffalo"),
+        ],
+    ) as response:
+        assert response.status_code == 200
+        body = "".join(response.iter_text())
+
+    # Shared ranking stream events.
+    assert "event: batch" in body
+    assert "event: progress" in body
+    assert "event: rank-count" in body
+    assert "event: done" in body
+
+    # Both program groups rendered.
+    assert 'data-ranking-id="47-2111.00"' in body
+    assert 'data-ranking-id="11-1021.00"' in body
+
+    assert "Electrician" in body
+    assert "Business Operations Associate" in body
+
+    # The local Strong result stays Strong.
+    local_card_start = body.index('data-ranking-id="47-2111.00"')
+    far_card_start = body.index('data-ranking-id="11-1021.00"')
+
+    local_card = body[
+        local_card_start : (
+            far_card_start if far_card_start > local_card_start else len(body)
+        )
+    ]
+
+    assert 'data-ranking-tier="Strong"' in local_card
+
+    # The NYC Strong model score is capped to Moderate for Buffalo.
+    assert 'data-ranking-id="11-1021.00"' in body
+
+    far_result_position = body.index('data-ranking-id="11-1021.00"')
+
+    assert 'data-ranking-tier="Moderate"' in body[far_result_position:]
+
+    # Program counts use the generic units vocabulary in the SSE count.
+    assert '<span id="units-count">6</span> registered programs' in body
+
+
+def test_program_ranking_cache_hit_isolated_from_opportunity_cache(
+    client,
+    monkeypatch,
+):
+    """Verifies that completed program rankings are reused for the same
+    profile without populating the opportunity-ranking cache."""
+    score_calls = 0
+
+    async def fake_score_program_groups(
+        profile,
+        program_groups,
+    ):
+        nonlocal score_calls
+        score_calls += 1
+
+        return [
+            {
+                "id": group["socCode"],
+                "tier": "Strong",
+                "explanation": "Good career match.",
+            }
+            for group in program_groups
+        ]
+
+    monkeypatch.setattr(
+        server,
+        "_score_program_groups",
+        fake_score_program_groups,
+    )
+
+    params = [
+        ("likes", "hands-on work"),
+        ("location", "Buffalo"),
+    ]
+
+    # First request performs the actual scoring and populates PROGRAMS cache.
+    with client.stream(
+        "GET",
+        "/api/rank-programs",
+        params=params,
+    ) as response:
+        assert response.status_code == 200
+        first_body = "".join(response.iter_text())
+
+    assert score_calls == 1
+    assert "event: done" in first_body
+
+    # Same profile should now stream from cache, not invoke the scorer again.
+    with client.stream(
+        "GET",
+        "/api/rank-programs",
+        params=params,
+    ) as response:
+        assert response.status_code == 200
+        cached_body = "".join(response.iter_text())
+
+    assert score_calls == 1
+    assert "event: batch" in cached_body
+    assert "event: progress" in cached_body
+    assert "event: rank-count" in cached_body
+    assert "event: done" in cached_body
+
+    # Inspect the actual browser session to verify target isolation.
+    session_id = client.cookies.get(SESSION_COOKIE_NAME)
+
+    assert session_id is not None
+
+    returned_session_id, session = server.session_store.get_or_create(session_id)
+
+    assert returned_session_id == session_id
+
+    profile = build_profile(
+        likes=["hands-on work"],
+        dislikes=[],
+        location="Buffalo",
+        transportation=None,
+        use_location_matching=True,
+    )
+
+    assert (
+        session.ranking_cache.get(
+            profile,
+            MatchTarget.PROGRAMS,
+        )
+        is not None
+    )
+
+    assert (
+        session.ranking_cache.get(
+            profile,
+            MatchTarget.OPPORTUNITIES,
+        )
+        is None
+    )
