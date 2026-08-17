@@ -2,11 +2,13 @@ from urllib.parse import parse_qs, urlparse
 
 import pytest
 
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.profile import (
     build_profile,
     extract_profile,
     has_profile_query_params,
     profile_chat_url,
+    profile_match_url,
     profile_query_params,
     profile_rank_params,
     profile_rank_url,
@@ -380,3 +382,68 @@ def test_has_profile_query_params_detects_explicit_blank_string():
         transportation=None,
         use_location_matching=None,
     )
+
+def test_profile_match_url_for_programs_uses_profile_params_without_ranked():
+    profile = build_profile(
+        likes=["math", "fixing things"],
+        dislikes=["desk work"],
+        location="Buffalo",
+        transportation="car",
+        use_location_matching=True,
+    )
+
+    parsed = urlparse(profile_match_url(profile, MatchTarget.PROGRAMS))
+    query = parse_qs(parsed.query)
+
+    assert parsed.path == "/programs"
+    assert "ranked" not in query
+    assert query["likes"] == ["math", "fixing things"]
+    assert query["dislikes"] == ["desk work"]
+    assert query["location"] == ["Buffalo"]
+    assert query["transportation"] == ["car"]
+
+
+def test_profile_match_url_for_opportunities_keeps_ranked_mode():
+    profile = build_profile(
+        likes=["math"],
+        dislikes=[],
+        location="Buffalo",
+        transportation=None,
+        use_location_matching=True,
+    )
+
+    parsed = urlparse(profile_match_url(profile, MatchTarget.OPPORTUNITIES))
+    query = parse_qs(parsed.query)
+
+    assert parsed.path == "/opportunities"
+    assert query["ranked"] == ["true"]
+    assert query["likes"] == ["math"]
+    assert query["location"] == ["Buffalo"]
+
+
+def test_profile_match_url_for_programs_preserves_disabled_location_matching():
+    profile = build_profile(
+        likes=["construction"],
+        dislikes=[],
+        location="Buffalo",
+        transportation="car",
+        use_location_matching=False,
+    )
+
+    query = parse_qs(
+        urlparse(profile_match_url(profile, MatchTarget.PROGRAMS)).query
+    )
+
+    assert query["use_location_matching"] == ["false"]
+
+
+def test_profile_match_url_for_empty_program_profile_returns_plain_path():
+    profile = build_profile(
+        likes=[],
+        dislikes=[],
+        location=None,
+        transportation=None,
+        use_location_matching=True,
+    )
+
+    assert profile_match_url(profile, MatchTarget.PROGRAMS) == "/programs"

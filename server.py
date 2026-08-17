@@ -31,6 +31,7 @@ from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
 from naswa_matcher.location_matching import location_inference_details
+from naswa_matcher.match_target import MATCH_TARGET
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -39,6 +40,7 @@ from naswa_matcher.profile import (
     extract_profile,
     has_profile_query_params,
     profile_chat_url,
+    profile_match_url,
     profile_rank_params,
     profile_rank_url,
     strip_profile,
@@ -318,9 +320,9 @@ async def chat_page(
 
         session.apply_confirmed_profile(profile)
 
-    ranked_url = None
+    matches_url = None
     if session.profile and session.profile.get("confirmed"):
-        ranked_url = profile_rank_url(session.profile)
+        matches_url = profile_match_url(session.profile, MATCH_TARGET)
 
     return templates.TemplateResponse(
         request,
@@ -328,7 +330,8 @@ async def chat_page(
         {
             "profile": session.profile,
             "messages": session.messages,
-            "ranked_url": ranked_url,
+            "matches_url": matches_url,
+            "match_target": MATCH_TARGET.value,
         },
     )
 
@@ -570,9 +573,12 @@ async def chat_stream(request: Request):
                 if profile.get("confirmed"):
                     log_event(request, "profile_confirmed")
 
-                    ranked_url = profile_rank_url(profile)
+                    matches_url = profile_match_url(profile, MATCH_TARGET)
                     card_html = render(
-                        "_profile_card.html", profile=profile, ranked_url=ranked_url
+                        "_profile_card.html",
+                        profile=profile,
+                        matches_url=matches_url,
+                        match_target=MATCH_TARGET.value,
                     )
                     yield {"event": "profile-confirmed", "data": card_html}
 

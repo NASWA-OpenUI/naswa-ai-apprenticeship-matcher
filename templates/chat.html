@@ -50,7 +50,7 @@
 
   <!-- Profile card injected here when conversation is confirmed -->
   <div id="profile-area" sse-swap="profile-confirmed" hx-swap="innerHTML">
-    {% if profile and profile.confirmed and ranked_url %}
+    {% if profile and profile.confirmed and matches_url %}
     {% include "_profile_card.html" %}
     {% endif %}
   </div>

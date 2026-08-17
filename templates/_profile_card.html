@@ -9,7 +9,7 @@
 } %}
 
 <div class="profile-card surface surface--shadow surface--accent surface--clip" role="region"
-  aria-label="Your profile summary" data-profile-card>
+  aria-label="Your profile summary" data-profile-card data-match-target="{{ match_target }}">
   <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
 
   <div class="profile-card-head">
@@ -110,7 +110,7 @@
         </button>
       </div>
 
-      <a href="{{ ranked_url }}" class="btn btn--filled" data-profile-ranked-link>
+      <a href="{{ matches_url }}" class="btn btn--filled" data-profile-matches-link>
         See my matches →
       </a>
     </div>

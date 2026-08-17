@@ -1186,7 +1186,7 @@ a.btn--jumbo:focus {
   gap: var(--app-space-100);
 }
 
-.profile-card-actions>[data-profile-ranked-link] {
+.profile-card-actions>[data-profile-matches-link] {
   margin-left: auto;
 }
 
@@ -1204,7 +1204,7 @@ a.btn--jumbo:focus {
     width: 100%;
   }
 
-  .profile-card-actions>[data-profile-ranked-link] {
+  .profile-card-actions>[data-profile-matches-link] {
     margin-left: 0;
   }
 }

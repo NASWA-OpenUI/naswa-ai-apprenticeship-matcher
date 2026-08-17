@@ -306,10 +306,12 @@
             target.appendChild(makeProfileCardValueChip(key, value));
         }
 
-        function buildRankedUrl(profile) {
+        function buildMatchesUrl(profile, target) {
             const params = new URLSearchParams();
 
-            params.set('ranked', 'true');
+            if (target === 'opportunities') {
+                params.set('ranked', 'true');
+            }
 
             profile.likes.forEach(function (like) {
                 params.append('likes', like);
@@ -331,7 +333,13 @@
                 params.set('use_location_matching', 'false');
             }
 
-            return '/opportunities?' + params.toString();
+            const path = target === 'opportunities'
+                ? '/opportunities'
+                : '/programs';
+
+            const query = params.toString();
+
+            return query ? `${path}?${query}` : path;
         }
 
         function buildChatUrl(profile) {
@@ -474,8 +482,11 @@
                 locationPreferenceValue.hidden = profile.use_location_matching !== false;
             }
 
-            const rankedLink = card.querySelector('[data-profile-ranked-link]');
-            if (rankedLink) rankedLink.href = buildRankedUrl(profile);
+            const matchesLink = card.querySelector('[data-profile-matches-link]');
+            const matchTarget = card.dataset.matchTarget;
+            if (matchesLink && matchTarget) {
+                matchesLink.href = buildMatchesUrl(profile, matchTarget);
+            }
 
             renderProfileSummary(profile);
             writeProfileJson(profile);

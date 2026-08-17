@@ -3,6 +3,7 @@ import re
 from urllib.parse import urlencode
 
 from naswa_matcher.location_matching import should_use_location_matching
+from naswa_matcher.match_target import MatchTarget
 
 
 def strip_profile(text: str) -> str:
@@ -120,6 +121,22 @@ def profile_rank_params(profile: dict) -> list[tuple[str, str]]:
 def profile_rank_url(profile: dict) -> str:
     """Return the ranked opportunities URL for a profile."""
     return "/opportunities?" + urlencode(profile_rank_params(profile))
+
+
+def profile_match_url(profile: dict, target: MatchTarget) -> str:
+    """Return the matches URL for a profile and matching target."""
+    if target is MatchTarget.OPPORTUNITIES:
+        return profile_rank_url(profile)
+
+    if target is MatchTarget.PROGRAMS:
+        params = profile_query_params(profile)
+
+        if not params:
+            return "/programs"
+
+        return "/programs?" + urlencode(params)
+
+    raise ValueError(f"Unsupported match target: {target}")
 
 
 def profile_chat_url(profile: dict) -> str:

@@ -215,8 +215,11 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
     assert 'data-edit-list="likes"' in response.text
     assert 'data-edit-list="dislikes"' in response.text
 
-    # Ranked URL should be built from the prefilled profile.
-    assert "/opportunities?ranked=true" in response.text
+    # Matches URL should be built from the prefilled profile.
+    assert 'data-match-target="programs"' in response.text
+    assert "data-profile-matches-link" in response.text
+    assert "/programs?" in response.text
+    assert "ranked=true" not in response.text
     assert "likes=art" in response.text
     assert "likes=fashion" in response.text
     assert "dislikes=office+work" in response.text
