@@ -1,11 +1,16 @@
+{# templates/_program_rank_cards.html #}
+
 {% for item in ranked %}
 {% set group = item.program_group %}
+{% set trades = group.trades | default([], true) %}
 {% set regions = group.regions | default([], true) %}
 {% set tier_class = item.tier | lower %}
+{% set is_statewide = regions | length == 10 %}
 
-<article class="match-card match-card--{{ tier_class }} surface surface--shadow" data-tier-order="{{ item.tier_order }}"
-    data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}" data-ranking-tier="{{ item.tier }}"
-    data-ranking-explanation="{{ item.explanation }}" data-regions="{{ regions | join(',') }}">
+<article class="match-card program-match-card match-card--{{ tier_class }} surface surface--shadow"
+    data-tier-order="{{ item.tier_order }}" data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}"
+    data-ranking-tier="{{ item.tier }}" data-ranking-explanation="{{ item.explanation }}"
+    data-regions="{{ regions | join(',') }}">
     <div class="match-card__inner">
         <div class="match-card__top flex-center-wrap">
             <span class="chip chip--{{ tier_class }}">
@@ -13,14 +18,31 @@
                 <span class="chip__label">{{ item.tier }} match</span>
             </span>
 
-            <h3 class="match-card__title">
+            <a class="job-link match-card__title" href="/programs/{{ group.socCode }}">
                 {{ item.title }}
-            </h3>
+            </a>
         </div>
 
         {% if regions %}
         <div class="match-card__meta text-meta">
-            {{ regions | join(" · ") }}
+            <span class="meta-pin" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="currentColor" stroke-width="2"
+                        stroke-linejoin="round" />
+                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" />
+                </svg>
+            </span>
+
+            {% if is_statewide %}
+            <span>Statewide — programs in all 10 regions</span>
+            {% else %}
+            {% for region in regions %}
+            <span class="reg" data-region="{{ region }}">{{ region }}</span>
+            {% if not loop.last %}
+            <span class="sep" aria-hidden="true">·</span>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
         </div>
         {% endif %}
 
@@ -33,13 +55,58 @@
         </div>
         {% endif %}
 
+        {% if trades | length > 1 %}
+        <details class="disclosure disc-trades">
+            <summary>
+                <svg class="caret" viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+
+                Programs include {{ trades | length }} trade titles
+            </summary>
+
+            <div class="disclosure__body">
+                <ul class="trade-list">
+                    {% for trade in trades %}
+                    {% set trade_name = trade.displayTradeName or trade.tradeName %}
+                    {% set trade_count = trade.programCount | default(0, true) %}
+
+                    <li>
+                        <span class="t-name">{{ trade_name }}</span>
+                        <span class="t-count">
+                            {{ trade_count }}
+                            program{{ "" if trade_count == 1 else "s" }}
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </details>
+        {% endif %}
+
         <div class="match-card__footer">
-            <div class="match-card__summary flex-center-wrap">
+            <span class="match-card__stat">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="2"
+                        stroke-linejoin="round" />
+                </svg>
+
                 <span>
                     <strong>{{ group.programCount }}</strong>
                     registered program{{ "" if group.programCount == 1 else "s" }}
                 </span>
-            </div>
+            </span>
+
+            <a class="match-card__details-link" href="/programs/{{ group.socCode }}">
+                View programs
+
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
         </div>
     </div>
 </article>

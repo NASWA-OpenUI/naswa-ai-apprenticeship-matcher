@@ -2386,6 +2386,127 @@ body.profile-modal-open {
   visibility: visible;
 }
 
+/* Program match cards */
+
+.program-match-card .match-card__meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 0.1rem 0 0.6rem;
+}
+
+.program-match-card .meta-pin {
+  flex-shrink: 0;
+  align-self: center;
+  margin-right: 0.35rem;
+}
+
+.program-match-card .meta-pin svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  color: var(--app-text-weak);
+}
+
+.program-match-card .reg {
+  color: var(--app-text-weak);
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+.program-match-card .sep {
+  color: var(--app-base);
+  margin: 0 0.15rem;
+}
+
+.program-match-card .disclosure {
+  margin-top: 0.75rem;
+}
+
+.program-match-card .disclosure>summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--nys-color-theme);
+}
+
+.program-match-card .disclosure>summary::-webkit-details-marker {
+  display: none;
+}
+
+.program-match-card .disclosure>summary .caret {
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.program-match-card .disclosure[open]>summary .caret {
+  transform: rotate(90deg);
+}
+
+.program-match-card .disclosure__body {
+  margin-top: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--nys-color-theme-faint);
+  border: 1px solid var(--nys-color-theme-weaker);
+  border-radius: var(--app-radius-md);
+}
+
+.program-match-card .trade-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.program-match-card .trade-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px dashed var(--nys-color-theme-weaker);
+  font-size: 0.88rem;
+}
+
+.program-match-card .trade-list li:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.program-match-card .trade-list .t-name {
+  color: var(--app-ink);
+}
+
+.program-match-card .trade-list .t-count {
+  flex-shrink: 0;
+  color: var(--app-text-weak);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.program-match-card .match-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--app-ink);
+}
+
+.program-match-card .match-card__stat svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--app-text-weak);
+}
+
+.program-match-card .match-card__stat strong {
+  font-weight: 800;
+}
+
 @media (max-width: 640px) {
   .match-card__inner {
     padding: 0.95rem 1rem;
@@ -2397,6 +2518,15 @@ body.profile-modal-open {
 
   .match-card__summary {
     gap: 0.55rem;
+  }
+
+  .program-match-card .trade-list li {
+    display: block;
+  }
+
+  .program-match-card .trade-list .t-count {
+    display: block;
+    margin-top: 0.1rem;
   }
 }
 

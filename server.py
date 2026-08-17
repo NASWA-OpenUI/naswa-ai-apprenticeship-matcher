@@ -30,6 +30,7 @@ from naswa_matcher.app_logging import (
 )
 from naswa_matcher.db import (
     all_opportunities,
+    get_program_group,
     all_program_groups,
     get_opportunity,
 )
@@ -900,6 +901,29 @@ async def programs_page(
             "unit_singular": "registered program",
             "unit_plural": "registered programs",
             "region_filter_options": REGION_FILTER_OPTIONS,
+        },
+    )
+
+
+# ── Single program group page ─────────────────────────────────────────────────
+
+
+@app.get("/programs/{soc_code}")
+async def program_detail_page(
+    request: Request,
+    soc_code: str,
+):
+    """Serve a registered apprenticeship program-group detail page."""
+    program_group = get_program_group(soc_code)
+
+    if program_group is None:
+        raise HTTPException(status_code=404)
+
+    return templates.TemplateResponse(
+        request,
+        "program.html",
+        {
+            "program_group": program_group,
         },
     )
 
