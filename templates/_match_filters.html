@@ -1,9 +1,13 @@
 {# templates/_match_filters.html #}
 {% set filters_ready = ranking_cached|default(false) %}
+{% set show_license_filter = show_license_filter|default(false) %}
+{% set filter_item_singular = filter_item_singular|default("match") %}
+{% set filter_item_plural = filter_item_plural|default("matches") %}
 
 <aside id="match-filters" class="match-filters surface surface--shadow" data-match-filters
     data-ranking-cached="{% if filters_ready %}true{% else %}false{% endif %}"
     data-filters-ready="{% if filters_ready %}true{% else %}false{% endif %}"
+    data-filter-item-singular="{{ filter_item_singular }}" data-filter-item-plural="{{ filter_item_plural }}"
     aria-busy="{% if filters_ready %}false{% else %}true{% endif %}" aria-labelledby="match-filters-title">
     <div class="match-filters__head">
         <h3 id="match-filters-title" class="match-filters__title">
@@ -61,6 +65,7 @@
             {% endfor %}
         </fieldset>
 
+        {% if show_license_filter %}
         <fieldset class="match-filter-group">
             <legend>Driver’s license</legend>
 
@@ -73,11 +78,13 @@
                 <span class="match-filter-option__count" data-match-filter-count="no-license">0</span>
             </label>
         </fieldset>
+        {% endif %}
     </form>
 
     <p class="match-filters__summary" data-match-filters-summary aria-live="polite" aria-atomic="true">
         {% if filters_ready %}
-        Showing all matches
+        Showing all {{ total_items }}
+        {{ filter_item_singular if total_items == 1 else filter_item_plural }}
         {% else %}
         Filters available when ranking is complete.
         {% endif %}
@@ -93,6 +100,9 @@
             const panel = document.querySelector('[data-match-filters]');
             const form = document.querySelector('[data-match-filters-form]');
             const matchList = document.getElementById('match-list');
+            const itemSingular = panel.dataset.filterItemSingular || 'match';
+            const itemPlural = panel.dataset.filterItemPlural || 'matches';
+            const licenseInput = form.elements['no-license-required'];
 
             if (!panel || !form || !matchList) {
                 return;
@@ -127,8 +137,10 @@
                 );
             }
 
-            function pluralizeMatches(count) {
-                return count === 1 ? 'match' : 'matches';
+            function itemLabel(count) {
+                return count === 1
+                    ? itemSingular
+                    : itemPlural;
             }
 
             function selectedTier() {
@@ -140,17 +152,20 @@
             }
 
             function noLicenseRequired() {
-                return Boolean(
-                    form.elements['no-license-required']?.checked
-                );
+                return Boolean(licenseInput?.checked);
             }
 
             function currentFilterState() {
-                return {
+                const state = {
                     tier: selectedTier(),
-                    regions: selectedRegions(),
-                    noLicense: noLicenseRequired()
+                    regions: selectedRegions()
                 };
+
+                if (licenseInput) {
+                    state.noLicense = noLicenseRequired();
+                }
+
+                return state;
             }
 
             function saveFilters() {
@@ -159,7 +174,7 @@
                 const isDefaultState =
                     state.tier === 'all' &&
                     state.regions.length === 0 &&
-                    !state.noLicense;
+                    (!licenseInput || !state.noLicense);
 
                 try {
                     if (isDefaultState) {
@@ -248,9 +263,6 @@
                             savedRegions.has(input.value);
                     });
 
-                const licenseInput =
-                    form.elements['no-license-required'];
-
                 if (licenseInput) {
                     licenseInput.checked =
                         savedState.noLicense === true;
@@ -282,9 +294,12 @@
                     all: cards.length,
                     strong: 0,
                     moderate: 0,
-                    weak: 0,
-                    'no-license': 0
+                    weak: 0
                 };
+
+                if (licenseInput) {
+                    counts['no-license'] = 0;
+                }
 
                 const regionCounts = new Map();
 
@@ -306,7 +321,7 @@
                         counts[tier] += 1;
                     }
 
-                    if (card.dataset.licenseRequired !== 'true') {
+                    if (licenseInput && card.dataset.licenseRequired !== 'true') {
                         counts['no-license'] += 1;
                     }
 
@@ -400,12 +415,13 @@
                 if (!labels.length) {
                     summary.textContent =
                         `Showing all ${totalCount} ` +
-                        pluralizeMatches(totalCount);
+                        itemLabel(totalCount);
                     return;
                 }
 
                 summary.textContent =
-                    `Showing ${visibleCount} of ${totalCount} · ` +
+                    `Showing ${visibleCount} of ${totalCount} ` +
+                    `${itemLabel(totalCount)} · ` +
                     labels.join(' · ');
             }
 

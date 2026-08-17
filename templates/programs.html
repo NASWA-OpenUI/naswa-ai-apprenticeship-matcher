@@ -33,38 +33,54 @@
         <div id="results-bar" class="results-bar" aria-label="Program match results summary">
             <div class="count" id="rank-count" aria-live="polite" aria-atomic="true" sse-swap="rank-count"
                 hx-swap="innerHTML">
-                <span id="ranked-count" class="ranked-count">
-                    {{ completed_items }}
-                </span>
+                <span id="ranked-count" class="ranked-count">{{ completed_items }}</span>
                 of {{ total_items }}
                 {{ item_singular if total_items == 1 else item_plural }} analyzed
 
+                {% if completed_units %}
                 <span aria-hidden="true"> · </span>
-
-                <span id="units-count">
-                    {{ completed_units }}
-                </span>
+                <span id="units-count">{{ completed_units }}</span>
                 {{ unit_singular if completed_units == 1 else unit_plural }}
+                {% endif %}
             </div>
 
             <div id="rank-status" class="text-meta">
                 {% if ranking_cached|default(false) %}
                 Ranking complete. Matches loaded from cached results.
                 {% else %}
-                Matches generated using AI. Results may re-order while matches are loading.
+                Matches generated using AI. Results may re-order while matches load.
                 {% endif %}
             </div>
+
+            <button type="button" class="btn btn--outline match-filters-open" data-match-filters-open
+                aria-controls="match-filters" aria-expanded="false" {% if not ranking_cached|default(false) %}disabled{%
+                endif %}>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                Filters
+            </button>
         </div>
 
-        <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
-            {% if cached_ranked|default([]) %}
-            {% with ranked=cached_ranked %}
-            {% include "_program_rank_cards.html" %}
-            {% endwith %}
-            {% endif %}
-        </div>
+        <div class="matched-results-layout">
+            {% include "_match_filters.html" %}
 
-        <div id="rank-errors" sse-swap="batch-error" hx-swap="beforeend"></div>
+            <div class="matched-results-main">
+                <p id="match-filter-empty" class="match-filter-empty empty-state surface surface--shadow" hidden>
+                    No careers meet those filters. Try clearing one or more filters.
+                </p>
+
+                <div id="match-list" class="match-list" sse-swap="batch" hx-swap="beforeend">
+                    {% if cached_ranked|default([]) %}
+                    {% with ranked=cached_ranked %}
+                    {% include "_program_rank_cards.html" %}
+                    {% endwith %}
+                    {% endif %}
+                </div>
+
+                <div id="rank-errors" sse-swap="batch-error" hx-swap="beforeend"></div>
+            </div>
+        </div>
 
         <div id="rank-done" sse-swap="done" hx-swap="innerHTML" hidden></div>
     </div>

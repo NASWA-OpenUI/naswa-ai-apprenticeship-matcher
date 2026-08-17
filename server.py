@@ -687,6 +687,9 @@ async def opportunities_page(
                 "unit_singular": "opening",
                 "unit_plural": "openings",
                 "region_filter_options": REGION_FILTER_OPTIONS,
+                "show_license_filter": True,
+                "filter_item_singular": "opportunity",
+                "filter_item_plural": "opportunities",
             },
         )
 
@@ -901,6 +904,9 @@ async def programs_page(
             "unit_singular": "registered program",
             "unit_plural": "registered programs",
             "region_filter_options": REGION_FILTER_OPTIONS,
+            "show_license_filter": False,
+            "filter_item_singular": "career",
+            "filter_item_plural": "careers",
         },
     )
 
