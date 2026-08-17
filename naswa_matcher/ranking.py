@@ -47,6 +47,31 @@ def _pluck(items: list, field: str, limit: int) -> list[str]:
     return values
 
 
+def build_onet_ranking_fields(onet: dict) -> dict:
+    """Build the compact O*NET fields used as AI ranking evidence."""
+    return {
+        "description": (onet.get("description") or "")[:300],
+        "skills": _pluck(
+            _nested_list(onet, ("skills", "data", "element")),
+            "name",
+            5,
+        ),
+        "activities": _pluck(
+            _nested_list(
+                onet,
+                ("detailed_work_activities", "data", "activity"),
+            ),
+            "title",
+            5,
+        ),
+        "work_styles": _pluck(
+            _nested_list(onet, ("work_styles", "data", "element")),
+            "name",
+            4,
+        ),
+    }
+
+
 def normalize_tier(tier: str | None) -> str:
     """Keep unexpected model output from breaking CSS/classes/sorting."""
     if tier in TIER_ORDER:
@@ -82,10 +107,7 @@ def build_job_summary(profile: dict, job: dict) -> dict:
         "location": posting.get("locationSummary"),
         "regions": posting.get("regions", []),
         "requirements_summary": posting.get("requirementsSummary"),
-        "description": (onet.get("description") or "")[:300],
-        "skills": skills,
-        "activities": activities,
-        "work_styles": styles,
+        **build_onet_ranking_fields(onet),
     }
 
     if should_use_location_matching(profile):
