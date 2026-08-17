@@ -4,15 +4,16 @@ from collections.abc import Callable
 from dataclasses import dataclass, field, replace
 
 from naswa_matcher.location_matching import should_use_location_matching
+from naswa_matcher.match_target import MatchTarget
 
-RANKING_CACHE_VERSION = "rank-cache-v1"
+RANKING_CACHE_VERSION = "rank-cache-v2"
 
 Clock = Callable[[], float]
 
 
 @dataclass
 class RankingCacheEntry:
-    """Cached ranked opportunities for one normalized profile."""
+    """Cached ranking results for one normalized profile."""
 
     profile: dict
     ranked: list[dict] = field(default_factory=list)
@@ -60,7 +61,7 @@ def _normalized_profile_for_cache(profile: dict) -> dict:
 
 @dataclass
 class RankingCache:
-    """Store completed opportunity rankings by normalized profile."""
+    """Store completed rankings by target and normalized profile."""
 
     max_age_seconds: int
     version: str = RANKING_CACHE_VERSION
@@ -71,20 +72,25 @@ class RankingCache:
         compare=False,
     )
 
-    def key_for(self, profile: dict) -> str:
-        """Build a deterministic cache key for a ranking profile."""
+    def key_for(self, profile: dict, target: MatchTarget) -> str:
+        """Build a deterministic cache key for a ranking target and profile."""
         return json.dumps(
             {
                 "version": self.version,
+                "target": target.value,
                 "profile": _normalized_profile_for_cache(profile),
             },
             sort_keys=True,
             separators=(",", ":"),
         )
 
-    def get(self, profile: dict) -> RankingCacheEntry | None:
-        """Return a complete, unexpired ranking for a profile."""
-        key = self.key_for(profile)
+    def get(
+        self,
+        profile: dict,
+        target: MatchTarget,
+    ) -> RankingCacheEntry | None:
+        """Return a complete, unexpired ranking for a target and profile."""
+        key = self.key_for(profile, target)
         entry = self.entries.get(key)
 
         if entry is None:
@@ -99,14 +105,19 @@ class RankingCache:
 
         return entry
 
-    def put(self, profile: dict, entry: RankingCacheEntry) -> None:
-        """Store a ranking under the normalized profile key."""
+    def put(
+        self,
+        profile: dict,
+        target: MatchTarget,
+        entry: RankingCacheEntry,
+    ) -> None:
+        """Store a ranking under its target and normalized profile key."""
         normalized_entry = replace(
             entry,
             profile=_normalized_profile_for_cache(profile),
         )
 
-        self.entries[self.key_for(profile)] = normalized_entry
+        self.entries[self.key_for(profile, target)] = normalized_entry
 
     def clear(self) -> None:
         """Remove every cached ranking."""

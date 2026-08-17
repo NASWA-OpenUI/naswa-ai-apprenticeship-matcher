@@ -31,7 +31,7 @@ from naswa_matcher.db import all_opportunities, get_opportunity
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
 from naswa_matcher.location_matching import location_inference_details
-from naswa_matcher.match_target import MATCH_TARGET
+from naswa_matcher.match_target import MATCH_TARGET, MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -625,7 +625,7 @@ async def opportunities_page(
         no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
         total_openings = sum_openings(onet_jobs)
 
-        cached = session.ranking_cache.get(profile)
+        cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
         ranking_cached = cached is not None
         cached_ranked = cached.ranked if cached else []
 
@@ -715,7 +715,7 @@ async def rank_opportunities_stream(
         use_location_matching=use_location_matching,
     )
 
-    cached = session.ranking_cache.get(profile)
+    cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
 
     if cached:
         log_event(
@@ -754,6 +754,7 @@ async def rank_opportunities_stream(
         stream_ranking(
             request=request,
             session=session,
+            target=MatchTarget.OPPORTUNITIES,
             profile=profile,
             request_started_at=request_started_at,
             onet_jobs=onet_jobs,

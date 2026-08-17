@@ -1,5 +1,6 @@
 import json
 
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.ranking_cache import RankingCache, RankingCacheEntry
 
 
@@ -30,7 +31,9 @@ def test_equivalent_cleaned_profiles_generate_same_key():
     )
     cleaned = make_profile()
 
-    assert cache.key_for(uncleaned) == cache.key_for(cleaned)
+    assert cache.key_for(uncleaned, MatchTarget.OPPORTUNITIES) == cache.key_for(
+        cleaned, MatchTarget.OPPORTUNITIES
+    )
 
 
 def test_profile_fields_that_do_not_affect_ranking_are_ignored():
@@ -45,7 +48,9 @@ def test_profile_fields_that_do_not_affect_ranking_are_ignored():
         confirmed=True,
     )
 
-    assert cache.key_for(first) == cache.key_for(second)
+    assert cache.key_for(first, MatchTarget.OPPORTUNITIES) == cache.key_for(
+        second, MatchTarget.OPPORTUNITIES
+    )
 
 
 def test_list_order_is_preserved_in_cache_key():
@@ -54,7 +59,9 @@ def test_list_order_is_preserved_in_cache_key():
     first = make_profile(likes=["math", "electronics"])
     second = make_profile(likes=["electronics", "math"])
 
-    assert cache.key_for(first) != cache.key_for(second)
+    assert cache.key_for(first, MatchTarget.OPPORTUNITIES) != cache.key_for(
+        second, MatchTarget.OPPORTUNITIES
+    )
 
 
 def test_complete_fresh_entry_is_returned():
@@ -67,6 +74,7 @@ def test_complete_fresh_entry_is_returned():
 
     cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             ranked=[{"id": "electrician"}],
@@ -77,7 +85,7 @@ def test_complete_fresh_entry_is_returned():
         ),
     )
 
-    cached = cache.get(profile)
+    cached = cache.get(profile, MatchTarget.OPPORTUNITIES)
 
     assert cached is not None
     assert cached.ranked == [{"id": "electrician"}]
@@ -94,13 +102,14 @@ def test_put_stores_normalized_profile_snapshot():
 
     cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             is_complete=True,
         ),
     )
 
-    cached = cache.get(profile)
+    cached = cache.get(profile, MatchTarget.OPPORTUNITIES)
 
     assert cached is not None
     assert cached.profile == {
@@ -122,6 +131,7 @@ def test_expired_entry_is_rejected_and_removed():
 
     cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             created_at=89.0,
@@ -129,10 +139,10 @@ def test_expired_entry_is_rejected_and_removed():
         ),
     )
 
-    key = cache.key_for(profile)
+    key = cache.key_for(profile, MatchTarget.OPPORTUNITIES)
 
     assert key in cache.entries
-    assert cache.get(profile) is None
+    assert cache.get(profile, MatchTarget.OPPORTUNITIES) is None
     assert key not in cache.entries
 
 
@@ -145,6 +155,7 @@ def test_incomplete_entry_is_rejected():
 
     cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             created_at=100.0,
@@ -152,7 +163,7 @@ def test_incomplete_entry_is_rejected():
         ),
     )
 
-    assert cache.get(profile) is None
+    assert cache.get(profile, MatchTarget.OPPORTUNITIES) is None
 
 
 def test_cache_version_change_invalidates_existing_key():
@@ -167,6 +178,7 @@ def test_cache_version_change_invalidates_existing_key():
     )
     original_cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             created_at=100.0,
@@ -181,14 +193,14 @@ def test_cache_version_change_invalidates_existing_key():
         clock=lambda: 100.0,
     )
 
-    assert updated_cache.get(profile) is None
+    assert updated_cache.get(profile, MatchTarget.OPPORTUNITIES) is None
 
 
 def test_false_location_matching_is_preserved_in_key():
     cache = RankingCache(max_age_seconds=100)
     profile = make_profile(use_location_matching=False)
 
-    payload = json.loads(cache.key_for(profile))
+    payload = json.loads(cache.key_for(profile, MatchTarget.OPPORTUNITIES))
 
     assert payload["profile"]["use_location_matching"] is False
 
@@ -199,6 +211,7 @@ def test_clear_removes_all_entries():
 
     cache.put(
         profile,
+        MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
             profile=profile,
             is_complete=True,
@@ -208,3 +221,19 @@ def test_clear_removes_all_entries():
     cache.clear()
 
     assert cache.entries == {}
+
+
+def test_different_match_targets_generate_different_keys():
+    cache = RankingCache(max_age_seconds=100)
+    profile = make_profile()
+
+    opportunity_key = cache.key_for(
+        profile,
+        MatchTarget.OPPORTUNITIES,
+    )
+    program_key = cache.key_for(
+        profile,
+        MatchTarget.PROGRAMS,
+    )
+
+    assert opportunity_key != program_key

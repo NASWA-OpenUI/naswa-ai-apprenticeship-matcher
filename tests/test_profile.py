@@ -383,6 +383,7 @@ def test_has_profile_query_params_detects_explicit_blank_string():
         use_location_matching=None,
     )
 
+
 def test_profile_match_url_for_programs_uses_profile_params_without_ranked():
     profile = build_profile(
         likes=["math", "fixing things"],
@@ -430,9 +431,7 @@ def test_profile_match_url_for_programs_preserves_disabled_location_matching():
         use_location_matching=False,
     )
 
-    query = parse_qs(
-        urlparse(profile_match_url(profile, MatchTarget.PROGRAMS)).query
-    )
+    query = parse_qs(urlparse(profile_match_url(profile, MatchTarget.PROGRAMS)).query)
 
     assert query["use_location_matching"] == ["false"]
 

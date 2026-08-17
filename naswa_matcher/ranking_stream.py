@@ -12,6 +12,7 @@ from naswa_matcher.app_logging import (
     log_event,
     log_exception,
 )
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.ranking import build_ranked_items, sort_ranked_items
 from naswa_matcher.ranking_cache import RankingCacheEntry
@@ -291,6 +292,7 @@ async def stream_ranking(
     *,
     request: Request,
     session: ChatSession,
+    target: MatchTarget,
     profile: dict,
     request_started_at: float,
     onet_jobs: list[dict],
@@ -400,6 +402,7 @@ async def stream_ranking(
         if progress.completed_jobs == len(onet_jobs) and not progress.had_batch_error:
             session.ranking_cache.put(
                 profile,
+                target,
                 RankingCacheEntry(
                     profile=profile,
                     ranked=final_ranked,
