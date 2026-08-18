@@ -742,3 +742,22 @@ def test_program_ranking_cache_hit_isolated_from_opportunity_cache(
         )
         is None
     )
+
+
+def test_program_detail_route_renders_program_group(client):
+    response = client.get("/programs/47-2111.00")
+
+    assert response.status_code == 200
+
+    assert "Electrician" in response.text
+    assert "Registered Apprenticeship Programs" in response.text
+    assert "Sponsor" in response.text
+    assert "Location" in response.text
+    assert "Region" in response.text
+    assert "Length" in response.text
+
+
+def test_program_detail_route_returns_404_for_unknown_soc(client):
+    response = client.get("/programs/99-9999.99")
+
+    assert response.status_code == 404

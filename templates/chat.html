@@ -107,6 +107,7 @@
     {{ (profile is not none and profile.confirmed) | tojson }};
 
   sessionStorage.removeItem('jobRankings');
+  sessionStorage.removeItem('programRankings');
 
   function scrollIntoViewSafe(el) {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'end' });

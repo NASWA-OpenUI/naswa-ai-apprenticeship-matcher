@@ -100,6 +100,11 @@
             {{ ranking_cached|default (false) | tojson
     }};
 
+    sessionStorage.setItem(
+        'lastProgramsUrl',
+        window.location.href
+    );
+
     function sortCards() {
         if (!matchList) {
             return;
@@ -128,7 +133,28 @@
         });
     }
 
+    function syncProgramRankingsToSessionStorage() {
+        if (!matchList) return;
+
+        const rankings = Array.from(
+            matchList.querySelectorAll('.match-card')
+        ).map(card => {
+            return {
+                id: card.dataset.rankingId,
+                tier: card.dataset.rankingTier,
+                explanation:
+                    card.dataset.rankingExplanation || ''
+            };
+        });
+
+        sessionStorage.setItem(
+            'programRankings',
+            JSON.stringify({ ranked: rankings })
+        );
+    }
+
     sortCards();
+    syncProgramRankingsToSessionStorage();
 
     if (!rankingCached) {
         document.body.addEventListener(
@@ -147,6 +173,7 @@
 
                 requestAnimationFrame(() => {
                     sortCards();
+                    syncProgramRankingsToSessionStorage();
 
                     if (type === 'done' && rankStatus) {
                         const elapsed =
@@ -172,6 +199,7 @@
             }
         );
     }
+
   }
 </script>
 {% endblock %}

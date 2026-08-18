@@ -61,6 +61,14 @@ def client(monkeypatch, opportunities, program_groups):
 
     monkeypatch.setattr(server, "get_opportunity", fake_get_opportunity)
 
+    def fake_get_program_group(soc_code: str):
+        return next(
+            (group for group in program_groups if group["socCode"] == soc_code),
+            None,
+        )
+
+    monkeypatch.setattr(server, "get_program_group", fake_get_program_group)
+
     with TestClient(server.app) as test_client:
         yield test_client
 
@@ -88,7 +96,32 @@ def program_groups():
                         "electrical wiring and equipment."
                     ),
                     "programCount": 4,
-                    "programs": [],
+                    "programs": [
+                        {
+                            "sponsorName": "Buffalo Electrical JAC",
+                            "addressCity": "Buffalo",
+                            "region": "Western New York",
+                            "programLength": 60,
+                        },
+                        {
+                            "sponsorName": "Niagara Electrical Training Alliance",
+                            "addressCity": "Niagara Falls",
+                            "region": "Western New York",
+                            "programLength": 60,
+                        },
+                        {
+                            "sponsorName": "Rochester Electrical JATC",
+                            "addressCity": "Rochester",
+                            "region": "Finger Lakes",
+                            "programLength": 48,
+                        },
+                        {
+                            "sponsorName": "Western New York Electrical Training",
+                            "addressCity": "Cheektowaga",
+                            "region": "Western New York",
+                            "programLength": 48,
+                        },
+                    ],
                 }
             ],
         },

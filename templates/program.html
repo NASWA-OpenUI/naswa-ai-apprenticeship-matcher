@@ -1,0 +1,694 @@
+{% extends "base.html" %}
+
+{% block title %}{{ program_title }} — Registered Apprenticeship Programs{% endblock %}
+
+{#
+The program detail page deliberately reuses the same detail-page shell as
+opportunity.html: crumb, service-page hero, detail layout, match panel,
+and "On this page" navigation.
+#}
+{% block title_band %}
+<div class="detail-crumb">
+    <div class="container">
+        <a id="detail-back-link" class="chip chip--warning" href="/programs">
+            ← All matches
+        </a>
+    </div>
+</div>
+
+<section class="detail-hero" aria-labelledby="program-title">
+    <div class="container">
+        <h1 id="program-title">{{ program_title }}</h1>
+
+        <p class="detail-hero__org">
+            A registered apprenticeship career in New York State
+        </p>
+
+        <div class="detail-hero__chips flex-center-wrap" aria-label="Career summary">
+            <span class="detail-hero__chip">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                    <path d="M3 12l9 5 9-5M3 16l9 5 9-5" stroke="currentColor" stroke-width="2"
+                        stroke-linejoin="round" />
+                </svg>
+
+                {{ program_group.programCount }}
+                registered program{{ "" if program_group.programCount == 1 else "s" }}
+            </span>
+
+            <span class="detail-hero__chip">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 6h10M4 12h10M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    </path>
+                    <circle cx="18.5" cy="6" r="1.6" fill="currentColor"></circle>
+                    <circle cx="18.5" cy="12" r="1.6" fill="currentColor"></circle>
+                    <circle cx="15.5" cy="18" r="1.6" fill="currentColor"></circle>
+                </svg>
+
+                {{ program_group.trades | length }}
+                trade title{{ "" if program_group.trades | length == 1 else "s" }}
+            </span>
+
+            {% if program_group.regions %}
+            <span class="detail-hero__chip">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor"
+                        stroke-width="2" />
+                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" />
+                </svg>
+
+                {% if program_group.regions | length == 10 %}
+                Statewide
+                {% elif program_group.regions | length == 1 %}
+                {{ program_group.regions[0] }}
+                {% else %}
+                {{ program_group.regions | length }} regions
+                {% endif %}
+            </span>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block content %}
+<div class="opportunity-detail-page program-detail-page" data-program-soc-code="{{ program_group.socCode }}">
+    <div class="opportunity-detail-layout">
+
+        <div class="detail-content">
+
+            {#
+            Hidden by default.
+            #}
+            <section class="detail-section" id="match" aria-label="Why this job matches your interests" hidden>
+                <h2 class="detail-section__heading">Why this matches you</h2>
+                <div class="detail-match surface" id="detail-match">
+                    <div class="detail-match__inner">
+                        <div class="detail-match__body">
+                            <span id="detail-tier" class="chip">
+                                <span class="chip__dot" aria-hidden="true"></span>
+                                <span id="detail-tier-text" class="chip__label"></span>
+                            </span>
+                            <p id="detail-explanation"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {% if program_group.onet and program_group.onet.description %}
+            <section id="career-intro" class="detail-section">
+                <h2 class="detail-section__heading">About {{ program_title }}</h2>
+
+                <p>
+                    {{ program_group.onet.description }}
+                </p>
+            </section>
+            {% endif %}
+
+
+            {% for trade in program_group.trades %}
+            {% set trade_title = trade.displayTradeName or trade.tradeName %}
+            {% set programs = trade.programs | default([], true) %}
+
+            <section id="trade-{{ loop.index }}" class="detail-section program-trade-section">
+                <div class="program-trade-heading">
+                    <h2 class="detail-section__heading">{{ trade_title }}</h2>
+
+                    <span class="text-meta">
+                        {{ trade.programCount }}
+                        program{{ "" if trade.programCount == 1 else "s" }}
+                    </span>
+                </div>
+
+                {% if trade.description %}
+                <p>{{ trade.description }}</p>
+                {% endif %}
+
+                {% if programs %}
+                <div class="program-table-shell{% if programs | length > 15 %} is-collapsed{% endif %}"
+                    data-program-table-shell data-row-limit="15">
+                    <div class="table-wrap surface program-table-wrap">
+                        <table class="opportunities-table program-detail-table" data-program-table>
+                            <caption class="visually-hidden">
+                                Registered apprenticeship programs for {{ trade_title }}
+                            </caption>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Sponsor
+                                    </th>
+
+                                    <th scope="col">
+                                        Location
+                                    </th>
+
+                                    <th scope="col" aria-sort="none" data-sort-header="region">
+                                        <button type="button" class="program-table-sort" data-program-sort="region">
+                                            Region
+                                            <span class="program-table-sort__indicator" aria-hidden="true">↕</span>
+                                        </button>
+                                    </th>
+
+                                    <th scope="col" aria-sort="none" data-sort-header="length">
+                                        <button type="button" class="program-table-sort" data-program-sort="length">
+                                            Length
+                                            <span class="program-table-sort__indicator" aria-hidden="true">↕</span>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for program in programs %}
+                                <tr data-program-row data-region="{{ program.region | default('', true) }}"
+                                    data-length="{{ program.programLength | default('', true) }}" {% if loop.index> 15
+                                    %}hidden{% endif %}
+                                    >
+                                    <td>
+                                        {{ program.sponsorName }}
+                                    </td>
+
+                                    <td class="location">
+                                        {{ program.addressCity or "—" }}
+                                    </td>
+
+                                    <td>
+                                        {{ program.region or "—" }}
+                                    </td>
+
+                                    <td class="date">
+                                        {% if program.programLength %}
+                                        {{ program.programLength }}
+                                        month{{ "" if program.programLength == 1 else "s" }}
+                                        {% else %}
+                                        —
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {% if programs | length > 15 %}
+                <div class="program-table-controls" data-program-table-controls>
+                    <span class="text-meta" data-program-table-status>
+                        Showing 15 of {{ programs | length }} programs
+                    </span>
+
+                    <button type="button" class="btn btn--outline program-table-toggle" data-program-table-toggle>
+                        Show all {{ programs | length }} programs
+                    </button>
+                </div>
+                {% endif %}
+                {% endif %}
+            </section>
+            {% endfor %}
+
+        </div>
+
+
+        <nav class="on-this-page" aria-label="On this page">
+            <p>On this page</p>
+
+            <ul>
+                <li id="on-this-page-match" hidden>
+                    <a href="#match">Why this matches you</a>
+                </li>
+
+                {% if program_group.onet and program_group.onet.description %}
+                <li>
+                    <a class="active" href="#career-intro">
+                        About {{ program_title }}
+                    </a>
+                </li>
+                {% endif %}
+
+                {% for trade in program_group.trades %}
+                {% set trade_title = trade.displayTradeName or trade.tradeName %}
+                <li>
+                    <a href="#trade-{{ loop.index }}">
+                        {{ trade_title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    (function () {
+        const page =
+            document.querySelector('[data-program-soc-code]');
+
+        if (!page) {
+            return;
+        }
+
+        const socCode = page.dataset.programSocCode;
+
+
+        /* Set back link to recent matches results URL string */
+        const backLink =
+            document.getElementById('detail-back-link');
+
+        const lastProgramsUrl =
+            sessionStorage.getItem('lastProgramsUrl');
+
+        if (backLink && lastProgramsUrl) {
+            try {
+                const url = new URL(
+                    lastProgramsUrl,
+                    window.location.origin
+                );
+
+                if (
+                    url.origin === window.location.origin &&
+                    url.pathname === '/programs' &&
+                    url.search
+                ) {
+                    backLink.href =
+                        url.pathname + url.search;
+                }
+            } catch {
+                // Keep the default /programs fallback.
+            }
+        }
+
+        /*
+         * Match context
+         *
+         * This mirrors opportunity.html: the detail page itself never runs
+         * ranking. It only reveals the match panel when the results page saved
+         * an existing ranking for this SOC group.
+         */
+        let rankings = null;
+
+        try {
+            rankings = JSON.parse(
+                sessionStorage.getItem('programRankings') || 'null'
+            );
+        } catch {
+            rankings = null;
+        }
+
+        const match =
+            rankings?.ranked?.find(item => item.id === socCode);
+
+        if (match) {
+            const section =
+                document.getElementById('match');
+
+            const navItem =
+                document.getElementById('on-this-page-match');
+
+            const tierContainer =
+                document.getElementById('detail-match');
+
+            const tier =
+                document.getElementById('detail-tier');
+
+            const tierText =
+                document.getElementById('detail-tier-text');
+
+            const explanation =
+                document.getElementById('detail-explanation');
+
+            if (
+                section &&
+                tier &&
+                tierText &&
+                explanation
+            ) {
+                const tierClass =
+                    (match.tier || 'Weak').toLowerCase();
+
+                if (tierContainer) {
+                    tierContainer.className =
+                        `detail-match surface detail-match--${tierClass}`;
+                }
+
+                tier.className =
+                    `chip chip--${tierClass}`;
+
+                tierText.textContent =
+                    match.tier || 'Weak';
+
+                explanation.textContent =
+                    match.explanation || '';
+
+                section.hidden = false;
+
+                if (navItem) {
+                    navItem.hidden = false;
+                }
+            }
+        }
+
+
+        /*
+         * Program tables
+         *
+         * Tables with more than 15 programs begin collapsed. Sorting always
+         * operates on the complete set of rows, including currently hidden rows.
+         */
+        function initProgramTable(shell) {
+            const table =
+                shell.querySelector('[data-program-table]');
+
+            const tbody =
+                table?.querySelector('tbody');
+
+            if (!table || !tbody) {
+                return;
+            }
+
+            const rows = Array.from(
+                tbody.querySelectorAll('[data-program-row]')
+            );
+
+            const rowLimit =
+                Number(shell.dataset.rowLimit || 15);
+
+            const controls =
+                shell.nextElementSibling?.matches(
+                    '[data-program-table-controls]'
+                )
+                    ? shell.nextElementSibling
+                    : null;
+
+            const toggle =
+                controls?.querySelector(
+                    '[data-program-table-toggle]'
+                );
+
+            const status =
+                controls?.querySelector(
+                    '[data-program-table-status]'
+                );
+
+            let expanded = false;
+
+
+            function applyRowVisibility() {
+                rows.forEach((row, index) => {
+                    row.hidden =
+                        !expanded && index >= rowLimit;
+                });
+
+                shell.classList.toggle(
+                    'is-collapsed',
+                    !expanded && rows.length > rowLimit
+                );
+
+                if (toggle) {
+                    toggle.textContent = expanded
+                        ? 'Show fewer programs'
+                        : `Show all ${rows.length} programs`;
+
+                    toggle.setAttribute(
+                        'aria-expanded',
+                        String(expanded)
+                    );
+                }
+
+                if (status) {
+                    const visible =
+                        expanded
+                            ? rows.length
+                            : Math.min(rowLimit, rows.length);
+
+                    status.textContent =
+                        `Showing ${visible} of ${rows.length} programs`;
+                }
+            }
+
+
+            function compareValues(a, b, key, direction) {
+                if (key === 'length') {
+                    const aValue =
+                        a.dataset.length
+                            ? Number(a.dataset.length)
+                            : null;
+
+                    const bValue =
+                        b.dataset.length
+                            ? Number(b.dataset.length)
+                            : null;
+
+                    /*
+                     * Missing lengths remain at the bottom in both directions.
+                     */
+                    if (aValue === null && bValue === null) {
+                        return 0;
+                    }
+
+                    if (aValue === null) {
+                        return 1;
+                    }
+
+                    if (bValue === null) {
+                        return -1;
+                    }
+
+                    return (
+                        (aValue - bValue) * direction
+                    );
+                }
+
+                const aValue =
+                    (a.dataset.region || '').trim();
+
+                const bValue =
+                    (b.dataset.region || '').trim();
+
+                return (
+                    aValue.localeCompare(bValue) *
+                    direction
+                );
+            }
+
+
+            function sortTable(key, header) {
+                const current =
+                    header.getAttribute('aria-sort');
+
+                const next =
+                    current === 'ascending'
+                        ? 'descending'
+                        : 'ascending';
+
+                const direction =
+                    next === 'ascending' ? 1 : -1;
+
+                rows.sort((a, b) =>
+                    compareValues(
+                        a,
+                        b,
+                        key,
+                        direction
+                    )
+                );
+
+                rows.forEach(row => {
+                    tbody.appendChild(row);
+                });
+
+                table
+                    .querySelectorAll('[data-sort-header]')
+                    .forEach(otherHeader => {
+                        otherHeader.setAttribute(
+                            'aria-sort',
+                            otherHeader === header
+                                ? next
+                                : 'none'
+                        );
+
+                        const indicator =
+                            otherHeader.querySelector(
+                                '.program-table-sort__indicator'
+                            );
+
+                        if (indicator) {
+                            indicator.textContent =
+                                otherHeader === header
+                                    ? next === 'ascending'
+                                        ? '↑'
+                                        : '↓'
+                                    : '↕';
+                        }
+                    });
+
+                applyRowVisibility();
+            }
+
+
+            table
+                .querySelectorAll('[data-program-sort]')
+                .forEach(button => {
+                    button.addEventListener(
+                        'click',
+                        function () {
+                            const key =
+                                button.dataset.programSort;
+
+                            const header =
+                                button.closest(
+                                    '[data-sort-header]'
+                                );
+
+                            if (!key || !header) {
+                                return;
+                            }
+
+                            sortTable(key, header);
+                        }
+                    );
+                });
+
+
+            toggle?.addEventListener(
+                'click',
+                function () {
+                    expanded = !expanded;
+                    applyRowVisibility();
+                }
+            );
+
+
+            applyRowVisibility();
+        }
+
+
+        document
+            .querySelectorAll('[data-program-table-shell]')
+            .forEach(initProgramTable);
+
+
+        /*
+         * Shared detail-page scroll spy.
+         *
+         * This follows the same behaviour as opportunity.html.
+         */
+        const scrollSpyOffset = 50;
+
+        const onThisPageNav =
+            document.querySelector('.on-this-page');
+
+
+        function getVisibleDetailSections() {
+            return Array.from(
+                document.querySelectorAll(
+                    '.detail-section[id]'
+                )
+            ).filter(section => !section.hidden);
+        }
+
+
+        function setActiveOnThisPageLink(sectionId) {
+            if (!onThisPageNav) {
+                return;
+            }
+
+            const links =
+                onThisPageNav.querySelectorAll(
+                    'a[href^="#"]'
+                );
+
+            links.forEach(link => {
+                const isActive =
+                    link.getAttribute('href') ===
+                    `#${sectionId}`;
+
+                link.classList.toggle(
+                    'active',
+                    isActive
+                );
+
+                if (isActive) {
+                    link.setAttribute(
+                        'aria-current',
+                        'true'
+                    );
+                } else {
+                    link.removeAttribute(
+                        'aria-current'
+                    );
+                }
+            });
+        }
+
+
+        function updateActiveOnThisPageLink() {
+            const sections =
+                getVisibleDetailSections();
+
+            if (!sections.length) {
+                return;
+            }
+
+            let activeSection = sections[0];
+
+            sections.forEach(section => {
+                const top =
+                    section.getBoundingClientRect().top;
+
+                if (top <= scrollSpyOffset) {
+                    activeSection = section;
+                }
+            });
+
+            setActiveOnThisPageLink(
+                activeSection.id
+            );
+        }
+
+
+        if (onThisPageNav) {
+            onThisPageNav.addEventListener(
+                'click',
+                function (event) {
+                    const link =
+                        event.target.closest(
+                            'a[href^="#"]'
+                        );
+
+                    if (
+                        !link ||
+                        !onThisPageNav.contains(link)
+                    ) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    window.location.replace(
+                        link.hash
+                    );
+                }
+            );
+
+            window.addEventListener(
+                'scroll',
+                updateActiveOnThisPageLink,
+                { passive: true }
+            );
+
+            window.addEventListener(
+                'resize',
+                updateActiveOnThisPageLink
+            );
+
+            updateActiveOnThisPageLink();
+        }
+    })();
+</script>
+{% endblock %}

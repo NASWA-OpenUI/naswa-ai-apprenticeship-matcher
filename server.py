@@ -30,9 +30,9 @@ from naswa_matcher.app_logging import (
 )
 from naswa_matcher.db import (
     all_opportunities,
-    get_program_group,
     all_program_groups,
     get_opportunity,
+    get_program_group,
 )
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
@@ -52,6 +52,7 @@ from naswa_matcher.profile import (
 )
 from naswa_matcher.program_ranking import (
     build_ranked_program_items,
+    program_group_title,
     score_program_groups,
     sum_programs,
 )
@@ -930,6 +931,7 @@ async def program_detail_page(
         "program.html",
         {
             "program_group": program_group,
+            "program_title": program_group_title(program_group),
         },
     )
 

@@ -1741,8 +1741,9 @@ body.profile-modal-open {
 }
 
 .opportunities-table thead th {
-  background: var(--nys-color-theme);
-  color: var(--app-text-on-theme);
+  background: var(--app-surface-muted);
+  border-bottom: 1px solid var(--nys-color-black-transparent-300);
+  color: var(--app-text-weak);
   font-weight: 700;
   font-size: 0.76rem;
   text-transform: uppercase;
@@ -1777,6 +1778,7 @@ body.profile-modal-open {
   padding: 0.75rem 1rem;
   vertical-align: top;
   font-size: 0.94rem;
+  border-bottom: 1px solid var(--nys-color-black-transparent-100);
 }
 
 .job-link {
@@ -2975,6 +2977,119 @@ p.earnings__summary {
 
 @media (max-width: 520px) {
   .detail-match__body {
+    flex-direction: column;
+  }
+}
+
+/* ── Program detail page ─────────────────────────────────────────────────── */
+
+.program-trade-section {
+  margin-top: 2rem;
+}
+
+.program-trade-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.program-trade-heading .text-meta {
+  color: var(--app-text-weak);
+  font-weight: 600;
+  translate: 0 -1px;
+}
+
+/* Program tables */
+
+.program-table-shell {
+  position: relative;
+  margin-top: 0.85rem;
+}
+
+.program-table-wrap {
+  overflow-x: auto;
+}
+
+.program-detail-table {
+  min-width: 640px;
+}
+
+.program-detail-table th,
+.program-detail-table td {
+  vertical-align: top;
+}
+
+.program-detail-table td:first-child {
+  font-weight: 600;
+}
+
+
+/* Sortable Region / Length headers */
+
+.program-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.program-table-sort:hover,
+.program-table-sort:focus {
+  color: var(--nys-color-theme, #084b52);
+  text-decoration: underline;
+}
+
+.program-table-sort__indicator {
+  min-width: 0.8rem;
+  font-size: 0.85em;
+}
+
+
+/*
+ * A collapsed large table gets a subtle fade over the bottom edge to signal
+ * that more rows are available.
+ */
+.program-table-shell.is-collapsed::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  height: 2.75rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      transparent,
+      var(--app-surface));
+}
+
+
+/* Show-all control */
+
+.program-table-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.65rem;
+}
+
+.program-table-toggle {
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 640px) {
+  .program-table-controls {
+    align-items: flex-start;
     flex-direction: column;
   }
 }
