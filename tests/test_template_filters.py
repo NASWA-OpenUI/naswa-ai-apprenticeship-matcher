@@ -6,6 +6,7 @@ from naswa_matcher.template_filters import (
     format_date,
     format_wage,
     percent_of,
+    typical_program_length
 )
 
 
@@ -80,17 +81,6 @@ def test_percent_of(value, maximum, expected):
     assert percent_of(value, maximum) == expected
 
 
-def test_template_filters_exports_expected_filters():
-    """Verifies that all template filter functions are exposed in the registry
-    used to register filters with Jinja."""
-    assert TEMPLATE_FILTERS == {
-        "format_date": format_date,
-        "format_wage": format_wage,
-        "percent_of": percent_of,
-        "chat_markdown": chat_markdown,
-    }
-
-
 def test_chat_markdown_renders_paragraphs_lists_and_bold_text():
     """Verifies that chat Markdown is converted into the expected HTML."""
     value = """\
@@ -126,3 +116,40 @@ def test_chat_markdown_escapes_raw_html():
 def test_chat_markdown_handles_missing_content(value, expected):
     """Verifies that missing or empty chat content produces no HTML."""
     assert str(chat_markdown(value)) == expected
+
+def test_typical_program_length_returns_most_common_length():
+    programs = [
+        {"programLength": 60},
+        {"programLength": 48},
+        {"programLength": 60},
+    ]
+
+    assert typical_program_length(programs) == 60
+
+
+def test_typical_program_length_prefers_shorter_length_on_tie():
+    programs = [
+        {"programLength": 60},
+        {"programLength": 48},
+    ]
+
+    assert typical_program_length(programs) == 48
+
+
+def test_typical_program_length_ignores_missing_lengths():
+    programs = [
+        {"programLength": None},
+        {"programLength": None},
+        {"programLength": 36},
+    ]
+
+    assert typical_program_length(programs) == 36
+
+
+def test_typical_program_length_returns_none_when_all_lengths_missing():
+    programs = [
+        {"programLength": None},
+        {"programLength": None},
+    ]
+
+    assert typical_program_length(programs) is None

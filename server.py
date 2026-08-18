@@ -831,7 +831,7 @@ async def programs_page(
     transportation: str | None = None,
     use_location_matching: bool | None = None,
 ):
-    """Serve AI-ranked registered apprenticeship career groups."""
+    """Browse programs or serve AI-ranked program matches."""
     has_profile = has_profile_query_params(
         likes=likes,
         dislikes=dislikes,
@@ -841,7 +841,17 @@ async def programs_page(
     )
 
     if not has_profile:
-        return RedirectResponse("/chat", status_code=303)
+        program_groups = all_program_groups()
+
+        return templates.TemplateResponse(
+            request,
+            "programs_browse.html",
+            {
+                "program_groups": program_groups,
+                "total_items": len(program_groups),
+                "total_units": sum_programs(program_groups),
+            },
+        )
 
     use_location_matching_value = (
         True if use_location_matching is None else use_location_matching

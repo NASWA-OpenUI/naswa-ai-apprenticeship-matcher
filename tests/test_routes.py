@@ -511,16 +511,23 @@ def test_build_ranked_items_does_not_cap_far_match_when_location_matching_disabl
     assert ranked[0]["location_fit"] is None
 
 
-def test_programs_page_redirects_to_chat_without_profile(client):
-    """Verifies that programs are only shown as personalized matches and
-    cannot be browsed without profile query parameters."""
-    response = client.get(
-        "/programs",
-        follow_redirects=False,
-    )
+def test_programs_page_without_profile_renders_browse_page(client):
+    response = client.get("/programs")
 
-    assert response.status_code == 303
-    assert response.headers["location"] == "/chat"
+    assert response.status_code == 200
+
+    assert "All apprenticeship programs" in response.text
+    assert "Trade title" in response.text
+    assert "Programs" in response.text
+    assert "Typical length" in response.text
+
+    assert "Electricians" in response.text
+    assert "Electrician" in response.text
+
+    assert 'data-program-browse-toggle' in response.text
+
+    # Browse mode does not start AI ranking.
+    assert "/api/rank-programs" not in response.text
 
 
 def test_programs_page_renders_ranking_shell(client):
