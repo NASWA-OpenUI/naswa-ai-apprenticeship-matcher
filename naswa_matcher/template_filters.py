@@ -75,7 +75,7 @@ def typical_program_length(programs: list[dict] | None) -> int | None:
 
         try:
             lengths.append(int(value))
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             continue
 
     if not lengths:
@@ -84,16 +84,13 @@ def typical_program_length(programs: list[dict] | None) -> int | None:
     counts = Counter(lengths)
     highest_count = max(counts.values())
 
-    return min(
-        length
-        for length, count in counts.items()
-        if count == highest_count
-    )
+    return min(length for length, count in counts.items() if count == highest_count)
+
 
 TEMPLATE_FILTERS = {
     "format_date": format_date,
     "format_wage": format_wage,
     "percent_of": percent_of,
     "chat_markdown": chat_markdown,
-    "typical_program_length": typical_program_length
+    "typical_program_length": typical_program_length,
 }

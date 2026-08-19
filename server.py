@@ -625,7 +625,15 @@ async def opportunities_page(
     transportation: str | None = None,
     use_location_matching: bool = True,
 ):
-    """Serve the opportunities list, optionally in ranked mode."""
+    """Browse opportunities or serve AI-ranked opportunity matches."""
+
+    if not (ranked and likes):
+        return templates.TemplateResponse(
+            request,
+            "opportunities_browse.html",
+            {"opportunities": all_opportunities()},
+        )
+
     profile = build_profile(
         likes=likes,
         dislikes=dislikes,
@@ -634,70 +642,70 @@ async def opportunities_page(
         use_location_matching=use_location_matching,
     )
 
-    if ranked and likes:
-        session = request.state.session
+    session = request.state.session
 
-        session.profile = build_profile(
-            name=session.profile.get("name") if session.profile else None,
-            likes=likes,
-            dislikes=dislikes,
-            location=location,
-            transportation=transportation,
-            use_location_matching=use_location_matching,
-            confirmed=True,
-        )
+    session.profile = build_profile(
+        name=session.profile.get("name") if session.profile else None,
+        likes=likes,
+        dislikes=dislikes,
+        location=location,
+        transportation=transportation,
+        use_location_matching=use_location_matching,
+        confirmed=True,
+    )
 
-        all_jobs = all_opportunities()
-        onet_jobs = [j for j in all_jobs if j.get("onet") is not None]
-        no_onet_jobs = [j for j in all_jobs if j.get("onet") is None]
-        total_openings = sum_openings(onet_jobs)
+    all_jobs = all_opportunities()
+    onet_jobs = [job for job in all_jobs if job.get("onet") is not None]
+    no_onet_jobs = [job for job in all_jobs if job.get("onet") is None]
 
-        cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
-        ranking_cached = cached is not None
-        cached_ranked = cached.ranked if cached else []
+    total_openings = sum_openings(onet_jobs)
 
-        params = profile_query_params(profile)
+    cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
 
-        rank_stream_url = "/api/rank-opportunities"
-        if params:
-            rank_stream_url += "?" + urlencode(params)
+    ranking_cached = cached is not None
+    cached_ranked = cached.ranked if cached else []
 
-        unranked = [{"id": j["id"], "posting": j["posting"]} for j in no_onet_jobs]
+    params = profile_query_params(profile)
 
-        return templates.TemplateResponse(
-            request,
-            "opportunities.html",
-            {
-                "ranked": True,
-                "rank_stream_url": rank_stream_url,
-                "profile": profile,
-                "match_target": MatchTarget.OPPORTUNITIES.value,
-                "chat_profile_url": profile_chat_url(profile),
-                "likes": likes,
-                "unranked": unranked,
-                "completed_items": cached.completed_items if cached else 0,
-                "total_items": cached.total_items if cached else len(onet_jobs),
-                "completed_units": cached.completed_units if cached else 0,
-                "total_units": cached.total_units if cached else total_openings,
-                "is_done": ranking_cached,
-                "ranking_cached": ranking_cached,
-                "cached_ranked": cached_ranked,
-                "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
-                "item_singular": "opportunity",
-                "item_plural": "opportunities",
-                "unit_singular": "opening",
-                "unit_plural": "openings",
-                "region_filter_options": REGION_FILTER_OPTIONS,
-                "show_license_filter": True,
-                "filter_item_singular": "opportunity",
-                "filter_item_plural": "opportunities",
-            },
-        )
+    rank_stream_url = "/api/rank-opportunities"
+    if params:
+        rank_stream_url += "?" + urlencode(params)
+
+    unranked = [
+        {
+            "id": job["id"],
+            "posting": job["posting"],
+        }
+        for job in no_onet_jobs
+    ]
 
     return templates.TemplateResponse(
         request,
         "opportunities.html",
-        {"ranked": False, "opportunities": all_opportunities()},
+        {
+            "rank_stream_url": rank_stream_url,
+            "profile": profile,
+            "match_target": MatchTarget.OPPORTUNITIES.value,
+            "chat_profile_url": profile_chat_url(profile),
+            "likes": likes,
+            "unranked": unranked,
+            "completed_items": cached.completed_items if cached else 0,
+            "total_items": cached.total_items if cached else len(onet_jobs),
+            "completed_units": cached.completed_units if cached else 0,
+            "total_units": cached.total_units if cached else total_openings,
+            "is_done": ranking_cached,
+            "ranking_cached": ranking_cached,
+            "cached_ranked": cached_ranked,
+            "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
+            "item_singular": "opportunity",
+            "item_plural": "opportunities",
+            "unit_singular": "opening",
+            "unit_plural": "openings",
+            "region_filter_options": REGION_FILTER_OPTIONS,
+            "show_license_filter": True,
+            "filter_item_singular": "opportunity",
+            "filter_item_plural": "opportunities",
+        },
     )
 
 

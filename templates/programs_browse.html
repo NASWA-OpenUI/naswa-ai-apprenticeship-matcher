@@ -14,13 +14,12 @@
 {% block content %}
 <div class="programs-browse-page">
 
-    <div class="programs-browse-meta">
+    <div class="programs-browse-meta results-bar">
         <div class="count">
-            <strong>{{ total_units }}</strong>
+            <span class="count__strong">{{ total_units }}</span>
             registered program{{ "" if total_units == 1 else "s" }}
             <span aria-hidden="true"> · </span>
-            <strong>{{ total_items }}</strong>
-            career{{ "" if total_items == 1 else "s" }}
+            {{ total_items }} career{{ "" if total_items == 1 else "s" }}
         </div>
     </div>
 

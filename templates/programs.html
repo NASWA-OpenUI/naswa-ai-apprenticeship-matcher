@@ -33,7 +33,7 @@
         <div id="results-bar" class="results-bar" aria-label="Program match results summary">
             <div class="count" id="rank-count" aria-live="polite" aria-atomic="true" sse-swap="rank-count"
                 hx-swap="innerHTML">
-                <span id="ranked-count" class="ranked-count">{{ completed_items }}</span>
+                <span id="ranked-count" class="ranked-count count__strong">{{ completed_items }}</span>
                 of {{ total_items }}
                 {{ item_singular if total_items == 1 else item_plural }} analyzed
 

@@ -524,7 +524,7 @@ def test_programs_page_without_profile_renders_browse_page(client):
     assert "Electricians" in response.text
     assert "Electrician" in response.text
 
-    assert 'data-program-browse-toggle' in response.text
+    assert "data-program-browse-toggle" in response.text
 
     # Browse mode does not start AI ranking.
     assert "/api/rank-programs" not in response.text

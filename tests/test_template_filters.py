@@ -6,7 +6,7 @@ from naswa_matcher.template_filters import (
     format_date,
     format_wage,
     percent_of,
-    typical_program_length
+    typical_program_length,
 )
 
 
@@ -116,6 +116,7 @@ def test_chat_markdown_escapes_raw_html():
 def test_chat_markdown_handles_missing_content(value, expected):
     """Verifies that missing or empty chat content produces no HTML."""
     assert str(chat_markdown(value)) == expected
+
 
 def test_typical_program_length_returns_most_common_length():
     programs = [
