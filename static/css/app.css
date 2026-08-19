@@ -1862,12 +1862,16 @@ body.profile-modal-open {
 
 /* SOC career label bands */
 
+.programs-browse-page .opportunities-table thead th {
+  border-bottom-color: var(--app-border);
+}
+
 .programs-browse-soc-band>th {
   padding: 0.5rem 0.9rem;
   text-align: left;
-  background: var(--app-surface-muted);
-  border-top: 1px solid var(--app-base);
-  border-bottom: 1px solid var(--app-base);
+  background: #eef1f2;
+  border-top: 1px solid var(--nys-color-black-transparent-300);
+  border-bottom: 1px solid var(--nys-color-black-transparent-100);
   font-weight: 400;
 }
 
@@ -1894,7 +1898,8 @@ body.profile-modal-open {
 /* Trade rows */
 
 .programs-browse-trade-row>td {
-  border-bottom: 1px solid var(--app-base-weak);
+  border-bottom: 1px solid var(--nys-color-black-transparent-300);
+  border-bottom: none;
 }
 
 .programs-browse-trade-row:hover>td {
@@ -1939,10 +1944,14 @@ body.profile-modal-open {
 
 /* Expanded nested program rows */
 
+.opportunities-table tbody tr.programs-browse-detail-row {
+  border-top: none;
+}
+
 .programs-browse-detail-row>td {
   padding: 0;
-  background: var(--app-surface-muted);
-  border-bottom: 1px solid var(--app-base);
+  border-bottom: 1px solid var(--nys-color-black-transparent-100);
+  background: var(--app-row-stripe);
 }
 
 .programs-browse-detail-inner {
@@ -1951,9 +1960,13 @@ body.profile-modal-open {
 
 .programs-browse-nested-wrap {
   overflow-x: auto;
-  border: 1px solid var(--app-base-weak);
+  border: 1px solid var(--nys-color-black-transparent-300);
   border-radius: var(--app-radius-md);
   background: var(--app-surface);
+}
+
+.programs-browse-page .programs-browse-nested-table thead th {
+  border-bottom: 1px solid var(--nys-color-black-transparent-300);
 }
 
 .programs-browse-nested-table {
@@ -1964,6 +1977,7 @@ body.profile-modal-open {
 .programs-browse-nested-table thead th {
   padding: 0.4rem 0.75rem;
   font-size: 0.68rem;
+  background: #eef1f2;
 }
 
 .programs-browse-nested-table td {
