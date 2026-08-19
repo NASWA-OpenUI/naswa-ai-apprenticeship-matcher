@@ -1,10 +1,9 @@
 {
   "socCode": "49-2094.00",
   "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-  "programCount": 3,
+  "programCount": 2,
   "regions": [
-    "Finger Lakes",
-    "Mohawk Valley"
+    "Finger Lakes"
   ],
   "onet": {
     "socCode": "49-2094.00",
@@ -1086,7 +1085,7 @@
       "tradeName": "Electronics Technician (Manufacturing Only)",
       "displayTradeName": "Electronics Technician",
       "description": "An Electronics Technician in manufacturing builds, tests, troubleshoots, and repairs electronic parts and equipment used on factory lines. They read diagrams, use meters and soldering tools, replace faulty components, and help set up or adjust machines and control systems. Their work keeps production equipment running, products working properly, and factory operations safer and more reliable.",
-      "programCount": 3,
+      "programCount": 2,
       "programs": [
         {
           "programAk": 4154,
@@ -1119,25 +1118,6 @@
           "region": "Finger Lakes",
           "programStatus": "Active",
           "programApprovalDate": "2018-01-12",
-          "programGroupType": "Individual - Non Joint",
-          "programApproach": "Time",
-          "programLength": 48,
-          "ratio": "1:1,1:1",
-          "socCode": "49-2094.00",
-          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
-        },
-        {
-          "programAk": 14748,
-          "sponsorName": "Fiber Instrument Sales Inc.",
-          "tradeName": "Electronics Technician (Manufacturing Only)",
-          "addressLine1": "161 Clear Road",
-          "addressLine2": null,
-          "addressCity": "Oriskany",
-          "addressState": "NY",
-          "addressPostalCode": "13424",
-          "region": "Mohawk Valley",
-          "programStatus": "Probation",
-          "programApprovalDate": "2025-05-01",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
           "programLength": 48,

@@ -1,7 +1,7 @@
 {
   "socCode": "47-2152.00",
   "socTitle": "Plumbers, Pipefitters, and Steamfitters",
-  "programCount": 78,
+  "programCount": 77,
   "regions": [
     "Capital Region",
     "Central New York",
@@ -1369,7 +1369,7 @@
       "tradeName": "Plumber",
       "displayTradeName": "Plumber",
       "description": "A Plumber installs, repairs, and maintains the pipes, fixtures, and equipment that carry water, gas, and waste in homes, buildings, and job sites. They cut and join pipe, clear blockages, fit sinks and toilets, test for leaks, and read plans. Their work keeps water flowing, waste moving out, and buildings safe and usable.",
-      "programCount": 26,
+      "programCount": 25,
       "programs": [
         {
           "programAk": 177,
@@ -1725,25 +1725,6 @@
           "region": "New York City",
           "programStatus": "Active",
           "programApprovalDate": "2002-08-06",
-          "programGroupType": "Individual - Non Joint",
-          "programApproach": "Time",
-          "programLength": 60,
-          "ratio": "1:1,1:3",
-          "socCode": "47-2152.00",
-          "socTitle": "Plumbers, Pipefitters, and Steamfitters"
-        },
-        {
-          "programAk": 15662,
-          "sponsorName": "Stanley Lewis Plumbing & Heating Corp",
-          "tradeName": "Plumber",
-          "addressLine1": "749 Prospect Place",
-          "addressLine2": null,
-          "addressCity": "Brooklyn",
-          "addressState": "NY",
-          "addressPostalCode": "11216",
-          "region": "New York City",
-          "programStatus": "Probation",
-          "programApprovalDate": "2025-10-23",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
           "programLength": 60,

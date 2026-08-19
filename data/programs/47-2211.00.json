@@ -1,7 +1,7 @@
 {
   "socCode": "47-2211.00",
   "socTitle": "Sheet Metal Workers",
-  "programCount": 25,
+  "programCount": 26,
   "regions": [
     "Capital Region",
     "Central New York",
@@ -1059,7 +1059,7 @@
       "tradeName": "Sheet Metal Worker",
       "displayTradeName": "Sheet Metal Worker",
       "description": "A Sheet Metal Worker makes, installs, and repairs metal parts used in buildings and equipment. They measure and cut sheet metal, bend and shape it, and fasten ducts, vents, flashing, and panels using hand tools, power tools, and welding equipment. Their work helps heating, cooling, and building systems fit properly and keep running safely.",
-      "programCount": 24,
+      "programCount": 25,
       "programs": [
         {
           "programAk": 64,
@@ -1357,7 +1357,7 @@
           "addressPostalCode": "10509",
           "region": "Hudson Valley",
           "programStatus": "Active",
-          "programApprovalDate": "1961-03-02",
+          "programApprovalDate": "2061-03-02",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 48,
@@ -1395,7 +1395,7 @@
           "addressPostalCode": "11435",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "1968-03-01",
+          "programApprovalDate": "2068-03-01",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 60,
@@ -1494,6 +1494,25 @@
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 60,
+          "ratio": "1:1,1:3",
+          "socCode": "47-2211.00",
+          "socTitle": "Sheet Metal Workers"
+        },
+        {
+          "programAk": 18198,
+          "sponsorName": "Area Sheet Metal Workers Jac Of Elmira, Lu #112",
+          "tradeName": "Sheet Metal Worker",
+          "addressLine1": "1200 Clemens Center Parkway",
+          "addressLine2": null,
+          "addressCity": "Elmira",
+          "addressState": "NY",
+          "addressPostalCode": "14902",
+          "region": "Southern Tier",
+          "programStatus": "Active",
+          "programApprovalDate": "1985-11-10",
+          "programGroupType": "Group - Joint",
+          "programApproach": "Time",
+          "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
           "socTitle": "Sheet Metal Workers"
