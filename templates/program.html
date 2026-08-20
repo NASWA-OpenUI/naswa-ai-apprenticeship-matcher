@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% set hiring = program_group | program_hiring_stats %}
 
 {% block title %}{{ program_title }} — Registered Apprenticeship Programs{% endblock %}
 
@@ -25,6 +26,13 @@ and "On this page" navigation.
         </p>
 
         <div class="detail-hero__chips flex-center-wrap" aria-label="Career summary">
+            {% if hiring.programs_hiring %}
+            <span class="detail-hero__chip detail-hero__chip--hiring">
+                <span class="detail-hero__hiring-dot" aria-hidden="true"></span>
+                Hiring
+            </span>
+            {% endif %}
+
             <span class="detail-hero__chip">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                     <path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
@@ -96,6 +104,28 @@ and "On this page" navigation.
                 </div>
             </section>
 
+            {% if hiring.programs_hiring %}
+            <div class="program-hiring-strip">
+                <span class="program-hiring-strip__summary">
+                    <strong>
+                        {{ hiring.programs_hiring }}
+                        program{{ "" if hiring.programs_hiring == 1 else "s" }}
+                        hiring now
+                    </strong>
+
+                    <span aria-hidden="true"> · </span>
+
+                    {{ hiring.open_positions }}
+                    open position{{ "" if hiring.open_positions == 1 else "s" }}
+                </span>
+
+                <label class="program-hiring-toggle">
+                    <input type="checkbox" data-program-hiring-toggle>
+                    <span>Show only programs hiring now</span>
+                </label>
+            </div>
+            {% endif %}
+
             {% if program_group.onet and program_group.onet.description %}
             <section id="career-intro" class="detail-section">
                 <h2 class="detail-section__heading">About {{ program_title }}</h2>
@@ -110,6 +140,10 @@ and "On this page" navigation.
             {% for trade in program_group.trades %}
             {% set trade_title = trade.displayTradeName or trade.tradeName %}
             {% set programs = trade.programs | default([], true) %}
+
+            {% if hiring.programs_hiring %}
+            {% set programs = programs | programs_hiring_first %}
+            {% endif %}
 
             <section id="trade-{{ loop.index }}" class="detail-section program-trade-section">
                 <div class="program-trade-heading">
@@ -129,7 +163,9 @@ and "On this page" navigation.
                 <div class="program-table-shell{% if programs | length > 15 %} is-collapsed{% endif %}"
                     data-program-table-shell data-row-limit="15">
                     <div class="table-wrap surface program-table-wrap">
-                        <table class="opportunities-table program-detail-table" data-program-table>
+                        <table
+                            class="opportunities-table program-detail-table{% if hiring.programs_hiring %} program-detail-table--hiring{% endif %}"
+                            data-program-table>
                             <caption class="visually-hidden">
                                 Registered apprenticeship programs for {{ trade_title }}
                             </caption>
@@ -157,13 +193,26 @@ and "On this page" navigation.
                                             <span class="program-table-sort__indicator" aria-hidden="true">↕</span>
                                         </button>
                                     </th>
+
+                                    {% if hiring.programs_hiring %}
+                                    <th scope="col" aria-sort="none" data-sort-header="hiring">
+                                        <button type="button" class="program-table-sort" data-program-sort="hiring">
+                                            Hiring
+                                            <span class="program-table-sort__indicator" aria-hidden="true">↕</span>
+                                        </button>
+                                    </th>
+                                    {% endif %}
                                 </tr>
                             </thead>
 
                             <tbody>
                                 {% for program in programs %}
+                                {% set hiring_opportunities = program | program_hiring_opportunities %}
+
                                 <tr data-program-row data-region="{{ program.region | default('', true) }}"
-                                    data-length="{{ program.programLength | default('', true) }}" {% if loop.index> 15
+                                    data-length="{{ program.programLength | default('', true) }}"
+                                    data-hiring="{{ 'true' if hiring_opportunities else 'false' }}" {% if
+                                    hiring_opportunities %}class="program-row--hiring" {% endif %} {% if loop.index> 15
                                     %}hidden{% endif %}
                                     >
                                     <td>
@@ -186,6 +235,35 @@ and "On this page" navigation.
                                         —
                                         {% endif %}
                                     </td>
+
+                                    {% if hiring.programs_hiring %}
+                                    <td class="program-openings-cell">
+                                        {% for opportunity in hiring_opportunities %}
+                                        <div class="program-opening">
+                                            {% if opportunity.id %}
+                                            <a class="program-opening__link" href="/opportunities/{{ opportunity.id }}">
+                                                <span>
+                                                    {{ opportunity.numberOfOpenings | default(0, true) }}
+                                                    opening{{ "" if opportunity.numberOfOpenings == 1 else "s" }}
+                                                </span>
+
+                                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                                                    focusable="false">
+                                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </a>
+                                            {% else %}
+                                            <span class="program-opening__count">
+                                                {{ opportunity.numberOfOpenings | default(0, true) }}
+                                                opening{{ "" if opportunity.numberOfOpenings == 1 else "s" }}
+                                            </span>
+                                            {% endif %}
+                                        </div>
+                                        {% endfor %}
+                                    </td>
+                                    {% endif %}
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -204,6 +282,14 @@ and "On this page" navigation.
                     </button>
                 </div>
                 {% endif %}
+
+                {% if hiring.programs_hiring %}
+                <p class="text-meta program-hiring-empty" data-program-hiring-empty hidden>
+                    No programs in this trade are hiring right now.
+                </p>
+                {% endif %}
+
+
                 {% endif %}
             </section>
             {% endfor %}
@@ -353,12 +439,11 @@ and "On this page" navigation.
             }
         }
 
-
-        /*
-         * Program tables
+        /* Program tables
          *
-         * Tables with more than 15 programs begin collapsed. Sorting always
-         * operates on the complete set of rows, including currently hidden rows.
+         * Tables with more than 15 matching rows begin collapsed. Sorting operates
+         * on the complete row set. The hiring-only filter and row limit are applied
+         * together so they never overwrite each other's visibility state.
          */
         function initProgramTable(shell) {
             const table =
@@ -368,22 +453,26 @@ and "On this page" navigation.
                 table?.querySelector('tbody');
 
             if (!table || !tbody) {
-                return;
+                return null;
             }
 
             const rows = Array.from(
                 tbody.querySelectorAll('[data-program-row]')
             );
+            const defaultOrder = new Map(
+                rows.map((row, index) => [row, index])
+            );
 
             const rowLimit =
                 Number(shell.dataset.rowLimit || 15);
 
+            const tradeSection =
+                shell.closest('.program-trade-section');
+
             const controls =
-                shell.nextElementSibling?.matches(
+                tradeSection?.querySelector(
                     '[data-program-table-controls]'
-                )
-                    ? shell.nextElementSibling
-                    : null;
+                ) || null;
 
             const toggle =
                 controls?.querySelector(
@@ -395,24 +484,59 @@ and "On this page" navigation.
                     '[data-program-table-status]'
                 );
 
+            const hiringEmpty =
+                tradeSection?.querySelector(
+                    '[data-program-hiring-empty]'
+                );
+
             let expanded = false;
+            let hiringOnly = false;
+
+
+            function filteredRows() {
+                if (!hiringOnly) {
+                    return rows;
+                }
+
+                return rows.filter(
+                    row => row.dataset.hiring === 'true'
+                );
+            }
 
 
             function applyRowVisibility() {
-                rows.forEach((row, index) => {
+                const availableRows = filteredRows();
+
+                rows.forEach(row => {
+                    row.hidden = true;
+                });
+
+                availableRows.forEach((row, index) => {
                     row.hidden =
                         !expanded && index >= rowLimit;
                 });
 
+                const canExpand =
+                    availableRows.length > rowLimit;
+
                 shell.classList.toggle(
                     'is-collapsed',
-                    !expanded && rows.length > rowLimit
+                    !expanded && canExpand
                 );
 
+                if (controls) {
+                    controls.hidden = !canExpand;
+                }
+
                 if (toggle) {
+                    const noun =
+                        hiringOnly
+                            ? 'hiring programs'
+                            : 'programs';
+
                     toggle.textContent = expanded
                         ? 'Show fewer programs'
-                        : `Show all ${rows.length} programs`;
+                        : `Show all ${availableRows.length} ${noun}`;
 
                     toggle.setAttribute(
                         'aria-expanded',
@@ -423,16 +547,55 @@ and "On this page" navigation.
                 if (status) {
                     const visible =
                         expanded
-                            ? rows.length
-                            : Math.min(rowLimit, rows.length);
+                            ? availableRows.length
+                            : Math.min(
+                                rowLimit,
+                                availableRows.length
+                            );
+
+                    const noun =
+                        hiringOnly
+                            ? 'hiring programs'
+                            : 'programs';
 
                     status.textContent =
-                        `Showing ${visible} of ${rows.length} programs`;
+                        `Showing ${visible} of ${availableRows.length} ${noun}`;
+                }
+
+                if (hiringEmpty) {
+                    hiringEmpty.hidden =
+                        !hiringOnly ||
+                        availableRows.length > 0;
                 }
             }
 
 
             function compareValues(a, b, key, direction) {
+                if (key === 'hiring') {
+                    const aHiring =
+                        a.dataset.hiring === 'true';
+
+                    const bHiring =
+                        b.dataset.hiring === 'true';
+
+                    if (aHiring !== bHiring) {
+                        /*
+                         * Ascending means hiring programs first.
+                         */
+                        return direction === 1
+                            ? aHiring ? -1 : 1
+                            : aHiring ? 1 : -1;
+                    }
+
+                    /*
+                     * Within hiring/non-hiring groups, restore the
+                     * original server-rendered order.
+                     */
+                    return (
+                        defaultOrder.get(a) -
+                        defaultOrder.get(b)
+                    );
+                }
                 if (key === 'length') {
                     const aValue =
                         a.dataset.length
@@ -565,13 +728,51 @@ and "On this page" navigation.
 
 
             applyRowVisibility();
+
+
+            return {
+                setHiringOnly(value) {
+                    hiringOnly = value;
+                    expanded = false;
+                    applyRowVisibility();
+                },
+            };
         }
 
 
+        const programTableControllers = [];
+
         document
             .querySelectorAll('[data-program-table-shell]')
-            .forEach(initProgramTable);
+            .forEach(shell => {
+                const controller =
+                    initProgramTable(shell);
 
+                if (controller) {
+                    programTableControllers.push(
+                        controller
+                    );
+                }
+            });
+
+
+        const hiringOnlyToggle =
+            page.querySelector(
+                '[data-program-hiring-toggle]'
+            );
+
+        hiringOnlyToggle?.addEventListener(
+            'change',
+            function () {
+                programTableControllers.forEach(
+                    controller => {
+                        controller.setHiringOnly(
+                            hiringOnlyToggle.checked
+                        );
+                    }
+                );
+            }
+        );
 
         /*
          * Shared detail-page scroll spy.

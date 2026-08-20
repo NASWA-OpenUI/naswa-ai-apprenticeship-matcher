@@ -171,22 +171,26 @@ def program_hiring_stats(
             if not isinstance(program, dict):
                 continue
 
-            program_is_hiring = False
-            opportunities = program.get("opportunities") or []
+            hiring_opportunities = program_hiring_opportunities(
+                program,
+                today=today,
+            )
 
-            for opportunity_index, opportunity in enumerate(opportunities):
-                if not isinstance(opportunity, dict):
-                    continue
+            if not hiring_opportunities:
+                continue
 
-                if not _opportunity_matches_program(opportunity, program):
-                    continue
+            trade_is_hiring = True
 
-                if not _opportunity_is_hiring(opportunity, today):
-                    continue
+            program_ak = program.get("programAk")
 
-                program_is_hiring = True
-                trade_is_hiring = True
+            if program_ak not in (None, ""):
+                program_key = ("programAk", str(program_ak))
+            else:
+                program_key = ("position", trade_index, program_index)
 
+            hiring_program_keys.add(program_key)
+
+            for opportunity_index, opportunity in enumerate(hiring_opportunities):
                 opportunity_id = opportunity.get("id")
 
                 if opportunity_id not in (None, ""):
@@ -199,23 +203,11 @@ def program_hiring_stats(
                         opportunity_index,
                     )
 
-                if opportunity_key not in counted_opportunity_keys:
-                    counted_opportunity_keys.add(opportunity_key)
-                    open_positions += _opportunity_openings(opportunity)
+                if opportunity_key in counted_opportunity_keys:
+                    continue
 
-            if program_is_hiring:
-                program_ak = program.get("programAk")
-
-                if program_ak not in (None, ""):
-                    program_key = ("programAk", str(program_ak))
-                else:
-                    program_key = (
-                        "position",
-                        trade_index,
-                        program_index,
-                    )
-
-                hiring_program_keys.add(program_key)
+                counted_opportunity_keys.add(opportunity_key)
+                open_positions += _opportunity_openings(opportunity)
 
         if trade_is_hiring:
             trade_name = trade.get("tradeName") or trade.get("displayTradeName")
@@ -231,11 +223,69 @@ def program_hiring_stats(
     }
 
 
+def program_hiring_opportunities(
+    program: dict | None,
+    *,
+    today: date | None = None,
+) -> list[dict]:
+    """Return current/upcoming opportunities belonging to one program."""
+    if not isinstance(program, dict):
+        return []
+
+    today = today or _new_york_today()
+
+    hiring_opportunities = []
+    seen_opportunity_keys = set()
+
+    for opportunity_index, opportunity in enumerate(program.get("opportunities") or []):
+        if not isinstance(opportunity, dict):
+            continue
+
+        if not _opportunity_matches_program(opportunity, program):
+            continue
+
+        if not _opportunity_is_hiring(opportunity, today):
+            continue
+
+        opportunity_id = opportunity.get("id")
+
+        if opportunity_id not in (None, ""):
+            opportunity_key = ("id", str(opportunity_id))
+        else:
+            opportunity_key = ("position", opportunity_index)
+
+        if opportunity_key in seen_opportunity_keys:
+            continue
+
+        seen_opportunity_keys.add(opportunity_key)
+        hiring_opportunities.append(opportunity)
+
+    return hiring_opportunities
+
+
+def programs_hiring_first(
+    programs: list[dict] | None,
+    *,
+    today: date | None = None,
+) -> list[dict]:
+    """Return programs with hiring programs first, preserving order within groups."""
+    today = today or _new_york_today()
+
+    return sorted(
+        programs or [],
+        key=lambda program: (
+            0 if program_hiring_opportunities(program, today=today) else 1
+        ),
+    )
+
+
 TEMPLATE_FILTERS = {
     "format_date": format_date,
     "format_wage": format_wage,
     "percent_of": percent_of,
     "chat_markdown": chat_markdown,
     "typical_program_length": typical_program_length,
+    "programs_hiring_first": programs_hiring_first,
+    "program_hiring_opportunities": program_hiring_opportunities,
     "program_hiring_stats": program_hiring_stats,
 }
