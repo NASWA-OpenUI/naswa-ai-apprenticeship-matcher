@@ -10,7 +10,9 @@ scripts, and the outer #main-content landmark.
 {% block title_band %}
 <div class="detail-crumb">
   <div class="container">
-    <a id="detail-back-link" class="chip chip--warning" href="/opportunities">← All opportunities</a>
+    <a id="detail-back-link" class="chip chip--warning" href="{{ back_href }}">
+      {{ back_label }}
+    </a>
   </div>
 </div>
 
@@ -338,7 +340,9 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
     Populate the match section from sessionStorage if the user came from
     the ranked view and this opportunity has a stored match explanation.
   */
-  const match = rankings?.ranked?.find(r => r.id === slug);
+  const match = cameFromRankedPage
+    ? rankings?.ranked?.find(r => r.id === slug)
+    : null;
 
   if (match) {
     const section = document.getElementById('match');

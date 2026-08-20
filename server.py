@@ -713,7 +713,11 @@ async def opportunities_page(
 
 
 @app.get("/opportunities/{slug}")
-async def opportunity_detail_page(request: Request, slug: str):
+async def opportunity_detail_page(
+    request: Request,
+    slug: str,
+    from_program: str | None = None,
+):
     """Serve the opportunity detail page."""
     opp = get_opportunity(slug)
     if opp is None:
@@ -721,12 +725,24 @@ async def opportunity_detail_page(request: Request, slug: str):
 
     detail = build_opportunity_detail(opp)
 
+    back_href = "/opportunities"
+    back_label = "← All opportunities"
+
+    if from_program:
+        program_group = get_program_group(from_program)
+
+        if program_group is not None:
+            back_href = f"/programs/{program_group['socCode']}"
+            back_label = "← Back to program details"
+
     return templates.TemplateResponse(
         request,
         "opportunity.html",
         {
             "opp": opp,
             "detail": detail,
+            "back_href": back_href,
+            "back_label": back_label,
         },
     )
 

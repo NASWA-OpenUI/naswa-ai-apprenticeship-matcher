@@ -330,6 +330,52 @@ def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
     assert response.status_code == 404
 
 
+def test_opportunity_detail_defaults_back_to_all_opportunities(
+    client,
+):
+    response = client.get("/opportunities/electrician-apprentice-fixture")
+
+    assert response.status_code == 200
+    assert 'href="/opportunities"' in response.text
+    assert "← All opportunities" in response.text
+
+
+def test_opportunity_detail_can_link_back_to_program(
+    client,
+):
+    response = client.get(
+        "/opportunities/electrician-apprentice-fixture",
+        params={
+            "from_program": "47-2111.00",
+        },
+    )
+
+    assert response.status_code == 200
+
+    assert 'href="/programs/47-2111.00"' in response.text
+    assert "← Back to program details" in response.text
+
+
+def test_opportunity_detail_ignores_invalid_from_program(
+    client,
+):
+    response = client.get(
+        "/opportunities/electrician-apprentice-fixture",
+        params={
+            "from_program": "https://example.com",
+        },
+    )
+
+    assert response.status_code == 200
+
+    assert (
+        'id="detail-back-link" class="chip chip--warning" href="/opportunities"'
+        in response.text
+    )
+    assert "← All opportunities" in response.text
+    assert "← Back to program details" not in response.text
+
+
 def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeypatch):
     """Verifies that the streaming rank endpoint caps far/non-local Strong
     model scores to Moderate when location matching is enabled."""

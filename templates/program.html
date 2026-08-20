@@ -242,7 +242,8 @@ and "On this page" navigation.
                                         {% for opportunity in hiring_opportunities %}
                                         <div class="program-opening">
                                             {% if opportunity.id %}
-                                            <a class="program-opening__link" href="/opportunities/{{ opportunity.id }}">
+                                            <a class="program-opening__link"
+                                                href="/opportunities/{{ opportunity.id }}?from_program={{ program_group.socCode }}">
                                                 <span>
                                                     {{ opportunity.numberOfOpenings | default(0, true) }}
                                                     opening{{ "" if opportunity.numberOfOpenings == 1 else "s" }}
