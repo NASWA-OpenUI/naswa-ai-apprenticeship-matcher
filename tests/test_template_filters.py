@@ -9,6 +9,7 @@ from naswa_matcher.template_filters import (
     format_wage,
     percent_of,
     program_hiring_stats,
+    trades_by_program_count,
     typical_program_length,
 )
 
@@ -573,3 +574,58 @@ def test_program_hiring_stats_handles_empty_group():
 
 def test_program_hiring_stats_is_registered_as_template_filter():
     assert TEMPLATE_FILTERS["program_hiring_stats"] is program_hiring_stats
+
+
+def test_trades_by_program_count_sorts_largest_first():
+    trades = [
+        {
+            "displayTradeName": "Electrical Maintenance Technician",
+            "programCount": 1,
+        },
+        {
+            "displayTradeName": "Electrician",
+            "programCount": 111,
+        },
+        {
+            "displayTradeName": "Plant Maintenance-Electrician",
+            "programCount": 29,
+        },
+        {
+            "displayTradeName": "Electronics Mechanic",
+            "programCount": 3,
+        },
+    ]
+
+    sorted_trades = trades_by_program_count(trades)
+
+    assert [trade["displayTradeName"] for trade in sorted_trades] == [
+        "Electrician",
+        "Plant Maintenance-Electrician",
+        "Electronics Mechanic",
+        "Electrical Maintenance Technician",
+    ]
+
+
+def test_trades_by_program_count_sorts_ties_alphabetically():
+    trades = [
+        {
+            "displayTradeName": "Instrument and Electrical Mechanic",
+            "programCount": 1,
+        },
+        {
+            "displayTradeName": "Electrician",
+            "programCount": 5,
+        },
+        {
+            "displayTradeName": "Electrical Maintenance Technician",
+            "programCount": 1,
+        },
+    ]
+
+    sorted_trades = trades_by_program_count(trades)
+
+    assert [trade["displayTradeName"] for trade in sorted_trades] == [
+        "Electrician",
+        "Electrical Maintenance Technician",
+        "Instrument and Electrical Mechanic",
+    ]

@@ -279,13 +279,41 @@ def programs_hiring_first(
     )
 
 
+def trades_by_program_count(
+    trades: list[dict] | None,
+) -> list[dict]:
+    """Return trades ordered by program count, then display name."""
+    valid_trades = [trade for trade in trades or [] if isinstance(trade, dict)]
+
+    def sort_key(trade: dict) -> tuple[int, str]:
+        try:
+            program_count = int(trade.get("programCount") or 0)
+        except TypeError, ValueError:
+            program_count = 0
+
+        trade_name = str(
+            trade.get("displayTradeName") or trade.get("tradeName") or ""
+        ).strip()
+
+        return (
+            -program_count,
+            trade_name.casefold(),
+        )
+
+    return sorted(
+        valid_trades,
+        key=sort_key,
+    )
+
+
 TEMPLATE_FILTERS = {
     "format_date": format_date,
     "format_wage": format_wage,
     "percent_of": percent_of,
     "chat_markdown": chat_markdown,
-    "typical_program_length": typical_program_length,
     "programs_hiring_first": programs_hiring_first,
     "program_hiring_opportunities": program_hiring_opportunities,
     "program_hiring_stats": program_hiring_stats,
+    "trades_by_program_count": trades_by_program_count,
+    "typical_program_length": typical_program_length,
 }

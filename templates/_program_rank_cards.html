@@ -2,7 +2,7 @@
 
 {% for item in ranked %}
 {% set group = item.program_group %}
-{% set trades = group.trades | default([], true) %}
+{% set trades = (group.trades | default([], true)) | trades_by_program_count %}
 {% set regions = group.regions | default([], true) %}
 {% set tier_class = item.tier | lower %}
 {% set is_statewide = regions | length == 10 %}

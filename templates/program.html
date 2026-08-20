@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% set hiring = program_group | program_hiring_stats %}
+{% set trades = (program_group.trades | default([], true)) | trades_by_program_count %}
 
 {% block title %}{{ program_title }} — Registered Apprenticeship Programs{% endblock %}
 
@@ -53,8 +54,8 @@ and "On this page" navigation.
                     <circle cx="15.5" cy="18" r="1.6" fill="currentColor"></circle>
                 </svg>
 
-                {{ program_group.trades | length }}
-                trade title{{ "" if program_group.trades | length == 1 else "s" }}
+                {{ trades | length }}
+                trade title{{ "" if trades | length == 1 else "s" }}
             </span>
 
             {% if program_group.regions %}
@@ -137,7 +138,7 @@ and "On this page" navigation.
             {% endif %}
 
 
-            {% for trade in program_group.trades %}
+            {% for trade in trades %}
             {% set trade_title = trade.displayTradeName or trade.tradeName %}
             {% set programs = trade.programs | default([], true) %}
 
@@ -313,7 +314,7 @@ and "On this page" navigation.
                 </li>
                 {% endif %}
 
-                {% for trade in program_group.trades %}
+                {% for trade in trades %}
                 {% set trade_title = trade.displayTradeName or trade.tradeName %}
                 <li>
                     <a href="#trade-{{ loop.index }}">
