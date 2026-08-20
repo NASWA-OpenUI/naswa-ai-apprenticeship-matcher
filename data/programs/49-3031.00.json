@@ -1113,7 +1113,7 @@
     {
       "tradeName": "Bus Mechanic",
       "displayTradeName": "Bus Mechanic",
-      "description": "A Bus Mechanic inspects, repairs, and maintains buses so they can run safely every day. They diagnose engine, brake, steering, electrical, and heating problems, replace worn parts, change fluids, and test vehicles in the shop and on the road. Their work keeps public transportation running, passengers safer, and buses reliable for daily travel.",
+      "description": "A Bus Mechanic inspects, repairs, and maintains buses so they can run safely every day. They diagnose engine, brake, steering, and electrical problems, change worn parts, test systems, and do routine service in a garage or yard. Their work keeps buses reliable, protects passengers and drivers, and helps public transportation stay running.",
       "programCount": 1,
       "programs": [
         {
@@ -1133,14 +1133,15 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "49-3031.00",
-          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists"
+          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Diesel Engine Mechanic",
       "displayTradeName": "Diesel Engine Mechanic",
-      "description": "A Diesel Engine Mechanic repairs, services, and tests diesel-powered engines in trucks, buses, heavy equipment, and other machines. They inspect parts, change filters and fluids, use diagnostic tools to find problems, and replace worn brakes, belts, or fuel system parts. Their work keeps vehicles and equipment running safely, reliably, and efficiently.",
+      "description": "A Diesel Engine Mechanic repairs and maintains diesel-powered vehicles and equipment such as trucks, buses, tractors, and generators. They inspect engines, test parts, change filters and fluids, replace worn components, and use tools and diagnostic equipment to find problems. Their work keeps engines running reliably and helps vehicles and machines stay safe and useful every day.",
       "programCount": 3,
       "programs": [
         {
@@ -1160,7 +1161,8 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "49-3031.00",
-          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists"
+          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists",
+          "opportunities": []
         },
         {
           "programAk": 9711,
@@ -1179,7 +1181,8 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "49-3031.00",
-          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists"
+          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists",
+          "opportunities": []
         },
         {
           "programAk": 18616,
@@ -1198,14 +1201,15 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "49-3031.00",
-          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists"
+          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Industrial Truck Mechanic",
       "displayTradeName": "Industrial Truck Mechanic",
-      "description": "An Industrial Truck Mechanic repairs and maintains forklifts, pallet jacks, and other lifting and loading vehicles used in warehouses, factories, and yards. They inspect engines, brakes, steering, hydraulics, batteries, and tires, replace worn parts, and test equipment to find problems. Their work keeps heavy machines running safely and goods moving on time.",
+      "description": "An Industrial Truck Mechanic repairs and maintains forklifts, pallet jacks, and other warehouse and lifting vehicles. They inspect engines, brakes, steering, hydraulics, batteries, and tires, replace worn parts, and test equipment to make sure it works properly. Their work keeps trucks running safely and helps factories, warehouses, and loading docks move materials.",
       "programCount": 1,
       "programs": [
         {
@@ -1225,7 +1229,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "49-3031.00",
-          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists"
+          "socTitle": "Bus and Truck Mechanics and Diesel Engine Specialists",
+          "opportunities": []
         }
       ]
     }

@@ -1084,7 +1084,7 @@
     {
       "tradeName": "Dairy Processor",
       "displayTradeName": "Dairy Processor",
-      "description": "A Dairy Processor turns raw milk into foods like cheese, butter, yogurt, and packaged milk. They run pasteurizing, mixing, separating, and filling machines, check temperatures and cleanliness, test samples, and move products through tanks, pipes, and packaging lines. Their work helps keep dairy products safe to eat, fresh, and ready for stores and homes.",
+      "description": "A Dairy Processor runs equipment that turns raw milk into products like cheese, yogurt, butter, and bottled milk. They measure ingredients, pasteurize and separate milk, watch temperatures, fill and seal containers, and clean tanks and lines. Their work keeps dairy products safe to eat, fresh, and ready for stores and kitchens.",
       "programCount": 2,
       "programs": [
         {
@@ -1104,7 +1104,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-3092.00",
-          "socTitle": "Food Batchmakers"
+          "socTitle": "Food Batchmakers",
+          "opportunities": []
         },
         {
           "programAk": 13351,
@@ -1123,7 +1124,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-3092.00",
-          "socTitle": "Food Batchmakers"
+          "socTitle": "Food Batchmakers",
+          "opportunities": []
         }
       ]
     }

@@ -1067,7 +1067,7 @@
     {
       "tradeName": "Bartender",
       "displayTradeName": "Bartender",
-      "description": "A Bartender prepares and serves beer, wine, cocktails, and nonalcoholic drinks in bars, restaurants, and event spaces. They take orders, mix drinks, check ID, handle payments, restock bottles and garnishes, and keep the bar clean and organized during busy shifts. Their work helps customers get served safely, spaces stay orderly, and business keep running smoothly.",
+      "description": "A Bartender prepares and serves beer, wine, cocktails, and nonalcoholic drinks in bars, restaurants, and event spaces. They mix ingredients, pour drinks, take orders, check IDs, handle payments, restock bottles and ice, and keep the bar clean and organized during busy shifts. Their work keeps service running smoothly and helps customers enjoy a safe, well-managed place to eat and drink.",
       "programCount": 1,
       "programs": [
         {
@@ -1087,7 +1087,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "35-3011.00",
-          "socTitle": "Bartenders"
+          "socTitle": "Bartenders",
+          "opportunities": []
         }
       ]
     }

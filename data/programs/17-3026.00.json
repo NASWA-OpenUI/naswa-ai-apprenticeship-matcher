@@ -1168,7 +1168,7 @@
     {
       "tradeName": "Industrial Manufacturing Technician",
       "displayTradeName": "Industrial Manufacturing Technician",
-      "description": "An Industrial Manufacturing Technician sets up, runs, and monitors machines that make parts and products in factories. They load materials, check measurements, adjust equipment, replace worn tools, and inspect finished items for quality while keeping the work area clean and safe. Their work keeps production lines running, products consistent, and equipment working properly.",
+      "description": "An Industrial Manufacturing Technician sets up, monitors, and maintains the machines and systems used to make products in a factory. They load materials, check gauges and computer screens, test parts, fix minor problems, and keep equipment clean and running smoothly. Their work helps build reliable products and keeps production lines safe and working properly.",
       "programCount": 7,
       "programs": [
         {
@@ -1188,7 +1188,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 4137,
@@ -1207,7 +1208,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 6896,
@@ -1226,7 +1228,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 11769,
@@ -1245,7 +1248,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 12851,
@@ -1264,7 +1268,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 14399,
@@ -1283,7 +1288,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 15801,
@@ -1302,7 +1308,8 @@
           "programLength": 16,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.00",
-          "socTitle": "Industrial Engineering Technologists and Technicians"
+          "socTitle": "Industrial Engineering Technologists and Technicians",
+          "opportunities": []
         }
       ]
     }

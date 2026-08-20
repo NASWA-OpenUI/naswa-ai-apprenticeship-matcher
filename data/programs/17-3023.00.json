@@ -1182,8 +1182,8 @@
   "trades": [
     {
       "tradeName": "Calibration Technician(Electrical-Electronic)",
-      "displayTradeName": "Calibration Technician",
-      "description": "A Calibration Technician working with electrical and electronic equipment tests, adjusts, and repairs instruments so they give accurate readings. They use meters, signal sources, and software to check sensors, gauges, controls, and lab tools, then record results and make fine adjustments. Their work keeps machines, tests, and safety systems working correctly and reliably.",
+      "displayTradeName": "Calibration Technician(Electrical-Electronic)",
+      "description": "A Calibration Technician in electrical and electronic work checks, adjusts, and tests meters, sensors, gauges, and control devices to make sure they read and operate correctly. They use test equipment, compare results to standards, replace faulty parts, and record measurements. Their work keeps machines, systems, and safety devices accurate, reliable, and running properly.",
       "programCount": 1,
       "programs": [
         {
@@ -1203,14 +1203,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3023.00",
-          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians"
+          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Instrument Technician",
       "displayTradeName": "Instrument Technician",
-      "description": "An Instrument Technician installs, tests, repairs, and calibrates the devices that measure and control temperature, pressure, flow, and level in machines and industrial systems. They trace wiring, replace sensors, adjust control settings, and use testing tools to find faults. Their work keeps equipment accurate, processes running smoothly, and workplaces safer.",
+      "description": "An Instrument Technician installs, tests, repairs, and calibrates the sensors, gauges, and control systems that monitor machines and industrial processes. They trace wiring, replace faulty parts, adjust settings, and use testing tools to make sure equipment reads and responds correctly. Their work keeps factories, plants, and building systems running safely and accurately.",
       "programCount": 3,
       "programs": [
         {
@@ -1230,7 +1231,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3023.00",
-          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians"
+          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 4612,
@@ -1249,7 +1251,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3023.00",
-          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians"
+          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians",
+          "opportunities": []
         },
         {
           "programAk": 5972,
@@ -1268,7 +1271,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3023.00",
-          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians"
+          "socTitle": "Electrical and Electronic Engineering Technologists and Technicians",
+          "opportunities": []
         }
       ]
     }

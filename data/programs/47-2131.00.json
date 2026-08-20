@@ -929,7 +929,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 3642,
@@ -948,7 +949,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 4189,
@@ -967,7 +969,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 11605,
@@ -986,7 +989,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 11790,
@@ -1005,7 +1009,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 11931,
@@ -1024,7 +1029,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 12374,
@@ -1043,7 +1049,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 12939,
@@ -1062,7 +1069,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 13235,
@@ -1081,7 +1089,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": []
         },
         {
           "programAk": 16544,
@@ -1100,7 +1109,67 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2131.00",
-          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall"
+          "socTitle": "Insulation Workers, Floor, Ceiling, and Wall",
+          "opportunities": [
+            {
+              "id": "heat-frost-insulation-allied-workers-lu-26-0-insulation-and-asbestos-worker-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/heat-frost-insulation-allied-workers-lu-26-0",
+              "sourceTitle": "Heat & Frost Insulation & Allied Workers LU 26",
+              "jobTitle": "Insulation and Asbestos Worker Apprentice",
+              "socCode": "47-2131.00",
+              "numberOfOpenings": 6,
+              "sponsorName": "JATC for Heat and Frost Insulators and Allied Workers, Local Union #26",
+              "unionName": "Heat and Frost Insulators and Allied Workers, Local Union #26",
+              "locationSummary": "Rochester, NY",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2026-04-01",
+              "recruitmentEndDate": "2027-03-31",
+              "applicationStartDate": "2026-04-01",
+              "applicationEndDate": "2027-03-31",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at www.insulators26.org any time during the recruitment period. Applications must be received by noon on March 31, 2027.",
+              "applicationWebsite": "https://www.insulators26.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Any day, any time during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have a valid New York State driver’s license, and reliable transportation to job sites and required classes.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be willing to attend at least 144 hours of required classroom instruction per year at the JATC training center.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must verbally attest that they are physically able to perform the work required of the trade.",
+                "Must be able to lift 50 lbs. unassisted.",
+                "Must be able to climb ladders and work from heights above 8 feet.",
+                "Must be able to work in confined spaces.",
+                "Must be able to work in cold and hot environments such as coolers below 40 degrees and boiler rooms above 100 degrees.",
+                "Must have a valid New York State driver’s license in order to operate company vehicles.",
+                "Must be able to read, hear and understand verbal instructions and warnings given in English.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must be legally able to work in the USA.",
+                "Must be willing to attend a minimum of 144 hours of required classroom instruction per year located at the JATC for Heat and Frost Insulators and Allied Workers, Local Union #26 Training Center.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, physically able to do the work, have a valid NYS driver’s license, reliable transportation, and be able to attend required classroom instruction.",
+              "contactName": "JATC for Heat and Frost Insulators and Allied Workers, Local Union #26",
+              "contactPhone": "(585) 323-1620",
+              "contactEmail": null,
+              "contactWebsite": "https://www.insulators26.org",
+              "contactSummary": "For further information, contact the JATC for Heat and Frost Insulators and Allied Workers, Local Union #26 at (585) 323-1620."
+            }
+          ]
         }
       ]
     }

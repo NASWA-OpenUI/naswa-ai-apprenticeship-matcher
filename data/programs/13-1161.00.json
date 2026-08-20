@@ -985,7 +985,7 @@
     {
       "tradeName": "Marketing Coordinator",
       "displayTradeName": "Marketing Coordinator",
-      "description": "A Marketing Coordinator helps plan and carry out marketing projects for a business or organization. They write social media posts, update website content, help create ads and email campaigns, organize events, track deadlines, and gather results from promotions. Their work helps businesses reach customers, keep messages clear, and support sales or public awareness.",
+      "description": "A Marketing Coordinator helps plan and carry out marketing projects for a business or organization. They write social media posts, update websites, organize events, track schedules, gather photos and information, and help create ads, emails, and printed materials. Their work helps customers learn about products and services and keeps marketing running smoothly.",
       "programCount": 5,
       "programs": [
         {
@@ -1005,7 +1005,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "13-1161.00",
-          "socTitle": "Market Research Analysts and Marketing Specialists"
+          "socTitle": "Market Research Analysts and Marketing Specialists",
+          "opportunities": []
         },
         {
           "programAk": 9776,
@@ -1024,7 +1025,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "13-1161.00",
-          "socTitle": "Market Research Analysts and Marketing Specialists"
+          "socTitle": "Market Research Analysts and Marketing Specialists",
+          "opportunities": []
         },
         {
           "programAk": 13362,
@@ -1043,7 +1045,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "13-1161.00",
-          "socTitle": "Market Research Analysts and Marketing Specialists"
+          "socTitle": "Market Research Analysts and Marketing Specialists",
+          "opportunities": []
         },
         {
           "programAk": 16418,
@@ -1062,7 +1065,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "13-1161.00",
-          "socTitle": "Market Research Analysts and Marketing Specialists"
+          "socTitle": "Market Research Analysts and Marketing Specialists",
+          "opportunities": []
         },
         {
           "programAk": 18201,
@@ -1081,7 +1085,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "13-1161.00",
-          "socTitle": "Market Research Analysts and Marketing Specialists"
+          "socTitle": "Market Research Analysts and Marketing Specialists",
+          "opportunities": []
         }
       ]
     }

@@ -1015,8 +1015,8 @@
   "trades": [
     {
       "tradeName": "Housekeeper (Commercial, Residential, Industrial)",
-      "displayTradeName": "Housekeeper",
-      "description": "A Housekeeper cleans and maintains homes, offices, hotels, hospitals, factories, and other buildings. They vacuum floors, dust surfaces, scrub bathrooms, change linens, empty trash, restock supplies, and sometimes wash windows or sanitize work areas. Their work keeps indoor spaces clean, organized, healthier to use, and safer for the people in them.",
+      "displayTradeName": "Housekeeper (Commercial, Residential, Industrial)",
+      "description": "A Housekeeper in commercial, residential, and industrial settings cleans and maintains rooms, halls, washrooms, and work areas. They vacuum carpets, mop floors, dust surfaces, change linens, empty waste, restock supplies, and sanitize kitchens, bathrooms, or shared spaces. Their work keeps homes, businesses, and facilities clean, orderly, safe, and ready for daily use.",
       "programCount": 4,
       "programs": [
         {
@@ -1036,7 +1036,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "37-2012.00",
-          "socTitle": "Maids and Housekeeping Cleaners"
+          "socTitle": "Maids and Housekeeping Cleaners",
+          "opportunities": []
         },
         {
           "programAk": 10280,
@@ -1055,7 +1056,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "37-2012.00",
-          "socTitle": "Maids and Housekeeping Cleaners"
+          "socTitle": "Maids and Housekeeping Cleaners",
+          "opportunities": []
         },
         {
           "programAk": 13370,
@@ -1074,7 +1076,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "37-2012.00",
-          "socTitle": "Maids and Housekeeping Cleaners"
+          "socTitle": "Maids and Housekeeping Cleaners",
+          "opportunities": []
         },
         {
           "programAk": 13707,
@@ -1093,7 +1096,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "37-2012.00",
-          "socTitle": "Maids and Housekeeping Cleaners"
+          "socTitle": "Maids and Housekeeping Cleaners",
+          "opportunities": []
         }
       ]
     }

@@ -975,7 +975,7 @@
     {
       "tradeName": "Customer Service Representative",
       "displayTradeName": "Customer Service Representative",
-      "description": "A Customer Service Representative helps people with questions, orders, returns, billing, or problems with a company’s products or services. They answer phone calls, emails, or chats, look up account details, explain options, process changes, and solve issues while staying calm and clear. Their work keeps services running smoothly and helps customers get what they need.",
+      "description": "A Customer Service Representative helps people with questions, orders, payments, returns, and problems with a company’s products or services. They answer phone calls, emails, and chats, look up account details, explain options, solve common issues, and keep records of each contact. Their work keeps customers informed, services running smoothly, and everyday transactions on track.",
       "programCount": 5,
       "programs": [
         {
@@ -995,7 +995,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "43-4051.00",
-          "socTitle": "Customer Service Representatives"
+          "socTitle": "Customer Service Representatives",
+          "opportunities": []
         },
         {
           "programAk": 9413,
@@ -1014,7 +1015,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "43-4051.00",
-          "socTitle": "Customer Service Representatives"
+          "socTitle": "Customer Service Representatives",
+          "opportunities": []
         },
         {
           "programAk": 12645,
@@ -1033,7 +1035,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "43-4051.00",
-          "socTitle": "Customer Service Representatives"
+          "socTitle": "Customer Service Representatives",
+          "opportunities": []
         },
         {
           "programAk": 13922,
@@ -1052,7 +1055,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "43-4051.00",
-          "socTitle": "Customer Service Representatives"
+          "socTitle": "Customer Service Representatives",
+          "opportunities": []
         },
         {
           "programAk": 14490,
@@ -1071,7 +1075,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "43-4051.00",
-          "socTitle": "Customer Service Representatives"
+          "socTitle": "Customer Service Representatives",
+          "opportunities": []
         }
       ]
     }

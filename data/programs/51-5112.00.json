@@ -1063,7 +1063,7 @@
     {
       "tradeName": "Offset Lithographic Press Operator",
       "displayTradeName": "Offset Lithographic Press Operator",
-      "description": "An Offset Lithographic Press Operator runs large printing presses that transfer ink from plates onto paper. They set up plates, load paper and ink, adjust rollers and controls, watch for color and alignment problems, and clean the press between jobs. Their work produces clear, accurate printed materials and keeps packaging, labels, books, and forms consistent.",
+      "description": "An Offset Lithographic Press Operator runs large printing presses that transfer ink from metal plates onto paper or other materials. They set up the press, load paper, adjust ink and water levels, check color and alignment, and watch for jams or flaws during long print runs. Their work produces clear, accurate books, labels, packaging, and forms people use every day.",
       "programCount": 1,
       "programs": [
         {
@@ -1083,7 +1083,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-5112.00",
-          "socTitle": "Printing Press Operators"
+          "socTitle": "Printing Press Operators",
+          "opportunities": []
         }
       ]
     }

@@ -1083,8 +1083,8 @@
   "trades": [
     {
       "tradeName": "Electronics Technician (Manufacturing Only)",
-      "displayTradeName": "Electronics Technician",
-      "description": "An Electronics Technician in manufacturing builds, tests, troubleshoots, and repairs electronic parts and equipment used on factory lines. They read diagrams, use meters and soldering tools, replace faulty components, and help set up or adjust machines and control systems. Their work keeps production equipment running, products working properly, and factory operations safer and more reliable.",
+      "displayTradeName": "Electronics Technician (Manufacturing Only)",
+      "description": "An Electronics Technician in manufacturing builds, tests, troubleshoots, and repairs electronic parts and equipment on factory floors. They wire circuits, use meters and soldering tools, replace faulty components, adjust machines, and check that products meet quality standards. Their work keeps production lines running, devices working properly, and finished products safe and reliable.",
       "programCount": 2,
       "programs": [
         {
@@ -1104,7 +1104,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-2094.00",
-          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "opportunities": []
         },
         {
           "programAk": 8438,
@@ -1123,7 +1124,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-2094.00",
-          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment"
+          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "opportunities": []
         }
       ]
     }

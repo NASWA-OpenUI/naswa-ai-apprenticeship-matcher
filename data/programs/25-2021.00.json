@@ -1292,7 +1292,7 @@
     {
       "tradeName": "Teacher",
       "displayTradeName": "Teacher",
-      "description": "A Teacher plans lessons, explains ideas, leads class activities, and helps students learn new skills and information. They teach from books, boards, screens, and hands-on materials, answer questions, mark work, and keep the classroom organized and focused each day. Their work builds knowledge, improves skills, and helps schools keep learning on track.",
+      "description": "A Teacher plans lessons, explains new ideas, leads class activities, and checks how students are doing. They spend their day speaking with students, answering questions, marking work, and helping with reading, writing, math, or other subjects. Their work builds knowledge, supports daily learning, and helps classrooms run in a safe, organized way.",
       "programCount": 7,
       "programs": [
         {
@@ -1312,7 +1312,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 2882,
@@ -1331,7 +1332,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 3579,
@@ -1350,7 +1352,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 9788,
@@ -1369,7 +1372,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 9874,
@@ -1388,7 +1392,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 13285,
@@ -1407,7 +1412,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         },
         {
           "programAk": 15612,
@@ -1426,7 +1432,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-2021.00",
-          "socTitle": "Elementary School Teachers, etc."
+          "socTitle": "Elementary School Teachers, etc.",
+          "opportunities": []
         }
       ]
     }

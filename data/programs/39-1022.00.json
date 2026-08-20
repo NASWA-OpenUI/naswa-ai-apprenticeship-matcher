@@ -1031,8 +1031,8 @@
   "trades": [
     {
       "tradeName": "Direct Support Professional (DSP) Supervisor",
-      "displayTradeName": "Direct Support Professional Supervisor",
-      "description": "A Direct Support Professional Supervisor leads staff who help people with disabilities or other support needs in homes, day programs, or community settings. They make schedules, train workers, check care plans, handle problems, and step in to help with daily routines, appointments, or activities. Their work keeps support services organized, safe, and running well.",
+      "displayTradeName": "Direct Support Professional (DSP) Supervisor",
+      "description": "A Direct Support Professional Supervisor leads staff who help people with disabilities or other support needs in homes, day programs, or community settings. They schedule workers, train staff, check care plans, handle problems, and step in to support daily routines like meals, transportation, and personal care. Their work keeps services organized, safe, and dependable.",
       "programCount": 4,
       "programs": [
         {
@@ -1052,7 +1052,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-1022.00",
-          "socTitle": "First-Line Supervisors of Personal Service Workers"
+          "socTitle": "First-Line Supervisors of Personal Service Workers",
+          "opportunities": []
         },
         {
           "programAk": 9562,
@@ -1071,7 +1072,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-1022.00",
-          "socTitle": "First-Line Supervisors of Personal Service Workers"
+          "socTitle": "First-Line Supervisors of Personal Service Workers",
+          "opportunities": []
         },
         {
           "programAk": 11166,
@@ -1090,7 +1092,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-1022.00",
-          "socTitle": "First-Line Supervisors of Personal Service Workers"
+          "socTitle": "First-Line Supervisors of Personal Service Workers",
+          "opportunities": []
         },
         {
           "programAk": 11562,
@@ -1109,7 +1112,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-1022.00",
-          "socTitle": "First-Line Supervisors of Personal Service Workers"
+          "socTitle": "First-Line Supervisors of Personal Service Workers",
+          "opportunities": []
         }
       ]
     }

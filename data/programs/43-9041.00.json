@@ -1086,7 +1086,7 @@
     {
       "tradeName": "General Insurance Associate",
       "displayTradeName": "General Insurance Associate",
-      "description": "A General Insurance Associate helps people and businesses choose and manage insurance coverage for things like homes, cars, health, travel, or property. They explain policy options, prepare quotes, process applications and renewals, answer questions, and help with claims paperwork and records. Their work helps protect people, property, and finances when problems happen.",
+      "description": "A General Insurance Associate helps people and businesses choose and manage insurance coverage for things like cars, homes, property, and liability. They explain policy options, collect customer information, prepare quotes, process applications and claims, and answer questions by phone, email, or in person. Their work helps protect property, finances, and daily operations when problems happen.",
       "programCount": 1,
       "programs": [
         {
@@ -1106,7 +1106,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "43-9041.00",
-          "socTitle": "Insurance Claims and Policy Processing Clerks"
+          "socTitle": "Insurance Claims and Policy Processing Clerks",
+          "opportunities": []
         }
       ]
     }

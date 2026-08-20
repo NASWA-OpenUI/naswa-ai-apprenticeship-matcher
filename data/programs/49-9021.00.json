@@ -1186,7 +1186,7 @@
     {
       "tradeName": "Heating, Ventilation and Air Conditioning Mechanic",
       "displayTradeName": "Heating, Ventilation, and Air Conditioning Mechanic",
-      "description": "A Heating, Ventilation, and Air Conditioning Mechanic installs, repairs, and maintains furnaces, air conditioners, heat pumps, ventilation fans, and duct systems in homes and buildings. They connect pipes and wiring, test airflow and controls, replace worn parts, and troubleshoot breakdowns using hand and power tools. Their work keeps indoor spaces comfortable, efficient, and safe year-round.",
+      "description": "A Heating, Ventilation, and Air Conditioning Mechanic installs, tests, repairs, and maintains furnaces, air conditioners, heat pumps, ventilation fans, and duct systems in homes and buildings. They handle tools, wiring, pipes, and gauges to find problems and keep equipment working properly. Their work keeps indoor air comfortable, systems efficient, and buildings safe to use.",
       "programCount": 19,
       "programs": [
         {
@@ -1206,7 +1206,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 1027,
@@ -1225,7 +1226,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 1634,
@@ -1244,7 +1246,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 2422,
@@ -1263,7 +1266,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 2790,
@@ -1282,7 +1286,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 5186,
@@ -1301,7 +1306,65 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "sheet-metal-jatc-rochester-lu-46-0-heating-ventilation-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/sheet-metal-jatc-rochester-lu-46-0",
+              "sourceTitle": "Sheet Metal JATC of Rochester LU #46",
+              "jobTitle": "Heating, Ventilation & Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Sheet Metal Workers of Rochester, Local Union #46",
+              "unionName": "Sheet Metal Workers of Rochester, Local Union #46",
+              "locationSummary": "Rochester, NY area; applicants must live within the Local Union #46 jurisdiction.",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2026-04-08",
+              "recruitmentEndDate": "2027-04-07",
+              "applicationStartDate": "2026-04-08",
+              "applicationEndDate": "2027-04-07",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at SMW46.com during the recruitment period. Applications must be received by 11:59 p.m. on April 7, 2027.",
+              "applicationWebsite": "https://www.SMW46.com",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 647-3200",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Available online during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, with one year of algebra with a passing grade in Math Course I or Math Course II, or a minimum score of 55 on the TASC or GED math test.",
+              "residencyRequirement": "Must have been a resident for at least one year within the Local Union #46 jurisdiction, which includes Livingston, Monroe, Ontario, Seneca, Wayne, and Yates counties.",
+              "transportationRequirement": "Must have a valid NYS driver's license to operate company vehicles and reliable transportation to job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must take and pass a drug test upon offer of employment; additional drug testing may occur during the apprenticeship program. Drug testing is paid for by the sponsor.",
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), with one year of algebra with a passing grade in Math Course I or Math Course II; or a minimum of 55 on the TASC or GED math test.",
+                "Must sign an affidavit attesting they are physically able to perform the work of the trade.",
+                "Work in the sheet metal industry may be physical and strenuous, including climbing ladders, scaffolds, and roofs; working at great heights; lifting materials in excess of 70 lbs.; and working outdoors in all types of weather conditions.",
+                "Must take and pass a drug test upon offer of employment.",
+                "May be subject to additional drug testing at any time during the apprenticeship program.",
+                "Drug testing is paid for by the sponsor.",
+                "Must have a valid NYS driver's license in order to operate company vehicles.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must be a resident, for at least one year, within the jurisdiction of Sheet Metal Workers of Rochester, Local Union #46, which includes the counties of Livingston, Monroe, Ontario, Seneca, Wayne, and Yates."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent with the required math preparation, be physically able to do strenuous trade work, pass a drug test, have a valid NYS driver's license, reliable transportation, and meet the one-year residency requirement in the Local 46 jurisdiction.",
+              "contactName": "Sheet Metal Workers of Rochester, Local Union #46",
+              "contactPhone": "(585) 254-9151",
+              "contactEmail": null,
+              "contactWebsite": "https://www.SMW46.com",
+              "contactSummary": "For further information, contact Sheet Metal Workers of Rochester, Local Union #46 at (585) 254-9151."
+            }
+          ]
         },
         {
           "programAk": 6869,
@@ -1320,7 +1383,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 8015,
@@ -1339,7 +1403,60 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "plumbers-steamfitters-local-union-7-jac-heating-ventilation-and-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-local-union-7-jac",
+              "sourceTitle": "Plumbers & Steamfitters Local Union #7 JAC",
+              "jobTitle": "Heating, Ventilation, and Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Plumbers & Steamfitters Local Union #7 Joint Apprenticeship and Training Committee",
+              "unionName": "Plumbers & Steamfitters Local Union #7",
+              "locationSummary": "Latham, NY area",
+              "regions": [
+                "Capital Region"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-01",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain applications in person at Local Union #7, 18 Avis Drive, Latham, NY, on the first Thursday of each month from 9:00 a.m. to 4:00 p.m. during the recruitment period. Applications must be received by September 1, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #7, 18 Avis Drive, Latham, NY 12110",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 4:00 p.m. the first Thursday of every month, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Applicants must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": null,
+              "drugTestRequirement": "Applicants must be physically able to perform the work as determined by a physical exam and drug testing after selection and prior to enrollment, at the sponsor's expense.",
+              "classRequirement": null,
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must be physically able to perform the work required as determined by a physical exam and drug testing after selection and prior to enrollment in apprenticeship, at the expense of the sponsor.",
+                "Must take and pass the Wonderlic Basic Skills aptitude test and score 50 or higher on the exam to be interviewed.",
+                "Must provide DD Form 214, Certificate of Release or Discharge from Active Duty, if applicable, after an offer of employment."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalent, pass the Wonderlic Basic Skills test with a score of 50 or higher, and complete a physical exam and drug test after selection.",
+              "contactName": "Plumbers & Steamfitters Local Union #7",
+              "contactPhone": "(518) 785-9844 or (518) 785-9808 Ext 22",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
+            }
+          ]
         },
         {
           "programAk": 8428,
@@ -1358,7 +1475,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 8672,
@@ -1377,7 +1495,68 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "plumbers-steamfitters-jatc-lu-81-1-heating-ventilation-and-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-jatc-lu-81-1",
+              "sourceTitle": "Plumbers & Steamfitters JATC LU# 81",
+              "jobTitle": "Heating, Ventilation and Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Plumbers & Steamfitters, Local Union #81 JATC",
+              "unionName": "Local Union #81",
+              "locationSummary": "Syracuse, Ithaca, Oswego, and Gouverneur, NY",
+              "regions": [
+                "Central New York",
+                "Finger Lakes",
+                "North Country",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-05-11",
+              "recruitmentEndDate": "2027-03-31",
+              "applicationStartDate": "2026-05-11",
+              "applicationEndDate": "2027-03-31",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application"
+              ],
+              "applicationSummary": "Apply in person at any Local Union #81 location or online at www.ualocal81.org during the recruitment period. Applications must be received by March 31, 2027.",
+              "applicationWebsite": "https://www.ualocal81.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "107 Twin Oaks Drive, Syracuse, NY 13206; 705 East Seneca Street, Oswego, NY 13126; 701 West State Street, Ithaca, NY 14850",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 4:00 p.m., Monday through Friday, excluding legal holidays",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": "Must reside within the jurisdiction of Local Union #81: Cayuga, Chemung, Cortland, Franklin, Jefferson, Lewis, Madison, Onondaga, Oswego, Schuyler, Seneca, St. Lawrence, and Tompkins counties.",
+              "transportationRequirement": "Must have a valid driver's license, may be required to drive company vehicles, and must have reliable transportation to work sites and classes at the approved school.",
+              "drugTestRequirement": "Must pass a negative drug screening at the time of appointment, at the expense of the sponsor.",
+              "classRequirement": "Must be able to get to classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED. Proof of transcript will be required after selection and prior to enrollment in apprenticeship.",
+                "Must attest in writing that they are physically able to perform the work of the trade, including working with sharp objects, hazardous machinery, and possible exposure to loud noises and respiratory irritants; prolonged standing and walking; repeated squatting and/or bending; working in severe weather conditions and extreme temperatures; working in confined spaces; working in wet and muddy conditions; lifting and/or moving heavy objects and equipment; and working off ladders and scaffolds at various heights.",
+                "Must reside within the jurisdiction of Local Union #81, including Cayuga, Chemung, Cortland, Franklin, Jefferson, Lewis, Madison, Onondaga, Oswego, Schuyler, Seneca, St. Lawrence, and Tompkins counties.",
+                "Must have a valid driver's license. Apprentices may be required to drive company vehicles. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must have reliable transportation to and from various work sites and classes at the approved school.",
+                "Must prove negative on a drug screening, at the expense of the sponsor, at the time of appointment.",
+                "Must provide military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship.",
+                "Must take and pass the Bennett Mechanical Comprehension Test."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, have a high school diploma or equivalency, live within Local Union #81's jurisdiction, have a valid driver's license and reliable transportation, pass a drug screening, and pass the Bennett Mechanical Comprehension Test.",
+              "contactName": "Local Union #81",
+              "contactPhone": "(315) 437-7397",
+              "contactEmail": null,
+              "contactWebsite": "https://www.ualocal81.org",
+              "contactSummary": "For more information, contact Local Union #81 at (315) 437-7397 or visit the union website."
+            }
+          ]
         },
         {
           "programAk": 9523,
@@ -1396,7 +1575,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 10928,
@@ -1415,7 +1595,65 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "plumbers-steamfitters-lu-22-jac-western-ny-3-heating-ventilation-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-lu-22-jac-western-ny-3",
+              "sourceTitle": "Plumbers & Steamfitters LU #22 JAC of Western NY",
+              "jobTitle": "Heating, Ventilation, & Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Plumbers & Steamfitters, Local Union #22",
+              "unionName": "Plumbers & Steamfitters, Local Union #22",
+              "locationSummary": "West Seneca, NY; recruitment for the Finger Lakes and Western regions of New York",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-01-20",
+              "recruitmentEndDate": "2027-01-19",
+              "applicationStartDate": "2026-01-20",
+              "applicationEndDate": "2027-01-19",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Get the application in person at Local Union #22 in West Seneca on the third Tuesday of each month from 9:00 a.m. to 5:00 p.m. (except legal holidays), then return it by mail or in person. A drop box is available 24/7 for in-person returns.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Plumbers & Steamfitters, Local Union #22, 120 Gardenville Parkway, West Seneca, NY 14224",
+              "applicationMailingAddress": "Plumbers & Steamfitters, Local Union #22, 120 Gardenville Parkway, West Seneca, NY 14224",
+              "applicationHours": "9:00 a.m. to 5:00 p.m. on the third Tuesday of each month, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": "Must live in Cattaraugus, Chautauqua, Erie, Niagara, or Wyoming Counties; or in Genesee County in the townships of Alabama, Oakfield, Elba, Pembroke, Batavia, Darien, or Alexander; or in Orleans County in the townships of Yates, Ridgeway, or Shelby; or in Allegany County in the townships of Allen, Alma, Amity, Angelica, Belfast, Bolivar, Caneadea, Centerville, Clarksville, Cuba, Friendship, Genesee, Granger, Hume, New Hudson, Rushford, Scio, or Wirt.",
+              "transportationRequirement": "Must have a valid NYS driver's license to operate company vehicles and reliable transportation to job sites and required classes.",
+              "drugTestRequirement": "Must pass a drug test, at the sponsor's expense, after selection and before enrollment.",
+              "classRequirement": "Must be able to travel to and attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must provide a signed statement from a personal physician confirming the applicant can physically perform the duties of a Heating, Ventilation, & Air Conditioning Mechanic.",
+                "Must have a valid New York State driver's license in order to operate company vehicles.",
+                "Must have reliable transportation to and from job sites and required classes at the approved school.",
+                "Must reside in Cattaraugus, Chautauqua, Erie, Niagara, or Wyoming Counties; or in Genesee County in the townships of Alabama, Oakfield, Elba, Pembroke, Batavia, Darien, or Alexander; or in Orleans County in the townships of Yates, Ridgeway, or Shelby; or in Allegany County in the townships of Allen, Alma, Amity, Angelica, Belfast, Bolivar, Caneadea, Centerville, Clarksville, Cuba, Friendship, Genesee, Granger, Hume, New Hudson, Rushford, Scio, or Wirt.",
+                "Must pass a drug test, at the sponsor's expense, after selection and prior to enrollment in the apprenticeship program.",
+                "Must take and pass the Work Keys Applied Mathematics, Workplace Documents, and Graphic Literacy assessment tests with a minimum score of four out of seven in each category to be selected for an interview."
+              ],
+              "requirementsSummary": "Applicants must be 18+, have a high school diploma or equivalent, hold a valid NYS driver's license, live in the listed counties/townships, have reliable transportation, pass a drug test, and score at least 4 on required Work Keys tests.",
+              "contactName": "Plumbers & Steamfitters, Local Union #22",
+              "contactPhone": "(716) 668-8500",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact Plumbers & Steamfitters, Local Union #22 at (716) 668-8500."
+            }
+          ]
         },
         {
           "programAk": 12844,
@@ -1434,7 +1672,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 13263,
@@ -1453,7 +1692,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 14036,
@@ -1472,7 +1712,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 14363,
@@ -1491,7 +1732,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 15517,
@@ -1510,7 +1752,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 15551,
@@ -1529,7 +1772,73 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "plumbing-and-heating-jatc-rochester-lu-13-0-heating-ventilation-and-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbing-and-heating-jatc-rochester-lu-13-0",
+              "sourceTitle": "Plumbing and Heating JATC Rochester LU #13",
+              "jobTitle": "Heating, Ventilation and Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 12,
+              "sponsorName": "Plumbing and Heating Joint Apprenticeship and Training Council, Local Union #13",
+              "unionName": "Local Union #13",
+              "locationSummary": "Rochester, NY area and Local Union #13 jurisdiction",
+              "regions": [
+                "Finger Lakes",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-03-04",
+              "recruitmentEndDate": "2027-03-03",
+              "applicationStartDate": "2026-03-04",
+              "applicationEndDate": "2027-03-03",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application"
+              ],
+              "applicationSummary": "Apply online anytime or in person on the first Tuesday of each month during recruitment. Online applicants must complete the required math aptitude test the following month, and the $20 fee must be paid before testing.",
+              "applicationWebsite": "https://ua13.kmrapplications.com/registration/",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Plumbing and Heating Joint Apprenticeship and Training Council, Local Union #13, 1850 Mt. Read Blvd., Rochester, NY 14615",
+              "applicationMailingAddress": null,
+              "applicationHours": "In person on the first Tuesday of each month, 9:00 a.m. to 11:00 a.m. and 1:00 p.m. to 3:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 20,
+              "applicationFeeDetails": "A $20 application fee is required before taking the math test in person at LU #13. The fee may be waived upon request with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old at the time of application.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as GED or TASC, and must present transcripts at the time of application.",
+              "residencyRequirement": "Must have been a resident for at least one year within Local Union #13 jurisdiction, including Allegany, Genesee, Livingston, Monroe, Ontario, Orleans, Seneca, Steuben, Wayne, or Yates County.",
+              "transportationRequirement": "Must have a valid driver’s license and reliable transportation to job sites and required classes. Apprentices may be required to drive company vehicles.",
+              "drugTestRequirement": "Must pass a physical exam and drug test after selection and before enrollment, at the sponsor’s expense, and must submit to random drug testing during the apprenticeship.",
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old at the time of application.",
+                "Must have a high school diploma or high school equivalency diploma such as GED or TASC.",
+                "Must present transcripts at the time of application.",
+                "Must pass the math exam at the time of application with a score of 70% or higher.",
+                "Must be physically able to do the work of a heating, ventilation and air conditioning mechanic, including heavy lifting over 80 pounds on occasion, working in confined spaces, climbing and working at heights, and working indoors and outdoors in industrial plants, institutions, commercial buildings, and power plants.",
+                "Must be legally able to work in the United States.",
+                "Must have a valid driver’s license.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must be a resident for at least one year within the jurisdiction of Local Union #13, including Allegany, Genesee, Livingston, Monroe, Ontario, Orleans, Seneca, Steuben, Wayne, or Yates County.",
+                "Must appear for an interview when scheduled.",
+                "Must pay the $20 application fee before taking the math test; the fee may be waived upon request with verifiable proof of financial need.",
+                "Must pass a physical exam and drug test after selection and before enrollment, at the sponsor’s expense.",
+                "Must submit to random drug testing at any time during the apprenticeship.",
+                "Must reimburse the JATC $100 for book fees for years 1 through 4 of the apprenticeship.",
+                "Must present proof after selection and before enrollment of minimum age, transcripts from other educational programs to be considered, current driver’s license, residency within the jurisdiction of Local Union #13, and DD-214 if applicable."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, pass a math test, live in the Local Union #13 area, have a driver’s license and reliable transportation, and meet physical and drug-testing requirements.",
+              "contactName": "Plumbing and Heating Joint Apprenticeship and Training Council, Local Union #13",
+              "contactPhone": "(585) 338-2360",
+              "contactEmail": null,
+              "contactWebsite": "https://ua13.kmrapplications.com/registration/",
+              "contactSummary": "Contact Plumbing and Heating JATC Local Union #13 at (585) 338-2360 or use the online application site."
+            }
+          ]
         },
         {
           "programAk": 17713,
@@ -1548,14 +1857,71 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": [
+            {
+              "id": "plumbers-steamfitters-jac-local-773-0-heating-ventilation-and-air-conditioning-mechanic-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-jac-local-773-0",
+              "sourceTitle": "Plumbers & Steamfitters JAC Local 773",
+              "jobTitle": "Heating, Ventilation, and Air Conditioning Mechanic Apprentice",
+              "socCode": "49-9021.00",
+              "numberOfOpenings": 1,
+              "sponsorName": "Plumbers and Steamfitters JAC Local 773",
+              "unionName": "Local Union #773",
+              "locationSummary": "Queensbury, NY; Capital District and North Country regions",
+              "regions": [
+                "Capital Region",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-01-12",
+              "recruitmentEndDate": "2026-12-14",
+              "applicationStartDate": "2026-01-12",
+              "applicationEndDate": "2026-12-14",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Pick up applications from Local Union #773 in Queensbury or L.H. LaPlante Co. in Plattsburgh during the monthly application hours, and submit them by the stated monthly deadline. A $25 processing fee and $25 testing fee apply, with fee waivers available for financial need.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Plumbers and Steamfitters Local Union #773, 37 Luzerne Road, Queensbury, NY 12804; L.H. LaPlante Co Inc., 52 Main Mill Street, Plattsburgh, NY 12901",
+              "applicationMailingAddress": null,
+              "applicationHours": "8:00 a.m. to 10:00 a.m. on the second Monday of each month, excluding legal holidays, during the recruitment period. All applications must be received by noon the Friday following the second Monday of each month.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 50,
+              "applicationFeeDetails": "Non-refundable $25.00 application processing fee plus a $25.00 testing fee. Fee waivers may be requested and are approved with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED. Proof is required after selection and at enrollment.",
+              "residencyRequirement": "Openings are for applicants in the Capital District and North Country regions of New York.",
+              "transportationRequirement": "Must have a valid driver’s license to operate company vehicles and reliable transportation to various work sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school and pay $100 each year toward textbooks.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). Proof will be required after selection and at the time of enrollment in apprenticeship.",
+                "Must sign the Pipe trades apprenticeship affidavit, after selection and prior to enrollment in apprenticeship, indicating that the applicant is physically able to perform the work of the trade, which may include lifting and carrying 75-100 pounds without assistance; moving or lifting piping materials up or down stairs; moving and setting up heavy equipment; climbing and working off ladders at heights of 10 feet or more; working in crawl spaces; working indoors and outdoors in severe weather and extreme temperatures; and working in dirty or damp places.",
+                "Must take an aptitude test (Work Keys Assessments) and score an average of at least 4.334 out of a total of 7 to be interviewed.",
+                "Must have a valid driver’s license to operate company vehicles.",
+                "Must have reliable transportation to and from various work sites and required classes at the approved school.",
+                "Must pay $100 each year toward the cost of textbooks for required classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and at the time of enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, pass the Work Keys aptitude test, and meet physical, license, transportation, and class requirements.",
+              "contactName": "Plumbers and Steamfitters, Local Union #773",
+              "contactPhone": "(518) 792-9157",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Call Plumbers and Steamfitters Local Union #773 at (518) 792-9157 for further information."
+            }
+          ]
         }
       ]
     },
     {
       "tradeName": "Refrigeration and Air Conditioning Mechanic",
       "displayTradeName": "Refrigeration and Air Conditioning Mechanic",
-      "description": "A Refrigeration and Air Conditioning Mechanic installs, tests, repairs, and maintains cooling and climate-control systems in homes, stores, offices, and industrial buildings. They connect pipes and wiring, check refrigerant levels, replace worn parts, and diagnose problems with compressors, fans, and thermostats. Their work keeps food cold, indoor spaces comfortable, and equipment running safely.",
+      "description": "A Refrigeration and Air Conditioning Mechanic installs, tests, repairs, and maintains cooling systems in homes, stores, offices, and factories. They handle compressors, fans, thermostats, wiring, and refrigerant lines, using tools and gauges to find leaks or faulty parts and get systems working properly. Their work keeps food fresh, rooms comfortable, and equipment running safely and efficiently.",
       "programCount": 3,
       "programs": [
         {
@@ -1575,7 +1941,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 2853,
@@ -1594,7 +1961,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         },
         {
           "programAk": 17606,
@@ -1613,7 +1981,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "49-9021.00",
-          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers"
+          "socTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+          "opportunities": []
         }
       ]
     }

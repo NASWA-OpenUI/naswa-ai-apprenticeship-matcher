@@ -949,7 +949,7 @@
     {
       "tradeName": "Wastewater Systems Operation Specialist",
       "displayTradeName": "Wastewater Systems Operation Specialist",
-      "description": "A Wastewater Systems Operation Specialist runs and monitors the equipment that moves and cleans sewage at treatment plants and pump stations. They test water, adjust chemical levels, inspect pipes and tanks, record readings, and fix or report problems. Their work keeps wastewater systems running properly and protects public health, waterways, and the environment.",
+      "description": "A Wastewater Systems Operation Specialist runs and monitors the equipment that cleans sewage and used water before it is released or reused. They check gauges, test water samples, adjust pumps and chemicals, inspect pipes and tanks, and respond to alarms or breakdowns. Their work keeps treatment systems running and protects public health, waterways, and the environment.",
       "programCount": 3,
       "programs": [
         {
@@ -969,7 +969,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "51-8031.00",
-          "socTitle": "Water and Wastewater Treatment Plant and System Operators"
+          "socTitle": "Water and Wastewater Treatment Plant and System Operators",
+          "opportunities": []
         },
         {
           "programAk": 9264,
@@ -988,7 +989,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "51-8031.00",
-          "socTitle": "Water and Wastewater Treatment Plant and System Operators"
+          "socTitle": "Water and Wastewater Treatment Plant and System Operators",
+          "opportunities": []
         },
         {
           "programAk": 16407,
@@ -1007,14 +1009,15 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "51-8031.00",
-          "socTitle": "Water and Wastewater Treatment Plant and System Operators"
+          "socTitle": "Water and Wastewater Treatment Plant and System Operators",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Water Systems Operation Specialist",
       "displayTradeName": "Water Systems Operation Specialist",
-      "description": "A Water Systems Operation Specialist runs and maintains the equipment that moves, treats, and stores drinking water and wastewater. They check gauges, test water samples, adjust pumps and valves, inspect pipes and tanks, and respond to system problems. Their work keeps water clean, pressure steady, and essential public systems running safely every day.",
+      "description": "A Water Systems Operation Specialist runs and monitors the equipment that moves, treats, and stores water in a community. They check gauges, test water samples, adjust pumps and valves, inspect tanks and pipes, and respond to problems or leaks. Their work keeps clean water flowing, wastewater handled safely, and systems running reliably every day.",
       "programCount": 2,
       "programs": [
         {
@@ -1034,7 +1037,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "51-8031.00",
-          "socTitle": "Water and Wastewater Treatment Plant and System Operators"
+          "socTitle": "Water and Wastewater Treatment Plant and System Operators",
+          "opportunities": []
         },
         {
           "programAk": 17845,
@@ -1053,7 +1057,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "51-8031.00",
-          "socTitle": "Water and Wastewater Treatment Plant and System Operators"
+          "socTitle": "Water and Wastewater Treatment Plant and System Operators",
+          "opportunities": []
         }
       ]
     }

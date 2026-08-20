@@ -1161,7 +1161,7 @@
     {
       "tradeName": "Machine Repairer",
       "displayTradeName": "Machine Repairer",
-      "description": "A Machine Repairer fixes and maintains factory and workshop machines so they run properly. They inspect equipment, take apart worn or broken parts, replace belts, gears, or bearings, lubricate moving pieces, and test the machine after repairs. Their work keeps production equipment running, reduces breakdowns, and helps workplaces operate safely and smoothly.",
+      "description": "A Machine Repairer fixes and maintains factory and industrial machines that stop working or wear down over time. They inspect equipment, take apart motors or gearboxes, replace broken parts, align moving pieces, lubricate systems, and test machines after repairs. Their work keeps production equipment running safely, reliably, and with less downtime.",
       "programCount": 2,
       "programs": [
         {
@@ -1181,7 +1181,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 127655,
@@ -1200,14 +1201,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Machinist",
       "displayTradeName": "Machinist",
-      "description": "A Machinist makes precise metal parts for machines, tools, and equipment. They read blueprints, set up lathes, mills, grinders, and computer-controlled machines, then cut, drill, and shape metal to exact sizes. They also check measurements and finish surfaces. Their work builds parts that fit properly and keeps vehicles, factories, and everyday equipment running safely.",
+      "description": "A Machinist makes precise metal or plastic parts used in machines, tools, and equipment. They read blueprints, set up lathes, mills, grinders, and CNC machines, measure pieces with exact tools, and adjust cuts so each part fits properly. Their work builds and repairs the parts that keep vehicles, factories, and everyday equipment running smoothly.",
       "programCount": 6,
       "programs": [
         {
@@ -1227,7 +1229,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 8222,
@@ -1246,7 +1249,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 9395,
@@ -1265,7 +1269,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 9836,
@@ -1284,7 +1289,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 14717,
@@ -1303,7 +1309,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 17793,
@@ -1322,14 +1329,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Machinist (CNC)",
-      "displayTradeName": "Machinist",
-      "description": "A CNC Machinist makes precise metal or plastic parts using computer-controlled machines. They read blueprints, set up tools and materials, load programs, watch cuts closely, and measure finished pieces to make sure they match exact sizes. Their work helps build and repair machines, vehicles, and equipment that people use every day and keeps them running properly.",
+      "displayTradeName": "Machinist (CNC)",
+      "description": "A CNC Machinist makes precise metal or plastic parts using computer-controlled machines. They read blueprints, set up tools and materials, program or adjust machine controls, measure finished pieces, and watch the machines as they cut, drill, or shape each part. Their work builds accurate parts that keep vehicles, equipment, and machines running properly.",
       "programCount": 32,
       "programs": [
         {
@@ -1349,7 +1357,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 930,
@@ -1368,7 +1377,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 1524,
@@ -1387,7 +1397,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 1692,
@@ -1406,7 +1417,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 3531,
@@ -1425,7 +1437,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 4734,
@@ -1444,7 +1457,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 4893,
@@ -1463,7 +1477,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 4908,
@@ -1482,7 +1497,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 5033,
@@ -1501,7 +1517,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 5082,
@@ -1520,7 +1537,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 5463,
@@ -1539,7 +1557,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 5604,
@@ -1558,7 +1577,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 5888,
@@ -1577,7 +1597,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 6727,
@@ -1596,7 +1617,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 7074,
@@ -1615,7 +1637,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 7131,
@@ -1634,7 +1657,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 7133,
@@ -1653,7 +1677,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 7694,
@@ -1672,7 +1697,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 8688,
@@ -1691,7 +1717,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 10201,
@@ -1710,7 +1737,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 10406,
@@ -1729,7 +1757,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 10606,
@@ -1748,7 +1777,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 11602,
@@ -1767,7 +1797,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 11799,
@@ -1786,7 +1817,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 13232,
@@ -1805,7 +1837,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 13303,
@@ -1824,7 +1857,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 15064,
@@ -1843,7 +1877,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 15867,
@@ -1862,7 +1897,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 17176,
@@ -1881,7 +1917,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 18376,
@@ -1900,7 +1937,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 18805,
@@ -1919,7 +1957,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 18931,
@@ -1938,14 +1977,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Maintenance Machinist",
       "displayTradeName": "Maintenance Machinist",
-      "description": "A Maintenance Machinist keeps factory and plant equipment working by making, repairing, and fitting metal parts. They use lathes, mills, grinders, and measuring tools to rebuild worn pieces, line up machinery, and fix breakdowns on the shop floor. Their work keeps machines running safely, reduces downtime, and supports everyday production.",
+      "description": "A Maintenance Machinist installs, repairs, and rebuilds the moving parts in factory and plant equipment. They take apart pumps, conveyors, gearboxes, and other machines, measure worn pieces, machine or fit replacements, align shafts, and test everything before it goes back into service. Their work keeps equipment running safely and helps prevent breakdowns that stop production.",
       "programCount": 3,
       "programs": [
         {
@@ -1965,7 +2005,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 1339,
@@ -1984,7 +2025,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         },
         {
           "programAk": 18372,
@@ -2003,7 +2045,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4041.00",
-          "socTitle": "Machinists"
+          "socTitle": "Machinists",
+          "opportunities": []
         }
       ]
     }

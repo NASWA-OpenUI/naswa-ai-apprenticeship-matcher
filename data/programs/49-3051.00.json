@@ -970,7 +970,7 @@
     {
       "tradeName": "Marine Services Technician",
       "displayTradeName": "Marine Services Technician",
-      "description": "A Marine Services Technician repairs and maintains boat and ship systems, both in the shop and at the dock. They inspect engines, steering, fuel, electrical, and plumbing equipment, replace worn parts, test controls, and troubleshoot problems using tools and diagnostic equipment. Their work keeps marine vessels reliable, safe, and ready to operate on the water.",
+      "description": "A Marine Services Technician installs, maintains, and repairs mechanical, electrical, and plumbing systems on boats and marine equipment. They inspect engines, test batteries and wiring, fix pumps and steering systems, and service fuel and water lines, often working in marinas or boatyards. Their work keeps vessels operating safely and reliably on the water.",
       "programCount": 1,
       "programs": [
         {
@@ -990,7 +990,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-3051.00",
-          "socTitle": "Motorboat Mechanics and Service Technicians"
+          "socTitle": "Motorboat Mechanics and Service Technicians",
+          "opportunities": []
         }
       ]
     }

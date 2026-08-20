@@ -1075,8 +1075,8 @@
   "trades": [
     {
       "tradeName": "Instructor/Trainer (Information Technology)",
-      "displayTradeName": "Instructor/Trainer",
-      "description": "An Instructor/Trainer in information technology teaches people how to use computer systems, software, networks, and digital tools. They plan lessons, explain concepts, demonstrate tasks, answer questions, and guide hands-on practice in classrooms, labs, or online. Their work builds job skills, improves computer use, and helps workplaces keep technology running smoothly and safely.",
+      "displayTradeName": "Instructor/Trainer (Information Technology)",
+      "description": "An Instructor/Trainer in information technology teaches people how to use computer systems, software, networks, and digital tools. They plan lessons, give demonstrations, lead hands-on practice, answer questions, and check whether learners can do the work on their own. Their work builds useful tech skills and helps workplaces keep systems running smoothly and safely.",
       "programCount": 1,
       "programs": [
         {
@@ -1096,7 +1096,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "25-1194.00",
-          "socTitle": "Career/Technical Education Teachers, Postsecondary"
+          "socTitle": "Career/Technical Education Teachers, Postsecondary",
+          "opportunities": []
         }
       ]
     }

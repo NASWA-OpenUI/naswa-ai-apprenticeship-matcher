@@ -1048,7 +1048,7 @@
     {
       "tradeName": "Elevator Servicer and Repairer",
       "displayTradeName": "Elevator Servicer and Repairer",
-      "description": "An Elevator Servicer and Repairer installs, inspects, fixes, and maintains elevators, escalators, moving walkways, and lifts. They test controls, replace worn parts, adjust cables and doors, trace electrical or mechanical problems, and respond to breakdowns in homes, offices, hospitals, and malls. Their work keeps people and goods moving safely and equipment running reliably.",
+      "description": "An Elevator Servicer and Repairer installs, maintains, troubleshoots, and fixes elevators, escalators, and moving walkways. They inspect cables, motors, brakes, doors, and control systems, replace worn parts, and test equipment to make sure it runs smoothly. Their work keeps building transportation working safely and reliably for the people who use it every day.",
       "programCount": 6,
       "programs": [
         {
@@ -1062,13 +1062,14 @@
           "addressPostalCode": "11106",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "2056-06-01",
+          "programApprovalDate": "1956-06-01",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 3984,
@@ -1087,7 +1088,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 4888,
@@ -1106,7 +1108,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 6681,
@@ -1125,7 +1128,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 8696,
@@ -1144,7 +1148,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 13480,
@@ -1163,14 +1168,15 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Elevator/Escalator Constructor & Modernizer",
       "displayTradeName": "Elevator/Escalator Constructor and Modernizer",
-      "description": "An Elevator/Escalator Constructor and Modernizer installs, rebuilds, and updates elevators, escalators, and moving walkways in buildings. They assemble rails, cars, doors, motors, wiring, and control systems, then test, adjust, and repair equipment so it runs smoothly. Their work keeps people and goods moving safely and reliably through everyday places like offices, malls, and hospitals.",
+      "description": "An Elevator/Escalator Constructor and Modernizer installs, rebuilds, and updates elevators, escalators, and moving walkways in buildings. They assemble rails, cars, motors, doors, wiring, and control systems, then test, adjust, and repair equipment so it runs smoothly. Their work keeps people and goods moving safely through offices, apartments, hospitals, and transit stations.",
       "programCount": 7,
       "programs": [
         {
@@ -1190,7 +1196,8 @@
           "programLength": null,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 3914,
@@ -1209,7 +1216,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 6328,
@@ -1228,7 +1236,8 @@
           "programLength": null,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 6876,
@@ -1247,7 +1256,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 7535,
@@ -1266,7 +1276,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 14054,
@@ -1285,7 +1296,8 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 16619,
@@ -1304,7 +1316,8 @@
           "programLength": null,
           "ratio": "1:1,1:2",
           "socCode": "47-4021.00",
-          "socTitle": "Elevator Installers and Repairers"
+          "socTitle": "Elevator Installers and Repairers",
+          "opportunities": []
         }
       ]
     }

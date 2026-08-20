@@ -1140,7 +1140,7 @@
     {
       "tradeName": "Truck Driver, Heavy",
       "displayTradeName": "Truck Driver, Heavy",
-      "description": "A Truck Driver, Heavy drives large trucks to move materials, equipment, or goods between job sites, warehouses, stores, and customers. They load and secure cargo, check brakes, tires, and lights, follow delivery routes, and keep records of trips and shipments. Their work keeps supplies moving, businesses running, and roads safer for everyone.",
+      "description": "A Truck Driver, Heavy operates large trucks to move materials, equipment, or goods between job sites, warehouses, stores, and customers. They load and secure cargo, inspect the vehicle, plan routes, drive long hours, and unload safely at each stop. Their work keeps supplies, construction projects, and everyday deliveries moving safely and on time.",
       "programCount": 3,
       "programs": [
         {
@@ -1160,7 +1160,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "53-3032.00",
-          "socTitle": "Heavy and Tractor-Trailer Truck Drivers"
+          "socTitle": "Heavy and Tractor-Trailer Truck Drivers",
+          "opportunities": []
         },
         {
           "programAk": 11234,
@@ -1179,7 +1180,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "53-3032.00",
-          "socTitle": "Heavy and Tractor-Trailer Truck Drivers"
+          "socTitle": "Heavy and Tractor-Trailer Truck Drivers",
+          "opportunities": []
         },
         {
           "programAk": 18568,
@@ -1198,7 +1200,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "53-3032.00",
-          "socTitle": "Heavy and Tractor-Trailer Truck Drivers"
+          "socTitle": "Heavy and Tractor-Trailer Truck Drivers",
+          "opportunities": []
         }
       ]
     }

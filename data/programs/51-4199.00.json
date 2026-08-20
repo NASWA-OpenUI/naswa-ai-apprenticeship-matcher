@@ -24,8 +24,8 @@
   "trades": [
     {
       "tradeName": "Electronic Discharge Machine (EDM) - Wire & Sinker Programmer/Operator",
-      "displayTradeName": "Electronic Discharge Machine - Wire and Sinker Programmer/Operator",
-      "description": "An Electronic Discharge Machine Wire and Sinker Programmer/Operator sets up and runs EDM machines that cut metal parts with wire or shaped electrodes. They read blueprints, program machine paths, clamp workpieces, monitor sparks and fluid, and check finished parts for accuracy. Their work makes precise tools, molds, and machine parts that keep manufacturing equipment running properly.",
+      "displayTradeName": "Electronic Discharge Machine (EDM) - Wire and Sinker Programmer/Operator",
+      "description": "An Electronic Discharge Machine EDM Wire and Sinker Programmer/Operator sets up, programs, and runs EDM machines that cut metal with electrical sparks. They load metal parts, choose wire or sinker tools, enter job settings, check measurements, and inspect finished pieces. Their work makes precise molds, dies, and parts that keep tools, machines, and products working properly.",
       "programCount": 1,
       "programs": [
         {
@@ -45,7 +45,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4199.00",
-          "socTitle": "Metal Workers and Plastic Workers, All Other"
+          "socTitle": "Metal Workers and Plastic Workers, All Other",
+          "opportunities": []
         }
       ]
     }

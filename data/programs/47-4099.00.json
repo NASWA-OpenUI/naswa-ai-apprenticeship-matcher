@@ -17,7 +17,7 @@
     "onetSocCode": "47-4099.00",
     "title": "Construction and Related Workers, All Other",
     "description": "All construction and related workers not listed separately.",
-    "fetchedAt": "2026-06-11T15:47:26.532445+00:00",
+    "fetchedAt": "2026-08-19T21:12:14.123759+00:00",
     "source": {
       "name": "O*NET Web Services API v2",
       "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/47-4099.00"
@@ -32,7 +32,7 @@
     {
       "tradeName": "Ornamental Iron Worker",
       "displayTradeName": "Ornamental Iron Worker",
-      "description": "An Ornamental Iron Worker makes and installs decorative metal parts for buildings, fences, gates, railings, stairs, and balconies. They cut, weld, bend, and bolt iron or steel pieces into place, often using shop drawings, hoists, and power tools. Their work adds strength, detail, and safe barriers to the places people use every day.",
+      "description": "An Ornamental Iron Worker builds and installs decorative metal features for buildings and outdoor spaces. They measure, cut, weld, and bolt together railings, gates, stairs, fences, balconies, and metal trim, then lift and fasten them into place on site. Their work improves how places look, adds strength, and helps keep entrances, walkways, and edges safer.",
       "programCount": 4,
       "programs": [
         {
@@ -52,7 +52,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         },
         {
           "programAk": 10670,
@@ -71,7 +72,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         },
         {
           "programAk": 10773,
@@ -90,7 +92,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         },
         {
           "programAk": 14538,
@@ -109,14 +112,15 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Pointer, Caulker and Cleaner",
       "displayTradeName": "Pointer, Caulker, and Cleaner",
-      "description": "A Pointer, Caulker, and Cleaner repairs and protects the outside of buildings, bridges, and chimneys. They scrape out damaged mortar, pack fresh mortar between bricks or stone, seal gaps with caulk, and wash or blast away dirt and stains, often while working from scaffolds. This keeps walls strong, dry, clean, and safer.",
+      "description": "A Pointer, Caulker, and Cleaner repairs and protects the outside of buildings, bridges, and chimneys. They scrape out damaged mortar, pack fresh mortar between bricks or stone, seal gaps with caulk, and wash or blast away dirt and stains, often while working from scaffolds. This keeps walls strong, dry, clean, and safe.",
       "programCount": 7,
       "programs": [
         {
@@ -136,7 +140,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         },
         {
           "programAk": 5262,
@@ -155,7 +160,64 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-local-3-rochester-1-pointer-caulker-and-cleaner-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-local-3-rochester-1",
+              "sourceTitle": "Bricklayers & Allied Craftworkers Local # 3 (Rochester)",
+              "jobTitle": "Pointer, Caulker and Cleaner Apprentice",
+              "socCode": "47-2061.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local #3 (Rochester)",
+              "locationSummary": "Rochester, NY area",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2025-10-04",
+              "recruitmentEndDate": "2026-10-03",
+              "applicationStartDate": "2025-10-04",
+              "applicationEndDate": "2026-10-03",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply online during the recruitment period, print and complete the application, then submit it in person at the JATC office or mail it in. If you cannot print the application, call to have one mailed to you.",
+              "applicationWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 641-0750",
+              "applicationInPersonAddress": "33 Saginaw Drive, Rochester, NY 14623",
+              "applicationMailingAddress": "BAC LU #3 JATC, 33 Saginaw Drive, Rochester, NY 14623",
+              "applicationHours": "8:00AM-4:00PM Monday-Friday, excluding legal holidays, to call for a mailed application if you cannot print one.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old at the time of enrollment.",
+              "educationRequirement": null,
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a physical and a drug test after the offer of employment, at the sponsor's expense, and must submit to random drug testing during the apprenticeship.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old at the time of enrollment.",
+                "Must sign an affidavit stating that they are physically able to perform the work required of the trade, including standing and kneeling for prolonged periods; climbing and working off lifts, ladders, and scaffolds; repetitive bending and stooping; reading blueprints with near vision and using depth perception; verifying alignment of stones, bricks, and blocks with a plumb bob; lifting, carrying, and positioning materials weighing up to 40 pounds; possible exposure to loud noises and respiratory irritants such as dust and chemicals; working in confined spaces and outside in all weather conditions.",
+                "Must pass a physical and a drug test, at the sponsor's expense, after the offer of employment.",
+                "Must also submit to random drug testing which may be administered at any time during the apprenticeship.",
+                "Must provide their own hand tools as appropriate for the trade; estimated cost is approximately $100-$500 depending on the trade.",
+                "Must provide proof of employment authorization to work in the United States at the time of offer.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, physically able to do the work, have their own hand tools, provide work authorization, pass post-offer physical and drug testing, and have reliable transportation.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester)",
+              "contactPhone": "(585) 641-0750",
+              "contactEmail": null,
+              "contactWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
+            }
+          ]
         },
         {
           "programAk": 6624,
@@ -174,7 +236,66 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-jac-local-2-utica-0-pointer-caulker-and-cleaner-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-jac-local-2-utica-0",
+              "sourceTitle": "Bricklayers & Allied Craftworkers JAC Local 2 (Utica)",
+              "jobTitle": "Pointer, Caulker and Cleaner Apprentice",
+              "socCode": "47-2061.00",
+              "numberOfOpenings": 6,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Bricklayers & Allied Craftworkers, Local Union #2 (Utica)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local Union #2 (Utica)",
+              "locationSummary": "Local Union #2 jurisdiction in central and eastern New York",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Obtain and complete applications in person at the Liverpool office during recruitment, apply online 24/7, or mail completed applications. Applications must be received by April 30, 2027.",
+              "applicationWebsite": "https://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Bricklayers & Allied Craftworkers, Local Union #2 (Utica), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2 (Utica), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationHours": "Mondays through Fridays each month, from 8:00 p.m. to 4:00 p.m., excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must have lived within the geographic jurisdiction of Local Union #2 for at least six months before applying. Eligible counties include Albany, Cayuga, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Herkimer, Jefferson, Lewis, Madison, Montgomery, Oneida, Onondaga, Oswego, Rensselaer, St. Lawrence, Saratoga, Schenectady, Schoharie, Warren, and Washington.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes at the approved school, and must have a valid driver’s license to operate company vehicles.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to travel to required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have reliable transportation to and from job sites and required classes at the approved school.",
+                "Must have a valid driver’s license to operate company vehicles.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application.",
+                "Eligible counties include Albany, Cayuga, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Herkimer, Jefferson, Lewis, Madison, Montgomery, Oneida, Onondaga, Oswego, Rensselaer, St. Lawrence, Saratoga, Schenectady, Schoharie, Warren, or Washington."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, physically able to lift 50-100 pounds, have reliable transportation and a valid driver’s license, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Utica)",
+              "contactPhone": "(315) 622-2081",
+              "contactEmail": null,
+              "contactWebsite": "https://www.baclocal2nyvt.org",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Utica) at (315) 622-2081 for further information."
+            }
+          ]
         },
         {
           "programAk": 7023,
@@ -193,7 +314,66 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-jac-local-2-syracuse-1-pointer-caulker-and-cleaner-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-jac-local-2-syracuse-1",
+              "sourceTitle": "Bricklayers & Allied Craftworkers JAC Local 2 (Syracuse)",
+              "jobTitle": "Pointer, Caulker and Cleaner Apprentice",
+              "socCode": "47-2061.00",
+              "numberOfOpenings": 6,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "locationSummary": "Local Union #2 jurisdiction in upstate New York; applications in Liverpool, NY",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply in person at Bricklayers & Allied Craftworkers Local Union #2 in Liverpool or apply online; completed applications may also be mailed. Applications must be received by April 30, 2027.",
+              "applicationWebsite": "http://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationHours": "Mondays through Fridays of each month, 8:00 p.m. to 4:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must reside within the geographic jurisdiction of Local Union #2 for at least six months before applying. Counties include Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have reliable transportation to and from job sites and required classes at the approved school.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application.",
+                "Jurisdiction includes the counties of Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+                "Must be able to attend required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, able to lift 50-100 pounds, have reliable transportation, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "contactPhone": "(315) 622-2081",
+              "contactEmail": null,
+              "contactWebsite": "http://www.baclocal2nyvt.org",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
+            }
+          ]
         },
         {
           "programAk": 9762,
@@ -212,7 +392,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         },
         {
           "programAk": 11173,
@@ -231,7 +412,62 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": [
+            {
+              "id": "international-union-bricklayers-allied-craftsmen-local-3-ny-ithaca-chapter-0-pointer-caulker-and-cleaner-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/international-union-bricklayers-allied-craftsmen-local-3-ny-ithaca-chapter-0",
+              "sourceTitle": "International Union of Bricklayers & Allied Craftsmen Local 3 NY (Ithaca Chapter)",
+              "jobTitle": "Pointer, Caulker, and Cleaner Apprentice",
+              "socCode": "47-2061.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Joint Apprenticeship Committee for the International Union of Bricklayers & Allied Craftsmen (IUBAC), Local Union #3",
+              "unionName": "IUBAC Local Union #3",
+              "locationSummary": "Whitney Point, NY area",
+              "regions": [
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-01-08",
+              "recruitmentEndDate": "2027-01-07",
+              "applicationStartDate": "2026-01-08",
+              "applicationEndDate": "2027-01-07",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain and submit applications online at www.bac3ny.com or in person at the JAC Training Center in Whitney Point during the recruitment period.",
+              "applicationWebsite": "https://www.bac3ny.com",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JAC for the IUBAC, Local Union #3 Training Center, 4 Railroad Street, Whitney Point, NY 13862",
+              "applicationMailingAddress": null,
+              "applicationHours": "Mondays only, 9:00 a.m.-12:00 p.m. and 1:00 p.m.-3:00 p.m., excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or high school equivalency diploma (such as TASC or GED).",
+                "Must sign an affidavit stating that they are physically able to perform the work of these trades, including working with sharp objects and hazardous machinery, possible exposure to noise and respiratory irritants, prolonged standing and walking, repeated squatting and/or bending, working indoors and outdoors in all kinds of weather, working in confined spaces, lifting and moving heavy objects and equipment up to 50 pounds, and working on ladders and scaffolds exceeding 50 feet.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must be prepared to take a math and measurement computation test at the time of interview.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, have reliable transportation, and be prepared for a math and measurement test and a physical-ability affidavit.",
+              "contactName": "JAC for the IUBAC, Local Union #3",
+              "contactPhone": "(607) 786-8945",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
+            }
+          ]
         },
         {
           "programAk": 11354,
@@ -250,14 +486,72 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-local-2-albany-0-pointer-caulker-and-cleaner-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-local-2-albany-0",
+              "sourceTitle": "Bricklayers & Allied Craftworkers Local# 2 (Albany)",
+              "jobTitle": "Pointer, Caulker and Cleaner Apprentice",
+              "socCode": "47-2061.00",
+              "numberOfOpenings": 8,
+              "sponsorName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2",
+              "unionName": "Bricklayers & Allied Craftworkers Local Union #2",
+              "locationSummary": "Albany, NY area; Capital District, Mohawk Valley, and North Country regions",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply online at the BAC Local 2 website or pick up and complete an application in person during the recruitment period. Completed applications may also be mailed to the JATC and must be received by April 30, 2027.",
+              "applicationWebsite": "http://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JATC for Bricklayers & Allied Craftworkers, Local Union #2, 302 Centre Drive, Albany, NY 12203; or Eastern Contractors Association, 6 Airline Drive, Albany, NY 12205",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2, 302 Centre Drive, Albany, NY 12203",
+              "applicationHours": "Applications are available in person Monday through Friday, 8:00 a.m. to 4:00 p.m., excluding legal holidays, during the recruitment period. Online applications are available 24 hours a day during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must have lived within the geographic jurisdiction of Local Union #2 for at least six months before applying. Counties include Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+              "transportationRequirement": "Must have a valid driver's license to operate company vehicles and reliable transportation to and from job sites and required classes.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have a valid driver's license to operate company vehicles.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application. This includes the counties of Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, St. Lawrence.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, be able to lift 50-100 pounds, have a valid driver's license and reliable transportation, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2",
+              "contactPhone": "(518) 456-5477",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Call the JATC for Bricklayers & Allied Craftworkers, Local Union #2 at (518) 456-5477 for more information."
+            }
+          ]
         }
       ]
     },
     {
       "tradeName": "Sheet Metal Worker (Sign Hanger-Rigger)",
-      "displayTradeName": "Sheet Metal Worker",
-      "description": "A Sheet Metal Worker who hangs signs and rigs heavy pieces makes, lifts, and installs metal signs, frames, ducts, and other metal parts on buildings or structures. They measure, cut, bend, fasten, and secure materials, often using hoists, ropes, and power tools high above the ground. Their work keeps signs, metal systems, and structures secure and working properly.",
+      "displayTradeName": "Sheet Metal Worker (Sign Hanger-Rigger)",
+      "description": "A Sheet Metal Worker who hangs and rigs signs builds, fits, lifts, and fastens metal signs, frames, brackets, and supports onto buildings, poles, or other structures. They measure parts, cut and shape metal, use hoists and rigging gear, and secure heavy pieces in place. Their work keeps signs stable, visible, and safe in public spaces.",
       "programCount": 1,
       "programs": [
         {
@@ -277,7 +571,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-4099.00",
-          "socTitle": "Construction and Related Workers, All Other"
+          "socTitle": "Construction and Related Workers, All Other",
+          "opportunities": []
         }
       ]
     }

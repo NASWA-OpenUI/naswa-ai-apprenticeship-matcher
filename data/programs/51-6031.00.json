@@ -1080,7 +1080,7 @@
     {
       "tradeName": "Industrial Sewing Machine Operator",
       "displayTradeName": "Industrial Sewing Machine Operator",
-      "description": "An Industrial Sewing Machine Operator uses large sewing machines to make or repair fabric, leather, vinyl, or other material products in a factory or workshop. They guide material under fast-moving needles, join seams, add zippers or trim, check stitching, and stack finished pieces. Their work helps make clothing, furniture, car interiors, and other everyday items sturdy and ready to use.",
+      "description": "An Industrial Sewing Machine Operator uses heavy-duty sewing machines to make or repair items like clothing, furniture covers, bags, or other fabric products. They guide material under fast-moving needles, change thread and machine settings, line up seams, and check for defects. Their work helps build durable products and keeps everyday goods usable and well made.",
       "programCount": 1,
       "programs": [
         {
@@ -1100,7 +1100,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "51-6031.00",
-          "socTitle": "Sewing Machine Operators"
+          "socTitle": "Sewing Machine Operators",
+          "opportunities": []
         }
       ]
     }

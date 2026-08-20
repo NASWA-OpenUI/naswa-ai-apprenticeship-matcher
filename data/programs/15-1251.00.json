@@ -1035,7 +1035,7 @@
     {
       "tradeName": "Software Developer",
       "displayTradeName": "Software Developer",
-      "description": "A Software Developer creates and updates computer programs, apps, and digital systems. They write code, test features, fix bugs, review how software works, and work with teammates to turn ideas into tools people can use on screens every day. Their work builds and keeps digital services running for communication, shopping, work, and daily tasks.",
+      "description": "A Software Developer creates and updates computer programs, apps, and systems that people use for work, shopping, banking, learning, and entertainment. They write code, test features, fix bugs, and work with teammates to turn ideas into software that runs smoothly. Their work builds digital tools that keep everyday tasks working reliably and safely.",
       "programCount": 4,
       "programs": [
         {
@@ -1055,7 +1055,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-1251.00",
-          "socTitle": "Computer Programmers"
+          "socTitle": "Computer Programmers",
+          "opportunities": []
         },
         {
           "programAk": 3708,
@@ -1074,7 +1075,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1251.00",
-          "socTitle": "Computer Programmers"
+          "socTitle": "Computer Programmers",
+          "opportunities": []
         },
         {
           "programAk": 8965,
@@ -1093,7 +1095,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1251.00",
-          "socTitle": "Computer Programmers"
+          "socTitle": "Computer Programmers",
+          "opportunities": []
         },
         {
           "programAk": 15580,
@@ -1112,7 +1115,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-1251.00",
-          "socTitle": "Computer Programmers"
+          "socTitle": "Computer Programmers",
+          "opportunities": []
         }
       ]
     }

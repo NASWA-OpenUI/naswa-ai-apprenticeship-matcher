@@ -1049,7 +1049,7 @@
     {
       "tradeName": "Behavior Technician",
       "displayTradeName": "Behavior Technician",
-      "description": "A Behavior Technician works one-on-one with children or adults who need help building daily living, communication, or social skills. They lead practice activities, track behavior, follow treatment plans, and help clients stay focused during sessions at home, school, or a clinic. Their work helps improve everyday skills, routines, and safer behavior.",
+      "description": "A Behavior Technician works one-on-one with children or adults who need help building everyday skills and managing behavior. They follow treatment plans, guide practice with communication, play, self-care, or school tasks, record progress, and help calm difficult moments. Their work helps people learn routines, improve daily functioning, and makes home, school, and community life safer and smoother.",
       "programCount": 2,
       "programs": [
         {
@@ -1069,7 +1069,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "29-2053.00",
-          "socTitle": "Psychiatric Technicians"
+          "socTitle": "Psychiatric Technicians",
+          "opportunities": []
         },
         {
           "programAk": 7572,
@@ -1088,7 +1089,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "29-2053.00",
-          "socTitle": "Psychiatric Technicians"
+          "socTitle": "Psychiatric Technicians",
+          "opportunities": []
         }
       ]
     }

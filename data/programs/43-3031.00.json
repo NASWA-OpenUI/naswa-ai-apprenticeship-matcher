@@ -1095,7 +1095,7 @@
     {
       "tradeName": "Junior Accountant",
       "displayTradeName": "Junior Accountant",
-      "description": "A Junior Accountant helps a business keep accurate financial records and track its money. They enter transactions, check invoices and receipts, prepare reports, reconcile bank statements, and help with payroll, budgets, and tax paperwork, often using accounting software and spreadsheets. Their work helps companies pay bills on time, follow rules, and make sound financial decisions.",
+      "description": "A Junior Accountant helps manage a company’s daily financial records. They enter invoices, track payments, check receipts, update spreadsheets, help prepare reports, and make sure numbers match in ledgers and accounting software. Their work keeps bills, payroll, budgets, and tax records organized so a business can run smoothly and make sound decisions.",
       "programCount": 4,
       "programs": [
         {
@@ -1115,7 +1115,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-3031.00",
-          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks"
+          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks",
+          "opportunities": []
         },
         {
           "programAk": 7635,
@@ -1134,7 +1135,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "43-3031.00",
-          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks"
+          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks",
+          "opportunities": []
         },
         {
           "programAk": 11242,
@@ -1153,7 +1155,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-3031.00",
-          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks"
+          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks",
+          "opportunities": []
         },
         {
           "programAk": 16355,
@@ -1172,7 +1175,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-3031.00",
-          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks"
+          "socTitle": "Bookkeeping, Accounting, and Auditing Clerks",
+          "opportunities": []
         }
       ]
     }

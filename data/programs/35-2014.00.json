@@ -1064,8 +1064,8 @@
   "trades": [
     {
       "tradeName": "Cook (Chef)",
-      "displayTradeName": "Cook",
-      "description": "A Cook prepares and cooks meals in places like restaurants, cafeterias, hospitals, or hotels. They chop and season ingredients, use grills, ovens, and stovetops, plate food, clean work areas, and follow food safety rules while keeping pace during busy meal times. Their work keeps people fed with meals that are safe, timely, and ready to serve.",
+      "displayTradeName": "Cook (Chef)",
+      "description": "A Cook, often called a chef, prepares and cooks meals in restaurants, cafeterias, hotels, or other kitchens. They chop ingredients, season food, watch pots and grills, plate dishes, and keep the kitchen clean and organized during busy service. Their work makes sure people get safe, tasty meals and kitchens run smoothly every day.",
       "programCount": 3,
       "programs": [
         {
@@ -1085,7 +1085,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "35-2014.00",
-          "socTitle": "Cooks, Restaurant"
+          "socTitle": "Cooks, Restaurant",
+          "opportunities": []
         },
         {
           "programAk": 7449,
@@ -1104,7 +1105,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "35-2014.00",
-          "socTitle": "Cooks, Restaurant"
+          "socTitle": "Cooks, Restaurant",
+          "opportunities": []
         },
         {
           "programAk": 16186,
@@ -1123,7 +1125,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "35-2014.00",
-          "socTitle": "Cooks, Restaurant"
+          "socTitle": "Cooks, Restaurant",
+          "opportunities": []
         }
       ]
     }

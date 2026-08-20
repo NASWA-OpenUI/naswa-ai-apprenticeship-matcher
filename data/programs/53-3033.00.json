@@ -963,8 +963,8 @@
   "trades": [
     {
       "tradeName": "Truck Driver, Light (Last-Mile Delivery)",
-      "displayTradeName": "Truck Driver, Light",
-      "description": "A Truck Driver, Light in last-mile delivery drives small trucks or vans to bring packages and goods from a local hub to homes, stores, and offices. They load and unload items, follow delivery routes, scan packages, collect signatures, and keep the vehicle in good shape. Their work keeps everyday orders moving and deliveries on time.",
+      "displayTradeName": "Truck Driver, Light (Last-Mile Delivery)",
+      "description": "A Truck Driver, Light in last-mile delivery picks up packages, loads a small truck or van, and brings orders to homes, stores, and offices on local routes. They follow delivery schedules, scan items, get signatures, and unload goods at each stop. Their work keeps everyday deliveries moving and helps people get what they need on time.",
       "programCount": 1,
       "programs": [
         {
@@ -984,7 +984,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "53-3033.00",
-          "socTitle": "Light Truck Drivers"
+          "socTitle": "Light Truck Drivers",
+          "opportunities": []
         }
       ]
     }

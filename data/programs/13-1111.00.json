@@ -978,7 +978,7 @@
     {
       "tradeName": "Continuous Improvement Associate",
       "displayTradeName": "Continuous Improvement Associate",
-      "description": "A Continuous Improvement Associate studies how work gets done in places like factories, warehouses, or offices and helps make it better. They watch processes, gather data, map steps, spot delays or waste, test changes, and train coworkers on new methods. Their work helps products and services get made faster, with fewer mistakes, lower costs, and safer routines.",
+      "description": "A Continuous Improvement Associate studies how work gets done in places like factories, warehouses, or offices and looks for ways to make it better. They watch processes, collect data, map steps, talk with workers, and help test changes that reduce waste, delays, errors, and extra effort. Their work helps keep daily operations running smoother, faster, and safer.",
       "programCount": 1,
       "programs": [
         {
@@ -998,7 +998,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "13-1111.00",
-          "socTitle": "Management Analysts"
+          "socTitle": "Management Analysts",
+          "opportunities": []
         }
       ]
     }

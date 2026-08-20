@@ -1116,7 +1116,7 @@
     {
       "tradeName": "Electrical Utility Operator",
       "displayTradeName": "Electrical Utility Operator",
-      "description": "An Electrical Utility Operator runs and monitors equipment that helps generate, move, or control electric power in plants, substations, or utility systems. They watch gauges and computer screens, switch circuits, inspect equipment, record readings, and respond to problems or outages. Their work keeps electricity flowing safely and keeps homes, businesses, and public services running.",
+      "description": "An Electrical Utility Operator runs and monitors equipment that helps generate, move, or control electric power in utility plants and substations. They read gauges, switch circuits, start or shut down systems, inspect machinery, and respond to problems to keep power flowing safely. Their work keeps electricity reliable for homes, businesses, and public services.",
       "programCount": 1,
       "programs": [
         {
@@ -1136,7 +1136,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-8013.00",
-          "socTitle": "Power Plant Operators"
+          "socTitle": "Power Plant Operators",
+          "opportunities": []
         }
       ]
     }

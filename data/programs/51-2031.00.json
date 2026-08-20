@@ -946,7 +946,7 @@
     {
       "tradeName": "Machine Builder",
       "displayTradeName": "Machine Builder",
-      "description": "A Machine Builder assembles, fits, and tests industrial machines from metal parts, motors, belts, wiring, and control systems. They read blueprints, use hand and power tools, line up moving parts, make adjustments, and fix problems during setup. Their work builds equipment that keeps factories, packaging lines, and other production systems running safely and smoothly.",
+      "description": "A Machine Builder assembles, fits, and tests industrial machines from metal parts, frames, motors, belts, and control systems. They read blueprints, use hand and power tools, line up moving parts, make adjustments, and fix problems during setup. Their work builds equipment that keeps factories, packaging lines, and other production systems running safely and smoothly.",
       "programCount": 2,
       "programs": [
         {
@@ -966,7 +966,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-2031.00",
-          "socTitle": "Engine and Other Machine Assemblers"
+          "socTitle": "Engine and Other Machine Assemblers",
+          "opportunities": []
         },
         {
           "programAk": 4387,
@@ -985,14 +986,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-2031.00",
-          "socTitle": "Engine and Other Machine Assemblers"
+          "socTitle": "Engine and Other Machine Assemblers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Machine Tool Builder",
       "displayTradeName": "Machine Tool Builder",
-      "description": "A Machine Tool Builder assembles, fits, and tests machines that cut, drill, grind, or shape metal and other materials in factories. They work with blueprints, hand tools, measuring tools, wiring, and moving parts to install frames, motors, controls, and precision components. Their work builds and keeps production equipment running accurately and safely.",
+      "description": "A Machine Tool Builder builds, assembles, and installs the machines used to cut, shape, and drill metal parts in factories. They fit frames, align moving parts, bolt on motors and controls, test each machine, and make careful adjustments so it runs smoothly and accurately. Their work keeps manufacturing equipment precise, reliable, and ready for daily production.",
       "programCount": 1,
       "programs": [
         {
@@ -1012,7 +1014,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-2031.00",
-          "socTitle": "Engine and Other Machine Assemblers"
+          "socTitle": "Engine and Other Machine Assemblers",
+          "opportunities": []
         }
       ]
     }

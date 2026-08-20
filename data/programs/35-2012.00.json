@@ -1029,7 +1029,7 @@
     {
       "tradeName": "Cook",
       "displayTradeName": "Cook",
-      "description": "A Cook prepares and cooks meals in places like restaurants, cafeterias, hospitals, or care homes. They chop ingredients, follow recipes, grill or bake food, watch cooking times, plate meals, and keep the kitchen clean and safe. Their work keeps people fed with meals that are ready on time, tasty, and safe to eat.",
+      "description": "A Cook prepares and cooks meals in places like restaurants, cafeterias, or care homes. They chop ingredients, season and grill food, watch pots and ovens, plate dishes, and keep the kitchen clean and stocked while working quickly during busy meal times. Their work keeps people fed, kitchens running smoothly, and food safe to eat.",
       "programCount": 5,
       "programs": [
         {
@@ -1049,7 +1049,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "35-2012.00",
-          "socTitle": "Cooks, Institution and Cafeteria"
+          "socTitle": "Cooks, Institution and Cafeteria",
+          "opportunities": []
         },
         {
           "programAk": 10765,
@@ -1068,7 +1069,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "35-2012.00",
-          "socTitle": "Cooks, Institution and Cafeteria"
+          "socTitle": "Cooks, Institution and Cafeteria",
+          "opportunities": []
         },
         {
           "programAk": 12646,
@@ -1087,7 +1089,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "35-2012.00",
-          "socTitle": "Cooks, Institution and Cafeteria"
+          "socTitle": "Cooks, Institution and Cafeteria",
+          "opportunities": []
         },
         {
           "programAk": 13647,
@@ -1106,7 +1109,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "35-2012.00",
-          "socTitle": "Cooks, Institution and Cafeteria"
+          "socTitle": "Cooks, Institution and Cafeteria",
+          "opportunities": []
         },
         {
           "programAk": 15921,
@@ -1125,7 +1129,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "35-2012.00",
-          "socTitle": "Cooks, Institution and Cafeteria"
+          "socTitle": "Cooks, Institution and Cafeteria",
+          "opportunities": []
         }
       ]
     }

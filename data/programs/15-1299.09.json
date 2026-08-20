@@ -1072,7 +1072,7 @@
     {
       "tradeName": "Project Manager",
       "displayTradeName": "Project Manager",
-      "description": "A Project Manager plans and leads a project from start to finish. They set schedules, track budgets, assign work, run meetings, solve problems, and keep workers, clients, and suppliers informed as the job moves forward. Their work helps teams stay organized, deadlines get met, and projects get built, delivered, or improved with fewer delays and mistakes.",
+      "description": "A Project Manager plans and leads a project from start to finish. They set schedules and budgets, assign work, track progress, solve problems, and meet with workers, clients, or suppliers to keep everyone on the same page. Their work keeps jobs organized, deadlines on track, and projects running smoothly, safely, and within budget.",
       "programCount": 6,
       "programs": [
         {
@@ -1092,7 +1092,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         },
         {
           "programAk": 8050,
@@ -1111,7 +1112,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         },
         {
           "programAk": 9307,
@@ -1130,7 +1132,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         },
         {
           "programAk": 11841,
@@ -1149,7 +1152,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         },
         {
           "programAk": 15231,
@@ -1168,7 +1172,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         },
         {
           "programAk": 16627,
@@ -1187,7 +1192,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.09",
-          "socTitle": "Information Technology Project Managers"
+          "socTitle": "Information Technology Project Managers",
+          "opportunities": []
         }
       ]
     }

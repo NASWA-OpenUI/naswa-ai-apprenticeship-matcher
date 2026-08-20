@@ -1005,7 +1005,7 @@
     {
       "tradeName": "Metal Refinisher",
       "displayTradeName": "Metal Refinisher",
-      "description": "A Metal Refinisher restores and improves the surface of metal parts and products. They clean, sand, grind, polish, buff, and coat metal to remove rust, scratches, and dull spots, and may match finishes or prepare pieces for painting or plating. Their work helps metal items look better, last longer, and resist wear and corrosion.",
+      "description": "A Metal Refinisher restores and improves the surface of metal parts and products. They sand, grind, polish, clean, and coat metal to remove rust, scratches, or old finishes, using hand tools, power tools, and spray equipment. Their work helps metal items look better, last longer, and resist wear, corrosion, and damage.",
       "programCount": 2,
       "programs": [
         {
@@ -1025,7 +1025,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-9022.00",
-          "socTitle": "Grinding and Polishing Workers, Hand"
+          "socTitle": "Grinding and Polishing Workers, Hand",
+          "opportunities": []
         },
         {
           "programAk": 17852,
@@ -1044,7 +1045,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-9022.00",
-          "socTitle": "Grinding and Polishing Workers, Hand"
+          "socTitle": "Grinding and Polishing Workers, Hand",
+          "opportunities": []
         }
       ]
     }

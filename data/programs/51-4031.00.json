@@ -1172,7 +1172,7 @@
     {
       "tradeName": "Metal Stamping Press Operator",
       "displayTradeName": "Metal Stamping Press Operator",
-      "description": "A Metal Stamping Press Operator runs machines that press and cut metal into specific shapes for parts and products. They load metal sheets or coils, set dies, start and monitor the press, check measurements, and remove finished pieces while watching for jams or defects. Their work helps build accurate metal parts and keeps manufacturing lines running safely.",
+      "description": "A Metal Stamping Press Operator runs machines that press and cut sheet metal into specific shapes for parts and products. They load metal into presses, change dies, watch gauges, check measurements, and inspect finished pieces for defects. Their work helps build reliable car parts, tools, appliances, and other metal goods people use every day.",
       "programCount": 1,
       "programs": [
         {
@@ -1192,7 +1192,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-4031.00",
-          "socTitle": "Cutting, Punching, and Press Machine Setters, Operators and Tenders, Metal and Plastic"
+          "socTitle": "Cutting, Punching, and Press Machine Setters, Operators and Tenders, Metal and Plastic",
+          "opportunities": []
         }
       ]
     }

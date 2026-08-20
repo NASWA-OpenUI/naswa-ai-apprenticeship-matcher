@@ -1031,7 +1031,7 @@
     {
       "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
       "displayTradeName": "Mold Maker, Die-Casting, and Plastic Molding",
-      "description": "A Mold Maker, Die-Casting, and Plastic Molding builds, repairs, and adjusts the metal molds used to shape plastic parts and die-cast products. They read drawings, machine and polish mold pieces, fit parts together, and test for smooth opening, closing, and cooling. Their work helps factories make accurate parts and keeps production running safely.",
+      "description": "A Mold Maker, Die-Casting, and Plastic Molding builds, repairs, and adjusts the metal molds and dies used to shape plastic and cast metal parts. They read drawings, machine and polish steel pieces, fit parts together, and test molds for smooth, accurate production. Their work helps factories make everyday products that fit right and keep machines running.",
       "programCount": 3,
       "programs": [
         {
@@ -1051,7 +1051,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 11366,
@@ -1070,7 +1071,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 14589,
@@ -1089,14 +1091,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Moldmaker",
       "displayTradeName": "Moldmaker",
-      "description": "A Moldmaker builds and repairs the metal molds used to shape plastic, rubber, or metal parts in factories. They read drawings, machine and polish mold pieces, fit them together with great accuracy, and test how they open, close, and form parts. Their work helps everyday products come out the right size, shape, and quality.",
+      "description": "A Moldmaker builds and repairs the metal molds used to shape plastic, rubber, or other materials into parts. They read blueprints, machine and polish steel blocks, fit moving pieces, drill cooling channels, and test molds so products come out correctly. Their work helps factories make everyday items that fit, work, and last.",
       "programCount": 6,
       "programs": [
         {
@@ -1116,7 +1119,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 6188,
@@ -1135,7 +1139,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 7043,
@@ -1154,7 +1159,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 9529,
@@ -1173,7 +1179,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 9800,
@@ -1192,7 +1199,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 17388,
@@ -1211,14 +1219,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Tool and Die Maker",
       "displayTradeName": "Tool and Die Maker",
-      "description": "A Tool and Die Maker builds and repairs the metal tools, molds, and dies used to shape parts in factories. They read drawings, measure precisely, cut and grind metal, and fit pieces together using machines and hand tools. Their work keeps manufacturing equipment accurate, products consistent, and production lines running smoothly.",
+      "description": "A Tool and Die Maker builds and repairs the precision tools, metal forms, and cutting parts used in factories. They read blueprints, measure to tiny tolerances, machine and grind steel pieces, and fit them together so presses and machines work properly. Their work keeps manufactured parts accurate, production running, and equipment working safely.",
       "programCount": 10,
       "programs": [
         {
@@ -1238,7 +1247,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 510,
@@ -1257,7 +1267,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 1439,
@@ -1276,7 +1287,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 2913,
@@ -1295,7 +1307,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 7265,
@@ -1314,7 +1327,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 8353,
@@ -1333,7 +1347,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 11289,
@@ -1352,7 +1367,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 13574,
@@ -1371,7 +1387,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 13689,
@@ -1390,7 +1407,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 15922,
@@ -1409,14 +1427,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Toolmaker",
       "displayTradeName": "Toolmaker",
-      "description": "A Toolmaker makes, repairs, and adjusts the metal tools used to shape parts in factories, such as molds, dies, jigs, and gauges. They read drawings, measure with precision tools, cut and grind metal, and fit pieces together by hand or machine. Their work keeps production accurate, machines running, and finished products consistent.",
+      "description": "A Toolmaker makes and repairs the precision tools used in manufacturing, such as molds, dies, jigs, and gauges. They read technical drawings, measure metal parts, machine and grind pieces, and fit them together by hand so everything works exactly right. Their work helps factories build accurate parts, keep machines running, and reduce waste.",
       "programCount": 17,
       "programs": [
         {
@@ -1436,7 +1455,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 4975,
@@ -1455,7 +1475,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 5356,
@@ -1474,7 +1495,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 6551,
@@ -1493,7 +1515,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 7467,
@@ -1512,7 +1535,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 7549,
@@ -1531,7 +1555,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 8377,
@@ -1550,7 +1575,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 10123,
@@ -1569,7 +1595,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 10413,
@@ -1588,7 +1615,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 10647,
@@ -1607,7 +1635,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 13483,
@@ -1626,7 +1655,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 16016,
@@ -1645,7 +1675,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 16150,
@@ -1664,7 +1695,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 16399,
@@ -1683,7 +1715,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 16431,
@@ -1702,7 +1735,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 16947,
@@ -1721,7 +1755,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         },
         {
           "programAk": 17168,
@@ -1740,7 +1775,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4111.00",
-          "socTitle": "Tool and Die Makers"
+          "socTitle": "Tool and Die Makers",
+          "opportunities": []
         }
       ]
     }

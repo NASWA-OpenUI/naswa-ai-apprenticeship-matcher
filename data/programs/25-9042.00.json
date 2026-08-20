@@ -1163,7 +1163,7 @@
     {
       "tradeName": "Teacher Assistant",
       "displayTradeName": "Teacher Assistant",
-      "description": "A Teacher Assistant helps teachers support students in the classroom. They set up materials, work with small groups, help students stay focused, supervise lunch or recess, and assist with reading, writing, or other daily lessons. Their work helps classrooms run smoothly and gives students the support they need to learn safely and stay on track.",
+      "description": "A Teacher Assistant supports a classroom teacher and helps students during the school day. They set up materials, supervise small groups, help children stay on task, assist with reading, writing, or cleanup, and watch students at lunch, recess, or on field trips. Their work helps classrooms run smoothly and keeps students supported, organized, and safe.",
       "programCount": 8,
       "programs": [
         {
@@ -1183,7 +1183,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 5903,
@@ -1202,7 +1203,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 5971,
@@ -1221,7 +1223,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 6922,
@@ -1240,7 +1243,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 9351,
@@ -1259,7 +1263,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 9869,
@@ -1278,7 +1283,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 12685,
@@ -1297,7 +1303,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         },
         {
           "programAk": 14162,
@@ -1316,7 +1323,8 @@
           "programLength": 24,
           "ratio": "1:1,2:1",
           "socCode": "25-9042.00",
-          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education"
+          "socTitle": "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education",
+          "opportunities": []
         }
       ]
     }

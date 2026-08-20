@@ -1018,7 +1018,7 @@
     {
       "tradeName": "Dental Office Assistant",
       "displayTradeName": "Dental Office Assistant",
-      "description": "A Dental Office Assistant helps a dental clinic run smoothly by supporting both patients and staff. They greet people, book appointments, prepare treatment rooms, clean and set out instruments, update records, and handle billing or insurance forms. Their work keeps the office organized, visits moving on time, and patient care cleaner and safer.",
+      "description": "A Dental Office Assistant helps keep a dental clinic organized and ready for patients. They greet people, book appointments, update records, prepare treatment rooms, clean instruments, handle paperwork, and may help dentists during procedures by passing tools or setting up supplies. Their work keeps visits running smoothly, equipment clean, and patient care safe.",
       "programCount": 1,
       "programs": [
         {
@@ -1038,7 +1038,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "31-9091.00",
-          "socTitle": "Dental Assistants"
+          "socTitle": "Dental Assistants",
+          "opportunities": []
         }
       ]
     }

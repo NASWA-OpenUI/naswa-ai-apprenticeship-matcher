@@ -1083,7 +1083,7 @@
     {
       "tradeName": "Groundskeeper",
       "displayTradeName": "Groundskeeper",
-      "description": "A Groundskeeper cares for outdoor areas such as parks, school grounds, golf courses, and business properties. They mow grass, trim shrubs, plant flowers, rake leaves, water lawns, clear litter, and use tools and small machines to keep grounds neat. Their work keeps outdoor spaces clean, usable, attractive, and safer for everyday use.",
+      "description": "A Groundskeeper cares for outdoor areas such as lawns, gardens, parks, sports fields, and walkways. They mow grass, trim shrubs, plant flowers, rake leaves, spread mulch, water plants, and remove litter, snow, or debris using hand tools and machines. Their work keeps outdoor spaces clean, healthy, safe, and pleasant to use.",
       "programCount": 1,
       "programs": [
         {
@@ -1103,14 +1103,15 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "37-3011.00",
-          "socTitle": "Landscaping and Groundskeeping Workers"
+          "socTitle": "Landscaping and Groundskeeping Workers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Landscape Nursery Manager",
       "displayTradeName": "Landscape Nursery Manager",
-      "description": "A Landscape Nursery Manager runs a nursery that grows trees, shrubs, flowers, and other outdoor plants for yards and public spaces. They plan planting schedules, oversee watering, pruning, fertilizing, pest control, and loading orders, while directing staff and checking plant quality. Their work keeps landscapes supplied with healthy plants that improve outdoor spaces.",
+      "description": "A Landscape Nursery Manager runs a nursery that grows and sells trees, shrubs, flowers, and other outdoor plants. They plan planting and watering, watch for pests and disease, manage workers, order supplies, and help customers or landscapers choose healthy stock. Their work keeps gardens, yards, and public spaces supplied with strong plants that grow well.",
       "programCount": 2,
       "programs": [
         {
@@ -1130,7 +1131,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "37-3011.00",
-          "socTitle": "Landscaping and Groundskeeping Workers"
+          "socTitle": "Landscaping and Groundskeeping Workers",
+          "opportunities": []
         },
         {
           "programAk": 8224,
@@ -1149,7 +1151,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "37-3011.00",
-          "socTitle": "Landscaping and Groundskeeping Workers"
+          "socTitle": "Landscaping and Groundskeeping Workers",
+          "opportunities": []
         }
       ]
     }

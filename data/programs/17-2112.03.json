@@ -1142,7 +1142,7 @@
     {
       "tradeName": "Manufacturing Engineering Technician",
       "displayTradeName": "Manufacturing Engineering Technician",
-      "description": "A Manufacturing Engineering Technician helps improve how products are made in factories. They set up and test equipment, check measurements, track production problems, update drawings and instructions, and help workers use tools and machines the right way. Their work helps factories build parts more accurately, reduce waste, and keep production running smoothly.",
+      "description": "A Manufacturing Engineering Technician helps improve how products are made in factories. They set up and test equipment, measure parts, track production problems, update instructions, and work with engineers and machine operators on the shop floor. Their work helps products be made correctly, machines run smoothly, and production stay safe and efficient.",
       "programCount": 6,
       "programs": [
         {
@@ -1162,7 +1162,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         },
         {
           "programAk": 4695,
@@ -1181,7 +1182,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         },
         {
           "programAk": 6633,
@@ -1200,7 +1202,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         },
         {
           "programAk": 8977,
@@ -1219,7 +1222,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         },
         {
           "programAk": 9551,
@@ -1238,7 +1242,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         },
         {
           "programAk": 12762,
@@ -1257,7 +1262,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-2112.03",
-          "socTitle": "Manufacturing Engineers"
+          "socTitle": "Manufacturing Engineers",
+          "opportunities": []
         }
       ]
     }

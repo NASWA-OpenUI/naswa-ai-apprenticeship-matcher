@@ -1101,7 +1101,7 @@
     {
       "tradeName": "Network Administrator",
       "displayTradeName": "Network Administrator",
-      "description": "A Network Administrator sets up, monitors, and fixes the computer networks that connect offices, devices, and servers. They install routers and switches, manage user access, update security settings, troubleshoot slow or broken connections, and keep backups and systems running smoothly. Their work keeps computers, phones, internet access, and shared files working safely every day.",
+      "description": "A Network Administrator sets up, monitors, and maintains the computer networks that connect people, devices, and systems at work. They install routers and switches, manage user access, fix slow or broken connections, update security settings, and back up network data. Their work keeps internet, email, shared files, and business systems running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -1121,14 +1121,15 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1244.00",
-          "socTitle": "Network and Computer Systems Administrators"
+          "socTitle": "Network and Computer Systems Administrators",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Systems Engineer",
       "displayTradeName": "Systems Engineer",
-      "description": "A Systems Engineer plans and manages how complex computer, software, and hardware systems work together. They gather needs, design system layouts, test parts, fix problems, and help teams connect networks, servers, databases, and applications into one working setup. Their work keeps important technology running smoothly, securely, and reliably for everyday business and public services.",
+      "description": "A Systems Engineer designs, connects, and improves complex computer and technical systems so all the parts work together. They plan system layouts, test software and hardware, solve performance problems, and work with teams to install updates and fix issues. Their work keeps networks, machines, and digital services running smoothly, safely, and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -1148,7 +1149,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1244.00",
-          "socTitle": "Network and Computer Systems Administrators"
+          "socTitle": "Network and Computer Systems Administrators",
+          "opportunities": []
         }
       ]
     }

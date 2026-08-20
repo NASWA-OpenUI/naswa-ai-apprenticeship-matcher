@@ -1118,7 +1118,7 @@
     {
       "tradeName": "Stationary Engineer",
       "displayTradeName": "Stationary Engineer",
-      "description": "A Stationary Engineer runs and watches building systems like boilers, chillers, pumps, turbines, and air-conditioning equipment. They check gauges, adjust controls, do routine maintenance, and respond when something overheats, leaks, or loses pressure. Their work keeps heat, cooling, water, and power systems running safely and reliably in hospitals, schools, and large buildings.",
+      "description": "A Stationary Engineer runs and maintains building systems that keep large facilities working. They monitor boilers, pumps, turbines, air conditioning, and control panels, walk through mechanical rooms, adjust settings, and fix problems before equipment fails. Their work keeps heat, cooling, water, and power systems running safely in places like hospitals, schools, and factories.",
       "programCount": 3,
       "programs": [
         {
@@ -1138,7 +1138,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-8021.00",
-          "socTitle": "Stationary Engineers and Boiler Operators"
+          "socTitle": "Stationary Engineers and Boiler Operators",
+          "opportunities": []
         },
         {
           "programAk": 2092,
@@ -1157,7 +1158,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-8021.00",
-          "socTitle": "Stationary Engineers and Boiler Operators"
+          "socTitle": "Stationary Engineers and Boiler Operators",
+          "opportunities": []
         },
         {
           "programAk": 13578,
@@ -1176,7 +1178,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "51-8021.00",
-          "socTitle": "Stationary Engineers and Boiler Operators"
+          "socTitle": "Stationary Engineers and Boiler Operators",
+          "opportunities": []
         }
       ]
     }

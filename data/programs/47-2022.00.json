@@ -957,7 +957,7 @@
     {
       "tradeName": "Stone Mason",
       "displayTradeName": "Stone Mason",
-      "description": "A Stone Mason builds, repairs, and restores walls, steps, floors, fireplaces, monuments, and building fronts using stone, brick, and mortar. They measure and cut stone, spread mortar, set pieces in place, and shape surfaces with hand and power tools. Their work builds strong structures and keeps buildings, walkways, and public spaces lasting longer.",
+      "description": "A Stone Mason builds, repairs, and restores walls, steps, fireplaces, floors, and building fronts using stone, brick, and mortar. They measure and cut stone, spread mortar, set pieces in place, and shape joints so the work is strong and neat. Their work builds and repairs solid surfaces that keep buildings, walkways, and landmarks safe and lasting.",
       "programCount": 1,
       "programs": [
         {
@@ -977,7 +977,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2022.00",
-          "socTitle": "Stone Mason"
+          "socTitle": "Stone Mason",
+          "opportunities": []
         }
       ]
     }

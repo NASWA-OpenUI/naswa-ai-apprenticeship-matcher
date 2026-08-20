@@ -1153,7 +1153,7 @@
     {
       "tradeName": "Community Health Worker",
       "displayTradeName": "Community Health Worker",
-      "description": "A Community Health Worker connects people with health care, social services, and local support in their community. They meet with clients, explain health information in simple terms, help with forms and appointments, check in on needs, and guide people to food, housing, or counseling resources. Their work helps people get care, stay informed, and manage daily health needs.",
+      "description": "A Community Health Worker connects people with health care, social services, and local support in their community. They meet with clients, explain programs, help fill out forms, arrange appointments, check in on needs, and share practical health information in homes, clinics, schools, or neighborhood spaces. Their work helps people get care, manage daily needs, and stay healthier.",
       "programCount": 4,
       "programs": [
         {
@@ -1173,7 +1173,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1094.00",
-          "socTitle": "Community Health Workers"
+          "socTitle": "Community Health Workers",
+          "opportunities": []
         },
         {
           "programAk": 7286,
@@ -1192,7 +1193,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1094.00",
-          "socTitle": "Community Health Workers"
+          "socTitle": "Community Health Workers",
+          "opportunities": []
         },
         {
           "programAk": 9541,
@@ -1211,7 +1213,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1094.00",
-          "socTitle": "Community Health Workers"
+          "socTitle": "Community Health Workers",
+          "opportunities": []
         },
         {
           "programAk": 12773,
@@ -1230,7 +1233,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1094.00",
-          "socTitle": "Community Health Workers"
+          "socTitle": "Community Health Workers",
+          "opportunities": []
         }
       ]
     }

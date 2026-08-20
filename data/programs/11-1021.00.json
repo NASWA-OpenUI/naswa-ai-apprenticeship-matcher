@@ -1050,7 +1050,7 @@
     {
       "tradeName": "Business Operations Associate",
       "displayTradeName": "Business Operations Associate",
-      "description": "A Business Operations Associate helps a company’s daily business activities run smoothly. They track orders, update spreadsheets, prepare reports, organize records, coordinate with teams, and help solve problems with schedules, supplies, or processes. Their work keeps information accurate, tasks on time, and business systems running more smoothly for employees and customers.",
+      "description": "A Business Operations Associate helps a company stay organized and run smoothly day to day. They track schedules, update spreadsheets, prepare reports, check orders or invoices, answer questions, and work with different teams to solve routine problems and keep work moving. Their work keeps business tasks on time, records accurate, and services running properly.",
       "programCount": 1,
       "programs": [
         {
@@ -1070,7 +1070,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "11-1021.00",
-          "socTitle": "General Operations Managers"
+          "socTitle": "General Operations Managers",
+          "opportunities": []
         }
       ]
     }

@@ -1100,7 +1100,7 @@
     {
       "tradeName": "Fiber Optic Calibration Technician",
       "displayTradeName": "Fiber Optic Calibration Technician",
-      "description": "A Fiber Optic Calibration Technician tests and fine-tunes fiber optic cables, sensors, and measuring equipment so signals stay accurate and clear. They connect lines, run light and signal checks, adjust instruments, record results, and replace faulty parts in labs, plants, or field settings. Their work keeps communication systems, data networks, and precision equipment running reliably.",
+      "description": "A Fiber Optic Calibration Technician tests, adjusts, and fine-tunes fiber optic cables, sensors, and measuring equipment so they give accurate readings. They connect instruments, run light signal tests, compare results to standards, and record settings and repairs. Their work keeps communication systems, medical devices, and other precision equipment working reliably and safely.",
       "programCount": 1,
       "programs": [
         {
@@ -1120,7 +1120,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3029.08",
-          "socTitle": "Photonics Technicians"
+          "socTitle": "Photonics Technicians",
+          "opportunities": []
         }
       ]
     }

@@ -1027,7 +1027,7 @@
     {
       "tradeName": "Chemical Laboratory Technician",
       "displayTradeName": "Chemical Laboratory Technician",
-      "description": "A Chemical Laboratory Technician tests and analyzes chemicals, materials, and products in a lab. They measure samples, mix solutions, run equipment, record results, and help maintain clean, organized work areas while following safety rules. Their work helps make sure medicines, food, water, and manufactured goods are safe, consistent, and working as expected.",
+      "description": "A Chemical Laboratory Technician tests and studies chemicals and materials in a lab. They collect samples, measure and mix liquids or powders, run instruments, record results, and keep glassware and equipment clean and ready to use. Their work helps make products meet standards and keeps manufacturing, water, food, and medicines safe and reliable.",
       "programCount": 2,
       "programs": [
         {
@@ -1047,7 +1047,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "19-4031.00",
-          "socTitle": "Chemical Technicians"
+          "socTitle": "Chemical Technicians",
+          "opportunities": []
         },
         {
           "programAk": 194332,
@@ -1066,7 +1067,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "19-4031.00",
-          "socTitle": "Chemical Technicians"
+          "socTitle": "Chemical Technicians",
+          "opportunities": []
         }
       ]
     }

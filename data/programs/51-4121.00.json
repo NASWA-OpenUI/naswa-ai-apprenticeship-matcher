@@ -1149,8 +1149,8 @@
   "trades": [
     {
       "tradeName": "Welder (Industrial)",
-      "displayTradeName": "Welder",
-      "description": "An industrial Welder joins metal parts to build, repair, and maintain heavy equipment, machinery, pipes, and steel structures. They read drawings, measure and prepare metal, use welding torches and machines, and check that seams are strong and clean. Their work keeps factories, plants, and industrial equipment safe, solid, and running properly.",
+      "displayTradeName": "Welder (Industrial)",
+      "description": "An industrial Welder joins metal parts in factories, plants, and workshops using heat, filler metal, and welding equipment. They read drawings, prepare surfaces, cut and fit pieces, weld frames, pipes, tanks, or machinery, and check that joints are strong and clean. Their work builds and repairs equipment that keeps industrial systems running safely.",
       "programCount": 5,
       "programs": [
         {
@@ -1170,7 +1170,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4121.00",
-          "socTitle": "Welders, Cutters, Solderers, and Brazers"
+          "socTitle": "Welders, Cutters, Solderers, and Brazers",
+          "opportunities": []
         },
         {
           "programAk": 6731,
@@ -1189,7 +1190,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4121.00",
-          "socTitle": "Welders, Cutters, Solderers, and Brazers"
+          "socTitle": "Welders, Cutters, Solderers, and Brazers",
+          "opportunities": []
         },
         {
           "programAk": 11867,
@@ -1208,7 +1210,60 @@
           "programLength": 60,
           "ratio": "1:1,1:1",
           "socCode": "51-4121.00",
-          "socTitle": "Welders, Cutters, Solderers, and Brazers"
+          "socTitle": "Welders, Cutters, Solderers, and Brazers",
+          "opportunities": [
+            {
+              "id": "plumbers-steamfitters-local-union-7-jac-welder-industrial-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/plumbers-steamfitters-local-union-7-jac",
+              "sourceTitle": "Plumbers & Steamfitters Local Union #7 JAC",
+              "jobTitle": "Welder (Industrial) Apprentice",
+              "socCode": "51-4121.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Plumbers & Steamfitters Local Union #7 Joint Apprenticeship and Training Committee",
+              "unionName": "Plumbers & Steamfitters Local Union #7",
+              "locationSummary": "Latham, NY area",
+              "regions": [
+                "Capital Region"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-01",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain applications in person at Local Union #7, 18 Avis Drive, Latham, NY, on the first Thursday of each month from 9:00 a.m. to 4:00 p.m. during the recruitment period. Applications must be received by September 1, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #7, 18 Avis Drive, Latham, NY 12110",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 4:00 p.m. the first Thursday of every month, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Applicants must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": null,
+              "drugTestRequirement": "Applicants must be physically able to perform the work as determined by a physical exam and drug testing after selection and prior to enrollment, at the sponsor's expense.",
+              "classRequirement": null,
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must be physically able to perform the work required as determined by a physical exam and drug testing after selection and prior to enrollment in apprenticeship, at the expense of the sponsor.",
+                "Must take and pass the Wonderlic Basic Skills aptitude test and score 50 or higher on the exam to be interviewed.",
+                "Must provide DD Form 214, Certificate of Release or Discharge from Active Duty, if applicable, after an offer of employment."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalent, pass the Wonderlic Basic Skills test with a score of 50 or higher, and complete a physical exam and drug test after selection.",
+              "contactName": "Plumbers & Steamfitters Local Union #7",
+              "contactPhone": "(518) 785-9844 or (518) 785-9808 Ext 22",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Plumbers & Steamfitters Local Union #7 for further information at (518) 785-9844 or (518) 785-9808 Ext 22."
+            }
+          ]
         },
         {
           "programAk": 14560,
@@ -1227,7 +1282,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4121.00",
-          "socTitle": "Welders, Cutters, Solderers, and Brazers"
+          "socTitle": "Welders, Cutters, Solderers, and Brazers",
+          "opportunities": []
         },
         {
           "programAk": 14983,
@@ -1246,7 +1302,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4121.00",
-          "socTitle": "Welders, Cutters, Solderers, and Brazers"
+          "socTitle": "Welders, Cutters, Solderers, and Brazers",
+          "opportunities": []
         }
       ]
     }

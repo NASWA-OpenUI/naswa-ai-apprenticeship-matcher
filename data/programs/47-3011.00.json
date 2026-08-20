@@ -961,7 +961,7 @@
     {
       "tradeName": "Tile, Marble and Terrazzo Finisher",
       "displayTradeName": "Tile, Marble, and Terrazzo Finisher",
-      "description": "A Tile, Marble, and Terrazzo Finisher prepares floors, walls, countertops, and stairs for smooth finished surfaces. They mix mortar or grout, patch and level base layers, polish rough spots, clean edges, and help set tile, marble, or terrazzo into place. Their work helps surfaces last longer, look neat, and stay safe and easy to use.",
+      "description": "A Tile, Marble, and Terrazzo Finisher prepares surfaces and helps create smooth, even floors, walls, countertops, and stairs. They mix grout or cement, spread materials, fill cracks, polish edges, and clean finished tile, marble, or terrazzo so it looks right and lasts. Their work helps keep buildings strong, neat, and safe to use every day.",
       "programCount": 5,
       "programs": [
         {
@@ -981,7 +981,64 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-3011.00",
-          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-local-3-rochester-1-tile-setter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-local-3-rochester-1",
+              "sourceTitle": "Bricklayers & Allied Craftworkers Local # 3 (Rochester)",
+              "jobTitle": "Tile Setter Apprentice",
+              "socCode": "47-3011.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local #3 (Rochester)",
+              "locationSummary": "Rochester, NY area",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2025-10-04",
+              "recruitmentEndDate": "2026-10-03",
+              "applicationStartDate": "2025-10-04",
+              "applicationEndDate": "2026-10-03",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply online during the recruitment period, print and complete the application, then submit it in person at the JATC office or mail it in. If you cannot print the application, call to have one mailed to you.",
+              "applicationWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 641-0750",
+              "applicationInPersonAddress": "33 Saginaw Drive, Rochester, NY 14623",
+              "applicationMailingAddress": "BAC LU #3 JATC, 33 Saginaw Drive, Rochester, NY 14623",
+              "applicationHours": "8:00AM-4:00PM Monday-Friday, excluding legal holidays, to call for a mailed application if you cannot print one.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old at the time of enrollment.",
+              "educationRequirement": null,
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a physical and a drug test after the offer of employment, at the sponsor's expense, and must submit to random drug testing during the apprenticeship.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old at the time of enrollment.",
+                "Must sign an affidavit stating that they are physically able to perform the work required of the trade, including standing and kneeling for prolonged periods; climbing and working off lifts, ladders, and scaffolds; repetitive bending and stooping; reading blueprints with near vision and using depth perception; verifying alignment of stones, bricks, and blocks with a plumb bob; lifting, carrying, and positioning materials weighing up to 40 pounds; possible exposure to loud noises and respiratory irritants such as dust and chemicals; working in confined spaces and outside in all weather conditions.",
+                "Must pass a physical and a drug test, at the sponsor's expense, after the offer of employment.",
+                "Must also submit to random drug testing which may be administered at any time during the apprenticeship.",
+                "Must provide their own hand tools as appropriate for the trade; estimated cost is approximately $100-$500 depending on the trade.",
+                "Must provide proof of employment authorization to work in the United States at the time of offer.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, physically able to do the work, have their own hand tools, provide work authorization, pass post-offer physical and drug testing, and have reliable transportation.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester)",
+              "contactPhone": "(585) 641-0750",
+              "contactEmail": null,
+              "contactWebsite": "https://bac3ny.com/training-education-safety/apprentice-training-program",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #3 (Rochester) for further information."
+            }
+          ]
         },
         {
           "programAk": 656,
@@ -1000,7 +1057,66 @@
           "programLength": 24,
           "ratio": "1:1,1:4",
           "socCode": "47-3011.00",
-          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-jac-local-2-syracuse-1-tile-setter-3-year-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-jac-local-2-syracuse-1",
+              "sourceTitle": "Bricklayers & Allied Craftworkers JAC Local 2 (Syracuse)",
+              "jobTitle": "Tile Setter (3 Year) Apprentice",
+              "socCode": "47-3011.00",
+              "numberOfOpenings": 2,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "locationSummary": "Local Union #2 jurisdiction in upstate New York; applications in Liverpool, NY",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply in person at Bricklayers & Allied Craftworkers Local Union #2 in Liverpool or apply online; completed applications may also be mailed. Applications must be received by April 30, 2027.",
+              "applicationWebsite": "http://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationHours": "Mondays through Fridays of each month, 8:00 p.m. to 4:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must reside within the geographic jurisdiction of Local Union #2 for at least six months before applying. Counties include Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have reliable transportation to and from job sites and required classes at the approved school.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application.",
+                "Jurisdiction includes the counties of Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+                "Must be able to attend required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, able to lift 50-100 pounds, have reliable transportation, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "contactPhone": "(315) 622-2081",
+              "contactEmail": null,
+              "contactWebsite": "http://www.baclocal2nyvt.org",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
+            }
+          ]
         },
         {
           "programAk": 7901,
@@ -1019,7 +1135,8 @@
           "programLength": 24,
           "ratio": "1:1,1:4",
           "socCode": "47-3011.00",
-          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+          "opportunities": []
         },
         {
           "programAk": 14097,
@@ -1038,7 +1155,65 @@
           "programLength": 22,
           "ratio": "1:1,1:4",
           "socCode": "47-3011.00",
-          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-local-2-albany-0-tile-setter-3-year-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-local-2-albany-0",
+              "sourceTitle": "Bricklayers & Allied Craftworkers Local# 2 (Albany)",
+              "jobTitle": "Tile Setter (3 Year) Apprentice",
+              "socCode": "47-3011.00",
+              "numberOfOpenings": 2,
+              "sponsorName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2",
+              "unionName": "Bricklayers & Allied Craftworkers Local Union #2",
+              "locationSummary": "Albany, NY area; Capital District, Mohawk Valley, and North Country regions",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply online at the BAC Local 2 website or pick up and complete an application in person during the recruitment period. Completed applications may also be mailed to the JATC and must be received by April 30, 2027.",
+              "applicationWebsite": "http://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JATC for Bricklayers & Allied Craftworkers, Local Union #2, 302 Centre Drive, Albany, NY 12203; or Eastern Contractors Association, 6 Airline Drive, Albany, NY 12205",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2, 302 Centre Drive, Albany, NY 12203",
+              "applicationHours": "Applications are available in person Monday through Friday, 8:00 a.m. to 4:00 p.m., excluding legal holidays, during the recruitment period. Online applications are available 24 hours a day during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must have lived within the geographic jurisdiction of Local Union #2 for at least six months before applying. Counties include Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+              "transportationRequirement": "Must have a valid driver's license to operate company vehicles and reliable transportation to and from job sites and required classes.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have a valid driver's license to operate company vehicles.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application. This includes the counties of Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, St. Lawrence.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, be able to lift 50-100 pounds, have a valid driver's license and reliable transportation, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2",
+              "contactPhone": "(518) 456-5477",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Call the JATC for Bricklayers & Allied Craftworkers, Local Union #2 at (518) 456-5477 for more information."
+            }
+          ]
         },
         {
           "programAk": 15854,
@@ -1057,7 +1232,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-3011.00",
-          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters"
+          "socTitle": "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters",
+          "opportunities": []
         }
       ]
     }

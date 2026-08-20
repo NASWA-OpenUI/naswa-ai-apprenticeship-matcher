@@ -953,8 +953,8 @@
   "trades": [
     {
       "tradeName": "Drafter (Tool Design)",
-      "displayTradeName": "Drafter",
-      "description": "A Drafter in tool design turns ideas for tools, dies, molds, and fixtures into detailed technical drawings. They use computer drafting software to show exact sizes, shapes, materials, and how parts fit together, often updating plans as designs change. Their work helps machine shops build accurate tools that keep manufacturing running smoothly and safely.",
+      "displayTradeName": "Drafter (Tool Design)",
+      "description": "A Tool Design Drafter prepares detailed drawings for tools, dies, jigs, and fixtures used to make parts in factories. They use CAD software to sketch layouts, add measurements and notes, and revise plans so machinists and toolmakers can build the equipment accurately. Their work helps parts fit right and keeps production running smoothly and safely.",
       "programCount": 1,
       "programs": [
         {
@@ -974,7 +974,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "17-3013.00",
-          "socTitle": "Mechanical Drafters"
+          "socTitle": "Mechanical Drafters",
+          "opportunities": []
         }
       ]
     }

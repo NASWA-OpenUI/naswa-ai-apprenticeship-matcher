@@ -1001,7 +1001,7 @@
     {
       "tradeName": "Industrial Equipment Wirer and Assembler",
       "displayTradeName": "Industrial Equipment Wirer and Assembler",
-      "description": "An Industrial Equipment Wirer and Assembler builds and wires electrical parts into machines, control panels, and other industrial equipment. They read diagrams, mount components, connect wires, test circuits, and fix problems using hand and power tools. Their work helps factories and workplaces keep equipment running safely, accurately, and reliably.",
+      "description": "An Industrial Equipment Wirer and Assembler builds and wires machines, control panels, and other industrial equipment. They read diagrams, mount parts, connect wires, test circuits, and use hand and power tools to make sure everything fits and works properly. Their work helps factories and other workplaces keep equipment running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -1021,7 +1021,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-2022.00",
-          "socTitle": "Electrical and Electronic Equipment Assemblers"
+          "socTitle": "Electrical and Electronic Equipment Assemblers",
+          "opportunities": []
         }
       ]
     }

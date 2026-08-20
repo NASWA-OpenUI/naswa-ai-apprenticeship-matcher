@@ -1115,7 +1115,73 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": [
+            {
+              "id": "north-atlantic-state-carpenters-training-fund-0-millwright-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-state-carpenters-training-fund-0",
+              "sourceTitle": "North Atlantic State Carpenters Training Fund",
+              "jobTitle": "Millwright Apprentice",
+              "socCode": "49-9044.00",
+              "numberOfOpenings": 15,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": "Eastern Millwright Regional Council",
+              "locationSummary": "Multiple regions across New York State, including the Capital District, Central, Finger Lakes, Mohawk Valley, North Country, Southern Tier, and Western regions",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Finger Lakes",
+                "Hudson Valley",
+                "Long Island",
+                "Mohawk Valley",
+                "New York City",
+                "North Country",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-06-01",
+              "recruitmentEndDate": "2027-05-30",
+              "applicationStartDate": "2026-06-01",
+              "applicationEndDate": "2027-05-30",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at local1163.com by clicking the \"Join Us\" tab. Applications are available any time during the recruitment period and must be received online by May 30, 2027.",
+              "applicationWebsite": "https://local1163.com/",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Applications can be obtained online any day and any time during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must reside within the jurisdiction of North Atlantic States Carpenters Training Fund, which includes all counties in New York State except Dutchess, Nassau, Orange, Putnam, Rockland, Suffolk, Westchester, Kings, Queens, Bronx, New York, and Richmond counties.",
+              "transportationRequirement": "Must have reliable transportation to and from various jobsites and required classes at the approved school, and must have a valid driver’s license; apprentice may be required to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test, at the sponsor’s expense, after selection and prior to enrollment; drug testing may be administered at any time during the program.",
+              "classRequirement": "Must attend all related instruction classroom training as required to complete the apprenticeship program.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required at time of enrollment or bona fide offer of employment.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship; drug testing may be administered at any time during the program.",
+                "Must sign an affidavit stating they are physically able to perform Millwright work, including climbing and working from heights, on scaffolds, in confined spaces and underground; lifting a minimum of 50 pounds; performing repetitive motions; using precision tools such as Vernier calipers, micrometers, dial indicators, levels, gauge blocks, and optical laser alignment tooling; working in inclement weather; and standing and stooping for prolonged periods.",
+                "Must have reliable transportation to and from various jobsites and required classes at the approved school.",
+                "Must have a valid driver’s license; apprentice may be required to operate company vehicles.",
+                "Must be a U.S. citizen or legally able to work in the USA.",
+                "Must attend all related instruction classroom training as required to complete the apprenticeship program.",
+                "Must reside within the jurisdiction of North Atlantic States Carpenters Training Fund, which includes all counties in New York State except Dutchess, Nassau, Orange, Putnam, Rockland, Suffolk, Westchester, Kings, Queens, Bronx, New York, and Richmond counties.",
+                "Must provide a copy of DD-214, if applicable, at time of enrollment or bona fide offer of employment."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, live within the sponsor’s New York State jurisdiction, have reliable transportation and a valid driver’s license, be legally able to work in the U.S., attend required classes, and pass a drug test after selection.",
+              "contactName": "Eastern Millwright Regional Council",
+              "contactPhone": "(315) 277-7808",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact Eastern Millwright Regional Council at (315) 277-7808."
+            }
+          ]
         },
         {
           "programAk": 8118,
@@ -1134,7 +1200,79 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": [
+            {
+              "id": "carpenters-jatc-nyc-vicinity-2-millwright-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/carpenters-jatc-nyc-vicinity-2",
+              "sourceTitle": "Carpenters JATC of NYC & Vicinity",
+              "jobTitle": "Millwright Apprentice",
+              "socCode": "49-9044.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee for the New York City District Council of Carpenters",
+              "unionName": "New York City District Council of Carpenters",
+              "locationSummary": "New York City, NY area",
+              "regions": [
+                "New York City"
+              ],
+              "recruitmentStartDate": "2025-09-10",
+              "recruitmentEndDate": "2026-09-09",
+              "applicationStartDate": "2025-09-10",
+              "applicationEndDate": "2026-09-09",
+              "applicationMethods": [
+                "information_session_required",
+                "online_application"
+              ],
+              "applicationSummary": "Attend the required in-person information session at the NYCDCC Training Center, receive a passcode, and complete the online application within 60 days of the session.",
+              "applicationWebsite": "https://nyccarpenterstrainingcenter.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "New York City District Council of Carpenters Training Center, 395 Hudson Street, 2nd Floor (Clarkson Street entrance), New York, NY 10014",
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the second Wednesday of each month from 9:00 AM to 10:00 AM during the recruitment period, excluding December and January. No admittance after 9:00 AM.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at the time of application.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and classes at the approved school. Must be willing to travel to off-site training and accept the associated costs if training is canceled, missed, or not successfully completed.",
+              "drugTestRequirement": "Must pass a substance abuse screening at the sponsor's expense within 48 hours of selection and before enrollment.",
+              "classRequirement": "Must be willing to travel to off-site training and attend classes at the approved school.",
+              "allRequirements": [
+                "Must attend an in-person information session and sign in to be considered further.",
+                "Spaces are limited and filled on a first-come, first-served basis.",
+                "At the conclusion of the information session, applicants will receive a passcode required to complete the online application.",
+                "Applications are only available online during the recruitment period.",
+                "Completed applications must be submitted through the website portal within 60 days from the date of the information session.",
+                "Applicants may only apply for one trade.",
+                "Each application will be kept on file for two years; after two years it is considered expired and the applicant must reapply if still interested.",
+                "Applications that meet all stated requirements will be scheduled for an interview at a future date.",
+                "Each applicant will be allowed only one interview, and punctuality is required.",
+                "Failure to arrive on time for the scheduled interview will result in disqualification.",
+                "Applicants will receive an instruction sheet and a list of original documents required if they are accepted into the program.",
+                "Must be at least 17 years old at the time of application.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED; proof will be required after selection and before enrollment.",
+                "Must be physically able to perform the work of the trade without posing a direct threat to the safety of themselves or others.",
+                "Must be physically able to perform the work of a carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from heights; lifting a minimum of 50 pounds; and standing and stooping for prolonged periods.",
+                "Must pass a substance abuse screening, at the sponsor's expense, within 48 hours of selection and before enrollment in apprenticeship, at a designated collection site designated by the JATC.",
+                "Must be able to read, hear, and understand verbal instructions and warnings in English.",
+                "Must provide proof of any trade-related experience, certification, or education after selection and before enrollment in apprenticeship.",
+                "Must agree to sign an Apprentice handbook, subject to change at any time.",
+                "Must be willing to travel to off-site training and assume financial responsibility for associated costs in the event of cancellation, failure to attend, or failure to successfully complete the program.",
+                "Must be a U.S. citizen or have the legal right to work in the United States; proof will be required after selection and before enrollment in apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and before enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must attend the required in-person information session, apply online within 60 days, and meet age, education, physical ability, English-language, transportation, and substance screening requirements.",
+              "contactName": "New York City District Council of Carpenters",
+              "contactPhone": "(212) 727-2224",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
+            }
+          ]
         },
         {
           "programAk": 10744,
@@ -1153,7 +1291,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 17115,
@@ -1172,14 +1311,15 @@
           "programLength": 32,
           "ratio": "1:1,1:4",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Millwright",
       "displayTradeName": "Plant Maintenance-Millwright",
-      "description": "A Plant Maintenance-Millwright installs, moves, repairs, and lines up heavy machines in factories, plants, and mills. They take apart motors, pumps, conveyors, and gear systems, replace worn parts, use precision tools to set equipment correctly, and test it after repairs. Their work keeps production equipment running safely, smoothly, and with less downtime.",
+      "description": "A Plant Maintenance-Millwright installs, takes apart, repairs, and lines up heavy machines in factories, mills, and processing plants. They use hoists, hand tools, measuring tools, and blueprints to replace worn parts, adjust moving equipment, and get production lines running smoothly again. Their work keeps machines operating safely, prevents breakdowns, and supports everyday manufacturing.",
       "programCount": 10,
       "programs": [
         {
@@ -1199,7 +1339,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 1163,
@@ -1218,7 +1359,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 6219,
@@ -1237,7 +1379,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 9416,
@@ -1256,7 +1399,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 9932,
@@ -1275,7 +1419,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 12124,
@@ -1294,7 +1439,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 13376,
@@ -1313,7 +1459,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 15744,
@@ -1332,7 +1479,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 17405,
@@ -1351,7 +1499,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         },
         {
           "programAk": 149881,
@@ -1370,7 +1519,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9044.00",
-          "socTitle": "Millwrights"
+          "socTitle": "Millwrights",
+          "opportunities": []
         }
       ]
     }

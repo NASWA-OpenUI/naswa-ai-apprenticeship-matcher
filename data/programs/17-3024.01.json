@@ -1061,7 +1061,7 @@
     {
       "tradeName": "Robotics Technician",
       "displayTradeName": "Robotics Technician",
-      "description": "A Robotics Technician builds, installs, tests, and repairs robotic machines and automated equipment. They wire parts, replace sensors and motors, adjust controls, run test cycles, and troubleshoot problems on factory floors or in workshops. Their work keeps robots moving accurately, production lines running, and equipment safer and more reliable in everyday manufacturing.",
+      "description": "A Robotics Technician installs, tests, repairs, and maintains robots and automated equipment used in factories, warehouses, and other work sites. They wire parts, replace sensors, adjust controls, troubleshoot breakdowns, and watch machines run to spot problems. Their work keeps automated systems running smoothly, products moving, and workplaces safer and more reliable.",
       "programCount": 1,
       "programs": [
         {
@@ -1081,7 +1081,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "17-3024.01",
-          "socTitle": "Robotics Technician"
+          "socTitle": "Robotics Technician",
+          "opportunities": []
         }
       ]
     }

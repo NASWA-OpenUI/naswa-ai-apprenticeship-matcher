@@ -993,7 +993,7 @@
     {
       "tradeName": "School Safety Agent",
       "displayTradeName": "School Safety Agent",
-      "description": "A School Safety Agent helps keep order and safety in school buildings and around school grounds. They watch entrances and hallways, check visitors in, respond to problems, enforce school rules, and help during arrivals, dismissals, and emergencies. Their work helps protect students and staff and keeps the school day running safely and smoothly.",
+      "description": "A School Safety Agent helps keep students, staff, and visitors safe in and around school buildings. They watch entrances, check IDs, monitor hallways, respond to fights or emergencies, and report problems to school leaders or police when needed. Their work helps schools stay orderly, secure, and safer for everyday learning.",
       "programCount": 1,
       "programs": [
         {
@@ -1007,13 +1007,14 @@
           "addressPostalCode": "11101",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "2066-11-03",
+          "programApprovalDate": "1966-11-03",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "33-9032.00",
-          "socTitle": "Security Guards"
+          "socTitle": "Security Guards",
+          "opportunities": []
         }
       ]
     }

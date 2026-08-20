@@ -1164,8 +1164,8 @@
   "trades": [
     {
       "tradeName": "Sales Associate (Financial Services)",
-      "displayTradeName": "Sales Associate",
-      "description": "A Sales Associate in financial services helps people choose and apply for products like bank accounts, credit cards, loans, or insurance. They speak with customers, ask about needs, explain options, process applications, and handle paperwork or computer records. Their work helps people manage money, access services, and keep everyday finances organized and running.",
+      "displayTradeName": "Sales Associate (Financial Services)",
+      "description": "A Sales Associate in financial services helps people choose and apply for products like bank accounts, credit cards, loans, or insurance. They talk with customers, explain options, gather paperwork, answer questions, and may suggest services that fit a person’s needs and budget. Their work helps people manage money, access services, and keep daily finances running.",
       "programCount": 1,
       "programs": [
         {
@@ -1185,7 +1185,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "41-3031.00",
-          "socTitle": "Securities, Commodities, and Financial Services Sales Agents"
+          "socTitle": "Securities, Commodities, and Financial Services Sales Agents",
+          "opportunities": []
         }
       ]
     }

@@ -1257,8 +1257,8 @@
   "trades": [
     {
       "tradeName": "School Administrator (Building Administrator)",
-      "displayTradeName": "School Administrator",
-      "description": "A School Administrator who leads a school building manages daily operations, staff, budgets, schedules, student discipline, and communication with families. They walk classrooms and hallways, meet with teachers and parents, handle problems, and make sure school rules and programs are followed. Their work keeps the school organized, safe, and running smoothly for students and staff.",
+      "displayTradeName": "School Administrator (Building Administrator)",
+      "description": "A School Administrator who leads a school building manages daily school operations for students and staff. They walk halls and classrooms, oversee schedules, budgets, safety plans, student behavior, meetings, and support for teachers and families. Their work keeps the school organized, safe, and running smoothly so students can learn each day.",
       "programCount": 4,
       "programs": [
         {
@@ -1278,7 +1278,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "11-9032.00",
-          "socTitle": "Education Administrators, Kindergarten through Secondary"
+          "socTitle": "Education Administrators, Kindergarten through Secondary",
+          "opportunities": []
         },
         {
           "programAk": 4731,
@@ -1297,7 +1298,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "11-9032.00",
-          "socTitle": "Education Administrators, Kindergarten through Secondary"
+          "socTitle": "Education Administrators, Kindergarten through Secondary",
+          "opportunities": []
         },
         {
           "programAk": 7766,
@@ -1316,7 +1318,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "11-9032.00",
-          "socTitle": "Education Administrators, Kindergarten through Secondary"
+          "socTitle": "Education Administrators, Kindergarten through Secondary",
+          "opportunities": []
         },
         {
           "programAk": 9706,
@@ -1335,7 +1338,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "11-9032.00",
-          "socTitle": "Education Administrators, Kindergarten through Secondary"
+          "socTitle": "Education Administrators, Kindergarten through Secondary",
+          "opportunities": []
         }
       ]
     }

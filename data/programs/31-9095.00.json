@@ -977,7 +977,7 @@
     {
       "tradeName": "Pharmacy Associate",
       "displayTradeName": "Pharmacy Associate",
-      "description": "A Pharmacy Associate works in a pharmacy helping fill prescriptions and serve customers. They count pills, label bottles, stock shelves, handle cash registers, answer basic questions, and keep records organized while working with pharmacists and pharmacy technicians. Their work helps people get the right medicines on time and keeps the pharmacy running safely and smoothly.",
+      "description": "A Pharmacy Associate works in a pharmacy helping prepare and provide medicines and health products. They count pills, label prescriptions, stock shelves, handle cash, update customer records, and answer basic questions while working with pharmacists. Their work helps people get the right medication, keeps supplies organized, and supports safe daily healthcare.",
       "programCount": 2,
       "programs": [
         {
@@ -997,7 +997,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "31-9095.00",
-          "socTitle": "Pharmacy Aides"
+          "socTitle": "Pharmacy Aides",
+          "opportunities": []
         },
         {
           "programAk": 18604,
@@ -1016,7 +1017,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "31-9095.00",
-          "socTitle": "Pharmacy Aides"
+          "socTitle": "Pharmacy Aides",
+          "opportunities": []
         }
       ]
     }

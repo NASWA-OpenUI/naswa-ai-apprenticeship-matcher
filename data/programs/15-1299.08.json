@@ -1177,7 +1177,7 @@
     {
       "tradeName": "Cloud Engineer",
       "displayTradeName": "Cloud Engineer",
-      "description": "A Cloud Engineer builds and manages the online systems that store data, run apps, and connect services over the internet. They set up servers, networks, security tools, and backups, monitor performance, and fix outages or slowdowns. Their work keeps websites, business systems, and digital tools running reliably, securely, and smoothly every day.",
+      "description": "A Cloud Engineer builds and manages the online systems that store data, run apps, and connect services over the internet. They set up servers, networks, security tools, and backups, monitor performance, and fix problems when systems slow down or fail. Their work keeps websites, business tools, and digital services running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -1197,7 +1197,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1299.08",
-          "socTitle": "Computer Systems Engineers/Architects"
+          "socTitle": "Computer Systems Engineers/Architects",
+          "opportunities": []
         }
       ]
     }

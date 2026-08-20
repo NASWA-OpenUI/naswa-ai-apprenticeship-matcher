@@ -1124,7 +1124,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2051.00",
-          "socTitle": "Cement Masons and Concrete Finishers"
+          "socTitle": "Cement Masons and Concrete Finishers",
+          "opportunities": []
         },
         {
           "programAk": 1261,
@@ -1143,7 +1144,62 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2051.00",
-          "socTitle": "Cement Masons and Concrete Finishers"
+          "socTitle": "Cement Masons and Concrete Finishers",
+          "opportunities": [
+            {
+              "id": "international-union-bricklayers-allied-craftsmen-local-3-ny-ithaca-chapter-0-cement-mason-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/international-union-bricklayers-allied-craftsmen-local-3-ny-ithaca-chapter-0",
+              "sourceTitle": "International Union of Bricklayers & Allied Craftsmen Local 3 NY (Ithaca Chapter)",
+              "jobTitle": "Cement Mason Apprentice",
+              "socCode": "47-2051.00",
+              "numberOfOpenings": 2,
+              "sponsorName": "Joint Apprenticeship Committee for the International Union of Bricklayers & Allied Craftsmen (IUBAC), Local Union #3",
+              "unionName": "IUBAC Local Union #3",
+              "locationSummary": "Whitney Point, NY area",
+              "regions": [
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-01-08",
+              "recruitmentEndDate": "2027-01-07",
+              "applicationStartDate": "2026-01-08",
+              "applicationEndDate": "2027-01-07",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain and submit applications online at www.bac3ny.com or in person at the JAC Training Center in Whitney Point during the recruitment period.",
+              "applicationWebsite": "https://www.bac3ny.com",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JAC for the IUBAC, Local Union #3 Training Center, 4 Railroad Street, Whitney Point, NY 13862",
+              "applicationMailingAddress": null,
+              "applicationHours": "Mondays only, 9:00 a.m.-12:00 p.m. and 1:00 p.m.-3:00 p.m., excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or high school equivalency diploma (such as TASC or GED).",
+                "Must sign an affidavit stating that they are physically able to perform the work of these trades, including working with sharp objects and hazardous machinery, possible exposure to noise and respiratory irritants, prolonged standing and walking, repeated squatting and/or bending, working indoors and outdoors in all kinds of weather, working in confined spaces, lifting and moving heavy objects and equipment up to 50 pounds, and working on ladders and scaffolds exceeding 50 feet.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must be prepared to take a math and measurement computation test at the time of interview.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, have reliable transportation, and be prepared for a math and measurement test and a physical-ability affidavit.",
+              "contactName": "JAC for the IUBAC, Local Union #3",
+              "contactPhone": "(607) 786-8945",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact the JAC for the IUBAC, Local Union #3 at (607) 786-8945 for further information."
+            }
+          ]
         },
         {
           "programAk": 10386,
@@ -1162,7 +1218,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2051.00",
-          "socTitle": "Cement Masons and Concrete Finishers"
+          "socTitle": "Cement Masons and Concrete Finishers",
+          "opportunities": []
         },
         {
           "programAk": 14899,
@@ -1181,7 +1238,66 @@
           "programLength": 27,
           "ratio": "1:1,1:4",
           "socCode": "47-2051.00",
-          "socTitle": "Cement Masons and Concrete Finishers"
+          "socTitle": "Cement Masons and Concrete Finishers",
+          "opportunities": [
+            {
+              "id": "bricklayers-allied-craftworkers-jac-local-2-syracuse-1-cement-finisher-or-cement-mason-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/bricklayers-allied-craftworkers-jac-local-2-syracuse-1",
+              "sourceTitle": "Bricklayers & Allied Craftworkers JAC Local 2 (Syracuse)",
+              "jobTitle": "Cement Finisher or Cement Mason Apprentice",
+              "socCode": "47-2051.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "unionName": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "locationSummary": "Local Union #2 jurisdiction in upstate New York; applications in Liverpool, NY",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-01",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-01",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Apply in person at Bricklayers & Allied Craftworkers Local Union #2 in Liverpool or apply online; completed applications may also be mailed. Applications must be received by April 30, 2027.",
+              "applicationWebsite": "http://www.baclocal2nyvt.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationMailingAddress": "Bricklayers & Allied Craftworkers JATC #2 (Syracuse), 7705 Maltlage Drive, Liverpool, NY 13090",
+              "applicationHours": "Mondays through Fridays of each month, 8:00 p.m. to 4:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must reside within the geographic jurisdiction of Local Union #2 for at least six months before applying. Counties include Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must be physically able to lift 50-100 pounds.",
+                "Must have reliable transportation to and from job sites and required classes at the approved school.",
+                "Must reside within the geographic jurisdiction of Local Union #2 for at least six months prior to application.",
+                "Jurisdiction includes the counties of Albany, Cayuga, Clinton, Columbia, Schenectady, Schoharie, Warren, Washington, Greene, Rensselaer, Fulton, Hamilton, Montgomery, Saratoga, Essex, Franklin, Herkimer, Jefferson, Lewis, Madison, Oneida, Onondaga, Oswego, and St. Lawrence.",
+                "Must be able to attend required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, able to lift 50-100 pounds, have reliable transportation, and live in the Local Union #2 jurisdiction for at least six months before applying.",
+              "contactName": "JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse)",
+              "contactPhone": "(315) 622-2081",
+              "contactEmail": null,
+              "contactWebsite": "http://www.baclocal2nyvt.org",
+              "contactSummary": "Contact the JATC for Bricklayers & Allied Craftworkers, Local Union #2 (Syracuse) at (315) 622-2081."
+            }
+          ]
         },
         {
           "programAk": 14969,
@@ -1200,7 +1316,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2051.00",
-          "socTitle": "Cement Masons and Concrete Finishers"
+          "socTitle": "Cement Masons and Concrete Finishers",
+          "opportunities": []
         }
       ]
     }

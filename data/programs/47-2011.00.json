@@ -1016,7 +1016,7 @@
   "trades": [
     {
       "tradeName": "Boilermaker (Construction)",
-      "displayTradeName": "Boilermaker",
+      "displayTradeName": "Boilermaker (Construction)",
       "description": "A Boilermaker in construction builds, installs, and repairs large metal tanks, boilers, and pressure vessels on job sites. They read blueprints, cut and fit steel plates, weld parts together, bolt sections in place, and test for leaks or pressure problems. Their work helps keep industrial buildings, heating systems, and heavy equipment running safely.",
       "programCount": 4,
       "programs": [
@@ -1037,7 +1037,60 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2011.00",
-          "socTitle": "Boilermakers"
+          "socTitle": "Boilermakers",
+          "opportunities": [
+            {
+              "id": "boilermakers-northeastern-jac-lu-5-zone-197-boilermaker-construction-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/boilermakers-northeastern-jac-lu-5-zone-197",
+              "sourceTitle": "Boilermakers Northeastern JAC LU 5 Zone 197",
+              "jobTitle": "Boilermaker (Construction) Apprentice",
+              "socCode": "47-2011.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Boilermakers Northeast JATC, Local Union #5, Zone #197",
+              "unionName": "Local Union #5, Zone #197",
+              "locationSummary": "Albany, NY",
+              "regions": [
+                "Capital Region"
+              ],
+              "recruitmentStartDate": "2026-05-12",
+              "recruitmentEndDate": "2027-05-11",
+              "applicationStartDate": "2026-05-12",
+              "applicationEndDate": "2027-05-11",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at BoilermakersApprenticeship.com during the recruitment period. All applications must be received by May 11, 2027.",
+              "applicationWebsite": "https://www.BoilermakersApprenticeship.com",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": null,
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to remote job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must be willing to submit to a drug/alcohol test within 48 hours of signing the apprentice agreement. The sponsor pays for the test.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof of age will be required at the time of the offer of employment.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED; proof will be required at the time of an offer of employment.",
+                "Must verbally attest that they are physically able to do the work of a Boilermaker (Construction), including working 8 hours continually on feet; lifting and carrying weights in excess of 95 pounds for extended periods; working in extreme weather conditions and temperatures; working in restrictive and confined spaces; working at heights of 20 feet on a scaffold or platform; working in ditches or trenches up to 20 feet in depth; and working in nuclear facilities and hazardous conditions.",
+                "Must be willing to submit to a drug/alcohol test within 48 hours of signing the apprentice agreement. The test will be paid for by the sponsor.",
+                "Must have reliable transportation to report to remote job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalency, pass a physical ability attestation, agree to a drug/alcohol test, and have reliable transportation.",
+              "contactName": "Boilermakers Northeast JATC, Local Union #5, Zone #197",
+              "contactPhone": "(518) 438-0718",
+              "contactEmail": null,
+              "contactWebsite": "https://www.neaac.net",
+              "contactSummary": "Contact Boilermakers Northeast JATC, Local Union #5, Zone #197 at (518) 438-0718 or visit the Boilermakers Northeast JATC website for more information."
+            }
+          ]
         },
         {
           "programAk": 2412,
@@ -1056,7 +1109,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2011.00",
-          "socTitle": "Boilermakers"
+          "socTitle": "Boilermakers",
+          "opportunities": []
         },
         {
           "programAk": 15121,
@@ -1075,7 +1129,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2011.00",
-          "socTitle": "Boilermakers"
+          "socTitle": "Boilermakers",
+          "opportunities": []
         },
         {
           "programAk": 15531,
@@ -1094,7 +1149,62 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2011.00",
-          "socTitle": "Boilermakers"
+          "socTitle": "Boilermakers",
+          "opportunities": [
+            {
+              "id": "boilermakers-northeastern-jac-local-5-zone-7-0-boilermaker-construction-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/boilermakers-northeastern-jac-local-5-zone-7-0",
+              "sourceTitle": "Boilermakers Northeastern JAC Local #5, Zone # 7",
+              "jobTitle": "Boilermaker (Construction) Apprentice",
+              "socCode": "47-2011.00",
+              "numberOfOpenings": 3,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Boilermakers Northeastern, Local Union #5, Zone #7",
+              "unionName": "Boilermakers Northeastern, Local Union #5, Zone #7",
+              "locationSummary": "Finger Lakes, Southern Tier, and Western regions of New York State",
+              "regions": [
+                "Finger Lakes",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2025-11-26",
+              "recruitmentEndDate": "2026-11-25",
+              "applicationStartDate": "2025-11-26",
+              "applicationEndDate": "2026-11-25",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at boilermakersapprenticeship.com during the recruitment period. Applications can be submitted online through November 25, 2026.",
+              "applicationWebsite": "https://www.boilermakersapprenticeship.com",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "All day, all hours during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma, such as TASC or GED.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug/alcohol test at the sponsor's expense within 48 hours of signing the apprenticeship agreement.",
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof of age will be required after selection and at the time of enrollment in apprenticeship.",
+                "Must have a high school diploma or a high school equivalency diploma, such as TASC or GED. Proof will be required when the applicant is presented with a bona fide offer or at the time of enrollment in apprenticeship.",
+                "Must sign an affidavit attesting that they are physically able to do the work of a Boilermaker (Construction), including working eight hours continually on feet; lifting and carrying weights in excess of 95 pounds for extended periods; working in severe weather conditions and extreme temperatures; working in restrictive and confined spaces; working at heights of 20 feet on a scaffold or platform; working in ditches or trenches up to 20 feet in depth; and working in nuclear facilities and hazardous conditions.",
+                "Must pass a drug/alcohol test, at the expense of the sponsor, within 48 hours of signing the apprenticeship agreement.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, be physically able to perform the work, pass a drug/alcohol test, and have reliable transportation.",
+              "contactName": "Boilermakers Northeast JATC, Local Union #5, Zone #7",
+              "contactPhone": "(716) 667-0861",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Boilermakers Northeast JATC, Local Union #5, Zone #7 at (716) 667-0861 for further information."
+            }
+          ]
         }
       ]
     }

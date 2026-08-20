@@ -1087,7 +1087,7 @@
     {
       "tradeName": "Nanotechnology Engineering Technician",
       "displayTradeName": "Nanotechnology Engineering Technician",
-      "description": "A Nanotechnology Engineering Technician helps develop and test very small materials and devices, often too tiny to see without special tools. They set up lab equipment, prepare samples, run experiments, record measurements, and help troubleshoot machines and processes. Their work helps build and improve electronics, medical tools, coatings, and other products people use every day.",
+      "description": "A Nanotechnology Engineering Technician helps build, test, and improve extremely small materials, parts, and devices used in labs and manufacturing. They set up equipment, prepare samples, run experiments, record measurements, and inspect results under powerful microscopes and other tools. Their work helps create and keep running smaller, more precise products used in electronics, medicine, and everyday technology.",
       "programCount": 1,
       "programs": [
         {
@@ -1107,7 +1107,8 @@
           "programLength": 27,
           "ratio": "1:1,1:1",
           "socCode": "17-3026.01",
-          "socTitle": "Nanotechnology Engineering Technologists and Technicians"
+          "socTitle": "Nanotechnology Engineering Technologists and Technicians",
+          "opportunities": []
         }
       ]
     }

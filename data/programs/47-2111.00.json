@@ -1065,7 +1065,7 @@
     {
       "tradeName": "Electrical Maintenance Technician",
       "displayTradeName": "Electrical Maintenance Technician",
-      "description": "An Electrical Maintenance Technician keeps electrical systems and equipment working safely in places like factories, buildings, or plants. They inspect wiring, motors, control panels, and machines, test for faults, replace worn parts, and make repairs using hand tools and meters. Their work keeps power, lighting, and equipment running safely and reliably.",
+      "description": "An Electrical Maintenance Technician installs, inspects, troubleshoots, repairs, and tests electrical equipment in places like factories, buildings, or plants. They trace wiring, replace worn parts, reset controls, and use meters and tools to keep machines and systems working properly. Their work keeps power, lighting, and equipment running safely and helps prevent breakdowns.",
       "programCount": 1,
       "programs": [
         {
@@ -1085,7 +1085,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     },
@@ -1112,7 +1113,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 281,
@@ -1131,7 +1133,137 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "geneva-electrical-jatc-local-840-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/geneva-electrical-jatc-local-840-0",
+              "sourceTitle": "Geneva Electrical JATC Local # 840",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 8,
+              "sponsorName": "Geneva Electrical Joint Apprenticeship and Training Committee, Local Union #840",
+              "unionName": "IBEW Local Union #840",
+              "locationSummary": "Geneva, NY area and Local Union #840 jurisdiction",
+              "regions": [
+                "Central New York",
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2025-09-11",
+              "recruitmentEndDate": "2026-09-10",
+              "applicationStartDate": "2025-09-11",
+              "applicationEndDate": "2026-09-10",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain and complete the application in person at IBEW Local Union #840 in Geneva during the recruitment period, then submit it by the deadline. A $10 testing fee is due at application and may be waived for financial need.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "IBEW Local Union #840, 1401 Routes 5 and 20, Geneva, NY",
+              "applicationMailingAddress": null,
+              "applicationHours": "8:00 a.m. to 4:30 p.m., Monday through Friday, except legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 10,
+              "applicationFeeDetails": "A $10.00 testing fee is due at the time of application. Applicants may request a waiver, which will be approved with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, plus one year of algebra with a passing grade. Proof of education is required after selection and before enrollment.",
+              "residencyRequirement": "Must reside within the geographic jurisdiction of Local Union #840: Cayuga County (all townships except Genoa, Ira, Sterling, Victory, Locke, Sempronius, and Summerhill); Onondaga County (Elbridge and Skaneateles); Ontario County (Canandaigua, Farmington, Geneva, Gorham, Hopewell, Manchester, Phelps, and Seneca); Seneca County (all townships except Covert and Lodi); Wayne County (Arcadia, Galen, Lyons, and Savannah); and Yates County (all townships).",
+              "transportationRequirement": "Must have a valid New York State driver’s license to operate company vehicles and reliable transportation to job sites and required classes.",
+              "drugTestRequirement": "Must pass a physical examination and drug test, at the sponsor’s expense, after selection and before enrollment.",
+              "classRequirement": "Must be willing and able to attend all classroom instruction at the approved school as required to complete the apprenticeship.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must have one year of algebra with a passing grade.",
+                "Proof of education required after selection and prior to enrollment in apprenticeship.",
+                "Must pass a physical examination and drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must be physically able to perform the work of an electrician, including climbing and working off scaffolds, ladders, poles, and towers of various heights.",
+                "Must be physically able to perform the work of an electrician, including crawling and working in confined spaces such as attics and manholes.",
+                "Must take and pass the NJATC Electrical Aptitude Test and obtain a score of at least four out of nine.",
+                "Must possess a valid New York State driver’s license in order to operate company vehicles.",
+                "Must be willing and able to attend all classroom instruction at the approved school as required to complete the apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Apprentices must furnish their own hand tools as appropriate for the trade. Estimated cost of hand tools is approximately $300 by the end of the program.",
+                "Must be able to read English and hear and understand verbal instructions and warnings given in English.",
+                "Must reside within the geographic jurisdiction of Local Union #840.",
+                "Cayuga County - All townships except Genoa, Ira, Sterling, Victory, Locke, Sempronius, and Summerhill.",
+                "Onondaga County - The townships of Elbridge and Skaneateles.",
+                "Ontario County - The townships of Canandaigua, Farmington, Geneva, Gorham, Hopewell, Manchester, Phelps, and Seneca.",
+                "Seneca County - All the townships except Covert and Lodi.",
+                "Wayne County - The townships of Arcadia, Galen, Lyons, and Savannah.",
+                "Yates County - All the townships."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, meet the education and algebra requirement, live within the Local Union #840 jurisdiction, have a valid NYS driver’s license and reliable transportation, pass an aptitude test, physical, and drug test, and attend required classes.",
+              "contactName": "Geneva Electrical JATC Local Union #840",
+              "contactPhone": "(315) 789-3330",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Geneva Electrical JATC Local Union #840 for further information at (315) 789-3330."
+            },
+            {
+              "id": "geneva-electrical-jatc-local-840-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/geneva-electrical-jatc-local-840-1",
+              "sourceTitle": "Geneva Electrical JATC Local # 840",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Geneva Electrical Joint Apprenticeship and Training Committee, Local Union #840",
+              "unionName": "IBEW Local Union #840",
+              "locationSummary": "Geneva, NY area and Local Union #840 jurisdiction",
+              "regions": [
+                "Central New York",
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2026-09-11",
+              "recruitmentEndDate": "2027-09-10",
+              "applicationStartDate": "2026-09-11",
+              "applicationEndDate": "2027-09-10",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain and complete the application in person at IBEW Local Union #840 in Geneva during the recruitment period, then submit it by September 10, 2027 at 4:30 p.m. A $10 testing fee is required, with waivers available for verified financial need.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "IBEW Local Union #840, 1401 Routes 5 & 20, Geneva, NY",
+              "applicationMailingAddress": null,
+              "applicationHours": "8:00 a.m. to 4:30 p.m., Monday through Friday, except legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 10,
+              "applicationFeeDetails": "A $10.00 testing fee is due at the time of application. Applicants may request a fee waiver, which may be approved with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, plus one year of algebra with a passing grade. Proof of education is required after selection and before enrollment.",
+              "residencyRequirement": "Must reside within the geographic jurisdiction of Local Union #840: Cayuga County (all townships except Genoa, Ira, Sterling, Victory, Locke, Sempronius, and Summerhill); Onondaga County (Elbridge and Skaneateles); Ontario County (Canandaigua, Farmington, Geneva, Gorham, Hopewell, Manchester, Phelps, and Seneca); Seneca County (all townships except Covert and Lodi); Wayne County (Arcadia, Galen, Lyons, and Savannah); and Yates County (all townships).",
+              "transportationRequirement": "Must have a valid New York State driver’s license, reliable transportation to and from job sites and required classes, and be able to operate company vehicles.",
+              "drugTestRequirement": "Must pass a physical examination and drug test after selection and before enrollment, at the sponsor’s expense.",
+              "classRequirement": "Must be willing and able to attend all classroom instruction at the approved school as required to complete the apprenticeship.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have one year of algebra with a passing grade.",
+                "Proof of education is required after selection and prior to enrollment in the apprenticeship.",
+                "Must pass a physical examination and drug test after selection and prior to enrollment in the apprenticeship.",
+                "Physical ability to perform electrician work, including climbing and working off scaffolds, ladders, poles, and towers of various heights.",
+                "Physical ability to crawl and work in confined spaces such as attics and manholes.",
+                "Must take and pass the NJATC Electrical Aptitude Test and obtain a score of at least four out of nine.",
+                "Must possess a valid New York State driver’s license in order to operate company vehicles.",
+                "Must be willing and able to attend all classroom instruction at the approved school as required to complete the apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Apprentices must furnish their own hand tools as appropriate for the trade; estimated cost is approximately $300 by the end of the program.",
+                "Must be able to read English and hear and understand verbal instructions and warnings given in English.",
+                "Must reside within the geographic jurisdiction of Local Union #840: Cayuga County (all townships except Genoa, Ira, Sterling, Victory, Locke, Sempronius, and Summerhill); Onondaga County (Elbridge and Skaneateles); Ontario County (Canandaigua, Farmington, Geneva, Gorham, Hopewell, Manchester, Phelps, and Seneca); Seneca County (all townships except Covert and Lodi); Wayne County (Arcadia, Galen, Lyons, and Savannah); and Yates County (all townships)."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent with one year of algebra, pass aptitude and physical/drug testing, have a valid NYS driver’s license and reliable transportation, and live within Local Union #840’s jurisdiction.",
+              "contactName": "Geneva Electrical JATC Local Union #840",
+              "contactPhone": "(315) 789-3330",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact Geneva Electrical JATC Local Union #840 at (315) 789-3330."
+            }
+          ]
         },
         {
           "programAk": 311,
@@ -1150,7 +1282,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 394,
@@ -1169,7 +1302,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 435,
@@ -1188,7 +1322,62 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "usis-electric-inc-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/usis-electric-inc",
+              "sourceTitle": "USIS Electric, Inc.",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 24,
+              "sponsorName": "USIS Electric, Inc.",
+              "unionName": null,
+              "locationSummary": "Pearl River, NY; recruitment for the Hudson Valley, Long Island, and New York City regions",
+              "regions": [
+                "Hudson Valley",
+                "Long Island",
+                "New York City"
+              ],
+              "recruitmentStartDate": "2026-05-11",
+              "recruitmentEndDate": "2027-05-07",
+              "applicationStartDate": "2026-05-11",
+              "applicationEndDate": "2027-05-07",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Apply in person at USIS Electric, Inc. in Pearl River during the recruitment period, Monday through Friday from 9:00 a.m. to 12:00 p.m. and 1:00 p.m. to 4:00 p.m., excluding legal holidays. Applications must be received by May 7, 2027.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "USIS Electric, Inc., 35 West Jefferson Avenue, Pearl River, NY 10965",
+              "applicationMailingAddress": null,
+              "applicationHours": "Monday through Friday, 9:00 a.m. to 12:00 p.m. and 1:00 p.m. to 4:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED), including one year of high school algebra.",
+              "residencyRequirement": "Must be a resident of Orange, Putnam, Rockland, or Westchester counties in New York, or Bergen County, New Jersey.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), including one year of high school algebra.",
+                "Must verbally attest to being physically able to perform the work of an Electrician, including lifting up to 50 pounds, carrying 25 pounds, climbing ladders, pulling cable, and standing 90% of the time and sitting approximately 10%.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must be a resident of Orange, Putnam, Rockland, and Westchester counties of New York or Bergen County in New Jersey."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency with one year of algebra, have reliable transportation, live in the eligible counties, and be physically able to perform electrician work.",
+              "contactName": "USIS Electric, Inc.",
+              "contactPhone": "(845) 358-7755",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact USIS Electric, Inc. at (845) 358-7755 for further information."
+            }
+          ]
         },
         {
           "programAk": 717,
@@ -1207,7 +1396,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 744,
@@ -1226,7 +1416,59 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "rondout-electric-inc-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/rondout-electric-inc",
+              "sourceTitle": "Rondout Electric, Inc.",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Rondout Electric, Inc.",
+              "unionName": null,
+              "locationSummary": "Highland, NY",
+              "regions": [
+                "Hudson Valley"
+              ],
+              "recruitmentStartDate": "2025-09-02",
+              "recruitmentEndDate": "2026-09-01",
+              "applicationStartDate": "2025-09-02",
+              "applicationEndDate": "2026-09-01",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain and submit applications in person at Rondout Electric, Inc. in Highland during the recruitment period.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Rondout Electric, Inc., 225 Upper North Road, Highland, NY 12528",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 4:00 p.m., Monday through Friday, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma, such as TASC or GED.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must possess a valid driver’s license; apprentices may be required to operate company vehicles on public roads.",
+              "drugTestRequirement": null,
+              "classRequirement": null,
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must possess a valid driver’s license.",
+                "Apprentices may be required to operate company vehicles on public roads."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, and hold a valid driver’s license.",
+              "contactName": "Rondout Electric, Inc.",
+              "contactPhone": "(845) 471-4810",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Rondout Electric, Inc. at (845) 471-4810 for further information."
+            }
+          ]
         },
         {
           "programAk": 877,
@@ -1245,7 +1487,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 961,
@@ -1264,7 +1507,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 1177,
@@ -1283,7 +1527,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 1201,
@@ -1302,7 +1547,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 1505,
@@ -1321,7 +1567,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 1540,
@@ -1340,7 +1587,66 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "central-new-york-electrical-training-alliance-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/central-new-york-electrical-training-alliance-1",
+              "sourceTitle": "Central New York Electrical Training Alliance",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 25,
+              "sponsorName": "Central New York Electrical Training Alliance",
+              "unionName": null,
+              "locationSummary": "Clay, NY; recruitment for the Central, Finger Lakes, Mohawk Valley, and Southern Tier regions of New York",
+              "regions": [
+                "Central New York",
+                "Finger Lakes",
+                "Mohawk Valley",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-07-01",
+              "recruitmentEndDate": "2027-06-30",
+              "applicationStartDate": "2026-07-01",
+              "applicationEndDate": "2027-06-30",
+              "applicationMethods": [
+                "online_application",
+                "appointment_required"
+              ],
+              "applicationSummary": "Apply online at cnyeta.org during the recruitment period. Applicants without computer access may call to schedule use of a computer at the training center in Clay.",
+              "applicationWebsite": "https://www.cnyeta.org",
+              "applicationEmail": null,
+              "applicationPhone": "(315) 546-0221",
+              "applicationInPersonAddress": "4566 Waterhouse Road, Clay, NY 13041",
+              "applicationMailingAddress": null,
+              "applicationHours": "Mondays through Fridays, 8:00 a.m. to 12:00 p.m. and 1:00 p.m. to 5:00 p.m.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 20,
+              "applicationFeeDetails": "Applicants must take the American Institute for Research Electrical Aptitude Test and pay a $20 fee. Fee waivers may be requested and will be approved with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED), including one year of Algebra, Math Course 1, or High School Regents Math. Proof is required at time of appointment.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various work sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug test at the sponsor’s expense at the time of appointment.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), including one year of Algebra, Math Course 1, or High School Regents Math. Proof will be required at time of appointment.",
+                "Must take the American Institute for Research’s Electrical Aptitude Test and pay a $20 fee. Fee waivers may be approved with verifiable proof of financial need.",
+                "Must attest in writing that they are physically able to perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights and working in confined spaces.",
+                "Must pass a drug test, at the expense of the sponsor, at the time of appointment.",
+                "Must be able to read, hear and understand instructions and warnings given in English.",
+                "Must have reliable transportation to and from various work sites and required classes at the approved school."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent with required math coursework, pass the aptitude test, be physically able to do the work, pass a drug test, understand English instructions, and have reliable transportation.",
+              "contactName": "Central New York Electrical Training Alliance",
+              "contactPhone": "(315) 546-0221",
+              "contactEmail": null,
+              "contactWebsite": "https://www.cnyeta.org",
+              "contactSummary": "Contact the Central New York Electrical Training Alliance for further information at (315) 546-0221."
+            }
+          ]
         },
         {
           "programAk": 1735,
@@ -1359,7 +1665,67 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "rochester-electrical-jatc-lu-86-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/rochester-electrical-jatc-lu-86-1",
+              "sourceTitle": "Rochester Electrical JATC LU# 86",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 25,
+              "sponsorName": "Rochester Electrical JATC Local Union #86",
+              "unionName": "Rochester Electrical Local Union #86",
+              "locationSummary": "Rochester, NY area; Local Union #86 geographic jurisdiction",
+              "regions": [
+                "Finger Lakes",
+                "New York City"
+              ],
+              "recruitmentStartDate": "2026-04-01",
+              "recruitmentEndDate": "2027-03-31",
+              "applicationStartDate": "2026-04-01",
+              "applicationEndDate": "2027-03-31",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at www.ibewlu86.org during the recruitment period. Applications must be received by March 31, 2027, and a $10 testing fee is due at application unless waived for financial need.",
+              "applicationWebsite": "https://www.ibewlu86.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": null,
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 10,
+              "applicationFeeDetails": "A $10.00 testing fee is due at the time of application. The fee may be waived upon request with verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, including one year of algebra with a passing grade.",
+              "residencyRequirement": "Must live within the geographic jurisdiction of Local Union #86, including specified areas of Genesee, Livingston, Monroe, Ontario, Orleans, Wayne, and Wyoming counties.",
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must be physically able to perform the work, as determined by a physical exam and drug test at the sponsor's expense after selection and before enrollment.",
+              "classRequirement": "Must be willing and able to attend all classes required to complete the apprenticeship.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), including one year of algebra with a passing grade.",
+                "Apprentices must furnish their own tools. Estimated total cost of tools is $200 to start and $1,000 by the end of the program.",
+                "Must be physically able to perform the work required as determined by a physical exam and drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must be able to climb, and work from ladders and scaffolds of various lengths and heights.",
+                "Must be able to crawl and work in confined spaces, such as attics, manholes, and crawl spaces.",
+                "Must live within the geographic jurisdiction of Local Union #86, including: Genesee County townships of Batavia, Bergen, Bethany, Byron, Le Roy, Elba, Pavilion, and Stafford; Livingston County: all of Livingston County; Monroe County: all of Monroe County; Ontario County townships of Bristol, Canadice, Naples, West Bloomfield, Richmond, South Bristol, East Bloomfield, and Victor; Orleans County townships of Clarendon, Kendall, and Murray; Wayne County townships of Macedon, Marion, Ontario, Palmyra, Sodus, Walworth, and Williamson; Wyoming County townships of Castile, Covington, Gainesville, Genesee Falls, Middlebury, Perry, Pike, and Warsaw.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must be willing and able to attend all classes, as required to complete the apprenticeship.",
+                "Must be able to write, read, hear and understand verbal and written instructions and warnings given in English.",
+                "Must take and obtain a score of four or higher, out of a possible nine points, on the NJATC Electrical Aptitude Test."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent with one year of algebra, live in the Local Union #86 jurisdiction, have reliable transportation, and be able to pass a physical/drug test and the NJATC aptitude test.",
+              "contactName": "Rochester Electrical JATC Local Union #86",
+              "contactPhone": "(585) 235-5050",
+              "contactEmail": null,
+              "contactWebsite": "https://www.ibewlu86.org",
+              "contactSummary": "Contact Rochester Electrical JATC Local Union #86 at (585) 235-5050 for further information. Applications are available online at www.ibewlu86.org."
+            }
+          ]
         },
         {
           "programAk": 1775,
@@ -1378,7 +1744,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2150,
@@ -1397,7 +1764,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2245,
@@ -1416,7 +1784,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2450,
@@ -1435,7 +1804,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2696,
@@ -1454,7 +1824,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2704,
@@ -1473,7 +1844,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2861,
@@ -1492,7 +1864,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2951,
@@ -1511,7 +1884,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 3802,
@@ -1530,7 +1904,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 3971,
@@ -1549,7 +1924,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4241,
@@ -1568,7 +1944,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4509,
@@ -1587,7 +1964,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4577,
@@ -1606,7 +1984,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4667,
@@ -1625,7 +2004,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4719,
@@ -1644,7 +2024,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4788,
@@ -1663,7 +2044,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 4795,
@@ -1682,7 +2064,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 5552,
@@ -1701,7 +2084,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 5788,
@@ -1720,7 +2104,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 5870,
@@ -1739,7 +2124,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6342,
@@ -1758,7 +2144,257 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-buffalo-lu-41-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-0",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Electricians, LU #41",
+              "locationSummary": "Orchard Park, NY area",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-30",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Pick up an application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., complete it, and mail it within 30 days of pickup. All applications must be received by September 30, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "1:00 p.m. to 5:00 p.m. every Wednesday during the recruitment period, except November 26, 2025, December 24, 2025, and December 31, 2025.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "High school diploma or high school equivalency diploma (such as TASC or GED) plus one full year of high school algebra or a post-high-school algebra course; an associate degree or higher is accepted in lieu. Applicants with at least 4,000 hours of substantiated electrical construction experience may not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; in Cattaraugus County, the townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; in Genesee County, the townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and in Wyoming County, the townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes, and a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays the cost.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required after selection and prior to enrollment.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). Applicants must have successfully completed one full year of high school algebra or a post-high school algebra course. Proof will be required after selection and prior to enrollment.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician trade who can verify having a minimum of 4,000 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above. Proof will be required after selection and prior to enrollment.",
+                "Must take and pass the Electrical Trades aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Jurisdiction includes all of Erie County; Cattaraugus County townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; Genesee County townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and Wyoming County townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be 18+, meet the diploma/algebra requirement unless they have 4,000 hours of qualifying experience, pass an aptitude test, have reliable transportation and a valid NYS driver’s license, attend required classes, pass a drug test, and live within LU #41’s jurisdiction.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact Electricians LU #41 at (716) 662-6111."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-0-electrician-housewire-or-residential-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-0",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician (Housewire or Residential) Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Electricians, LU #41",
+              "locationSummary": "Orchard Park, NY area",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-30",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Pick up an application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., complete it, and mail it within 30 days of pickup. All applications must be received by September 30, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "1:00 p.m. to 5:00 p.m. every Wednesday during the recruitment period, except November 26, 2025, December 24, 2025, and December 31, 2025.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "High school diploma or high school equivalency diploma (such as TASC or GED) plus one full year of high school algebra or a post-high-school algebra course; an associate degree or higher is accepted in lieu. Applicants with at least 2,400 hours of substantiated electrical construction experience may not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; in Cattaraugus County, the townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; in Genesee County, the townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and in Wyoming County, the townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes, and a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays the cost.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required after selection and prior to enrollment.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). Applicants must have successfully completed one full year of high school algebra or a post-high school algebra course. Proof will be required after selection and prior to enrollment.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician (Housewire or Residential) trade who can verify having a minimum of 2,400 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above. Proof will be required after selection and prior to enrollment.",
+                "Must take and pass the Electrical Trades aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Jurisdiction includes all of Erie County; Cattaraugus County townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; Genesee County townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and Wyoming County townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be 18+, meet the diploma/algebra requirement unless they have 2,400 hours of qualifying experience, pass an aptitude test, have reliable transportation and a valid NYS driver’s license, attend required classes, pass a drug test, and live within LU #41’s jurisdiction.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact Electricians LU #41 at (716) 662-6111."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-1",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Local Union #41",
+              "locationSummary": "Orchard Park, NY",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-10-07",
+              "recruitmentEndDate": "2027-09-29",
+              "applicationStartDate": "2026-10-07",
+              "applicationEndDate": "2027-09-29",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Obtain the application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., then mail the completed application within 30 days of pickup.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Electricians LU #41, S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "Applications available in person only every Wednesday from 1:00 p.m. to 5:00 p.m. during the recruitment period, except November 25, 2026, December 23, 2026, and December 30, 2026.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma and one full year of high school algebra or a post-high school algebra course. An associate degree or higher may be accepted instead. Applicants with at least 4,000 hours of substantiated electrical construction experience do not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; specified townships in Cattaraugus, Genesee, and Wyoming counties; and certain portions of Batavia and Elba.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes, and must have a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment, at the sponsor’s expense.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have successfully completed one full year of high school algebra or a post-high school algebra course.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician trade who can verify at least 4,000 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above.",
+                "Must take and pass the Electrical Trades’ aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. The jurisdiction includes all of Erie County; specified townships in Cattaraugus County; specified townships and portions of Batavia and Elba in Genesee County; and specified townships in Wyoming County.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, meet the education or experience requirement, pass an aptitude test, be able to work safely and understand English instructions, live within LU #41 jurisdiction, have reliable transportation and a valid driver’s license, attend classes, and pass a sponsor-paid drug test.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians, LU #41 at (716) 662-6111 for further information."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-1-electrician-housewire-or-residential-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-1",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician (Housewire or Residential) Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Local Union #41",
+              "locationSummary": "Orchard Park, NY",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-10-07",
+              "recruitmentEndDate": "2027-09-29",
+              "applicationStartDate": "2026-10-07",
+              "applicationEndDate": "2027-09-29",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Obtain the application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., then mail the completed application within 30 days of pickup.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Electricians LU #41, S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "Applications available in person only every Wednesday from 1:00 p.m. to 5:00 p.m. during the recruitment period, except November 25, 2026, December 23, 2026, and December 30, 2026.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma and one full year of high school algebra or a post-high school algebra course. An associate degree or higher may be accepted instead. Applicants with at least 2,400 hours of substantiated electrical construction experience do not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; specified townships in Cattaraugus, Genesee, and Wyoming counties; and certain portions of Batavia and Elba.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes, and must have a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment, at the sponsor’s expense.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have successfully completed one full year of high school algebra or a post-high school algebra course.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician (Housewire or Residential) trade who can verify at least 2,400 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above.",
+                "Must take and pass the Electrical Trades’ aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. The jurisdiction includes all of Erie County; specified townships in Cattaraugus County; specified townships and portions of Batavia and Elba in Genesee County; and specified townships in Wyoming County.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, meet the education or experience requirement, pass an aptitude test, be able to work safely and understand English instructions, live within LU #41 jurisdiction, have reliable transportation and a valid driver’s license, attend classes, and pass a sponsor-paid drug test.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians, LU #41 at (716) 662-6111 for further information."
+            }
+          ]
         },
         {
           "programAk": 6390,
@@ -1777,7 +2413,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6441,
@@ -1796,7 +2433,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6592,
@@ -1815,7 +2453,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6790,
@@ -1834,7 +2473,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6951,
@@ -1853,7 +2493,67 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-watertown-local-910-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-watertown-local-910-0",
+              "sourceTitle": "Electricians JAC Watertown Local # 910",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 20,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Electricians of Watertown, Local Union #910",
+              "unionName": "Local Union #910",
+              "locationSummary": "Watertown, NY area",
+              "regions": [
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-15",
+              "recruitmentEndDate": "2027-04-14",
+              "applicationStartDate": "2026-05-15",
+              "applicationEndDate": "2027-02-28",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application"
+              ],
+              "applicationSummary": "Apply online at ibew910.org/ejatc/ or complete an application in person at the Watertown or Plattsburgh locations during the recruitment period. Upload your high school transcript and current resume with the online application, and bring a current resume when applying in person.",
+              "applicationWebsite": "http://ibew910.org/ejatc/",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Electricians JATC of Watertown, Local Union #910, 25001 Water Street, Watertown, NY 13601; or 28 New York Road, Plattsburgh, NY",
+              "applicationMailingAddress": null,
+              "applicationHours": "Watertown: 10:00 a.m. to 3:00 p.m. Plattsburgh: 8:00 a.m. to 11:00 a.m. on the first Monday of each month, excluding legal holidays, during the recruitment period. If the first Monday is a legal holiday, applications are accepted the second Monday.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, plus two full years of high school math, including Algebra or post-high school algebra. Education proof is not required if the applicant can verify qualifying trade-related experience.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various work sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a physical exam, including a drug screening, after selection and before enrollment. The exam is at the sponsor's expense.",
+              "classRequirement": "Must attend required classes at the approved school. Trade experience substitutions may include three years of required classes at the approved school and 4,500 hours of on-the-job training in a non-IBEW/NECA NYS Registered electrical construction apprenticeship program.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have successfully completed two full years of high school math, one of which must be Algebra or post-high school algebra.",
+                "Applicants who can verify any of the following trade-related experience do not need the proof of education noted above: 8,000 hours specifically in the electrical construction trade; 4,500 hours as a residential wireman under an IBEW/NECA Local collective bargaining agreement; or three years of required classes at the approved school and 4,500 hours of on-the-job training as an enrolled apprentice in a NYS Registered electrical construction apprenticeship program not sponsored by IBEW/NECA.",
+                "Must pass a physical exam, including a drug screening, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must attest in writing that they are physically able to perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings in English.",
+                "Must have reliable transportation to and from various work sites and required classes at the approved school. Proof will be required after an offer of employment.",
+                "Must pass the Electrical trade's aptitude test and bring a picture ID for admission to the test.",
+                "Must be legally eligible to work in the USA.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalent with two years of high school math, pass an aptitude test and physical/drug screening, and have reliable transportation. Trade experience may substitute for the education requirement.",
+              "contactName": "Electricians JATC of Watertown, Local Union #910",
+              "contactPhone": "(315) 782-1675",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact Electricians JATC of Watertown, Local Union #910 at (315) 782-1675."
+            }
+          ]
         },
         {
           "programAk": 7235,
@@ -1872,7 +2572,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 7431,
@@ -1891,7 +2592,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 7936,
@@ -1910,7 +2612,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8019,
@@ -1929,7 +2632,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8495,
@@ -1948,7 +2652,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8606,
@@ -1967,7 +2672,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8657,
@@ -1986,7 +2692,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8795,
@@ -2005,7 +2712,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8941,
@@ -2024,7 +2732,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9121,
@@ -2043,7 +2752,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9354,
@@ -2062,7 +2772,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9578,
@@ -2081,7 +2792,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9801,
@@ -2100,7 +2812,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9884,
@@ -2119,7 +2832,69 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-elmira-lu-139-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-elmira-lu-139-0",
+              "sourceTitle": "Electricians JAC of Elmira LU #139",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Electricians JAC of Elmira Local Union #139",
+              "unionName": "Local Union #139",
+              "locationSummary": "Southern Tier and Western regions of New York; based in Elmira",
+              "regions": [
+                "Finger Lakes",
+                "Hudson Valley",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-01-09",
+              "recruitmentEndDate": "2027-01-08",
+              "applicationStartDate": "2026-01-09",
+              "applicationEndDate": "2027-01-08",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Get applications in person at Electricians JAC of Elmira Local Union #139 in Elmira on the second Friday of each month during the recruitment period, then complete and submit them on-site by January 8, 2027.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": "(607) 732-1237",
+              "applicationInPersonAddress": "Electricians JAC of Elmira Local Union #139, 415 West Second Street, Elmira, NY 14901",
+              "applicationMailingAddress": null,
+              "applicationHours": "8:30 a.m. to 3:30 p.m. on the second Friday of each month during the recruitment period, excluding legal holidays",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at time of application; selected applicants must be at least 18.",
+              "educationRequirement": "High school diploma or high school equivalency diploma (such as TASC or GED), plus one year of high school algebra or one post-high-school algebra course with a passing grade.",
+              "residencyRequirement": "Must have lived for at least six months within Local Union #139's jurisdiction, including all of Chemung and Steuben counties; specified townships in Allegany, Schuyler, and Tioga counties.",
+              "transportationRequirement": "Must have a valid NYS driver's license to operate company vehicles and reliable transportation to job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a physical exam and drug test after selection and before enrollment; the sponsor pays the expense.",
+              "classRequirement": "Must attend required classes at the approved school and be able to travel to them.",
+              "allRequirements": [
+                "Must be at least 17 years old at time of application; applicants selected for hire must be at least 18 years of age.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED) with completion of one year of high school algebra or one post-high school algebra course with a passing grade.",
+                "Must provide an official transcript for high school and post-high school education, and evidence of completion of algebra, after selection and prior to enrollment in apprenticeship.",
+                "Must pass a physical exam and a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must attest that they are physically able to perform the work of the trade, including climbing and working from ladders, scaffolds, poles, and towers of various heights; crawling and working in confined spaces such as attics, manholes, and crawlspaces; lifting a minimum of 50 pounds; and working outdoors year-round in all weather conditions.",
+                "Must reside, for at least six months, within the geographic jurisdiction of Local Union #139, including all of Chemung County; all of Steuben County; in Allegany County the townships of Allen, Almond, Alfred, Andover, Birdsall, Burns, Granger, Grove, Hume, Independence, Ward, Wellsville, West Almond, and Willing, plus portions of Amity, Angelica, Belfast, Caneadea, and Scio townships east of the Genesee River; in Schuyler County the townships of Dix, Montour, Orange, Reading, and Tyrone; and in Tioga County the townships of Barton and Nichols.",
+                "Must have a valid NYS driver's license in order to operate company vehicles.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must qualify for an interview based on the Electrical trade aptitude test by scoring 4 or higher out of a total score of 9.",
+                "Must be able to hear and understand verbal instructions and warnings given in English.",
+                "Must provide DD-214, if applicable, after selection and prior to enrollment in apprenticeship, to verify military training and/or experience to receive consideration for such training and/or experience."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, meet the education and algebra requirement, live in the union's jurisdiction for at least six months, and have a valid NYS driver's license, reliable transportation, and the ability to pass the aptitude test, physical, and drug test.",
+              "contactName": "Electricians JAC of Elmira Local Union #139",
+              "contactPhone": "(607) 732-1237",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians JAC of Elmira Local Union #139 at (607) 732-1237 for more information."
+            }
+          ]
         },
         {
           "programAk": 10070,
@@ -2138,7 +2913,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 10339,
@@ -2157,7 +2933,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 10648,
@@ -2176,7 +2953,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 10780,
@@ -2195,7 +2973,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11143,
@@ -2214,7 +2993,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11244,
@@ -2233,7 +3013,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11623,
@@ -2252,7 +3033,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11643,
@@ -2271,7 +3053,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11682,
@@ -2290,7 +3073,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11712,
@@ -2309,7 +3093,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11845,
@@ -2328,7 +3113,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11921,
@@ -2347,7 +3133,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 11987,
@@ -2366,7 +3153,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12070,
@@ -2385,7 +3173,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12199,
@@ -2404,7 +3193,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12225,
@@ -2423,7 +3213,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12361,
@@ -2442,7 +3233,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12541,
@@ -2461,7 +3253,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12758,
@@ -2480,7 +3273,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12885,
@@ -2499,7 +3293,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12949,
@@ -2518,7 +3313,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13041,
@@ -2537,7 +3333,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13155,
@@ -2556,7 +3353,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13213,
@@ -2575,7 +3373,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13377,
@@ -2594,7 +3393,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13493,
@@ -2613,7 +3413,68 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-binghamton-ibew-lu-325-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-binghamton-ibew-lu-325-1",
+              "sourceTitle": "Electricians JAC Binghamton IBEW LU# 325",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 15,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #325",
+              "unionName": "IBEW Local Union #325",
+              "locationSummary": "Binghamton, NY area and Local Union #325 jurisdiction",
+              "regions": [
+                "Capital Region",
+                "Mohawk Valley",
+                "North Country",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-08-01",
+              "recruitmentEndDate": "2027-07-31",
+              "applicationStartDate": "2026-08-01",
+              "applicationEndDate": "2027-07-31",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at www.ibew325.net any time during the recruitment period. You must also pass the Electrical Trades Aptitude Test and pay the $22 testing fee by the deadline.",
+              "applicationWebsite": "http://www.ibew325.net",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "IBEW Local 325 JATC, 142 Corporate Drive, Binghamton, NY 13904",
+              "applicationMailingAddress": "IBEW Local 325 JATC, 142 Corporate Drive, Binghamton, NY 13904",
+              "applicationHours": null,
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 22,
+              "applicationFeeDetails": "A $22.00 Electrical Trades Aptitude Test fee is required and must be received two weeks before the day of the test. Fee waivers are available with verifiable proof of financial need. Pay by check or money order payable to IBEW Local 325 JATC. Cash is accepted only if paid in person. Payments must be mailed or hand-delivered to IBEW Local 325 JATC, 142 Corporate Drive, Binghamton, NY 13904.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as GED or TASC. Proof is required after selection and before enrollment.",
+              "residencyRequirement": "Must have lived for at least six months within Local Union #325 jurisdiction, including Broome County; parts of Chenango, Delaware, Otsego, and Tioga counties.",
+              "transportationRequirement": "Must have reliable transportation to and from work and required classes, and must have a valid New York State driver’s license. Apprentices may be required to operate company vehicles.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or high school equivalency diploma such as TASC or GED. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must be physically able to perform the work required as determined by a physician of the JATC’s choice, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Electrician work may include climbing and working from ladders, scaffolds, poles, or towers of various heights.",
+                "Electrician work may include crawling and working in confined spaces such as attics, manholes, and crawlspaces.",
+                "Must be able to read, hear, and understand instructions and warnings.",
+                "Must be a resident for at least six months within the jurisdiction of Local Union #325, including Broome County; Chenango County townships of Afton, Bainbridge, Coventry, German, Greene, Guilford, Lincklaen, McDonough, North Norwich, Norwich, Otselic, Oxford, Pharslia, Pitcher, Plymouth, Preston, Smithville, and Smyrna; Delaware County townships of Davenport, Delhi, Deposit, Franklin, Hamden, Masonville, Meredith, Sidney, Tompkins, Walton, and that portion of Colchester and Hancock north of the East Branch of the Delaware River; Otsego County townships of Butternuts, Harwick, Laurens, Maryland, Milford, Morris, Oneonta, Otego, Unadilla, and Westford; and Tioga County townships of Berkshire, Newark Valley, Owego, Richford, and Tioga.",
+                "Must have reliable transportation to and from work and required classes at the approved school.",
+                "Must possess a valid NYS driver’s license. Apprentices may be required to operate company vehicles.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be 18+, have a high school diploma or equivalent, live for at least six months in the Local 325 area, and have reliable transportation plus a valid NYS driver’s license. They must also be physically able to do the work, pass required aptitude testing, and attend classes.",
+              "contactName": "Local Union #325",
+              "contactPhone": "(607) 729-6171",
+              "contactEmail": null,
+              "contactWebsite": "http://www.ibew325.net",
+              "contactSummary": "Contact Local Union #325 at (607) 729-6171 for further information."
+            }
+          ]
         },
         {
           "programAk": 13617,
@@ -2632,7 +3493,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13684,
@@ -2651,7 +3513,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 13821,
@@ -2670,7 +3533,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 14343,
@@ -2689,7 +3553,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 14456,
@@ -2708,7 +3573,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 14695,
@@ -2727,7 +3593,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 14962,
@@ -2746,7 +3613,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15043,
@@ -2765,7 +3633,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15079,
@@ -2784,7 +3653,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15408,
@@ -2803,7 +3673,8 @@
           "programLength": 66,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15464,
@@ -2822,7 +3693,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15505,
@@ -2841,7 +3713,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15614,
@@ -2860,7 +3733,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15888,
@@ -2879,7 +3753,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15938,
@@ -2898,7 +3773,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16002,
@@ -2917,7 +3793,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16141,
@@ -2936,7 +3813,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16163,
@@ -2955,7 +3833,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16206,
@@ -2974,7 +3853,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16218,
@@ -2993,7 +3873,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16757,
@@ -3012,7 +3893,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17199,
@@ -3031,7 +3913,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17438,
@@ -3050,7 +3933,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17675,
@@ -3069,7 +3953,65 @@
           "programLength": 66,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "westchester-fairfield-jeatc-lu-3-ibew-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/westchester-fairfield-jeatc-lu-3-ibew-1",
+              "sourceTitle": "Westchester-Fairfield JEATC LU #3 IBEW",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 15,
+              "sponsorName": "Westchester-Fairfield Joint Electrical Apprenticeship Training Committee (WFJEATC)",
+              "unionName": "Local Union #3 IBEW",
+              "locationSummary": "White Plains, NY area",
+              "regions": [
+                "Hudson Valley"
+              ],
+              "recruitmentStartDate": "2026-07-01",
+              "recruitmentEndDate": "2027-06-30",
+              "applicationStartDate": "2026-07-01",
+              "applicationEndDate": "2027-06-30",
+              "applicationMethods": [
+                "email_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Request an application by email from July 1, 2026 through June 30, 2027, then mail the completed application to WFJEATC in White Plains. Applications must be postmarked by June 30, 2027. A $25 non-refundable fee applies, with a possible waiver for financial need.",
+              "applicationWebsite": null,
+              "applicationEmail": "[email protected]",
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": "WFJEATC, 200 Bloomingdale Road, White Plains, NY 10605",
+              "applicationHours": null,
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": 25,
+              "applicationFeeDetails": "Non-refundable $25 application fee. A fee waiver may be requested and will be approved upon showing verifiable proof of financial need.",
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must be a high school graduate or have a high school equivalency diploma such as a GED or TASC. Must have completed one year of algebra or one year of high school Regents Math. Proof of education and an official transcript are required with the application.",
+              "residencyRequirement": "Must have lived for the past two years within a 60-mile radius of White Plains, NY.",
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes, and must possess a valid driver's license to operate company vehicles.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must be a high school graduate or have a high school equivalency diploma such as a GED or TASC issued by an appropriate State education authority; home study diplomas are not acceptable.",
+                "Must have successfully completed one year of algebra or one year of high school Regents Math.",
+                "Proof of education and official transcript will be required upon submission of the application.",
+                "Must take and pass a physical exam by the physician of the JATC’s choice, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must be a resident for the past two years within a 60-mile radius of White Plains, NY.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must possess a valid driver's license in order to operate company vehicles.",
+                "Must take and pass the Electrical Trades Aptitude Test with a score of at least 6 out of 9 to qualify for the interview."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or GED/TASC with algebra or Regents Math, live within 60 miles of White Plains for the past two years, and have reliable transportation and a valid driver's license. They must also pass a physical exam and the aptitude test.",
+              "contactName": "WFJEATC, Local Union #3 IBEW",
+              "contactPhone": "(914) 946-0472",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact WFJEATC, Local Union #3 IBEW at (914) 946-0472 for further information."
+            }
+          ]
         },
         {
           "programAk": 17734,
@@ -3088,7 +4030,67 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-ithaca-241-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-ithaca-241-0",
+              "sourceTitle": "Electricians JAC of Ithaca #241",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 12,
+              "sponsorName": "Electricians Joint Apprenticeship and Training Committee of Ithaca",
+              "unionName": "Local Union #241",
+              "locationSummary": "Ithaca, NY area; Central, Finger Lakes, and Southern Tier regions",
+              "regions": [
+                "Central New York",
+                "Finger Lakes",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-04-01",
+              "recruitmentEndDate": "2027-03-31",
+              "applicationStartDate": "2026-04-01",
+              "applicationEndDate": "2027-03-31",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Get an application at Local Union #241 in Ithaca during the recruitment period and make sure it is received by March 31, 2027.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #241, 134 Cecil A. Malone Drive, Ithaca, NY 14850",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 2:00 p.m., Monday through Friday, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED) with one year of Elementary Algebra or Math I.",
+              "residencyRequirement": "Must have been employed or a resident of Local #241 jurisdiction for 1 year prior to recruitment. The jurisdiction includes Cayuga, Schuyler, Seneca, Tioga, and Tompkins counties, with additional township limits listed in the posting.",
+              "transportationRequirement": "Must have reliable transportation to commute to any jobsite within the union’s geographic area and to attend all related classroom training.",
+              "drugTestRequirement": "Must pass a drug/alcohol screening after acceptance, at the sponsor’s expense.",
+              "classRequirement": "Must have reliable transportation to attend all related classroom training as required.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED) with one year of Elementary Algebra or Math I.",
+                "An academic transcript will be required after acceptance into the program.",
+                "Must be physically able to perform the work required, as determined by a physical exam, at the expense of the sponsor, after acceptance into the program.",
+                "Must pass a drug/alcohol screening, at the expense of the sponsor, after acceptance into the program.",
+                "Must be able to climb and work from ladders, scaffolds, poles, or towers of various lengths and heights.",
+                "Must be willing and able to commute to any jobsite within the geographical jurisdiction of Local #241. The jurisdiction includes all of Tompkins County except Groton Township; Genoa Township in Cayuga County; Catherine, Cayuta, and Hector townships in Schuyler County; Covert and Lodi townships in Seneca County; and Candor and Spencer townships in Tioga County.",
+                "Must have reliable transportation to and willing to commute to any job site within the union’s geographic area.",
+                "Must have been employed or be a resident of Local #241 jurisdiction for 1 year prior to recruitment. The jurisdiction is the counties of Cayuga, Schuyler, Seneca, Tioga and Tompkins.",
+                "Must have reliable transportation to attend all related classroom training, as required."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency with one year of algebra/math, and meet physical, drug screening, transportation, and residency/work-history requirements.",
+              "contactName": "Electricians JAC Ithaca Local #241",
+              "contactPhone": "(607) 272-2809",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians JAC Ithaca Local #241 for further information at (607) 272-2809."
+            }
+          ]
         },
         {
           "programAk": 17745,
@@ -3107,7 +4109,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18094,
@@ -3126,7 +4129,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18158,
@@ -3145,7 +4149,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18249,
@@ -3164,7 +4169,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18592,
@@ -3183,7 +4189,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18640,
@@ -3202,13 +4209,14 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Electrician (Housewire or Residential)",
-      "displayTradeName": "Electrician",
+      "displayTradeName": "Electrician (Housewire or Residential)",
       "description": "A residential Electrician installs, connects, tests, and repairs wiring, outlets, switches, breaker panels, and light fixtures in houses and apartments. They read plans, run cable through walls and ceilings, use hand and power tools, and check that electrical systems work properly and meet safety codes. Their work keeps homes powered, safe, and working reliably every day.",
       "programCount": 2,
       "programs": [
@@ -3229,7 +4237,257 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": [
+            {
+              "id": "electricians-jac-buffalo-lu-41-0-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-0",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Electricians, LU #41",
+              "locationSummary": "Orchard Park, NY area",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-30",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Pick up an application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., complete it, and mail it within 30 days of pickup. All applications must be received by September 30, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "1:00 p.m. to 5:00 p.m. every Wednesday during the recruitment period, except November 26, 2025, December 24, 2025, and December 31, 2025.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "High school diploma or high school equivalency diploma (such as TASC or GED) plus one full year of high school algebra or a post-high-school algebra course; an associate degree or higher is accepted in lieu. Applicants with at least 4,000 hours of substantiated electrical construction experience may not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; in Cattaraugus County, the townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; in Genesee County, the townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and in Wyoming County, the townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes, and a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays the cost.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required after selection and prior to enrollment.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). Applicants must have successfully completed one full year of high school algebra or a post-high school algebra course. Proof will be required after selection and prior to enrollment.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician trade who can verify having a minimum of 4,000 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above. Proof will be required after selection and prior to enrollment.",
+                "Must take and pass the Electrical Trades aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Jurisdiction includes all of Erie County; Cattaraugus County townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; Genesee County townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and Wyoming County townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be 18+, meet the diploma/algebra requirement unless they have 4,000 hours of qualifying experience, pass an aptitude test, have reliable transportation and a valid NYS driver’s license, attend required classes, pass a drug test, and live within LU #41’s jurisdiction.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact Electricians LU #41 at (716) 662-6111."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-0-electrician-housewire-or-residential-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-0",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician (Housewire or Residential) Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Electricians, LU #41",
+              "locationSummary": "Orchard Park, NY area",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-30",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Pick up an application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., complete it, and mail it within 30 days of pickup. All applications must be received by September 30, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "1:00 p.m. to 5:00 p.m. every Wednesday during the recruitment period, except November 26, 2025, December 24, 2025, and December 31, 2025.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "High school diploma or high school equivalency diploma (such as TASC or GED) plus one full year of high school algebra or a post-high-school algebra course; an associate degree or higher is accepted in lieu. Applicants with at least 2,400 hours of substantiated electrical construction experience may not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; in Cattaraugus County, the townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; in Genesee County, the townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and in Wyoming County, the townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes, and a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays the cost.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required after selection and prior to enrollment.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). Applicants must have successfully completed one full year of high school algebra or a post-high school algebra course. Proof will be required after selection and prior to enrollment.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician (Housewire or Residential) trade who can verify having a minimum of 2,400 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above. Proof will be required after selection and prior to enrollment.",
+                "Must take and pass the Electrical Trades aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Jurisdiction includes all of Erie County; Cattaraugus County townships of Ashford, East Otto, Ellicottville, Farmersville, Franklinville, Freedom, Lyndon, Machias, Mansfield, New Albion, Otto, Perrysburg, Persia, and Yorkshire; Genesee County townships of Alabama, Alexander, Darien, Oakfield, and Pembroke, plus portions of Batavia and Elba west of Little Tonawanda Creek and Tonawanda Creek, the City limits of Batavia, and State Highway 98 north of the City of Batavia; and Wyoming County townships of Arcade, Attica, Bennington, Eagle, Java, Orangeville, Sheldon, and Wethersfield.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be 18+, meet the diploma/algebra requirement unless they have 2,400 hours of qualifying experience, pass an aptitude test, have reliable transportation and a valid NYS driver’s license, attend required classes, pass a drug test, and live within LU #41’s jurisdiction.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact Electricians LU #41 at (716) 662-6111."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-1-electrician-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-1",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Local Union #41",
+              "locationSummary": "Orchard Park, NY",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-10-07",
+              "recruitmentEndDate": "2027-09-29",
+              "applicationStartDate": "2026-10-07",
+              "applicationEndDate": "2027-09-29",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Obtain the application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., then mail the completed application within 30 days of pickup.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Electricians LU #41, S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "Applications available in person only every Wednesday from 1:00 p.m. to 5:00 p.m. during the recruitment period, except November 25, 2026, December 23, 2026, and December 30, 2026.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma and one full year of high school algebra or a post-high school algebra course. An associate degree or higher may be accepted instead. Applicants with at least 4,000 hours of substantiated electrical construction experience do not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; specified townships in Cattaraugus, Genesee, and Wyoming counties; and certain portions of Batavia and Elba.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes, and must have a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment, at the sponsor’s expense.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have successfully completed one full year of high school algebra or a post-high school algebra course.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician trade who can verify at least 4,000 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above.",
+                "Must take and pass the Electrical Trades’ aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. The jurisdiction includes all of Erie County; specified townships in Cattaraugus County; specified townships and portions of Batavia and Elba in Genesee County; and specified townships in Wyoming County.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, meet the education or experience requirement, pass an aptitude test, be able to work safely and understand English instructions, live within LU #41 jurisdiction, have reliable transportation and a valid driver’s license, attend classes, and pass a sponsor-paid drug test.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians, LU #41 at (716) 662-6111 for further information."
+            },
+            {
+              "id": "electricians-jac-buffalo-lu-41-1-electrician-housewire-or-residential-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/electricians-jac-buffalo-lu-41-1",
+              "sourceTitle": "Electricians JAC Buffalo LU #41",
+              "jobTitle": "Electrician (Housewire or Residential) Apprentice",
+              "socCode": "47-2111.00",
+              "numberOfOpenings": 4,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Electricians, Local Union #41",
+              "unionName": "Local Union #41",
+              "locationSummary": "Orchard Park, NY",
+              "regions": [
+                "Finger Lakes",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-10-07",
+              "recruitmentEndDate": "2027-09-29",
+              "applicationStartDate": "2026-10-07",
+              "applicationEndDate": "2027-09-29",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Obtain the application in person at Electricians LU #41 on Wednesdays from 1:00 p.m. to 5:00 p.m., then mail the completed application within 30 days of pickup.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Electricians LU #41, S. 3546 California Road, Orchard Park, NY",
+              "applicationMailingAddress": "Recruitment, Electrical Industry Education Fund, S. 3546 California Road, Orchard Park, NY 14127",
+              "applicationHours": "Applications available in person only every Wednesday from 1:00 p.m. to 5:00 p.m. during the recruitment period, except November 25, 2026, December 23, 2026, and December 30, 2026.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma and one full year of high school algebra or a post-high school algebra course. An associate degree or higher may be accepted instead. Applicants with at least 2,400 hours of substantiated electrical construction experience do not need to meet the education requirement.",
+              "residencyRequirement": "Must be a resident within the jurisdiction of Local Union #41, including all of Erie County; specified townships in Cattaraugus, Genesee, and Wyoming counties; and certain portions of Batavia and Elba.",
+              "transportationRequirement": "Must have reliable transportation to and from job sites and required classes, and must have a valid NYS driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment, at the sponsor’s expense.",
+              "classRequirement": "Must be willing and able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must have successfully completed one full year of high school algebra or a post-high school algebra course.",
+                "An associate degree or higher will be accepted in lieu of a high school diploma or high school equivalency diploma.",
+                "Applicants for the Electrician (Housewire or Residential) trade who can verify at least 2,400 hours of substantiated experience in the electrical construction trade do not need to meet the education requirements above.",
+                "Must take and pass the Electrical Trades’ aptitude test.",
+                "Must attest in writing that they are physically and mentally able to safely perform the work of an Electrician, including climbing and working from ladders, scaffolds, poles, or towers of various heights, and crawling and working in confined spaces.",
+                "Must be able to read, hear, and understand verbal instructions and warnings given in English.",
+                "Must be willing and able to attend required classes at the approved school.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must have a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in the apprenticeship program.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship program.",
+                "Must be a resident within the jurisdiction of Local Union #41. The jurisdiction includes all of Erie County; specified townships in Cattaraugus County; specified townships and portions of Batavia and Elba in Genesee County; and specified townships in Wyoming County.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in the apprenticeship program."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, meet the education or experience requirement, pass an aptitude test, be able to work safely and understand English instructions, live within LU #41 jurisdiction, have reliable transportation and a valid driver’s license, attend classes, and pass a sponsor-paid drug test.",
+              "contactName": "Electricians, LU #41",
+              "contactPhone": "(716) 662-6111",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Electricians, LU #41 at (716) 662-6111 for further information."
+            }
+          ]
         },
         {
           "programAk": 18117,
@@ -3248,14 +4506,15 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Electronics Mechanic (CNC Systems Maintenance)",
-      "displayTradeName": "Electronics Mechanic",
-      "description": "An Electronics Mechanic who maintains CNC systems installs, tests, troubleshoots, and repairs the electronic controls in computer-guided machines. They trace wiring, replace circuit boards, calibrate sensors, and use meters and diagrams to find faults on the shop floor. Their work keeps factory machines running accurately, safely, and with less downtime.",
+      "displayTradeName": "Electronics Mechanic (CNC Systems Maintenance)",
+      "description": "An Electronics Mechanic in CNC systems maintenance installs, tests, troubleshoots, and repairs the electronic controls in computer-guided factory machines. They trace wiring, replace circuit boards, adjust sensors, read diagrams, and use meters and software to find faults on the shop floor. Their work keeps production equipment running accurately, safely, and with less downtime.",
       "programCount": 3,
       "programs": [
         {
@@ -3275,7 +4534,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 14044,
@@ -3294,7 +4554,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16871,
@@ -3313,14 +4574,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Instrument &  Electrical Mechanic",
       "displayTradeName": "Instrument and Electrical Mechanic",
-      "description": "An Instrument and Electrical Mechanic installs, tests, repairs, and maintains electrical systems and control instruments in factories, plants, and other industrial sites. They wire panels, trace faults, replace sensors, calibrate equipment, and use meters and tools to keep machines working properly. Their work keeps equipment running safely, accurately, and with fewer breakdowns.",
+      "description": "An Instrument and Electrical Mechanic installs, tests, repairs, and maintains electrical systems and control instruments in buildings, plants, or industrial equipment. They run wires, connect panels, replace faulty parts, and use meters and tools to track down problems. Their work keeps machines, power systems, and automated controls running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -3340,14 +4602,15 @@
           "programLength": 45,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Electrician",
       "displayTradeName": "Plant Maintenance-Electrician",
-      "description": "A Plant Maintenance-Electrician keeps a factory or industrial plant’s electrical systems working safely and reliably. They install and repair wiring, motors, control panels, sensors, and lighting, test equipment, trace faults, and replace worn parts to prevent breakdowns. Their work keeps machines running, helps avoid shutdowns, and makes the plant safer and more dependable.",
+      "description": "A Plant Maintenance-Electrician installs, tests, repairs, and maintains the electrical systems that keep a factory or processing plant running. They trace wiring problems, replace motors, sensors, switches, and control parts, and work around machines, panels, and conveyor lines. Their work keeps equipment running safely, reduces breakdowns, and helps plants make products reliably.",
       "programCount": 29,
       "programs": [
         {
@@ -3367,7 +4630,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 998,
@@ -3386,7 +4650,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 1493,
@@ -3405,7 +4670,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2722,
@@ -3424,7 +4690,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2820,
@@ -3443,7 +4710,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 2993,
@@ -3462,7 +4730,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 3509,
@@ -3481,7 +4750,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6145,
@@ -3500,7 +4770,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6233,
@@ -3519,7 +4790,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6264,
@@ -3538,7 +4810,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 6857,
@@ -3557,7 +4830,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8393,
@@ -3576,7 +4850,8 @@
           "programLength": 60,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8426,
@@ -3595,7 +4870,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8502,
@@ -3614,7 +4890,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 8981,
@@ -3633,7 +4910,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 9608,
@@ -3652,7 +4930,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12106,
@@ -3671,7 +4950,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12807,
@@ -3690,7 +4970,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12824,
@@ -3709,7 +4990,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 12897,
@@ -3728,7 +5010,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15730,
@@ -3747,7 +5030,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 15905,
@@ -3766,7 +5050,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16020,
@@ -3785,7 +5070,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 16091,
@@ -3804,7 +5090,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17241,
@@ -3823,7 +5110,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17309,
@@ -3842,7 +5130,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 17887,
@@ -3861,7 +5150,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18014,
@@ -3880,7 +5170,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         },
         {
           "programAk": 18334,
@@ -3899,7 +5190,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2111.00",
-          "socTitle": "Electricians"
+          "socTitle": "Electricians",
+          "opportunities": []
         }
       ]
     }

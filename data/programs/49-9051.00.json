@@ -1078,8 +1078,8 @@
   "trades": [
     {
       "tradeName": "Electrical (Outside) Line Worker",
-      "displayTradeName": "Electrical Line Worker",
-      "description": "An outside Electrical Line Worker builds, repairs, and maintains overhead and underground power lines and related equipment. They climb poles or work from bucket trucks, string wire, replace damaged lines, connect transformers, and restore service after storms and outages. Their work keeps electricity flowing to homes, schools, businesses, and streetlights safely and reliably.",
+      "displayTradeName": "Electrical (Outside) Line Worker",
+      "description": "An outside Electrical Line Worker builds, repairs, and maintains overhead and underground power lines that carry electricity to homes and businesses. They climb poles, work from bucket trucks, string wire, install transformers, replace damaged lines, and restore service after storms. Their work keeps power systems running and makes daily life safer and more reliable.",
       "programCount": 18,
       "programs": [
         {
@@ -1099,7 +1099,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 2356,
@@ -1118,7 +1119,8 @@
           "programLength": 54,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 5054,
@@ -1137,7 +1139,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 7099,
@@ -1156,7 +1159,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 7910,
@@ -1175,7 +1179,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 8200,
@@ -1194,7 +1199,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 8726,
@@ -1213,7 +1219,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 9110,
@@ -1232,7 +1239,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 10836,
@@ -1251,7 +1259,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 11664,
@@ -1270,7 +1279,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 12308,
@@ -1289,7 +1299,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 12855,
@@ -1308,7 +1319,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 13017,
@@ -1327,7 +1339,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 13259,
@@ -1346,7 +1359,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 14093,
@@ -1365,7 +1379,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 17307,
@@ -1384,7 +1399,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 18179,
@@ -1403,7 +1419,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         },
         {
           "programAk": 18957,
@@ -1422,7 +1439,8 @@
           "programLength": 42,
           "ratio": "1:1,1:2",
           "socCode": "49-9051.00",
-          "socTitle": "Electrical Power-Line Installers and Repairers"
+          "socTitle": "Electrical Power-Line Installers and Repairers",
+          "opportunities": []
         }
       ]
     }

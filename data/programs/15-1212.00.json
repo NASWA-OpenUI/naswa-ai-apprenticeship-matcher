@@ -953,7 +953,7 @@
     {
       "tradeName": "Network Engineer",
       "displayTradeName": "Network Engineer",
-      "description": "A Network Engineer designs, sets up, and maintains the computer networks that connect offices, devices, phones, and online systems. They install routers and switches, run and test connections, monitor performance, and fix outages or slowdowns. Their work keeps data moving, systems running, and workplaces connected and secure.",
+      "description": "A Network Engineer builds and maintains the computer networks that connect offices, data centers, devices, and internet services. They install routers, switches, firewalls, and cables, set up secure connections, monitor traffic, and fix outages when systems slow down or fail. Their work keeps phones, apps, websites, and business systems running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -973,14 +973,15 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1212.00",
-          "socTitle": "Information Security Analysts"
+          "socTitle": "Information Security Analysts",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Security Analyst",
       "displayTradeName": "Security Analyst",
-      "description": "A Security Analyst protects an organization’s computer systems, networks, and data from cyber threats. They watch for suspicious activity, review alerts, test for weak spots, investigate breaches, and help set up tools and rules that block attacks. Their work helps keep information private, systems running, and online services safer for everyday use.",
+      "description": "A Security Analyst protects an organization’s computer systems, networks, and data from cyber threats. They watch security alerts, investigate suspicious activity, test for weak spots, install or update protections, and help respond to breaches when something goes wrong. Their work helps keep information private, systems running, and online services safer to use.",
       "programCount": 4,
       "programs": [
         {
@@ -1000,7 +1001,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1212.00",
-          "socTitle": "Information Security Analysts"
+          "socTitle": "Information Security Analysts",
+          "opportunities": []
         },
         {
           "programAk": 13603,
@@ -1019,7 +1021,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-1212.00",
-          "socTitle": "Information Security Analysts"
+          "socTitle": "Information Security Analysts",
+          "opportunities": []
         },
         {
           "programAk": 14090,
@@ -1038,7 +1041,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1212.00",
-          "socTitle": "Information Security Analysts"
+          "socTitle": "Information Security Analysts",
+          "opportunities": []
         },
         {
           "programAk": 14866,
@@ -1057,7 +1061,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1212.00",
-          "socTitle": "Information Security Analysts"
+          "socTitle": "Information Security Analysts",
+          "opportunities": []
         }
       ]
     }

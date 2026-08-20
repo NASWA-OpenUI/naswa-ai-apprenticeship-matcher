@@ -1100,7 +1100,7 @@
     {
       "tradeName": "Animal Handler",
       "displayTradeName": "Animal Handler",
-      "description": "An Animal Handler cares for and controls animals in places like shelters, kennels, farms, zoos, or training facilities. They feed and water animals, clean cages or pens, watch for signs of illness, lead or restrain animals safely, and help with exercise, transport, or basic grooming. Their work keeps animals healthy, spaces clean, and people safer.",
+      "description": "An Animal Handler cares for and controls animals in places like kennels, shelters, zoos, farms, or training areas. They feed, groom, clean enclosures, exercise animals, watch for signs of illness or stress, and safely move or restrain them when needed. Their work keeps animals healthy, spaces clean, and people safer around them.",
       "programCount": 1,
       "programs": [
         {
@@ -1120,7 +1120,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-2021.00",
-          "socTitle": "Animal Caretakers"
+          "socTitle": "Animal Caretakers",
+          "opportunities": []
         }
       ]
     }

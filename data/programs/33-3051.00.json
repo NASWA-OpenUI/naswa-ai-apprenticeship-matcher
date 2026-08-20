@@ -1207,7 +1207,7 @@
     {
       "tradeName": "Police Officer",
       "displayTradeName": "Police Officer",
-      "description": "A Police Officer enforces laws and helps keep order in the community. They patrol neighborhoods and roads, respond to emergencies, question people, direct traffic, investigate crimes, make arrests, and write reports, often switching quickly from routine checks to urgent calls. Their work helps protect people and property, keeps public spaces safer, and keeps daily life running more smoothly.",
+      "description": "A Police Officer enforces laws and helps keep public order in the community. They patrol streets, respond to emergency calls, stop drivers, investigate crimes, interview people, write reports, and may make arrests or direct traffic. Their work helps protect people and property, keeps neighborhoods safer, and keeps daily life running more smoothly.",
       "programCount": 2,
       "programs": [
         {
@@ -1227,7 +1227,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "33-3051.00",
-          "socTitle": "Police and Sheriff's Patrol Officers"
+          "socTitle": "Police and Sheriff's Patrol Officers",
+          "opportunities": []
         },
         {
           "programAk": 17722,
@@ -1246,7 +1247,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "33-3051.00",
-          "socTitle": "Police and Sheriff's Patrol Officers"
+          "socTitle": "Police and Sheriff's Patrol Officers",
+          "opportunities": []
         }
       ]
     }

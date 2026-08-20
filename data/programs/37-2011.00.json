@@ -1033,7 +1033,7 @@
     {
       "tradeName": "Multi-Story Window and Building Surface Cleaner",
       "displayTradeName": "Multi-Story Window and Building Surface Cleaner",
-      "description": "A Multi-Story Window and Building Surface Cleaner cleans windows, walls, and other outside building surfaces on tall buildings. They work from suspended platforms, swing stages, ladders, or lifts, washing glass, scraping off grime, and applying cleaning solutions with squeegees and brushes. Their work keeps buildings looking cared for, windows clear, and surfaces safer and well maintained.",
+      "description": "A Multi-Story Window and Building Surface Cleaner washes windows and cleans the outside surfaces of mid-rise buildings. They work from ladders, lifts, swing stages, or ropes, using squeegees, scrubbers, and cleaning solutions to remove dirt, streaks, bird mess, and grime from glass, metal, and stone. Their work keeps buildings looking cared for, surfaces lasting longer, and entrances safer.",
       "programCount": 1,
       "programs": [
         {
@@ -1053,7 +1053,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "37-2011.00",
-          "socTitle": "Janitors and Cleaners, Except Maids and Housekeeping Cleaners"
+          "socTitle": "Janitors and Cleaners, Except Maids and Housekeeping Cleaners",
+          "opportunities": []
         }
       ]
     }

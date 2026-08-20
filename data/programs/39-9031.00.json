@@ -1062,7 +1062,7 @@
     {
       "tradeName": "Fitness Instructor",
       "displayTradeName": "Fitness Instructor",
-      "description": "A Fitness Instructor leads exercise classes and helps people improve strength, balance, stamina, and flexibility. They demonstrate movements, watch form, adjust routines for different fitness levels, set up equipment, and keep people motivated during workouts in gyms, studios, or community centers. Their work helps people exercise safely, stay active, and keep their bodies functioning better day to day.",
+      "description": "A Fitness Instructor leads exercise sessions and helps people use workout equipment safely and effectively. They demonstrate stretches, cardio, and strength exercises, watch form, adjust routines for different fitness levels, and keep classes active and organized. Their work helps people build strength, improve health, and stay safer while exercising.",
       "programCount": 1,
       "programs": [
         {
@@ -1082,7 +1082,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "39-9031.00",
-          "socTitle": "Exercise Trainers and Group Fitness Instructors"
+          "socTitle": "Exercise Trainers and Group Fitness Instructors",
+          "opportunities": []
         }
       ]
     }

@@ -1040,7 +1040,7 @@
     {
       "tradeName": "Data Analyst",
       "displayTradeName": "Data Analyst",
-      "description": "A Data Analyst collects, checks, and studies data to find patterns and answer questions for a business or organization. They clean spreadsheets, build charts and dashboards, write reports, and explain what the numbers show so others can make decisions. Their work helps improve services, reduce mistakes, and keep daily operations running better.",
+      "description": "A Data Analyst collects, cleans, and studies data to find patterns and answer business questions. They build spreadsheets, dashboards, and reports, check numbers for errors, and turn raw information into clear charts and summaries for managers or teams. Their work helps organizations make better decisions, improve services, and keep operations running smoothly.",
       "programCount": 2,
       "programs": [
         {
@@ -1060,7 +1060,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-2031.00",
-          "socTitle": "Operations Research Analysts"
+          "socTitle": "Operations Research Analysts",
+          "opportunities": []
         },
         {
           "programAk": 17467,
@@ -1079,7 +1080,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-2031.00",
-          "socTitle": "Operations Research Analysts"
+          "socTitle": "Operations Research Analysts",
+          "opportunities": []
         }
       ]
     }

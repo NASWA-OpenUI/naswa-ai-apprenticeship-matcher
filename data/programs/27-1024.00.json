@@ -1049,7 +1049,7 @@
     {
       "tradeName": "Visual and Graphic Arts Associate",
       "displayTradeName": "Visual and Graphic Arts Associate",
-      "description": "A Visual and Graphic Arts Associate creates visual materials that communicate ideas, information, or a certain look. They sketch concepts, use design software, arrange images and text, prepare layouts, and sometimes help produce signs, packaging, ads, or digital graphics. Their work makes messages clearer, products more appealing, and printed or online materials easier to use.",
+      "description": "A Visual and Graphic Arts Associate creates artwork and design pieces for print, screens, signs, packaging, or displays. They sketch ideas, use design software, arrange images and text, choose colors and layouts, and prepare files for production. Their work helps people understand information, recognize brands, and use products, spaces, and services more easily.",
       "programCount": 1,
       "programs": [
         {
@@ -1069,7 +1069,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "27-1024.00",
-          "socTitle": "Graphic Designers"
+          "socTitle": "Graphic Designers",
+          "opportunities": []
         }
       ]
     }

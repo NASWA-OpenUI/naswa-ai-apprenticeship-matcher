@@ -1077,8 +1077,8 @@
   "trades": [
     {
       "tradeName": "Coordinator (Trade Shows, Events, Conferences, Exhibitions, Meetings)",
-      "displayTradeName": "Coordinator",
-      "description": "A Coordinator for trade shows, events, conferences, exhibitions, and meetings plans and organizes the details that make gatherings run smoothly. They book venues, schedule vendors, register guests, prepare materials, track budgets, and solve problems on the day of the event. Their work keeps events organized, on time, and working well for everyone attending.",
+      "displayTradeName": "Coordinator (Trade Shows, Events, Conferences, Exhibitions, Meetings)",
+      "description": "A Coordinator for trade shows, events, conferences, exhibitions, and meetings plans and organizes business gatherings from start to finish. They book venues, arrange schedules, set up booths and seating, manage vendors, prepare materials, and solve last-minute problems during the event. Their work helps events run smoothly, keeps people informed, and supports safe, organized spaces.",
       "programCount": 1,
       "programs": [
         {
@@ -1098,7 +1098,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "13-1121.00",
-          "socTitle": "Meeting, Convention, and Event Planners"
+          "socTitle": "Meeting, Convention, and Event Planners",
+          "opportunities": []
         }
       ]
     }

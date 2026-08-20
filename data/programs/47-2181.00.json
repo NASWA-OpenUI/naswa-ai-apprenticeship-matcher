@@ -1094,7 +1094,62 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": [
+            {
+              "id": "roofing-industry-jatc-rochester-local-22-0-roofer-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/roofing-industry-jatc-rochester-local-22-0",
+              "sourceTitle": "Roofing Industry JATC of Rochester Local #22",
+              "jobTitle": "Roofer Apprentice",
+              "socCode": "47-2181.00",
+              "numberOfOpenings": 48,
+              "sponsorName": "JATC for the Roofing Industry of Rochester, Local Union #22",
+              "unionName": "Local Union #22",
+              "locationSummary": "Rochester, NY area; jurisdiction includes Livingston, Monroe, Ontario, Wayne, and Yates counties",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2026-02-06",
+              "recruitmentEndDate": "2027-02-05",
+              "applicationStartDate": "2026-02-06",
+              "applicationEndDate": "2027-02-05",
+              "applicationMethods": [
+                "in_person_application",
+                "appointment_required"
+              ],
+              "applicationSummary": "Obtain and submit applications in person at 280 Metro Park, Rochester, NY 14623, Monday through Friday from 9:00 a.m. to 3:00 p.m., or by appointment, during the recruitment period.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JATC for the Roofing Industry of Rochester, Local Union #22, 280 Metro Park, Rochester, NY 14623",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 3:00 p.m., Monday through Friday, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must reside within the jurisdiction of JATC for the Roofing Industry of Rochester, Local Union #22, including Livingston, Monroe, Ontario, Wayne, and/or Yates counties.",
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": "May be required to pass a drug screening at the sponsor's expense after selection and before enrollment.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must attest in writing that they are physically capable of performing the work of a roofer, including repetitive heavy lifting, kneeling, squatting, and walking; climbing and working off ladders and scaffolds; working from high heights, which may require wearing safety protective equipment; working in extreme temperatures and severe weather conditions including extreme cold and heat; and working while wearing respirators.",
+                "Must sign a statement indicating that they are residents within the jurisdiction of JATC for the Roofing Industry of Rochester, Local Union #22, including the counties of Livingston, Monroe, Ontario, Wayne, and/or Yates.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must be legally authorized to work in the USA.",
+                "May be required to pass a drug screening, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, live within the local jurisdiction, have reliable transportation, and be legally authorized to work in the U.S. They must also attest to being physically able to do the work, and may need to pass a drug screen after selection.",
+              "contactName": "JATC for the Roofing Industry of Rochester, Local Union #22",
+              "contactPhone": "(585) 235-3098",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact the JATC for the Roofing Industry of Rochester, Local Union #22 for further information."
+            }
+          ]
         },
         {
           "programAk": 2455,
@@ -1113,7 +1168,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 4672,
@@ -1132,7 +1188,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 5773,
@@ -1151,7 +1208,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 7224,
@@ -1170,7 +1228,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 9700,
@@ -1189,7 +1248,8 @@
           "programLength": 60,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 9775,
@@ -1208,7 +1268,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 9903,
@@ -1227,7 +1288,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 9974,
@@ -1246,7 +1308,60 @@
           "programLength": 48,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": [
+            {
+              "id": "united-union-roofers-waterproofers-jac-lu-154-0-roofer-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/united-union-roofers-waterproofers-jac-lu-154-0",
+              "sourceTitle": "United Union of Roofers, Waterproofers JAC LU #154",
+              "jobTitle": "Roofer Apprentice",
+              "socCode": "47-2181.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Roofers, Waterproofers, and Allied Workers, Local Union #154",
+              "unionName": "United Union for Roofers, Waterproofers and Allied Workers, Local Union #154",
+              "locationSummary": "Hauppauge, NY; Nassau and Suffolk counties",
+              "regions": [
+                "Long Island"
+              ],
+              "recruitmentStartDate": "2026-04-21",
+              "recruitmentEndDate": "2027-04-20",
+              "applicationStartDate": "2026-04-21",
+              "applicationEndDate": "2027-04-20",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Pick up applications in person at Roofers Local Union #154 in Hauppauge on Tuesdays and Thursdays from 3:00 p.m. to 5:00 p.m. during the recruitment period. Applications must be received by April 20, 2027.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Roofers Local Union #154, 370 Vanderbilt Motor Parkway, Suite 1 Rear, Hauppauge, NY 11788",
+              "applicationMailingAddress": null,
+              "applicationHours": "Tuesdays and Thursdays, 3:00 p.m. to 5:00 p.m., excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": "Must reside within the jurisdiction of Local Union #154 at the time of application, including Nassau and Suffolk counties.",
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+              "drugTestRequirement": null,
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must pass a physical examination, at the expense of the sponsor, after selection and prior to enrollment in the apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school.",
+                "Must reside within the jurisdiction of Local Union #154 at the time of application, which includes Nassau and Suffolk counties."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, live within Local Union #154’s jurisdiction, and have reliable transportation. A physical exam is required after selection.",
+              "contactName": "United Union for Roofers, Waterproofers and Allied Workers, Local Union #154",
+              "contactPhone": "(631) 435-0655",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact United Union for Roofers, Waterproofers and Allied Workers, Local Union #154 at (631) 435-0655 for further information."
+            }
+          ]
         },
         {
           "programAk": 12061,
@@ -1265,7 +1380,8 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": []
         },
         {
           "programAk": 17956,
@@ -1284,7 +1400,63 @@
           "programLength": 36,
           "ratio": "1:1,1:2",
           "socCode": "47-2181.00",
-          "socTitle": "Roofers"
+          "socTitle": "Roofers",
+          "opportunities": [
+            {
+              "id": "roofers-jac-capital-district-local-241-roofer-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/roofers-jac-capital-district-local-241",
+              "sourceTitle": "Roofers JAC of Capital District Local # 241",
+              "jobTitle": "Roofer Apprentice",
+              "socCode": "47-2181.00",
+              "numberOfOpenings": 15,
+              "sponsorName": "Roofers JAC of the Capital District, Local Union #241",
+              "unionName": "Local Union #241",
+              "locationSummary": "Capital District, Mohawk Valley, and North Country regions of New York",
+              "regions": [
+                "Capital Region",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2025-10-01",
+              "recruitmentEndDate": "2026-09-30",
+              "applicationStartDate": "2025-10-01",
+              "applicationEndDate": "2026-09-30",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Pick up and submit applications in person at Local Union #241 in Albany every Tuesday from 8:00 a.m. to 2:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #241, 890 Third Street, Suite 211, Albany, NY 12206",
+              "applicationMailingAddress": null,
+              "applicationHours": "Every Tuesday, 8:00 a.m. to 2:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Applicants must be at least 18 years old.",
+              "educationRequirement": "Applicants must have completed at least 10th grade education.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Reliable transportation is required to get to various job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug test, at the sponsor's expense, after selection and prior to enrollment.",
+              "classRequirement": "Reliable transportation is required for required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have completed at least 10th grade education.",
+                "Must achieve a minimum score of 40 points on the evaluation form in order to be placed on the rank list.",
+                "Must sign a statement and be physically able to perform the work required of a Roofer, including lifting 70 pounds, working at heights on low-pitch and steep roofing, climbing ladders and scaffolding, and working in hot and cold weather.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have at least a 10th grade education, be physically able to do roofing work, have reliable transportation, and pass a drug test after selection. A minimum score of 40 points on the evaluation form is also required for the rank list.",
+              "contactName": "Roofers JAC of the Capital District, Local Union #241",
+              "contactPhone": "(518) 258-0521",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact Roofers JAC of the Capital District, Local Union #241 at (518) 258-0521."
+            }
+          ]
         }
       ]
     }

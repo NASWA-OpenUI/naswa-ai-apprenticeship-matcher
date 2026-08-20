@@ -1190,7 +1190,7 @@
     {
       "tradeName": "Automotive Service Technician",
       "displayTradeName": "Automotive Service Technician",
-      "description": "An Automotive Service Technician inspects, maintains, and repairs cars and light trucks. They test engines, brakes, steering, batteries, and computer systems, change fluids and worn parts, and use hand tools and diagnostic equipment in a busy shop. Their work keeps vehicles running reliably, improves fuel use, and makes roads safer.",
+      "description": "An Automotive Service Technician inspects, diagnoses, repairs, and maintains cars and light trucks. They change oil, test batteries, replace brakes, fix engines, steering, and suspension systems, and use computerized tools to find problems. Their work keeps vehicles running properly, improves safety on the road, and helps prevent breakdowns.",
       "programCount": 2,
       "programs": [
         {
@@ -1210,7 +1210,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-3023.00",
-          "socTitle": "Automotive Service Technicians and Mechanics"
+          "socTitle": "Automotive Service Technicians and Mechanics",
+          "opportunities": []
         },
         {
           "programAk": 16336,
@@ -1229,7 +1230,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-3023.00",
-          "socTitle": "Automotive Service Technicians and Mechanics"
+          "socTitle": "Automotive Service Technicians and Mechanics",
+          "opportunities": []
         }
       ]
     }

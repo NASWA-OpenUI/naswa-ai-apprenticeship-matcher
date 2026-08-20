@@ -1078,7 +1078,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 795,
@@ -1097,7 +1098,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 1436,
@@ -1116,7 +1118,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 1703,
@@ -1135,7 +1138,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 2462,
@@ -1154,7 +1158,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 4101,
@@ -1173,7 +1178,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 4498,
@@ -1192,7 +1198,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 4541,
@@ -1211,7 +1218,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 5802,
@@ -1230,7 +1238,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 7139,
@@ -1249,7 +1258,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 8265,
@@ -1268,7 +1278,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 8416,
@@ -1287,7 +1298,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 8571,
@@ -1306,7 +1318,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 9008,
@@ -1325,7 +1338,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 12170,
@@ -1344,7 +1358,65 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": [
+            {
+              "id": "sheet-metal-jatc-rochester-lu-46-0-sheet-metal-worker-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/sheet-metal-jatc-rochester-lu-46-0",
+              "sourceTitle": "Sheet Metal JATC of Rochester LU #46",
+              "jobTitle": "Sheet Metal Worker Apprentice",
+              "socCode": "47-2211.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Sheet Metal Workers of Rochester, Local Union #46",
+              "unionName": "Sheet Metal Workers of Rochester, Local Union #46",
+              "locationSummary": "Rochester, NY area; applicants must live within the Local Union #46 jurisdiction.",
+              "regions": [
+                "Finger Lakes"
+              ],
+              "recruitmentStartDate": "2026-04-08",
+              "recruitmentEndDate": "2027-04-07",
+              "applicationStartDate": "2026-04-08",
+              "applicationEndDate": "2027-04-07",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at SMW46.com during the recruitment period. Applications must be received by 11:59 p.m. on April 7, 2027.",
+              "applicationWebsite": "https://www.SMW46.com",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 647-3200",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Available online during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED, with one year of algebra with a passing grade in Math Course I or Math Course II, or a minimum score of 55 on the TASC or GED math test.",
+              "residencyRequirement": "Must have been a resident for at least one year within the Local Union #46 jurisdiction, which includes Livingston, Monroe, Ontario, Seneca, Wayne, and Yates counties.",
+              "transportationRequirement": "Must have a valid NYS driver's license to operate company vehicles and reliable transportation to job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must take and pass a drug test upon offer of employment; additional drug testing may occur during the apprenticeship program. Drug testing is paid for by the sponsor.",
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), with one year of algebra with a passing grade in Math Course I or Math Course II; or a minimum of 55 on the TASC or GED math test.",
+                "Must sign an affidavit attesting they are physically able to perform the work of the trade.",
+                "Work in the sheet metal industry may be physical and strenuous, including climbing ladders, scaffolds, and roofs; working at great heights; lifting materials in excess of 70 lbs.; and working outdoors in all types of weather conditions.",
+                "Must take and pass a drug test upon offer of employment.",
+                "May be subject to additional drug testing at any time during the apprenticeship program.",
+                "Drug testing is paid for by the sponsor.",
+                "Must have a valid NYS driver's license in order to operate company vehicles.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must be a resident, for at least one year, within the jurisdiction of Sheet Metal Workers of Rochester, Local Union #46, which includes the counties of Livingston, Monroe, Ontario, Seneca, Wayne, and Yates."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent with the required math preparation, be physically able to do strenuous trade work, pass a drug test, have a valid NYS driver's license, reliable transportation, and meet the one-year residency requirement in the Local 46 jurisdiction.",
+              "contactName": "Sheet Metal Workers of Rochester, Local Union #46",
+              "contactPhone": "(585) 254-9151",
+              "contactEmail": null,
+              "contactWebsite": "https://www.SMW46.com",
+              "contactSummary": "For further information, contact Sheet Metal Workers of Rochester, Local Union #46 at (585) 254-9151."
+            }
+          ]
         },
         {
           "programAk": 13299,
@@ -1357,13 +1429,14 @@
           "addressPostalCode": "10509",
           "region": "Hudson Valley",
           "programStatus": "Active",
-          "programApprovalDate": "2061-03-02",
+          "programApprovalDate": "1961-03-02",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 13428,
@@ -1382,7 +1455,68 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": [
+            {
+              "id": "sheetmetal-workers-jac-syracuse-58-0-sheet-metal-worker-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/sheetmetal-workers-jac-syracuse-58-0",
+              "sourceTitle": "Sheetmetal Workers JAC of Syracuse #58",
+              "jobTitle": "Sheet Metal Worker Apprentice",
+              "socCode": "47-2211.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Sheet Metal Workers, Local Union #58",
+              "unionName": "Sheet Metal Workers, Local Union #58",
+              "locationSummary": "Syracuse, NY; Central, Mohawk Valley, North Country, and Southern Tier regions",
+              "regions": [
+                "Central New York",
+                "Mohawk Valley",
+                "North Country",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-08-01",
+              "recruitmentEndDate": "2027-07-31",
+              "applicationStartDate": "2026-08-01",
+              "applicationEndDate": "2027-07-31",
+              "applicationMethods": [
+                "online_application"
+              ],
+              "applicationSummary": "Apply online at www.smw58.org. If you do not have a computer, you may use a local library or a New York State Department of Labor Career Center. Applications must be received by July 31, 2027.",
+              "applicationWebsite": "http://www.smw58.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": null,
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED), including at least one year of Algebra, Math I, or high school Regents Math.",
+              "residencyRequirement": null,
+              "transportationRequirement": null,
+              "drugTestRequirement": null,
+              "classRequirement": null,
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED), including at least one year of Algebra, Math I, or high school Regents Math.",
+                "Must attest in writing that they are physically able to perform the work of a Sheet Metal Worker.",
+                "Must be able to work from ladders and heights.",
+                "Must be able to lift heavy materials up to 75 pounds.",
+                "Must be able to stand for long periods of time.",
+                "Must be able to work in confined spaces.",
+                "Must be able to work outdoors in all kinds of weather conditions.",
+                "Must be able to tolerate possible exposure to loud noises.",
+                "Must be able to wear respirators, hard hats, and safety glasses as required."
+              ],
+              "requirementsSummary": "Applicants must be 18 or older, have a high school diploma or equivalency with the required math background, and attest they can perform the physical demands of the trade.",
+              "contactName": "Sheet Metal Workers, Local Union #58",
+              "contactPhone": "(315) 472-4411",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact Sheet Metal Workers, Local Union #58 at (315) 472-4411."
+            }
+          ]
         },
         {
           "programAk": 15784,
@@ -1395,13 +1529,14 @@
           "addressPostalCode": "11435",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "2068-03-01",
+          "programApprovalDate": "1968-03-01",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 16232,
@@ -1420,7 +1555,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 16335,
@@ -1439,7 +1575,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 16366,
@@ -1458,7 +1595,8 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 16517,
@@ -1477,7 +1615,8 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         },
         {
           "programAk": 16553,
@@ -1496,7 +1635,67 @@
           "programLength": 60,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": [
+            {
+              "id": "capital-sheet-metal-workers-jatc-local-83-0-sheet-metal-worker-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/capital-sheet-metal-workers-jatc-local-83-0",
+              "sourceTitle": "Capital Sheet Metal Workers JATC Local 83",
+              "jobTitle": "Sheet Metal Worker Apprentice",
+              "socCode": "47-2211.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship Committee for Capital District Sheet Metal Workers, Local Union #83",
+              "unionName": "Local Union #83",
+              "locationSummary": "Albany, NY area",
+              "regions": [
+                "Capital Region",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-04-06",
+              "recruitmentEndDate": "2027-04-05",
+              "applicationStartDate": "2026-04-06",
+              "applicationEndDate": "2027-04-05",
+              "applicationMethods": [
+                "in_person_application",
+                "online_application"
+              ],
+              "applicationSummary": "Obtain applications in person at the Local Union #83 office in Clifton Park or online during the recruitment period.",
+              "applicationWebsite": "https://www.smartlu83.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Capital District Sheet Metal Workers Local Union #83, 900 Commerce Drive, Clifton Park, NY 12065",
+              "applicationMailingAddress": null,
+              "applicationHours": "Mondays through Fridays, 8:00 a.m. to 5:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED), with a passing grade in Algebra, Math I, or the math portion of the GED in the year taken, or a minimum score of 500 on the TASC math test. Proof is required after selection and before an interview.",
+              "residencyRequirement": "Must reside in the Local 83 jurisdiction counties: Albany, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, and Washington.",
+              "transportationRequirement": "Must have a valid New York State driver’s license to operate company vehicles and reliable transportation to and from work and required classes at the approved school.",
+              "drugTestRequirement": "Must submit to and pass a drug test at the sponsor’s expense if selected for the program.",
+              "classRequirement": "Must have reliable transportation to required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED). This must include a passing grade in Algebra, a passing grade in Math I, or a passing grade in the math portion of the GED equivalent in the year in which the test was taken or a minimum of 500 on the TASC math test. Proof will be required after selection and prior to an interview.",
+                "Must sign an affidavit stating they are physically able to perform the work of a Sheet Metal Worker, including working with sharp objects, hazardous machinery, and possible exposure to noise and respiratory irritants; prolonged standing and walking; repeated squatting and/or bending; working in severe weather conditions and extreme temperatures; working in restrictive or confined spaces; lifting and/or moving heavy objects and equipment; and working off ladders and scaffolds at various heights.",
+                "Must have a valid New York State driver’s license in order to operate company vehicles.",
+                "Must reside in Local 83 jurisdiction counties: Albany, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, and Washington.",
+                "Must have reliable transportation to and from work and required classes at the approved school.",
+                "Must submit to and pass a drug test, at the expense of the sponsor, if selected for the program.",
+                "Must submit to the background check, at the sponsor’s expense, if selected for the program.",
+                "Must take the Criteria Corp-Criteria Basic Skills Test (CBST) and Criteria Cognitive Aptitude Test (CCAT). Applicant must score at least 6 out of a combined 15 available points on combined CBST and CCAT to be considered for the program."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, live in the Local 83 counties, have a high school diploma or equivalent with required math scores, hold a valid NYS driver’s license, have reliable transportation, and pass required testing, a drug test, and a background check.",
+              "contactName": "Local Union #83",
+              "contactPhone": "(518) 489-1377",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Local Union #83 at (518) 489-1377 for more information."
+            }
+          ]
         },
         {
           "programAk": 18198,
@@ -1515,7 +1714,71 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": [
+            {
+              "id": "area-sheet-metal-workers-jatc-lu112-elmira-0-sheet-metal-worker-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/area-sheet-metal-workers-jatc-lu112-elmira-0",
+              "sourceTitle": "Area Sheet Metal Workers JATC LU#112 (Elmira)",
+              "jobTitle": "Sheet Metal Worker Apprentice",
+              "socCode": "47-2211.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "JATC for Area Sheet Metal Workers, Local Union #112",
+              "unionName": "Local Union #112",
+              "locationSummary": "Southern Tier and Western New York",
+              "regions": [
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-03-01",
+              "recruitmentEndDate": "2027-02-28",
+              "applicationStartDate": "2026-03-01",
+              "applicationEndDate": "2027-02-28",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application",
+                "online_application"
+              ],
+              "applicationSummary": "Get the application from JATC for Area Sheet Metal Workers Local Union #112 in Elmira, download it from the union website, and return the completed application in person or by mail by February 28, 2027.",
+              "applicationWebsite": "https://www.smw112.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "1200 Clemens Center Parkway, Elmira, NY 14902",
+              "applicationMailingAddress": "P.O. Box 1146, Elmira, NY 14902",
+              "applicationHours": "8:00 a.m. to 4:30 p.m., Monday through Friday, excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have a valid NYS driver's license, may be required to drive company vehicles, and must have reliable transportation to work sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug test at the sponsor's expense after selection and before enrollment.",
+              "classRequirement": "Must attend 50% of all local union meetings during each school year and have reliable transportation to required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma (such as TASC or GED).",
+                "Must sign an affidavit stating that the applicant is physically able to perform the work of a Sheet Metal Worker, including working with sharp objects, hazardous machinery, and possible exposure to loud noises and respiratory irritants; standing, sitting and walking for prolonged periods; squatting and bending repeatedly; working in severe weather and extreme temperatures; working in confined spaces; lifting and/or moving heavy objects and equipment weighing up to 100 pounds; and working off ladders and scaffolds at heights that may exceed 50 feet.",
+                "Must have a valid NYS driver's license. Apprentices may be required to drive company vehicles.",
+                "Must have reliable transportation to and from various work sites and required classes at the approved school.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship.",
+                "Must provide own hand tools as per the JATC LU 112 apprentices tool list, not to exceed $750.00.",
+                "Must have manual dexterity and multi-limb coordination with the ability to move and coordinate two or more limbs (arms and legs) to grasp, manipulate, and/or assemble objects in a timely fashion.",
+                "Must be able to read, hear, speak, and understand verbal instructions and warnings given in English.",
+                "Must have visual color discrimination in order to match or detect between colors, including shades of color and brightness.",
+                "Must be able to read, write, and understand verbal instructions and warnings given in English.",
+                "Must be bondable.",
+                "Must attend 50% of all local union meetings during each school year (September through August)."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency, have a valid NYS driver's license, reliable transportation, and be able to meet the physical, language, tool, drug test, bondability, and union meeting requirements.",
+              "contactName": "JATC for Area Sheet Metal Workers, Local Union #112",
+              "contactPhone": "(607) 733-3732",
+              "contactEmail": null,
+              "contactWebsite": "https://www.smw112.org",
+              "contactSummary": "Contact JATC for Area Sheet Metal Workers, Local Union #112 at (607) 733-3732 for further information."
+            }
+          ]
         },
         {
           "programAk": 18271,
@@ -1534,14 +1797,15 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Sheet Metal Worker (Iron Plate)",
-      "displayTradeName": "Sheet Metal Worker",
-      "description": "A Sheet Metal Worker working with iron plate makes, fits, and repairs heavy metal parts used in buildings, tanks, ducts, roofs, and industrial equipment. They measure and mark metal, cut and shape plates, join seams, and install finished pieces on site or in a shop. Their work helps keep structures strong, equipment covered, and systems running safely.",
+      "displayTradeName": "Sheet Metal Worker (Iron Plate)",
+      "description": "A Sheet Metal Worker working with iron plate makes, fits, and repairs heavy metal parts used in tanks, ducts, hoppers, and other industrial equipment. They measure and mark plate, cut and shape it, weld or bolt sections together, and install finished pieces on site. Their work builds and keeps metal systems running safely in workplaces.",
       "programCount": 1,
       "programs": [
         {
@@ -1561,7 +1825,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2211.00",
-          "socTitle": "Sheet Metal Workers"
+          "socTitle": "Sheet Metal Workers",
+          "opportunities": []
         }
       ]
     }

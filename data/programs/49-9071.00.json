@@ -1221,7 +1221,7 @@
     {
       "tradeName": "Building Maintenance Mechanic",
       "displayTradeName": "Building Maintenance Mechanic",
-      "description": "A Building Maintenance Mechanic keeps a building’s systems and equipment working properly. They inspect and repair heating, cooling, plumbing, lighting, doors, pumps, and other parts of the property, using hand and power tools to fix problems and do routine upkeep. Their work keeps buildings safe, comfortable, clean, and running day to day.",
+      "description": "A Building Maintenance Mechanic keeps a building’s systems and equipment working properly. They inspect and repair heating, cooling, plumbing, lights, doors, pumps, and other parts of the building, using hand and power tools to fix problems and do routine upkeep. Their work keeps buildings safe, comfortable, clean, and running day to day.",
       "programCount": 5,
       "programs": [
         {
@@ -1241,7 +1241,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 2082,
@@ -1260,7 +1261,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 7658,
@@ -1279,7 +1281,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 9576,
@@ -1298,7 +1301,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 14478,
@@ -1317,14 +1321,15 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Electrician-Mechanic",
       "displayTradeName": "Plant Maintenance-Electrician-Mechanic",
-      "description": "A Plant Maintenance-Electrician-Mechanic installs, troubleshoots, repairs, and maintains the electrical and mechanical equipment that keeps a plant running. They inspect motors, conveyors, pumps, wiring, control panels, and other machines, replacing worn parts and fixing breakdowns. Their work keeps production equipment operating safely, reduces downtime, and helps buildings and systems keep running.",
+      "description": "A Plant Maintenance-Electrician-Mechanic keeps factory and plant equipment working safely and reliably. They inspect machines, trace electrical faults, replace motors, belts, bearings, switches, and wiring, and test systems using tools and meters. They may also weld, lubricate parts, and adjust controls. Their work keeps production running, equipment in good condition, and workplaces safer.",
       "programCount": 2,
       "programs": [
         {
@@ -1344,7 +1349,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 12931,
@@ -1363,14 +1369,15 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Mechanic (3 Year)",
       "displayTradeName": "Plant Maintenance-Mechanic",
-      "description": "A Plant Maintenance-Mechanic keeps factory and plant equipment working properly. They inspect machines, replace worn parts, lubricate moving equipment, line up belts and gears, troubleshoot breakdowns, and use hand and power tools to repair pumps, motors, conveyors, and other machinery. Their work keeps production running, reduces downtime, and helps equipment operate safely.",
+      "description": "A Plant Maintenance-Mechanic installs, checks, repairs, and replaces the machines and equipment that keep a factory or processing plant running. They inspect moving parts, change belts and bearings, align motors, fix breakdowns, and use hand and power tools in noisy work areas. Their work keeps production equipment running safely and helps prevent costly shutdowns.",
       "programCount": 3,
       "programs": [
         {
@@ -1390,7 +1397,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 8256,
@@ -1409,7 +1417,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 13787,
@@ -1428,14 +1437,15 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Mechanic (4 Year)",
       "displayTradeName": "Plant Maintenance-Mechanic",
-      "description": "A Plant Maintenance-Mechanic keeps factory and plant equipment working properly. They inspect machines, replace worn parts, lubricate moving equipment, line up belts and gears, troubleshoot breakdowns, and use hand and power tools to repair pumps, motors, conveyors, and other machinery. Their work keeps production running, reduces downtime, and helps equipment operate safely.",
+      "description": "A Plant Maintenance-Mechanic installs, checks, repairs, and replaces the machines and equipment that keep a factory or processing plant running. They inspect moving parts, change belts and bearings, align motors, fix breakdowns, and use hand and power tools in noisy work areas. Their work keeps production equipment running safely and helps prevent costly shutdowns.",
       "programCount": 11,
       "programs": [
         {
@@ -1455,7 +1465,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 1273,
@@ -1474,7 +1485,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 2154,
@@ -1493,7 +1505,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 4259,
@@ -1512,7 +1525,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 8297,
@@ -1531,7 +1545,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 8343,
@@ -1550,7 +1565,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 10558,
@@ -1569,7 +1585,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 10636,
@@ -1588,7 +1605,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 11942,
@@ -1607,7 +1625,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 17820,
@@ -1626,7 +1645,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         },
         {
           "programAk": 18885,
@@ -1645,7 +1665,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "49-9071.00",
-          "socTitle": "Maintenance and Repair Workers, General"
+          "socTitle": "Maintenance and Repair Workers, General",
+          "opportunities": []
         }
       ]
     }

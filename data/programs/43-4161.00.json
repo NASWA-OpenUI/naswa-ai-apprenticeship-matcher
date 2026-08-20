@@ -1014,7 +1014,7 @@
     {
       "tradeName": "Human Resources Associate",
       "displayTradeName": "Human Resources Associate",
-      "description": "A Human Resources Associate supports the people side of a workplace. They post jobs, review applications, help set up interviews, prepare hiring paperwork, update employee records, answer questions about pay or benefits, and help with onboarding new staff. Their work keeps personnel information organized, hiring moving, and workplace policies running smoothly.",
+      "description": "A Human Resources Associate helps manage employee records, hiring steps, pay and benefits information, and workplace policies. They post job openings, schedule interviews, answer staff questions, update files, and help with onboarding and training paperwork, often working at a desk with computer systems and forms. Their work keeps workplaces organized, fair, and running smoothly.",
       "programCount": 6,
       "programs": [
         {
@@ -1034,7 +1034,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         },
         {
           "programAk": 5741,
@@ -1053,7 +1054,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         },
         {
           "programAk": 13291,
@@ -1072,7 +1074,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         },
         {
           "programAk": 13531,
@@ -1091,7 +1094,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         },
         {
           "programAk": 14317,
@@ -1110,7 +1114,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         },
         {
           "programAk": 17169,
@@ -1129,7 +1134,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "43-4161.00",
-          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping"
+          "socTitle": "Human Resources Assistants, Except Payroll and Timekeeping",
+          "opportunities": []
         }
       ]
     }

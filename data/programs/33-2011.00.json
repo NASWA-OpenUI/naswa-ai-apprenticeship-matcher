@@ -1176,7 +1176,7 @@
     {
       "tradeName": "Fire Fighter",
       "displayTradeName": "Fire Fighter",
-      "description": "A Fire Fighter responds to fires, medical emergencies, vehicle crashes, and rescue calls. They drive or ride in fire trucks, carry hoses and tools, enter smoke-filled buildings, operate ladders, control flames, help injured people, and check buildings for danger. Their work protects lives, property, and public spaces, and helps keep emergencies from getting worse.",
+      "description": "A Fire Fighter responds to fires, vehicle crashes, medical emergencies, and other dangerous situations. They drive trucks, carry hoses and tools, enter smoky buildings, rescue people, give basic emergency care, and help control hazards like spills or downed wires. Their work protects lives, property, and buildings, and helps keep communities safer in emergencies.",
       "programCount": 2,
       "programs": [
         {
@@ -1196,7 +1196,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "33-2011.00",
-          "socTitle": "Firefighters"
+          "socTitle": "Firefighters",
+          "opportunities": []
         },
         {
           "programAk": 10264,
@@ -1215,14 +1216,15 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "33-2011.00",
-          "socTitle": "Firefighters"
+          "socTitle": "Firefighters",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Fire Fighter-EMT",
       "displayTradeName": "Fire Fighter-EMT",
-      "description": "A Fire Fighter-EMT responds to fires, medical emergencies, car crashes, and rescue calls. They drive emergency vehicles, carry hoses and tools, enter smoke-filled spaces, give first aid, use oxygen and heart monitors, and help move injured people to ambulances. Their work puts out fires, treats injuries, and helps keep people, homes, and public places safer.",
+      "description": "A Fire Fighter-EMT responds to fires, crashes, medical emergencies, and other urgent calls. They drive or ride in emergency vehicles, carry hoses and tools, put out fires, search buildings, give first aid, perform CPR, and help move injured people to ambulances. Their work protects lives, property, and public safety in everyday emergencies.",
       "programCount": 2,
       "programs": [
         {
@@ -1236,13 +1238,14 @@
           "addressPostalCode": "13440",
           "region": "Mohawk Valley",
           "programStatus": "Active",
-          "programApprovalDate": "2067-01-21",
+          "programApprovalDate": "1967-01-21",
           "programGroupType": "Individual - Joint",
           "programApproach": "Time",
           "programLength": 42,
           "ratio": "1:1,1:1",
           "socCode": "33-2011.00",
-          "socTitle": "Firefighters"
+          "socTitle": "Firefighters",
+          "opportunities": []
         },
         {
           "programAk": 3477,
@@ -1261,7 +1264,8 @@
           "programLength": 42,
           "ratio": "1:1,1:1",
           "socCode": "33-2011.00",
-          "socTitle": "Firefighters"
+          "socTitle": "Firefighters",
+          "opportunities": []
         }
       ]
     }

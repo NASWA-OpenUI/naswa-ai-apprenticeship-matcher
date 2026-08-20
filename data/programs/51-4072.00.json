@@ -1190,7 +1190,7 @@
     {
       "tradeName": "Plastic Process Technician",
       "displayTradeName": "Plastic Process Technician",
-      "description": "A Plastic Process Technician sets up, runs, and adjusts machines that melt and shape plastic into parts and products. They load materials, check temperatures and pressure, test finished pieces, fix quality problems, and keep equipment working smoothly on the factory floor. Their work helps make everyday plastic items consistent, safe, and ready to use.",
+      "description": "A Plastic Process Technician runs and adjusts machines that melt, mold, extrude, or shape plastic into finished products. They set temperatures and pressures, change molds or dies, check samples, fix process problems, and keep production lines on track. Their work helps make everyday plastic parts and packaging fit properly, work reliably, and stay safe to use.",
       "programCount": 1,
       "programs": [
         {
@@ -1210,7 +1210,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4072.00",
-          "socTitle": "Molding, Coremaking, and Casting Machine Setters"
+          "socTitle": "Molding, Coremaking, and Casting Machine Setters",
+          "opportunities": []
         }
       ]
     }

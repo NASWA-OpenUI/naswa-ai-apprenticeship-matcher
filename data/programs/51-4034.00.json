@@ -1023,7 +1023,7 @@
     {
       "tradeName": "Screw Machine Set-Up and Operator-Multiple",
       "displayTradeName": "Screw Machine Set-Up and Operator-Multiple",
-      "description": "A Screw Machine Set-Up and Operator-Multiple runs and adjusts several screw machines that shape metal parts from bars or rods. They load material, install tools, set machine speeds, watch parts being cut, measure finished pieces, and fix problems when machines jam or drift out of spec. Their work helps keep small metal parts accurate and production lines running smoothly.",
+      "description": "A Screw Machine Set-Up and Operator-Multiple runs and adjusts several screw machines that shape metal or plastic parts from rods and bars. They load material, install cutting tools, set speeds, check measurements, clear jams, and watch multiple machines as parts are made. Their work keeps small, precise parts flowing into cars, appliances, tools, and other everyday equipment.",
       "programCount": 1,
       "programs": [
         {
@@ -1043,7 +1043,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4034.00",
-          "socTitle": "Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic"
+          "socTitle": "Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic",
+          "opportunities": []
         }
       ]
     }

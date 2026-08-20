@@ -1012,8 +1012,8 @@
   "trades": [
     {
       "tradeName": "Iron Worker (Outside)",
-      "displayTradeName": "Iron Worker",
-      "description": "An outside Iron Worker builds and repairs the steel skeletons of buildings, bridges, towers, and other large structures. They unload and position heavy beams, bolt and weld pieces together, install metal decking, and work high above the ground using cranes, lifts, and safety gear. Their work helps keep structures strong, stable, and safe to use.",
+      "displayTradeName": "Iron Worker (Outside)",
+      "description": "An outside Iron Worker builds and repairs the steel frames of buildings, bridges, towers, and other large structures. They unload and hoist heavy steel, line up beams, bolt and weld connections, install metal decking, and work high above the ground using lifts, cranes, and safety gear. Their work builds strong structures and keeps them stable and safe.",
       "programCount": 12,
       "programs": [
         {
@@ -1033,7 +1033,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 668,
@@ -1052,7 +1053,66 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": [
+            {
+              "id": "ironworkers-jatc-lu-417-newburgh-ironworker-outside-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/ironworkers-jatc-lu-417-newburgh",
+              "sourceTitle": "Ironworkers JATC LU #417 (Newburgh)",
+              "jobTitle": "Ironworker (Outside) Apprentice",
+              "socCode": "47-2221.00",
+              "numberOfOpenings": 10,
+              "sponsorName": "Joint Apprenticeship Committee for Ironworkers, Local Union #417",
+              "unionName": "Ironworkers Local Union #417",
+              "locationSummary": "Wallkill, NY; Local Union #417 jurisdiction in Dutchess, Orange, Putman, Rockland, Sullivan, and Ulster counties",
+              "regions": [
+                "Hudson Valley"
+              ],
+              "recruitmentStartDate": "2025-10-14",
+              "recruitmentEndDate": "2026-10-13",
+              "applicationStartDate": "2025-10-14",
+              "applicationEndDate": "2026-05-31",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Apply in person at Local Union #417 in Wallkill during the recruitment period. Applications are available Monday through Friday, 9:00 a.m. to 12:00 p.m. and 1:00 p.m. to 3:30 p.m., excluding legal holidays, and must be received by May 31, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #417, 583 Route 32, Wallkill, NY 12589",
+              "applicationMailingAddress": null,
+              "applicationHours": "Monday through Friday, 9:00 a.m. to 12:00 p.m. and 1:00 p.m. to 3:30 p.m., excluding legal holidays",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": "Must reside within the Local Union #417 jurisdiction and be a resident of Dutchess, Orange, Putman, Rockland, Sullivan, or Ulster County.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes within the Local Union #417 jurisdiction, and must have a valid driver's license. Apprentices may be required to operate company vehicles.",
+              "drugTestRequirement": "Must pass a drug screening at an approved facility, at the union's expense if required, after selection and prior to enrollment.",
+              "classRequirement": "Must be able to attend required classes at the approved school within the Local Union #417 jurisdiction.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED. Proof will be required.",
+                "Must be physically able to perform the work of an Ironworker as determined by a physical agility test conducted by Local Union #417, including climbing a 40-foot ladder and not being afraid of heights, climbing a column, walking on a beam, pulling a 40-pound bucket, carrying and moving 80 pounds of reinforcing rods from one location to another, and demonstrating applicable trade-related skills such as welding, burning, and tying reinforcing bars.",
+                "Must pass a drug screening at an approved facility, at the union's expense, if required, after selection and prior to enrollment in apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and required classes at the approved school within the jurisdiction of Local Union #417, including Dutchess, Orange, Putman, Rockland, Sullivan, and Ulster counties.",
+                "Must reside within the jurisdiction of Local Union #417 and be a resident of one of these counties: Dutchess, Orange, Putman, Rockland, Sullivan, or Ulster.",
+                "Must have a valid driver's license; apprentices may be required to operate company vehicles.",
+                "Must have the ability to purchase tools as needed; tools will cost approximately $500.",
+                "Must be able to read a ruler.",
+                "Must have hand-eye coordination.",
+                "Must be able to calculate basic applications."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalent, live in the Local 417 jurisdiction, and have reliable transportation plus a valid driver's license. A physical agility test, drug screening, and proof of tool-purchase ability are also required.",
+              "contactName": "Ironworkers Local Union #417",
+              "contactPhone": "(845) 566-8417",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Ironworkers Local Union #417 for further information at (845) 566-8417."
+            }
+          ]
         },
         {
           "programAk": 1325,
@@ -1071,7 +1131,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 4145,
@@ -1090,7 +1151,69 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": [
+            {
+              "id": "ironworkers-jac-syracuse-lu-60-0-ironworker-outside-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/ironworkers-jac-syracuse-lu-60-0",
+              "sourceTitle": "Ironworkers JAC of Syracuse LU #60",
+              "jobTitle": "Ironworker (Outside) Apprentice",
+              "socCode": "47-2221.00",
+              "numberOfOpenings": 20,
+              "sponsorName": "Ironworkers JAC of Syracuse LU #60",
+              "unionName": "Ironworkers Local Union #60",
+              "locationSummary": "Central, Finger Lakes, North Country, and Southern regions of New York State",
+              "regions": [
+                "Central New York",
+                "Finger Lakes",
+                "North Country",
+                "Southern Tier"
+              ],
+              "recruitmentStartDate": "2026-04-29",
+              "recruitmentEndDate": "2027-04-18",
+              "applicationStartDate": "2026-04-29",
+              "applicationEndDate": "2027-04-23",
+              "applicationMethods": [
+                "online_application",
+                "in_person_application"
+              ],
+              "applicationSummary": "Obtain an application from JATC for Ironworkers Local Union #60 in Syracuse or from www.ironworkers60.org, complete it fully, and submit it by April 23, 2027. Two letters of recommendation are required.",
+              "applicationWebsite": "https://www.ironworkers60.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "JATC for Ironworkers Local Union #60, 500 West Genesee Street, Syracuse, NY 13204",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 4:00 p.m., Monday through Friday, excluding legal holidays, during the recruitment period",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must have been a resident of Ironworkers Local Union #60 jurisdiction for at least six months before recruitment. The jurisdiction includes Broome, Cayuga, Chenango, Cortland, Jefferson, Madison, Onondaga, Oswego, Seneca, Schuyler, Tioga, Tompkins, and Wayne counties.",
+              "transportationRequirement": "Must have reliable transportation to and from work and required classes. Must possess a valid New York State driver’s license to operate company vehicles.",
+              "drugTestRequirement": "Must take and pass a drug test at the sponsor’s expense after selection and before enrollment.",
+              "classRequirement": "Must attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must take a basic math and detail accuracy assessment test during the interview process.",
+                "Must be in good physical condition and pass an agility test, including climbing ladders and working at heights.",
+                "Must take and pass a drug test, at the sponsor’s expense, after selection and prior to enrollment in apprenticeship.",
+                "Must provide military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship.",
+                "Must provide a copy of birth certificate at the time of appointment.",
+                "Must have reliable transportation to and from work and required classes at the approved school.",
+                "Must possess a valid NYS driver’s license in order to operate company vehicles. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must be a resident of Ironworkers Local Union #60 jurisdiction for at least six months prior to recruitment. The jurisdiction includes the counties of Broome, Cayuga, Chenango, Cortland, Jefferson, Madison, Onondaga, Oswego, Seneca, Schuyler, Tioga, Tompkins, and Wayne.",
+                "Application must be completed in its entirety and submitted with two letters of recommendation from previous employers. Recent graduates may submit letters from teachers, school officials, etc."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, live in the union’s jurisdiction for at least six months, pass a math/detail test and agility test, have reliable transportation and a valid NYS driver’s license, and pass a drug test after selection. Two letters of recommendation are required.",
+              "contactName": "JATC for Ironworkers Local Union #60",
+              "contactPhone": "(315) 422-8200",
+              "contactEmail": null,
+              "contactWebsite": "https://www.ironworkers60.org",
+              "contactSummary": "Contact JATC for Ironworkers Local Union #60 for further information."
+            }
+          ]
         },
         {
           "programAk": 8139,
@@ -1109,7 +1232,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 8335,
@@ -1128,7 +1252,65 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": [
+            {
+              "id": "iron-workers-local-union-6-ironworker-outside-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/iron-workers-local-union-6",
+              "sourceTitle": "Iron Workers Local Union 6",
+              "jobTitle": "Ironworker (outside) Apprentice",
+              "socCode": "47-2221.00",
+              "numberOfOpenings": 20,
+              "sponsorName": "Joint Apprenticeship and Training Committee for Ironworkers, Local Union #6",
+              "unionName": "Local Union #6",
+              "locationSummary": "Finger Lakes, Southern Tier, and Western regions of New York",
+              "regions": [
+                "Finger Lakes",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-08-03",
+              "recruitmentEndDate": "2027-07-31",
+              "applicationStartDate": "2026-08-03",
+              "applicationEndDate": "2027-07-31",
+              "applicationMethods": [
+                "in_person_application"
+              ],
+              "applicationSummary": "Apply in person at Ironworkers Local Union #6 in Buffalo, Monday through Friday from 9:00 a.m. to 3:00 p.m., excluding legal holidays, during the recruitment period. Applications must be completed on premises.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Local Union #6, 196 Orchard Park Road, Buffalo, NY 14224",
+              "applicationMailingAddress": null,
+              "applicationHours": "Monday through Friday, 9:00 a.m. to 3:00 p.m., excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": "Must live within the jurisdiction of Local Union #6, including eligible parts of Erie, Cattaraugus, Genesee, Chautauqua, Allegany, Wyoming, and Steuben counties.",
+              "transportationRequirement": "Must have a valid NYS driver’s license to drive company vehicles and reliable transportation to job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug screening, at the sponsor’s expense, after selection and at the time of enrollment.",
+              "classRequirement": "Must be able to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED.",
+                "Must pass a drug screening, at the expense of the sponsor, after selection and at the time of enrollment.",
+                "Must be a U.S. citizen or authorized to work in the USA.",
+                "Must live within the jurisdiction of Local Union #6, including: Erie County - all of Erie County except the northern half of Grand Island; the boundary line is Whitehaven Road from East River to West River. Cattaraugus County - all of Cattaraugus County. Genesee County - townships of Alabama, Pembroke, Darien, Oakfield, Alexander, and Batavia (western half, excluding the City of Batavia). Chautauqua County - townships of Sheridan, Pomfret, Charlotte, Arkwright, Hanover, Villenova, Cherry Creek, Ellington, and Brocton. Allegany County - townships of Alfred, Allen, Almond, Andover, Centerville, Rushford, New Hudson, Cuba, Clarksville, Genesee, Hume, Caneadea, Belfast, Wirt, Friendship, Bolivar, Angelica, Amity, Scio, Wellsville, West Almond, Alma, Granger, Willing, and Independence. Wyoming County - townships of Bennington, Sheldon, Java, Arcade, Attica, Orangeville, Wethersfield, Eagle, Warsaw, Gainesville, Pike, and Genesee Falls. Steuben County - townships of Canisteo, Freemont, Greenwood, Hartsville, Hornell, Hornellsville, Howard, Jasper, Troupsburg, and West Union.",
+                "Must possess a valid NYS driver’s license in order to drive company vehicles.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment."
+              ],
+              "requirementsSummary": "Applicants must be 18+, have a high school diploma or equivalent, be legally authorized to work in the U.S., live within the Local Union #6 jurisdiction, have a valid NYS driver’s license and reliable transportation, and pass a drug screen after selection.",
+              "contactName": "Ironworkers Local Union #6",
+              "contactPhone": "(716) 876-4744",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact Ironworkers Local Union #6 for further information."
+            }
+          ]
         },
         {
           "programAk": 9630,
@@ -1141,13 +1323,14 @@
           "addressPostalCode": "11106",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "2044-11-24",
+          "programApprovalDate": "1944-11-24",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 10105,
@@ -1166,7 +1349,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 11948,
@@ -1185,7 +1369,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 17480,
@@ -1204,7 +1389,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 17744,
@@ -1223,7 +1409,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         },
         {
           "programAk": 17861,
@@ -1242,14 +1429,15 @@
           "programLength": 39,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Iron Worker (Stone Derrickman and Rigger)",
-      "displayTradeName": "Iron Worker",
-      "description": "An Iron Worker who works as a stone derrickman and rigger moves, lifts, and positions large stone pieces using cranes, cables, pulleys, and rigging gear. They fasten loads, guide heavy materials into place, and help set stone safely on building or construction sites. Their work helps structures go together correctly and keeps lifting jobs safer and under control.",
+      "displayTradeName": "Iron Worker (Stone Derrickman and Rigger)",
+      "description": "An Iron Worker who works as a stone derrickman and rigger moves and sets heavy stone on construction sites. They attach slings, chains, and cables, guide loads with cranes or derricks, signal operators, and position pieces carefully into place. Their work helps build strong walls, bridges, and structures, and keeps heavy lifting safer and controlled.",
       "programCount": 1,
       "programs": [
         {
@@ -1269,7 +1457,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2221.00",
-          "socTitle": "Structural Iron and Steel Workers"
+          "socTitle": "Structural Iron and Steel Workers",
+          "opportunities": []
         }
       ]
     }

@@ -1013,7 +1013,7 @@
     {
       "tradeName": "Model Maker",
       "displayTradeName": "Model Maker",
-      "description": "A Model Maker builds detailed physical models, prototypes, and mock-ups used to test, display, or explain products, buildings, sets, or ideas. They measure, cut, shape, sand, glue, paint, and assemble wood, plastic, metal, foam, or other materials with hand and power tools. Their work helps people see designs clearly, check fit and function, and improve what gets built.",
+      "description": "A Model Maker builds detailed physical models of products, machines, buildings, or set designs from wood, plastic, metal, foam, and other materials. They read drawings, measure carefully, cut and shape parts, assemble pieces, and smooth or paint surfaces to match the final design. Their work helps people test ideas, show plans clearly, and improve what gets built.",
       "programCount": 1,
       "programs": [
         {
@@ -1033,7 +1033,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "51-4061.00",
-          "socTitle": "Model Makers, Metal and Plastic"
+          "socTitle": "Model Makers, Metal and Plastic",
+          "opportunities": []
         }
       ]
     }

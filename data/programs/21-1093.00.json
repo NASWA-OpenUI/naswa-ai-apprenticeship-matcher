@@ -1078,7 +1078,7 @@
     {
       "tradeName": "Alcoholism and Substance Abuse Counselor Aide",
       "displayTradeName": "Alcoholism and Substance Abuse Counselor Aide",
-      "description": "An Alcoholism and Substance Abuse Counselor Aide supports treatment programs for people dealing with addiction. They greet clients, set up rooms, keep records, schedule appointments, lead basic activities, watch for problems, and help counselors with daily care and program tasks. Their work helps treatment services stay organized, safe, and running smoothly for clients and staff.",
+      "description": "An Alcoholism and Substance Abuse Counselor Aide supports counseling staff who help people dealing with alcohol or drug use problems. They prepare rooms, greet clients, schedule appointments, keep records organized, monitor supplies, and help with basic office and program tasks. Their work helps treatment services stay organized, welcoming, and running safely for clients and staff.",
       "programCount": 3,
       "programs": [
         {
@@ -1098,7 +1098,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 2570,
@@ -1117,7 +1118,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 8123,
@@ -1136,14 +1138,15 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Certified Recovery Peer Advocate",
       "displayTradeName": "Certified Recovery Peer Advocate",
-      "description": "A Certified Recovery Peer Advocate supports people who are working to recover from addiction or mental health challenges by sharing their own lived experience. They meet one-on-one, lead support groups, help people find housing, treatment, or community services, and encourage healthy routines. Their work helps people stay connected, supported, and moving forward in daily life.",
+      "description": "A Certified Recovery Peer Advocate supports people working to recover from substance use or mental health challenges by drawing on their own recovery experience. They meet one-on-one, lead support groups, help people set goals, find services, and handle daily obstacles like housing or appointments. Their work helps people stay connected, stable, and safer in everyday life.",
       "programCount": 2,
       "programs": [
         {
@@ -1163,7 +1166,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 7351,
@@ -1182,14 +1186,15 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Direct Support Professional",
       "displayTradeName": "Direct Support Professional",
-      "description": "A Direct Support Professional helps people with disabilities or other support needs with daily living at home, at work, and in the community. They may help with meals, bathing, medications, transportation, chores, and social activities, while encouraging independence and choice. Their work helps people stay safe, healthy, included, and able to live everyday life.",
+      "description": "A Direct Support Professional helps people with disabilities or other support needs with daily living at home, at work, or in the community. They may help with meals, bathing, dressing, medicine, rides, chores, and activities while offering encouragement and supervision. Their work helps people stay safe, independent, included, and cared for each day.",
       "programCount": 14,
       "programs": [
         {
@@ -1209,7 +1214,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 551,
@@ -1228,7 +1234,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 2520,
@@ -1247,7 +1254,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 2585,
@@ -1266,7 +1274,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 2592,
@@ -1285,7 +1294,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 4539,
@@ -1304,7 +1314,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 8602,
@@ -1323,7 +1334,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 9076,
@@ -1342,7 +1354,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 9463,
@@ -1361,7 +1374,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 11765,
@@ -1380,7 +1394,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 15442,
@@ -1399,7 +1414,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 16392,
@@ -1418,7 +1434,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 17297,
@@ -1437,7 +1454,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         },
         {
           "programAk": 18807,
@@ -1456,14 +1474,15 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Social Service Assistant",
       "displayTradeName": "Social Service Assistant",
-      "description": "A Social Service Assistant helps people get support for daily needs and life problems. They meet with clients, gather information, fill out forms, arrange services like housing, food, or transportation, check in by phone or in person, and keep records up to date. Their work helps people stay connected to care, services, and safer living situations.",
+      "description": "A Social Service Assistant helps people get support with daily challenges like housing, food, benefits, transportation, and appointments. They meet with clients, fill out forms, keep records, check in by phone or in person, and connect people with community services. Their work helps people access basic needs, stay organized, and keep important services running.",
       "programCount": 1,
       "programs": [
         {
@@ -1483,7 +1502,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1093.00",
-          "socTitle": "Social and Human Service Assistants"
+          "socTitle": "Social and Human Service Assistants",
+          "opportunities": []
         }
       ]
     }

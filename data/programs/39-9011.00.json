@@ -1118,7 +1118,7 @@
     {
       "tradeName": "Childcare Assistant",
       "displayTradeName": "Childcare Assistant",
-      "description": "A Childcare Assistant helps care for infants and young children in daycares, preschools, or after-school programs. They watch children closely, prepare snacks, help with play and learning activities, change diapers, tidy rooms, and support nap and outdoor time. Their work helps keep children safe, clean, active, and cared for each day.",
+      "description": "A Childcare Assistant helps care for babies, toddlers, or young children in a daycare, preschool, or after-school setting. They set up activities, serve snacks, supervise play, help with dressing and toileting, tidy rooms, and support routines like naps and story time. Their work helps children stay safe, clean, active, and cared for each day.",
       "programCount": 6,
       "programs": [
         {
@@ -1138,7 +1138,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         },
         {
           "programAk": 5983,
@@ -1157,7 +1158,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         },
         {
           "programAk": 7419,
@@ -1176,7 +1178,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         },
         {
           "programAk": 14505,
@@ -1195,7 +1198,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         },
         {
           "programAk": 15969,
@@ -1214,7 +1218,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         },
         {
           "programAk": 17233,
@@ -1233,7 +1238,8 @@
           "programLength": 21,
           "ratio": "1:1,1:1",
           "socCode": "39-9011.00",
-          "socTitle": "Childcare Workers"
+          "socTitle": "Childcare Workers",
+          "opportunities": []
         }
       ]
     }

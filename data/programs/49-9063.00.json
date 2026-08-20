@@ -1096,7 +1096,7 @@
     {
       "tradeName": "Piano Builder",
       "displayTradeName": "Piano Builder",
-      "description": "A Piano Builder makes and rebuilds pianos by hand, shaping wood parts, fitting strings and keys, installing felt and metal pieces, and carefully adjusting the action, pedals, and sound. They use measuring tools, clamps, sanders, and tuning methods at benches and workshop floors. Their work builds instruments that play smoothly, sound right, and last for years.",
+      "description": "A Piano Builder makes and rebuilds pianos by hand, using wood, felt, wire, glue, and metal parts. They shape and fit the frame, keyboard, strings, and action, then tune and test each note to make sure the instrument sounds and feels right. Their work builds reliable pianos that create music in homes, schools, and concert spaces.",
       "programCount": 1,
       "programs": [
         {
@@ -1116,7 +1116,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "49-9063.00",
-          "socTitle": "Musical Instrument Repairers and Tuners"
+          "socTitle": "Musical Instrument Repairers and Tuners",
+          "opportunities": []
         }
       ]
     }

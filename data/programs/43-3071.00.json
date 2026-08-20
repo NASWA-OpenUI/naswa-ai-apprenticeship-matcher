@@ -1111,7 +1111,7 @@
     {
       "tradeName": "Financial Services Representative",
       "displayTradeName": "Financial Services Representative",
-      "description": "A Financial Services Representative helps people choose and manage financial products and services. They meet with customers, explain options like bank accounts, loans, credit, insurance, or investments, answer questions, process applications, and keep records up to date. Their work helps people handle money, access services, and keep everyday finances organized and running smoothly.",
+      "description": "A Financial Services Representative helps people choose and use banking, credit, insurance, or investment products that fit their needs. They meet with customers, explain options, open accounts, process applications, answer questions, and keep records up to date, often by phone, computer, and in person. Their work helps people manage money, plan ahead, and keep finances running smoothly.",
       "programCount": 1,
       "programs": [
         {
@@ -1131,7 +1131,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "43-3071.00",
-          "socTitle": "Tellers"
+          "socTitle": "Tellers",
+          "opportunities": []
         }
       ]
     }

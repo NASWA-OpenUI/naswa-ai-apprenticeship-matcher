@@ -1016,7 +1016,7 @@
     {
       "tradeName": "Dairy Specialist",
       "displayTradeName": "Dairy Specialist",
-      "description": "A Dairy Specialist works with milk and dairy products in processing plants, farms, or food facilities. They test milk quality, monitor equipment, check cleanliness, track temperatures, and help make products like cheese, butter, or yogurt follow safety and quality standards. Their work helps keep dairy products safe, fresh, and ready for everyday use.",
+      "description": "A Dairy Specialist manages the care, handling, and quality of milk and other dairy products on a farm or in a processing setting. They may monitor milking equipment, check animal health, test milk, clean tanks and tools, and track storage conditions. Their work helps keep dairy products safe, fresh, and ready for everyday use.",
       "programCount": 2,
       "programs": [
         {
@@ -1036,7 +1036,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "45-2093.00",
-          "socTitle": "Farmworkers, Farm, Ranch, and Aquacultural Animals"
+          "socTitle": "Farmworkers, Farm, Ranch, and Aquacultural Animals",
+          "opportunities": []
         },
         {
           "programAk": 7779,
@@ -1055,7 +1056,8 @@
           "programLength": 36,
           "ratio": "1:1,1:1",
           "socCode": "45-2093.00",
-          "socTitle": "Farmworkers, Farm, Ranch, and Aquacultural Animals"
+          "socTitle": "Farmworkers, Farm, Ranch, and Aquacultural Animals",
+          "opportunities": []
         }
       ]
     }

@@ -1100,8 +1100,8 @@
   "trades": [
     {
       "tradeName": "Operating Engineer (Grade and Paving Equipment)",
-      "displayTradeName": "Operating Engineer",
-      "description": "An Operating Engineer working with grading and paving equipment runs heavy machines that shape ground and lay road surfaces. They steer graders, rollers, pavers, and loaders, level soil and gravel, spread asphalt, and watch controls to keep the work even and smooth. Their work helps build and maintain roads, parking lots, and surfaces people use every day.",
+      "displayTradeName": "Operating Engineer (Grade and Paving Equipment)",
+      "description": "An Operating Engineer who works with grading and paving equipment runs heavy machines that shape the ground and lay road surfaces. They drive graders, rollers, pavers, and loaders, spread soil or asphalt, level surfaces, and check controls while working around crews and traffic. Their work builds smooth roads, parking lots, and streets that keep travel safer and more reliable.",
       "programCount": 4,
       "programs": [
         {
@@ -1121,7 +1121,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 10292,
@@ -1140,7 +1141,8 @@
           "programLength": 24,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 17154,
@@ -1159,7 +1161,8 @@
           "programLength": 30,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 18238,
@@ -1178,13 +1181,14 @@
           "programLength": 38,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Operating Engineer (Heavy Equipment)",
-      "displayTradeName": "Operating Engineer",
+      "displayTradeName": "Operating Engineer (Heavy Equipment)",
       "description": "An Operating Engineer works with heavy equipment on construction sites and other outdoor job sites. They drive, steer, and control bulldozers, excavators, loaders, graders, and rollers to dig, lift, move, level, and spread earth, rock, and materials. Their work helps build roads, foundations, and utility systems, and keeps projects moving safely.",
       "programCount": 12,
       "programs": [
@@ -1205,7 +1209,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 631,
@@ -1224,7 +1229,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 2541,
@@ -1237,13 +1243,85 @@
           "addressPostalCode": "11719",
           "region": "Long Island",
           "programStatus": "Active",
-          "programApprovalDate": "2062-05-01",
+          "programApprovalDate": "1962-05-01",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": [
+            {
+              "id": "international-union-operating-engineers-local-union-138-operating-engineer-heavy-equipment-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/international-union-operating-engineers-local-union-138",
+              "sourceTitle": "International Union of Operating Engineers Local Union #138",
+              "jobTitle": "Operating Engineer (Heavy Equipment) Apprentice",
+              "socCode": "47-2073.00",
+              "numberOfOpenings": 5,
+              "sponsorName": "Joint Apprenticeship and Training Committee (JATC) for Operating Engineers, Local Union #138",
+              "unionName": "Local Union #138",
+              "locationSummary": "Long Island, NY; applications available in Farmingdale",
+              "regions": [
+                "Long Island"
+              ],
+              "recruitmentStartDate": "2026-09-14",
+              "recruitmentEndDate": "2026-09-25",
+              "applicationStartDate": "2026-09-14",
+              "applicationEndDate": "2026-10-02",
+              "applicationMethods": [
+                "in_person_application",
+                "mail_application"
+              ],
+              "applicationSummary": "Pick up applications at the Union Hall in Farmingdale during recruitment hours, then return the completed application by certified mail, return receipt requested, to the JATC attention Mr. Stephen Barnett. Applications must be received by October 2, 2026.",
+              "applicationWebsite": null,
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "Union Hall, 137 Gazza Boulevard, Farmingdale, New York 11735",
+              "applicationMailingAddress": null,
+              "applicationHours": "9:00 a.m. to 12:00 p.m., Monday through Friday, excluding legal holidays, during the recruitment period.",
+              "applicationLimit": null,
+              "applicationLimitDetails": null,
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 18 years old.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma (such as TASC or GED) and one year of high school algebra.",
+              "residencyRequirement": "Must be a resident of Nassau County or Suffolk County, as shown by the address on the application.",
+              "transportationRequirement": "Must have a valid New York State driver’s license to drive company vehicles and reliable transportation to and from work and required classes at the approved school.",
+              "drugTestRequirement": "Must be willing to submit to and pass a drug test at the expense of the JATC after selection and before enrollment.",
+              "classRequirement": "Must have reliable transportation to required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 18 years old; proof will be required after selection and before enrollment.",
+                "Must have a high school diploma or high school equivalency diploma (such as TASC or GED).",
+                "Must have one year of high school algebra.",
+                "Must properly submit an application.",
+                "Applicants will be contacted to take the Wonderlic Select aptitude test.",
+                "Applicants who score 80% or higher on the Wonderlic Select aptitude test, or the top 100 candidates, whichever is lesser, will be offered an interview with the training committee.",
+                "Must be a resident of Nassau County or Suffolk County, as shown by the address on the application.",
+                "Must provide proof of residence after selection and before enrollment; two items are required other than a driver’s license or car registration.",
+                "Must sign an affidavit attesting that they are physically able to perform the work of an Operating Engineer.",
+                "Work may include working with hand and power tools.",
+                "Work may include climbing up onto and down from heavy equipment.",
+                "Work may include working outdoors in extreme temperatures and weather conditions.",
+                "Work may include lifting and moving heavy tools and equipment.",
+                "Work may include reading, hearing, and understanding instructions and warnings.",
+                "Must have a valid NYS driver’s license to drive company vehicles.",
+                "Must have reliable transportation to and from work and required classes at the approved school.",
+                "Must submit a copy of a valid photo identification after selection and before enrollment.",
+                "Must provide three personal reference letters after selection and before enrollment.",
+                "Must be willing to submit to and pass a drug test at the expense of the JATC after selection and before enrollment.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and before enrollment.",
+                "Applications can be obtained at the Union Hall only during the recruitment period, between 9:00 a.m. and 12:00 p.m., Monday through Friday, excluding legal holidays.",
+                "All applications must be returned via the U.S. Postal Service using certified mail, return receipt requested.",
+                "All applications must be received no later than October 2, 2026."
+              ],
+              "requirementsSummary": "Applicants must be at least 18, have a high school diploma or equivalency plus algebra, live in Nassau or Suffolk County, have a valid NYS driver’s license and reliable transportation, and pass an aptitude test, interview, and drug test.",
+              "contactName": "JATC for Operating Engineers, Local Union #138",
+              "contactPhone": "(631) 286-8677",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact the JATC for Operating Engineers, Local Union #138 at (631) 286-8677 for further information."
+            }
+          ]
         },
         {
           "programAk": 2976,
@@ -1262,7 +1340,8 @@
           "programLength": 48,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 3550,
@@ -1281,7 +1360,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 4484,
@@ -1300,7 +1380,8 @@
           "programLength": 27,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 4720,
@@ -1319,7 +1400,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 7741,
@@ -1338,7 +1420,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 11795,
@@ -1357,7 +1440,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 13359,
@@ -1376,7 +1460,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 15229,
@@ -1395,7 +1480,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 18620,
@@ -1414,14 +1500,15 @@
           "programLength": 48,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Operating Engineer (Universal Equipment)",
-      "displayTradeName": "Operating Engineer",
-      "description": "An Operating Engineer runs heavy equipment used to move earth and materials on construction and industrial sites. They sit in bulldozers, loaders, excavators, and similar machines to dig, grade, lift, trench, and clear ground, while checking controls and watching site conditions. Their work helps build roads, foundations, and utility systems and keeps projects moving safely.",
+      "displayTradeName": "Operating Engineer (Universal Equipment)",
+      "description": "An Operating Engineer who uses many kinds of heavy equipment runs and helps maintain machines on construction sites, roads, and industrial projects. They operate bulldozers, loaders, excavators, cranes, and paving equipment to dig, lift, grade, and move earth or materials. Their work helps build roads, foundations, and other structures, and keeps job sites running safely and smoothly.",
       "programCount": 9,
       "programs": [
         {
@@ -1441,7 +1528,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 1349,
@@ -1460,7 +1548,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 2640,
@@ -1479,7 +1568,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 3937,
@@ -1498,7 +1588,8 @@
           "programLength": 48,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 4048,
@@ -1517,7 +1608,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 4847,
@@ -1536,7 +1628,8 @@
           "programLength": 26,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 7585,
@@ -1555,7 +1648,8 @@
           "programLength": 29,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 11039,
@@ -1574,7 +1668,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         },
         {
           "programAk": 12023,
@@ -1593,7 +1688,8 @@
           "programLength": 36,
           "ratio": "1:1,1:5",
           "socCode": "47-2073.00",
-          "socTitle": "Operating Engineers and Other Construction Equipment Operators"
+          "socTitle": "Operating Engineers and Other Construction Equipment Operators",
+          "opportunities": []
         }
       ]
     }

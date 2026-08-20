@@ -1130,7 +1130,7 @@
     {
       "tradeName": "Quality Assurance Auditor",
       "displayTradeName": "Quality Assurance Auditor",
-      "description": "A Quality Assurance Auditor checks whether a company’s products, services, or work processes meet set standards and rules. They review records, inspect work areas, watch how tasks are done, and write reports on problems they find. Their work helps catch mistakes, improve consistency, and keep products and services safe and reliable.",
+      "description": "A Quality Assurance Auditor checks whether a company’s products, services, or work processes meet set standards and rules. They review records, inspect work areas, test samples, watch how jobs are done, and write reports on problems that need fixing. Their work helps keep products reliable, workplaces following rules, and everyday services running safely.",
       "programCount": 9,
       "programs": [
         {
@@ -1150,7 +1150,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 6971,
@@ -1169,7 +1170,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 6975,
@@ -1188,7 +1190,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 11538,
@@ -1207,7 +1210,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 12699,
@@ -1226,7 +1230,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 14323,
@@ -1245,7 +1250,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 15155,
@@ -1264,7 +1270,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 18710,
@@ -1283,7 +1290,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         },
         {
           "programAk": 18721,
@@ -1302,7 +1310,8 @@
           "programLength": 24,
           "ratio": "1:1,1:1",
           "socCode": "19-4099.01",
-          "socTitle": "Quality Control Analysts"
+          "socTitle": "Quality Control Analysts",
+          "opportunities": []
         }
       ]
     }

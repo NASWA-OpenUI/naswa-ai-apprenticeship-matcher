@@ -26,7 +26,7 @@
     {
       "tradeName": "Workforce Development Specialist",
       "displayTradeName": "Workforce Development Specialist",
-      "description": "A Workforce Development Specialist helps people prepare for jobs and helps employers find workers with the right skills. They meet with job seekers, assess interests, connect people to training, workshops, and support services, and work with schools, agencies, and businesses to plan programs. Their work helps people build careers and keeps local workplaces staffed and running.",
+      "description": "A Workforce Development Specialist helps people build job skills and connect with training, education, and work opportunities. They meet with job seekers, assess needs, guide career plans, organize workshops, track progress, and work with employers, schools, and community programs. Their work helps people find steady employment and keeps local businesses staffed and workforce programs running.",
       "programCount": 2,
       "programs": [
         {
@@ -46,7 +46,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1019.00",
-          "socTitle": "Counselors, All Other"
+          "socTitle": "Counselors, All Other",
+          "opportunities": []
         },
         {
           "programAk": 13545,
@@ -65,7 +66,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "21-1019.00",
-          "socTitle": "Counselors, All Other"
+          "socTitle": "Counselors, All Other",
+          "opportunities": []
         }
       ]
     }

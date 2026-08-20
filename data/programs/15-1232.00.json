@@ -1053,7 +1053,7 @@
     {
       "tradeName": "Computer Support Technician",
       "displayTradeName": "Computer Support Technician",
-      "description": "A Computer Support Technician helps people fix everyday computer and technology problems at work or home. They set up computers, install software, connect printers and networks, update systems, and troubleshoot issues by phone, online, or in person. Their work keeps devices, programs, and internet connections running properly so people can work safely and without long delays.",
+      "description": "A Computer Support Technician helps people fix computer and technology problems at work or in homes. They set up computers, install software, troubleshoot slow systems, repair basic hardware, connect printers and networks, and show users how to solve common issues. Their work keeps devices, internet connections, and daily tasks running smoothly and safely.",
       "programCount": 2,
       "programs": [
         {
@@ -1073,7 +1073,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-1232.00",
-          "socTitle": "Computer User Support Specialists"
+          "socTitle": "Computer User Support Specialists",
+          "opportunities": []
         },
         {
           "programAk": 18497,
@@ -1092,7 +1093,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "15-1232.00",
-          "socTitle": "Computer User Support Specialists"
+          "socTitle": "Computer User Support Specialists",
+          "opportunities": []
         }
       ]
     }

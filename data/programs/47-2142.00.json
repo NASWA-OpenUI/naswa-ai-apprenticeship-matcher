@@ -1010,7 +1010,7 @@
     {
       "tradeName": "Paperhanger",
       "displayTradeName": "Paperhanger",
-      "description": "A Paperhanger covers interior walls and sometimes ceilings with wallpaper, vinyl, or fabric wall coverings. They measure rooms, smooth and patch surfaces, cut and match patterns, spread adhesive, and press coverings into place so seams line up cleanly. Their work gives rooms a finished look and helps protect walls in homes, offices, and public buildings.",
+      "description": "A Paperhanger covers walls and ceilings with wallpaper, vinyl, fabric, and other decorative finishes. They measure rooms, smooth and patch surfaces, cut material to size, match patterns, apply paste or adhesive, and press coverings into place neatly around corners, doors, and trim. Their work improves how indoor spaces look and helps protect wall surfaces from wear.",
       "programCount": 1,
       "programs": [
         {
@@ -1030,7 +1030,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2142.00",
-          "socTitle": "Paperhangers"
+          "socTitle": "Paperhangers",
+          "opportunities": []
         }
       ]
     }

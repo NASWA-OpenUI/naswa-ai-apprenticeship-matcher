@@ -1105,7 +1105,7 @@
     {
       "tradeName": "Industrial Hygienist",
       "displayTradeName": "Industrial Hygienist",
-      "description": "An Industrial Hygienist finds and controls health hazards in workplaces like factories, labs, hospitals, and construction sites. They walk through work areas, take samples of air, noise, dust, or chemicals, review jobs and equipment, and recommend safer ways to work. Their work helps keep workers healthy and job sites safer and in good working order.",
+      "description": "An Industrial Hygienist finds and controls health hazards in workplaces such as factories, labs, offices, and construction sites. They test air, noise, dust, chemicals, and ventilation, inspect equipment and work areas, and recommend safer methods, gear, or cleanup steps. Their work helps keep workers healthy and makes job sites safer and cleaner.",
       "programCount": 1,
       "programs": [
         {
@@ -1125,14 +1125,15 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "19-5011.00",
-          "socTitle": "Occupational Health and Safety Specialists"
+          "socTitle": "Occupational Health and Safety Specialists",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Safety and Health Inspector",
       "displayTradeName": "Safety and Health Inspector",
-      "description": "A Safety and Health Inspector checks workplaces to make sure they follow safety laws and health rules. They walk through factories, offices, construction sites, or stores, inspect equipment, watch how jobs are done, take notes, and write reports on hazards and violations. Their work helps prevent injuries, illness, and unsafe conditions on the job.",
+      "description": "A Safety and Health Inspector checks workplaces for hazards and makes sure safety rules are being followed. They walk through buildings, job sites, kitchens, factories, or warehouses, inspect equipment, review records, investigate accidents, and explain what needs to be fixed. Their work helps prevent injuries, illness, unsafe conditions, and costly problems on the job.",
       "programCount": 1,
       "programs": [
         {
@@ -1152,7 +1153,8 @@
           "programLength": 18,
           "ratio": "1:1,1:1",
           "socCode": "19-5011.00",
-          "socTitle": "Occupational Health and Safety Specialists"
+          "socTitle": "Occupational Health and Safety Specialists",
+          "opportunities": []
         }
       ]
     }

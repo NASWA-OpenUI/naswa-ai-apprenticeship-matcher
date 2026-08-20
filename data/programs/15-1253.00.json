@@ -1161,7 +1161,7 @@
     {
       "tradeName": "Quality Assurance Auditor-A",
       "displayTradeName": "Quality Assurance Auditor-A",
-      "description": "A Quality Assurance Auditor-A checks whether products, materials, or work processes meet company and industry standards. They inspect items, review records, watch how work is done, note defects, and write reports on problems they find. Their work helps catch mistakes early and keeps goods consistent, safe, and ready for customers or further use.",
+      "description": "A Quality Assurance Auditor-A checks whether a company’s work, products, or records meet set standards and rules. They inspect materials, watch work being done, review paperwork, note problems, and write reports for managers. Their work helps catch mistakes early, keeps processes consistent, and makes products, services, and workplaces safer and more reliable.",
       "programCount": 1,
       "programs": [
         {
@@ -1181,7 +1181,8 @@
           "programLength": null,
           "ratio": "1:1,1:1",
           "socCode": "15-1253.00",
-          "socTitle": "Software Quality Assurance Analysts and Testers"
+          "socTitle": "Software Quality Assurance Analysts and Testers",
+          "opportunities": []
         }
       ]
     }

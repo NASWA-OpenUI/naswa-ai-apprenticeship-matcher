@@ -1214,7 +1214,7 @@
     {
       "tradeName": "Carpenter",
       "displayTradeName": "Carpenter",
-      "description": "A Carpenter builds, installs, and repairs wooden parts of buildings and other structures. They measure and cut lumber, frame walls, hang doors, fit cabinets, install floors, and use hand and power tools on homes, offices, and job sites. Their work helps create solid spaces that are safe, useful, and built to last.",
+      "description": "A Carpenter builds, installs, and repairs wooden parts of buildings and other structures. They measure and cut lumber, frame walls, hang doors, fit windows, build stairs, and install cabinets, floors, and trim using hand and power tools. Their work helps create solid spaces people can live in, work in, and use safely every day.",
       "programCount": 16,
       "programs": [
         {
@@ -1234,7 +1234,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 2317,
@@ -1253,7 +1254,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 2864,
@@ -1272,7 +1274,65 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-6-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-6",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, and Westchester counties; information sessions in Rock Tavern, NY",
+              "regions": [
+                "Hudson Valley"
+              ],
+              "recruitmentStartDate": "2026-03-09",
+              "recruitmentEndDate": "2027-03-08",
+              "applicationStartDate": "2026-03-09",
+              "applicationEndDate": "2027-03-08",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Apply online at NASCTF during the recruitment period after attending a required in-person information session. A passcode from the session is needed to complete the application.",
+              "applicationWebsite": "https://www.nasctf.org/",
+              "applicationEmail": null,
+              "applicationPhone": "(631) 952-9555",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Online applications are available during the recruitment period. For assistance with the online application, call Monday through Friday, 9:00 a.m. to 3:00 p.m.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Information-session spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at the time of application.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the NASCTF geographical jurisdiction: Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, and Westchester counties.",
+              "transportationRequirement": "Must have reliable transportation and be willing to travel to job sites and required classes.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment, at the sponsor's expense. If the applicant tests positive, they cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend related instruction classes as required.",
+              "allRequirements": [
+                "Must be at least 17 years old at the time of application.",
+                "Must attest in writing that they are physically able to perform the work of a Carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from minimum heights of 10 feet; lifting at least 50 lbs.; and standing and stooping for prolonged periods.",
+                "Must pass a drug test, at the sponsor's expense, after selection and prior to enrollment in apprenticeship. If the applicant tests positive, they cannot reapply for one year.",
+                "Must have the ability to read, interpret, and work from sketches, drawings, or blueprints.",
+                "Must have the ability to use stationary and portable hand tools, as well as power tools.",
+                "Must be willing to attend related instruction classes as required.",
+                "Must have reliable means of transportation and be willing to travel to and from various job sites and required classes at the approved school.",
+                "Must live in the geographical jurisdiction of the NASCTF: Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, and Westchester counties.",
+                "Must provide a military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, live in the NASCTF jurisdiction, attend a required information session, and be able to meet physical, transportation, class, and drug-testing requirements.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(845) 567-1810",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nasctf.org/",
+              "contactSummary": "Contact North Atlantic States Carpenters Training Fund at (845) 567-1810 for further information."
+            }
+          ]
         },
         {
           "programAk": 3259,
@@ -1291,7 +1351,69 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-8-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-8",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "Upstate New York counties in the NASCTF jurisdiction; information sessions at multiple locations including Rochester, Syracuse, Buffalo, Horseheads, Binghamton, Utica, and Jamestown",
+              "regions": [
+                "Central New York",
+                "Finger Lakes",
+                "Mohawk Valley",
+                "North Country",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-06-08",
+              "recruitmentEndDate": "2027-06-07",
+              "applicationStartDate": "2026-06-08",
+              "applicationEndDate": "2027-06-07",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required",
+                "in_person_application"
+              ],
+              "applicationSummary": "Attend a required in-person information session first, receive a passcode, then complete the online application at the NASCTF website during the recruitment period.",
+              "applicationWebsite": "https://www.nasctf.org/",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 436-1110",
+              "applicationInPersonAddress": "21 Jetview Drive, Rochester, NY 14624; 6920 Princeton Ct, Syracuse, NY 13212; 1000 N Blossom Rd, Elma, NY 14059; 181 Latta Brook Industrial Park Rd, Horseheads, NY 14845; 23 Market St, Binghamton, NY 13905; 207 Genesee St, Utica, NY 13501-2812; 65 E Main St, Falconer, NY 14733",
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the first Monday of each month at 6:00 p.m. during the recruitment period, except holidays; Jamestown sessions are at 4:00 p.m. sharp. If the first Monday is a holiday, the session is held the second Monday of that month at the same time.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis. A passcode from the information session is required to complete the online application.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the geographical jurisdiction covering Allegany, Cattaraugus, Chautauqua, Erie, Niagara, Orleans, Genesee, Wyoming, Monroe, Livingston, Wayne, Ontario, Chemung, Schuyler, Steuben, Tompkins, Yates, Seneca, Cayuga, Cortland, Onondaga, Madison, Oswego, Broome, Delaware, Chenango, Otsego, Tioga, Oneida, Herkimer, Jefferson, Lewis, and St. Lawrence counties.",
+              "transportationRequirement": "Must have reliable transportation and be willing to travel to job sites and required classes at the approved school.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays for the test. If the applicant tests positive, they cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must attest in writing that they are physically able to perform the work of a Carpenter, including working on scaffolds and in confined spaces, working in inclement weather, performing constant repetitive motions, climbing and working from heights, lifting at least 50 lbs., and standing and stooping for prolonged periods.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship. If the applicant tests positive, they cannot reapply for one year.",
+                "Must be willing to attend required classes at the approved school.",
+                "Must have reliable means of transportation and be willing to travel to and from various job sites and required classes at the approved school.",
+                "Must live in the geographical jurisdiction covering Allegany, Cattaraugus, Chautauqua, Erie, Niagara, Orleans, Genesee, Wyoming, Monroe, Livingston, Wayne, Ontario, Chemung, Schuyler, Steuben, Tompkins, Yates, Seneca, Cayuga, Cortland, Onondaga, Madison, Oswego, Broome, Delaware, Chenango, Otsego, Tioga, Oneida, Herkimer, Jefferson, Lewis, and St. Lawrence counties.",
+                "Must provide military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, live in the listed counties, have reliable transportation, pass a drug test after selection, and be willing to attend required classes.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(585) 436-1110",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nasctf.org/",
+              "contactSummary": "Call the North Atlantic States Carpenters Training Fund at (585) 436-1110 for help completing the online application."
+            }
+          ]
         },
         {
           "programAk": 3680,
@@ -1310,7 +1432,8 @@
           "programLength": 32,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 3829,
@@ -1329,7 +1452,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 4627,
@@ -1348,7 +1472,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 4809,
@@ -1367,7 +1492,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 5067,
@@ -1386,7 +1512,65 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-7-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-7",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "Albany, NY area and the counties in the training fund's geographic jurisdiction",
+              "regions": [
+                "Capital Region",
+                "Mohawk Valley",
+                "North Country"
+              ],
+              "recruitmentStartDate": "2026-05-04",
+              "recruitmentEndDate": "2027-04-30",
+              "applicationStartDate": "2026-05-04",
+              "applicationEndDate": "2027-04-30",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Apply online at nasctf.org during the recruitment period, but you must first attend an in-person information session in Albany to receive a passcode needed for the online application.",
+              "applicationWebsite": "https://www.nasctf.org",
+              "applicationEmail": null,
+              "applicationPhone": "(518) 438-0901",
+              "applicationInPersonAddress": "16 Corporate Circle, Albany, NY 12203",
+              "applicationMailingAddress": null,
+              "applicationHours": "In-person information sessions are held the first Monday of each month at 6:00 p.m. during the recruitment period; if the first Monday is a legal holiday, the session is held the second Monday at 6:00 p.m. Application help by phone is available Monday through Friday, 9:00 a.m. to 3:00 p.m.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces for the required in-person information session are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the geographic jurisdiction that includes Albany, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, and Washington counties.",
+              "transportationRequirement": "Must have reliable transportation and be willing to travel to and from various job sites and required classes.",
+              "drugTestRequirement": "Must pass a drug test after selection and before enrollment; the sponsor pays for the test. Applicants who test positive cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must attest in writing that they are physically able to perform the work of a Carpenter, including working on scaffolds and in confined spaces, working in inclement weather, performing constant repetitive motions, climbing and working from heights, lifting at least 50 lbs., and standing and stooping for prolonged periods.",
+                "Must pass a drug test, at the expense of the sponsor, after selection and prior to enrollment in apprenticeship. If applicant tests positive, he/she cannot reapply for one year.",
+                "Must be willing to attend required classes at the approved school.",
+                "Must have reliable means of transportation and be willing to travel to and from various job sites and required classes at the approved school.",
+                "Must live in the geographic jurisdiction that includes Albany, Clinton, Columbia, Essex, Franklin, Fulton, Greene, Hamilton, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, and Washington counties.",
+                "Must provide military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be 17 or older, live in the listed county jurisdiction, have reliable transportation, attend required classes, pass a post-selection drug test, and be physically able to perform carpenter work.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(518) 438-0901",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nasctf.org",
+              "contactSummary": "For more information or help completing the online application, contact the North Atlantic States Carpenters Training Fund at (518) 438-0901."
+            }
+          ]
         },
         {
           "programAk": 5298,
@@ -1405,7 +1589,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 7626,
@@ -1424,7 +1609,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 11909,
@@ -1443,7 +1629,78 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "high-rise-concrete-carpenters-jatc-new-york-city-1-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/high-rise-concrete-carpenters-jatc-new-york-city-1",
+              "sourceTitle": "High Rise Concrete Carpenters JATC of New York City",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 15,
+              "sponsorName": "Joint Apprenticeship and Training Committee for the High Rise Concrete Carpenters of New York City",
+              "unionName": null,
+              "locationSummary": "New York City, NY",
+              "regions": [
+                "New York City"
+              ],
+              "recruitmentStartDate": "2026-02-11",
+              "recruitmentEndDate": "2027-02-10",
+              "applicationStartDate": "2026-02-11",
+              "applicationEndDate": "2027-02-10",
+              "applicationMethods": [
+                "information_session_required",
+                "online_application"
+              ],
+              "applicationSummary": "Attend an in-person information session at the NYCDCC Training Center to receive a passcode, then complete and submit the application online within 60 days of the session date.",
+              "applicationWebsite": "https://www.nyccarpenterstrainingcenter.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "New York City District Council of Carpenters Training Center (NYCDCC Training Center), 395 Hudson Street (Clarkson Street entrance), New York, New York",
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held on the second Wednesday of each month, excluding December and January, from 9:00 AM to 10:00 AM. No admittance after 9:00 AM.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis. Applicants may apply for only one trade, and completed applications must be received within 60 days of the information session.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old when entering the apprenticeship program.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC. Proof is required after selection and before enrollment.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must be able to travel to off-site training and be financially responsible for certain costs if the apprentice cancels, fails to show up, or fails to complete the program.",
+              "drugTestRequirement": "Must pass a substance abuse screening within 48 hours of selection, at the sponsor’s expense, and sign the apprentice drug testing policy covering pre-enrollment, random, for-cause, and post-accident testing.",
+              "classRequirement": "Must attend an in-person information session before applying and may be required to travel to off-site training.",
+              "allRequirements": [
+                "Must sign in during the in-person information session; failure to sign in will disqualify the applicant.",
+                "Must attend an in-person information session at the NYCDCC Training Center before applying.",
+                "Will receive a passcode at the end of the information session to access the online application.",
+                "Completed applications must be submitted and received through the website portal within 60 days of the information session.",
+                "Applicants may only apply for one trade.",
+                "Applications will remain on file for two years; after two years the application is considered expired and the applicant must reapply.",
+                "Applications that meet all requirements will be scheduled for an interview at a future date.",
+                "Applicants are only allowed one interview.",
+                "Applicants who do not arrive on time to their scheduled interview will be disqualified.",
+                "Applicants will be provided an instruction sheet and a list of original documents required if they are accepted into the program.",
+                "Must be at least 17 years old when entering the apprenticeship program.",
+                "Must have a high school diploma or a high school equivalency diploma such as GED or TASC; proof required after selection and before enrollment.",
+                "Must be physically able to perform the work of the trade without posing a direct threat to the safety of themselves or others.",
+                "Must attest in writing that they are physically able to perform the work of a carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from heights; lifting at least 50 pounds; and standing and stooping for prolonged periods.",
+                "Must pass a substance abuse screening, at the sponsor’s expense, within 48 hours of selection and before enrollment.",
+                "Must agree to and sign an Apprentice drug Testing policy with pre-enrollment, random, for-cause, and post-accident testing.",
+                "Must provide proof of any trade-related experience, certification, or education after selection and before enrollment.",
+                "Must agree to and sign an Apprentice Handbook, which is subject to change at any time.",
+                "Must travel to off-site training and agree to be financially responsible for certain costs if the apprentice cancels, fails to show up, or fails to successfully complete the program.",
+                "Must be able to read, hear, and understand written and verbal instructions and warnings in English.",
+                "Must be a U.S. citizen or have the legal right to work in the United States; proof required after selection and before enrollment.",
+                "Must provide a DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and before enrollment."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, have a high school diploma or equivalent, be physically able to do the work, and pass drug screening. They must also attend an in-person information session, apply online, and meet interview and document requirements.",
+              "contactName": "High Rise Concrete Carpenters of New York City",
+              "contactPhone": "(212) 727-2224 Ext. “Admissions”",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nyccarpenterstrainingcenter.org",
+              "contactSummary": "For further information, contact High Rise Concrete Carpenters of New York City at (212) 727-2224 Ext. “Admissions” when calling the training center."
+            }
+          ]
         },
         {
           "programAk": 14961,
@@ -1456,13 +1713,69 @@
           "addressPostalCode": "11788",
           "region": "Long Island",
           "programStatus": "Active",
-          "programApprovalDate": "2068-01-01",
+          "programApprovalDate": "1968-01-01",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-4-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-4",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "Nassau and Suffolk counties, NY",
+              "regions": [
+                "Long Island"
+              ],
+              "recruitmentStartDate": "2025-11-03",
+              "recruitmentEndDate": "2026-11-02",
+              "applicationStartDate": "2025-11-03",
+              "applicationEndDate": "2026-11-02",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Apply online at the NASCTF website during the recruitment period, but you must first attend an in-person information session and receive a passcode before submitting the electronic application.",
+              "applicationWebsite": "https://www.nasctf.org",
+              "applicationEmail": null,
+              "applicationPhone": "(631) 952-9555",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the first Monday of each month at 6:00 p.m. at 270 Motor Parkway, Hauppauge, NY 11788, excluding legal holidays. If the first Monday is a holiday, the session is held the second Monday at 6:00 p.m. Application help is available by phone Monday through Friday, 9:00 a.m. to 3:00 p.m.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Information session spaces are limited and filled on a first come, first served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the geographic jurisdiction of the NASCTF, which includes Nassau and Suffolk counties.",
+              "transportationRequirement": "Must have reliable transportation and be willing to travel to various job sites and required classes.",
+              "drugTestRequirement": "Must pass a drug test at the sponsor’s expense after selection and before enrollment. Applicants who test positive cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must attest in writing that they are physically able to perform the work of a Carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from heights; lifting at least 50 lbs.; and standing and stooping for prolonged periods.",
+                "Must pass a drug test, at the sponsor’s expense, after selection and prior to enrollment in apprenticeship. If the applicant tests positive, they cannot reapply for one year.",
+                "Must be willing to attend required classes at the approved school as required.",
+                "Must have reliable means of transportation and be willing to travel to and from various job sites and required classes at the approved school.",
+                "Must live in the geographical jurisdiction of the NASCTF, which includes Nassau and Suffolk counties.",
+                "Must provide a military transfer card or DD-214 discharge form, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, live in Nassau or Suffolk counties, have reliable transportation, pass a drug test, and be able to perform the physical demands of carpentry. Required classes and an in-person information session are also required.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(631) 952-9555",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nasctf.org",
+              "contactSummary": "Contact North Atlantic States Carpenters Training Fund at (631) 952-9555 for application assistance and further information."
+            }
+          ]
         },
         {
           "programAk": 16046,
@@ -1481,7 +1794,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 17781,
@@ -1500,7 +1814,69 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "carpenters-jatc-nyc-vicinity-3-carpenter-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/carpenters-jatc-nyc-vicinity-3",
+              "sourceTitle": "Carpenters JATC of NYC & Vicinity",
+              "jobTitle": "Carpenter Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 25,
+              "sponsorName": "Joint Apprenticeship and Training Committee for the New York City District Council of Carpenters",
+              "unionName": "New York City District Council of Carpenters",
+              "locationSummary": "New York City, NY",
+              "regions": [
+                "New York City"
+              ],
+              "recruitmentStartDate": "2026-03-11",
+              "recruitmentEndDate": "2027-02-10",
+              "applicationStartDate": "2026-03-11",
+              "applicationEndDate": "2027-02-10",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Attend the required in-person information session, sign in to receive a passcode, then complete and submit the online application at the training center website within 60 days of the session.",
+              "applicationWebsite": "https://www.nyccarpenterstrainingcenter.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held on the second Wednesday of each month from 9:00 AM to 10:00 AM during the recruitment period, except December and January. No admittance after 9:00 AM.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at the time of application.",
+              "educationRequirement": "Must have a high school diploma or high school equivalency diploma such as TASC or GED.",
+              "residencyRequirement": "Must be a U.S. citizen or have the legal right to work in the United States.",
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and classes at the approved school, and must travel to off-site training.",
+              "drugTestRequirement": "Must pass a substance abuse screening within 48 hours of selection before enrollment, and must agree to the apprentice drug testing policy, including pre-enrollment, random, for-cause, and post-accident testing.",
+              "classRequirement": "Must attend related training and classes at the approved school and be willing to travel to off-site training.",
+              "allRequirements": [
+                "Must be at least 17 years old at the time of application.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must be physically able to perform the work of the trade without posing a direct threat to the safety of themselves or others.",
+                "Must be physically able to perform the work of a Carpenter, including working on scaffolds and in confined spaces; working in inclement weather such as rain, snow, cold, heat, and direct sunlight; performing constant repetitive motions; climbing and working from heights; lifting items weighing at least 50 pounds; and standing and stooping for prolonged periods.",
+                "Must pass a substance abuse screening, at the expense of the sponsor, within 48 hours of selection and prior to enrollment in apprenticeship, at a designated collection site.",
+                "Must agree to and sign the Apprentice drug testing policy, which provides for pre-enrollment testing, random testing, for-cause testing, and post-accident testing.",
+                "Must agree to sign the Apprentice handbook, which is subject to change at any time.",
+                "Must travel to off-site training and agree to be financially responsible for certain costs related to such training if the apprentice cancels, fails to show up, or fails to successfully complete the program.",
+                "Must be able to read, hear, and understand verbal instructions and warnings in English.",
+                "Must provide proof of any trade-related experience, certification, or education after selection and prior to enrollment in apprenticeship.",
+                "Must be a U.S. citizen or have the legal right to work in the United States. Proof will be required after selection and prior to enrollment in apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, have a high school diploma or equivalency, be legally able to work in the U.S., have reliable transportation, and meet physical, English-language, and substance-screening requirements.",
+              "contactName": "New York City District Council of Carpenters",
+              "contactPhone": "(212) 727-2224",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "Contact the New York City District Council of Carpenters at (212) 727-2224 for further information."
+            }
+          ]
         },
         {
           "programAk": 17931,
@@ -1519,14 +1895,15 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Carpenter (Heavy-Highway)",
-      "displayTradeName": "Carpenter",
-      "description": "A Carpenter in heavy-highway construction builds and installs wood forms, supports, and temporary structures used to shape concrete for bridges, roads, tunnels, and other large projects. They measure, cut, fasten, and brace materials, often working outdoors with saws, levels, and drills. Their work helps create strong structures and keeps transportation systems safe and functioning.",
+      "displayTradeName": "Carpenter (Heavy-Highway)",
+      "description": "A heavy-highway Carpenter builds and repairs the wooden forms, guardrails, decks, and other structures used in road, bridge, and large civil construction. They measure, cut, fasten, and brace materials, often around concrete pours, traffic lanes, and heavy equipment. Their work helps roads and bridges stay strong, aligned, and safe for daily travel.",
       "programCount": 4,
       "programs": [
         {
@@ -1546,7 +1923,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 1547,
@@ -1565,7 +1943,8 @@
           "programLength": 36,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 2002,
@@ -1584,7 +1963,8 @@
           "programLength": 27,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 14641,
@@ -1603,14 +1983,15 @@
           "programLength": 27,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Carpenter(Piledriver/Dockbuilder)",
-      "displayTradeName": "Carpenter",
-      "description": "A Carpenter who works as a piledriver and dockbuilder builds and repairs heavy wooden structures in and around water. They drive piles deep into the ground, frame docks, bridges, and retaining walls, and use cranes, hammers, saws, and drills on busy outdoor job sites. Their work keeps waterfront structures strong, stable, and safe to use.",
+      "displayTradeName": "Carpenter(Piledriver/Dockbuilder)",
+      "description": "A Carpenter working as a piledriver and dockbuilder builds and repairs waterfront structures such as docks, piers, bulkheads, and bridge supports. They drive heavy piles into the ground or riverbed, set timbers and concrete forms, and work around cranes, barges, and power tools. Their work keeps shorelines, bridges, and marine facilities stable and safe.",
       "programCount": 4,
       "programs": [
         {
@@ -1630,7 +2011,8 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         },
         {
           "programAk": 4644,
@@ -1649,7 +2031,73 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-9-carpenter-pile-driver-dockbuilder-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-9",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Carpenter (Pile Driver/Dockbuilder) Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "New York State counties in the NASCTF jurisdiction, outside Nassau, Suffolk, and the five NYC borough counties",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Finger Lakes",
+                "Hudson Valley",
+                "Long Island",
+                "Mohawk Valley",
+                "New York City",
+                "North Country",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-07-01",
+              "recruitmentEndDate": "2027-06-30",
+              "applicationStartDate": "2026-07-01",
+              "applicationEndDate": "2027-06-30",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Attend a required in-person information session, receive a passcode, then complete and submit the application online during the recruitment period. Spaces are limited and filled first come, first served.",
+              "applicationWebsite": "https://www.nasctf.org",
+              "applicationEmail": null,
+              "applicationPhone": "(631) 952-9555",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the first Monday of each month at 6:00 p.m. during the recruitment period, except if that Monday is a legal holiday when the session is held the second Monday at 6:00 p.m. The Jamestown session is held at 4:00 p.m. sharp. Help completing the online application is available Monday through Friday from 9:00 a.m. to 3:00 p.m.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the North Atlantic States Carpenters Training Fund jurisdiction: Clinton, Essex, Franklin, Hamilton, Albany, Columbia, Fulton, Greene, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, Washington, Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, Westchester, Allegany, Cattaraugus, Chautauqua, Erie, Niagara, Orleans, Genesee, Wyoming, Monroe, Livingston, Wayne, Ontario, Chemung, Schuyler, Steuben, Tompkins, Yates, Seneca, Cayuga, Cortland, Onondaga, Madison, Oswego, Broome, Chenango, Delaware, Otsego, Tioga, Oneida, Herkimer, Jefferson, Lewis, and St. Lawrence counties. Nassau, Suffolk, and the five borough counties of New York City are excluded.",
+              "transportationRequirement": "Must have reliable transportation to job sites and required classes, and must be willing to travel to various job sites and statewide class locations.",
+              "drugTestRequirement": "Must pass a drug test at the sponsor’s expense after selection and before enrollment; applicants who test positive cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend required classes at the approved school and travel to various locations statewide.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must attest in writing that they are physically able to perform carpenter work, including working on scaffolds and in confined spaces; working in rain, snow, cold, heat, and direct sunlight; performing constant repetitive motions; climbing and working from heights; lifting at least 50 lbs.; and standing and stooping for prolonged periods.",
+                "Must pass a drug test at the sponsor’s expense after selection and before enrollment in apprenticeship. If the applicant tests positive, they cannot reapply for one year.",
+                "Must live in the geographical jurisdiction of the North Atlantic States Carpenters Training Fund, including the listed counties in New York State, and excluding Nassau, Suffolk, and the five borough counties of New York City.",
+                "Must be willing to travel to job sites in various counties within the jurisdiction.",
+                "Must be willing to attend required classes at the approved school and travel to various locations statewide.",
+                "Must have reliable transportation to and from various job sites and required classes at the approved school.",
+                "Must provide a military transfer card or discharge form DD-214, if applicable, after selection and prior to enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, live in the sponsor’s jurisdiction, have reliable transportation, be willing to travel and attend classes, pass a drug test, and meet physical ability and documentation requirements.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(631) 952-9555",
+              "contactEmail": null,
+              "contactWebsite": "https://www.nasctf.org",
+              "contactSummary": "North Atlantic States Carpenters Training Fund, (631) 952-9555, for application help and further information."
+            }
+          ]
         },
         {
           "programAk": 5045,
@@ -1668,7 +2116,79 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": [
+            {
+              "id": "carpenters-jatc-nyc-vicinity-2-carpenter-piledriver-dockbuilder-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/carpenters-jatc-nyc-vicinity-2",
+              "sourceTitle": "Carpenters JATC of NYC & Vicinity",
+              "jobTitle": "Carpenter (Piledriver/Dockbuilder) Apprentice",
+              "socCode": "47-2031.00",
+              "numberOfOpenings": 25,
+              "sponsorName": "Joint Apprenticeship and Training Committee for the New York City District Council of Carpenters",
+              "unionName": "New York City District Council of Carpenters",
+              "locationSummary": "New York City, NY area",
+              "regions": [
+                "New York City"
+              ],
+              "recruitmentStartDate": "2025-09-10",
+              "recruitmentEndDate": "2026-09-09",
+              "applicationStartDate": "2025-09-10",
+              "applicationEndDate": "2026-09-09",
+              "applicationMethods": [
+                "information_session_required",
+                "online_application"
+              ],
+              "applicationSummary": "Attend the required in-person information session at the NYCDCC Training Center, receive a passcode, and complete the online application within 60 days of the session.",
+              "applicationWebsite": "https://nyccarpenterstrainingcenter.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "New York City District Council of Carpenters Training Center, 395 Hudson Street, 2nd Floor (Clarkson Street entrance), New York, NY 10014",
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the second Wednesday of each month from 9:00 AM to 10:00 AM during the recruitment period, excluding December and January. No admittance after 9:00 AM.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at the time of application.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and classes at the approved school. Must be willing to travel to off-site training and accept the associated costs if training is canceled, missed, or not successfully completed.",
+              "drugTestRequirement": "Must pass a substance abuse screening at the sponsor's expense within 48 hours of selection and before enrollment.",
+              "classRequirement": "Must be willing to travel to off-site training and attend classes at the approved school.",
+              "allRequirements": [
+                "Must attend an in-person information session and sign in to be considered further.",
+                "Spaces are limited and filled on a first-come, first-served basis.",
+                "At the conclusion of the information session, applicants will receive a passcode required to complete the online application.",
+                "Applications are only available online during the recruitment period.",
+                "Completed applications must be submitted through the website portal within 60 days from the date of the information session.",
+                "Applicants may only apply for one trade.",
+                "Each application will be kept on file for two years; after two years it is considered expired and the applicant must reapply if still interested.",
+                "Applications that meet all stated requirements will be scheduled for an interview at a future date.",
+                "Each applicant will be allowed only one interview, and punctuality is required.",
+                "Failure to arrive on time for the scheduled interview will result in disqualification.",
+                "Applicants will receive an instruction sheet and a list of original documents required if they are accepted into the program.",
+                "Must be at least 17 years old at the time of application.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED; proof will be required after selection and before enrollment.",
+                "Must be physically able to perform the work of the trade without posing a direct threat to the safety of themselves or others.",
+                "Must be physically able to perform the work of a carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from heights; lifting a minimum of 50 pounds; and standing and stooping for prolonged periods.",
+                "Must pass a substance abuse screening, at the sponsor's expense, within 48 hours of selection and before enrollment in apprenticeship, at a designated collection site designated by the JATC.",
+                "Must be able to read, hear, and understand verbal instructions and warnings in English.",
+                "Must provide proof of any trade-related experience, certification, or education after selection and before enrollment in apprenticeship.",
+                "Must agree to sign an Apprentice handbook, subject to change at any time.",
+                "Must be willing to travel to off-site training and assume financial responsibility for associated costs in the event of cancellation, failure to attend, or failure to successfully complete the program.",
+                "Must be a U.S. citizen or have the legal right to work in the United States; proof will be required after selection and before enrollment in apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and before enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must attend the required in-person information session, apply online within 60 days, and meet age, education, physical ability, English-language, transportation, and substance screening requirements.",
+              "contactName": "New York City District Council of Carpenters",
+              "contactPhone": "(212) 727-2224",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
+            }
+          ]
         },
         {
           "programAk": 12679,
@@ -1687,14 +2207,15 @@
           "programLength": 48,
           "ratio": "1:1,1:4",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Lather (Wood, Wire and Metal)",
-      "displayTradeName": "Lather",
-      "description": "A Lather works with wood, wire, and metal to build the framework that supports plaster, stucco, and some ceiling systems. They measure walls and ceilings, cut and fasten strips or mesh, and shape backing around corners, beams, and openings. Their work helps walls and ceilings stay strong, even, and ready for finishing.",
+      "displayTradeName": "Lather (Wood, Wire, and Metal)",
+      "description": "A Lather works with wood, wire, and metal to build the framework that holds plaster, drywall, or stucco in place on walls and ceilings. They measure spaces, cut and fasten strips or mesh, frame corners and curves, and secure materials to studs or supports. Their work helps surfaces stay strong, even, and secure in homes and buildings.",
       "programCount": 1,
       "programs": [
         {
@@ -1708,20 +2229,21 @@
           "addressPostalCode": "11377",
           "region": "New York City",
           "programStatus": "Active",
-          "programApprovalDate": "2062-08-21",
+          "programApprovalDate": "1962-08-21",
           "programGroupType": "Group - Joint",
           "programApproach": "Time",
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         }
       ]
     },
     {
       "tradeName": "Plant Maintenance-Carpenter",
       "displayTradeName": "Plant Maintenance-Carpenter",
-      "description": "A Plant Maintenance-Carpenter maintains and repairs wooden structures, fixtures, and building parts in factories, plants, or large facilities. They fix doors, walls, floors, stairs, and work platforms, build partitions or storage areas, and use hand and power tools to measure, cut, and install materials. Their work keeps buildings solid, equipment areas usable, and workplaces safer.",
+      "description": "A Plant Maintenance-Carpenter keeps an industrial site’s wood and light building structures in good repair. They build and fix walls, doors, floors, shelves, forms, and work platforms, using saws, drills, and measuring tools while working around plant equipment. Their work keeps facilities solid, usable, and safe for daily operations.",
       "programCount": 1,
       "programs": [
         {
@@ -1741,7 +2263,8 @@
           "programLength": 48,
           "ratio": "1:1,1:1",
           "socCode": "47-2031.00",
-          "socTitle": "Carpenters"
+          "socTitle": "Carpenters",
+          "opportunities": []
         }
       ]
     }

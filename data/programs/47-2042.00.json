@@ -979,7 +979,8 @@
           "programLength": 36,
           "ratio": "1:1,1:3",
           "socCode": "47-2042.00",
-          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile"
+          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile",
+          "opportunities": []
         },
         {
           "programAk": 17535,
@@ -998,7 +999,77 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2042.00",
-          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile"
+          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile",
+          "opportunities": [
+            {
+              "id": "north-atlantic-states-carpenters-training-fund-10-linoleum-resilient-tile-and-carpet-layer-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/north-atlantic-states-carpenters-training-fund-10",
+              "sourceTitle": "North Atlantic States Carpenters Training Fund",
+              "jobTitle": "Linoleum, Resilient Tile and Carpet Layer Apprentice",
+              "socCode": "47-2042.00",
+              "numberOfOpenings": 50,
+              "sponsorName": "North Atlantic States Carpenters Training Fund",
+              "unionName": null,
+              "locationSummary": "NASCTF jurisdiction across much of New York State, excluding Nassau, Suffolk, and the five boroughs of New York City",
+              "regions": [
+                "Capital Region",
+                "Central New York",
+                "Finger Lakes",
+                "Hudson Valley",
+                "Long Island",
+                "Mohawk Valley",
+                "New York City",
+                "North Country",
+                "Southern Tier",
+                "Western New York"
+              ],
+              "recruitmentStartDate": "2026-07-01",
+              "recruitmentEndDate": "2027-06-30",
+              "applicationStartDate": "2026-07-01",
+              "applicationEndDate": "2027-06-30",
+              "applicationMethods": [
+                "online_application",
+                "information_session_required"
+              ],
+              "applicationSummary": "Apply online at NASCTF during the recruitment period after attending a required in-person information session and receiving a passcode. Applications are accepted online only.",
+              "applicationWebsite": "https://www.nasctf.org/",
+              "applicationEmail": null,
+              "applicationPhone": "(585) 436-1110",
+              "applicationInPersonAddress": null,
+              "applicationMailingAddress": null,
+              "applicationHours": "Applications are available online during the recruitment period. Required in-person information sessions are held the first Monday of each month at 6:00 p.m. (Jamestown at 4:00 p.m.; if the first Monday is a holiday, the session is held the second Monday).",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old.",
+              "educationRequirement": null,
+              "residencyRequirement": "Must live in the NASCTF geographical jurisdiction: Clinton, Essex, Franklin, Hamilton, Albany, Columbia, Fulton, Greene, Montgomery, Rensselaer, Saratoga, Schenectady, Schoharie, Warren, Washington, Dutchess, Orange, Putnam, Rockland, Sullivan, Ulster, Westchester, Allegany, Cattaraugus, Chautauqua, Erie, Niagara, Orleans, Genesee, Wyoming, Monroe, Livingston, Wayne, Ontario, Chemung, Schuyler, Steuben, Tompkins, Yates, Seneca, Cayuga, Cortland, Onondaga, Madison, Oswego, Broome, Chenango, Delaware, Otsego, Tioga, Oneida, Herkimer, Jefferson, Lewis, and St. Lawrence counties; excluding Nassau, Suffolk, and the five boroughs of New York City.",
+              "transportationRequirement": "Must have reliable transportation and be willing to travel to various job sites and required classes.",
+              "drugTestRequirement": "Must pass a drug test at the sponsor’s expense after selection and before enrollment; applicants who test positive cannot reapply for one year.",
+              "classRequirement": "Must be willing to attend required classes at the approved school.",
+              "allRequirements": [
+                "Must be at least 17 years old.",
+                "Must attest in writing that they are physically able to perform the work of a Linoleum, Resilient Tile and Carpet Layer apprentice, including working with stationary and portable hand and power tools; standing and stooping for prolonged periods; working in all types of weather, including extreme heat and cold; performing constant repetitive motions; and lifting/holding items that weigh at least 50 lbs.",
+                "Must pass a drug test at the sponsor’s expense after selection and before enrollment in apprenticeship. If the applicant tests positive, they cannot reapply for one year.",
+                "Must be willing to attend required classes at the approved school.",
+                "Must have reliable transportation and be willing to travel to and from various job sites in the listed counties and required classes at the approved school.",
+                "Must live in the geographical jurisdiction of NASCTF, including the listed counties in New York State, excluding Nassau, Suffolk, and the five boroughs of New York City.",
+                "Must be willing to travel to various locations within the geographical jurisdiction of NASCTF, excluding Nassau, Suffolk, and the five boroughs of New York City.",
+                "Must provide military transfer card or discharge form DD-214, if applicable, after selection and before enrollment in apprenticeship.",
+                "Must attend an in-person information session before submitting an electronic application.",
+                "Must obtain a passcode at the information session to complete the online application.",
+                "Applications are available online only during the recruitment period.",
+                "All applications must be received no later than June 30, 2027."
+              ],
+              "requirementsSummary": "Applicants must be at least 17, live within the NASCTF jurisdiction, have reliable transportation, attend required classes and an in-person information session, and be able to pass a drug test.",
+              "contactName": "North Atlantic States Carpenters Training Fund",
+              "contactPhone": "(631) 952-9555",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For more information, contact North Atlantic States Carpenters Training Fund at (631) 952-9555. For help completing the online application, call (585) 436-1110."
+            }
+          ]
         },
         {
           "programAk": 17928,
@@ -1017,7 +1088,79 @@
           "programLength": 48,
           "ratio": "1:1,1:3",
           "socCode": "47-2042.00",
-          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile"
+          "socTitle": "Floor Layers, Except Carpet, Wood, and Hard Tile",
+          "opportunities": [
+            {
+              "id": "carpenters-jatc-nyc-vicinity-2-linoleum-resilient-tile-and-carpet-layer-apprentice",
+              "sourceUrl": "https://dol.ny.gov/news/carpenters-jatc-nyc-vicinity-2",
+              "sourceTitle": "Carpenters JATC of NYC & Vicinity",
+              "jobTitle": "Linoleum, Resilient Tile, and Carpet Layer Apprentice",
+              "socCode": "47-2042.00",
+              "numberOfOpenings": 20,
+              "sponsorName": "Joint Apprenticeship and Training Committee for the New York City District Council of Carpenters",
+              "unionName": "New York City District Council of Carpenters",
+              "locationSummary": "New York City, NY area",
+              "regions": [
+                "New York City"
+              ],
+              "recruitmentStartDate": "2025-09-10",
+              "recruitmentEndDate": "2026-09-09",
+              "applicationStartDate": "2025-09-10",
+              "applicationEndDate": "2026-09-09",
+              "applicationMethods": [
+                "information_session_required",
+                "online_application"
+              ],
+              "applicationSummary": "Attend the required in-person information session at the NYCDCC Training Center, receive a passcode, and complete the online application within 60 days of the session.",
+              "applicationWebsite": "https://nyccarpenterstrainingcenter.org",
+              "applicationEmail": null,
+              "applicationPhone": null,
+              "applicationInPersonAddress": "New York City District Council of Carpenters Training Center, 395 Hudson Street, 2nd Floor (Clarkson Street entrance), New York, NY 10014",
+              "applicationMailingAddress": null,
+              "applicationHours": "Information sessions are held the second Wednesday of each month from 9:00 AM to 10:00 AM during the recruitment period, excluding December and January. No admittance after 9:00 AM.",
+              "applicationLimit": null,
+              "applicationLimitDetails": "Spaces are limited and filled on a first-come, first-served basis.",
+              "applicationFee": null,
+              "applicationFeeDetails": null,
+              "ageRequirement": "Must be at least 17 years old at the time of application.",
+              "educationRequirement": "Must have a high school diploma or a high school equivalency diploma such as GED or TASC.",
+              "residencyRequirement": null,
+              "transportationRequirement": "Must have reliable transportation to and from various job sites and classes at the approved school. Must be willing to travel to off-site training and accept the associated costs if training is canceled, missed, or not successfully completed.",
+              "drugTestRequirement": "Must pass a substance abuse screening at the sponsor's expense within 48 hours of selection and before enrollment.",
+              "classRequirement": "Must be willing to travel to off-site training and attend classes at the approved school.",
+              "allRequirements": [
+                "Must attend an in-person information session and sign in to be considered further.",
+                "Spaces are limited and filled on a first-come, first-served basis.",
+                "At the conclusion of the information session, applicants will receive a passcode required to complete the online application.",
+                "Applications are only available online during the recruitment period.",
+                "Completed applications must be submitted through the website portal within 60 days from the date of the information session.",
+                "Applicants may only apply for one trade.",
+                "Each application will be kept on file for two years; after two years it is considered expired and the applicant must reapply if still interested.",
+                "Applications that meet all stated requirements will be scheduled for an interview at a future date.",
+                "Each applicant will be allowed only one interview, and punctuality is required.",
+                "Failure to arrive on time for the scheduled interview will result in disqualification.",
+                "Applicants will receive an instruction sheet and a list of original documents required if they are accepted into the program.",
+                "Must be at least 17 years old at the time of application.",
+                "Must have a high school diploma or a high school equivalency diploma such as TASC or GED; proof will be required after selection and before enrollment.",
+                "Must be physically able to perform the work of the trade without posing a direct threat to the safety of themselves or others.",
+                "Must be physically able to perform the work of a carpenter, including working on scaffolds and in confined spaces; working in inclement weather; performing constant repetitive motions; climbing and working from heights; lifting a minimum of 50 pounds; and standing and stooping for prolonged periods.",
+                "Must pass a substance abuse screening, at the sponsor's expense, within 48 hours of selection and before enrollment in apprenticeship, at a designated collection site designated by the JATC.",
+                "Must be able to read, hear, and understand verbal instructions and warnings in English.",
+                "Must provide proof of any trade-related experience, certification, or education after selection and before enrollment in apprenticeship.",
+                "Must agree to sign an Apprentice handbook, subject to change at any time.",
+                "Must be willing to travel to off-site training and assume financial responsibility for associated costs in the event of cancellation, failure to attend, or failure to successfully complete the program.",
+                "Must be a U.S. citizen or have the legal right to work in the United States; proof will be required after selection and before enrollment in apprenticeship.",
+                "Must have reliable means of transportation to and from various job sites and classes at the approved school.",
+                "Must provide DD-214, Certificate of Release or Discharge from Active Duty, if applicable, after selection and before enrollment in apprenticeship."
+              ],
+              "requirementsSummary": "Applicants must attend the required in-person information session, apply online within 60 days, and meet age, education, physical ability, English-language, transportation, and substance screening requirements.",
+              "contactName": "New York City District Council of Carpenters",
+              "contactPhone": "(212) 727-2224",
+              "contactEmail": null,
+              "contactWebsite": null,
+              "contactSummary": "For further information, contact the New York City District Council of Carpenters at (212) 727-2224."
+            }
+          ]
         }
       ]
     }

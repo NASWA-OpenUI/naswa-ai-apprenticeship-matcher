@@ -1098,7 +1098,7 @@
     {
       "tradeName": "Medical Assistant",
       "displayTradeName": "Medical Assistant",
-      "description": "A Medical Assistant supports doctors and nurses in clinics, offices, and other healthcare settings. They greet patients, take blood pressure and temperature, prepare exam rooms, update medical records, schedule appointments, and may collect samples or give basic instructions. Their work helps visits run smoothly, keeps records accurate, and makes patient care safer and more organized.",
+      "description": "A Medical Assistant supports doctors and nurses in clinics, offices, and other healthcare settings. They take vital signs, prepare exam rooms, update patient records, schedule appointments, collect lab samples, and help patients during visits. Their work keeps care organized, helps clinics run smoothly, and makes everyday medical visits safer and more efficient.",
       "programCount": 3,
       "programs": [
         {
@@ -1118,7 +1118,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "31-9092.00",
-          "socTitle": "Medical Assistants"
+          "socTitle": "Medical Assistants",
+          "opportunities": []
         },
         {
           "programAk": 12715,
@@ -1137,7 +1138,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "31-9092.00",
-          "socTitle": "Medical Assistants"
+          "socTitle": "Medical Assistants",
+          "opportunities": []
         },
         {
           "programAk": 13325,
@@ -1156,7 +1158,8 @@
           "programLength": 12,
           "ratio": "1:1,1:1",
           "socCode": "31-9092.00",
-          "socTitle": "Medical Assistants"
+          "socTitle": "Medical Assistants",
+          "opportunities": []
         }
       ]
     }
