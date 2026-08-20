@@ -75,79 +75,13 @@ def client(monkeypatch, opportunities, program_groups):
 
 @pytest.fixture
 def program_groups():
-    """Return stable SOC-grouped program data for route tests."""
+    """Load stable program groups instead of using the real data directory."""
+    fixture_names = [
+        "program-group-with-opportunities.json",
+        "program-group-no-opportunities.json",
+    ]
+
     return [
-        {
-            "socCode": "47-2111.00",
-            "socTitle": "Electricians",
-            "programCount": 4,
-            "regions": [
-                "Western New York",
-            ],
-            "onet": {
-                "description": "Install and maintain electrical systems.",
-            },
-            "trades": [
-                {
-                    "tradeName": "Electrician",
-                    "displayTradeName": "Electrician",
-                    "description": (
-                        "Electricians install, maintain, and repair "
-                        "electrical wiring and equipment."
-                    ),
-                    "programCount": 4,
-                    "programs": [
-                        {
-                            "sponsorName": "Buffalo Electrical JAC",
-                            "addressCity": "Buffalo",
-                            "region": "Western New York",
-                            "programLength": 60,
-                        },
-                        {
-                            "sponsorName": "Niagara Electrical Training Alliance",
-                            "addressCity": "Niagara Falls",
-                            "region": "Western New York",
-                            "programLength": 60,
-                        },
-                        {
-                            "sponsorName": "Rochester Electrical JATC",
-                            "addressCity": "Rochester",
-                            "region": "Finger Lakes",
-                            "programLength": 48,
-                        },
-                        {
-                            "sponsorName": "Western New York Electrical Training",
-                            "addressCity": "Cheektowaga",
-                            "region": "Western New York",
-                            "programLength": 48,
-                        },
-                    ],
-                }
-            ],
-        },
-        {
-            "socCode": "11-1021.00",
-            "socTitle": "General and Operations Managers",
-            "programCount": 2,
-            "regions": [
-                "New York City",
-            ],
-            "onet": {
-                "description": (
-                    "Plan, direct, or coordinate organizational operations."
-                ),
-            },
-            "trades": [
-                {
-                    "tradeName": "Business Operations Associate",
-                    "displayTradeName": "Business Operations Associate",
-                    "description": (
-                        "Business Operations Associates help organizations "
-                        "coordinate daily business operations."
-                    ),
-                    "programCount": 2,
-                    "programs": [],
-                }
-            ],
-        },
+        json.loads((FIXTURES_DIR / fixture_name).read_text())
+        for fixture_name in fixture_names
     ]

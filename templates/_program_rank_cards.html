@@ -6,6 +6,7 @@
 {% set regions = group.regions | default([], true) %}
 {% set tier_class = item.tier | lower %}
 {% set is_statewide = regions | length == 10 %}
+{% set hiring = group | program_hiring_stats %}
 
 <article class="match-card program-match-card match-card--{{ tier_class }} surface surface--shadow"
     data-tier-order="{{ item.tier_order }}" data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}"
@@ -55,6 +56,20 @@
         </div>
         {% endif %}
 
+        {% if hiring.programs_hiring %}
+        <div class="program-hiring-summary">
+            <span class="program-hiring-summary__dot" aria-hidden="true"></span>
+
+            <span>
+                <strong>{{ hiring.programs_hiring }}</strong>
+                program{{ "" if hiring.programs_hiring == 1 else "s" }} hiring now
+                <span aria-hidden="true">·</span>
+                <strong>{{ hiring.open_positions }}</strong>
+                open position{{ "" if hiring.open_positions == 1 else "s" }}
+            </span>
+        </div>
+        {% endif %}
+
         {% if trades | length > 1 %}
         <details class="disclosure disc-trades">
             <summary>
@@ -70,10 +85,21 @@
                 <ul class="trade-list">
                     {% for trade in trades %}
                     {% set trade_name = trade.displayTradeName or trade.tradeName %}
+                    {% set trade_hiring_name = trade.tradeName or trade.displayTradeName %}
                     {% set trade_count = trade.programCount | default(0, true) %}
 
                     <li>
-                        <span class="t-name">{{ trade_name }}</span>
+                        <span class="t-name">
+                            {{ trade_name }}
+
+                            {% if trade_hiring_name in hiring.hiring_trade_names %}
+                            <span class="chip chip--strong program-hiring-chip">
+                                <span class="chip__dot" aria-hidden="true"></span>
+                                <span class="chip__label">Hiring</span>
+                            </span>
+                            {% endif %}
+                        </span>
+
                         <span class="t-count">
                             {{ trade_count }}
                             program{{ "" if trade_count == 1 else "s" }}
@@ -99,12 +125,13 @@
                 </span>
             </span>
 
-            <a class="match-card__details-link" href="/programs/{{ group.socCode }}">
-                View programs
-
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
+            <a class="match-card__details-link with-svg" href="/programs/{{ group.socCode }}" aria-hidden="true"
+                tabindex="-1">
+                <strong>View details</strong>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                    </path>
                 </svg>
             </a>
         </div>

@@ -1,5 +1,8 @@
+from datetime import date
+
 import pytest
 
+import naswa_matcher.template_filters as template_filters
 import server
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.profile import build_profile
@@ -566,7 +569,7 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
     monkeypatch,
 ):
     """Verifies that program ranking streams SOC-group cards and caps a
-    far-away Strong model score to Moderate."""
+    nearby Strong model score to Moderate."""
 
     async def fake_score_program_groups(
         profile,
@@ -576,13 +579,13 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
             "hands-on work",
             "problem solving",
         ]
-        assert profile["location"] == "Buffalo"
+        assert profile["location"] == "Binghamton"
 
         soc_codes = {group["socCode"] for group in program_groups}
 
         assert soc_codes == {
             "47-2111.00",
-            "11-1021.00",
+            "21-1093.00",
         }
 
         return [
@@ -592,11 +595,11 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
                 "explanation": ("You may enjoy hands-on electrical troubleshooting."),
             },
             {
-                "id": "11-1021.00",
+                "id": "21-1093.00",
                 "tier": "Strong",
                 "explanation": (
                     "Your problem-solving interests could connect "
-                    "with business operations."
+                    "with helping people access services."
                 ),
             },
         ]
@@ -613,7 +616,7 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
         params=[
             ("likes", "hands-on work"),
             ("likes", "problem solving"),
-            ("location", "Buffalo"),
+            ("location", "Binghamton"),
         ],
     ) as response:
         assert response.status_code == 200
@@ -627,32 +630,27 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
 
     # Both program groups rendered.
     assert 'data-ranking-id="47-2111.00"' in body
-    assert 'data-ranking-id="11-1021.00"' in body
+    assert 'data-ranking-id="21-1093.00"' in body
 
-    assert "Electrician" in body
-    assert "Business Operations Associate" in body
+    assert "Electricians" in body
+    assert "Social and Human Service Assistants" in body
 
-    # The local Strong result stays Strong.
+    # Electricians includes the Southern Tier, so the Strong result stays Strong.
     local_card_start = body.index('data-ranking-id="47-2111.00"')
-    far_card_start = body.index('data-ranking-id="11-1021.00"')
+    non_local_card_start = body.index('data-ranking-id="21-1093.00"')
 
-    local_card = body[
-        local_card_start : (
-            far_card_start if far_card_start > local_card_start else len(body)
-        )
-    ]
+    local_card = body[local_card_start:non_local_card_start]
 
     assert 'data-ranking-tier="Strong"' in local_card
 
-    # The NYC Strong model score is capped to Moderate for Buffalo.
-    assert 'data-ranking-id="11-1021.00"' in body
+    # Social and Human Service Assistants does not include the Southern Tier,
+    # so its nearby Strong model score is capped to Moderate.
+    non_local_card = body[non_local_card_start:]
 
-    far_result_position = body.index('data-ranking-id="11-1021.00"')
+    assert 'data-ranking-tier="Moderate"' in non_local_card
 
-    assert 'data-ranking-tier="Moderate"' in body[far_result_position:]
-
-    # Program counts use the generic units vocabulary in the SSE count.
-    assert '<span id="units-count">6</span> registered programs' in body
+    # 147 Electrician programs + 20 Social/Human Service programs.
+    assert '<span id="units-count">167</span> registered programs' in body
 
 
 def test_program_ranking_cache_hit_isolated_from_opportunity_cache(
@@ -768,3 +766,69 @@ def test_program_detail_route_returns_404_for_unknown_soc(client):
     response = client.get("/programs/99-9999.99")
 
     assert response.status_code == 404
+
+
+def test_rank_programs_stream_renders_hiring_information(
+    client,
+    monkeypatch,
+):
+    """Verifies that hiring data from program fixtures is rendered on
+    program match cards."""
+
+    monkeypatch.setattr(
+        template_filters,
+        "_new_york_today",
+        lambda: date(2026, 8, 20),
+    )
+
+    async def fake_score_program_groups(
+        profile,
+        program_groups,
+    ):
+        return [
+            {
+                "id": group["socCode"],
+                "tier": "Strong",
+                "explanation": "Fixture explanation.",
+            }
+            for group in program_groups
+        ]
+
+    monkeypatch.setattr(
+        server,
+        "_score_program_groups",
+        fake_score_program_groups,
+    )
+
+    with client.stream(
+        "GET",
+        "/api/rank-programs",
+        params=[
+            ("likes", "hands-on work"),
+            ("location", "Buffalo"),
+        ],
+    ) as response:
+        assert response.status_code == 200
+        body = "".join(response.iter_text())
+
+    electrician_start = body.index('data-ranking-id="47-2111.00"')
+    social_start = body.index('data-ranking-id="21-1093.00"')
+
+    electrician_card = body[electrician_start:social_start]
+    social_card = body[social_start:]
+
+    # The Electricians fixture has active/upcoming recruitment.
+    assert "program-hiring-summary" in electrician_card
+    assert "<strong>12</strong>" in electrician_card
+    assert "programs hiring now" in electrician_card
+    assert "<strong>196</strong>" in electrician_card
+    assert "open positions" in electrician_card
+
+    # Both hiring trade titles are visibly distinguished.
+    assert "Electrician" in electrician_card
+    assert "Electrician (Housewire or Residential)" in electrician_card
+    assert electrician_card.count("program-hiring-chip") == 2
+
+    # The Social and Human Service Assistants fixture has no opportunities.
+    assert "program-hiring-summary" not in social_card
+    assert "program-hiring-chip" not in social_card

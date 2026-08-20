@@ -1,3 +1,5 @@
+from datetime import date
+
 import pytest
 
 from naswa_matcher.template_filters import (
@@ -6,6 +8,7 @@ from naswa_matcher.template_filters import (
     format_date,
     format_wage,
     percent_of,
+    program_hiring_stats,
     typical_program_length,
 )
 
@@ -154,3 +157,419 @@ def test_typical_program_length_returns_none_when_all_lengths_missing():
     ]
 
     assert typical_program_length(programs) is None
+
+
+def test_program_hiring_stats_counts_current_and_upcoming_opportunities():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "current",
+                                "socCode": "47-2111.00",
+                                "applicationStartDate": "2026-01-01",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 2,
+                            },
+                            {
+                                "id": "upcoming",
+                                "socCode": "47-2111.00",
+                                "applicationStartDate": "2026-09-01",
+                                "applicationEndDate": "2027-08-31",
+                                "numberOfOpenings": 3,
+                            },
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 5,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_excludes_expired_opportunities():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "expired",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-08-19",
+                                "numberOfOpenings": 10,
+                            }
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 0,
+        "open_positions": 0,
+        "hiring_trade_names": [],
+    }
+
+
+def test_program_hiring_stats_includes_opportunity_ending_today():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "ends-today",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-08-20",
+                                "numberOfOpenings": 4,
+                            }
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 4,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_counts_program_once_with_multiple_opportunities():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "posting-one",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 8,
+                            },
+                            {
+                                "id": "posting-two",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2027-12-31",
+                                "numberOfOpenings": 10,
+                            },
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 18,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_counts_multiple_hiring_programs():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "first-program",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 5,
+                            }
+                        ],
+                    },
+                    {
+                        "programAk": 200,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "second-program",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2027-01-31",
+                                "numberOfOpenings": 7,
+                            }
+                        ],
+                    },
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 2,
+        "open_positions": 12,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_marks_each_hiring_trade():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "electrician",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 5,
+                            }
+                        ],
+                    }
+                ],
+            },
+            {
+                "tradeName": "Plant Maintenance-Electrician",
+                "programs": [
+                    {
+                        "programAk": 200,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "maintenance",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2027-01-31",
+                                "numberOfOpenings": 2,
+                            }
+                        ],
+                    }
+                ],
+            },
+            {
+                "tradeName": "Electrical Maintenance Technician",
+                "programs": [
+                    {
+                        "programAk": 300,
+                        "socCode": "47-2111.00",
+                        "opportunities": [],
+                    }
+                ],
+            },
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 2,
+        "open_positions": 7,
+        "hiring_trade_names": [
+            "Electrician",
+            "Plant Maintenance-Electrician",
+        ],
+    }
+
+
+def test_program_hiring_stats_ignores_opportunity_for_different_soc():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Plumber",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2152.00",
+                        "opportunities": [
+                            {
+                                "id": "plumber",
+                                "socCode": "47-2152.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 2,
+                            },
+                            {
+                                "id": "glazier",
+                                "socCode": "47-2121.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 4,
+                            },
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 2,
+        "hiring_trade_names": ["Plumber"],
+    }
+
+
+def test_program_hiring_stats_does_not_double_count_duplicate_opportunity_ids():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "same-opportunity",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 10,
+                            },
+                            {
+                                "id": "same-opportunity",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": 10,
+                            },
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 10,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_handles_invalid_dates_and_opening_counts():
+    program_group = {
+        "trades": [
+            {
+                "tradeName": "Electrician",
+                "programs": [
+                    {
+                        "programAk": 100,
+                        "socCode": "47-2111.00",
+                        "opportunities": [
+                            {
+                                "id": "missing-date",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": None,
+                                "numberOfOpenings": 5,
+                            },
+                            {
+                                "id": "invalid-date",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "not-a-date",
+                                "numberOfOpenings": 5,
+                            },
+                            {
+                                "id": "invalid-openings",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": "unknown",
+                            },
+                            {
+                                "id": "negative-openings",
+                                "socCode": "47-2111.00",
+                                "applicationEndDate": "2026-12-31",
+                                "numberOfOpenings": -5,
+                            },
+                        ],
+                    }
+                ],
+            }
+        ]
+    }
+
+    stats = program_hiring_stats(
+        program_group,
+        today=date(2026, 8, 20),
+    )
+
+    assert stats == {
+        "programs_hiring": 1,
+        "open_positions": 0,
+        "hiring_trade_names": ["Electrician"],
+    }
+
+
+def test_program_hiring_stats_handles_empty_group():
+    assert program_hiring_stats(
+        None,
+        today=date(2026, 8, 20),
+    ) == {
+        "programs_hiring": 0,
+        "open_positions": 0,
+        "hiring_trade_names": [],
+    }
+
+
+def test_program_hiring_stats_is_registered_as_template_filter():
+    assert TEMPLATE_FILTERS["program_hiring_stats"] is program_hiring_stats

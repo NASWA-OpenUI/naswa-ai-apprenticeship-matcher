@@ -2616,6 +2616,26 @@ body.profile-modal-open {
   padding: 0 1px;
 }
 
+.program-match-card .program-hiring-summary {
+  margin-top: 0.75rem;
+  color: var(--nys-color-success);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.program-hiring-summary .program-hiring-summary__dot {
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  margin: 0 3px;
+}
+
+.program-hiring-chip {
+  line-height: 1.9;
+}
+
 .program-match-card .sep {
   color: var(--app-base);
   margin: 0 0.15rem;
@@ -2628,7 +2648,7 @@ body.profile-modal-open {
 .program-match-card .disclosure>summary {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 3.5px;
   width: fit-content;
   list-style: none;
   cursor: pointer;
