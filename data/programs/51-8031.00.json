@@ -949,7 +949,7 @@
     {
       "tradeName": "Wastewater Systems Operation Specialist",
       "displayTradeName": "Wastewater Systems Operation Specialist",
-      "description": "A Wastewater Systems Operation Specialist runs and monitors the equipment that cleans sewage and used water before it is released or reused. They check gauges, test water samples, adjust pumps and chemicals, inspect pipes and tanks, and respond to alarms or breakdowns. Their work keeps treatment systems running and protects public health, waterways, and the environment.",
+      "description": "A Wastewater Systems Operation Specialist runs and monitors the equipment that cleans sewage and dirty water before it is released or reused. They check pumps, tanks, filters, and control panels, collect samples, adjust chemical levels, and fix basic problems. Their work keeps treatment systems running safely and protects public health, waterways, and the environment.",
       "programCount": 3,
       "programs": [
         {
@@ -1017,7 +1017,7 @@
     {
       "tradeName": "Water Systems Operation Specialist",
       "displayTradeName": "Water Systems Operation Specialist",
-      "description": "A Water Systems Operation Specialist runs and monitors the equipment that moves, treats, and stores water in a community. They check gauges, test water samples, adjust pumps and valves, inspect tanks and pipes, and respond to problems or leaks. Their work keeps clean water flowing, wastewater handled safely, and systems running reliably every day.",
+      "description": "A Water Systems Operation Specialist runs and monitors the equipment that treats, pumps, and moves drinking water through a community’s system. They check gauges, test water samples, adjust chemicals, inspect pipes and valves, and respond to leaks or equipment problems. Their work keeps water clean, flowing, and safe for homes, schools, and businesses.",
       "programCount": 2,
       "programs": [
         {

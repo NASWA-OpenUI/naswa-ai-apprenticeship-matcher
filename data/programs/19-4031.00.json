@@ -1,10 +1,9 @@
 {
   "socCode": "19-4031.00",
   "socTitle": "Chemical Technicians",
-  "programCount": 2,
+  "programCount": 1,
   "regions": [
-    "Central New York",
-    "Finger Lakes"
+    "Central New York"
   ],
   "onet": {
     "socCode": "19-4031.00",
@@ -1027,8 +1026,8 @@
     {
       "tradeName": "Chemical Laboratory Technician",
       "displayTradeName": "Chemical Laboratory Technician",
-      "description": "A Chemical Laboratory Technician tests and studies chemicals and materials in a lab. They collect samples, measure and mix liquids or powders, run instruments, record results, and keep glassware and equipment clean and ready to use. Their work helps make products meet standards and keeps manufacturing, water, food, and medicines safe and reliable.",
-      "programCount": 2,
+      "description": "A Chemical Laboratory Technician works in a lab testing and analyzing chemicals, materials, or samples. They prepare solutions, measure and mix substances, run instruments, record results, and clean and maintain lab equipment while following strict safety rules. Their work helps keep products consistent, processes under control, and workplaces and the environment safer.",
+      "programCount": 1,
       "programs": [
         {
           "programAk": 6057,
@@ -1043,26 +1042,6 @@
           "programStatus": "Active",
           "programApprovalDate": "2018-09-25",
           "programGroupType": "Individual - Joint",
-          "programApproach": "Time",
-          "programLength": 48,
-          "ratio": "1:1,1:1",
-          "socCode": "19-4031.00",
-          "socTitle": "Chemical Technicians",
-          "opportunities": []
-        },
-        {
-          "programAk": 194332,
-          "sponsorName": "Rtma, The Rochester Technology And Manufacturing Association",
-          "tradeName": "Chemical Laboratory Technician",
-          "addressLine1": "2024 W. Henrietta Road Ste 3J",
-          "addressLine2": null,
-          "addressCity": "Rochester",
-          "addressState": "NY",
-          "addressPostalCode": "14623",
-          "region": "Finger Lakes",
-          "programStatus": "Probation",
-          "programApprovalDate": "2026-07-23",
-          "programGroupType": "Group - Non Joint",
           "programApproach": "Time",
           "programLength": 48,
           "ratio": "1:1,1:1",

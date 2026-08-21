@@ -953,7 +953,7 @@
     {
       "tradeName": "Network Engineer",
       "displayTradeName": "Network Engineer",
-      "description": "A Network Engineer builds and maintains the computer networks that connect offices, data centers, devices, and internet services. They install routers, switches, firewalls, and cables, set up secure connections, monitor traffic, and fix outages when systems slow down or fail. Their work keeps phones, apps, websites, and business systems running safely and reliably.",
+      "description": "A Network Engineer designs, sets up, and maintains the computer networks that connect offices, servers, phones, and internet services. They install routers and switches, configure wireless access, monitor traffic, fix outages, and strengthen security so data moves where it should. Their work keeps communication systems running, information protected, and businesses connected day to day.",
       "programCount": 1,
       "programs": [
         {
@@ -981,7 +981,7 @@
     {
       "tradeName": "Security Analyst",
       "displayTradeName": "Security Analyst",
-      "description": "A Security Analyst protects an organization’s computer systems, networks, and data from cyber threats. They watch security alerts, investigate suspicious activity, test for weak spots, install or update protections, and help respond to breaches when something goes wrong. Their work helps keep information private, systems running, and online services safer to use.",
+      "description": "A Security Analyst protects an organization’s computer systems, networks, and data from cyber threats. They watch for unusual activity, review alerts, test for weak spots, investigate breaches, and help install security tools and rules. Their work helps keep information private, systems running, and online services safer for employees, customers, and the public.",
       "programCount": 4,
       "programs": [
         {

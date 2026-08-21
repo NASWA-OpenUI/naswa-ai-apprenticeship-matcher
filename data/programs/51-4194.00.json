@@ -1044,7 +1044,7 @@
     {
       "tradeName": "CNC Tool And Cutter Grinder",
       "displayTradeName": "CNC Tool And Cutter Grinder",
-      "description": "A CNC Tool And Cutter Grinder sets up and runs computer-controlled machines that sharpen, shape, and repair cutting tools used in factories. They load metal parts, choose grinding settings, measure edges closely, and check finished tools for accuracy. Their work keeps drills, cutters, and production machines cutting cleanly, making parts correctly, and staying in good working order.",
+      "description": "A CNC Tool And Cutter Grinder sets up and runs computer-controlled machines that sharpen, shape, and finish metal cutting tools such as drill bits, end mills, and reamers. They load tools, enter machine settings, measure parts closely, and inspect edges for accuracy and wear. Their work keeps factory tools cutting cleanly, parts accurate, and machines running well.",
       "programCount": 2,
       "programs": [
         {

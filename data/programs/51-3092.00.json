@@ -1084,7 +1084,7 @@
     {
       "tradeName": "Dairy Processor",
       "displayTradeName": "Dairy Processor",
-      "description": "A Dairy Processor runs equipment that turns raw milk into products like cheese, yogurt, butter, and bottled milk. They measure ingredients, pasteurize and separate milk, watch temperatures, fill and seal containers, and clean tanks and lines. Their work keeps dairy products safe to eat, fresh, and ready for stores and kitchens.",
+      "description": "A Dairy Processor works in a plant that turns raw milk into products like cheese, butter, yogurt, and cream. They run and watch machines, measure ingredients, pasteurize milk, fill containers, clean equipment, and check quality and food safety. Their work keeps dairy products fresh, safe to eat, and ready for stores and kitchens.",
       "programCount": 2,
       "programs": [
         {

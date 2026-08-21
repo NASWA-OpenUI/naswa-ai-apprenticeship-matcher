@@ -1161,7 +1161,7 @@
     {
       "tradeName": "Machine Repairer",
       "displayTradeName": "Machine Repairer",
-      "description": "A Machine Repairer fixes and maintains factory and industrial machines that stop working or wear down over time. They inspect equipment, take apart motors or gearboxes, replace broken parts, align moving pieces, lubricate systems, and test machines after repairs. Their work keeps production equipment running safely, reliably, and with less downtime.",
+      "description": "A Machine Repairer fixes and maintains factory and industrial machines so they work properly. They inspect equipment, take apart worn or broken parts, replace belts, bearings, gears, or motors, and test machines after repairs. Their work keeps production lines running, prevents breakdowns, and helps equipment operate safely and reliably.",
       "programCount": 2,
       "programs": [
         {
@@ -1209,7 +1209,7 @@
     {
       "tradeName": "Machinist",
       "displayTradeName": "Machinist",
-      "description": "A Machinist makes precise metal or plastic parts used in machines, tools, and equipment. They read blueprints, set up lathes, mills, grinders, and CNC machines, measure pieces with exact tools, and adjust cuts so each part fits properly. Their work builds and repairs the parts that keep vehicles, factories, and everyday equipment running smoothly.",
+      "description": "A Machinist makes precise metal or plastic parts used in machines, tools, and equipment. They read blueprints, set up lathes, mills, grinders, and computer-controlled machines, then cut, drill, shape, and measure each piece to tight standards. Their work builds parts that fit properly and keeps vehicles, factories, and everyday equipment running safely.",
       "programCount": 6,
       "programs": [
         {
@@ -1337,7 +1337,7 @@
     {
       "tradeName": "Machinist (CNC)",
       "displayTradeName": "Machinist (CNC)",
-      "description": "A CNC Machinist makes precise metal or plastic parts using computer-controlled machines. They read blueprints, set up tools and materials, program or adjust machine controls, measure finished pieces, and watch the machines as they cut, drill, or shape each part. Their work builds accurate parts that keep vehicles, equipment, and machines running properly.",
+      "description": "A CNC Machinist makes precise metal or plastic parts using computer-controlled machine tools. They read blueprints, set up lathes and mills, load materials, choose cutting tools, monitor the machines, and measure finished pieces to make sure they match exact sizes. Their work builds and keeps running the parts used in vehicles, machines, and equipment.",
       "programCount": 32,
       "programs": [
         {
@@ -1690,7 +1690,7 @@
           "addressState": "NY",
           "addressPostalCode": "13069",
           "region": "Central New York",
-          "programStatus": "Active",
+          "programStatus": "Probation",
           "programApprovalDate": "2024-04-25",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
@@ -1985,7 +1985,7 @@
     {
       "tradeName": "Maintenance Machinist",
       "displayTradeName": "Maintenance Machinist",
-      "description": "A Maintenance Machinist installs, repairs, and rebuilds the moving parts in factory and plant equipment. They take apart pumps, conveyors, gearboxes, and other machines, measure worn pieces, machine or fit replacements, align shafts, and test everything before it goes back into service. Their work keeps equipment running safely and helps prevent breakdowns that stop production.",
+      "description": "A Maintenance Machinist keeps factory and plant equipment working by making, repairing, and fitting metal parts. They use lathes, milling machines, grinders, and measuring tools to rebuild worn pieces, line up machinery, and fix breakdowns on the shop floor. Their work keeps production equipment running safely, smoothly, and with less downtime.",
       "programCount": 3,
       "programs": [
         {

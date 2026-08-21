@@ -1903,7 +1903,7 @@
     {
       "tradeName": "Carpenter (Heavy-Highway)",
       "displayTradeName": "Carpenter (Heavy-Highway)",
-      "description": "A heavy-highway Carpenter builds and repairs the wooden forms, guardrails, decks, and other structures used in road, bridge, and large civil construction. They measure, cut, fasten, and brace materials, often around concrete pours, traffic lanes, and heavy equipment. Their work helps roads and bridges stay strong, aligned, and safe for daily travel.",
+      "description": "A Heavy-Highway Carpenter builds and repairs the wooden forms, barriers, and temporary structures used on road, bridge, and tunnel projects. They measure, cut, and fasten lumber or panels, set concrete forms, install guardrails or signs, and work around heavy equipment outdoors. Their work helps highways and bridges stay strong, aligned, and safer for travel.",
       "programCount": 4,
       "programs": [
         {
@@ -1990,8 +1990,8 @@
     },
     {
       "tradeName": "Carpenter(Piledriver/Dockbuilder)",
-      "displayTradeName": "Carpenter(Piledriver/Dockbuilder)",
-      "description": "A Carpenter working as a piledriver and dockbuilder builds and repairs waterfront structures such as docks, piers, bulkheads, and bridge supports. They drive heavy piles into the ground or riverbed, set timbers and concrete forms, and work around cranes, barges, and power tools. Their work keeps shorelines, bridges, and marine facilities stable and safe.",
+      "displayTradeName": "Carpenter (Piledriver/Dockbuilder)",
+      "description": "A Carpenter who works as a piledriver or dockbuilder builds and repairs heavy wooden structures along shorelines and in the water. They drive piles deep into the ground, frame docks and piers, bolt timbers and steel parts together, and work from barges, cranes, and temporary platforms. Their work keeps waterfront structures strong, stable, and safe.",
       "programCount": 4,
       "programs": [
         {
@@ -2215,7 +2215,7 @@
     {
       "tradeName": "Lather (Wood, Wire and Metal)",
       "displayTradeName": "Lather (Wood, Wire, and Metal)",
-      "description": "A Lather works with wood, wire, and metal to build the framework that holds plaster, drywall, or stucco in place on walls and ceilings. They measure spaces, cut and fasten strips or mesh, frame corners and curves, and secure materials to studs or supports. Their work helps surfaces stay strong, even, and secure in homes and buildings.",
+      "description": "A Lather who works with wood, wire, and metal builds the hidden framework that supports plaster, stucco, and similar wall and ceiling finishes. They measure spaces, cut and fasten strips, mesh, and metal framing, and shape surfaces around corners, curves, and openings. Their work helps walls and ceilings stay strong, even, and secure.",
       "programCount": 1,
       "programs": [
         {
@@ -2243,7 +2243,7 @@
     {
       "tradeName": "Plant Maintenance-Carpenter",
       "displayTradeName": "Plant Maintenance-Carpenter",
-      "description": "A Plant Maintenance-Carpenter keeps an industrial site’s wood and light building structures in good repair. They build and fix walls, doors, floors, shelves, forms, and work platforms, using saws, drills, and measuring tools while working around plant equipment. Their work keeps facilities solid, usable, and safe for daily operations.",
+      "description": "A Plant Maintenance-Carpenter maintains and repairs wooden and built-in parts of an industrial plant. They fix doors, floors, walls, platforms, shelves, forms, and work areas, using hand and power tools to measure, cut, fit, and install materials. Their work keeps plant spaces solid, usable, and safe for daily operations.",
       "programCount": 1,
       "programs": [
         {

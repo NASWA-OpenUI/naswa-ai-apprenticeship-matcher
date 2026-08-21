@@ -1016,7 +1016,7 @@
     {
       "tradeName": "Housekeeper (Commercial, Residential, Industrial)",
       "displayTradeName": "Housekeeper (Commercial, Residential, Industrial)",
-      "description": "A Housekeeper in commercial, residential, and industrial settings cleans and maintains rooms, halls, washrooms, and work areas. They vacuum carpets, mop floors, dust surfaces, change linens, empty waste, restock supplies, and sanitize kitchens, bathrooms, or shared spaces. Their work keeps homes, businesses, and facilities clean, orderly, safe, and ready for daily use.",
+      "description": "A Housekeeper in commercial, residential, and industrial settings cleans and maintains rooms, halls, washrooms, work areas, and shared spaces. They vacuum, mop, dust, change linens, restock supplies, empty trash, and sanitize surfaces, sometimes using larger cleaning machines or special products. Their work keeps homes, businesses, and facilities clean, safe, orderly, and running well.",
       "programCount": 4,
       "programs": [
         {

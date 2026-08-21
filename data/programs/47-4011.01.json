@@ -902,7 +902,7 @@
     {
       "tradeName": "Energy Efficiency Technician",
       "displayTradeName": "Energy Efficiency Technician",
-      "description": "An Energy Efficiency Technician checks buildings and equipment to find where energy is being wasted. They test heating and cooling systems, inspect insulation, windows, and lighting, take measurements, and suggest or help install upgrades that reduce energy use. Their work helps lower utility costs, improve comfort, and keep homes and buildings running more efficiently.",
+      "description": "An Energy Efficiency Technician checks homes, buildings, or equipment to find where energy is being wasted. They inspect insulation, lighting, heating and cooling systems, take measurements, run tests, and suggest or help install upgrades that use less power. Their work lowers energy costs, improves comfort, and keeps buildings running more efficiently.",
       "programCount": 1,
       "programs": [
         {

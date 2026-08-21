@@ -25,7 +25,7 @@
     {
       "tradeName": "Precision Imaging / Nanolithography Technician",
       "displayTradeName": "Precision Imaging/Nanolithography Technician",
-      "description": "A Precision Imaging/Nanolithography Technician makes extremely small patterns and images used in advanced electronics, research tools, and tiny devices. They set up cleanroom equipment, coat surfaces, align masks, expose materials to light or electron beams, and inspect results under powerful microscopes. Their work helps build accurate chips, sensors, and parts that keep modern technology working reliably.",
+      "description": "A Precision Imaging/Nanolithography Technician makes tiny patterns and images on surfaces used in advanced electronics, optics, or research tools. They set up clean-room equipment, coat materials, align masks, expose surfaces to light or beams, and inspect results under microscopes. Their work helps build and improve the small parts inside chips, sensors, and other high-precision devices.",
       "programCount": 1,
       "programs": [
         {
@@ -53,7 +53,7 @@
     {
       "tradeName": "Precision Optics Manufacturing Technician",
       "displayTradeName": "Precision Optics Manufacturing Technician",
-      "description": "A Precision Optics Manufacturing Technician makes and finishes highly accurate glass or crystal parts used in lenses, lasers, cameras, and other optical equipment. They cut, grind, polish, coat, inspect, and measure tiny components using specialized machines and careful hand work. Their work helps optical devices perform clearly, accurately, and reliably in everyday tools and technology.",
+      "description": "A Precision Optics Manufacturing Technician makes highly accurate glass or crystal parts used in devices like cameras, lasers, and medical tools. They cut, grind, polish, coat, and inspect lenses, mirrors, and prisms using specialized machines and measuring tools in clean work areas. Their work helps optical equipment stay precise, reliable, and safe to use.",
       "programCount": 5,
       "programs": [
         {

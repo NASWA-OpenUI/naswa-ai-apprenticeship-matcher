@@ -1043,7 +1043,7 @@
     {
       "tradeName": "Industrial Machinery Mechanic",
       "displayTradeName": "Industrial Machinery Mechanic",
-      "description": "An Industrial Machinery Mechanic installs, maintains, troubleshoots, and repairs factory machines and production equipment. They take apart motors, gearboxes, pumps, conveyors, and hydraulic systems, replace worn parts, line up moving pieces, and test everything to make sure it runs smoothly. Their work keeps machines running, reduces breakdowns, and helps workplaces stay productive and safe.",
+      "description": "An Industrial Machinery Mechanic installs, inspects, repairs, and maintains the machines used in factories, plants, and other industrial sites. They take apart equipment, replace worn parts, align moving pieces, lubricate systems, and test machines to find problems. Their work keeps production equipment running safely, reliably, and with less downtime.",
       "programCount": 1,
       "programs": [
         {
@@ -1071,7 +1071,7 @@
     {
       "tradeName": "Maintenance Mechanic (Automatic Equipment)",
       "displayTradeName": "Maintenance Mechanic (Automatic Equipment)",
-      "description": "A Maintenance Mechanic working on automatic equipment installs, inspects, troubleshoots, and repairs machines that run on their own in factories, shops, or large buildings. They replace worn parts, adjust belts, gears, sensors, and controls, lubricate moving pieces, and test equipment after repairs. Their work keeps machines running safely, reliably, and with less downtime.",
+      "description": "A Maintenance Mechanic working on automatic equipment installs, checks, repairs, and adjusts machines that run by themselves in factories, plants, or large buildings. They replace worn parts, test motors and controls, clear jams, lubricate moving pieces, and use tools to keep equipment working properly. Their work keeps machines running safely and production on schedule.",
       "programCount": 5,
       "programs": [
         {
@@ -1179,7 +1179,7 @@
     {
       "tradeName": "Packer Mechanic",
       "displayTradeName": "Packer Mechanic",
-      "description": "A Packer Mechanic installs, adjusts, repairs, and maintains the machines that fill, wrap, seal, label, and pack products in factories. They change worn parts, line up moving pieces, test controls, and troubleshoot breakdowns on busy production lines. Their work keeps packaged goods moving, equipment running safely, and products ready for stores and customers.",
+      "description": "A Packer Mechanic installs, repairs, and maintains the machines that fill, wrap, label, and seal products in boxes, bags, or bottles. They adjust belts, gears, sensors, and moving parts, replace worn pieces, and test equipment to keep lines running smoothly. Their work keeps packaging systems reliable, products protected, and production moving safely.",
       "programCount": 1,
       "programs": [
         {

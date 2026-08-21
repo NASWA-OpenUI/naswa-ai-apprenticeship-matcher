@@ -1207,7 +1207,7 @@
     {
       "tradeName": "Police Officer",
       "displayTradeName": "Police Officer",
-      "description": "A Police Officer enforces laws and helps keep public order in the community. They patrol streets, respond to emergency calls, stop drivers, investigate crimes, interview people, write reports, and may make arrests or direct traffic. Their work helps protect people and property, keeps neighborhoods safer, and keeps daily life running more smoothly.",
+      "description": "A Police Officer enforces laws and responds to emergencies in the community. They patrol streets, answer calls, interview people, direct traffic, investigate crimes, write reports, and may make arrests. They spend much of the day on the move, in cars and on foot, dealing with people in tense situations. Their work helps keep people, property, and public spaces safer.",
       "programCount": 2,
       "programs": [
         {

@@ -1142,7 +1142,7 @@
     {
       "tradeName": "Manufacturing Engineering Technician",
       "displayTradeName": "Manufacturing Engineering Technician",
-      "description": "A Manufacturing Engineering Technician helps improve how products are made in factories. They set up and test equipment, measure parts, track production problems, update instructions, and work with engineers and machine operators on the shop floor. Their work helps products be made correctly, machines run smoothly, and production stay safe and efficient.",
+      "description": "A Manufacturing Engineering Technician helps improve how products are made in factories. They set up and test equipment, measure parts, update drawings and instructions, track production problems, and work with engineers and machine operators on the shop floor. Their work helps products be made correctly, reduces waste, and keeps production running smoothly and safely.",
       "programCount": 6,
       "programs": [
         {
@@ -1215,7 +1215,7 @@
           "addressState": "NY",
           "addressPostalCode": "13069",
           "region": "Central New York",
-          "programStatus": "Active",
+          "programStatus": "Probation",
           "programApprovalDate": "2024-04-25",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",

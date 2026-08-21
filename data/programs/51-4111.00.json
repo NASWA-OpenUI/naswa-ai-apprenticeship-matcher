@@ -1031,7 +1031,7 @@
     {
       "tradeName": "Mold Maker, Die-Casting and Plastic Molding",
       "displayTradeName": "Mold Maker, Die-Casting, and Plastic Molding",
-      "description": "A Mold Maker, Die-Casting, and Plastic Molding builds, repairs, and adjusts the metal molds and dies used to shape plastic and cast metal parts. They read drawings, machine and polish steel pieces, fit parts together, and test molds for smooth, accurate production. Their work helps factories make everyday products that fit right and keep machines running.",
+      "description": "A Mold Maker, Die-Casting, and Plastic Molding builds, repairs, and fine-tunes the metal molds and dies used to shape plastic and die-cast parts. They read drawings, machine and polish steel pieces, fit moving parts, and test molds for smooth, accurate production. Their work helps factories make reliable parts that fit properly and keeps production running.",
       "programCount": 3,
       "programs": [
         {
@@ -1099,7 +1099,7 @@
     {
       "tradeName": "Moldmaker",
       "displayTradeName": "Moldmaker",
-      "description": "A Moldmaker builds and repairs the metal molds used to shape plastic, rubber, or other materials into parts. They read blueprints, machine and polish steel blocks, fit moving pieces, drill cooling channels, and test molds so products come out correctly. Their work helps factories make everyday items that fit, work, and last.",
+      "description": "A Moldmaker builds and repairs the metal molds used to shape plastic, rubber, or other materials into parts and products. They read blueprints, machine and polish metal pieces, fit parts together, test the mold, and make precise adjustments. Their work helps factories make consistent products and keeps production running smoothly.",
       "programCount": 6,
       "programs": [
         {
@@ -1227,7 +1227,7 @@
     {
       "tradeName": "Tool and Die Maker",
       "displayTradeName": "Tool and Die Maker",
-      "description": "A Tool and Die Maker builds and repairs the precision tools, metal forms, and cutting parts used in factories. They read blueprints, measure to tiny tolerances, machine and grind steel pieces, and fit them together so presses and machines work properly. Their work keeps manufactured parts accurate, production running, and equipment working safely.",
+      "description": "A Tool and Die Maker builds and repairs the precise metal tools used to shape parts in factories. They read blueprints, measure to tiny tolerances, cut and grind steel, and fit dies, molds, jigs, and fixtures with care. Their work helps machines make accurate parts and keeps production running safely and smoothly.",
       "programCount": 10,
       "programs": [
         {
@@ -1435,7 +1435,7 @@
     {
       "tradeName": "Toolmaker",
       "displayTradeName": "Toolmaker",
-      "description": "A Toolmaker makes and repairs the precision tools used in manufacturing, such as molds, dies, jigs, and gauges. They read technical drawings, measure metal parts, machine and grind pieces, and fit them together by hand so everything works exactly right. Their work helps factories build accurate parts, keep machines running, and reduce waste.",
+      "description": "A Toolmaker makes and repairs the precise tools, dies, molds, and fixtures used in manufacturing. They read detailed drawings, cut and shape metal, operate machine tools, polish surfaces, and check measurements to tiny tolerances so parts fit exactly. Their work keeps factory machines running, products accurate, and production lines making reliable everyday goods.",
       "programCount": 17,
       "programs": [
         {

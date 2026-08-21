@@ -1221,7 +1221,7 @@
     {
       "tradeName": "Building Maintenance Mechanic",
       "displayTradeName": "Building Maintenance Mechanic",
-      "description": "A Building Maintenance Mechanic keeps a building’s systems and equipment working properly. They inspect and repair heating, cooling, plumbing, lights, doors, pumps, and other parts of the building, using hand and power tools to fix problems and do routine upkeep. Their work keeps buildings safe, comfortable, clean, and running day to day.",
+      "description": "A Building Maintenance Mechanic keeps a building’s systems and spaces in working order. They inspect equipment, fix plumbing leaks, replace light fixtures, repair doors, walls, and floors, and handle basic heating, cooling, and electrical problems using hand and power tools. Their work keeps buildings safe, functional, and comfortable for the people who use them every day.",
       "programCount": 5,
       "programs": [
         {
@@ -1274,7 +1274,7 @@
           "addressState": "NY",
           "addressPostalCode": "13424",
           "region": "Mohawk Valley",
-          "programStatus": "Active",
+          "programStatus": "Probation",
           "programApprovalDate": "2024-01-30",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
@@ -1329,7 +1329,7 @@
     {
       "tradeName": "Plant Maintenance-Electrician-Mechanic",
       "displayTradeName": "Plant Maintenance-Electrician-Mechanic",
-      "description": "A Plant Maintenance-Electrician-Mechanic keeps factory and plant equipment working safely and reliably. They inspect machines, trace electrical faults, replace motors, belts, bearings, switches, and wiring, and test systems using tools and meters. They may also weld, lubricate parts, and adjust controls. Their work keeps production running, equipment in good condition, and workplaces safer.",
+      "description": "A Plant Maintenance-Electrician-Mechanic keeps factory and plant equipment working. They inspect machines, troubleshoot electrical and mechanical problems, replace worn parts, wire motors and controls, lubricate moving equipment, and test systems after repairs. Their work helps prevent breakdowns, keeps production lines running, and makes equipment safer and more reliable every day.",
       "programCount": 2,
       "programs": [
         {
@@ -1377,7 +1377,7 @@
     {
       "tradeName": "Plant Maintenance-Mechanic (3 Year)",
       "displayTradeName": "Plant Maintenance-Mechanic",
-      "description": "A Plant Maintenance-Mechanic installs, checks, repairs, and replaces the machines and equipment that keep a factory or processing plant running. They inspect moving parts, change belts and bearings, align motors, fix breakdowns, and use hand and power tools in noisy work areas. Their work keeps production equipment running safely and helps prevent costly shutdowns.",
+      "description": "A Plant Maintenance-Mechanic keeps factory or processing plant equipment working properly. They inspect machines, take apart motors, pumps, conveyors, and gearboxes, replace worn parts, lubricate moving pieces, and troubleshoot breakdowns using hand and power tools. Their work keeps production lines running, equipment safer, and buildings operating without costly shutdowns.",
       "programCount": 3,
       "programs": [
         {
@@ -1445,7 +1445,7 @@
     {
       "tradeName": "Plant Maintenance-Mechanic (4 Year)",
       "displayTradeName": "Plant Maintenance-Mechanic",
-      "description": "A Plant Maintenance-Mechanic installs, checks, repairs, and replaces the machines and equipment that keep a factory or processing plant running. They inspect moving parts, change belts and bearings, align motors, fix breakdowns, and use hand and power tools in noisy work areas. Their work keeps production equipment running safely and helps prevent costly shutdowns.",
+      "description": "A Plant Maintenance-Mechanic keeps factory or processing plant equipment working properly. They inspect machines, take apart motors, pumps, conveyors, and gearboxes, replace worn parts, lubricate moving pieces, and troubleshoot breakdowns using hand and power tools. Their work keeps production lines running, equipment safer, and buildings operating without costly shutdowns.",
       "programCount": 11,
       "programs": [
         {

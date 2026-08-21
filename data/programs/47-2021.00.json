@@ -967,7 +967,7 @@
     {
       "tradeName": "Bricklayer Mason and Plasterer",
       "displayTradeName": "Bricklayer Mason and Plasterer",
-      "description": "A Bricklayer Mason and Plasterer builds and repairs walls, fireplaces, chimneys, and other surfaces using brick, block, stone, mortar, and plaster. They spread mortar, lay materials in straight rows, smooth plaster onto walls and ceilings, and patch damaged areas. Their work helps make buildings strong, weather-resistant, finished, and safe to use.",
+      "description": "A Bricklayer Mason and Plasterer builds and repairs walls, fireplaces, and other structures using brick, block, stone, mortar, and plaster. They spread mortar, lay materials in straight lines, smooth and coat surfaces, and patch cracks or damage on indoor and outdoor walls. Their work builds strong surfaces and helps keep buildings sturdy, sealed, and looking finished.",
       "programCount": 7,
       "programs": [
         {
@@ -1511,7 +1511,7 @@
     {
       "tradeName": "Bricklayer, Mason",
       "displayTradeName": "Bricklayer, Mason",
-      "description": "A Bricklayer, Mason builds and repairs walls, chimneys, fireplaces, patios, and other structures using brick, concrete block, and stone. They spread mortar, lay each piece in straight rows, cut materials to fit, and check that surfaces are level and solid. Their work builds strong buildings and keeps outdoor spaces sturdy, safe, and weather-resistant.",
+      "description": "A Bricklayer, Mason builds and repairs walls, chimneys, fireplaces, walkways, and other structures using brick, concrete block, and stone. They spread mortar, line up each course, cut materials to fit, and check that surfaces are level and strong. Their work helps create buildings and outdoor spaces that stay solid, weather-resistant, and safe to use.",
       "programCount": 7,
       "programs": [
         {

@@ -1065,7 +1065,7 @@
     {
       "tradeName": "Electrical Maintenance Technician",
       "displayTradeName": "Electrical Maintenance Technician",
-      "description": "An Electrical Maintenance Technician installs, inspects, troubleshoots, repairs, and tests electrical equipment in places like factories, buildings, or plants. They trace wiring, replace worn parts, reset controls, and use meters and tools to keep machines and systems working properly. Their work keeps power, lighting, and equipment running safely and helps prevent breakdowns.",
+      "description": "An Electrical Maintenance Technician keeps electrical equipment and systems working safely and reliably. They inspect wiring, motors, panels, controls, and machines, test for faults, replace worn parts, and repair breakdowns using hand tools and testing devices. Their work keeps lights, machinery, and building systems running, and helps prevent damage, downtime, and electrical hazards.",
       "programCount": 1,
       "programs": [
         {
@@ -2980,7 +2980,7 @@
           "programAk": 11143,
           "sponsorName": "Triza Electrical Corp",
           "tradeName": "Electrician",
-          "addressLine1": "24-28 45th Street",
+          "addressLine1": "24-28 45Th Street",
           "addressLine2": null,
           "addressCity": "Astoria",
           "addressState": "NY",
@@ -4514,7 +4514,7 @@
     {
       "tradeName": "Electronics Mechanic (CNC Systems Maintenance)",
       "displayTradeName": "Electronics Mechanic (CNC Systems Maintenance)",
-      "description": "An Electronics Mechanic in CNC systems maintenance installs, tests, troubleshoots, and repairs the electronic controls in computer-guided factory machines. They trace wiring, replace circuit boards, adjust sensors, read diagrams, and use meters and software to find faults on the shop floor. Their work keeps production equipment running accurately, safely, and with less downtime.",
+      "description": "An Electronics Mechanic in CNC systems maintenance installs, tests, troubleshoots, and repairs the electronic controls, wiring, sensors, and circuit boards that run computer-controlled factory machines. They use meters, diagrams, and software to find faults, replace parts, and tune equipment. Their work keeps production machines running accurately, safely, and with less downtime.",
       "programCount": 3,
       "programs": [
         {
@@ -4582,7 +4582,7 @@
     {
       "tradeName": "Instrument &  Electrical Mechanic",
       "displayTradeName": "Instrument and Electrical Mechanic",
-      "description": "An Instrument and Electrical Mechanic installs, tests, repairs, and maintains electrical systems and control instruments in buildings, plants, or industrial equipment. They run wires, connect panels, replace faulty parts, and use meters and tools to track down problems. Their work keeps machines, power systems, and automated controls running safely and reliably.",
+      "description": "An Instrument and Electrical Mechanic installs, tests, repairs, and maintains electrical equipment, control systems, and precision instruments in places like factories, plants, and large buildings. They trace wiring, replace sensors, calibrate meters, and troubleshoot panels and motors using tools and test devices. Their work keeps machines running properly, measurements accurate, and equipment safe.",
       "programCount": 1,
       "programs": [
         {
@@ -4610,7 +4610,7 @@
     {
       "tradeName": "Plant Maintenance-Electrician",
       "displayTradeName": "Plant Maintenance-Electrician",
-      "description": "A Plant Maintenance-Electrician installs, tests, repairs, and maintains the electrical systems that keep a factory or processing plant running. They trace wiring problems, replace motors, sensors, switches, and control parts, and work around machines, panels, and conveyor lines. Their work keeps equipment running safely, reduces breakdowns, and helps plants make products reliably.",
+      "description": "A Plant Maintenance-Electrician keeps a factory or industrial plant’s electrical systems working safely and reliably. They inspect wiring, motors, control panels, and machines, troubleshoot faults, replace damaged parts, and do routine repairs and testing. Their work keeps production equipment running, helps prevent breakdowns, and makes the plant safer for workers.",
       "programCount": 29,
       "programs": [
         {

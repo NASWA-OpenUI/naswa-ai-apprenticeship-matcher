@@ -1113,7 +1113,7 @@
     {
       "tradeName": "Bus Mechanic",
       "displayTradeName": "Bus Mechanic",
-      "description": "A Bus Mechanic inspects, repairs, and maintains buses so they can run safely every day. They diagnose engine, brake, steering, and electrical problems, change worn parts, test systems, and do routine service in a garage or yard. Their work keeps buses reliable, protects passengers and drivers, and helps public transportation stay running.",
+      "description": "A Bus Mechanic inspects, repairs, and maintains buses so they can run safely every day. They test brakes, steering, engines, transmissions, and electrical systems, change fluids and worn parts, and use tools and diagnostic equipment in a busy shop or yard. Their work keeps public transportation running, passengers safer, and vehicles reliable on the road.",
       "programCount": 1,
       "programs": [
         {
@@ -1141,7 +1141,7 @@
     {
       "tradeName": "Diesel Engine Mechanic",
       "displayTradeName": "Diesel Engine Mechanic",
-      "description": "A Diesel Engine Mechanic repairs and maintains diesel-powered vehicles and equipment such as trucks, buses, tractors, and generators. They inspect engines, test parts, change filters and fluids, replace worn components, and use tools and diagnostic equipment to find problems. Their work keeps engines running reliably and helps vehicles and machines stay safe and useful every day.",
+      "description": "A Diesel Engine Mechanic repairs and maintains diesel-powered engines in trucks, buses, heavy equipment, and other machines. They inspect parts, run tests, change filters and fluids, replace worn components, and use tools and diagnostic equipment to fix problems. Their work keeps vehicles and equipment running safely, reliably, and with less downtime.",
       "programCount": 3,
       "programs": [
         {
@@ -1209,7 +1209,7 @@
     {
       "tradeName": "Industrial Truck Mechanic",
       "displayTradeName": "Industrial Truck Mechanic",
-      "description": "An Industrial Truck Mechanic repairs and maintains forklifts, pallet jacks, and other warehouse and lifting vehicles. They inspect engines, brakes, steering, hydraulics, batteries, and tires, replace worn parts, and test equipment to make sure it works properly. Their work keeps trucks running safely and helps factories, warehouses, and loading docks move materials.",
+      "description": "An Industrial Truck Mechanic repairs and maintains forklifts, pallet jacks, and other trucks used to move heavy loads in warehouses, factories, and yards. They inspect brakes, steering, engines, batteries, and hydraulic systems, replace worn parts, and test equipment after repairs. Their work keeps materials moving safely and helps workplaces run smoothly.",
       "programCount": 1,
       "programs": [
         {

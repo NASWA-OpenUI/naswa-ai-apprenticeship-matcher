@@ -1101,7 +1101,7 @@
     {
       "tradeName": "Network Administrator",
       "displayTradeName": "Network Administrator",
-      "description": "A Network Administrator sets up, monitors, and maintains the computer networks that connect people, devices, and systems at work. They install routers and switches, manage user access, fix slow or broken connections, update security settings, and back up network data. Their work keeps internet, email, shared files, and business systems running safely and reliably.",
+      "description": "A Network Administrator sets up, monitors, and maintains the computer networks that connect offices, devices, and systems. They install routers and switches, manage user accounts, fix internet or server problems, update security settings, and test backups so data can be recovered. Their work keeps computers, phones, files, and online services running safely and reliably.",
       "programCount": 1,
       "programs": [
         {
@@ -1129,7 +1129,7 @@
     {
       "tradeName": "Systems Engineer",
       "displayTradeName": "Systems Engineer",
-      "description": "A Systems Engineer designs, connects, and improves complex computer and technical systems so all the parts work together. They plan system layouts, test software and hardware, solve performance problems, and work with teams to install updates and fix issues. Their work keeps networks, machines, and digital services running smoothly, safely, and reliably.",
+      "description": "A Systems Engineer designs and manages the computer-based systems that help an organization work smoothly. They plan how hardware, software, networks, and data tools fit together, test performance, fix problems, and help upgrades run properly. Their work keeps important technology connected, reliable, and secure for everyday business, communication, and services.",
       "programCount": 1,
       "programs": [
         {

@@ -986,7 +986,7 @@
     {
       "tradeName": "Central Sterile Processing Technician",
       "displayTradeName": "Central Sterile Processing Technician",
-      "description": "A Central Sterile Processing Technician cleans, disinfects, sterilizes, sorts, and packages surgical tools and medical equipment used in hospitals and clinics. They inspect instruments for damage, run sterilizing machines, label trays, and deliver supplies where needed. Their work keeps equipment ready to use, reduces infection risks, and helps patient care run safely.",
+      "description": "A Central Sterile Processing Technician cleans, disinfects, sterilizes, and organizes the medical tools and equipment used in hospitals and clinics. They inspect instruments, run sterilizing machines, wrap and label trays, and deliver ready-to-use supplies to operating rooms and care areas. Their work helps prevent infection and keeps patient care safe and running smoothly.",
       "programCount": 1,
       "programs": [
         {

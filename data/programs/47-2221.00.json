@@ -1013,7 +1013,7 @@
     {
       "tradeName": "Iron Worker (Outside)",
       "displayTradeName": "Iron Worker (Outside)",
-      "description": "An outside Iron Worker builds and repairs the steel frames of buildings, bridges, towers, and other large structures. They unload and hoist heavy steel, line up beams, bolt and weld connections, install metal decking, and work high above the ground using lifts, cranes, and safety gear. Their work builds strong structures and keeps them stable and safe.",
+      "description": "An outside Iron Worker builds and repairs the steel frames and heavy metal parts of buildings, bridges, towers, and other large structures. They unload steel, line up beams, bolt and weld pieces together, and work high above the ground using cranes, lifts, and safety gear. Their work helps keep major structures strong, stable, and safe.",
       "programCount": 12,
       "programs": [
         {
@@ -1437,7 +1437,7 @@
     {
       "tradeName": "Iron Worker (Stone Derrickman and Rigger)",
       "displayTradeName": "Iron Worker (Stone Derrickman and Rigger)",
-      "description": "An Iron Worker who works as a stone derrickman and rigger moves and sets heavy stone on construction sites. They attach slings, chains, and cables, guide loads with cranes or derricks, signal operators, and position pieces carefully into place. Their work helps build strong walls, bridges, and structures, and keeps heavy lifting safer and controlled.",
+      "description": "An Iron Worker who rigs and runs stone derricks moves heavy stone and steel on construction sites. They attach cables, hooks, and pulleys, guide loads by hand signals, help set blocks into place, and make sure lifting gear is secure and balanced. Their work helps buildings and structures go up safely and stay properly supported.",
       "programCount": 1,
       "programs": [
         {

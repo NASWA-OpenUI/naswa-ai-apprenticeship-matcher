@@ -1083,7 +1083,7 @@
     {
       "tradeName": "Groundskeeper",
       "displayTradeName": "Groundskeeper",
-      "description": "A Groundskeeper cares for outdoor areas such as lawns, gardens, parks, sports fields, and walkways. They mow grass, trim shrubs, plant flowers, rake leaves, spread mulch, water plants, and remove litter, snow, or debris using hand tools and machines. Their work keeps outdoor spaces clean, healthy, safe, and pleasant to use.",
+      "description": "A Groundskeeper cares for outdoor spaces such as lawns, gardens, sports fields, and walkways. They mow grass, trim shrubs, plant flowers, rake leaves, spread mulch, water plants, and clear snow or litter while using tools and outdoor equipment. Their work keeps properties clean, usable, attractive, and safer for everyday visitors.",
       "programCount": 1,
       "programs": [
         {
@@ -1096,7 +1096,7 @@
           "addressState": "NY",
           "addressPostalCode": "12180",
           "region": "Capital Region",
-          "programStatus": "Active",
+          "programStatus": "Probation",
           "programApprovalDate": "2023-12-07",
           "programGroupType": "Group - Non Joint",
           "programApproach": "Time",
@@ -1111,7 +1111,7 @@
     {
       "tradeName": "Landscape Nursery Manager",
       "displayTradeName": "Landscape Nursery Manager",
-      "description": "A Landscape Nursery Manager runs a nursery that grows and sells trees, shrubs, flowers, and other outdoor plants. They plan planting and watering, watch for pests and disease, manage workers, order supplies, and help customers or landscapers choose healthy stock. Their work keeps gardens, yards, and public spaces supplied with strong plants that grow well.",
+      "description": "A Landscape Nursery Manager runs a plant nursery that grows trees, shrubs, flowers, and other outdoor plants for yards and landscape projects. They plan planting schedules, oversee watering and soil care, check plant health, manage workers, and organize sales and deliveries. Their work keeps healthy plants available for parks, homes, and public spaces.",
       "programCount": 2,
       "programs": [
         {

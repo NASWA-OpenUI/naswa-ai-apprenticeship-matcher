@@ -1048,7 +1048,7 @@
     {
       "tradeName": "Elevator Servicer and Repairer",
       "displayTradeName": "Elevator Servicer and Repairer",
-      "description": "An Elevator Servicer and Repairer installs, maintains, troubleshoots, and fixes elevators, escalators, and moving walkways. They inspect cables, motors, brakes, doors, and control systems, replace worn parts, and test equipment to make sure it runs smoothly. Their work keeps building transportation working safely and reliably for the people who use it every day.",
+      "description": "An Elevator Servicer and Repairer installs, inspects, fixes, and maintains elevators, escalators, moving walkways, and lifts. They test controls, replace worn cables, motors, doors, and brakes, trace electrical or mechanical problems, and make adjustments using tools and meters. Their work keeps people and goods moving safely through buildings and keeps vertical transportation systems running reliably.",
       "programCount": 6,
       "programs": [
         {
@@ -1176,7 +1176,7 @@
     {
       "tradeName": "Elevator/Escalator Constructor & Modernizer",
       "displayTradeName": "Elevator/Escalator Constructor and Modernizer",
-      "description": "An Elevator/Escalator Constructor and Modernizer installs, rebuilds, and updates elevators, escalators, and moving walkways in buildings. They assemble rails, cars, motors, doors, wiring, and control systems, then test, adjust, and repair equipment so it runs smoothly. Their work keeps people and goods moving safely through offices, apartments, hospitals, and transit stations.",
+      "description": "An Elevator/Escalator Constructor and Modernizer installs, repairs, and updates elevators, escalators, and moving walkways in buildings. They assemble rails, cables, motors, doors, and control systems, test equipment, and replace worn parts during upgrades. Their work keeps people and goods moving safely, smoothly, and reliably through homes, offices, hospitals, and transit spaces.",
       "programCount": 7,
       "programs": [
         {

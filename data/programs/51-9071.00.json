@@ -1187,7 +1187,7 @@
     {
       "tradeName": "Bench Jeweler (Production)",
       "displayTradeName": "Bench Jeweler (Production)",
-      "description": "A Bench Jeweler in production makes and repairs jewelry at a workbench, often as part of a steady factory or shop workflow. They solder tiny parts, set stones, size rings, polish metal, and use files, torches, and magnifiers to shape each piece. Their work keeps jewelry attractive, durable, and ready to wear every day.",
+      "description": "A Bench Jeweler in production makes and repairs jewelry as part of a steady, repeatable workflow. They solder pieces, set stones, polish metal, resize rings, and use small hand tools and magnifiers to finish many items with careful detail. Their work helps keep jewelry strong, wearable, attractive, and ready for everyday use or sale.",
       "programCount": 1,
       "programs": [
         {

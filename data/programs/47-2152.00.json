@@ -1,7 +1,7 @@
 {
   "socCode": "47-2152.00",
   "socTitle": "Plumbers, Pipefitters, and Steamfitters",
-  "programCount": 77,
+  "programCount": 78,
   "regions": [
     "Capital Region",
     "Central New York",
@@ -1173,7 +1173,7 @@
     {
       "tradeName": "Pipefitter",
       "displayTradeName": "Pipefitter",
-      "description": "A Pipefitter installs, cuts, threads, bends, and connects high-pressure pipes that carry steam, water, chemicals, or gases in factories, power plants, and large buildings. They read blueprints, fit valves and pumps, test systems for leaks, and repair worn parts. Their work keeps heating, cooling, and industrial systems running safely and reliably.",
+      "description": "A Pipefitter installs, cuts, threads, joins, and repairs the heavy-duty pipes that carry water, steam, chemicals, fuel, or air in buildings and industrial sites. They read blueprints, fit valves and pumps, test for leaks, and use welding or other tools to make tight connections. Their work keeps vital systems running safely and reliably.",
       "programCount": 5,
       "programs": [
         {
@@ -1281,7 +1281,7 @@
     {
       "tradeName": "Plant Maintenance-Pipefitter",
       "displayTradeName": "Plant Maintenance-Pipefitter",
-      "description": "A Plant Maintenance-Pipefitter installs, repairs, and maintains the pipes, valves, pumps, and fittings that move water, steam, air, gas, or chemicals through an industrial plant. They cut and thread pipe, read blueprints, weld or bolt parts together, and fix leaks or worn equipment. Their work keeps plant systems running safely and reliably.",
+      "description": "A Plant Maintenance-Pipefitter installs, repairs, and maintains the pipes, valves, pumps, and fittings that carry water, steam, air, gas, and chemicals through a factory or industrial plant. They cut and thread pipe, read blueprints, weld or bolt parts together, and fix leaks or worn equipment. Their work keeps plant systems running safely and reliably.",
       "programCount": 3,
       "programs": [
         {
@@ -1349,7 +1349,7 @@
     {
       "tradeName": "Plant Maintenance-Plumber and Steamfitter",
       "displayTradeName": "Plant Maintenance-Plumber and Steamfitter",
-      "description": "A Plant Maintenance-Plumber and Steamfitter installs, repairs, and maintains water, steam, gas, and drainage pipes in factories, plants, and large buildings. They cut and thread pipe, fit valves, service boilers and pumps, fix leaks, and test systems to keep them working properly. Their work keeps essential building systems running safely and equipment in good condition.",
+      "description": "A Plant Maintenance-Plumber and Steamfitter installs, repairs, and maintains the pipes, valves, drains, boilers, and steam systems in factories, hospitals, schools, and other large buildings. They weld or thread pipe, replace worn parts, fix leaks, and test systems to keep water, heat, and steam flowing safely and equipment running properly.",
       "programCount": 1,
       "programs": [
         {
@@ -1378,7 +1378,7 @@
       "tradeName": "Plumber",
       "displayTradeName": "Plumber",
       "description": "A Plumber installs, repairs, and maintains the pipes, drains, fixtures, and water heating systems that move water and waste through homes, buildings, and job sites. They cut and join pipe, clear blockages, test for leaks, and fit sinks, toilets, showers, and boilers. Their work keeps water flowing safely and buildings clean, dry, and working properly.",
-      "programCount": 25,
+      "programCount": 26,
       "programs": [
         {
           "programAk": 177,
@@ -1752,6 +1752,26 @@
           "region": "New York City",
           "programStatus": "Active",
           "programApprovalDate": "2002-08-06",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 60,
+          "ratio": "1:1,1:3",
+          "socCode": "47-2152.00",
+          "socTitle": "Plumbers, Pipefitters, and Steamfitters",
+          "opportunities": []
+        },
+        {
+          "programAk": 15662,
+          "sponsorName": "Stanley Lewis Plumbing & Heating Corp",
+          "tradeName": "Plumber",
+          "addressLine1": "749 Prospect Place",
+          "addressLine2": null,
+          "addressCity": "Brooklyn",
+          "addressState": "NY",
+          "addressPostalCode": "11216",
+          "region": "New York City",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-10-23",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
           "programLength": 60,
@@ -2928,7 +2948,7 @@
     {
       "tradeName": "Sprinkler Fitter",
       "displayTradeName": "Sprinkler Fitter",
-      "description": "A Sprinkler Fitter installs, repairs, and tests the pipes, valves, and sprinkler heads used in fire protection systems. They measure and cut pipe, hang it from ceilings, connect fittings, and check water flow in buildings like schools, offices, and factories. Their work helps keep fire sprinkler systems working and buildings safer.",
+      "description": "A Sprinkler Fitter installs, tests, repairs, and maintains fire sprinkler systems in buildings. They measure and cut pipe, hang it from ceilings, connect valves and sprinkler heads, and check water pressure to make sure the system works properly. Their work helps control fires quickly and keeps buildings and the people inside safer.",
       "programCount": 9,
       "programs": [
         {

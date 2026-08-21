@@ -1,0 +1,54 @@
+{
+  "socCode": "41-9099.00",
+  "socTitle": "Sales and Related Workers, All Other",
+  "programCount": 1,
+  "regions": [
+    "New York City"
+  ],
+  "onet": {
+    "socCode": "41-9099.00",
+    "onetSocCode": "41-9099.00",
+    "title": "Sales and Related Workers, All Other",
+    "description": "All sales and related workers not listed separately.",
+    "fetchedAt": "2026-08-15T01:45:10.968495+00:00",
+    "source": {
+      "name": "O*NET Web Services API v2",
+      "overviewUrl": "https://api-v2.onetcenter.org/online/occupations/41-9099.00"
+    },
+    "tasks": null,
+    "detailed_work_activities": null,
+    "skills": null,
+    "abilities": null,
+    "work_styles": null
+  },
+  "trades": [
+    {
+      "tradeName": "Art Operations Associate",
+      "displayTradeName": "Art Operations Associate",
+      "description": "An Art Operations Associate helps manage the behind-the-scenes work that keeps art projects, exhibits, or collections organized and moving. They track artwork, update records, coordinate shipping and storage, prepare pieces for display, and help with schedules and supplies. Their work keeps artwork protected, exhibitions on time, and daily art operations running smoothly.",
+      "programCount": 1,
+      "programs": [
+        {
+          "programAk": 12883,
+          "sponsorName": "Phillips Auctioneers Dba Phillips",
+          "tradeName": "Art Operations Associate",
+          "addressLine1": "432 Park Avenue",
+          "addressLine2": null,
+          "addressCity": "New York",
+          "addressState": "NY",
+          "addressPostalCode": "10022",
+          "region": "New York City",
+          "programStatus": "Active",
+          "programApprovalDate": "2023-06-08",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 12,
+          "ratio": "1:1,1:1",
+          "socCode": "41-9099.00",
+          "socTitle": "Sales and Related Workers, All Other",
+          "opportunities": []
+        }
+      ]
+    }
+  ]
+}

@@ -1020,7 +1020,7 @@
     {
       "tradeName": "Small Gas Engine and Equipment Mechanic",
       "displayTradeName": "Small Gas Engine and Equipment Mechanic",
-      "description": "A Small Gas Engine and Equipment Mechanic repairs and maintains machines powered by small gasoline engines, such as lawn mowers, chainsaws, snowblowers, and generators. They inspect parts, test engines, replace spark plugs or fuel lines, sharpen blades, and tune equipment so it runs properly. Their work keeps everyday tools, yard equipment, and backup power systems running safely.",
+      "description": "A Small Gas Engine and Equipment Mechanic repairs and maintains machines powered by small gas engines, such as lawn mowers, snowblowers, chainsaws, generators, and similar equipment. They inspect parts, test engines, replace spark plugs and belts, clean fuel systems, and tune machines so they start and run properly. Their work keeps everyday tools and outdoor equipment working safely and reliably.",
       "programCount": 2,
       "programs": [
         {

@@ -1176,7 +1176,7 @@
     {
       "tradeName": "Fire Fighter",
       "displayTradeName": "Fire Fighter",
-      "description": "A Fire Fighter responds to fires, vehicle crashes, medical emergencies, and other dangerous situations. They drive trucks, carry hoses and tools, enter smoky buildings, rescue people, give basic emergency care, and help control hazards like spills or downed wires. Their work protects lives, property, and buildings, and helps keep communities safer in emergencies.",
+      "description": "A Fire Fighter responds to fires, crashes, medical calls, and other emergencies. They drive to scenes, pull hoses, carry tools, force open doors, rescue people, give first aid, and control smoke, flames, and dangerous materials. They also inspect equipment and stations between calls. Their work protects lives, property, and public spaces from damage and danger.",
       "programCount": 2,
       "programs": [
         {
@@ -1224,7 +1224,7 @@
     {
       "tradeName": "Fire Fighter-EMT",
       "displayTradeName": "Fire Fighter-EMT",
-      "description": "A Fire Fighter-EMT responds to fires, crashes, medical emergencies, and other urgent calls. They drive or ride in emergency vehicles, carry hoses and tools, put out fires, search buildings, give first aid, perform CPR, and help move injured people to ambulances. Their work protects lives, property, and public safety in everyday emergencies.",
+      "description": "A Fire Fighter-EMT responds to fires, medical emergencies, crashes, and rescues. They drive or ride in emergency vehicles, carry hoses and tools, put out fires, enter smoky buildings, give first aid and CPR, and help move injured people to safety. Their work protects lives, homes, buildings, and public spaces, and keeps emergencies from getting worse.",
       "programCount": 2,
       "programs": [
         {

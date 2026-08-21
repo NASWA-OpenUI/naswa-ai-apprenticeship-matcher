@@ -1033,7 +1033,7 @@
     {
       "tradeName": "Biological Technician",
       "displayTradeName": "Biological Technician",
-      "description": "A Biological Technician helps scientists study living things in labs, greenhouses, and outdoor field sites. They collect samples, prepare slides, run tests, record measurements, care for plants or animals, and keep equipment clean and working properly. Their work supports research that improves crops, monitors ecosystems, and keeps food, water, and public health safer.",
+      "description": "A Biological Technician helps scientists study living things in labs, greenhouses, or outdoor field sites. They collect plant, animal, or soil samples, prepare tests, record observations, care for equipment, and enter results into reports or databases. Their work helps research stay accurate and keeps health, farming, and environmental systems better understood and running properly.",
       "programCount": 1,
       "programs": [
         {

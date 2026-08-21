@@ -1160,7 +1160,7 @@
     {
       "tradeName": "Electro-Mechanical Technician",
       "displayTradeName": "Electro-Mechanical Technician",
-      "description": "An Electro-Mechanical Technician installs, tests, repairs, and maintains machines that use both electrical and mechanical parts. They trace wiring, replace motors or sensors, adjust moving components, and use tools and meters to find problems on factory equipment, elevators, or automated systems. Their work keeps machines running safely, accurately, and with less downtime.",
+      "description": "An Electro-Mechanical Technician installs, tests, repairs, and maintains machines that use both electrical and mechanical parts. They trace wiring, replace sensors, adjust motors, line up moving parts, and use tools and test equipment to find problems on factory floors or in workshops. Their work keeps equipment running safely, accurately, and with less downtime.",
       "programCount": 10,
       "programs": [
         {

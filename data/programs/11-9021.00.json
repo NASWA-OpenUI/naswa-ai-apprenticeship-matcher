@@ -1142,7 +1142,7 @@
     {
       "tradeName": "Construction Manager",
       "displayTradeName": "Construction Manager",
-      "description": "A Construction Manager plans and oversees building projects from start to finish. They schedule crews, order materials, track budgets, check work on site, solve problems, and make sure jobs meet plans, codes, and deadlines. Their work keeps construction organized, buildings going up properly, and job sites safer and running on time.",
+      "description": "A Construction Manager plans and runs building projects from start to finish. They schedule crews, order materials, check budgets, read drawings, visit job sites, and make sure work meets safety rules, codes, and deadlines. Their work keeps construction organized, buildings going up properly, and job sites safer and on schedule.",
       "programCount": 2,
       "programs": [
         {

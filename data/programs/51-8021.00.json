@@ -1118,7 +1118,7 @@
     {
       "tradeName": "Stationary Engineer",
       "displayTradeName": "Stationary Engineer",
-      "description": "A Stationary Engineer runs and maintains building systems that keep large facilities working. They monitor boilers, pumps, turbines, air conditioning, and control panels, walk through mechanical rooms, adjust settings, and fix problems before equipment fails. Their work keeps heat, cooling, water, and power systems running safely in places like hospitals, schools, and factories.",
+      "description": "A Stationary Engineer runs and maintains the large mechanical systems that keep a building operating. They monitor boilers, pumps, compressors, turbines, and control panels, adjust equipment, do routine repairs, and respond when something overheats, leaks, or shuts down. Their work keeps heat, cooling, power, and water systems running safely and reliably.",
       "programCount": 3,
       "programs": [
         {

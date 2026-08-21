@@ -1079,7 +1079,7 @@
     {
       "tradeName": "Electrical (Outside) Line Worker",
       "displayTradeName": "Electrical (Outside) Line Worker",
-      "description": "An outside Electrical Line Worker builds, repairs, and maintains overhead and underground power lines that carry electricity to homes and businesses. They climb poles, work from bucket trucks, string wire, install transformers, replace damaged lines, and restore service after storms. Their work keeps power systems running and makes daily life safer and more reliable.",
+      "description": "An outside Electrical Line Worker builds, repairs, and maintains overhead and underground power lines that carry electricity to homes and businesses. They climb poles, work from bucket trucks, replace wires, insulators, and transformers, and restore service after storms or outages. Their work keeps electrical systems running safely and power flowing where people need it.",
       "programCount": 18,
       "programs": [
         {

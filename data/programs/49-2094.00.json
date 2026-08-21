@@ -1,9 +1,10 @@
 {
   "socCode": "49-2094.00",
   "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
-  "programCount": 2,
+  "programCount": 3,
   "regions": [
-    "Finger Lakes"
+    "Finger Lakes",
+    "Mohawk Valley"
   ],
   "onet": {
     "socCode": "49-2094.00",
@@ -1084,8 +1085,8 @@
     {
       "tradeName": "Electronics Technician (Manufacturing Only)",
       "displayTradeName": "Electronics Technician (Manufacturing Only)",
-      "description": "An Electronics Technician in manufacturing builds, tests, troubleshoots, and repairs electronic parts and equipment on factory floors. They wire circuits, use meters and soldering tools, replace faulty components, adjust machines, and check that products meet quality standards. Their work keeps production lines running, devices working properly, and finished products safe and reliable.",
-      "programCount": 2,
+      "description": "An Electronics Technician in manufacturing builds, tests, troubleshoots, and repairs electronic equipment and parts in a factory. They wire circuits, solder components, use meters and testing tools, adjust machines, and track problems on production lines. Their work helps keep products working properly, production running smoothly, and electronic systems safe and reliable.",
+      "programCount": 3,
       "programs": [
         {
           "programAk": 4154,
@@ -1119,6 +1120,26 @@
           "region": "Finger Lakes",
           "programStatus": "Active",
           "programApprovalDate": "2018-01-12",
+          "programGroupType": "Individual - Non Joint",
+          "programApproach": "Time",
+          "programLength": 48,
+          "ratio": "1:1,1:1",
+          "socCode": "49-2094.00",
+          "socTitle": "Electrical and Electronics Repairers, Commercial and Industrial Equipment",
+          "opportunities": []
+        },
+        {
+          "programAk": 14748,
+          "sponsorName": "Fiber Instrument Sales Inc.",
+          "tradeName": "Electronics Technician (Manufacturing Only)",
+          "addressLine1": "161 Clear Road",
+          "addressLine2": null,
+          "addressCity": "Oriskany",
+          "addressState": "NY",
+          "addressPostalCode": "13424",
+          "region": "Mohawk Valley",
+          "programStatus": "Probation",
+          "programApprovalDate": "2025-05-01",
           "programGroupType": "Individual - Non Joint",
           "programApproach": "Time",
           "programLength": 48,

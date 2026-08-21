@@ -1182,8 +1182,8 @@
   "trades": [
     {
       "tradeName": "Calibration Technician(Electrical-Electronic)",
-      "displayTradeName": "Calibration Technician(Electrical-Electronic)",
-      "description": "A Calibration Technician in electrical and electronic work checks, adjusts, and tests meters, sensors, gauges, and control devices to make sure they read and operate correctly. They use test equipment, compare results to standards, replace faulty parts, and record measurements. Their work keeps machines, systems, and safety devices accurate, reliable, and running properly.",
+      "displayTradeName": "Calibration Technician (Electrical-Electronic)",
+      "description": "A Calibration Technician working with electrical and electronic equipment tests, adjusts, and fine-tunes meters, sensors, control panels, and other instruments. They use precise tools to compare readings, make corrections, replace faulty parts, and record results. Their work keeps machines accurate, equipment running properly, and workplaces safer.",
       "programCount": 1,
       "programs": [
         {
@@ -1211,7 +1211,7 @@
     {
       "tradeName": "Instrument Technician",
       "displayTradeName": "Instrument Technician",
-      "description": "An Instrument Technician installs, tests, repairs, and calibrates the sensors, gauges, and control systems that monitor machines and industrial processes. They trace wiring, replace faulty parts, adjust settings, and use testing tools to make sure equipment reads and responds correctly. Their work keeps factories, plants, and building systems running safely and accurately.",
+      "description": "An Instrument Technician installs, tests, repairs, and calibrates devices that measure and control things like pressure, temperature, flow, and level in industrial systems. They work with sensors, valves, control panels, and wiring, using tools and test equipment to find faults and keep instruments accurate. Their work keeps machines, processes, and safety systems running properly.",
       "programCount": 3,
       "programs": [
         {

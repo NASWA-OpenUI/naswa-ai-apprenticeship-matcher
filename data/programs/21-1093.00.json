@@ -1078,7 +1078,7 @@
     {
       "tradeName": "Alcoholism and Substance Abuse Counselor Aide",
       "displayTradeName": "Alcoholism and Substance Abuse Counselor Aide",
-      "description": "An Alcoholism and Substance Abuse Counselor Aide supports counseling staff who help people dealing with alcohol or drug use problems. They prepare rooms, greet clients, schedule appointments, keep records organized, monitor supplies, and help with basic office and program tasks. Their work helps treatment services stay organized, welcoming, and running safely for clients and staff.",
+      "description": "An Alcoholism and Substance Abuse Counselor Aide supports treatment staff who help people dealing with alcohol or drug use problems. They greet clients, prepare rooms, set up forms, keep records organized, schedule appointments, monitor waiting areas, and help with daily program tasks. Their work keeps treatment services organized, safe, and easier for clients to use.",
       "programCount": 3,
       "programs": [
         {
@@ -1146,7 +1146,7 @@
     {
       "tradeName": "Certified Recovery Peer Advocate",
       "displayTradeName": "Certified Recovery Peer Advocate",
-      "description": "A Certified Recovery Peer Advocate supports people working to recover from substance use or mental health challenges by drawing on their own recovery experience. They meet one-on-one, lead support groups, help people set goals, find services, and handle daily obstacles like housing or appointments. Their work helps people stay connected, stable, and safer in everyday life.",
+      "description": "A Certified Recovery Peer Advocate supports people working to overcome addiction or mental health challenges by using their own recovery experience. They meet one-on-one, lead support groups, help people set goals, find treatment, housing, or services, and check in regularly. Their work helps people stay connected, build stability, and keep recovery on track.",
       "programCount": 2,
       "programs": [
         {
@@ -1194,7 +1194,7 @@
     {
       "tradeName": "Direct Support Professional",
       "displayTradeName": "Direct Support Professional",
-      "description": "A Direct Support Professional helps people with disabilities or other support needs with daily living at home, at work, or in the community. They may help with meals, bathing, dressing, medicine, rides, chores, and activities while offering encouragement and supervision. Their work helps people stay safe, independent, included, and cared for each day.",
+      "description": "A Direct Support Professional helps people with disabilities or other support needs with daily life at home, at work, and in the community. They may help with meals, bathing, dressing, medicine reminders, rides, shopping, and simple paperwork while offering steady support and encouragement. Their work helps people stay safe, healthy, independent, and connected.",
       "programCount": 14,
       "programs": [
         {
@@ -1482,7 +1482,7 @@
     {
       "tradeName": "Social Service Assistant",
       "displayTradeName": "Social Service Assistant",
-      "description": "A Social Service Assistant helps people get support with daily challenges like housing, food, benefits, transportation, and appointments. They meet with clients, fill out forms, keep records, check in by phone or in person, and connect people with community services. Their work helps people access basic needs, stay organized, and keep important services running.",
+      "description": "A Social Service Assistant helps people get support with daily needs and community services. They meet with clients, gather information, fill out forms, arrange appointments, connect people with housing, food, or counseling, and keep case records up to date. Their work helps people get practical support, stay organized, and keep important services running.",
       "programCount": 1,
       "programs": [
         {

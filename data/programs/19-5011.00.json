@@ -1105,7 +1105,7 @@
     {
       "tradeName": "Industrial Hygienist",
       "displayTradeName": "Industrial Hygienist",
-      "description": "An Industrial Hygienist finds and controls health hazards in workplaces such as factories, labs, offices, and construction sites. They test air, noise, dust, chemicals, and ventilation, inspect equipment and work areas, and recommend safer methods, gear, or cleanup steps. Their work helps keep workers healthy and makes job sites safer and cleaner.",
+      "description": "An Industrial Hygienist finds and controls health hazards in workplaces such as dust, chemicals, noise, fumes, heat, and poor air quality. They inspect job sites, collect samples, measure exposure levels, study work processes, and recommend safer equipment, ventilation, and work methods. Their work helps keep workers healthy, buildings safer, and operations running properly.",
       "programCount": 1,
       "programs": [
         {
@@ -1133,7 +1133,7 @@
     {
       "tradeName": "Safety and Health Inspector",
       "displayTradeName": "Safety and Health Inspector",
-      "description": "A Safety and Health Inspector checks workplaces for hazards and makes sure safety rules are being followed. They walk through buildings, job sites, kitchens, factories, or warehouses, inspect equipment, review records, investigate accidents, and explain what needs to be fixed. Their work helps prevent injuries, illness, unsafe conditions, and costly problems on the job.",
+      "description": "A Safety and Health Inspector checks workplaces to make sure people follow safety and health rules. They walk through job sites, inspect equipment, watch how work is done, take notes, investigate accidents, and point out hazards that need fixing. Their work helps prevent injuries, illness, and unsafe conditions, and keeps workplaces safer and running properly.",
       "programCount": 1,
       "programs": [
         {

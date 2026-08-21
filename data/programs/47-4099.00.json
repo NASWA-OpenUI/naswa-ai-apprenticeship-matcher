@@ -32,7 +32,7 @@
     {
       "tradeName": "Ornamental Iron Worker",
       "displayTradeName": "Ornamental Iron Worker",
-      "description": "An Ornamental Iron Worker builds and installs decorative metal features for buildings and outdoor spaces. They measure, cut, weld, and bolt together railings, gates, stairs, fences, balconies, and metal trim, then lift and fasten them into place on site. Their work improves how places look, adds strength, and helps keep entrances, walkways, and edges safer.",
+      "description": "An Ornamental Iron Worker builds and installs decorative metal features for buildings and outdoor spaces. They measure, cut, weld, and bolt together railings, stairs, gates, fences, balconies, and window guards, then lift and fasten them into place on site. Their work adds strength, detail, and safety to the places people use every day.",
       "programCount": 4,
       "programs": [
         {
@@ -120,7 +120,7 @@
     {
       "tradeName": "Pointer, Caulker and Cleaner",
       "displayTradeName": "Pointer, Caulker, and Cleaner",
-      "description": "A Pointer, Caulker, and Cleaner repairs and protects the outside of buildings, bridges, and chimneys. They scrape out damaged mortar, pack fresh mortar between bricks or stone, seal gaps with caulk, and wash or blast away dirt and stains, often while working from scaffolds. This keeps walls strong, dry, clean, and safe.",
+      "description": "A Pointer, Caulker, and Cleaner repairs and protects the outside of buildings, bridges, and chimneys. They scrape out damaged mortar, pack fresh mortar between bricks or stone, seal cracks and joints with caulk, and clean surfaces with water, chemicals, or blasting tools, often from scaffolds. This keeps walls strong, dry, safe, and well maintained.",
       "programCount": 7,
       "programs": [
         {
@@ -551,7 +551,7 @@
     {
       "tradeName": "Sheet Metal Worker (Sign Hanger-Rigger)",
       "displayTradeName": "Sheet Metal Worker (Sign Hanger-Rigger)",
-      "description": "A Sheet Metal Worker who hangs and rigs signs builds, fits, lifts, and fastens metal signs, frames, brackets, and supports onto buildings, poles, or other structures. They measure parts, cut and shape metal, use hoists and rigging gear, and secure heavy pieces in place. Their work keeps signs stable, visible, and safe in public spaces.",
+      "description": "A Sheet Metal Worker who hangs and rigs signs makes, installs, and secures metal signs, frames, brackets, and supports on buildings or poles. They measure parts, cut and shape sheet metal, use lifts and rigging gear, and bolt or weld signs into place. Their work keeps signs visible, stable, and safer for workers, drivers, and pedestrians.",
       "programCount": 1,
       "programs": [
         {

@@ -1020,7 +1020,7 @@
     {
       "tradeName": "Radiation Protection Technician",
       "displayTradeName": "Radiation Protection Technician",
-      "description": "A Radiation Protection Technician checks workplaces for harmful radiation and makes sure safety rules are followed. They use meters to test rooms, equipment, and materials, track exposure levels, post warning signs, and help workers wear the right protective gear. Their work helps keep hospitals, labs, and industrial sites running safely and protects people from radiation exposure.",
+      "description": "A Radiation Protection Technician checks workplaces for radiation and helps control exposure. They use meters to measure radiation levels, test air and surfaces, inspect protective equipment, track worker exposure, and make sure safety rules are followed in places like hospitals, labs, or power plants. Their work helps keep people, equipment, and work areas safer and running properly.",
       "programCount": 1,
       "programs": [
         {
