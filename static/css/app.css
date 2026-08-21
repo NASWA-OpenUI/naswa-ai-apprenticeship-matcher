@@ -388,6 +388,15 @@ a.btn--accent:focus {
   overflow: hidden;
 }
 
+/* ── DOTS (shared styling) ─────────────────────────────────────────────── */
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nys-color-success);
+}
+
 /* ── CHIPS (shared component) ──────────────────────────────────────────── */
 
 .chip {
@@ -456,9 +465,6 @@ a.btn--accent:focus {
 }
 
 .chip .chip__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
   background: currentColor;
 }
 
@@ -2289,6 +2295,16 @@ body.profile-modal-open {
   font-weight: 700;
 }
 
+.match-filter-option__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.match-filter-option__hiring-dot {
+  flex: none;
+}
+
 .match-filters__summary {
   margin: var(--app-space-100) 0 0;
   padding-top: var(--app-space-200);
@@ -2625,15 +2641,16 @@ body.profile-modal-open {
 
 .program-hiring-summary .program-hiring-summary__dot {
   display: inline-flex;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-  margin: 0 3px;
+  margin: 0 3px 1px 3px;
 }
 
 .program-hiring-chip {
   line-height: 1.9;
+}
+
+.program-hiring-chip .dot {
+  height: 7.5px;
+  width: 7.5px;
 }
 
 .program-match-card .sep {
@@ -3210,10 +3227,7 @@ p.earnings__summary {
 }
 
 .detail-hero__hiring-dot {
-  width: 8px;
-  height: 8px;
   flex: none;
-  border-radius: 50%;
   background: #7fe0a0;
 }
 

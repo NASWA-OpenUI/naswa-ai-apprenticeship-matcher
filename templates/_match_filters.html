@@ -1,6 +1,6 @@
-{# templates/_match_filters.html #}
 {% set filters_ready = ranking_cached|default(false) %}
 {% set show_license_filter = show_license_filter|default(false) %}
+{% set show_hiring_filter = show_hiring_filter|default(false) %}
 {% set filter_item_singular = filter_item_singular|default("match") %}
 {% set filter_item_plural = filter_item_plural|default("matches") %}
 
@@ -32,6 +32,23 @@
     </div>
 
     <form class="match-filters__form" data-match-filters-form autocomplete="off">
+        {% if show_hiring_filter %}
+        <fieldset class="match-filter-group">
+            <legend>Availability</legend>
+
+            <label class="match-filter-option">
+                <input type="checkbox" name="hiring-now" value="true" {% if not filters_ready %}disabled{% endif %}>
+
+                <span class="match-filter-option__label">
+                    <span class="dot match-filter-option__hiring-dot" aria-hidden="true"></span>
+                    Hiring now
+                </span>
+
+                <span class="match-filter-option__count" data-match-filter-count="hiring">0</span>
+            </label>
+        </fieldset>
+        {% endif %}
+
         <fieldset class="match-filter-group">
             <legend>Match strength</legend>
 
@@ -103,6 +120,7 @@
             const itemSingular = panel.dataset.filterItemSingular || 'match';
             const itemPlural = panel.dataset.filterItemPlural || 'matches';
             const licenseInput = form.elements['no-license-required'];
+            const hiringInput = form.elements['hiring-now'];
 
             if (!panel || !form || !matchList) {
                 return;
@@ -155,11 +173,19 @@
                 return Boolean(licenseInput?.checked);
             }
 
+            function hiringNow() {
+                return Boolean(hiringInput?.checked);
+            }
+
             function currentFilterState() {
                 const state = {
                     tier: selectedTier(),
                     regions: selectedRegions()
                 };
+
+                if (hiringInput) {
+                    state.hiring = hiringNow();
+                }
 
                 if (licenseInput) {
                     state.noLicense = noLicenseRequired();
@@ -174,6 +200,7 @@
                 const isDefaultState =
                     state.tier === 'all' &&
                     state.regions.length === 0 &&
+                    (!hiringInput || !state.hiring) &&
                     (!licenseInput || !state.noLicense);
 
                 try {
@@ -268,6 +295,11 @@
                         savedState.noLicense === true;
                 }
 
+                if (hiringInput) {
+                    hiringInput.checked =
+                        savedState.hiring === true;
+                }
+
                 updateSelectedStyles();
             }
 
@@ -301,6 +333,10 @@
                     counts['no-license'] = 0;
                 }
 
+                if (hiringInput) {
+                    counts.hiring = 0;
+                }
+
                 const regionCounts = new Map();
 
                 panel
@@ -323,6 +359,10 @@
 
                     if (licenseInput && card.dataset.licenseRequired !== 'true') {
                         counts['no-license'] += 1;
+                    }
+
+                    if (hiringInput && card.dataset.hiring === 'true') {
+                        counts.hiring += 1;
                     }
 
                     /*
@@ -385,7 +425,8 @@
                 totalCount,
                 tier,
                 regions,
-                noLicense
+                noLicense,
+                hiring,
             ) {
                 if (!summary) {
                     return;
@@ -412,6 +453,10 @@
                     labels.push('No license required');
                 }
 
+                if (hiring) {
+                    labels.push('Hiring now');
+                }
+
                 if (!labels.length) {
                     summary.textContent =
                         `Showing all ${totalCount} ` +
@@ -434,6 +479,7 @@
                 const tier = selectedTier();
                 const regions = selectedRegions();
                 const noLicense = noLicenseRequired();
+                const hiring = hiringNow();
 
                 let visibleCount = 0;
 
@@ -464,9 +510,14 @@
                         !noLicense ||
                         card.dataset.licenseRequired !== 'true';
 
+                    const matchesHiring =
+                        !hiring ||
+                        card.dataset.hiring === 'true';
+
                     const isVisible =
                         matchesTier &&
                         matchesRegion &&
+                        matchesHiring &&
                         matchesLicense;
 
                     card.hidden = !isVisible;
@@ -480,6 +531,7 @@
                     clearButton.disabled =
                         tier === 'all' &&
                         regions.length === 0 &&
+                        !hiring &&
                         !noLicense;
                 }
 
@@ -494,6 +546,7 @@
                     cards.length,
                     tier,
                     regions,
+                    hiring,
                     noLicense
                 );
             }

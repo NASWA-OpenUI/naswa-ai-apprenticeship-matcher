@@ -11,11 +11,11 @@
 <article class="match-card program-match-card match-card--{{ tier_class }} surface surface--shadow"
     data-tier-order="{{ item.tier_order }}" data-sort-index="{{ item.sort_index }}" data-ranking-id="{{ item.id }}"
     data-ranking-tier="{{ item.tier }}" data-ranking-explanation="{{ item.explanation }}"
-    data-regions="{{ regions | join(',') }}">
+    data-regions="{{ regions | join(',') }}" data-hiring="{{ 'true' if hiring.programs_hiring else 'false' }}">
     <div class="match-card__inner">
         <div class="match-card__top flex-center-wrap">
             <span class="chip chip--{{ tier_class }}">
-                <span class="chip__dot" aria-hidden="true"></span>
+                <span class="dot chip__dot" aria-hidden="true"></span>
                 <span class="chip__label">{{ item.tier }} match</span>
             </span>
 
@@ -58,7 +58,7 @@
 
         {% if hiring.programs_hiring %}
         <div class="program-hiring-summary">
-            <span class="program-hiring-summary__dot" aria-hidden="true"></span>
+            <span class="dot program-hiring-summary__dot" aria-hidden="true"></span>
 
             <span>
                 <strong>{{ hiring.programs_hiring }}</strong>
@@ -94,7 +94,7 @@
 
                             {% if trade_hiring_name in hiring.hiring_trade_names %}
                             <span class="chip chip--strong program-hiring-chip">
-                                <span class="chip__dot" aria-hidden="true"></span>
+                                <span class="dot chip__dot" aria-hidden="true"></span>
                                 <span class="chip__label">Hiring</span>
                             </span>
                             {% endif %}
