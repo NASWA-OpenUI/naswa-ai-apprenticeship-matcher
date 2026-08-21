@@ -178,20 +178,12 @@
             }
 
             function currentFilterState() {
-                const state = {
+                return {
                     tier: selectedTier(),
-                    regions: selectedRegions()
+                    regions: selectedRegions(),
+                    hiring: hiringNow(),
+                    noLicense: noLicenseRequired()
                 };
-
-                if (hiringInput) {
-                    state.hiring = hiringNow();
-                }
-
-                if (licenseInput) {
-                    state.noLicense = noLicenseRequired();
-                }
-
-                return state;
             }
 
             function saveFilters() {
@@ -319,81 +311,140 @@
                     .filter(Boolean);
             }
 
+            function cardMatchesFilters(
+                card,
+                state,
+                ignoredCategory = null
+            ) {
+                const cardTier = (
+                    card.dataset.rankingTier || ''
+                ).toLowerCase();
+
+                const cardRegions = new Set(
+                    getCardRegions(card)
+                );
+
+                const matchesTier =
+                    ignoredCategory === 'tier' ||
+                    state.tier === 'all' ||
+                    cardTier === state.tier;
+
+                /*
+                 * Regions use OR logic when multiple regions are selected.
+                 * When calculating Region counts, ignore the entire Regions
+                 * category so each count reflects the other active filters.
+                 */
+                const matchesRegion =
+                    ignoredCategory === 'regions' ||
+                    state.regions.length === 0 ||
+                    state.regions.some(region =>
+                        cardRegions.has(region)
+                    );
+
+                const matchesHiring =
+                    ignoredCategory === 'hiring' ||
+                    !state.hiring ||
+                    card.dataset.hiring === 'true';
+
+                const matchesLicense =
+                    ignoredCategory === 'license' ||
+                    !state.noLicense ||
+                    card.dataset.licenseRequired !== 'true';
+
+                return (
+                    matchesTier &&
+                    matchesRegion &&
+                    matchesHiring &&
+                    matchesLicense
+                );
+            }
+
             function refreshCounts() {
                 const cards = getCards();
+                const state = currentFilterState();
 
-                const counts = {
-                    all: cards.length,
+                /*
+                 * Availability
+                 *
+                 * Apply every active category except Availability itself.
+                 */
+                if (hiringInput) {
+                    const hiringCount = cards.filter(card =>
+                        cardMatchesFilters(
+                            card,
+                            state,
+                            'hiring'
+                        ) &&
+                        card.dataset.hiring === 'true'
+                    ).length;
+
+                    const output = panel.querySelector(
+                        '[data-match-filter-count="hiring"]'
+                    );
+
+                    if (output) {
+                        output.textContent =
+                            String(hiringCount);
+                    }
+                }
+
+                /*
+                 * Match strength
+                 *
+                 * Apply every active category except Match strength itself.
+                 */
+                const tierCards = cards.filter(card =>
+                    cardMatchesFilters(
+                        card,
+                        state,
+                        'tier'
+                    )
+                );
+
+                const tierCounts = {
+                    all: tierCards.length,
                     strong: 0,
                     moderate: 0,
                     weak: 0
                 };
 
-                if (licenseInput) {
-                    counts['no-license'] = 0;
-                }
-
-                if (hiringInput) {
-                    counts.hiring = 0;
-                }
-
-                const regionCounts = new Map();
-
-                panel
-                    .querySelectorAll('[data-match-region-count]')
-                    .forEach(output => {
-                        regionCounts.set(
-                            output.dataset.matchRegionCount,
-                            0
-                        );
-                    });
-
-                cards.forEach(card => {
+                tierCards.forEach(card => {
                     const tier = (
                         card.dataset.rankingTier || ''
                     ).toLowerCase();
 
-                    if (Object.hasOwn(counts, tier)) {
-                        counts[tier] += 1;
+                    if (Object.hasOwn(tierCounts, tier)) {
+                        tierCounts[tier] += 1;
                     }
+                });
 
-                    if (licenseInput && card.dataset.licenseRequired !== 'true') {
-                        counts['no-license'] += 1;
-                    }
-
-                    if (hiringInput && card.dataset.hiring === 'true') {
-                        counts.hiring += 1;
-                    }
-
-                    /*
-                     * Use a Set so an accidentally duplicated region in one
-                     * posting cannot increment the same count twice.
-                     */
-                    const cardRegions = new Set(
-                        getCardRegions(card)
-                    );
-
-                    cardRegions.forEach(region => {
-                        if (!regionCounts.has(region)) {
-                            return;
-                        }
-
-                        regionCounts.set(
-                            region,
-                            regionCounts.get(region) + 1
+                Object.entries(tierCounts).forEach(
+                    ([key, count]) => {
+                        const output = panel.querySelector(
+                            `[data-match-filter-count="${key}"]`
                         );
-                    });
-                });
 
-                Object.entries(counts).forEach(([key, count]) => {
-                    const output = panel.querySelector(
-                        `[data-match-filter-count="${key}"]`
-                    );
-
-                    if (output) {
-                        output.textContent = String(count);
+                        if (output) {
+                            output.textContent =
+                                String(count);
+                        }
                     }
-                });
+                );
+
+                /*
+                 * Regions
+                 *
+                 * Ignore all currently selected regions while calculating
+                 * these counts. Each number therefore shows how many careers
+                 * matching the other active categories belong to that region.
+                 */
+                const regionCards = cards.filter(card =>
+                    cardMatchesFilters(
+                        card,
+                        state,
+                        'regions'
+                    )
+                );
 
                 panel
                     .querySelectorAll('[data-match-region-count]')
@@ -401,10 +452,40 @@
                         const region =
                             output.dataset.matchRegionCount;
 
-                        output.textContent = String(
-                            regionCounts.get(region) || 0
-                        );
+                        const count = regionCards.filter(
+                            card =>
+                                getCardRegions(card).includes(
+                                    region
+                                )
+                        ).length;
+
+                        output.textContent = String(count);
                     });
+
+                /*
+                 * Driver's license
+                 *
+                 * Apply every active category except the License category.
+                 */
+                if (licenseInput) {
+                    const noLicenseCount = cards.filter(card =>
+                        cardMatchesFilters(
+                            card,
+                            state,
+                            'license'
+                        ) &&
+                        card.dataset.licenseRequired !== 'true'
+                    ).length;
+
+                    const output = panel.querySelector(
+                        '[data-match-filter-count="no-license"]'
+                    );
+
+                    if (output) {
+                        output.textContent =
+                            String(noLicenseCount);
+                    }
+                }
             }
 
             function updateSelectedStyles() {
@@ -423,10 +504,7 @@
             function updateSummary(
                 visibleCount,
                 totalCount,
-                tier,
-                regions,
-                noLicense,
-                hiring,
+                state
             ) {
                 if (!summary) {
                     return;
@@ -434,33 +512,38 @@
 
                 const labels = [];
 
-                if (tier !== 'all') {
+                if (state.tier !== 'all') {
                     labels.push(
-                        tier.charAt(0).toUpperCase() +
-                        tier.slice(1)
+                        state.tier.charAt(0).toUpperCase() +
+                        state.tier.slice(1)
                     );
                 }
 
-                if (regions.length === 1) {
-                    labels.push(regions[0]);
-                } else if (regions.length > 1) {
-                    labels.push(
-                        `Regions: ${regions.join(', ')}`
-                    );
-                }
-
-                if (noLicense) {
-                    labels.push('No license required');
-                }
-
-                if (hiring) {
+                if (state.hiring) {
                     labels.push('Hiring now');
+                }
+
+                if (state.regions.length === 1) {
+                    labels.push(
+                        state.regions[0]
+                    );
+                } else if (state.regions.length > 1) {
+                    labels.push(
+                        `Regions: ${state.regions.join(', ')}`
+                    );
+                }
+
+                if (state.noLicense) {
+                    labels.push(
+                        'No license required'
+                    );
                 }
 
                 if (!labels.length) {
                     summary.textContent =
                         `Showing all ${totalCount} ` +
                         itemLabel(totalCount);
+
                     return;
                 }
 
@@ -476,49 +559,16 @@
                 }
 
                 const cards = getCards();
-                const tier = selectedTier();
-                const regions = selectedRegions();
-                const noLicense = noLicenseRequired();
-                const hiring = hiringNow();
+                const state = currentFilterState();
 
                 let visibleCount = 0;
 
                 cards.forEach(card => {
-                    const cardTier = (
-                        card.dataset.rankingTier || ''
-                    ).toLowerCase();
-
-                    const cardRegions = new Set(
-                        getCardRegions(card)
-                    );
-
-                    const matchesTier =
-                        tier === 'all' ||
-                        cardTier === tier;
-
-                    /*
-                     * No selected regions means all regions.
-                     * Multiple selected regions use OR logic.
-                     */
-                    const matchesRegion =
-                        regions.length === 0 ||
-                        regions.some(region =>
-                            cardRegions.has(region)
-                        );
-
-                    const matchesLicense =
-                        !noLicense ||
-                        card.dataset.licenseRequired !== 'true';
-
-                    const matchesHiring =
-                        !hiring ||
-                        card.dataset.hiring === 'true';
-
                     const isVisible =
-                        matchesTier &&
-                        matchesRegion &&
-                        matchesHiring &&
-                        matchesLicense;
+                        cardMatchesFilters(
+                            card,
+                            state
+                        );
 
                     card.hidden = !isVisible;
 
@@ -529,25 +579,25 @@
 
                 if (clearButton) {
                     clearButton.disabled =
-                        tier === 'all' &&
-                        regions.length === 0 &&
-                        !hiring &&
-                        !noLicense;
+                        state.tier === 'all' &&
+                        state.regions.length === 0 &&
+                        !state.hiring &&
+                        !state.noLicense;
                 }
 
                 if (emptyState) {
-                    emptyState.hidden = visibleCount !== 0;
+                    emptyState.hidden =
+                        visibleCount !== 0;
                 }
 
                 updateSelectedStyles();
 
+                refreshCounts();
+
                 updateSummary(
                     visibleCount,
                     cards.length,
-                    tier,
-                    regions,
-                    hiring,
-                    noLicense
+                    state
                 );
             }
 
@@ -565,7 +615,6 @@
                     openButton.disabled = false;
                 }
 
-                refreshCounts();
                 applyFilters();
             }
 
