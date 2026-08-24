@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
 from naswa_matcher.agents import (
@@ -39,6 +38,7 @@ from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
+    ChatProfileUpdate,
     build_profile_from_input,
     extract_profile,
     has_profile_query_params,
@@ -296,17 +296,6 @@ async def ai_disclosure(request: Request):
 
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
-
-
-class ChatProfileUpdate(BaseModel):
-    """Profile values submitted from the profile-edit modal."""
-
-    name: str | None = None
-    likes: list[str] = Field(default_factory=list)
-    dislikes: list[str] = Field(default_factory=list)
-    location: str | None = None
-    transportation: str | None = None
-    use_location_matching: bool = True
 
 
 @app.get("/chat")

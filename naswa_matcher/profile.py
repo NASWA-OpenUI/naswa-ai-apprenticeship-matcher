@@ -2,8 +2,21 @@ import json
 import re
 from urllib.parse import urlencode
 
+from pydantic import BaseModel, Field
+
 from naswa_matcher.location_matching import should_use_location_matching
 from naswa_matcher.match_target import MatchTarget
+
+
+class ChatProfileUpdate(BaseModel):
+    """Profile values submitted from the profile-edit modal."""
+
+    name: str | None = None
+    likes: list[str] = Field(default_factory=list)
+    dislikes: list[str] = Field(default_factory=list)
+    location: str | None = None
+    transportation: str | None = None
+    use_location_matching: bool = True
 
 
 def strip_profile(text: str) -> str:
