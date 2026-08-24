@@ -308,11 +308,12 @@ def test_profile_chat_url_excludes_ranked_parameter():
         use_location_matching=True,
     )
 
-    parsed = urlparse(profile_chat_url(profile))
+    parsed = urlparse(profile_chat_url(profile, MatchTarget.PROGRAMS))
     query = parse_qs(parsed.query)
 
     assert parsed.path == "/chat"
     assert "ranked" not in query
+    assert query["match_target"] == ["programs"]
     assert query["likes"] == ["math"]
     assert query["location"] == ["Buffalo"]
 
@@ -327,7 +328,9 @@ def test_false_location_matching_is_included_in_rank_and_chat_urls():
     )
 
     rank_query = parse_qs(urlparse(profile_rank_url(profile)).query)
-    chat_query = parse_qs(urlparse(profile_chat_url(profile)).query)
+    chat_query = parse_qs(
+        urlparse(profile_chat_url(profile, MatchTarget.OPPORTUNITIES)).query
+    )
 
     assert rank_query["use_location_matching"] == ["false"]
     assert chat_query["use_location_matching"] == ["false"]
@@ -364,7 +367,14 @@ def test_profile_rank_url_preserves_repeated_likes():
     assert query["likes"] == ["math", "fixing things"]
 
 
-def test_profile_chat_url_returns_plain_chat_path_for_empty_profile():
+@pytest.mark.parametrize(
+    ("target", "expected"),
+    [
+        (MatchTarget.PROGRAMS, "/chat?match_target=programs"),
+        (MatchTarget.OPPORTUNITIES, "/chat?match_target=opportunities"),
+    ],
+)
+def test_profile_chat_url_preserves_target_for_empty_profile(target, expected):
     profile = build_profile(
         likes=[],
         dislikes=[],
@@ -373,7 +383,7 @@ def test_profile_chat_url_returns_plain_chat_path_for_empty_profile():
         use_location_matching=True,
     )
 
-    assert profile_chat_url(profile) == "/chat"
+    assert profile_chat_url(profile, target) == expected
 
 
 def test_has_profile_query_params_detects_explicit_blank_string():
@@ -481,6 +491,7 @@ def test_profile_url_returns_plain_path_for_empty_profile():
 
     assert profile_url("/api/rank-programs", profile) == "/api/rank-programs"
 
+
 def test_build_profile_from_input_normalizes_values():
     profile = build_profile_from_input(
         name="  Paulo  ",
@@ -501,6 +512,7 @@ def test_build_profile_from_input_normalizes_values():
         "use_location_matching": False,
         "confirmed": True,
     }
+
 
 def test_build_profile_from_input_defaults_and_normalizes_blank_values():
     profile = build_profile_from_input(

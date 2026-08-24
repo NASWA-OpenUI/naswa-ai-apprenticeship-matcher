@@ -90,6 +90,7 @@ def build_profile_from_input(
         confirmed=confirmed,
     )
 
+
 def has_profile_query_params(
     *,
     likes: list[str],
@@ -167,6 +168,14 @@ def profile_match_url(profile: dict, target: MatchTarget) -> str:
     raise ValueError(f"Unsupported match target: {target}")
 
 
-def profile_chat_url(profile: dict) -> str:
-    """Return a chat URL that preloads a profile."""
-    return profile_url("/chat", profile)
+def profile_chat_url(
+    profile: dict,
+    target: MatchTarget,
+) -> str:
+    """Return a chat URL that preloads a profile and preserves its match target."""
+    params = [
+        ("match_target", target.value),
+        *profile_query_params(profile),
+    ]
+
+    return "/chat?" + urlencode(params)

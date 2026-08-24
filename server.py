@@ -7,7 +7,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
-from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
@@ -36,7 +35,7 @@ from naswa_matcher.db import (
 from naswa_matcher.db import load as load_db
 from naswa_matcher.location_data import REGION_KEY_TO_NAME
 from naswa_matcher.location_matching import location_inference_details
-from naswa_matcher.match_target import MATCH_TARGET, MatchTarget
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
@@ -318,9 +317,13 @@ async def chat_page(
     location: str | None = None,
     transportation: str | None = None,
     use_location_matching: bool | None = None,
+    match_target: MatchTarget | None = None,
 ):
     """Serve the guided chat page."""
     session = request.state.session
+
+    if match_target is not None:
+        session.match_target = match_target
 
     has_prefilled_profile = has_profile_query_params(
         likes=likes,
@@ -345,7 +348,7 @@ async def chat_page(
 
     matches_url = None
     if session.profile and session.profile.get("confirmed"):
-        matches_url = profile_match_url(session.profile, MATCH_TARGET)
+        matches_url = profile_match_url(session.profile, session.match_target)
 
     return templates.TemplateResponse(
         request,
@@ -354,7 +357,7 @@ async def chat_page(
             "profile": session.profile,
             "messages": session.messages,
             "matches_url": matches_url,
-            "match_target": MATCH_TARGET.value,
+            "match_target": session.match_target.value,
         },
     )
 
@@ -591,12 +594,12 @@ async def chat_stream(request: Request):
                 if profile.get("confirmed"):
                     log_event(request, "profile_confirmed")
 
-                    matches_url = profile_match_url(profile, MATCH_TARGET)
+                    matches_url = profile_match_url(profile, session.match_target)
                     card_html = render(
                         "_profile_card.html",
                         profile=profile,
                         matches_url=matches_url,
-                        match_target=MATCH_TARGET.value,
+                        match_target=session.match_target.value,
                     )
                     yield {"event": "profile-confirmed", "data": card_html}
 
@@ -673,7 +676,7 @@ async def opportunities_page(
             "rank_stream_url": rank_stream_url,
             "profile": profile,
             "match_target": MatchTarget.OPPORTUNITIES.value,
-            "chat_profile_url": profile_chat_url(profile),
+            "chat_profile_url": profile_chat_url(profile, MatchTarget.OPPORTUNITIES),
             "likes": likes,
             "unranked": unranked,
             "completed_items": cached.completed_items if cached else 0,
@@ -902,7 +905,7 @@ async def programs_page(
         {
             "profile": profile,
             "match_target": MatchTarget.PROGRAMS.value,
-            "chat_profile_url": profile_chat_url(profile),
+            "chat_profile_url": profile_chat_url(profile, MatchTarget.PROGRAMS),
             "rank_stream_url": rank_stream_url,
             "ranking_cached": ranking_cached,
             "cached_ranked": cached_ranked,

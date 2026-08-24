@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 from starlette.responses import Response
 from strands import Agent
 
+from naswa_matcher.match_target import DEFAULT_MATCH_TARGET, MatchTarget
 from naswa_matcher.ranking_cache import RankingCache
 
 SESSION_COOKIE_NAME = "tyler_session_cookie"
@@ -143,6 +144,7 @@ class ChatSession:
     agent: Agent = field(init=False)
     queue: asyncio.Queue[str] = field(default_factory=asyncio.Queue)
     profile: dict | None = None
+    match_target: MatchTarget = DEFAULT_MATCH_TARGET
     messages: list[ChatMessage] = field(default_factory=initial_messages)
     chat_message_sequence: int = 0
     last_seen: float = field(default_factory=time.time)

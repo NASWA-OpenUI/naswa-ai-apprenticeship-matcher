@@ -8,4 +8,4 @@ class MatchTarget(StrEnum):
     PROGRAMS = "programs"
 
 
-MATCH_TARGET = MatchTarget.PROGRAMS
+DEFAULT_MATCH_TARGET = MatchTarget.PROGRAMS
