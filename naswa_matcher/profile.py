@@ -67,6 +67,29 @@ def clean_profile_values(values: list[str]) -> list[str]:
     return cleaned
 
 
+def build_profile_from_input(
+    *,
+    likes: list[str],
+    dislikes: list[str],
+    location: str | None,
+    transportation: str | None,
+    use_location_matching: bool | None,
+    name: str | None = None,
+    confirmed: bool = False,
+) -> dict:
+    """Build a normalized profile from request or form input."""
+    return build_profile(
+        name=(name or "").strip() or None,
+        likes=clean_profile_values(likes),
+        dislikes=clean_profile_values(dislikes),
+        location=(location or "").strip() or None,
+        transportation=(transportation or "").strip() or None,
+        use_location_matching=(
+            True if use_location_matching is None else use_location_matching
+        ),
+        confirmed=confirmed,
+    )
+
 def has_profile_query_params(
     *,
     likes: list[str],

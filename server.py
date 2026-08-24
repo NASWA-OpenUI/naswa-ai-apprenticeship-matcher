@@ -40,8 +40,7 @@ from naswa_matcher.match_target import MATCH_TARGET, MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
-    build_profile,
-    clean_profile_values,
+    build_profile_from_input,
     extract_profile,
     has_profile_query_params,
     profile_chat_url,
@@ -332,15 +331,13 @@ async def chat_page(
     )
 
     if has_prefilled_profile:
-        profile = build_profile(
+        profile = build_profile_from_input(
             name=session.profile.get("name") if session.profile else None,
-            likes=clean_profile_values(likes),
-            dislikes=clean_profile_values(dislikes),
-            location=(location or "").strip() or None,
-            transportation=(transportation or "").strip() or None,
-            use_location_matching=(
-                True if use_location_matching is None else use_location_matching
-            ),
+            likes=likes,
+            dislikes=dislikes,
+            location=location,
+            transportation=transportation,
+            use_location_matching=use_location_matching,
             confirmed=True,
         )
 
@@ -387,17 +384,12 @@ async def update_chat_profile(
 
     existing_name = session.profile.get("name") if session.profile else None
 
-    if update.name is None:
-        name = existing_name
-    else:
-        name = update.name.strip() or None
-
-    profile = build_profile(
-        name=name,
-        likes=clean_profile_values(update.likes),
-        dislikes=clean_profile_values(update.dislikes),
-        location=(update.location or "").strip() or None,
-        transportation=(update.transportation or "").strip() or None,
+    profile = build_profile_from_input(
+        name=existing_name if update.name is None else update.name,
+        likes=update.likes,
+        dislikes=update.dislikes,
+        location=update.location,
+        transportation=update.transportation,
         use_location_matching=update.use_location_matching,
         confirmed=True,
     )
@@ -633,7 +625,7 @@ async def opportunities_page(
             {"opportunities": all_opportunities()},
         )
 
-    profile = build_profile(
+    profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
         location=location,
@@ -643,7 +635,7 @@ async def opportunities_page(
 
     session = request.state.session
 
-    session.profile = build_profile(
+    session.profile = build_profile_from_input(
         name=session.profile.get("name") if session.profile else None,
         likes=likes,
         dislikes=dislikes,
@@ -762,7 +754,7 @@ async def rank_opportunities_stream(
     """
     session = request.state.session
 
-    profile = build_profile(
+    profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
         location=location,
@@ -804,7 +796,6 @@ async def rank_opportunities_stream(
         onet_jobs,
         RANKING_STREAM_CONFIG.batch_size,
     )
-    total_batches = len(batches)
 
     log_event(
         request,
@@ -872,27 +863,23 @@ async def programs_page(
             },
         )
 
-    use_location_matching_value = (
-        True if use_location_matching is None else use_location_matching
-    )
-
-    profile = build_profile(
+    profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
         location=location,
         transportation=transportation,
-        use_location_matching=use_location_matching_value,
+        use_location_matching=use_location_matching,
     )
 
     session = request.state.session
 
-    session.profile = build_profile(
+    session.profile = build_profile_from_input(
         name=session.profile.get("name") if session.profile else None,
         likes=likes,
         dislikes=dislikes,
         location=location,
         transportation=transportation,
-        use_location_matching=use_location_matching_value,
+        use_location_matching=use_location_matching,
         confirmed=True,
     )
 
@@ -976,7 +963,7 @@ async def rank_programs_stream(
     """Rank registered apprenticeship career groups and stream results."""
     session = request.state.session
 
-    profile = build_profile(
+    profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
         location=location,

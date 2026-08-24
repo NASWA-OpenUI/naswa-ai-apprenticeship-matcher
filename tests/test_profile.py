@@ -5,6 +5,7 @@ import pytest
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.profile import (
     build_profile,
+    build_profile_from_input,
     extract_profile,
     has_profile_query_params,
     profile_chat_url,
@@ -479,3 +480,44 @@ def test_profile_url_returns_plain_path_for_empty_profile():
     )
 
     assert profile_url("/api/rank-programs", profile) == "/api/rank-programs"
+
+def test_build_profile_from_input_normalizes_values():
+    profile = build_profile_from_input(
+        name="  Paulo  ",
+        likes=["  Building things  ", "", "building things", " Math "],
+        dislikes=["  Desk work ", "DESK WORK", "  "],
+        location="  Buffalo  ",
+        transportation="  Can drive  ",
+        use_location_matching=False,
+        confirmed=True,
+    )
+
+    assert profile == {
+        "name": "Paulo",
+        "likes": ["Building things", "Math"],
+        "dislikes": ["Desk work"],
+        "location": "Buffalo",
+        "transportation": "Can drive",
+        "use_location_matching": False,
+        "confirmed": True,
+    }
+
+def test_build_profile_from_input_defaults_and_normalizes_blank_values():
+    profile = build_profile_from_input(
+        name=" ",
+        likes=[],
+        dislikes=[],
+        location="   ",
+        transportation=None,
+        use_location_matching=None,
+    )
+
+    assert profile == {
+        "name": None,
+        "likes": [],
+        "dislikes": [],
+        "location": None,
+        "transportation": None,
+        "use_location_matching": True,
+        "confirmed": False,
+    }
