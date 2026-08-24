@@ -7,6 +7,7 @@ data/_database.db
 llm-export*
 data-new/*
 data-old/*
+docs/*
 infra/COMMANDS.md
 infra/current/*
 infra/diagrams/*
