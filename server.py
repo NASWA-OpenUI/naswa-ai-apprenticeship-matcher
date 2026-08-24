@@ -4,7 +4,6 @@ import time
 import uuid
 from contextlib import asynccontextmanager
 from pathlib import Path
-from urllib.parse import urlencode
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
@@ -47,7 +46,7 @@ from naswa_matcher.profile import (
     has_profile_query_params,
     profile_chat_url,
     profile_match_url,
-    profile_query_params,
+    profile_url,
     strip_profile,
 )
 from naswa_matcher.program_ranking import (
@@ -665,11 +664,7 @@ async def opportunities_page(
     ranking_cached = cached is not None
     cached_ranked = cached.ranked if cached else []
 
-    params = profile_query_params(profile)
-
-    rank_stream_url = "/api/rank-opportunities"
-    if params:
-        rank_stream_url += "?" + urlencode(params)
+    rank_stream_url = profile_url("/api/rank-opportunities", profile)
 
     unranked = [
         {
@@ -912,11 +907,7 @@ async def programs_page(
     ranking_cached = cached is not None
     cached_ranked = cached.ranked if cached else []
 
-    params = profile_query_params(profile)
-
-    rank_stream_url = "/api/rank-programs"
-    if params:
-        rank_stream_url += "?" + urlencode(params)
+    rank_stream_url = profile_url("/api/rank-programs", profile)
 
     return templates.TemplateResponse(
         request,

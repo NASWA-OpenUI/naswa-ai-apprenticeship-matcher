@@ -110,6 +110,16 @@ def profile_query_params(profile: dict) -> list[tuple[str, str]]:
     return params
 
 
+def profile_url(path: str, profile: dict) -> str:
+    """Return a URL with the profile encoded as query parameters."""
+    params = profile_query_params(profile)
+
+    if not params:
+        return path
+
+    return path + "?" + urlencode(params)
+
+
 def profile_rank_params(profile: dict) -> list[tuple[str, str]]:
     """Return query parameters for the ranked opportunities page."""
     return [
@@ -129,21 +139,11 @@ def profile_match_url(profile: dict, target: MatchTarget) -> str:
         return profile_rank_url(profile)
 
     if target is MatchTarget.PROGRAMS:
-        params = profile_query_params(profile)
-
-        if not params:
-            return "/programs"
-
-        return "/programs?" + urlencode(params)
+        return profile_url("/programs", profile)
 
     raise ValueError(f"Unsupported match target: {target}")
 
 
 def profile_chat_url(profile: dict) -> str:
     """Return a chat URL that preloads a profile."""
-    params = profile_query_params(profile)
-
-    if not params:
-        return "/chat"
-
-    return "/chat?" + urlencode(params)
+    return profile_url("/chat", profile)

@@ -12,6 +12,7 @@ from naswa_matcher.profile import (
     profile_query_params,
     profile_rank_params,
     profile_rank_url,
+    profile_url,
     strip_profile,
 )
 
@@ -446,3 +447,35 @@ def test_profile_match_url_for_empty_program_profile_returns_plain_path():
     )
 
     assert profile_match_url(profile, MatchTarget.PROGRAMS) == "/programs"
+
+
+def test_profile_url_adds_profile_query_params():
+    profile = build_profile(
+        likes=["math", "fixing things"],
+        dislikes=["desk work"],
+        location="Buffalo",
+        transportation="car",
+        use_location_matching=False,
+    )
+
+    parsed = urlparse(profile_url("/api/rank-programs", profile))
+    query = parse_qs(parsed.query)
+
+    assert parsed.path == "/api/rank-programs"
+    assert query["likes"] == ["math", "fixing things"]
+    assert query["dislikes"] == ["desk work"]
+    assert query["location"] == ["Buffalo"]
+    assert query["transportation"] == ["car"]
+    assert query["use_location_matching"] == ["false"]
+
+
+def test_profile_url_returns_plain_path_for_empty_profile():
+    profile = build_profile(
+        likes=[],
+        dislikes=[],
+        location=None,
+        transportation=None,
+        use_location_matching=True,
+    )
+
+    assert profile_url("/api/rank-programs", profile) == "/api/rank-programs"
