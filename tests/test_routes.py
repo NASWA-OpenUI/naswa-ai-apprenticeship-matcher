@@ -566,7 +566,7 @@ def test_programs_page_without_profile_renders_browse_page(client):
     assert response.status_code == 200
 
     assert "All apprenticeship programs" in response.text
-    assert "Trade title" in response.text
+    assert "Job title" in response.text
     assert "Programs" in response.text
     assert "Typical length" in response.text
 
