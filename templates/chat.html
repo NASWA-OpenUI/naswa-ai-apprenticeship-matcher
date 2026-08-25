@@ -72,9 +72,9 @@
   <form id="chat-form" aria-label="Send a message" hx-post="/chat" hx-target="#chat-log" hx-swap="beforeend">
     <label for="user-input" class="visually-hidden">Message</label>
 
-    <input type="text" id="user-input" name="message" autocomplete="off" spellcheck="true"
+    <textarea id="user-input" name="message" rows="1" autocomplete="off" spellcheck="true" enterkeyhint="send"
       placeholder="{{ 'Conversation complete' if conversation_complete else 'Message Tyler…' }}" {% if
-      conversation_complete %}disabled{% endif %}>
+      conversation_complete %}disabled{% endif %}></textarea>
 
     <button type="submit" id="send-button" class="btn btn--filled" {% if conversation_complete %}disabled{% endif %}>
       {{ "Done" if conversation_complete else "Send" }}
@@ -108,6 +108,61 @@
 
   sessionStorage.removeItem('jobRankings');
   sessionStorage.removeItem('programRankings');
+
+  function resizeUserInput() {
+    if (!userInput) return;
+
+    userInput.style.height = 'auto';
+
+    const maxHeight = parseFloat(
+      getComputedStyle(userInput).maxHeight
+    );
+    console.log('maxHeight', maxHeight)
+
+    const height = Math.min(
+      userInput.scrollHeight,
+      maxHeight
+    );
+    console.log('height', height)
+
+    userInput.style.height = `${height}px`;
+
+    userInput.style.overflowY =
+      userInput.scrollHeight > maxHeight
+        ? 'auto'
+        : 'hidden';
+  }
+
+  userInput?.addEventListener(
+    'input',
+    resizeUserInput
+  );
+
+  userInput?.addEventListener(
+    'keydown',
+    function (event) {
+      if (
+        event.key !== 'Enter' ||
+        event.shiftKey ||
+        event.isComposing
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (
+        userInput.disabled ||
+        !userInput.value.trim()
+      ) {
+        return;
+      }
+
+      chatForm?.requestSubmit();
+    }
+  );
+
+  resizeUserInput();
 
   function scrollIntoViewSafe(el) {
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -274,6 +329,7 @@
 
       if (event.detail.successful && status !== 204) {
         chatForm.reset();
+        resizeUserInput();
       }
 
       if (!event.detail.successful || status === 204) {
