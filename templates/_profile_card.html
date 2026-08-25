@@ -1,12 +1,17 @@
-{% set use_location_matching = false if profile.use_location_matching is sameas false else true %}
+{% if match_target == "opportunities" %}
 {% set editable_profile = {
 "name": profile.name | default("", true),
 "likes": profile.likes | default([], true),
 "dislikes": profile.dislikes | default([], true),
-"location": profile.location | default("", true),
-"transportation": profile.transportation | default("", true),
-"use_location_matching": use_location_matching
+"transportation": profile.transportation | default("", true)
 } %}
+{% else %}
+{% set editable_profile = {
+"name": profile.name | default("", true),
+"likes": profile.likes | default([], true),
+"dislikes": profile.dislikes | default([], true)
+} %}
+{% endif %}
 
 <div class="profile-card surface surface--shadow surface--accent surface--clip" role="region"
   aria-label="Your profile summary" data-profile-card data-match-target="{{ match_target }}">
@@ -63,28 +68,7 @@
         </span>
       </dd>
 
-      <dt>Location</dt>
-      <dd data-profile-value="location">
-        {% if profile.location %}
-        <span class="chip chip--neutral profile-card-value-chip">
-          <svg class="chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-            <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="2" />
-            <circle cx="12" cy="10" r="2.2" stroke="currentColor" stroke-width="2" />
-          </svg>
-          <span>{{ profile.location }}</span>
-        </span>
-        {% else %}
-        <span class="profile-empty">—</span>
-        {% endif %}
-      </dd>
-
-      <dt data-profile-location-preference-label {% if use_location_matching %}hidden{% endif %}>
-        Location preference
-      </dt>
-      <dd data-profile-location-preference {% if use_location_matching %}hidden{% endif %}>
-        Open to apprenticeships anywhere in New York State
-      </dd>
-
+      {% if match_target == "opportunities" %}
       <dt>Transportation</dt>
       <dd data-profile-value="transportation">
         {% if profile.transportation %}
@@ -96,6 +80,7 @@
         <span class="profile-empty">—</span>
         {% endif %}
       </dd>
+      {% endif %}
     </dl>
 
     <div class="profile-card-actions">

@@ -77,14 +77,30 @@ def initial_messages() -> list[ChatMessage]:
     ]
 
 
+def _chat_profile(profile: dict, match_target: MatchTarget) -> dict:
+    """Return only profile fields relevant to the selected chat journey."""
+    chat_profile = {
+        "name": profile.get("name"),
+        "likes": list(profile.get("likes") or []),
+        "dislikes": list(profile.get("dislikes") or []),
+        "transportation": None,
+        "confirmed": bool(profile.get("confirmed")),
+    }
+
+    if match_target is MatchTarget.OPPORTUNITIES:
+        chat_profile["transportation"] = profile.get("transportation")
+
+    return chat_profile
+
 def _profile_context_messages(
     profile: dict,
+    match_target: MatchTarget,
     *,
     revision_mode: bool,
 ) -> list[dict]:
     """Build hidden conversation history containing the current profile."""
     profile_json = json.dumps(
-        profile,
+        _chat_profile(profile, match_target),
         ensure_ascii=False,
         sort_keys=True,
     )
@@ -153,7 +169,31 @@ class ChatSession:
     last_logged_location: str | None = None
 
     def __post_init__(self) -> None:
-        self.agent = self.agent_factory()
+        self.agent = self.agent_factory(match_target=self.match_target)
+        
+    def set_match_target(self, match_target: MatchTarget) -> None:
+        """Switch the guided chat to the selected matching journey."""
+        if match_target is self.match_target:
+            return
+
+        self.match_target = match_target
+
+        if self.profile:
+            self.profile = {
+                **self.profile,
+                "location": None,
+                "transportation": (
+                    self.profile.get("transportation")
+                    if match_target is MatchTarget.OPPORTUNITIES
+                    else None
+                ),
+                "use_location_matching": False,
+            }
+            self._replace_agent_with_profile_context(
+                revision_mode=not self.profile.get("confirmed", False),
+            )
+        else:
+            self.agent = self.agent_factory(match_target=self.match_target)
 
     def has_user_messages(self) -> bool:
         """Return whether the user has participated in this conversation."""
@@ -166,7 +206,7 @@ class ChatSession:
 
     def reset(self) -> None:
         """Restore the session to a fresh chat state."""
-        self.agent = self.agent_factory()
+        self.agent = self.agent_factory(match_target=self.match_target)
         self.queue = asyncio.Queue()
         self.profile = None
         self.messages = initial_messages()
@@ -204,14 +244,16 @@ class ChatSession:
     ) -> None:
         """Create a fresh agent grounded in the session's current profile."""
         if not self.profile:
-            self.agent = self.agent_factory()
+            self.agent = self.agent_factory(match_target=self.match_target)
             return
 
         self.agent = self.agent_factory(
+            match_target=self.match_target,
             messages=_profile_context_messages(
                 self.profile,
+                self.match_target,
                 revision_mode=revision_mode,
-            )
+            ),
         )
 
     def sync_confirmed_profile(self, profile: dict) -> None:

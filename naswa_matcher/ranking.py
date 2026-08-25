@@ -81,38 +81,17 @@ def normalize_tier(tier: str | None) -> str:
 
 
 def build_job_summary(profile: dict, job: dict) -> dict:
-    """Build the compact job summary sent to the scoring model."""
+    """Build the compact opportunity summary sent to the scoring model."""
     posting = job.get("posting", {})
     onet = job.get("onet") or {}
-
-    skills = _pluck(
-        _nested_list(onet, ("skills", "data", "element")),
-        "name",
-        5,
-    )
-    activities = _pluck(
-        _nested_list(onet, ("detailed_work_activities", "data", "activity")),
-        "title",
-        5,
-    )
-    styles = _pluck(
-        _nested_list(onet, ("work_styles", "data", "element")),
-        "name",
-        4,
-    )
 
     summary = {
         "id": job["id"],
         "title": posting.get("jobTitle"),
-        "location": posting.get("locationSummary"),
-        "regions": posting.get("regions", []),
         "requirements_summary": posting.get("requirementsSummary"),
+        "transportation_requirement": posting.get("transportationRequirement"),
         **build_onet_ranking_fields(onet),
     }
-
-    if should_use_location_matching(profile):
-        summary["location_fit"] = location_fit(profile, job)
-        summary["transportation_requirement"] = posting.get("transportationRequirement")
 
     return summary
 
@@ -120,33 +99,23 @@ def build_job_summary(profile: dict, job: dict) -> dict:
 def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
     """Build the prompt used to score O*NET-backed opportunities."""
 
-    def get_location_guidance(use_location_matching: bool) -> str:
-        if use_location_matching:
-            return (
-                "- Location is a major ranking factor, not a minor detail.\n"
-                "- A job should only be Strong if it fits both the profile interests and location.\n"
-                "- If location_fit is far, do not rank the job as Strong.\n"
-                "- If location_fit is nearby, usually rank the job as Moderate.\n"
-                "- Driving helps with local travel, but it does not make a job across New York State feasible.\n"
-                "- Do not describe a long-distance commute as feasible just because the profile says the person has a car.\n"
-                "- If transportation or location may be an issue, mention it gently as a caveat.\n"
-            )
-
-        return (
-            "- Do not use location or transportation as ranking factors.\n"
-            "- Do not mention statewide flexibility in every explanation.\n"
-        )
+    scoring_profile = {
+        "likes": list(profile.get("likes") or []),
+        "dislikes": list(profile.get("dislikes") or []),
+        "transportation": profile.get("transportation"),
+    }
 
     return (
         "You are ranking New York State registered apprenticeship opportunities "
         "for the person who will read these results.\n\n"
         "Profile:\n"
-        f"{json.dumps(profile, indent=2)}\n\n"
+        f"{json.dumps(scoring_profile, indent=2)}\n\n"
         "Score each job as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
         "- Put the most weight on whether the occupation connects to the profile's likes.\n"
-        f"{get_location_guidance(should_use_location_matching(profile))}"
         "- Use dislikes only as a soft negative signal.\n"
+        "- Use transportation only when the profile and the opportunity's transportation requirement provide relevant evidence.\n"
+        "- A transportation concern can be a caveat, but do not reject a job only because a requirement may need to be checked later.\n"
         "- Do not reject a job only because a requirement may need to be checked later.\n"
         "- Keep explanations friendly and concrete.\n"
         "- Write every explanation directly to the person reading it.\n"

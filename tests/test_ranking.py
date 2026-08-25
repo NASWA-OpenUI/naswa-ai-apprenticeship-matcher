@@ -91,7 +91,7 @@ def test_normalize_tier_defaults_unexpected_values_to_weak(tier):
 def test_build_job_summary_extracts_onet_fields():
     """Verifies that build_job_summary extracts the core posting fields,
     location fit, and compact O*NET fields sent to the scoring model."""
-    profile = {"location": "Buffalo area"}
+    profile = {}
 
     job = {
         "id": "electrician-apprentice",
@@ -133,7 +133,6 @@ def test_build_job_summary_extracts_onet_fields():
 
     assert summary["id"] == "electrician-apprentice"
     assert summary["title"] == "Electrician Apprentice"
-    assert summary["location_fit"] == "local"
     assert summary["skills"] == ["Troubleshooting", "Critical Thinking"]
     assert summary["activities"] == ["Repair electrical equipment"]
     assert summary["work_styles"] == ["Attention to Detail"]
@@ -189,41 +188,6 @@ def test_build_scoring_prompt_includes_profile_and_jobs():
     assert "Return ONLY a JSON array" in prompt
 
 
-def test_build_scoring_prompt_includes_location_guidance_when_matching_enabled():
-    """Verifies that location-specific ranking instructions are included when
-    the user's profile should use location matching."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
-
-    prompt = build_scoring_prompt(profile, [{"id": "job-1", "location_fit": "far"}])
-
-    assert "Location is a major ranking factor" in prompt
-    assert "If location_fit is far" in prompt
-    assert "Do not use location or transportation as ranking factors" not in prompt
-
-
-def test_build_scoring_prompt_removes_location_guidance_when_matching_disabled():
-    """Verifies that location and transportation guidance is removed when the
-    user is open to statewide opportunities."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": False,
-    }
-
-    prompt = build_scoring_prompt(profile, [{"id": "job-1"}])
-
-    assert "Do not use location or transportation as ranking factors" in prompt
-    assert "Do not mention statewide flexibility in every explanation" in prompt
-
-    assert "Location is a major ranking factor" not in prompt
-    assert "If location_fit is far" not in prompt
-    assert "Having a car helps with local travel" not in prompt
-
-
 def test_parse_scoring_response_accepts_plain_json():
     """Verifies that a valid plain JSON array from the model parses into the
     expected list of ranking objects."""
@@ -261,40 +225,60 @@ def test_parse_scoring_response_rejects_non_array_json():
         parse_scoring_response('{"id":"job-1","tier":"Strong"}')
 
 
-def test_build_job_summary_includes_location_fit_when_location_matching_enabled():
-    """Verifies that build_job_summary includes derived location fit and
-    transportation fields when location matching is enabled."""
+def test_build_scoring_prompt_includes_transportation_guidance():
+    """Verifies that transportation remains a scoring factor for opportunities."""
     profile = {
         "likes": ["hands-on work"],
+        "dislikes": ["desk work"],
+        "transportation": "Takes public transit",
+    }
+
+    prompt = build_scoring_prompt(
+        profile,
+        [
+            {
+                "id": "job-1",
+                "transportation_requirement": "Must have reliable transportation.",
+            }
+        ],
+    )
+
+    assert "Use transportation only when" in prompt
+    assert "A transportation concern can be a caveat" in prompt
+    assert "Takes public transit" in prompt
+    assert "Must have reliable transportation." in prompt
+
+
+def test_build_scoring_prompt_excludes_location_from_profile_and_guidance():
+    """Verifies that location is never sent to or considered by opportunity scoring."""
+    profile = {
+        "likes": ["hands-on work"],
+        "dislikes": [],
         "location": "Buffalo area",
+        "transportation": "Can drive",
         "use_location_matching": True,
     }
 
-    summary = build_job_summary(profile, make_rankable_job())
+    prompt = build_scoring_prompt(
+        profile,
+        [
+            {
+                "id": "job-1",
+                "transportation_requirement": "Must have reliable transportation.",
+            }
+        ],
+    )
 
-    assert summary["location_fit"] == "nearby"
-    assert summary["transportation_requirement"] == "Must have reliable transportation."
-    assert summary["location"] == "Binghamton, NY area"
-    assert summary["regions"] == ["Southern Tier"]
+    assert "hands-on work" in prompt
+    assert "Can drive" in prompt
 
+    assert "Buffalo area" not in prompt
+    assert "use_location_matching" not in prompt
+    assert "location_fit" not in prompt
 
-def test_build_job_summary_omits_location_fit_when_location_matching_disabled():
-    """Verifies that build_job_summary removes derived location and
-    transportation signals when statewide matching disables location logic."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": False,
-    }
-
-    summary = build_job_summary(profile, make_rankable_job())
-
-    assert "location_fit" not in summary
-    assert "transportation_requirement" not in summary
-
-    # Keep real job location context available, but not the derived ranking signal.
-    assert summary["location"] == "Binghamton, NY area"
-    assert summary["regions"] == ["Southern Tier"]
+    assert "Location is a major ranking factor" not in prompt
+    assert "If location_fit is far" not in prompt
+    assert "Having a car helps with local travel" not in prompt
 
 
 def test_build_ranked_items_attaches_scores_to_jobs():

@@ -77,19 +77,12 @@ def build_program_summary(
         "id": program_group["socCode"],
         "title": program_group_title(program_group),
         "soc_title": program_group.get("socTitle"),
-        "regions": program_group.get("regions", []),
         "onet_description": onet_fields["description"],
         "skills": onet_fields["skills"],
         "activities": onet_fields["activities"],
         "work_styles": onet_fields["work_styles"],
         "trades": trades,
     }
-
-    if should_use_location_matching(profile):
-        summary["location_fit"] = location_fit_for_regions(
-            profile,
-            program_group.get("regions"),
-        )
 
     return summary
 
@@ -99,21 +92,10 @@ def build_program_scoring_prompt(
     program_summaries: list[dict],
 ) -> str:
     """Build the prompt used to score SOC-grouped apprenticeship programs."""
-    if should_use_location_matching(profile):
-        location_guidance = (
-            "- Location is a major ranking factor, not a minor detail.\n"
-            "- A career group should only be Strong if it fits both the "
-            "profile interests and location.\n"
-            "- If location_fit is far, do not rank the group as Strong.\n"
-            "- If location_fit is nearby, usually rank the group as Moderate.\n"
-            "- A local location_fit means at least one registered program in "
-            "the group is local to the person.\n"
-        )
-    else:
-        location_guidance = (
-            "- Do not use location or transportation as ranking factors.\n"
-            "- Do not mention statewide flexibility in every explanation.\n"
-        )
+    scoring_profile = {
+        "likes": list(profile.get("likes") or []),
+        "dislikes": list(profile.get("dislikes") or []),
+    }
 
     return (
         "You are ranking New York State registered apprenticeship career groups "
@@ -121,7 +103,7 @@ def build_program_scoring_prompt(
         "Each item represents one O*NET-SOC occupation group. A group may contain "
         "one or more apprenticeship trade titles.\n\n"
         "Profile:\n"
-        f"{json.dumps(profile, indent=2)}\n\n"
+        f"{json.dumps(scoring_profile, indent=2)}\n\n"
         "Score each career group as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
         "- Put the most weight on whether the occupation connects to the "
@@ -130,7 +112,6 @@ def build_program_scoring_prompt(
         "descriptions when judging fit.\n"
         "- Trade descriptions are supporting evidence for the SOC group. "
         "Do not assume every trade within a group is identical.\n"
-        f"{location_guidance}"
         "- Use dislikes only as a soft negative signal.\n"
         "- Keep explanations friendly and concrete.\n"
         "- Write every explanation directly to the person reading it.\n"

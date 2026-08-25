@@ -1,5 +1,3 @@
-{# templates/_profile_edit_modal.html #}
-
 <div class="profile-modal-backdrop" data-profile-edit-modal
     data-profile-save-mode="{{ profile_save_mode | default('local') }}" hidden>
     <div class="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-edit-title"
@@ -46,29 +44,17 @@
                 </div>
             </div>
 
+            {% if match_target == "opportunities" %}
             <hr class="profile-modal-rule">
 
-            <div class="profile-edit-grid">
-                <div class="profile-edit-field">
-                    <label for="profile-edit-location" class="profile-edit-label">Location</label>
-                    <input id="profile-edit-location" class="form-control" type="text" data-edit-location
-                        placeholder="City, region, or ZIP">
-                </div>
-
-                <div class="profile-edit-field">
-                    <label for="profile-edit-transportation" class="profile-edit-label">Transportation</label>
-                    <input id="profile-edit-transportation" class="form-control" type="text" data-edit-transportation
-                        placeholder="e.g. drives self, transit">
-                </div>
+            <div class="profile-edit-field">
+                <label for="profile-edit-transportation" class="profile-edit-label">
+                    Transportation
+                </label>
+                <input id="profile-edit-transportation" class="form-control" type="text" data-edit-transportation
+                    placeholder="e.g. drives self, transit">
             </div>
-
-            <div class="profile-edit-field profile-match-field">
-                <div class="profile-check-row">
-                    <input id="profile-edit-location-match" type="checkbox" data-edit-location-match>
-                    <label for="profile-edit-location-match" class="profile-edit-label">Match by location</label>
-                </div>
-                <p class="profile-match-help text-meta" data-edit-location-help></p>
-            </div>
+            {% endif %}
         </div>
 
         <div class="profile-modal-foot">
@@ -155,9 +141,7 @@
                     name: '',
                     likes: [],
                     dislikes: [],
-                    location: '',
-                    transportation: '',
-                    use_location_matching: true
+                    transportation: ''
                 };
             }
 
@@ -168,18 +152,14 @@
                     name: parsed.name || '',
                     likes: cleanProfileList(parsed.likes),
                     dislikes: cleanProfileList(parsed.dislikes),
-                    location: parsed.location || '',
-                    transportation: parsed.transportation || '',
-                    use_location_matching: parsed.use_location_matching !== false
+                    transportation: parsed.transportation || ''
                 };
             } catch {
                 return {
                     name: '',
                     likes: [],
                     dislikes: [],
-                    location: '',
-                    transportation: '',
-                    use_location_matching: true
+                    transportation: ''
                 };
             }
         }
@@ -251,30 +231,7 @@
                 'profile-card-value-chip'
             ].join(' ');
 
-            if (key === 'location') {
-                chip.innerHTML = `
-            <svg
-                class="chip__icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-                focusable="false"
-            >
-                <path
-                    d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
-                    stroke="currentColor"
-                    stroke-width="2"
-                />
-                <circle
-                    cx="12"
-                    cy="10"
-                    r="2.2"
-                    stroke="currentColor"
-                    stroke-width="2"
-                />
-            </svg>
-        `;
-            } else if (key === 'transportation') {
+            if (key === 'transportation') {
                 chip.setAttribute('aria-label', `Transportation: ${text}`);
             }
 
@@ -321,16 +278,8 @@
                 params.append('dislikes', dislike);
             });
 
-            if (profile.location) {
-                params.set('location', profile.location);
-            }
-
-            if (profile.transportation) {
+            if (target === 'opportunities' && profile.transportation) {
                 params.set('transportation', profile.transportation);
-            }
-
-            if (profile.use_location_matching === false) {
-                params.set('use_location_matching', 'false');
             }
 
             const path = target === 'opportunities'
@@ -342,8 +291,10 @@
             return query ? `${path}?${query}` : path;
         }
 
-        function buildChatUrl(profile) {
+        function buildChatUrl(profile, target) {
             const params = new URLSearchParams();
+
+            params.set('match_target', target);
 
             profile.likes.forEach(function (like) {
                 params.append('likes', like);
@@ -353,74 +304,32 @@
                 params.append('dislikes', dislike);
             });
 
-            if (profile.location) {
-                params.set('location', profile.location);
-            }
-
-            if (profile.transportation) {
+            if (target === 'opportunities' && profile.transportation) {
                 params.set('transportation', profile.transportation);
             }
 
-            if (profile.use_location_matching === false) {
-                params.set('use_location_matching', 'false');
-            }
-
-            const query = params.toString();
-            return query ? '/chat?' + query : '/chat';
+            return '/chat?' + params.toString();
         }
 
         function makeSummaryTag(kind, text) {
+            const isDislike = kind === 'dislike';
             const tag = document.createElement('span');
 
-            const classes = [
+            tag.className = [
                 'profile-summary-tag',
-                'chip'
-            ];
+                'chip',
+                isDislike ? 'chip--danger' : 'chip--theme'
+            ].join(' ');
 
-            if (kind === 'like') {
-                classes.push('chip--theme');
-            } else if (kind === 'dislike') {
-                classes.push('chip--danger');
-            } else {
-                classes.push('chip--neutral');
-            }
-
-            tag.className = classes.join(' ');
-
-            if (kind === 'like') {
-                tag.setAttribute('aria-label', `Interest: ${text}`);
-                tag.innerHTML = `
-            <span class="chip__sign" aria-hidden="true">+</span>
-            ${escapeHtml(text)}
-        `;
-                return tag;
-            }
-
-            if (kind === 'dislike') {
-                tag.setAttribute('aria-label', `Avoiding: ${text}`);
-                tag.innerHTML = `
-            <span class="chip__sign" aria-hidden="true">−</span>
-            ${escapeHtml(text)}
-        `;
-                return tag;
-            }
+            tag.setAttribute(
+                'aria-label',
+                `${isDislike ? 'Avoiding' : 'Interest'}: ${text}`
+            );
 
             tag.innerHTML = `
-        <svg viewBox="0 0 24 24" fill="none"
-            aria-hidden="true" focusable="false">
-            <path
-                d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"
-                stroke="currentColor"
-                stroke-width="2"
-            />
-            <circle
-                cx="12"
-                cy="10"
-                r="2.2"
-                stroke="currentColor"
-                stroke-width="2"
-            />
-        </svg>
+        <span class="chip__sign" aria-hidden="true">
+            ${isDislike ? '−' : '+'}
+        </span>
         ${escapeHtml(text)}
     `;
 
@@ -442,17 +351,12 @@
                 profile.dislikes.forEach(function (dislike) {
                     tags.appendChild(makeSummaryTag('dislike', dislike));
                 });
-
-                if (profile.location) {
-                    tags.appendChild(makeSummaryTag('location', profile.location));
-                } else if (profile.use_location_matching === false) {
-                    tags.appendChild(makeSummaryTag('location', 'Anywhere in New York'));
-                }
             }
 
             const chatLink = summary.querySelector('[data-profile-chat-link]');
             if (chatLink) {
-                chatLink.href = buildChatUrl(profile);
+                const target = summary.dataset.matchTarget || 'programs';
+                chatLink.href = buildChatUrl(profile, target);
             }
         }
 
@@ -468,19 +372,7 @@
             renderCardList('likes', profile.likes);
             renderCardList('dislikes', profile.dislikes);
 
-            renderProfileCardValue('location', profile.location);
             renderProfileCardValue('transportation', profile.transportation);
-
-            const locationPreferenceLabel = card.querySelector('[data-profile-location-preference-label]');
-            const locationPreferenceValue = card.querySelector('[data-profile-location-preference]');
-
-            if (locationPreferenceLabel) {
-                locationPreferenceLabel.hidden = profile.use_location_matching !== false;
-            }
-
-            if (locationPreferenceValue) {
-                locationPreferenceValue.hidden = profile.use_location_matching !== false;
-            }
 
             const matchesLink = card.querySelector('[data-profile-matches-link]');
             const matchTarget = card.dataset.matchTarget;
@@ -552,41 +444,6 @@
             });
         }
 
-        function updateLocationMatchHelp() {
-            const modal = getModalBackdrop();
-            if (!modal) return;
-
-            const locationInput = modal.querySelector('[data-edit-location]');
-            const checkbox = modal.querySelector('[data-edit-location-match]');
-            const help = modal.querySelector('[data-edit-location-help]');
-            const field = modal.querySelector('.profile-match-field');
-
-            if (!locationInput || !checkbox) return;
-
-            const location = String(locationInput.value || '').trim();
-
-            if (!location) {
-                checkbox.checked = false;
-                checkbox.disabled = true;
-                field?.classList.add('is-disabled');
-
-                if (help) {
-                    help.textContent = 'Add a location above to match by area.';
-                }
-
-                return;
-            }
-
-            checkbox.disabled = false;
-            field?.classList.remove('is-disabled');
-
-            if (help) {
-                help.textContent = checkbox.checked
-                    ? `Prefer matches near ${location}.`
-                    : 'Equal weighting for matches across New York State.';
-            }
-        }
-
         function populateProfileModal() {
             const modal = getModalBackdrop();
             if (!modal) return;
@@ -596,15 +453,8 @@
             populateEditableList('likes', profile.likes);
             populateEditableList('dislikes', profile.dislikes);
 
-            const locationInput = modal.querySelector('[data-edit-location]');
             const transportationInput = modal.querySelector('[data-edit-transportation]');
-            const checkbox = modal.querySelector('[data-edit-location-match]');
-
-            if (locationInput) locationInput.value = profile.location || '';
             if (transportationInput) transportationInput.value = profile.transportation || '';
-            if (checkbox) checkbox.checked = profile.use_location_matching !== false;
-
-            updateLocationMatchHelp();
         }
 
         function flushTypedAddInputs() {
@@ -643,21 +493,18 @@
             flushTypedAddInputs();
 
             const existing = readProfileFromCard();
-            const locationInput = modal?.querySelector('[data-edit-location]');
-            const transportationInput = modal?.querySelector('[data-edit-transportation]');
-            const checkbox = modal?.querySelector('[data-edit-location-match]');
-
-            const location = String(locationInput?.value || '').trim();
-            const transportation = String(transportationInput?.value || '').trim();
-            const useLocationMatching = Boolean(checkbox?.checked);
+            const card = getProfileCard();
+            const target = card?.dataset.matchTarget || 'programs';
+            const transportationInput =
+                modal?.querySelector('[data-edit-transportation]');
 
             return {
                 name: existing.name,
                 likes: readListFromModal('likes'),
                 dislikes: readListFromModal('dislikes'),
-                location: location,
-                transportation: transportation,
-                use_location_matching: location ? useLocationMatching : false
+                transportation: target === 'opportunities'
+                    ? String(transportationInput?.value || '').trim()
+                    : ''
             };
         }
 
@@ -908,18 +755,6 @@
             if (!event.shiftKey && document.activeElement === last) {
                 event.preventDefault();
                 first.focus();
-            }
-        });
-
-        document.addEventListener('input', function (event) {
-            if (event.target.matches('[data-edit-location]')) {
-                updateLocationMatchHelp();
-            }
-        });
-
-        document.addEventListener('change', function (event) {
-            if (event.target.matches('[data-edit-location-match]')) {
-                updateLocationMatchHelp();
             }
         });
     })();

@@ -1,5 +1,6 @@
 from starlette.responses import Response
 
+from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import (
     INITIAL_CHAT_MESSAGES,
@@ -33,12 +34,13 @@ SESSION_ID_B = "b" * 43
 def agent_factory_with_history():
     created_agents = []
 
-    def factory(*, messages=None):
+    def factory(*, match_target=MatchTarget.PROGRAMS, messages=None):
         agent = object()
         created_agents.append(agent)
         factory.calls.append(
             {
                 "agent": agent,
+                "match_target": match_target,
                 "messages": messages,
             }
         )

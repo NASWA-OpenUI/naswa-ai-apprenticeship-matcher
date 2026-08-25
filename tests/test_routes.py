@@ -175,12 +175,13 @@ def test_chat_route_ignores_missing_message(client):
     assert response.content == b""
 
 
-def test_chat_get_route_prefills_confirmed_profile_from_query(client):
-    """Verifies that /chat can accept profile query params and render the
-    confirmed profile card immediately, without completing the AI chat flow."""
+def test_chat_get_route_prefills_confirmed_program_profile_from_query(client):
+    """Verifies that /chat can preload a confirmed Programs profile while
+    ignoring legacy location and transportation query parameters."""
     response = client.get(
         "/chat",
         params=[
+            ("match_target", "programs"),
             ("likes", "art"),
             ("likes", "fashion"),
             ("dislikes", "office work"),
@@ -201,12 +202,14 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
     assert "data-profile-json" in response.text
     assert "data-profile-edit-open" in response.text
 
-    # Profile values.
+    # Active Programs profile values.
     assert "art" in response.text
     assert "fashion" in response.text
     assert "office work" in response.text
-    assert "Buffalo" in response.text
-    assert "drives self" in response.text
+
+    # Legacy/non-Programs values are ignored.
+    assert "Buffalo" not in response.text
+    assert "drives self" not in response.text
 
     # The chat composer should be in the completed state.
     assert "Conversation complete" in response.text
@@ -220,7 +223,7 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
     assert 'data-edit-list="likes"' in response.text
     assert 'data-edit-list="dislikes"' in response.text
 
-    # Matches URL should be built from the prefilled profile.
+    # Matches URL contains only the Programs matching profile.
     assert 'data-match-target="programs"' in response.text
     assert "data-profile-matches-link" in response.text
     assert "/programs?" in response.text
@@ -228,16 +231,18 @@ def test_chat_get_route_prefills_confirmed_profile_from_query(client):
     assert "likes=art" in response.text
     assert "likes=fashion" in response.text
     assert "dislikes=office+work" in response.text
-    assert "location=Buffalo" in response.text
-    assert "transportation=drives+self" in response.text
+    assert "location=Buffalo" not in response.text
+    assert "transportation=drives+self" not in response.text
+    assert "use_location_matching=" not in response.text
 
 
-def test_chat_get_route_prefilled_profile_preserves_location_matching_false(client):
-    """Verifies that a prefilled chat profile can opt out of location-based
-    ranking and carries that preference into the ranked opportunities link."""
+def test_chat_get_route_prefilled_opportunity_profile_ignores_legacy_location(client):
+    """Verifies that an Opportunities chat ignores legacy location settings
+    while preserving transportation."""
     response = client.get(
         "/chat",
         params=[
+            ("match_target", "opportunities"),
             ("likes", "art"),
             ("location", "Buffalo"),
             ("transportation", "drives self"),
@@ -249,14 +254,17 @@ def test_chat_get_route_prefilled_profile_preserves_location_matching_false(clie
 
     assert "Your Profile" in response.text
     assert "art" in response.text
-    assert "Buffalo" in response.text
     assert "drives self" in response.text
+    assert "Buffalo" not in response.text
 
-    # The JSON profile used by the client-side editor should preserve this too.
-    assert '"use_location_matching": false' in response.text
+    assert 'data-match-target="opportunities"' in response.text
 
-    # The ranked URL should also preserve the false value.
-    assert "use_location_matching=false" in response.text
+    # Legacy location state must not be propagated.
+    assert "location=Buffalo" not in response.text
+    assert "use_location_matching=false" not in response.text
+
+    # Transportation remains part of opportunity matching.
+    assert "transportation=drives+self" in response.text
 
 
 def test_chat_reset_route_redirects_to_fresh_chat(client):
@@ -376,13 +384,18 @@ def test_opportunity_detail_ignores_invalid_from_program(
     assert "← Back to program details" not in response.text
 
 
-def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeypatch):
-    """Verifies that the streaming rank endpoint caps far/non-local Strong
-    model scores to Moderate when location matching is enabled."""
+def test_rank_opportunities_stream_ignores_legacy_location(client, monkeypatch):
+    """Verifies that the opportunity ranking route ignores legacy location
+    input while preserving opportunity transportation information."""
 
     async def fake_score_jobs(profile, onet_jobs):
-        assert profile["likes"] == ["hands-on work", "problem solving"]
-        assert profile["location"] == "Buffalo area"
+        assert profile["likes"] == [
+            "hands-on work",
+            "problem solving",
+        ]
+        assert profile["location"] is None
+        assert profile["transportation"] == "drives self"
+        assert profile["use_location_matching"] is False
 
         job_ids = {job["id"] for job in onet_jobs}
 
@@ -398,7 +411,7 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
             {
                 "id": "boilermaker-apprentice-local-fixture",
                 "tier": "Strong",
-                "explanation": "Good local match for fixing mechanical equipment.",
+                "explanation": "Good match for fixing mechanical equipment.",
             },
         ]
 
@@ -411,6 +424,8 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
             ("likes", "hands-on work"),
             ("likes", "problem solving"),
             ("location", "Buffalo area"),
+            ("transportation", "drives self"),
+            ("use_location_matching", "true"),
         ],
     ) as response:
         assert response.status_code == 200
@@ -419,22 +434,22 @@ def test_rank_opportunities_stream_caps_non_local_strong_matches(client, monkeyp
     assert "event: batch" in body
     assert "event: progress" in body
     assert "event: done" in body
+    assert "event: batch-error" not in body
 
-    # Local Western NY opportunity can remain Strong.
-    assert "Strong" in body
     assert "Boilermaker Apprentice" in body
-    assert "Good local match for fixing mechanical equipment." in body
-
-    # Binghamton/Southern Tier opportunity is capped from Strong to Moderate
-    # for a Buffalo-area user.
-    assert "Moderate" in body
     assert "Electrician Apprentice" in body
+
+    # Both model scores remain Strong because route-level location matching is off.
+    assert body.count('data-ranking-tier="Strong"') == 2
+    assert 'data-ranking-tier="Moderate"' not in body
+
     assert "Good match for hands-on troubleshooting work." in body
+    assert "Good match for fixing mechanical equipment." in body
 
     # Stream endpoint only returns ranked cards/progress, not the full page shell.
     assert "Sheet Metal Worker Apprentice" not in body
 
-    # Cards expose the same driver's-license classification used by the icon.
+    # Cards still expose driver's-licence metadata for deterministic filtering.
     assert 'data-license-required="' in body
 
 
@@ -449,6 +464,8 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
             ("likes", "problem solving"),
             ("dislikes", "desk work"),
             ("location", "Buffalo area"),
+            ("transportation", "drives self"),
+            ("use_location_matching", "true"),
         ],
     )
 
@@ -458,7 +475,15 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     assert "hands-on work" in response.text
     assert "problem solving" in response.text
     assert "desk work" in response.text
-    assert "Buffalo area" in response.text
+
+    # Legacy location input is discarded.
+    assert "Buffalo area" not in response.text
+    assert "location=Buffalo+area" not in response.text
+    assert "use_location_matching=true" not in response.text
+
+    # Transportation remains part of opportunity matching.
+    assert "drives self" in response.text
+    assert "transportation=drives+self" in response.text
 
     assert "Back to conversation" in response.text
     assert "Edit profile" in response.text
@@ -475,7 +500,7 @@ def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(cli
     assert "More opportunities" in response.text
     assert "Sheet Metal Worker Apprentice" in response.text
 
-    # Ranked-result filters are present but disabled until streaming completes.
+    # Ranked-result filters are still present.
     assert 'id="match-filters"' in response.text
     assert "data-match-filters-open" in response.text
     assert "data-match-filters-clear" in response.text
@@ -580,8 +605,8 @@ def test_programs_page_without_profile_renders_browse_page(client):
 
 
 def test_programs_page_renders_ranking_shell(client):
-    """Verifies that a profile-backed programs page renders the program
-    ranking shell and connects it to the program ranking SSE endpoint."""
+    """Verifies that a profile-backed programs page renders the ranking shell
+    using interests only, ignoring legacy location and transportation input."""
     response = client.get(
         "/programs",
         params=[
@@ -590,6 +615,7 @@ def test_programs_page_renders_ranking_shell(client):
             ("dislikes", "office work"),
             ("location", "Buffalo"),
             ("transportation", "car"),
+            ("use_location_matching", "true"),
         ],
     )
 
@@ -597,11 +623,14 @@ def test_programs_page_renders_ranking_shell(client):
 
     assert 'id="ranked-content"' in response.text
     assert 'sse-connect="/api/rank-programs?' in response.text
+
     assert "likes=hands-on+work" in response.text
     assert "likes=problem+solving" in response.text
     assert "dislikes=office+work" in response.text
-    assert "location=Buffalo" in response.text
-    assert "transportation=car" in response.text
+
+    assert "location=Buffalo" not in response.text
+    assert "transportation=car" not in response.text
+    assert "use_location_matching=true" not in response.text
 
     assert "ranked=true" not in response.text
 
@@ -610,12 +639,12 @@ def test_programs_page_renders_ranking_shell(client):
     assert 'id="match-list"' in response.text
 
 
-def test_rank_programs_stream_caps_non_local_strong_matches(
+def test_rank_programs_stream_ignores_legacy_location(
     client,
     monkeypatch,
 ):
-    """Verifies that program ranking streams SOC-group cards and caps a
-    nearby Strong model score to Moderate."""
+    """Verifies that program ranking ignores legacy location input and does not
+    location-cap model scores."""
 
     async def fake_score_program_groups(
         profile,
@@ -625,7 +654,9 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
             "hands-on work",
             "problem solving",
         ]
-        assert profile["location"] == "Binghamton"
+        assert profile["location"] is None
+        assert profile["transportation"] is None
+        assert profile["use_location_matching"] is False
 
         soc_codes = {group["socCode"] for group in program_groups}
 
@@ -638,7 +669,9 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
             {
                 "id": "47-2111.00",
                 "tier": "Strong",
-                "explanation": ("You may enjoy hands-on electrical troubleshooting."),
+                "explanation": (
+                    "You may enjoy hands-on electrical troubleshooting."
+                ),
             },
             {
                 "id": "21-1093.00",
@@ -663,37 +696,28 @@ def test_rank_programs_stream_caps_non_local_strong_matches(
             ("likes", "hands-on work"),
             ("likes", "problem solving"),
             ("location", "Binghamton"),
+            ("transportation", "car"),
+            ("use_location_matching", "true"),
         ],
     ) as response:
         assert response.status_code == 200
         body = "".join(response.iter_text())
 
-    # Shared ranking stream events.
     assert "event: batch" in body
     assert "event: progress" in body
     assert "event: rank-count" in body
     assert "event: done" in body
+    assert "event: batch-error" not in body
 
-    # Both program groups rendered.
     assert 'data-ranking-id="47-2111.00"' in body
     assert 'data-ranking-id="21-1093.00"' in body
 
     assert "Electricians" in body
     assert "Social and Human Service Assistants" in body
 
-    # Electricians includes the Southern Tier, so the Strong result stays Strong.
-    local_card_start = body.index('data-ranking-id="47-2111.00"')
-    non_local_card_start = body.index('data-ranking-id="21-1093.00"')
-
-    local_card = body[local_card_start:non_local_card_start]
-
-    assert 'data-ranking-tier="Strong"' in local_card
-
-    # Social and Human Service Assistants does not include the Southern Tier,
-    # so its nearby Strong model score is capped to Moderate.
-    non_local_card = body[non_local_card_start:]
-
-    assert 'data-ranking-tier="Moderate"' in non_local_card
+    # No location cap is applied at the route level.
+    assert body.count('data-ranking-tier="Strong"') == 2
+    assert 'data-ranking-tier="Moderate"' not in body
 
     # 147 Electrician programs + 20 Social/Human Service programs.
     assert '<span id="units-count">167</span> registered programs' in body
@@ -773,9 +797,9 @@ def test_program_ranking_cache_hit_isolated_from_opportunity_cache(
     profile = build_profile(
         likes=["hands-on work"],
         dislikes=[],
-        location="Buffalo",
+        location=None,
         transportation=None,
-        use_location_matching=True,
+        use_location_matching=False,
     )
 
     assert (

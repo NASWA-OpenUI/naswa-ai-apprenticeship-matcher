@@ -104,8 +104,8 @@ def test_profile_rank_params_includes_likes_and_dislikes():
     ]
 
 
-def test_profile_rank_params_includes_location_and_transportation():
-    """Include location and transportation params when present."""
+def test_profile_rank_params_includes_transportation_but_excludes_location():
+    """Include transportation but never expose legacy location in ranked URLs."""
     profile = {
         "location": "Buffalo",
         "transportation": "public transit",
@@ -113,40 +113,28 @@ def test_profile_rank_params_includes_location_and_transportation():
 
     assert profile_rank_params(profile) == [
         ("ranked", "true"),
-        ("location", "Buffalo"),
         ("transportation", "public transit"),
     ]
 
 
-def test_profile_rank_params_omits_empty_location_and_transportation():
-    """Omit blank location and transportation params."""
+def test_profile_rank_params_excludes_location_and_omits_empty_transportation():
     profile = {
-        "location": "",
+        "location": "Buffalo",
         "transportation": None,
-    }
-
-    assert profile_rank_params(profile) == [("ranked", "true")]
-
-
-def test_profile_rank_params_includes_location_matching_false():
-    """Include use_location_matching=false when the profile disables location matching."""
-    profile = {
-        "likes": ["math"],
-        "use_location_matching": False,
     }
 
     assert profile_rank_params(profile) == [
         ("ranked", "true"),
-        ("likes", "math"),
-        ("use_location_matching", "false"),
     ]
 
-
-def test_profile_rank_params_omits_location_matching_when_true():
-    """Omit use_location_matching when location matching is enabled."""
+@pytest.mark.parametrize("use_location_matching", [True, False])
+def test_profile_rank_params_excludes_location_matching_flag(
+    use_location_matching,
+):
+    """Never expose the legacy location-matching flag in ranked URLs."""
     profile = {
         "likes": ["math"],
-        "use_location_matching": True,
+        "use_location_matching": use_location_matching,
     }
 
     assert profile_rank_params(profile) == [
@@ -156,7 +144,6 @@ def test_profile_rank_params_omits_location_matching_when_true():
 
 
 def test_profile_rank_url_returns_encoded_ranked_opportunities_url():
-    """Return a ranked opportunities URL with encoded profile query params."""
     profile = {
         "likes": ["fixing things"],
         "dislikes": ["writing"],
@@ -167,7 +154,7 @@ def test_profile_rank_url_returns_encoded_ranked_opportunities_url():
 
     assert (
         profile_rank_url(profile)
-        == "/opportunities?ranked=true&likes=fixing+things&dislikes=writing&location=Buffalo&transportation=public+transit&use_location_matching=false"
+        == "/opportunities?ranked=true&likes=fixing+things&dislikes=writing&transportation=public+transit"
     )
 
 
@@ -249,7 +236,7 @@ def test_has_profile_query_params_detects_each_supported_value(overrides):
     assert has_profile_query_params(**values)
 
 
-def test_profile_query_params_includes_profile_fields_without_ranked():
+def test_profile_query_params_includes_active_profile_fields_without_ranked():
     profile = build_profile(
         likes=["math"],
         dislikes=["desk work"],
@@ -261,7 +248,6 @@ def test_profile_query_params_includes_profile_fields_without_ranked():
     assert profile_query_params(profile) == [
         ("likes", "math"),
         ("dislikes", "desk work"),
-        ("location", "Buffalo"),
         ("transportation", "car"),
     ]
 
@@ -296,7 +282,8 @@ def test_profile_rank_url_encodes_ranked_profile_query():
     assert parsed.path == "/opportunities"
     assert query["ranked"] == ["true"]
     assert query["likes"] == ["math"]
-    assert query["location"] == ["Buffalo"]
+    assert "location" not in query
+    assert "use_location_matching" not in query
 
 
 def test_profile_chat_url_excludes_ranked_parameter():
@@ -304,7 +291,7 @@ def test_profile_chat_url_excludes_ranked_parameter():
         likes=["math"],
         dislikes=[],
         location="Buffalo",
-        transportation=None,
+        transportation="car",
         use_location_matching=True,
     )
 
@@ -315,10 +302,12 @@ def test_profile_chat_url_excludes_ranked_parameter():
     assert "ranked" not in query
     assert query["match_target"] == ["programs"]
     assert query["likes"] == ["math"]
-    assert query["location"] == ["Buffalo"]
+    assert "location" not in query
+    assert "transportation" not in query
+    assert "use_location_matching" not in query
 
 
-def test_false_location_matching_is_included_in_rank_and_chat_urls():
+def test_legacy_location_fields_are_excluded_from_rank_and_chat_urls():
     profile = build_profile(
         likes=["construction"],
         dislikes=[],
@@ -329,11 +318,18 @@ def test_false_location_matching_is_included_in_rank_and_chat_urls():
 
     rank_query = parse_qs(urlparse(profile_rank_url(profile)).query)
     chat_query = parse_qs(
-        urlparse(profile_chat_url(profile, MatchTarget.OPPORTUNITIES)).query
+        urlparse(
+            profile_chat_url(profile, MatchTarget.OPPORTUNITIES)
+        ).query
     )
 
-    assert rank_query["use_location_matching"] == ["false"]
-    assert chat_query["use_location_matching"] == ["false"]
+    assert "location" not in rank_query
+    assert "use_location_matching" not in rank_query
+    assert rank_query["transportation"] == ["car"]
+
+    assert "location" not in chat_query
+    assert "use_location_matching" not in chat_query
+    assert chat_query["transportation"] == ["car"]
 
 
 def test_blank_optional_values_are_omitted_from_urls():
@@ -396,7 +392,7 @@ def test_has_profile_query_params_detects_explicit_blank_string():
     )
 
 
-def test_profile_match_url_for_programs_uses_profile_params_without_ranked():
+def test_profile_match_url_for_programs_uses_interest_params_without_ranked():
     profile = build_profile(
         likes=["math", "fixing things"],
         dislikes=["desk work"],
@@ -405,62 +401,45 @@ def test_profile_match_url_for_programs_uses_profile_params_without_ranked():
         use_location_matching=True,
     )
 
-    parsed = urlparse(profile_match_url(profile, MatchTarget.PROGRAMS))
+    parsed = urlparse(
+        profile_match_url(profile, MatchTarget.PROGRAMS)
+    )
     query = parse_qs(parsed.query)
 
     assert parsed.path == "/programs"
     assert "ranked" not in query
     assert query["likes"] == ["math", "fixing things"]
     assert query["dislikes"] == ["desk work"]
-    assert query["location"] == ["Buffalo"]
-    assert query["transportation"] == ["car"]
+
+    assert "location" not in query
+    assert "transportation" not in query
+    assert "use_location_matching" not in query
 
 
-def test_profile_match_url_for_opportunities_keeps_ranked_mode():
+def test_profile_match_url_for_opportunities_keeps_ranked_mode_and_transportation():
     profile = build_profile(
         likes=["math"],
         dislikes=[],
         location="Buffalo",
-        transportation=None,
+        transportation="car",
         use_location_matching=True,
     )
 
-    parsed = urlparse(profile_match_url(profile, MatchTarget.OPPORTUNITIES))
+    parsed = urlparse(
+        profile_match_url(profile, MatchTarget.OPPORTUNITIES)
+    )
     query = parse_qs(parsed.query)
 
     assert parsed.path == "/opportunities"
     assert query["ranked"] == ["true"]
     assert query["likes"] == ["math"]
-    assert query["location"] == ["Buffalo"]
+    assert query["transportation"] == ["car"]
+
+    assert "location" not in query
+    assert "use_location_matching" not in query
 
 
-def test_profile_match_url_for_programs_preserves_disabled_location_matching():
-    profile = build_profile(
-        likes=["construction"],
-        dislikes=[],
-        location="Buffalo",
-        transportation="car",
-        use_location_matching=False,
-    )
-
-    query = parse_qs(urlparse(profile_match_url(profile, MatchTarget.PROGRAMS)).query)
-
-    assert query["use_location_matching"] == ["false"]
-
-
-def test_profile_match_url_for_empty_program_profile_returns_plain_path():
-    profile = build_profile(
-        likes=[],
-        dislikes=[],
-        location=None,
-        transportation=None,
-        use_location_matching=True,
-    )
-
-    assert profile_match_url(profile, MatchTarget.PROGRAMS) == "/programs"
-
-
-def test_profile_url_adds_profile_query_params():
+def test_profile_url_adds_active_profile_query_params():
     profile = build_profile(
         likes=["math", "fixing things"],
         dislikes=["desk work"],
@@ -469,16 +448,42 @@ def test_profile_url_adds_profile_query_params():
         use_location_matching=False,
     )
 
-    parsed = urlparse(profile_url("/api/rank-programs", profile))
+    parsed = urlparse(
+        profile_url("/api/rank-programs", profile)
+    )
     query = parse_qs(parsed.query)
 
     assert parsed.path == "/api/rank-programs"
     assert query["likes"] == ["math", "fixing things"]
     assert query["dislikes"] == ["desk work"]
-    assert query["location"] == ["Buffalo"]
     assert query["transportation"] == ["car"]
-    assert query["use_location_matching"] == ["false"]
 
+    assert "location" not in query
+    assert "use_location_matching" not in query
+
+
+def test_profile_url_can_exclude_transportation():
+    profile = build_profile(
+        likes=["math"],
+        dislikes=["desk work"],
+        location="Buffalo",
+        transportation="car",
+        use_location_matching=False,
+    )
+
+    parsed = urlparse(
+        profile_url(
+            "/api/rank-programs",
+            profile,
+            include_transportation=False,
+        )
+    )
+    query = parse_qs(parsed.query)
+
+    assert query == {
+        "likes": ["math"],
+        "dislikes": ["desk work"],
+    }
 
 def test_profile_url_returns_plain_path_for_empty_profile():
     profile = build_profile(

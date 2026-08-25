@@ -4,7 +4,6 @@ from urllib.parse import urlencode
 
 from pydantic import BaseModel, Field
 
-from naswa_matcher.location_matching import should_use_location_matching
 from naswa_matcher.match_target import MatchTarget
 
 
@@ -124,8 +123,12 @@ def has_profile_query_params(
     )
 
 
-def profile_query_params(profile: dict) -> list[tuple[str, str]]:
-    """Return reusable URL query parameters for a profile."""
+def profile_query_params(
+    profile: dict,
+    *,
+    include_transportation: bool = True,
+) -> list[tuple[str, str]]:
+    """Return reusable URL query parameters for the active profile fields."""
     params: list[tuple[str, str]] = []
 
     for like in profile.get("likes", []):
@@ -136,20 +139,24 @@ def profile_query_params(profile: dict) -> list[tuple[str, str]]:
         if dislike:
             params.append(("dislikes", str(dislike)))
 
-    for key in ["location", "transportation"]:
-        value = profile.get(key)
-        if value:
-            params.append((key, str(value)))
-
-    if not should_use_location_matching(profile):
-        params.append(("use_location_matching", "false"))
+    transportation = profile.get("transportation")
+    if include_transportation and transportation:
+        params.append(("transportation", str(transportation)))
 
     return params
 
 
-def profile_url(path: str, profile: dict) -> str:
+def profile_url(
+    path: str,
+    profile: dict,
+    *,
+    include_transportation: bool = True,
+) -> str:
     """Return a URL with the profile encoded as query parameters."""
-    params = profile_query_params(profile)
+    params = profile_query_params(
+        profile,
+        include_transportation=include_transportation,
+    )
 
     if not params:
         return path
@@ -176,7 +183,11 @@ def profile_match_url(profile: dict, target: MatchTarget) -> str:
         return profile_rank_url(profile)
 
     if target is MatchTarget.PROGRAMS:
-        return profile_url("/programs", profile)
+        return profile_url(
+            "/programs",
+            profile,
+            include_transportation=False,
+        )
 
     raise ValueError(f"Unsupported match target: {target}")
 
@@ -188,7 +199,10 @@ def profile_chat_url(
     """Return a chat URL that preloads a profile and preserves its match target."""
     params = [
         ("match_target", target.value),
-        *profile_query_params(profile),
+        *profile_query_params(
+            profile,
+            include_transportation=(target is MatchTarget.OPPORTUNITIES),
+        ),
     ]
 
     return "/chat?" + urlencode(params)

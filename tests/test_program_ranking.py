@@ -113,10 +113,6 @@ def test_build_program_summary_extracts_program_and_onet_fields():
         "id": "21-1093.00",
         "title": "Direct Support Professional",
         "soc_title": "Social and Human Service Assistants",
-        "regions": [
-            "Capital Region",
-            "Western New York",
-        ],
         "onet_description": (
             "Assist people in accessing social and community services."
         ),
@@ -140,7 +136,6 @@ def test_build_program_summary_extracts_program_and_onet_fields():
                 ),
             }
         ],
-        "location_fit": "local",
     }
 
 
@@ -191,28 +186,3 @@ def test_build_program_summary_includes_every_trade_description():
             "description": "Description C.",
         },
     ]
-
-
-def test_build_program_summary_includes_location_fit_when_enabled():
-    group = make_program_group()
-
-    summary = build_program_summary(
-        make_profile(location="Buffalo"),
-        group,
-    )
-
-    assert summary["location_fit"] == "local"
-
-
-def test_build_program_summary_omits_location_fit_when_disabled():
-    group = make_program_group()
-
-    summary = build_program_summary(
-        make_profile(
-            location="Buffalo",
-            use_location_matching=False,
-        ),
-        group,
-    )
-
-    assert "location_fit" not in summary
