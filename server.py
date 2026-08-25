@@ -32,7 +32,7 @@ from naswa_matcher.db import (
     get_program_group,
 )
 from naswa_matcher.db import load as load_db
-from naswa_matcher.location_data import REGION_KEY_TO_NAME
+from naswa_matcher.location_data import LABOR_MARKET_REGIONS
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
@@ -75,7 +75,7 @@ from naswa_matcher.template_filters import TEMPLATE_FILTERS
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
-REGION_FILTER_OPTIONS = tuple(REGION_KEY_TO_NAME.values())
+REGION_FILTER_OPTIONS = LABOR_MARKET_REGIONS
 
 # ── Jinja2 setup ────────────────────────────────────────────────────────────────
 
@@ -302,9 +302,7 @@ async def chat_page(
     request: Request,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
-    location: str | None = None,
     transportation: str | None = None,
-    use_location_matching: bool | None = None,
     match_target: MatchTarget | None = None,
 ):
     """Serve the guided chat page."""
@@ -316,13 +314,11 @@ async def chat_page(
     has_prefilled_profile = has_profile_query_params(
         likes=likes,
         dislikes=dislikes,
-        location=None,
         transportation=(
             transportation
             if session.match_target is MatchTarget.OPPORTUNITIES
             else None
         ),
-        use_location_matching=None,
     )
 
     if has_prefilled_profile:
@@ -330,13 +326,11 @@ async def chat_page(
             name=session.profile.get("name") if session.profile else None,
             likes=likes,
             dislikes=dislikes,
-            location=None,
             transportation=(
                 transportation
                 if session.match_target is MatchTarget.OPPORTUNITIES
                 else None
             ),
-            use_location_matching=False,
             confirmed=True,
         )
 
@@ -387,13 +381,11 @@ async def update_chat_profile(
         name=existing_name if update.name is None else update.name,
         likes=update.likes,
         dislikes=update.dislikes,
-        location=None,
         transportation=(
             update.transportation
             if session.match_target is MatchTarget.OPPORTUNITIES
             else None
         ),
-        use_location_matching=False,
         confirmed=True,
     )
 
@@ -577,9 +569,7 @@ async def chat_stream(request: Request):
                     character_count=len(final_text),
                     model=CHAT_MODEL_NAME,
                     first_token_ms=(
-                        round(first_token_ms, 1)
-                        if first_token_ms is not None
-                        else None
+                        round(first_token_ms, 1) if first_token_ms is not None else None
                     ),
                     elapsed_ms=round(elapsed_ms, 1),
                 )
@@ -596,13 +586,11 @@ async def chat_stream(request: Request):
                     name=profile.get("name"),
                     likes=profile.get("likes") or [],
                     dislikes=profile.get("dislikes") or [],
-                    location=None,
                     transportation=(
                         profile.get("transportation")
                         if session.match_target is MatchTarget.OPPORTUNITIES
                         else None
                     ),
-                    use_location_matching=False,
                     confirmed=bool(profile.get("confirmed")),
                 )
 
@@ -640,9 +628,7 @@ async def opportunities_page(
     ranked: bool = False,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
-    location: str | None = None,
     transportation: str | None = None,
-    use_location_matching: bool = True,
 ):
     """Browse opportunities or serve AI-ranked opportunity matches."""
 
@@ -656,9 +642,7 @@ async def opportunities_page(
     profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
-        location=None,
         transportation=transportation,
-        use_location_matching=False,
     )
 
     session = request.state.session
@@ -667,9 +651,7 @@ async def opportunities_page(
         name=session.profile.get("name") if session.profile else None,
         likes=likes,
         dislikes=dislikes,
-        location=None,
         transportation=transportation,
-        use_location_matching=False,
         confirmed=True,
     )
 
@@ -770,9 +752,7 @@ async def rank_opportunities_stream(
     request: Request,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
-    location: str | None = None,
     transportation: str | None = None,
-    use_location_matching: bool = True,
 ):
     """
     Rank ONET jobs in parallel batches and stream result cards as each batch completes.
@@ -785,9 +765,7 @@ async def rank_opportunities_stream(
     profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
-        location=None,
         transportation=transportation,
-        use_location_matching=False,
     )
 
     cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
@@ -865,17 +843,11 @@ async def programs_page(
     request: Request,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
-    location: str | None = None,
-    transportation: str | None = None,
-    use_location_matching: bool | None = None,
 ):
     """Browse programs or serve AI-ranked program matches."""
     has_profile = has_profile_query_params(
         likes=likes,
         dislikes=dislikes,
-        location=None,
-        transportation=None,
-        use_location_matching=None,
     )
 
     if not has_profile:
@@ -894,9 +866,6 @@ async def programs_page(
     profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
-        location=None,
-        transportation=None,
-        use_location_matching=False,
     )
 
     session = request.state.session
@@ -905,9 +874,6 @@ async def programs_page(
         name=session.profile.get("name") if session.profile else None,
         likes=likes,
         dislikes=dislikes,
-        location=None,
-        transportation=None,
-        use_location_matching=False,
         confirmed=True,
     )
 
@@ -922,7 +888,7 @@ async def programs_page(
     ranking_cached = cached is not None
     cached_ranked = cached.ranked if cached else []
 
-    rank_stream_url = profile_url("/api/rank-programs", profile, include_transportation=False)
+    rank_stream_url = profile_url("/api/rank-programs", profile)
 
     return templates.TemplateResponse(
         request,
@@ -984,9 +950,6 @@ async def rank_programs_stream(
     request: Request,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
-    location: str | None = None,
-    transportation: str | None = None,
-    use_location_matching: bool = True,
 ):
     """Rank registered apprenticeship career groups and stream results."""
     session = request.state.session
@@ -994,9 +957,6 @@ async def rank_programs_stream(
     profile = build_profile_from_input(
         likes=likes,
         dislikes=dislikes,
-        location=None,
-        transportation=None,
-        use_location_matching=False,
     )
 
     cached = session.ranking_cache.get(

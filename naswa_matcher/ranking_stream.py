@@ -21,7 +21,7 @@ logger = logging.getLogger("naswa.ranking_stream")
 
 ScoreItems = Callable[[dict, list[dict]], Awaitable[list[dict]]]
 BuildRankedItems = Callable[
-    [list[dict], list[dict], dict[str, int], dict],
+    [list[dict], list[dict], dict[str, int]],
     list[dict],
 ]
 CountUnits = Callable[[list[dict]], int]
@@ -279,7 +279,6 @@ async def _rank_batch(
                 batch_items,
                 scores,
                 item_index,
-                profile,
             )
 
             elapsed_ms = (time.perf_counter() - batch_started_at) * 1000
@@ -458,17 +457,13 @@ async def stream_ranking(
 
         total_elapsed_seconds = round(total_elapsed_ms / 1000)
 
-        final_ranked = sort_ranked_items(
-            progress.ranked,
-            profile,
-        )
+        final_ranked = sort_ranked_items(progress.ranked)
 
         if progress.completed_items == len(items) and not progress.had_batch_error:
             session.ranking_cache.put(
                 profile,
                 target,
                 RankingCacheEntry(
-                    profile=profile,
                     ranked=final_ranked,
                     completed_items=progress.completed_items,
                     total_items=len(items),

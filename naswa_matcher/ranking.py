@@ -7,12 +7,6 @@ from typing import Any
 
 from strands import Agent
 
-from naswa_matcher.location_matching import (
-    LOCATION_FIT_ORDER,
-    cap_tier_by_location,
-    location_fit,
-    should_use_location_matching,
-)
 from naswa_matcher.opportunity_detail import build_opportunity_summary
 
 ModelFactory = Callable[[], Any]
@@ -80,20 +74,18 @@ def normalize_tier(tier: str | None) -> str:
     return "Weak"
 
 
-def build_job_summary(profile: dict, job: dict) -> dict:
+def build_job_summary(job: dict) -> dict:
     """Build the compact opportunity summary sent to the scoring model."""
     posting = job.get("posting", {})
     onet = job.get("onet") or {}
 
-    summary = {
+    return {
         "id": job["id"],
         "title": posting.get("jobTitle"),
         "requirements_summary": posting.get("requirementsSummary"),
         "transportation_requirement": posting.get("transportationRequirement"),
         **build_onet_ranking_fields(onet),
     }
-
-    return summary
 
 
 def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
@@ -153,7 +145,6 @@ def build_ranked_items(
     batch_jobs: list[dict],
     scores: list[dict],
     job_index: dict[str, int],
-    profile: dict,
 ) -> list[dict]:
     """Attach model scores back to jobs and sort this batch by rank."""
     score_map = {
@@ -163,18 +154,10 @@ def build_ranked_items(
     }
 
     ranked = []
-    use_location_matching = should_use_location_matching(profile)
 
     for job in batch_jobs:
         score = score_map.get(job["id"], {})
-        model_tier = normalize_tier(score.get("tier"))
-        job_location_fit = location_fit(profile, job) if use_location_matching else None
-
-        tier = (
-            cap_tier_by_location(model_tier, job_location_fit)
-            if use_location_matching
-            else model_tier
-        )
+        tier = normalize_tier(score.get("tier"))
 
         ranked.append(
             {
@@ -182,29 +165,21 @@ def build_ranked_items(
                 "tier": tier,
                 "tier_order": TIER_ORDER.get(tier, 3),
                 "sort_index": job_index[job["id"]],
-                "location_fit": job_location_fit,
                 "explanation": score.get("explanation", ""),
                 "posting": job["posting"],
                 "summary": build_opportunity_summary(job),
             }
         )
 
-    return sort_ranked_items(ranked, profile)
+    return sort_ranked_items(ranked)
 
 
-def sort_ranked_items(ranked: list[dict], profile: dict) -> list[dict]:
-    """Sort ranked items by tier, location fit, and original order."""
-    use_location_matching = should_use_location_matching(profile)
-
+def sort_ranked_items(ranked: list[dict]) -> list[dict]:
+    """Sort ranked items by tier and original order."""
     return sorted(
         ranked,
         key=lambda item: (
             item["tier_order"],
-            (
-                LOCATION_FIT_ORDER.get(item.get("location_fit"), 9)
-                if use_location_matching
-                else 0
-            ),
             item["sort_index"],
         ),
     )
@@ -217,7 +192,7 @@ async def score_jobs(
     model_factory: ModelFactory,
 ) -> list[dict]:
     """Score O*NET-backed jobs against a user profile."""
-    summaries = [build_job_summary(profile, job) for job in onet_jobs]
+    summaries = [build_job_summary(job) for job in onet_jobs]
     prompt = build_scoring_prompt(profile, summaries)
 
     scorer = Agent(

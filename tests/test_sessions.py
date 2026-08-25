@@ -70,6 +70,61 @@ def test_chat_session_next_message_sequence_increments():
     assert session.chat_message_sequence == 3
 
 
+def test_chat_session_uses_program_target_by_default():
+    agent_factory, _created_agents = agent_factory_with_history()
+
+    session = ChatSession(agent_factory=agent_factory)
+
+    assert session.match_target is MatchTarget.PROGRAMS
+    assert agent_factory.calls[-1]["match_target"] is MatchTarget.PROGRAMS
+
+
+def test_chat_session_creates_agent_for_selected_match_target():
+    agent_factory, _created_agents = agent_factory_with_history()
+
+    session = ChatSession(
+        agent_factory=agent_factory,
+        match_target=MatchTarget.OPPORTUNITIES,
+    )
+
+    assert session.match_target is MatchTarget.OPPORTUNITIES
+    assert agent_factory.calls[-1]["match_target"] is MatchTarget.OPPORTUNITIES
+
+
+def test_set_match_target_replaces_agent_for_new_target():
+    agent_factory, _created_agents = agent_factory_with_history()
+    session = ChatSession(agent_factory=agent_factory)
+
+    original_agent = session.agent
+
+    session.set_match_target(MatchTarget.OPPORTUNITIES)
+
+    assert session.match_target is MatchTarget.OPPORTUNITIES
+    assert session.agent is not original_agent
+    assert agent_factory.calls[-1]["match_target"] is MatchTarget.OPPORTUNITIES
+
+
+def test_set_match_target_to_programs_clears_transportation():
+    agent_factory, _created_agents = agent_factory_with_history()
+
+    session = ChatSession(
+        agent_factory=agent_factory,
+        match_target=MatchTarget.OPPORTUNITIES,
+    )
+    session.profile = {
+        "name": "Taylor",
+        "likes": ["working with tools"],
+        "dislikes": [],
+        "transportation": "public transit",
+        "confirmed": True,
+    }
+
+    session.set_match_target(MatchTarget.PROGRAMS)
+
+    assert session.match_target is MatchTarget.PROGRAMS
+    assert session.profile["transportation"] is None
+
+
 def test_session_store_creates_session_when_session_id_is_missing():
     agent_factory, created_agents = agent_factory_with_history()
 
@@ -157,15 +212,23 @@ def test_session_reset_restores_fresh_state():
     original_agent = session.agent
     original_queue = session.queue
 
-    session.profile = {"likes": ["math"], "confirmed": True}
-    session.messages.append(ChatMessage(role="user", content="I like math."))
+    session.profile = {
+        "likes": ["math"],
+        "confirmed": True,
+    }
+    session.messages.append(
+        ChatMessage(
+            role="user",
+            content="I like math.",
+        )
+    )
     session.queue.put_nowait("stale message")
     session.active_stream_id = "active-stream"
-    session.last_logged_location = "Buffalo"
-    session.ranking_cache.entries["cache-key"] = RankingCacheEntry(profile={})
+    session.ranking_cache.entries["cache-key"] = RankingCacheEntry()
 
     session.next_chat_message_sequence()
     session.next_chat_message_sequence()
+
     assert session.chat_message_sequence == 2
 
     session.reset()
@@ -181,7 +244,6 @@ def test_session_reset_restores_fresh_state():
     ]
     assert session.active_stream_id is None
     assert session.ranking_cache.entries == {}
-    assert session.last_logged_location is None
     assert session.chat_message_sequence == 0
 
 
@@ -209,17 +271,14 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
     original_agent = session.agent
     original_queue = session.queue
 
-    session.ranking_cache.entries["cache-key"] = RankingCacheEntry(profile={})
+    session.ranking_cache.entries["cache-key"] = RankingCacheEntry()
     session.active_stream_id = "active-stream"
-    session.last_logged_location = "Albany"
 
     profile = {
         "name": None,
         "likes": ["electronics"],
         "dislikes": [],
-        "location": "Buffalo",
-        "transportation": "car",
-        "use_location_matching": True,
+        "transportation": None,
         "confirmed": True,
     }
 
@@ -238,7 +297,6 @@ def test_apply_confirmed_profile_replaces_initial_transcript():
     ]
     assert session.active_stream_id is None
     assert session.ranking_cache.entries == {}
-    assert session.last_logged_location is None
 
     context_messages = agent_factory.calls[-1]["messages"]
 
@@ -255,7 +313,10 @@ def test_apply_confirmed_profile_preserves_real_conversation():
 
     session.messages.extend(
         [
-            ChatMessage(role="user", content="My name is Taylor."),
+            ChatMessage(
+                role="user",
+                content="My name is Taylor.",
+            ),
             ChatMessage(
                 role="assistant",
                 content="What kinds of work do you like?",
@@ -271,9 +332,7 @@ def test_apply_confirmed_profile_preserves_real_conversation():
         "name": "Taylor",
         "likes": ["working with tools"],
         "dislikes": [],
-        "location": "Buffalo",
-        "transportation": "public transit",
-        "use_location_matching": True,
+        "transportation": None,
         "confirmed": True,
     }
 
@@ -304,9 +363,7 @@ def test_begin_profile_revision_replaces_agent_with_revision_context():
         "name": "Taylor",
         "likes": ["working with tools"],
         "dislikes": [],
-        "location": "Buffalo",
-        "transportation": "public transit",
-        "use_location_matching": True,
+        "transportation": None,
         "confirmed": True,
     }
 
@@ -344,7 +401,12 @@ def test_has_user_messages_detects_user_participation():
 
     assert session.has_user_messages() is False
 
-    session.messages.append(ChatMessage(role="user", content="Hello"))
+    session.messages.append(
+        ChatMessage(
+            role="user",
+            content="Hello",
+        )
+    )
 
     assert session.has_user_messages() is True
 

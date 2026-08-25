@@ -4,11 +4,6 @@ import json
 
 from strands import Agent
 
-from naswa_matcher.location_matching import (
-    cap_tier_by_location,
-    location_fit_for_regions,
-    should_use_location_matching,
-)
 from naswa_matcher.ranking import (
     TIER_ORDER,
     ModelFactory,
@@ -47,10 +42,7 @@ def program_group_title(program_group: dict) -> str:
     )
 
 
-def build_program_summary(
-    profile: dict,
-    program_group: dict,
-) -> dict:
+def build_program_summary(program_group: dict) -> dict:
     """Build the compact SOC-group summary sent to the scoring model."""
     onet = program_group.get("onet") or {}
     onet_fields = build_onet_ranking_fields(onet)
@@ -135,7 +127,7 @@ async def score_program_groups(
     model_factory: ModelFactory,
 ) -> list[dict]:
     """Score SOC-grouped registered apprenticeship programs."""
-    summaries = [build_program_summary(profile, group) for group in program_groups]
+    summaries = [build_program_summary(group) for group in program_groups]
 
     prompt = build_program_scoring_prompt(
         profile,
@@ -156,7 +148,6 @@ def build_ranked_program_items(
     batch_groups: list[dict],
     scores: list[dict],
     group_index: dict[str, int],
-    profile: dict,
 ) -> list[dict]:
     """Attach model scores to SOC groups and sort one ranking batch."""
     score_map = {
@@ -166,30 +157,11 @@ def build_ranked_program_items(
     }
 
     ranked = []
-    use_location_matching = should_use_location_matching(profile)
 
     for group in batch_groups:
         soc_code = group["socCode"]
         score = score_map.get(soc_code, {})
-        model_tier = normalize_tier(score.get("tier"))
-
-        group_location_fit = (
-            location_fit_for_regions(
-                profile,
-                group.get("regions"),
-            )
-            if use_location_matching
-            else None
-        )
-
-        tier = (
-            cap_tier_by_location(
-                model_tier,
-                group_location_fit,
-            )
-            if use_location_matching
-            else model_tier
-        )
+        tier = normalize_tier(score.get("tier"))
 
         ranked.append(
             {
@@ -198,10 +170,9 @@ def build_ranked_program_items(
                 "tier": tier,
                 "tier_order": TIER_ORDER.get(tier, 3),
                 "sort_index": group_index[soc_code],
-                "location_fit": group_location_fit,
                 "explanation": score.get("explanation", ""),
                 "program_group": group,
             }
         )
 
-    return sort_ranked_items(ranked, profile)
+    return sort_ranked_items(ranked)

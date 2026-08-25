@@ -1,12 +1,11 @@
 import json
 import time
 from collections.abc import Callable
-from dataclasses import dataclass, field, replace
+from dataclasses import dataclass, field
 
-from naswa_matcher.location_matching import should_use_location_matching
 from naswa_matcher.match_target import MatchTarget
 
-RANKING_CACHE_VERSION = "rank-cache-v2"
+RANKING_CACHE_VERSION = "rank-cache-v3"
 
 Clock = Callable[[], float]
 
@@ -15,7 +14,6 @@ Clock = Callable[[], float]
 class RankingCacheEntry:
     """Cached completed ranking for one target and normalized profile."""
 
-    profile: dict
     ranked: list[dict] = field(default_factory=list)
     completed_items: int = 0
     total_items: int = 0
@@ -26,8 +24,11 @@ class RankingCacheEntry:
     is_complete: bool = False
 
 
-def _normalized_profile_for_cache(profile: dict) -> dict:
-    """Return a stable, compact profile shape for ranking-cache keys."""
+def _normalized_profile_for_cache(
+    profile: dict,
+    target: MatchTarget,
+) -> dict:
+    """Return the profile fields that can affect ranking for this target."""
 
     def clean_list(values) -> list[str]:
         if not isinstance(values, list):
@@ -50,13 +51,15 @@ def _normalized_profile_for_cache(profile: dict) -> dict:
         text = str(value).strip()
         return text or None
 
-    return {
+    normalized = {
         "likes": clean_list(profile.get("likes", [])),
         "dislikes": clean_list(profile.get("dislikes", [])),
-        "location": clean_string(profile.get("location")),
-        "transportation": clean_string(profile.get("transportation")),
-        "use_location_matching": should_use_location_matching(profile),
     }
+
+    if target is MatchTarget.OPPORTUNITIES:
+        normalized["transportation"] = clean_string(profile.get("transportation"))
+
+    return normalized
 
 
 @dataclass
@@ -78,7 +81,7 @@ class RankingCache:
             {
                 "version": self.version,
                 "target": target.value,
-                "profile": _normalized_profile_for_cache(profile),
+                "profile": _normalized_profile_for_cache(profile, target),
             },
             sort_keys=True,
             separators=(",", ":"),
@@ -112,12 +115,7 @@ class RankingCache:
         entry: RankingCacheEntry,
     ) -> None:
         """Store a ranking under its target and normalized profile key."""
-        normalized_entry = replace(
-            entry,
-            profile=_normalized_profile_for_cache(profile),
-        )
-
-        self.entries[self.key_for(profile, target)] = normalized_entry
+        self.entries[self.key_for(profile, target)] = entry
 
     def clear(self) -> None:
         """Remove every cached ranking."""

@@ -2,14 +2,15 @@ import pytest
 
 import naswa_matcher.agents as agents
 from naswa_matcher.agents import (
-    CHAT_SYSTEM_PROMPT,
     MODEL_CONFIGS,
     REQUESTED_MAX_OUTPUT_TOKENS,
+    build_chat_system_prompt,
     get_model_config,
     make_bedrock_model,
     make_chat_agent,
     make_scoring_model,
 )
+from naswa_matcher.match_target import MatchTarget
 
 
 @pytest.mark.parametrize(
@@ -100,7 +101,7 @@ def test_make_bedrock_model_uses_temperature_override(monkeypatch):
     assert captured["temperature"] == 0.7
 
 
-def test_make_chat_agent_uses_streaming_chat_model_and_system_prompt(monkeypatch):
+def test_make_chat_agent_uses_program_prompt_by_default(monkeypatch):
     fake_model = object()
     captured = {}
 
@@ -127,9 +128,35 @@ def test_make_chat_agent_uses_streaming_chat_model_and_system_prompt(monkeypatch
     assert captured["agent_kwargs"] == {
         "model": fake_model,
         "messages": None,
-        "system_prompt": CHAT_SYSTEM_PROMPT,
+        "system_prompt": build_chat_system_prompt(MatchTarget.PROGRAMS),
         "callback_handler": None,
     }
+
+
+def test_make_chat_agent_uses_opportunity_prompt_for_opportunity_target(
+    monkeypatch,
+):
+    fake_model = object()
+    captured = {}
+
+    def fake_make_bedrock_model(model_name, *, streaming, temperature=None):
+        return fake_model
+
+    def fake_agent(**kwargs):
+        captured["agent_kwargs"] = kwargs
+        return object()
+
+    monkeypatch.setattr(agents, "make_bedrock_model", fake_make_bedrock_model)
+    monkeypatch.setattr(agents, "Agent", fake_agent)
+
+    result = make_chat_agent(
+        match_target=MatchTarget.OPPORTUNITIES,
+    )
+
+    assert result is not None
+    assert captured["agent_kwargs"]["system_prompt"] == build_chat_system_prompt(
+        MatchTarget.OPPORTUNITIES
+    )
 
 
 def test_make_chat_agent_passes_initial_messages(monkeypatch):
@@ -153,7 +180,7 @@ def test_make_chat_agent_passes_initial_messages(monkeypatch):
         }
     ]
 
-    result = make_chat_agent(messages=messages)
+    result = make_chat_agent(match_target=MatchTarget.PROGRAMS, messages=messages)
 
     assert result is not None
     assert captured["agent_kwargs"]["messages"] is messages
@@ -180,3 +207,17 @@ def test_make_scoring_model_uses_non_streaming_scoring_model(monkeypatch):
         "streaming": False,
         "temperature": None,
     }
+
+
+def test_program_chat_prompt_uses_program_matching_instructions():
+    prompt = build_chat_system_prompt(MatchTarget.PROGRAMS)
+
+    assert "registered apprenticeship career groups" in prompt
+    assert "Do not ask the transportation question" in prompt
+
+
+def test_opportunity_chat_prompt_uses_transportation_instructions():
+    prompt = build_chat_system_prompt(MatchTarget.OPPORTUNITIES)
+
+    assert "specific apprenticeship opportunities" in prompt
+    assert "How would you usually get to job sites or classes" in prompt

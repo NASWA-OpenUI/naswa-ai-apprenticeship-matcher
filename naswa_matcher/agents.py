@@ -315,7 +315,6 @@ def build_chat_system_prompt(match_target: MatchTarget) -> str:
 CHAT_SYSTEM_PROMPT = build_chat_system_prompt(DEFAULT_MATCH_TARGET)
 
 
-
 @dataclass(frozen=True)
 class ModelConfig:
     """Configuration for a supported Bedrock model."""

@@ -172,11 +172,11 @@ def test_configure_logging_can_disable_named_logger():
 def test_request_url_preserves_query_string():
     request = make_request(
         path="/opportunities",
-        query_string=b"ranked=true&likes=computers&location=Buffalo%2C+NY",
+        query_string=b"ranked=true&likes=computers&dislikes=office%2C+desk+work",
     )
 
     assert request_url(request) == (
-        "/opportunities" "?ranked=true&likes=computers&location=Buffalo%2C+NY"
+        "/opportunities" "?ranked=true&likes=computers&dislikes=office%2C+desk+work"
     )
 
 

@@ -60,8 +60,6 @@ def confirm_profile_from_query(client):
         "/chat",
         params=[
             ("likes", "art"),
-            ("location", "Buffalo"),
-            ("transportation", "can drive"),
         ],
     )
 
@@ -335,9 +333,6 @@ def test_chat_profile_logs_edit_profile(client):
             json={
                 "likes": ["art"],
                 "dislikes": [],
-                "location": "Buffalo",
-                "transportation": "can drive",
-                "use_location_matching": True,
             },
         )
 

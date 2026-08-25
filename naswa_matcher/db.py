@@ -2,8 +2,6 @@ import json
 import sqlite3
 from pathlib import Path
 
-from naswa_matcher.location_data import load_location_data
-
 PACKAGE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PACKAGE_DIR.parent
 
@@ -20,7 +18,6 @@ def load() -> None:
     try:
         load_opportunities(conn)
         load_programs(conn)
-        load_location_data(conn)
         conn.commit()
     finally:
         conn.close()

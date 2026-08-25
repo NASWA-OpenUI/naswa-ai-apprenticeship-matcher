@@ -92,6 +92,7 @@ def _chat_profile(profile: dict, match_target: MatchTarget) -> dict:
 
     return chat_profile
 
+
 def _profile_context_messages(
     profile: dict,
     match_target: MatchTarget,
@@ -166,11 +167,10 @@ class ChatSession:
     last_seen: float = field(default_factory=time.time)
     active_stream_id: str | None = None
     ranking_cache: RankingCache = field(default_factory=_new_ranking_cache)
-    last_logged_location: str | None = None
 
     def __post_init__(self) -> None:
         self.agent = self.agent_factory(match_target=self.match_target)
-        
+
     def set_match_target(self, match_target: MatchTarget) -> None:
         """Switch the guided chat to the selected matching journey."""
         if match_target is self.match_target:
@@ -181,14 +181,13 @@ class ChatSession:
         if self.profile:
             self.profile = {
                 **self.profile,
-                "location": None,
                 "transportation": (
                     self.profile.get("transportation")
                     if match_target is MatchTarget.OPPORTUNITIES
                     else None
                 ),
-                "use_location_matching": False,
             }
+
             self._replace_agent_with_profile_context(
                 revision_mode=not self.profile.get("confirmed", False),
             )
@@ -213,7 +212,6 @@ class ChatSession:
         self.chat_message_sequence = 0
         self.active_stream_id = None
         self.ranking_cache.clear()
-        self.last_logged_location = None
 
     def apply_confirmed_profile(self, profile: dict) -> None:
         """
@@ -270,7 +268,6 @@ class ChatSession:
 
         self._replace_agent_with_profile_context(revision_mode=False)
         self.ranking_cache.clear()
-        self.last_logged_location = None
 
     def begin_profile_revision(self) -> bool:
         """

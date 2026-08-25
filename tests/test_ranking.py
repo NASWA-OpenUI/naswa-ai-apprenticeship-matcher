@@ -10,56 +10,6 @@ from naswa_matcher.ranking import (
 )
 
 
-def make_rankable_job(
-    *,
-    location_summary: str = "Binghamton, NY area",
-    regions: list[str] | None = None,
-) -> dict:
-    """Builds a compact O*NET-backed job fixture for testing ranking prompt
-    and summary behavior without depending on the full route fixtures."""
-    return {
-        "id": "electrician-apprentice-fixture",
-        "posting": {
-            "jobTitle": "Electrician Apprentice",
-            "locationSummary": location_summary,
-            "regions": regions or ["Southern Tier"],
-            "requirementsSummary": "Applicants should like hands-on technical work.",
-            "transportationRequirement": "Must have reliable transportation.",
-            "allRequirements": [
-                "Must have reliable transportation.",
-                "Jurisdiction includes Broome County.",
-            ],
-        },
-        "onet": {
-            "description": "Install, maintain, and repair electrical wiring and equipment.",
-            "skills": {
-                "data": {
-                    "element": [
-                        {"name": "Troubleshooting"},
-                        {"name": "Repairing"},
-                    ]
-                }
-            },
-            "detailed_work_activities": {
-                "data": {
-                    "activity": [
-                        {"title": "Repair electrical equipment."},
-                        {"title": "Install electrical components."},
-                    ]
-                }
-            },
-            "work_styles": {
-                "data": {
-                    "element": [
-                        {"name": "Attention to Detail"},
-                        {"name": "Dependability"},
-                    ]
-                }
-            },
-        },
-    }
-
-
 @pytest.mark.parametrize(
     "tier",
     [
@@ -88,17 +38,13 @@ def test_normalize_tier_defaults_unexpected_values_to_weak(tier):
     assert normalize_tier(tier) == "Weak"
 
 
-def test_build_job_summary_extracts_onet_fields():
-    """Verifies that build_job_summary extracts the core posting fields,
-    location fit, and compact O*NET fields sent to the scoring model."""
-    profile = {}
-
+def test_build_job_summary_extracts_posting_and_onet_fields():
+    """Verifies that build_job_summary extracts the compact opportunity fields
+    sent to the scoring model."""
     job = {
         "id": "electrician-apprentice",
         "posting": {
             "jobTitle": "Electrician Apprentice",
-            "locationSummary": "Buffalo, NY area",
-            "regions": ["Western New York"],
             "requirementsSummary": "Must have reliable transportation.",
             "transportationRequirement": "Must have reliable transportation.",
         },
@@ -129,46 +75,55 @@ def test_build_job_summary_extracts_onet_fields():
         },
     }
 
-    summary = build_job_summary(profile, job)
+    summary = build_job_summary(job)
 
-    assert summary["id"] == "electrician-apprentice"
-    assert summary["title"] == "Electrician Apprentice"
-    assert summary["skills"] == ["Troubleshooting", "Critical Thinking"]
-    assert summary["activities"] == ["Repair electrical equipment"]
-    assert summary["work_styles"] == ["Attention to Detail"]
+    assert summary == {
+        "id": "electrician-apprentice",
+        "title": "Electrician Apprentice",
+        "requirements_summary": "Must have reliable transportation.",
+        "transportation_requirement": "Must have reliable transportation.",
+        "description": "Install, maintain, and repair electrical wiring.",
+        "skills": [
+            "Troubleshooting",
+            "Critical Thinking",
+        ],
+        "activities": [
+            "Repair electrical equipment",
+        ],
+        "work_styles": [
+            "Attention to Detail",
+        ],
+    }
 
 
 def test_build_job_summary_handles_missing_onet_sections():
     """Verifies that missing optional O*NET sections become empty lists instead
     of raising errors or sending malformed values to the scoring model."""
-    profile = {"location": "Buffalo area"}
-
     job = {
         "id": "partial-job",
         "posting": {
             "jobTitle": "Partial Job",
-            "locationSummary": "Buffalo, NY area",
         },
         "onet": {
             "description": "A partial O*NET record.",
         },
     }
 
-    summary = build_job_summary(profile, job)
+    summary = build_job_summary(job)
 
+    assert summary["description"] == "A partial O*NET record."
     assert summary["skills"] == []
     assert summary["activities"] == []
     assert summary["work_styles"] == []
 
 
 def test_build_scoring_prompt_includes_profile_and_jobs():
-    """Verifies that the scoring prompt includes the user profile, supplied job
-    summaries, and strict JSON response instructions."""
+    """Verifies that the scoring prompt includes the active opportunity profile,
+    supplied job summaries, and strict JSON response instructions."""
     profile = {
         "likes": ["hands-on work"],
-        "dislikes": [],
-        "location": "Buffalo area",
-        "transportation": "car",
+        "dislikes": ["desk work"],
+        "transportation": "Can drive",
     }
 
     prompt = build_scoring_prompt(
@@ -177,15 +132,43 @@ def test_build_scoring_prompt_includes_profile_and_jobs():
             {
                 "id": "job-1",
                 "title": "Electrician Apprentice",
-                "location_fit": "local",
+                "transportation_requirement": ("Must have reliable transportation."),
             }
         ],
     )
 
     assert "Profile:" in prompt
     assert "hands-on work" in prompt
+    assert "desk work" in prompt
+    assert "Can drive" in prompt
     assert "job-1" in prompt
+    assert "Electrician Apprentice" in prompt
+    assert "Must have reliable transportation." in prompt
     assert "Return ONLY a JSON array" in prompt
+
+
+def test_build_scoring_prompt_includes_transportation_guidance():
+    """Verifies that transportation remains a scoring factor for opportunities."""
+    profile = {
+        "likes": ["hands-on work"],
+        "dislikes": ["desk work"],
+        "transportation": "Takes public transit",
+    }
+
+    prompt = build_scoring_prompt(
+        profile,
+        [
+            {
+                "id": "job-1",
+                "transportation_requirement": ("Must have reliable transportation."),
+            }
+        ],
+    )
+
+    assert "Use transportation only when" in prompt
+    assert "A transportation concern can be a caveat" in prompt
+    assert "Takes public transit" in prompt
+    assert "Must have reliable transportation." in prompt
 
 
 def test_parse_scoring_response_accepts_plain_json():
@@ -225,77 +208,14 @@ def test_parse_scoring_response_rejects_non_array_json():
         parse_scoring_response('{"id":"job-1","tier":"Strong"}')
 
 
-def test_build_scoring_prompt_includes_transportation_guidance():
-    """Verifies that transportation remains a scoring factor for opportunities."""
-    profile = {
-        "likes": ["hands-on work"],
-        "dislikes": ["desk work"],
-        "transportation": "Takes public transit",
-    }
-
-    prompt = build_scoring_prompt(
-        profile,
-        [
-            {
-                "id": "job-1",
-                "transportation_requirement": "Must have reliable transportation.",
-            }
-        ],
-    )
-
-    assert "Use transportation only when" in prompt
-    assert "A transportation concern can be a caveat" in prompt
-    assert "Takes public transit" in prompt
-    assert "Must have reliable transportation." in prompt
-
-
-def test_build_scoring_prompt_excludes_location_from_profile_and_guidance():
-    """Verifies that location is never sent to or considered by opportunity scoring."""
-    profile = {
-        "likes": ["hands-on work"],
-        "dislikes": [],
-        "location": "Buffalo area",
-        "transportation": "Can drive",
-        "use_location_matching": True,
-    }
-
-    prompt = build_scoring_prompt(
-        profile,
-        [
-            {
-                "id": "job-1",
-                "transportation_requirement": "Must have reliable transportation.",
-            }
-        ],
-    )
-
-    assert "hands-on work" in prompt
-    assert "Can drive" in prompt
-
-    assert "Buffalo area" not in prompt
-    assert "use_location_matching" not in prompt
-    assert "location_fit" not in prompt
-
-    assert "Location is a major ranking factor" not in prompt
-    assert "If location_fit is far" not in prompt
-    assert "Having a car helps with local travel" not in prompt
-
-
 def test_build_ranked_items_attaches_scores_to_jobs():
     """Verifies that model scores and derived opportunity summary facts are
     attached to jobs using each job ID."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
     jobs = [
         {
             "id": "job-1",
             "posting": {
                 "jobTitle": "Electrician Apprentice",
-                "locationSummary": "Buffalo, NY area",
-                "regions": ["Western New York"],
                 "numberOfOpenings": 3,
                 "applicationFee": "25",
                 "transportationRequirement": (
@@ -317,7 +237,6 @@ def test_build_ranked_items_attaches_scores_to_jobs():
         batch_jobs=jobs,
         scores=scores,
         job_index=job_index,
-        profile=profile,
     )
 
     assert ranked == [
@@ -326,7 +245,6 @@ def test_build_ranked_items_attaches_scores_to_jobs():
             "tier": "Strong",
             "tier_order": 0,
             "sort_index": 7,
-            "location_fit": "local",
             "explanation": "Good fit for hands-on technical work.",
             "posting": jobs[0]["posting"],
             "summary": {
@@ -340,18 +258,11 @@ def test_build_ranked_items_attaches_scores_to_jobs():
 
 def test_build_ranked_items_defaults_missing_scores_to_weak():
     """Verifies that jobs missing from the model response are kept as Weak matches."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
     jobs = [
         {
             "id": "job-1",
             "posting": {
                 "jobTitle": "Electrician Apprentice",
-                "locationSummary": "Buffalo, NY area",
-                "regions": ["Western New York"],
             },
         }
     ]
@@ -360,7 +271,6 @@ def test_build_ranked_items_defaults_missing_scores_to_weak():
         batch_jobs=jobs,
         scores=[],
         job_index={"job-1": 0},
-        profile=profile,
     )
 
     assert ranked[0]["id"] == "job-1"
@@ -369,209 +279,109 @@ def test_build_ranked_items_defaults_missing_scores_to_weak():
     assert ranked[0]["explanation"] == ""
 
 
-def test_build_ranked_items_caps_strong_tier_for_far_location():
-    """Verifies that location matching prevents far-away jobs from staying Strong."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
+def test_build_ranked_items_sorts_by_tier_and_original_order():
+    """Verifies that ranked batch results are sorted by tier and then by their
+    original source order."""
     jobs = [
         {
-            "id": "nyc-job",
+            "id": "weak-earlier",
             "posting": {
-                "jobTitle": "Electrician Apprentice",
-                "locationSummary": "New York City, NY area",
-                "regions": ["New York City"],
-                "allRequirements": [],
+                "jobTitle": "Weak Earlier Job",
             },
-        }
+        },
+        {
+            "id": "strong-earlier",
+            "posting": {
+                "jobTitle": "Strong Earlier Job",
+            },
+        },
+        {
+            "id": "strong-later",
+            "posting": {
+                "jobTitle": "Strong Later Job",
+            },
+        },
+        {
+            "id": "moderate",
+            "posting": {
+                "jobTitle": "Moderate Job",
+            },
+        },
     ]
     scores = [
         {
-            "id": "nyc-job",
+            "id": "weak-earlier",
+            "tier": "Weak",
+            "explanation": "",
+        },
+        {
+            "id": "strong-earlier",
             "tier": "Strong",
-            "explanation": "Good technical match.",
-        }
-    ]
-
-    ranked = build_ranked_items(
-        batch_jobs=jobs,
-        scores=scores,
-        job_index={"nyc-job": 0},
-        profile=profile,
-    )
-
-    assert ranked[0]["location_fit"] == "far"
-    assert ranked[0]["tier"] == "Moderate"
-    assert ranked[0]["tier_order"] == 1
-
-
-def test_build_ranked_items_does_not_cap_by_location_when_matching_disabled():
-    """Verifies that statewide users are not capped by derived location fit."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": False,
-    }
-    jobs = [
+            "explanation": "",
+        },
         {
-            "id": "nyc-job",
-            "posting": {
-                "jobTitle": "Electrician Apprentice",
-                "locationSummary": "New York City, NY area",
-                "regions": ["New York City"],
-                "allRequirements": [],
-            },
-        }
-    ]
-    scores = [
-        {
-            "id": "nyc-job",
+            "id": "strong-later",
             "tier": "Strong",
-            "explanation": "Good technical match.",
-        }
-    ]
-
-    ranked = build_ranked_items(
-        batch_jobs=jobs,
-        scores=scores,
-        job_index={"nyc-job": 0},
-        profile=profile,
-    )
-
-    assert ranked[0]["location_fit"] is None
-    assert ranked[0]["tier"] == "Strong"
-    assert ranked[0]["tier_order"] == 0
-
-
-def test_build_ranked_items_sorts_batch_by_tier_location_and_original_order():
-    """Verifies that ranked batch results are sorted by tier, location fit, and source order."""
-    profile = {
-        "likes": ["hands-on work"],
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
-    jobs = [
-        {
-            "id": "weak-local",
-            "posting": {
-                "jobTitle": "Weak Local Job",
-                "locationSummary": "Buffalo, NY area",
-                "regions": ["Western New York"],
-                "allRequirements": [],
-            },
+            "explanation": "",
         },
         {
-            "id": "strong-far",
-            "posting": {
-                "jobTitle": "Strong Far Job",
-                "locationSummary": "New York City, NY area",
-                "regions": ["New York City"],
-                "allRequirements": [],
-            },
+            "id": "moderate",
+            "tier": "Moderate",
+            "explanation": "",
         },
-        {
-            "id": "strong-local",
-            "posting": {
-                "jobTitle": "Strong Local Job",
-                "locationSummary": "Buffalo, NY area",
-                "regions": ["Western New York"],
-                "allRequirements": [],
-            },
-        },
-    ]
-    scores = [
-        {"id": "weak-local", "tier": "Weak", "explanation": ""},
-        {"id": "strong-far", "tier": "Strong", "explanation": ""},
-        {"id": "strong-local", "tier": "Strong", "explanation": ""},
     ]
     job_index = {
-        "weak-local": 0,
-        "strong-far": 1,
-        "strong-local": 2,
+        "weak-earlier": 0,
+        "strong-earlier": 1,
+        "strong-later": 2,
+        "moderate": 3,
     }
 
     ranked = build_ranked_items(
         batch_jobs=jobs,
         scores=scores,
         job_index=job_index,
-        profile=profile,
     )
 
     assert [item["id"] for item in ranked] == [
-        "strong-local",
-        "strong-far",
-        "weak-local",
+        "strong-earlier",
+        "strong-later",
+        "moderate",
+        "weak-earlier",
     ]
 
 
-def test_sort_ranked_items_orders_by_tier_location_and_original_order():
-    """Verifies that final ranked results use tier, location fit, and source order."""
-    profile = {
-        "location": "Buffalo area",
-        "use_location_matching": True,
-    }
+def test_sort_ranked_items_orders_by_tier_and_original_order():
+    """Verifies that final ranked results sort by tier and use original source
+    order as the tie-breaker."""
     ranked = [
-        {"id": "weak-local", "tier_order": 2, "location_fit": "local", "sort_index": 0},
-        {"id": "strong-far", "tier_order": 0, "location_fit": "far", "sort_index": 1},
         {
-            "id": "strong-local-later",
+            "id": "weak-earlier",
+            "tier_order": 2,
+            "sort_index": 0,
+        },
+        {
+            "id": "strong-later",
             "tier_order": 0,
-            "location_fit": "local",
             "sort_index": 3,
         },
         {
-            "id": "strong-local-earlier",
+            "id": "strong-earlier",
             "tier_order": 0,
-            "location_fit": "local",
             "sort_index": 2,
         },
         {
-            "id": "moderate-nearby",
+            "id": "moderate",
             "tier_order": 1,
-            "location_fit": "nearby",
             "sort_index": 4,
         },
     ]
 
-    sorted_items = sort_ranked_items(ranked, profile)
+    sorted_items = sort_ranked_items(ranked)
 
     assert [item["id"] for item in sorted_items] == [
-        "strong-local-earlier",
-        "strong-local-later",
-        "strong-far",
-        "moderate-nearby",
-        "weak-local",
-    ]
-
-
-def test_sort_ranked_items_ignores_location_when_matching_disabled():
-    """Verifies that location fit does not affect sort order for statewide users."""
-    profile = {
-        "location": "Buffalo area",
-        "use_location_matching": False,
-    }
-    ranked = [
-        {
-            "id": "strong-far-earlier",
-            "tier_order": 0,
-            "location_fit": "far",
-            "sort_index": 1,
-        },
-        {
-            "id": "strong-local-later",
-            "tier_order": 0,
-            "location_fit": "local",
-            "sort_index": 2,
-        },
-        {"id": "weak-local", "tier_order": 2, "location_fit": "local", "sort_index": 0},
-    ]
-
-    sorted_items = sort_ranked_items(ranked, profile)
-
-    assert [item["id"] for item in sorted_items] == [
-        "strong-far-earlier",
-        "strong-local-later",
-        "weak-local",
+        "strong-earlier",
+        "strong-later",
+        "moderate",
+        "weak-earlier",
     ]

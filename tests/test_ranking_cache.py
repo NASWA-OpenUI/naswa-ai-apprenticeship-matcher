@@ -9,9 +9,7 @@ def make_profile(**overrides) -> dict:
         "name": "Taylor",
         "likes": ["math", "electronics"],
         "dislikes": ["desk work"],
-        "location": "Buffalo",
         "transportation": "car",
-        "use_location_matching": True,
         "confirmed": True,
     }
     profile.update(overrides)
@@ -25,14 +23,17 @@ def test_equivalent_cleaned_profiles_generate_same_key():
         name="Ignored Name",
         likes=[" math ", "electronics "],
         dislikes=[" desk work "],
-        location=" Buffalo ",
         transportation=" car ",
         confirmed=False,
     )
     cleaned = make_profile()
 
-    assert cache.key_for(uncleaned, MatchTarget.OPPORTUNITIES) == cache.key_for(
-        cleaned, MatchTarget.OPPORTUNITIES
+    assert cache.key_for(
+        uncleaned,
+        MatchTarget.OPPORTUNITIES,
+    ) == cache.key_for(
+        cleaned,
+        MatchTarget.OPPORTUNITIES,
     )
 
 
@@ -48,24 +49,103 @@ def test_profile_fields_that_do_not_affect_ranking_are_ignored():
         confirmed=True,
     )
 
-    assert cache.key_for(first, MatchTarget.OPPORTUNITIES) == cache.key_for(
-        second, MatchTarget.OPPORTUNITIES
+    assert cache.key_for(
+        first,
+        MatchTarget.OPPORTUNITIES,
+    ) == cache.key_for(
+        second,
+        MatchTarget.OPPORTUNITIES,
     )
 
 
 def test_list_order_is_preserved_in_cache_key():
     cache = RankingCache(max_age_seconds=100)
 
-    first = make_profile(likes=["math", "electronics"])
-    second = make_profile(likes=["electronics", "math"])
-
-    assert cache.key_for(first, MatchTarget.OPPORTUNITIES) != cache.key_for(
-        second, MatchTarget.OPPORTUNITIES
+    first = make_profile(
+        likes=["math", "electronics"],
     )
+    second = make_profile(
+        likes=["electronics", "math"],
+    )
+
+    assert cache.key_for(
+        first,
+        MatchTarget.OPPORTUNITIES,
+    ) != cache.key_for(
+        second,
+        MatchTarget.OPPORTUNITIES,
+    )
+
+
+def test_opportunity_cache_key_includes_transportation():
+    cache = RankingCache(max_age_seconds=100)
+
+    driving = make_profile(
+        transportation="car",
+    )
+    transit = make_profile(
+        transportation="public transit",
+    )
+
+    assert cache.key_for(
+        driving,
+        MatchTarget.OPPORTUNITIES,
+    ) != cache.key_for(
+        transit,
+        MatchTarget.OPPORTUNITIES,
+    )
+
+
+def test_program_cache_key_ignores_transportation():
+    cache = RankingCache(max_age_seconds=100)
+
+    driving = make_profile(
+        transportation="car",
+    )
+    transit = make_profile(
+        transportation="public transit",
+    )
+
+    assert cache.key_for(
+        driving,
+        MatchTarget.PROGRAMS,
+    ) == cache.key_for(
+        transit,
+        MatchTarget.PROGRAMS,
+    )
+
+
+def test_cache_key_contains_only_ranking_fields_for_target():
+    cache = RankingCache(max_age_seconds=100)
+
+    opportunity_payload = json.loads(
+        cache.key_for(
+            make_profile(),
+            MatchTarget.OPPORTUNITIES,
+        )
+    )
+    program_payload = json.loads(
+        cache.key_for(
+            make_profile(),
+            MatchTarget.PROGRAMS,
+        )
+    )
+
+    assert opportunity_payload["profile"] == {
+        "likes": ["math", "electronics"],
+        "dislikes": ["desk work"],
+        "transportation": "car",
+    }
+
+    assert program_payload["profile"] == {
+        "likes": ["math", "electronics"],
+        "dislikes": ["desk work"],
+    }
 
 
 def test_complete_fresh_entry_is_returned():
     now = [100.0]
+
     cache = RankingCache(
         max_age_seconds=10,
         clock=lambda: now[0],
@@ -76,7 +156,6 @@ def test_complete_fresh_entry_is_returned():
         profile,
         MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
-            profile=profile,
             ranked=[{"id": "electrician"}],
             completed_items=1,
             total_items=1,
@@ -85,7 +164,10 @@ def test_complete_fresh_entry_is_returned():
         ),
     )
 
-    cached = cache.get(profile, MatchTarget.OPPORTUNITIES)
+    cached = cache.get(
+        profile,
+        MatchTarget.OPPORTUNITIES,
+    )
 
     assert cached is not None
     assert cached.ranked == [{"id": "electrician"}]
@@ -93,36 +175,9 @@ def test_complete_fresh_entry_is_returned():
     assert cached.total_items == 1
 
 
-def test_put_stores_normalized_profile_snapshot():
-    cache = RankingCache(max_age_seconds=100)
-    profile = make_profile(
-        likes=[" math ", " electronics "],
-        location=" Buffalo ",
-    )
-
-    cache.put(
-        profile,
-        MatchTarget.OPPORTUNITIES,
-        RankingCacheEntry(
-            profile=profile,
-            is_complete=True,
-        ),
-    )
-
-    cached = cache.get(profile, MatchTarget.OPPORTUNITIES)
-
-    assert cached is not None
-    assert cached.profile == {
-        "likes": ["math", "electronics"],
-        "dislikes": ["desk work"],
-        "location": "Buffalo",
-        "transportation": "car",
-        "use_location_matching": True,
-    }
-
-
 def test_expired_entry_is_rejected_and_removed():
     now = [100.0]
+
     cache = RankingCache(
         max_age_seconds=10,
         clock=lambda: now[0],
@@ -133,16 +188,24 @@ def test_expired_entry_is_rejected_and_removed():
         profile,
         MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
-            profile=profile,
             created_at=89.0,
             is_complete=True,
         ),
     )
 
-    key = cache.key_for(profile, MatchTarget.OPPORTUNITIES)
+    key = cache.key_for(
+        profile,
+        MatchTarget.OPPORTUNITIES,
+    )
 
     assert key in cache.entries
-    assert cache.get(profile, MatchTarget.OPPORTUNITIES) is None
+    assert (
+        cache.get(
+            profile,
+            MatchTarget.OPPORTUNITIES,
+        )
+        is None
+    )
     assert key not in cache.entries
 
 
@@ -157,13 +220,18 @@ def test_incomplete_entry_is_rejected():
         profile,
         MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
-            profile=profile,
             created_at=100.0,
             is_complete=False,
         ),
     )
 
-    assert cache.get(profile, MatchTarget.OPPORTUNITIES) is None
+    assert (
+        cache.get(
+            profile,
+            MatchTarget.OPPORTUNITIES,
+        )
+        is None
+    )
 
 
 def test_cache_version_change_invalidates_existing_key():
@@ -172,7 +240,7 @@ def test_cache_version_change_invalidates_existing_key():
 
     original_cache = RankingCache(
         max_age_seconds=100,
-        version="rank-cache-v1",
+        version="rank-cache-v2",
         entries=entries,
         clock=lambda: 100.0,
     )
@@ -180,7 +248,6 @@ def test_cache_version_change_invalidates_existing_key():
         profile,
         MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
-            profile=profile,
             created_at=100.0,
             is_complete=True,
         ),
@@ -188,21 +255,18 @@ def test_cache_version_change_invalidates_existing_key():
 
     updated_cache = RankingCache(
         max_age_seconds=100,
-        version="rank-cache-v2",
+        version="rank-cache-v3",
         entries=entries,
         clock=lambda: 100.0,
     )
 
-    assert updated_cache.get(profile, MatchTarget.OPPORTUNITIES) is None
-
-
-def test_false_location_matching_is_preserved_in_key():
-    cache = RankingCache(max_age_seconds=100)
-    profile = make_profile(use_location_matching=False)
-
-    payload = json.loads(cache.key_for(profile, MatchTarget.OPPORTUNITIES))
-
-    assert payload["profile"]["use_location_matching"] is False
+    assert (
+        updated_cache.get(
+            profile,
+            MatchTarget.OPPORTUNITIES,
+        )
+        is None
+    )
 
 
 def test_clear_removes_all_entries():
@@ -213,7 +277,6 @@ def test_clear_removes_all_entries():
         profile,
         MatchTarget.OPPORTUNITIES,
         RankingCacheEntry(
-            profile=profile,
             is_complete=True,
         ),
     )

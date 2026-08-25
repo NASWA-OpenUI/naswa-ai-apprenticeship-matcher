@@ -27,11 +27,7 @@ def make_program_group(*, trades: list[dict] | None = None) -> dict:
             "detailed_work_activities": {
                 "data": {
                     "activity": [
-                        {
-                            "title": (
-                                "Help clients get needed services " "or resources."
-                            )
-                        },
+                        {"title": ("Help clients get needed services or resources.")},
                     ]
                 }
             },
@@ -51,7 +47,9 @@ def make_program_group(*, trades: list[dict] | None = None) -> dict:
                 {
                     "tradeName": "Direct Support Professional",
                     "displayTradeName": "Direct Support Professional",
-                    "description": "Helps people with daily living and community support.",
+                    "description": (
+                        "Helps people with daily living and community support."
+                    ),
                     "programCount": 3,
                     "programs": [
                         {
@@ -62,20 +60,6 @@ def make_program_group(*, trades: list[dict] | None = None) -> dict:
                 }
             ]
         ),
-    }
-
-
-def make_profile(
-    *,
-    location: str | None = "Buffalo",
-    use_location_matching: bool = True,
-) -> dict:
-    return {
-        "likes": ["helping people"],
-        "dislikes": [],
-        "location": location,
-        "transportation": None,
-        "use_location_matching": use_location_matching,
     }
 
 
@@ -107,7 +91,7 @@ def test_program_group_title_uses_soc_title_for_multiple_trades():
 def test_build_program_summary_extracts_program_and_onet_fields():
     group = make_program_group()
 
-    summary = build_program_summary(make_profile(), group)
+    summary = build_program_summary(group)
 
     assert summary == {
         "id": "21-1093.00",
@@ -142,7 +126,7 @@ def test_build_program_summary_extracts_program_and_onet_fields():
 def test_build_program_summary_excludes_individual_program_records():
     group = make_program_group()
 
-    summary = build_program_summary(make_profile(), group)
+    summary = build_program_summary(group)
 
     assert "programs" not in summary["trades"][0]
     assert "programCount" not in summary["trades"][0]
@@ -170,7 +154,7 @@ def test_build_program_summary_includes_every_trade_description():
         ]
     )
 
-    summary = build_program_summary(make_profile(), group)
+    summary = build_program_summary(group)
 
     assert summary["trades"] == [
         {

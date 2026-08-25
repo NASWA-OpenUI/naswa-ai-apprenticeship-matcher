@@ -13,9 +13,7 @@ class ChatProfileUpdate(BaseModel):
     name: str | None = None
     likes: list[str] = Field(default_factory=list)
     dislikes: list[str] = Field(default_factory=list)
-    location: str | None = None
     transportation: str | None = None
-    use_location_matching: bool = True
 
 
 def strip_profile(text: str) -> str:
@@ -43,9 +41,7 @@ def build_profile(
     *,
     likes: list[str],
     dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool,
+    transportation: str | None = None,
     name: str | None = None,
     confirmed: bool = False,
 ) -> dict:
@@ -54,9 +50,7 @@ def build_profile(
         "name": name,
         "likes": likes,
         "dislikes": dislikes,
-        "location": location,
         "transportation": transportation,
-        "use_location_matching": use_location_matching,
         "confirmed": confirmed,
     }
 
@@ -83,9 +77,7 @@ def build_profile_from_input(
     *,
     likes: list[str],
     dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool | None,
+    transportation: str | None = None,
     name: str | None = None,
     confirmed: bool = False,
 ) -> dict:
@@ -94,11 +86,7 @@ def build_profile_from_input(
         name=(name or "").strip() or None,
         likes=clean_profile_values(likes),
         dislikes=clean_profile_values(dislikes),
-        location=(location or "").strip() or None,
         transportation=(transportation or "").strip() or None,
-        use_location_matching=(
-            True if use_location_matching is None else use_location_matching
-        ),
         confirmed=confirmed,
     )
 
@@ -107,18 +95,14 @@ def has_profile_query_params(
     *,
     likes: list[str],
     dislikes: list[str],
-    location: str | None,
-    transportation: str | None,
-    use_location_matching: bool | None,
+    transportation: str | None = None,
 ) -> bool:
     """Return whether a request includes any profile-prefill parameters."""
     return any(
         [
             likes,
             dislikes,
-            location is not None,
             transportation is not None,
-            use_location_matching is not None,
         ]
     )
 
