@@ -1,0 +1,43 @@
+<section id="no-strong-match-notice" class="match-fit-notice" hidden role="status" aria-live="polite"
+    aria-labelledby="no-strong-match-notice-title">
+    <span class="match-fit-notice__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+            <path d="M12 10v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M12 7h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+    </span>
+
+    <div class="match-fit-notice__content">
+        <h2 id="no-strong-match-notice-title" class="match-fit-notice__title">
+            About your matches
+        </h2>
+
+        {% if match_target == "programs" %}
+        <p class="match-fit-notice__text">
+            This tool only matches you with registered apprenticeships, not
+            every kind of career.
+            <strong>None were a strong fit based on your profile</strong>,
+            and that’s okay — some programs recruit only occasionally or have limited spots.
+            <br>
+            You can still explore the programs below.
+        </p>
+        {% else %}
+        <p class="match-fit-notice__text">
+            This tool only matches you with apprenticeship opportunities, not
+            every kind of job.
+            <strong>None were a strong fit based on your profile</strong>,
+            and that’s okay — new jobs show up periodically, so you can check back later.
+            <br>
+            You can still explore the opportunities below.
+        </p>
+        {% endif %}
+    </div>
+
+    <button type="button" class="match-fit-notice__dismiss" data-no-strong-match-dismiss
+        aria-label="Dismiss this message">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+    </button>
+</section>

@@ -117,13 +117,11 @@
     const maxHeight = parseFloat(
       getComputedStyle(userInput).maxHeight
     );
-    console.log('maxHeight', maxHeight)
 
     const height = Math.min(
       userInput.scrollHeight,
       maxHeight
     );
-    console.log('height', height)
 
     userInput.style.height = `${height}px`;
 

@@ -30,6 +30,8 @@
       {% include "_rank_progress.html" with context %}
     </div>
 
+    {% include "_no_strong_matches_notice.html" %}
+
     <h2 class="section-heading">
       Matched opportunities
     </h2>
@@ -180,6 +182,16 @@
     const rankingCached =
       rankedContent?.dataset.rankingCached === 'true';
 
+    const rankErrors =
+      document.getElementById('rank-errors');
+
+    const noStrongMatchNotice =
+      document.getElementById('no-strong-match-notice');
+
+    const noStrongMatchDismiss =
+      noStrongMatchNotice?.querySelector(
+        '[data-no-strong-match-dismiss]'
+      );
 
     sessionStorage.setItem(
       'lastOpportunitiesMode',
@@ -226,6 +238,43 @@
       });
     }
 
+    function revealNoStrongMatchNoticeIfNeeded() {
+      if (!matchList || !noStrongMatchNotice) {
+        return;
+      }
+
+      const hasMatches =
+        matchList.querySelector('.match-card') !== null;
+
+      const hasStrongMatch =
+        matchList.querySelector(
+          '[data-ranking-tier="Strong"]'
+        ) !== null;
+
+      const hasBatchErrors =
+        Boolean(rankErrors?.children.length);
+
+      if (
+        hasMatches &&
+        !hasStrongMatch &&
+        !hasBatchErrors
+      ) {
+        noStrongMatchNotice.hidden = false;
+
+        requestAnimationFrame(() => {
+          noStrongMatchNotice.classList.add(
+            'is-revealed'
+          );
+        });
+      }
+    }
+
+    noStrongMatchDismiss?.addEventListener(
+      'click',
+      function () {
+        noStrongMatchNotice.hidden = true;
+      }
+    );
 
     function syncRankingsToSessionStorage() {
       if (!matchList) {
@@ -297,6 +346,7 @@
       }
 
       revealUnranked();
+      revealNoStrongMatchNoticeIfNeeded();
 
     } else {
       document.body.addEventListener(
@@ -344,16 +394,18 @@
                 'rank-progress'
               );
 
-            if (panel) {
-              setTimeout(
-                () => {
+            setTimeout(
+              () => {
+                if (panel) {
                   panel.classList.add(
                     'is-collapsed'
                   );
-                },
-                3000
-              );
-            }
+                }
+
+                revealNoStrongMatchNoticeIfNeeded();
+              },
+              2000
+            );
 
             revealUnranked();
           }
