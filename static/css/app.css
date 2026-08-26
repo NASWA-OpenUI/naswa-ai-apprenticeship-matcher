@@ -3410,6 +3410,8 @@ p.earnings__summary {
 .program-table-shell {
   position: relative;
   margin-top: 0.85rem;
+
+  container: program-table / inline-size;
 }
 
 .program-table-wrap {
@@ -3439,7 +3441,7 @@ p.earnings__summary {
 
 .program-table-wrap::before,
 .program-table-wrap::after {
-  content: "";
+  content: none;
   grid-area: 1 / 1;
   position: sticky;
   z-index: 2;
@@ -3448,13 +3450,21 @@ p.earnings__summary {
   align-self: stretch;
 }
 
+@container program-table (width < 642px) {
+
+  .program-table-wrap::before,
+  .program-table-wrap::after {
+    content: "";
+  }
+}
+
 /* Left shadow */
 .program-table-wrap::before {
   left: 0;
   justify-self: start;
 
   background: linear-gradient(to right,
-      rgb(0 0 0 / 0.1),
+      rgb(0 0 0 / 0.15),
       transparent);
 
   animation: program-table-left-shadow linear both;
@@ -3467,7 +3477,7 @@ p.earnings__summary {
   justify-self: end;
 
   background: linear-gradient(to left,
-      rgb(0 0 0 / 0.1),
+      rgb(0 0 0 / 0.15),
       transparent);
 
   animation: program-table-right-shadow linear both;
