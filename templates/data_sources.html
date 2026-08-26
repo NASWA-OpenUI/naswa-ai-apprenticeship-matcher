@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block title %}Data sources — Registered Apprenticeship Finder{% endblock %}
+
+{% block page_heading %}Data Sources{% endblock %}
+
+{% block page_subhead %}
+<p class="title-band-sub">
+    Where the apprenticeship and career information in this tool comes from.
+</p>
+{% endblock %}
+
+{% block content %}
+<div class="detail-content detail-content--prose">
+
+    <h2 class="detail-section__heading">
+        Overview
+    </h2>
+    <p>
+        This page explains the data sources we use to build the Registered
+        Apprenticeship Finder and how that information appears throughout the
+        site. Being clear about where our information comes from is an
+        important part of making this tool transparent and trustworthy.
+    </p>
+
+    <nav class="data-sources-nav" aria-labelledby="data-sources-nav-title">
+        <h3 id="data-sources-nav-title">On this page</h3>
+
+        <ol>
+            <li>
+                <a href="#apprenticeship-opportunities">
+                    New York State apprenticeship opportunities
+                </a>
+            </li>
+            <li>
+                <a href="#registered-apprenticeship-programs">
+                    New York State registered apprenticeship programs
+                </a>
+            </li>
+            <li>
+                <a href="#onet-data">
+                    O*NET&reg; occupational data
+                </a>
+            </li>
+            <li>
+                <a href="#ai-generated-descriptions">
+                    AI-generated career descriptions
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <section id="apprenticeship-opportunities" class="detail-section">
+        <h2 class="detail-section__heading">
+            New York State apprenticeship opportunities
+        </h2>
+
+        <p>
+            Apprenticeship opportunities that are currently
+            recruiting comes from the New York State Department of Labor&rsquo;s listings of
+            <a href="https://dol.ny.gov/apprenticeship/apprenticeship-announcements" target="_blank">
+                Apprenticeship Announcements</a>.
+        </p>
+
+        <p>
+            Each announcement contains details specific to each job, like the apprenticeship
+            sponsor, number of openings, application dates, requirements, and
+            how to apply.
+        </p>
+
+        <ul class="data-source-links">
+            <li>
+                <a href="/opportunities">
+                    See all apprenticeship opportunities
+                </a>
+            </li>
+
+            {% if electrician_opportunity %}
+            <li>
+                <a href="/opportunities/{{ electrician_opportunity.id }}">
+                    See a sample opportunity:
+                    {{ electrician_opportunity.posting.jobTitle }}
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section id="registered-apprenticeship-programs" class="detail-section">
+        <h2 class="detail-section__heading">
+            New York State registered apprenticeship programs
+        </h2>
+
+        <p>
+            Registered apprenticeship programs and sponsors
+            comes from the New York State Department of Labor&rsquo;s
+            <a href="https://dol.ny.gov/list-active-sponsors" target="_blank">List of Active Sponsors</a>.
+        </p>
+
+        <p>
+            A registered apprenticeship program includes its sponsor(s),
+            regions, the official trade name, and the program length.
+        </p>
+
+        <ul class="data-source-links">
+            <li>
+                <a href="/programs">
+                    See all registered apprenticeship programs
+                </a>
+            </li>
+
+            {% if electrician_program %}
+            <li>
+                <a href="/programs/47-2111.00">
+                    See the program page for Electricians
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section id="onet-data" class="detail-section">
+        <h2 class="detail-section__heading">
+            O*NET&reg; occupational data
+        </h2>
+
+        <p>
+            This site incorporates information from
+            <a href="https://services.onetcenter.org/" target="_blank">O*NET Web Services</a>
+            by the U.S. Department of Labor, Employment and Training
+            Administration (USDOL/ETA). O*NET&reg; is a trademark of USDOL/ETA.
+        </p>
+
+        <p>
+            We add O*NET&reg; occupational data to opportunity and program
+            data to better match users to possible careers. Specifically, we look at the skills, work activities, and
+            work styles associated with an occupation when matching users.
+        </p>
+
+        <p>
+            For a specific example, you can see
+            <a href="https://www.onetonline.org/link/details/47-2111.00" target="_blank">O*NET&reg; occupation details
+                for
+                Electricians</a>.
+        </p>
+
+
+    </section>
+
+    <section id="ai-generated-descriptions" class="detail-section">
+        <h2 class="detail-section__heading">
+            AI-generated career descriptions
+        </h2>
+
+        <p>
+            Short, plain-language career descriptions in this tool are
+            generated using AI. These descriptions help make unfamiliar careers easier to understand.
+        </p>
+
+        {% if (
+        electrician_opportunity
+        and electrician_opportunity.jobDescription
+        and electrician_opportunity.jobDescription.description
+        ) %}
+        <p>
+            Here&rsquo;s an example of an AI-generated description used on this
+            site:
+        </p>
+
+        <blockquote class="data-source-example">
+            <p>
+                {{ electrician_opportunity.jobDescription.description }}
+            </p>
+
+            <footer>
+                &mdash;
+                {{ electrician_opportunity.jobDescription.displayJobTitle
+                or electrician_opportunity.posting.jobTitle }}
+            </footer>
+        </blockquote>
+        {% endif %}
+
+        <p>
+            You can learn more about how AI is used in this tool on our
+            <a href="/ai-disclosure">AI disclosure page</a>.
+        </p>
+    </section>
+
+</div>
+{% endblock %}

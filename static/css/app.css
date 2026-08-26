@@ -133,6 +133,13 @@ a>svg {
   border-radius: var(--app-radius-sm);
 }
 
+blockquote {
+  margin: 1rem 0 0;
+  padding: 0 1.25rem;
+  border-left: 4px solid var(--nys-color-theme);
+  background: var(--nys-color-theme-faint);
+}
+
 ul {
   list-style-type: disc;
 }
@@ -1671,6 +1678,45 @@ body.profile-modal-open {
   flex: none;
 }
 
+/* ── Data sources page ───────────────────────────────────────────────────── */
+
+.data-sources-nav {
+  margin: 2rem 0;
+}
+
+.data-sources-nav h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.data-sources-nav ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.data-sources-nav li {
+  margin: 0.35rem 0;
+}
+
+.detail-content--prose .detail-section p,
+.data-source-links {
+  margin-top: 1rem;
+}
+
+.data-source-links li {
+  margin: 0.35rem 0;
+}
+
+.data-source-example p {
+  margin-top: 0;
+}
+
+.data-source-example footer {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 /* ── Opportunities list and ranked results ───────────────────────────────── */
 
 .opportunities-page {
@@ -2997,7 +3043,7 @@ body:has(.opportunity-detail-page) {
 }
 
 .detail-section p.detail-apply-action {
-  margin-top: 1.1rem;
+  margin-top: 1rem;
 }
 
 .detail-apply-bottom {

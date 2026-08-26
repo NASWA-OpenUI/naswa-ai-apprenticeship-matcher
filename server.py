@@ -70,7 +70,10 @@ from naswa_matcher.sessions import (
     SessionStore,
     set_session_cookie,
 )
-from naswa_matcher.template_filters import TEMPLATE_FILTERS
+from naswa_matcher.template_filters import (
+    TEMPLATE_FILTERS,
+    program_hiring_opportunities,
+)
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
@@ -293,6 +296,52 @@ async def ai_disclosure(request: Request):
     """Serve the AI disclosure page."""
     return templates.TemplateResponse(request, "ai_disclosure.html")
 
+
+# ── Data sources page ────────────────────────────────────────────────────────
+
+
+ELECTRICIAN_SOC_CODE = "47-2111.00"
+
+
+def sample_opportunity_for_program(program_group: dict | None) -> dict | None:
+    """Return the first current/upcoming opportunity for a program group."""
+    if not program_group:
+        return None
+
+    for trade in program_group.get("trades") or []:
+        for program in trade.get("programs") or []:
+            for opportunity in program_hiring_opportunities(program):
+                opportunity_id = opportunity.get("id")
+
+                if not opportunity_id:
+                    continue
+
+                full_opportunity = get_opportunity(str(opportunity_id))
+
+                if full_opportunity is not None:
+                    return full_opportunity
+
+    return None
+
+# ── Data sources page ────────────────────────────────────────────────────────
+
+
+@app.get("/data-sources")
+async def data_sources(request: Request):
+    """Serve the data sources page."""
+    electrician_program = get_program_group(ELECTRICIAN_SOC_CODE)
+    electrician_opportunity = sample_opportunity_for_program(
+        electrician_program
+    )
+
+    return templates.TemplateResponse(
+        request,
+        "data_sources.html",
+        {
+            "electrician_program": electrician_program,
+            "electrician_opportunity": electrician_opportunity,
+        },
+    )
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
 

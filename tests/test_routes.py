@@ -128,6 +128,18 @@ def test_ai_disclosure_route_renders_ai_disclosure_page(client):
     assert "How this tool works, what info we ask you" in response.text
 
 
+def test_data_sources_route_renders_data_sources_page(client):
+    """Verifies that the data sources page identifies the major sources
+    used for apprenticeship and career information."""
+    response = client.get("/data-sources")
+
+    assert response.status_code == 200
+    assert "Data Sources" in response.text
+    assert "New York State apprenticeship opportunities" in response.text
+    assert "O*NET&reg;" in response.text
+    assert "AI-generated career descriptions" in response.text
+
+
 def test_chat_get_route_renders_chat_page(client):
     """Verifies that the chat page renders the initial assistant message,
     chat form, and SSE connection for streaming responses."""
