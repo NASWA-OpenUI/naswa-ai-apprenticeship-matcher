@@ -51,6 +51,7 @@ jobs:
       ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
       ECS_SERVICE_ARN: ${{ secrets.ECS_SERVICE_ARN }}
       APP_URL: ${{ secrets.APP_URL }}
+      BEDROCK_SECRET_ARN: ${{ secrets.BEDROCK_SECRET_ARN }}
 
     steps:
       - name: Check out repository
@@ -136,6 +137,7 @@ jobs:
               --arg image "$IMAGE_URI" \
               --arg region "$AWS_REGION" \
               --arg github_sha "$GITHUB_SHA" \
+              --arg bedrock_secret_arn "$BEDROCK_SECRET_ARN" \
               '{
                 image: $image,
                 containerPort: 8000,
@@ -157,8 +159,18 @@ jobs:
                     value: "nova-2-lite"
                   },
                   {
+                    name: "SESSION_COOKIE_SECURE",
+                    value: "true"
+                  },
+                  {
                     name: "GITHUB_SHA",
                     value: $github_sha
+                  }
+                ],
+                secrets: [
+                  {
+                    name: "AWS_BEARER_TOKEN_BEDROCK",
+                    valueFrom: $bedrock_secret_arn
                   }
                 ]
               }'
