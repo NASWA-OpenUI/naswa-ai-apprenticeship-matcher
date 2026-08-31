@@ -323,6 +323,7 @@ def sample_opportunity_for_program(program_group: dict | None) -> dict | None:
 
     return None
 
+
 # ── Data sources page ────────────────────────────────────────────────────────
 
 
@@ -330,9 +331,7 @@ def sample_opportunity_for_program(program_group: dict | None) -> dict | None:
 async def data_sources(request: Request):
     """Serve the data sources page."""
     electrician_program = get_program_group(ELECTRICIAN_SOC_CODE)
-    electrician_opportunity = sample_opportunity_for_program(
-        electrician_program
-    )
+    electrician_opportunity = sample_opportunity_for_program(electrician_program)
 
     return templates.TemplateResponse(
         request,
@@ -342,6 +341,7 @@ async def data_sources(request: Request):
             "electrician_opportunity": electrician_opportunity,
         },
     )
+
 
 # ── Chat ──────────────────────────────────────────────────────────────────────
 
@@ -674,14 +674,18 @@ async def chat_stream(request: Request):
 @app.get("/opportunities")
 async def opportunities_page(
     request: Request,
-    ranked: bool = False,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
     transportation: str | None = None,
 ):
     """Browse opportunities or serve AI-ranked opportunity matches."""
+    has_profile = has_profile_query_params(
+        likes=likes,
+        dislikes=dislikes,
+        transportation=transportation,
+    )
 
-    if not (ranked and likes):
+    if not has_profile:
         return templates.TemplateResponse(
             request,
             "opportunities_browse.html",

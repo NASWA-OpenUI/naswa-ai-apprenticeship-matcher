@@ -148,23 +148,13 @@ def profile_url(
     return path + "?" + urlencode(params)
 
 
-def profile_rank_params(profile: dict) -> list[tuple[str, str]]:
-    """Return query parameters for the ranked opportunities page."""
-    return [
-        ("ranked", "true"),
-        *profile_query_params(profile),
-    ]
-
-
-def profile_rank_url(profile: dict) -> str:
-    """Return the ranked opportunities URL for a profile."""
-    return "/opportunities?" + urlencode(profile_rank_params(profile))
-
-
 def profile_match_url(profile: dict, target: MatchTarget) -> str:
     """Return the matches URL for a profile and matching target."""
     if target is MatchTarget.OPPORTUNITIES:
-        return profile_rank_url(profile)
+        return profile_url(
+            "/opportunities",
+            profile,
+        )
 
     if target is MatchTarget.PROGRAMS:
         return profile_url(

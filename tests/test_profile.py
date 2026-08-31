@@ -11,8 +11,6 @@ from naswa_matcher.profile import (
     profile_chat_url,
     profile_match_url,
     profile_query_params,
-    profile_rank_params,
-    profile_rank_url,
     profile_url,
     strip_profile,
 )
@@ -87,57 +85,6 @@ def test_extract_profile_returns_none_when_profile_json_is_invalid():
     text = '<profile>{"likes": ["math"], "confirmed": true,}</profile>'
 
     assert extract_profile(text) is None
-
-
-def test_profile_rank_params_includes_likes_and_dislikes():
-    """Include each like and dislike as repeated query params."""
-    profile = {
-        "likes": ["math", "fixing things"],
-        "dislikes": ["writing"],
-    }
-
-    assert profile_rank_params(profile) == [
-        ("ranked", "true"),
-        ("likes", "math"),
-        ("likes", "fixing things"),
-        ("dislikes", "writing"),
-    ]
-
-
-def test_profile_rank_params_includes_transportation():
-    """Include transportation in ranked opportunity query params."""
-    profile = {
-        "transportation": "public transit",
-    }
-
-    assert profile_rank_params(profile) == [
-        ("ranked", "true"),
-        ("transportation", "public transit"),
-    ]
-
-
-def test_profile_rank_params_omits_empty_transportation():
-    """Omit transportation when no transportation value is present."""
-    profile = {
-        "transportation": None,
-    }
-
-    assert profile_rank_params(profile) == [
-        ("ranked", "true"),
-    ]
-
-
-def test_profile_rank_url_returns_encoded_ranked_opportunities_url():
-    profile = {
-        "likes": ["fixing things"],
-        "dislikes": ["writing"],
-        "transportation": "public transit",
-    }
-
-    assert (
-        profile_rank_url(profile)
-        == "/opportunities?ranked=true&likes=fixing+things&dislikes=writing&transportation=public+transit"
-    )
 
 
 def test_build_profile_defaults_to_unconfirmed_without_name():
@@ -218,35 +165,6 @@ def test_profile_query_params_includes_active_profile_fields_without_ranked():
     ]
 
 
-def test_profile_rank_params_adds_ranked_true_before_profile_params():
-    profile = build_profile(
-        likes=["math"],
-        dislikes=[],
-        transportation=None,
-    )
-
-    assert profile_rank_params(profile) == [
-        ("ranked", "true"),
-        ("likes", "math"),
-    ]
-
-
-def test_profile_rank_url_encodes_ranked_profile_query():
-    profile = build_profile(
-        likes=["math"],
-        dislikes=[],
-        transportation="car",
-    )
-
-    parsed = urlparse(profile_rank_url(profile))
-    query = parse_qs(parsed.query)
-
-    assert parsed.path == "/opportunities"
-    assert query["ranked"] == ["true"]
-    assert query["likes"] == ["math"]
-    assert query["transportation"] == ["car"]
-
-
 def test_profile_chat_url_for_programs_excludes_ranked_and_transportation():
     profile = build_profile(
         likes=["math"],
@@ -288,33 +206,6 @@ def test_profile_chat_url_for_opportunities_includes_transportation():
     assert query["match_target"] == ["opportunities"]
     assert query["likes"] == ["construction"]
     assert query["transportation"] == ["car"]
-
-
-def test_blank_optional_values_are_omitted_from_urls():
-    profile = build_profile(
-        likes=["math", ""],
-        dislikes=[""],
-        transportation=None,
-    )
-
-    query = parse_qs(urlparse(profile_rank_url(profile)).query)
-
-    assert query == {
-        "ranked": ["true"],
-        "likes": ["math"],
-    }
-
-
-def test_profile_rank_url_preserves_repeated_likes():
-    profile = build_profile(
-        likes=["math", "fixing things"],
-        dislikes=[],
-        transportation=None,
-    )
-
-    query = parse_qs(urlparse(profile_rank_url(profile)).query)
-
-    assert query["likes"] == ["math", "fixing things"]
 
 
 @pytest.mark.parametrize(
@@ -364,7 +255,7 @@ def test_profile_match_url_for_programs_uses_interest_params_without_ranked():
     assert "transportation" not in query
 
 
-def test_profile_match_url_for_opportunities_keeps_ranked_mode_and_transportation():
+def test_profile_match_url_for_opportunities_includes_profile_and_transportation():
     profile = build_profile(
         likes=["math"],
         dislikes=[],
@@ -380,9 +271,27 @@ def test_profile_match_url_for_opportunities_keeps_ranked_mode_and_transportatio
     query = parse_qs(parsed.query)
 
     assert parsed.path == "/opportunities"
-    assert query["ranked"] == ["true"]
     assert query["likes"] == ["math"]
     assert query["transportation"] == ["car"]
+
+
+def test_profile_match_url_for_opportunities_preserves_repeated_likes():
+    profile = build_profile(
+        likes=["math", "fixing things"],
+        dislikes=[],
+        transportation=None,
+    )
+
+    query = parse_qs(
+        urlparse(
+            profile_match_url(
+                profile,
+                MatchTarget.OPPORTUNITIES,
+            )
+        ).query
+    )
+
+    assert query["likes"] == ["math", "fixing things"]
 
 
 def test_profile_url_adds_active_profile_query_params():

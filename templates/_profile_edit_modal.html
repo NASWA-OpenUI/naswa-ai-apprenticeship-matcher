@@ -266,10 +266,6 @@
         function buildMatchesUrl(profile, target) {
             const params = new URLSearchParams();
 
-            if (target === 'opportunities') {
-                params.set('ranked', 'true');
-            }
-
             profile.likes.forEach(function (like) {
                 params.append('likes', like);
             });

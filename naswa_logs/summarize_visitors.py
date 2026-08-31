@@ -188,7 +188,7 @@ def friendly_action(event: dict) -> str:
     """Translate technical log actions into colleague-friendly labels."""
     action = clean_text(event.get("action"))
     url = str(event.get("url") or "")
-    path, _query = url_parts(url)
+    path, query = url_parts(url)
 
     known_actions = {
         "user_message_sent": "Sent chat message",
@@ -214,10 +214,17 @@ def friendly_action(event: dict) -> str:
         if path == "/chat":
             return "Opened matching chat"
         if path == "/opportunities":
+            has_profile = any(
+                key in query
+                for key in (
+                    "likes",
+                    "dislikes",
+                    "transportation",
+                )
+            )
+
             return (
-                "Viewed personalized matches"
-                if "ranked=true" in url
-                else "Viewed opportunities"
+                "Viewed personalized matches" if has_profile else "Viewed opportunities"
             )
         if path.startswith("/opportunities/"):
             return "Viewed apprenticeship opportunity"

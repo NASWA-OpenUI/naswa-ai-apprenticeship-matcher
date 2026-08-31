@@ -231,7 +231,6 @@ def test_chat_get_route_prefills_confirmed_program_profile_from_query(client):
     assert 'data-match-target="programs"' in response.text
     assert "data-profile-matches-link" in response.text
     assert "/programs?" in response.text
-    assert "ranked=true" not in response.text
     assert "likes=art" in response.text
     assert "likes=fashion" in response.text
     assert "dislikes=office+work" in response.text
@@ -305,6 +304,21 @@ def test_opportunity_detail_route_renders_enriched_opportunity(client):
     assert "About this job" in response.text
     assert "Install electrical components" in response.text
     assert "Dependability" in response.text
+
+
+def test_opportunities_page_with_profile_uses_personalized_results(client):
+    response = client.get(
+        "/opportunities",
+        params=[
+            ("likes", "hands-on work"),
+        ],
+    )
+
+    assert response.status_code == 200
+    assert 'id="ranked-content"' in response.text
+    assert "/api/rank-opportunities" in response.text
+    assert "likes=hands-on+work" in response.text
+    assert "ranked=true" not in response.text
 
 
 def test_opportunity_detail_route_renders_non_enriched_opportunity(client):
@@ -431,13 +445,14 @@ def test_rank_opportunities_stream_renders_scored_opportunities(
     assert 'data-license-required="' in body
 
 
-def test_ranked_opportunities_page_renders_streaming_shell_and_unranked_jobs(client):
+def test_opportunities_page_with_profile_renders_ranking_shell_and_unranked_jobs(
+    client,
+):
     """Verifies that the ranked opportunities page renders the streaming shell,
     profile summary widget, and non-O*NET jobs in the unranked section."""
     response = client.get(
         "/opportunities",
         params=[
-            ("ranked", "true"),
             ("likes", "hands-on work"),
             ("likes", "problem solving"),
             ("dislikes", "desk work"),
@@ -523,8 +538,6 @@ def test_programs_page_renders_ranking_shell(client):
     assert "likes=hands-on+work" in response.text
     assert "likes=problem+solving" in response.text
     assert "dislikes=office+work" in response.text
-
-    assert "ranked=true" not in response.text
 
     assert 'data-match-target="programs"' in response.text
     assert 'id="rank-progress"' in response.text
