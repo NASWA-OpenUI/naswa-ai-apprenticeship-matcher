@@ -1,9 +1,11 @@
 from datetime import date
+from urllib.parse import parse_qs, urlparse
 
 import pytest
 
 import naswa_matcher.template_filters as template_filters
 import server
+from naswa_matcher.demo_profiles import DEMO_PROFILES
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.profile import build_profile
 from naswa_matcher.sessions import (
@@ -873,3 +875,62 @@ def test_regular_profile_keeps_back_to_conversation_navigation(
     assert "Back to conversation" in response.text
     assert "Back to demo profiles" not in response.text
     assert 'data-demo="false"' in response.text
+
+
+def test_demo_route_renders_all_profiles_with_only_terry_enabled(client):
+    response = client.get("/demo")
+
+    assert response.status_code == 200
+
+    assert "TYLER: Sample user profiles" in response.text
+
+    assert "Terry the Turtle Guy" in response.text
+    assert "Dana the Dancer" in response.text
+    assert "Mark the Maker" in response.text
+    assert "Fiona the Fixer" in response.text
+
+    assert response.text.count("data-demo-profile-link=") == 1
+    assert 'data-demo-profile-link="terry"' in response.text
+
+    assert response.text.count("data-demo-profile-disabled=") == 3
+    assert 'data-demo-profile-disabled="dana"' in response.text
+    assert 'data-demo-profile-disabled="mark"' in response.text
+    assert 'data-demo-profile-disabled="fiona"' in response.text
+
+
+def test_terry_demo_profile_opens_program_matches(client):
+    terry = next(profile for profile in DEMO_PROFILES if profile["id"] == "terry")
+
+    match_url = terry["match_url"]
+
+    parsed = urlparse(match_url)
+    query = parse_qs(parsed.query)
+
+    assert parsed.path == "/programs"
+    assert query["name"] == ["Terry"]
+    assert query["demo"] == ["true"]
+
+    assert query["likes"] == [
+        "caring for animals",
+        "hands-on repair work",
+        "troubleshooting mechanical/electrical equipment",
+        "fixing and reselling equipment",
+        "self-directed learning",
+        "biology",
+        "physics",
+        "understanding how things work",
+    ]
+
+    assert query["dislikes"] == [
+        "math-heavy work",
+        "working on a computer",
+    ]
+
+    assert "transportation" not in query
+
+    response = client.get(match_url)
+
+    assert response.status_code == 200
+    assert '"name": "Terry"' in response.text
+    assert "Back to demo profiles" in response.text
+    assert 'href="/demo"' in response.text

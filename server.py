@@ -32,6 +32,7 @@ from naswa_matcher.db import (
     get_program_group,
 )
 from naswa_matcher.db import load as load_db
+from naswa_matcher.demo_profiles import DEMO_PROFILES
 from naswa_matcher.location_data import LABOR_MARKET_REGIONS
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
@@ -286,6 +287,15 @@ async def health():
 async def index(request: Request):
     """Serve the public landing page."""
     return templates.TemplateResponse(request, "index.html")
+
+
+# ── Guided demo page ──────────────────────────────────────────────────────────
+
+
+@app.get("/demo")
+async def demo(request: Request):
+    """Serve the guided demo profile picker."""
+    return templates.TemplateResponse(request, "demo.html", {"profiles": DEMO_PROFILES})
 
 
 # ── AI disclosure page ───────────────────────────────────────────────────────

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% macro profile_avatar(profile) %}
+<span class="demo-profile-avatar" aria-hidden="true">
+    <svg class="demo-profile-avatar__face" viewBox="0 0 96 96" fill="none" focusable="false">
+        {% if profile.id == "terry" %}
+        <circle cx="48" cy="48" r="48" fill="{{ profile.tint }}" />
+        <path d="M26 96c0-12 10-20 22-20s22 8 22 20z" fill="#2f8f57" />
+        <circle cx="27" cy="48" r="4" fill="#f0c7a0" />
+        <circle cx="69" cy="48" r="4" fill="#f0c7a0" />
+        <circle cx="48" cy="47" r="22" fill="#f0c7a0" />
+        <path d="M26 45c0-13 10-22 22-22s22 9 22 22c-5-7-11-10-22-10s-17 3-22 10z" fill="#6b4a2b" />
+        <circle cx="40" cy="48" r="7.5" fill="#fff" stroke="#3a3a3a" stroke-width="2.3" />
+        <circle cx="56" cy="48" r="7.5" fill="#fff" stroke="#3a3a3a" stroke-width="2.3" />
+        <path d="M47.5 48h1" stroke="#3a3a3a" stroke-width="2.3" stroke-linecap="round" />
+        <circle cx="40" cy="48" r="2.3" fill="#3a3a3a" />
+        <circle cx="56" cy="48" r="2.3" fill="#3a3a3a" />
+        <path d="M41 60q7 6 14 0" fill="none" stroke="#9a5a34" stroke-width="2.4" stroke-linecap="round" />
+
+        {% elif profile.id == "dana" %}
+        <circle cx="48" cy="48" r="48" fill="{{ profile.tint }}" />
+        <path d="M26 96c0-12 10-20 22-20s22 8 22 20z" fill="#9d4fb8" />
+        <circle cx="48" cy="19" r="7" fill="#3b2b30" />
+        <circle cx="27" cy="48" r="4" fill="#eabf98" />
+        <circle cx="69" cy="48" r="4" fill="#eabf98" />
+        <circle cx="48" cy="47" r="22" fill="#eabf98" />
+        <path
+            d="M26 47c0-13 10-24 22-24s22 11 22 24c-5-8-9-10-12-10 1-2 1-5 1-5-4 4-7 5-11 5s-7-1-11-5c0 0 0 3 1 5-3 0-7 2-12 10z"
+            fill="#3b2b30" />
+        <circle cx="41" cy="48" r="2.3" fill="#3a2a2f" />
+        <circle cx="55" cy="48" r="2.3" fill="#3a2a2f" />
+        <circle cx="37" cy="54" r="3" fill="#e79ab0" opacity="0.55" />
+        <circle cx="59" cy="54" r="3" fill="#e79ab0" opacity="0.55" />
+        <path d="M42 58q6 5 12 0" fill="none" stroke="#b06a80" stroke-width="2.4" stroke-linecap="round" />
+
+        {% elif profile.id == "mark" %}
+        <circle cx="48" cy="48" r="48" fill="{{ profile.tint }}" />
+        <path d="M26 96c0-12 10-20 22-20s22 8 22 20z" fill="#3b6fb0" />
+        <circle cx="27" cy="52" r="4" fill="#e8b48a" />
+        <circle cx="69" cy="52" r="4" fill="#e8b48a" />
+        <circle cx="48" cy="52" r="22" fill="#e8b48a" />
+        <path d="M26 50a22 22 0 0 1 44 0z" fill="#2f6fb0" />
+        <rect x="25" y="45" width="46" height="8" rx="3.5" fill="#24557f" />
+        <circle cx="40" cy="57" r="2.3" fill="#3a2a1f" />
+        <circle cx="56" cy="57" r="2.3" fill="#3a2a1f" />
+        <path d="M42 66q6 5 12 0" fill="none" stroke="#a35f38" stroke-width="2.4" stroke-linecap="round" />
+
+        {% else %}
+        <circle cx="48" cy="48" r="48" fill="#fbeede"></circle>
+        <path d="M26 96c0-12 10-20 22-20s22 8 22 20z" fill="#c2610a"></path>
+        <circle cx="27" cy="49" r="4" fill="#e8b48a"></circle>
+        <circle cx="69" cy="49" r="4" fill="#e8b48a"></circle>
+        <circle cx="48" cy="48" r="22" fill="#e8b48a"></circle>
+        <path
+            d="M26 48c0-13 10-23 22-23s22 10 22 23c1 6 0 12-2 16 0-12-2-21-4-23-4 2-9 3-16 3s-12-1-16-3c-2 2-4 11-4 23-2-4-3l-10-2-16z"
+            fill="#6e3a1f"></path>
+        <rect x="28" y="35" width="40" height="6" rx="3" fill="#d94f3d"></rect>
+        <circle cx="41" cy="49" r="2.3" fill="#3a2a1f"></circle>
+        <circle cx="55" cy="49" r="2.3" fill="#3a2a1f"></circle>
+        <circle cx="37" cy="55" r="3" fill="#e8907a" opacity="0.5"></circle>
+        <circle cx="59" cy="55" r="3" fill="#e8907a" opacity="0.5"></circle>
+        <path d="M42 59q6 5 12 0" fill="none" stroke="#b06a50" stroke-width="2.4" stroke-linecap="round"></path>
+        {% endif %}
+    </svg>
+
+    <span class="demo-profile-avatar__badge">
+        {{ profile.emoji }}
+    </span>
+</span>
+{% endmacro %}
+
+
+{% block title %}Guided Demo — Registered Apprenticeship Finder{% endblock %}
+
+{% block title_band %}
+<div class="title-band demo-title-band">
+    <div class="container">
+        <p class="demo-title-band__eyebrow">Guided demo</p>
+
+        <h1 class="title-band-h">
+            TYLER: Sample user profiles
+        </h1>
+
+        <p class="title-band-sub">
+            Jump straight to apprenticeship matches for these representative user profiles.
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block main_class %}container demo-main{% endblock %}
+
+{% block content %}
+<div class="demo-page">
+    <p class="demo-page__lead">
+        Each profile represents a different kind young person looking for a career. Choose a profile to see
+        how our AI matching engine finds
+        appropriate
+        opportunities for them.
+    </p>
+
+    <div class="demo-profile-grid">
+        {% for profile in profiles %}
+        <article class="demo-profile-card surface surface--shadow surface--clip" style="
+                --demo-profile-accent: {{ profile.accent }};
+                --demo-profile-tint: {{ profile.tint }};
+            " aria-labelledby="demo-profile-title-{{ profile.id }}">
+            <div class="demo-profile-card__cap">
+                {{ profile_avatar(profile) }}
+
+                <h2 class="demo-profile-card__name" id="demo-profile-title-{{ profile.id }}">
+                    {{ profile.title }}
+                </h2>
+
+                <p class="demo-profile-card__context">
+                    {{ profile.location_label }}
+                    <span aria-hidden="true">·</span>
+                    {{ profile.transportation_label }}
+                </p>
+            </div>
+
+            <div class="demo-profile-card__body">
+                <ul class="demo-profile-card__bullets">
+                    {% for bullet in profile.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+
+                {% if profile.dislike %}
+                <p class="demo-profile-card__dislike">
+                    Not into: {{ profile.dislike }}
+                </p>
+                {% endif %}
+
+                {% if profile.match_url %}
+                <a class="btn demo-profile-card__cta" href="{{ profile.match_url }}"
+                    data-demo-profile-link="{{ profile.id }}">
+                    {{ profile.first_name }}’s matches
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+                {% else %}
+                <button class="btn demo-profile-card__cta" type="button" disabled
+                    data-demo-profile-disabled="{{ profile.id }}">
+                    {{ profile.first_name }}’s matches
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <aside class="about-cta flex-center-wrap" aria-labelledby="about-cta-title">
+        <div class="about-cta__copy">
+            <h2 class="about-cta__title" id="about-cta-title">Want the full experience?</h2>
+            <p class="about-cta__text">Talk to Tyler to build your own profile and get matched to New York’s
+                Registered
+                Apprenticehip programs.</p>
+        </div>
+        <a class="btn btn--accent" href="/chat">Explore apprenticeships &rarr;</a>
+    </aside>
+</div>
+{% endblock %}
