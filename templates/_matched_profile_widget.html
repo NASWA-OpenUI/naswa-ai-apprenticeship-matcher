@@ -14,7 +14,7 @@
 {% endif %}
 
 <section class="matched-profile-widget surface surface--shadow" data-profile-summary
-    data-match-target="{{ match_target }}">
+    data-match-target="{{ match_target }}" data-demo="{{ 'true' if demo else 'false' }}">
     <script type="application/json" data-profile-json>{{ editable_profile | tojson }}</script>
 
     <div class="matched-profile-widget__main flex-center-wrap">
@@ -38,6 +38,15 @@
     </div>
 
     <div class="matched-profile-widget__actions">
+        {% if demo %}
+        <a class="matched-profile-widget__back" href="/demo">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            Back to demo profiles
+        </a>
+        {% else %}
         <a class="matched-profile-widget__back" href="{{ chat_profile_url | default('/chat') }}" data-profile-chat-link>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                 <path d="M19 12H5M11 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -45,6 +54,7 @@
             </svg>
             Back to conversation
         </a>
+        {% endif %}
 
         <button type="button" class="btn btn--outline matched-profile-widget__edit" data-profile-edit-open>
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">

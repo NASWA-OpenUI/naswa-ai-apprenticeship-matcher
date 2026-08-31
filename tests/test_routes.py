@@ -500,6 +500,38 @@ def test_opportunities_page_with_profile_renders_ranking_shell_and_unranked_jobs
     assert 'name="no-license-required"' in response.text
 
 
+def test_opportunities_demo_profile_uses_name_and_demo_navigation(
+    client,
+):
+    response = client.get(
+        "/opportunities",
+        params=[
+            ("name", "Dana"),
+            ("likes", "helping people"),
+            ("transportation", "public transit"),
+            ("demo", "true"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert '"name": "Dana"' in response.text
+
+    assert "Back to demo profiles" in response.text
+    assert 'href="/demo"' in response.text
+    assert 'data-demo="true"' in response.text
+
+    assert (
+        "/api/rank-opportunities"
+        "?likes=helping+people"
+        "&amp;transportation=public+transit" in response.text
+    )
+
+    assert "/api/rank-opportunities?name=Dana" not in response.text
+
+    assert "transportation=public+transit" "&amp;demo=true" not in response.text
+
+
 def test_programs_page_without_profile_renders_browse_page(client):
     response = client.get("/programs")
 
@@ -794,3 +826,50 @@ def test_rank_programs_stream_renders_hiring_information(
     # The Social and Human Service Assistants fixture has no opportunities.
     assert "program-hiring-summary" not in social_card
     assert "program-hiring-chip" not in social_card
+
+
+def test_programs_demo_profile_uses_name_and_demo_navigation(
+    client,
+):
+    response = client.get(
+        "/programs",
+        params=[
+            ("name", "Terry"),
+            ("likes", "repairing equipment"),
+            ("demo", "true"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert '"name": "Terry"' in response.text
+
+    assert "Back to demo profiles" in response.text
+    assert 'href="/demo"' in response.text
+    assert 'data-demo="true"' in response.text
+
+    assert "/api/rank-programs" "?likes=repairing+equipment" in response.text
+
+    assert "/api/rank-programs?name=Terry" not in response.text
+
+    assert (
+        "/api/rank-programs"
+        "?likes=repairing+equipment&amp;demo=true" not in response.text
+    )
+
+
+def test_regular_profile_keeps_back_to_conversation_navigation(
+    client,
+):
+    response = client.get(
+        "/programs",
+        params=[
+            ("likes", "repairing equipment"),
+        ],
+    )
+
+    assert response.status_code == 200
+
+    assert "Back to conversation" in response.text
+    assert "Back to demo profiles" not in response.text
+    assert 'data-demo="false"' in response.text

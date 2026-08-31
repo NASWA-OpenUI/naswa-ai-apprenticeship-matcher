@@ -677,6 +677,8 @@ async def opportunities_page(
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
     transportation: str | None = None,
+    name: str | None = None,
+    demo: bool = False,
 ):
     """Browse opportunities or serve AI-ranked opportunity matches."""
     has_profile = has_profile_query_params(
@@ -700,13 +702,19 @@ async def opportunities_page(
 
     session = request.state.session
 
-    session.profile = build_profile_from_input(
-        name=session.profile.get("name") if session.profile else None,
+    session.set_match_target(MatchTarget.OPPORTUNITIES)
+
+    existing_name = session.profile.get("name") if session.profile else None
+
+    display_profile = build_profile_from_input(
+        name=existing_name if name is None else name,
         likes=likes,
         dislikes=dislikes,
         transportation=transportation,
         confirmed=True,
     )
+
+    session.profile = display_profile
 
     all_jobs = all_opportunities()
     onet_jobs = [job for job in all_jobs if job.get("onet") is not None]
@@ -734,9 +742,12 @@ async def opportunities_page(
         "opportunities.html",
         {
             "rank_stream_url": rank_stream_url,
-            "profile": profile,
+            "profile": display_profile,
             "match_target": MatchTarget.OPPORTUNITIES.value,
-            "chat_profile_url": profile_chat_url(profile, MatchTarget.OPPORTUNITIES),
+            "chat_profile_url": profile_chat_url(
+                display_profile, MatchTarget.OPPORTUNITIES
+            ),
+            "demo": demo,
             "likes": likes,
             "unranked": unranked,
             "completed_items": cached.completed_items if cached else 0,
@@ -896,6 +907,8 @@ async def programs_page(
     request: Request,
     likes: list[str] = Query(default=[]),
     dislikes: list[str] = Query(default=[]),
+    name: str | None = None,
+    demo: bool = False,
 ):
     """Browse programs or serve AI-ranked program matches."""
     has_profile = has_profile_query_params(
@@ -923,12 +936,18 @@ async def programs_page(
 
     session = request.state.session
 
-    session.profile = build_profile_from_input(
-        name=session.profile.get("name") if session.profile else None,
+    session.set_match_target(MatchTarget.PROGRAMS)
+
+    existing_name = session.profile.get("name") if session.profile else None
+
+    display_profile = build_profile_from_input(
+        name=existing_name if name is None else name,
         likes=likes,
         dislikes=dislikes,
         confirmed=True,
     )
+
+    session.profile = display_profile
 
     program_groups = all_program_groups()
     total_programs = sum_programs(program_groups)
@@ -947,9 +966,10 @@ async def programs_page(
         request,
         "programs.html",
         {
-            "profile": profile,
+            "profile": display_profile,
             "match_target": MatchTarget.PROGRAMS.value,
-            "chat_profile_url": profile_chat_url(profile, MatchTarget.PROGRAMS),
+            "chat_profile_url": profile_chat_url(display_profile, MatchTarget.PROGRAMS),
+            "demo": demo,
             "rank_stream_url": rank_stream_url,
             "ranking_cached": ranking_cached,
             "cached_ranked": cached_ranked,

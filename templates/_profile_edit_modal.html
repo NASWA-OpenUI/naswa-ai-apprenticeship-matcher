@@ -263,8 +263,16 @@
             target.appendChild(makeProfileCardValueChip(key, value));
         }
 
-        function buildMatchesUrl(profile, target) {
+        function buildMatchesUrl(
+            profile,
+            target,
+            demo = false
+        ) {
             const params = new URLSearchParams();
+
+            if (demo && profile.name) {
+                params.set('name', profile.name);
+            }
 
             profile.likes.forEach(function (like) {
                 params.append('likes', like);
@@ -274,8 +282,18 @@
                 params.append('dislikes', dislike);
             });
 
-            if (target === 'opportunities' && profile.transportation) {
-                params.set('transportation', profile.transportation);
+            if (
+                target === 'opportunities' &&
+                profile.transportation
+            ) {
+                params.set(
+                    'transportation',
+                    profile.transportation
+                );
+            }
+
+            if (demo) {
+                params.set('demo', 'true');
             }
 
             const path = target === 'opportunities'
@@ -611,9 +629,10 @@
 
                     const card = getProfileCard();
                     const target = card?.dataset.matchTarget || 'programs';
+                    const demo = card?.dataset.demo === 'true';
 
                     window.location.assign(
-                        buildMatchesUrl(profile, target)
+                        buildMatchesUrl(profile, target, demo)
                     );
 
                     return;
