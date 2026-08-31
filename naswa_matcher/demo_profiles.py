@@ -61,6 +61,50 @@ TERRY_MATCH_URL = build_demo_match_url(
     ],
 )
 
+DANA_MATCH_URL = build_demo_match_url(
+    name="Dana",
+    target=MatchTarget.PROGRAMS,
+    likes=[
+        "Russian ballet",
+        "performing on stage",
+        "working one-on-one with people",
+        "physical discipline",
+        "drawing",
+        "doing arts and crafts with others",
+        "creative activities",
+    ],
+    dislikes=[],
+)
+
+MARK_MATCH_URL = build_demo_match_url(
+    name="Mark",
+    target=MatchTarget.OPPORTUNITIES,
+    likes=[
+        "building model planes",
+        "puzzles",
+        "home improvement and repair projects",
+        "basketball",
+        "shop class",
+        "woodworking",
+        "math comes easily",
+    ],
+    dislikes=["electrical wiring", "noisy industrial environments", "sparks and smoke"],
+)
+
+FIONA_MATCH_URL = build_demo_match_url(
+    name="Fiona",
+    target=MatchTarget.OPPORTUNITIES,
+    likes=[
+        "bike riding",
+        "installing/upgrading bike parts",
+        "making costumes for drama class",
+        "works part-time at a garage" "hands on work",
+        "figuring out why something isn't working",
+        "weight training",
+    ],
+    dislikes=["essay writing", "wood gives her splinters", "electronics and computers"],
+)
+
 
 DEMO_PROFILES = [
     {
@@ -94,9 +138,10 @@ DEMO_PROFILES = [
             "Trained in Russian ballet, performs on stage",
             "Loves working one-on-one with people",
             "Draws and does arts & crafts with others",
+            "creative activities",
         ],
         "dislike": None,
-        "match_url": None,
+        "match_url": DANA_MATCH_URL,
     },
     {
         "id": "mark",
@@ -108,12 +153,12 @@ DEMO_PROFILES = [
         "location_label": "Syracuse, NY",
         "transportation_label": "Can drive",
         "bullets": [
-            "Builds detailed model kits",
-            "Sketches furniture and room layouts",
-            "Helps his uncle fix things around the house",
+            "Likes jigsaw puzzles, builds model planes",
+            "Helps his dad fix things around the house",
+            "Enjoys shop class and math",
         ],
-        "dislike": "writing essays",
-        "match_url": None,
+        "dislike": "noisy environments",
+        "match_url": MARK_MATCH_URL,
     },
     {
         "id": "fiona",
@@ -125,11 +170,11 @@ DEMO_PROFILES = [
         "location_label": "Yonkers, NY",
         "transportation_label": "Uses transit",
         "bullets": [
-            "Fixes her own bike",
-            "Takes apart broken electronics",
-            "Makes costumes and props with friends",
+            "Loves bike riding, knows how to fix her bike",
+            "Makes costumes and props for drama class",
+            "Worked part-time at uncle’s garage",
         ],
-        "dislike": "memorizing for tests",
-        "match_url": None,
+        "dislike": "essay writing",
+        "match_url": FIONA_MATCH_URL,
     },
 ]

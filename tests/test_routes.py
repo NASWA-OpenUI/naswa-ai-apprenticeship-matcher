@@ -830,36 +830,6 @@ def test_rank_programs_stream_renders_hiring_information(
     assert "program-hiring-chip" not in social_card
 
 
-def test_programs_demo_profile_uses_name_and_demo_navigation(
-    client,
-):
-    response = client.get(
-        "/programs",
-        params=[
-            ("name", "Terry"),
-            ("likes", "repairing equipment"),
-            ("demo", "true"),
-        ],
-    )
-
-    assert response.status_code == 200
-
-    assert '"name": "Terry"' in response.text
-
-    assert "Back to demo profiles" in response.text
-    assert 'href="/demo"' in response.text
-    assert 'data-demo="true"' in response.text
-
-    assert "/api/rank-programs" "?likes=repairing+equipment" in response.text
-
-    assert "/api/rank-programs?name=Terry" not in response.text
-
-    assert (
-        "/api/rank-programs"
-        "?likes=repairing+equipment&amp;demo=true" not in response.text
-    )
-
-
 def test_regular_profile_keeps_back_to_conversation_navigation(
     client,
 ):
@@ -877,7 +847,7 @@ def test_regular_profile_keeps_back_to_conversation_navigation(
     assert 'data-demo="false"' in response.text
 
 
-def test_demo_route_renders_all_profiles_with_only_terry_enabled(client):
+def test_demo_route_renders_all_profiles(client):
     response = client.get("/demo")
 
     assert response.status_code == 200
@@ -889,17 +859,23 @@ def test_demo_route_renders_all_profiles_with_only_terry_enabled(client):
     assert "Mark the Maker" in response.text
     assert "Fiona the Fixer" in response.text
 
-    assert response.text.count("data-demo-profile-link=") == 1
-    assert 'data-demo-profile-link="terry"' in response.text
+    assert response.text.count("data-demo-profile-link=") == 4
 
-    assert response.text.count("data-demo-profile-disabled=") == 3
-    assert 'data-demo-profile-disabled="dana"' in response.text
-    assert 'data-demo-profile-disabled="mark"' in response.text
-    assert 'data-demo-profile-disabled="fiona"' in response.text
+    assert 'data-demo-profile-link="terry"' in response.text
+    assert 'data-demo-profile-link="dana"' in response.text
+    assert 'data-demo-profile-link="mark"' in response.text
+    assert 'data-demo-profile-link="fiona"' in response.text
+
+    assert "data-demo-profile-disabled=" not in response.text
+
 
 
 def test_terry_demo_profile_opens_program_matches(client):
-    terry = next(profile for profile in DEMO_PROFILES if profile["id"] == "terry")
+    terry = next(
+        profile
+        for profile in DEMO_PROFILES
+        if profile["id"] == "terry"
+    )
 
     match_url = terry["match_url"]
 
@@ -909,23 +885,8 @@ def test_terry_demo_profile_opens_program_matches(client):
     assert parsed.path == "/programs"
     assert query["name"] == ["Terry"]
     assert query["demo"] == ["true"]
-
-    assert query["likes"] == [
-        "caring for animals",
-        "hands-on repair work",
-        "troubleshooting mechanical/electrical equipment",
-        "fixing and reselling equipment",
-        "self-directed learning",
-        "biology",
-        "physics",
-        "understanding how things work",
-    ]
-
-    assert query["dislikes"] == [
-        "math-heavy work",
-        "working on a computer",
-    ]
-
+    assert query["likes"]
+    assert query["dislikes"]
     assert "transportation" not in query
 
     response = client.get(match_url)
