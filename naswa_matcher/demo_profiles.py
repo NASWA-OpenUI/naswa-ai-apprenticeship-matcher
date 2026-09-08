@@ -89,6 +89,7 @@ MARK_MATCH_URL = build_demo_match_url(
         "math comes easily",
     ],
     dislikes=["electrical wiring", "noisy industrial environments", "sparks and smoke"],
+    transportation="Can drive",
 )
 
 FIONA_MATCH_URL = build_demo_match_url(
@@ -98,11 +99,13 @@ FIONA_MATCH_URL = build_demo_match_url(
         "bike riding",
         "installing/upgrading bike parts",
         "making costumes for drama class",
-        "works part-time at a garage" "hands on work",
+        "works part-time at a garage",
+        "hands on work",
         "figuring out why something isn't working",
         "weight training",
     ],
     dislikes=["essay writing", "wood gives her splinters", "electronics and computers"],
+    transportation="Takes public transit",
 )
 
 
