@@ -84,15 +84,15 @@ AWS_DEFAULT_REGION=us-east-1
 
 # Optional. Defaults shown here.
 CHAT_MODEL_NAME=sonnet-4.6
-SCORING_MODEL_NAME=nova-2-lite
+SCORING_MODEL_NAME=maverick-17
 ```
 
 Supported local model names are currently:
 
 ```text
 sonnet-4.6
-nova-lite
 nova-2-lite
+maverick-17
 ```
 
 Do not commit `.env` files or AWS credentials.

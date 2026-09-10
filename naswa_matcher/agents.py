@@ -13,7 +13,7 @@ PROJECT_ROOT = PACKAGE_DIR.parent
 
 load_dotenv(PROJECT_ROOT / ".env")
 
-REQUESTED_MAX_OUTPUT_TOKENS = 16_384
+REQUESTED_MAX_OUTPUT_TOKENS = 4_096
 
 BASE_CHAT_SYSTEM_PROMPT = """\
 You are a friendly guide helping a user discover registered apprenticeships that may fit them.
@@ -350,20 +350,20 @@ MODEL_CONFIGS = {
         model_id="us.anthropic.claude-sonnet-4-6",
         max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
     ),
-    "nova-lite": ModelConfig(
-        model_id="us.amazon.nova-lite-v1:0",
-        # Nova Lite v1 has a 10K maximum output limit.
-        max_output_tokens=10_000,
-    ),
+    # NOTE: this was our old ranking LLM, but we are switching off of it
     "nova-2-lite": ModelConfig(
         model_id="us.amazon.nova-2-lite-v1:0",
+        max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
+    ),
+    "maverick-17": ModelConfig(
+        model_id="us.meta.llama4-maverick-17b-instruct-v1:0",
         max_output_tokens=REQUESTED_MAX_OUTPUT_TOKENS,
     ),
 }
 
 
 CHAT_MODEL_NAME = os.getenv("CHAT_MODEL_NAME", "sonnet-4.6")
-SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", "nova-2-lite")
+SCORING_MODEL_NAME = os.getenv("SCORING_MODEL_NAME", "maverick-17")
 
 
 def get_model_config(model_name: str) -> ModelConfig:

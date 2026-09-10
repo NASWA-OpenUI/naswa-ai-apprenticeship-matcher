@@ -156,7 +156,7 @@ jobs:
                   },
                   {
                     name: "SCORING_MODEL_NAME",
-                    value: "nova-2-lite"
+                    value: "maverick-17"
                   },
                   {
                     name: "SESSION_COOKIE_SECURE",

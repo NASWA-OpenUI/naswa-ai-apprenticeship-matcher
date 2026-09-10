@@ -22,13 +22,13 @@ from naswa_matcher.match_target import MatchTarget
             REQUESTED_MAX_OUTPUT_TOKENS,
         ),
         (
-            "nova-lite",
-            "us.amazon.nova-lite-v1:0",
-            10_000,
-        ),
-        (
             "nova-2-lite",
             "us.amazon.nova-2-lite-v1:0",
+            REQUESTED_MAX_OUTPUT_TOKENS,
+        ),
+                (
+            "maverick-17",
+            "us.meta.llama4-maverick-17b-instruct-v1:0",
             REQUESTED_MAX_OUTPUT_TOKENS,
         ),
     ],
@@ -45,10 +45,6 @@ def test_get_model_config_returns_supported_model_configuration(
     assert config.temperature == 0.0
 
 
-def test_nova_lite_uses_ten_thousand_output_token_limit():
-    assert MODEL_CONFIGS["nova-lite"].max_output_tokens == 10_000
-
-
 def test_get_model_config_rejects_unsupported_model_name():
     with pytest.raises(ValueError) as exc_info:
         get_model_config("unknown-model")
@@ -56,7 +52,7 @@ def test_get_model_config_rejects_unsupported_model_name():
     message = str(exc_info.value)
 
     assert "Unsupported model name 'unknown-model'" in message
-    assert "nova-lite" in message
+    assert "maverick-17" in message
     assert "nova-2-lite" in message
     assert "sonnet-4.6" in message
 
@@ -94,7 +90,7 @@ def test_make_bedrock_model_uses_temperature_override(monkeypatch):
     monkeypatch.setattr(agents, "BedrockModel", fake_bedrock_model)
 
     make_bedrock_model(
-        "nova-lite",
+        "maverick-17",
         temperature=0.7,
     )
 
@@ -196,14 +192,14 @@ def test_make_scoring_model_uses_non_streaming_scoring_model(monkeypatch):
         captured["temperature"] = temperature
         return fake_model
 
-    monkeypatch.setattr(agents, "SCORING_MODEL_NAME", "nova-2-lite")
+    monkeypatch.setattr(agents, "SCORING_MODEL_NAME", "maverick-17")
     monkeypatch.setattr(agents, "make_bedrock_model", fake_make_bedrock_model)
 
     result = make_scoring_model()
 
     assert result is fake_model
     assert captured == {
-        "model_name": "nova-2-lite",
+        "model_name": "maverick-17",
         "streaming": False,
         "temperature": None,
     }
