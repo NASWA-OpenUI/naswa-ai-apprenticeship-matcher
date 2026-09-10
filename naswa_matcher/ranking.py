@@ -105,6 +105,7 @@ def build_scoring_prompt(profile: dict, job_summaries: list[dict]) -> str:
         "Score each job as Strong, Moderate, or Weak.\n\n"
         "Guidance:\n"
         "- Put the most weight on whether the occupation connects to the profile's likes.\n"
+        "- Use Strong for jobs with a clear, meaningful connection to the person's interests: either one very direct connection or several mutually reinforcing connections. Generic similarities such as \"hands-on work\" alone are not enough for Strong.\n"
         "- Use dislikes only as a soft negative signal.\n"
         "- Use transportation only when the profile and the opportunity's transportation requirement provide relevant evidence.\n"
         "- A transportation concern can be a caveat, but do not reject a job only because a requirement may need to be checked later.\n"
