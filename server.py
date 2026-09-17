@@ -7,6 +7,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sse_starlette.sse import EventSourceResponse
@@ -66,6 +67,8 @@ from naswa_matcher.ranking_stream import (
 )
 from naswa_matcher.saves import (
     SAVES_COOKIE_NAME,
+    SAVES_MAX_ITEMS,
+    SavedItems,
     SaveLimitReached,
     parse_saves_cookie,
     sync_saves_cookie,
@@ -800,10 +803,38 @@ async def opportunities_page(
 # ── Saved opportunities ───────────────────────────────────────────────────────
 
 
-@app.post(
-    "/saves/opportunities/{opportunity_id}",
-    status_code=204,
-)
+def active_saved_opportunity_count(
+    saved: SavedItems,
+) -> int:
+    """Return the number of saved opportunities still in the current dataset."""
+    return sum(
+        1
+        for opportunity_id in saved.opportunity_ids
+        if get_opportunity(opportunity_id) is not None
+    )
+
+
+def render_opportunity_save_utility(
+    opportunity_id: str,
+    saved: SavedItems,
+    *,
+    status_message: str = "",
+    save_error: str = "",
+) -> HTMLResponse:
+    """Render the save controls shown below an opportunity detail hero."""
+    return HTMLResponse(
+        render(
+            "_opportunity_save_utility.html",
+            opportunity_id=opportunity_id,
+            is_saved=saved.has_opportunity(opportunity_id),
+            active_saved_count=(active_saved_opportunity_count(saved)),
+            status_message=status_message,
+            save_error=save_error,
+        )
+    )
+
+
+@app.post("/saves/opportunities/{opportunity_id}")
 async def save_opportunity(
     request: Request,
     opportunity_id: str,
@@ -817,15 +848,20 @@ async def save_opportunity(
     saved = request.state.saves
 
     if saved.has_opportunity(opportunity_id):
-        return Response(status_code=204)
+        return render_opportunity_save_utility(
+            opportunity_id,
+            saved,
+        )
 
     try:
         updated = saved.with_opportunity(opportunity_id)
-    except SaveLimitReached as exc:
-        raise HTTPException(
-            status_code=409,
-            detail=str(exc),
-        ) from exc
+    except SaveLimitReached:
+        return render_opportunity_save_utility(
+            opportunity_id,
+            saved,
+            status_message=(f"You can save up to {SAVES_MAX_ITEMS} opportunities."),
+            save_error=(f"You can save up to {SAVES_MAX_ITEMS} opportunities."),
+        )
 
     request.state.saves = updated
 
@@ -836,22 +872,23 @@ async def save_opportunity(
         saved_count=updated.total_count,
     )
 
-    return Response(status_code=204)
+    return render_opportunity_save_utility(
+        opportunity_id,
+        updated,
+        status_message="Opportunity saved.",
+    )
 
 
-@app.delete(
-    "/saves/opportunities/{opportunity_id}",
-    status_code=204,
-)
-async def unsave_opportunity(
-    request: Request,
-    opportunity_id: str,
-):
+@app.delete("/saves/opportunities/{opportunity_id}")
+async def unsave_opportunity(request: Request, opportunity_id: str):
     """Remove an apprenticeship opportunity from this browser's saves."""
     saved = request.state.saves
 
     if not saved.has_opportunity(opportunity_id):
-        return Response(status_code=204)
+        return render_opportunity_save_utility(
+            opportunity_id,
+            saved,
+        )
 
     updated = saved.without_opportunity(opportunity_id)
 
@@ -864,7 +901,11 @@ async def unsave_opportunity(
         saved_count=updated.total_count,
     )
 
-    return Response(status_code=204)
+    return render_opportunity_save_utility(
+        opportunity_id,
+        updated,
+        status_message=("Opportunity removed from saved opportunities."),
+    )
 
 
 # ── Single opportunity page ───────────────────────────────────────────────────
@@ -882,6 +923,7 @@ async def opportunity_detail_page(
         raise HTTPException(status_code=404)
 
     detail = build_opportunity_detail(opp)
+    saved = request.state.saves
 
     back_href = "/opportunities"
     back_label = "← All opportunities"
@@ -901,6 +943,9 @@ async def opportunity_detail_page(
             "detail": detail,
             "back_href": back_href,
             "back_label": back_label,
+            "opportunity_id": opp["id"],
+            "is_saved": saved.has_opportunity(opp["id"]),
+            "active_saved_count": (active_saved_opportunity_count(saved)),
         },
     )
 

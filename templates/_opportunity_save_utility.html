@@ -1,0 +1,47 @@
+<div id="opportunity-save-utility" class="detail-utility" aria-label="Saved opportunity controls">
+    <div class="container detail-utility__inner">
+
+        <button type="button"
+            class="btn btn--outline detail-save-button{% if is_saved %} detail-save-button--saved{% endif %}"
+            aria-pressed="{{ 'true' if is_saved else 'false' }}" {% if is_saved %}
+            hx-delete="/saves/opportunities/{{ opportunity_id }}" {% else %}
+            hx-post="/saves/opportunities/{{ opportunity_id }}" {% endif %} hx-target="#opportunity-save-utility"
+            hx-swap="outerHTML" hx-disabled-elt="this">
+            <svg viewBox="0 0 24 24" fill="{{ 'currentColor' if is_saved else 'none' }}" aria-hidden="true"
+                focusable="false">
+                <path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.5L6 21V4.5Z" stroke="currentColor"
+                    stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+
+            {% if is_saved %}
+            Saved
+            {% else %}
+            Save this opportunity
+            {% endif %}
+        </button>
+
+        <span class="detail-utility__saved-count"
+            aria-label="{{ active_saved_count }} saved {{ 'opportunity' if active_saved_count == 1 else 'opportunities' }}">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.5L6 21V4.5Z" stroke="currentColor"
+                    stroke-width="1.8" stroke-linejoin="round" />
+            </svg>
+
+            <strong>{{ active_saved_count }}</strong>
+            saved
+        </span>
+
+    </div>
+
+    {% if save_error %}
+    <div class="container">
+        <p class="detail-utility__error" role="alert">
+            {{ save_error }}
+        </p>
+    </div>
+    {% endif %}
+
+    <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true">
+        {{ status_message }}
+    </p>
+</div>

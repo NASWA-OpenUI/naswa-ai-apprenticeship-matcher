@@ -3220,6 +3220,70 @@ body:has(.opportunity-detail-page) {
   opacity: 1;
 }
 
+/* Utility actions directly below the opportunity hero. */
+.detail-utility {
+  background: var(--app-surface);
+  border-bottom: 1px solid var(--app-base);
+}
+
+.detail-utility__inner {
+  min-height: 4.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--app-space-100);
+  padding-bottom: var(--app-space-100);
+}
+
+.detail-save-button {
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--app-radius-md);
+}
+
+.detail-save-button svg,
+.detail-utility__saved-count svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.detail-save-button--saved {
+  background: var(--nys-color-theme-faint, #eef5f5);
+}
+
+.detail-save-button--saved:hover {
+  background: var(--nys-color-theme-weaker, #d7e8e9);
+}
+
+.detail-utility__saved-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  color: var(--nys-color-theme, #084b52);
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.detail-utility__error {
+  margin: -0.25rem 0 var(--app-space-100);
+  color: var(--app-danger);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .detail-utility__inner {
+    min-height: 4rem;
+  }
+
+  .detail-save-button {
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+  }
+}
+
 .detail-section p.detail-apply-action {
   margin-top: 1rem;
 }

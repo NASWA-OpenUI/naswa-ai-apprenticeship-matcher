@@ -907,7 +907,7 @@ def test_save_opportunity_sets_saved_cookie(
 
     response = client.post(f"/saves/opportunities/{opportunity_id}")
 
-    assert response.status_code == 204
+    assert response.status_code == 200
 
     saved = parse_saves_cookie(client.cookies.get(SAVES_COOKIE_NAME))
 
@@ -923,8 +923,8 @@ def test_save_opportunity_is_idempotent(
     first = client.post(f"/saves/opportunities/{opportunity_id}")
     second = client.post(f"/saves/opportunities/{opportunity_id}")
 
-    assert first.status_code == 204
-    assert second.status_code == 204
+    assert first.status_code == 200
+    assert second.status_code == 200
 
     saved = parse_saves_cookie(client.cookies.get(SAVES_COOKIE_NAME))
 
@@ -947,7 +947,7 @@ def test_unsave_opportunity_removes_saved_id(
 
     response = client.delete(f"/saves/opportunities/{opportunity_id}")
 
-    assert response.status_code == 204
+    assert response.status_code == 200
     assert client.cookies.get(SAVES_COOKIE_NAME) is None
 
 
@@ -987,4 +987,61 @@ def test_save_limit_returns_409(
 
     response = client.post(f"/saves/opportunities/{existing_id}")
 
-    assert response.status_code == 409
+    assert response.status_code == 200
+
+
+def test_opportunity_detail_shows_unsaved_control(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    response = client.get(f"/opportunities/{opportunity_id}")
+
+    assert response.status_code == 200
+
+    assert 'id="opportunity-save-utility"' in response.text
+    assert 'aria-pressed="false"' in response.text
+    assert f'hx-post="/saves/opportunities/{opportunity_id}"' in response.text
+    assert "Save this opportunity" in response.text
+    assert "0" in response.text
+    assert "saved" in response.text
+
+
+def test_save_opportunity_returns_saved_utility(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    response = client.post(f"/saves/opportunities/{opportunity_id}")
+
+    assert response.status_code == 200
+    assert 'aria-pressed="true"' in response.text
+    assert f'hx-delete="/saves/opportunities/{opportunity_id}"' in response.text
+    assert "Saved" in response.text
+    assert "Opportunity saved." in response.text
+
+
+def test_saved_count_excludes_unavailable_opportunities(
+    client,
+    opportunities,
+):
+    current_id = opportunities[0]["id"]
+
+    saved = SavedItems(
+        opportunity_ids=(
+            "retired-opportunity",
+            current_id,
+        )
+    )
+
+    client.cookies.set(
+        SAVES_COOKIE_NAME,
+        serialize_saves_cookie(saved),
+    )
+
+    response = client.get(f"/opportunities/{current_id}")
+
+    assert response.status_code == 200
+    assert 'aria-label="1 saved opportunity"' in response.text

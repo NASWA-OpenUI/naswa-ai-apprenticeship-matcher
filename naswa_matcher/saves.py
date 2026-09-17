@@ -103,7 +103,6 @@ def _saves_cookie_secure() -> bool:
 
 def _cookie_secret() -> bytes:
     secret = os.getenv("SAVES_COOKIE_SECRET", "").strip()
-    print("SECRET", secret)
 
     if not secret:
         raise RuntimeError(
