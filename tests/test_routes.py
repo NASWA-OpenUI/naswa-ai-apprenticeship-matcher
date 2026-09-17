@@ -1003,7 +1003,7 @@ def test_opportunity_detail_shows_unsaved_control(
     assert 'id="opportunity-save-utility"' in response.text
     assert 'aria-pressed="false"' in response.text
     assert f'hx-post="/saves/opportunities/{opportunity_id}"' in response.text
-    assert "Save this opportunity" in response.text
+    assert "Save opportunity" in response.text
     assert "0" in response.text
     assert "saved" in response.text
 

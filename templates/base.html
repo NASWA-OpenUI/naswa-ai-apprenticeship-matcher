@@ -61,9 +61,13 @@ keeping it here too is harmless and explicit. #}
           {% block app_name %}Registered Apprenticeship Finder{% endblock %}
         </a>
       </span>
-      <span class="chip chip--theme chip--phase-tag">
-        <span class="chip__label">Beta</span>
-      </span>
+
+      {% set saved_items = request.state.saves %}
+      {% set saved_total_count = saved_items.total_count %}
+      {% set active_saved_count = active_saved_opportunity_count(saved_items) %}
+      {% set saved_header_oob = false %}
+      {% include "_saved_header.html" %}
+
     </div>
   </header>
 

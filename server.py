@@ -814,6 +814,9 @@ def active_saved_opportunity_count(
     )
 
 
+templates.env.globals["active_saved_opportunity_count"] = active_saved_opportunity_count
+
+
 def render_opportunity_save_utility(
     opportunity_id: str,
     saved: SavedItems,
@@ -821,17 +824,25 @@ def render_opportunity_save_utility(
     status_message: str = "",
     save_error: str = "",
 ) -> HTMLResponse:
-    """Render the save controls shown below an opportunity detail hero."""
-    return HTMLResponse(
-        render(
-            "_opportunity_save_utility.html",
-            opportunity_id=opportunity_id,
-            is_saved=saved.has_opportunity(opportunity_id),
-            active_saved_count=(active_saved_opportunity_count(saved)),
-            status_message=status_message,
-            save_error=save_error,
-        )
+    active_saved_count = active_saved_opportunity_count(saved)
+
+    utility_html = render(
+        "_opportunity_save_utility.html",
+        opportunity_id=opportunity_id,
+        is_saved=saved.has_opportunity(opportunity_id),
+        active_saved_count=active_saved_count,
+        status_message=status_message,
+        save_error=save_error,
     )
+
+    header_html = render(
+        "_saved_header.html",
+        saved_total_count=saved.total_count,
+        active_saved_count=active_saved_count,
+        saved_header_oob=True,
+    )
+
+    return HTMLResponse(utility_html + header_html)
 
 
 @app.post("/saves/opportunities/{opportunity_id}")

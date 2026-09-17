@@ -655,11 +655,6 @@ a.btn--accent:focus {
   text-decoration: underline;
 }
 
-.chip--phase-tag {
-  margin-left: auto;
-  color: var(--nys-color-theme);
-}
-
 @media (max-width: 520px) {
   .site-header .app-logo {
     max-width: 135px;
@@ -670,6 +665,52 @@ a.btn--accent:focus {
     font-size: 1rem;
     margin: 0 .65rem;
   }
+}
+
+/* ── "Saved" nav menu chip/button ────────────────────────────────────────── */
+
+.saved-header-slot {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.saved-nav-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.25rem;
+  padding: 0.3rem 0;
+
+  /* Deliberately plain in the inactive state. */
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+
+  color: var(--app-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.saved-nav-status>svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--app-text-weak);
+}
+
+.saved-nav-status__label {
+  color: var(--app-ink);
+}
+
+.saved-nav-status__count {
+  /* Number is intentionally quieter than the label. */
+  color: var(--app-text-weak);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Page title band ─────────────────────────────────────────────────────── */
