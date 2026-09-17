@@ -1,5 +1,3 @@
-{# templates/_program_rank_cards.html #}
-
 {% for item in ranked %}
 {% set group = item.program_group %}
 {% set trades = (group.trades | default([], true)) | trades_by_program_count %}

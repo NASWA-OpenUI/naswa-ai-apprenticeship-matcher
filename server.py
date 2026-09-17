@@ -731,6 +731,7 @@ async def opportunities_page(
     )
 
     session = request.state.session
+    saved_opportunity_ids = request.state.saves.opportunity_ids
 
     session.set_match_target(MatchTarget.OPPORTUNITIES)
 
@@ -796,6 +797,7 @@ async def opportunities_page(
             "show_license_filter": True,
             "filter_item_singular": "opportunity",
             "filter_item_plural": "opportunities",
+            "saved_opportunity_ids": saved_opportunity_ids,
         },
     )
 
@@ -978,6 +980,9 @@ async def rank_opportunities_stream(
     to the same ranked opportunities URL does not rerun the AI scoring work.
     """
     session = request.state.session
+    saved_opportunity_ids = (
+        request.state.saves.opportunity_ids
+    )
 
     profile = build_profile_from_input(
         likes=likes,
@@ -1003,9 +1008,13 @@ async def rank_opportunities_stream(
                 cached,
                 render=render,
                 adapter=OPPORTUNITY_RANKING_ADAPTER,
+                card_context={
+                    "saved_opportunity_ids": (
+                        saved_opportunity_ids
+                    ),
+                },
             )
         )
-
     request_started_at = time.perf_counter()
 
     all_jobs = all_opportunities()
@@ -1048,6 +1057,11 @@ async def rank_opportunities_stream(
             adapter=OPPORTUNITY_RANKING_ADAPTER,
             render=render,
             config=RANKING_STREAM_CONFIG,
+            card_context={
+                "saved_opportunity_ids": (
+                    saved_opportunity_ids
+                ),
+            },
         )
     )
 

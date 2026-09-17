@@ -2833,9 +2833,51 @@ a.demo-profile-card__cta:focus-visible {
   margin-bottom: 0.15rem;
 }
 
-.match-card__title {
-  font-size: 1.08rem;
+.match-card__top--saved {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "tier saved"
+    "title title";
+  align-items: center;
+  column-gap: 0.75rem;
+  row-gap: 0.55rem;
 }
+
+.match-card__top--saved>.chip {
+  grid-area: tier;
+  justify-self: start;
+}
+
+.match-card__top--saved .match-card__title {
+  grid-area: title;
+  min-width: 0;
+}
+
+.match-card__saved {
+  grid-area: saved;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 0;
+
+  color: var(--nys-color-theme, #084b52);
+  font-size: 0.85rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.match-card__saved svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.match-card__saved strong {
+  font-weight: 700;
+}
+
 
 .match-card__meta {
   margin: 0.05rem 0 0.6rem;

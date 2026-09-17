@@ -124,11 +124,15 @@ async def stream_cached_ranking(
     *,
     render: Render,
     adapter: RankingStreamAdapter,
+    card_context: dict | None = None,
 ):
     """Yield SSE events for a completed ranking loaded from session cache."""
+    card_context = card_context or {}
+
     cards_html = render(
         adapter.cards_template,
         ranked=cached.ranked,
+        **card_context,
     )
 
     if cards_html.strip():
@@ -344,8 +348,11 @@ async def stream_ranking(
     adapter: RankingStreamAdapter,
     render: Render,
     config: RankingStreamConfig,
+    card_context: dict | None = None,
 ):
     """Rank batches concurrently and yield shared SSE ranking events."""
+    card_context = card_context or {}
+
     total_batches = len(batches)
     semaphore = asyncio.Semaphore(config.max_concurrency)
 
@@ -412,6 +419,7 @@ async def stream_ranking(
                 cards_html = render(
                     adapter.cards_template,
                     ranked=result.ranked,
+                    **card_context,
                 )
 
                 yield {
