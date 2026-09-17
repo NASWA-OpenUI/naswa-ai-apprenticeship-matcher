@@ -26,7 +26,7 @@ from naswa_matcher.match_target import MatchTarget
             "us.amazon.nova-2-lite-v1:0",
             REQUESTED_MAX_OUTPUT_TOKENS,
         ),
-                (
+        (
             "maverick-17",
             "us.meta.llama4-maverick-17b-instruct-v1:0",
             REQUESTED_MAX_OUTPUT_TOKENS,

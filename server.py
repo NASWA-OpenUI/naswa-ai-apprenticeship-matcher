@@ -64,6 +64,12 @@ from naswa_matcher.ranking_stream import (
     stream_cached_ranking,
     stream_ranking,
 )
+from naswa_matcher.saves import (
+    SAVES_COOKIE_NAME,
+    SaveLimitReached,
+    parse_saves_cookie,
+    sync_saves_cookie,
+)
 from naswa_matcher.sessions import (
     SESSION_COOKIE_NAME,
     SESSION_MAX_AGE_SECONDS,
@@ -224,6 +230,11 @@ async def application_request_context(request: Request, call_next):
     if not _should_handle_application_request(request):
         return await call_next(request)
 
+    raw_saves_cookie = request.cookies.get(SAVES_COOKIE_NAME)
+    had_saves_cookie = raw_saves_cookie is not None
+
+    request.state.saves = parse_saves_cookie(raw_saves_cookie)
+
     request_id = str(uuid.uuid4())
 
     session_id, session = session_store.get_or_create(
@@ -240,6 +251,12 @@ async def application_request_context(request: Request, call_next):
 
     try:
         response = await call_next(request)
+
+        sync_saves_cookie(
+            response,
+            request.state.saves,
+            had_cookie=had_saves_cookie,
+        )
 
     except Exception:
         elapsed_ms = (time.perf_counter() - started_at) * 1000
@@ -778,6 +795,76 @@ async def opportunities_page(
             "filter_item_plural": "opportunities",
         },
     )
+
+
+# ── Saved opportunities ───────────────────────────────────────────────────────
+
+
+@app.post(
+    "/saves/opportunities/{opportunity_id}",
+    status_code=204,
+)
+async def save_opportunity(
+    request: Request,
+    opportunity_id: str,
+):
+    """Save an apprenticeship opportunity in this browser."""
+    opportunity = get_opportunity(opportunity_id)
+
+    if opportunity is None:
+        raise HTTPException(status_code=404)
+
+    saved = request.state.saves
+
+    if saved.has_opportunity(opportunity_id):
+        return Response(status_code=204)
+
+    try:
+        updated = saved.with_opportunity(opportunity_id)
+    except SaveLimitReached as exc:
+        raise HTTPException(
+            status_code=409,
+            detail=str(exc),
+        ) from exc
+
+    request.state.saves = updated
+
+    log_event(
+        request,
+        "opportunity_saved",
+        opportunity_id=opportunity_id,
+        saved_count=updated.total_count,
+    )
+
+    return Response(status_code=204)
+
+
+@app.delete(
+    "/saves/opportunities/{opportunity_id}",
+    status_code=204,
+)
+async def unsave_opportunity(
+    request: Request,
+    opportunity_id: str,
+):
+    """Remove an apprenticeship opportunity from this browser's saves."""
+    saved = request.state.saves
+
+    if not saved.has_opportunity(opportunity_id):
+        return Response(status_code=204)
+
+    updated = saved.without_opportunity(opportunity_id)
+
+    request.state.saves = updated
+
+    log_event(
+        request,
+        "opportunity_unsaved",
+        opportunity_id=opportunity_id,
+        saved_count=updated.total_count,
+    )
+
+    return Response(status_code=204)
 
 
 # ── Single opportunity page ───────────────────────────────────────────────────

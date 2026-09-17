@@ -8,6 +8,13 @@ import server
 from naswa_matcher.demo_profiles import DEMO_PROFILES
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.profile import build_profile
+from naswa_matcher.saves import (
+    SAVES_COOKIE_NAME,
+    SAVES_MAX_ITEMS,
+    SavedItems,
+    parse_saves_cookie,
+    serialize_saves_cookie,
+)
 from naswa_matcher.sessions import (
     SESSION_COOKIE_NAME,
     SESSION_MAX_AGE_SECONDS,
@@ -869,13 +876,8 @@ def test_demo_route_renders_all_profiles(client):
     assert "data-demo-profile-disabled=" not in response.text
 
 
-
 def test_terry_demo_profile_opens_program_matches(client):
-    terry = next(
-        profile
-        for profile in DEMO_PROFILES
-        if profile["id"] == "terry"
-    )
+    terry = next(profile for profile in DEMO_PROFILES if profile["id"] == "terry")
 
     match_url = terry["match_url"]
 
@@ -895,3 +897,94 @@ def test_terry_demo_profile_opens_program_matches(client):
     assert '"name": "Terry"' in response.text
     assert "Back to demo profiles" in response.text
     assert 'href="/demo"' in response.text
+
+
+def test_save_opportunity_sets_saved_cookie(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    response = client.post(f"/saves/opportunities/{opportunity_id}")
+
+    assert response.status_code == 204
+
+    saved = parse_saves_cookie(client.cookies.get(SAVES_COOKIE_NAME))
+
+    assert saved.opportunity_ids == (opportunity_id,)
+
+
+def test_save_opportunity_is_idempotent(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    first = client.post(f"/saves/opportunities/{opportunity_id}")
+    second = client.post(f"/saves/opportunities/{opportunity_id}")
+
+    assert first.status_code == 204
+    assert second.status_code == 204
+
+    saved = parse_saves_cookie(client.cookies.get(SAVES_COOKIE_NAME))
+
+    assert saved.opportunity_ids == (opportunity_id,)
+
+
+def test_save_unknown_opportunity_returns_404(client):
+    response = client.post("/saves/opportunities/not-a-real-opportunity")
+
+    assert response.status_code == 404
+
+
+def test_unsave_opportunity_removes_saved_id(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    client.post(f"/saves/opportunities/{opportunity_id}")
+
+    response = client.delete(f"/saves/opportunities/{opportunity_id}")
+
+    assert response.status_code == 204
+    assert client.cookies.get(SAVES_COOKIE_NAME) is None
+
+
+def test_chat_reset_does_not_clear_saved_opportunities(
+    client,
+    opportunities,
+):
+    opportunity_id = opportunities[0]["id"]
+
+    client.post(f"/saves/opportunities/{opportunity_id}")
+
+    reset_response = client.post("/chat/reset")
+
+    assert reset_response.status_code == 204
+
+    saved = parse_saves_cookie(client.cookies.get(SAVES_COOKIE_NAME))
+
+    assert saved.has_opportunity(opportunity_id)
+
+
+def test_save_limit_returns_409(
+    client,
+    opportunities,
+):
+    existing_id = opportunities[0]["id"]
+
+    saved = SavedItems(
+        opportunity_ids=tuple(
+            f"retired-opportunity-{index}" for index in range(SAVES_MAX_ITEMS)
+        )
+    )
+
+    client.cookies.set(
+        SAVES_COOKIE_NAME,
+        serialize_saves_cookie(saved),
+    )
+
+    response = client.post(f"/saves/opportunities/{existing_id}")
+
+    assert response.status_code == 409

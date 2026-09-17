@@ -55,6 +55,11 @@ def client(monkeypatch, opportunities, program_groups):
 
     monkeypatch.setattr(server, "all_program_groups", lambda: program_groups)
 
+    monkeypatch.setenv(
+        "SAVES_COOKIE_SECRET",
+        "test-saves-cookie-secret",
+    )
+
     def fake_get_opportunity(slug: str):
         return next((opp for opp in opportunities if opp["id"] == slug), None)
 
