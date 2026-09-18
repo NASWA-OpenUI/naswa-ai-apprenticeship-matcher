@@ -1,0 +1,9 @@
+<div class="{{ back_crumb_class | default('detail-crumb') }}">
+    <div class="container">
+        <a class="chip chip--warning" href="{{ back_link.href }}" data-back-link
+            data-back-source="{{ back_link.source or 'fallback' }}" {% if back_link.use_history %} data-history-back {%
+            endif %}>
+            {{ back_link.label }}
+        </a>
+    </div>
+</div>

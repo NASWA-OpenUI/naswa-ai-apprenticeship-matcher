@@ -8,13 +8,9 @@ title-band. The shared base still provides the beta banner, header, footer,
 scripts, and the outer #main-content landmark.
 #}
 {% block title_band %}
-<div class="detail-crumb">
-  <div class="container">
-    <a id="detail-back-link" class="chip chip--warning" href="{{ back_href }}">
-      {{ back_label }}
-    </a>
-  </div>
-</div>
+
+{% set back_crumb_class = "detail-crumb" %}
+{% include "_back_link.html" %}
 
 <section class="detail-hero" aria-labelledby="opportunity-title">
   <div class="container">
@@ -302,42 +298,14 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
   }
 
   /*
-    If the user came from the ranked opportunities page, make the breadcrumb
-    behave like the browser Back button. This avoids reloading the ranked URL
-    and re-running the expensive /api/rank-opportunities request.
+    Logic for the back link
   */
-  const backLink = document.getElementById('detail-back-link');
-  const lastMode = sessionStorage.getItem('lastOpportunitiesMode');
-
-  let referrerUrl = null;
-  try {
-    referrerUrl = document.referrer ? new URL(document.referrer) : null;
-  } catch {
-    referrerUrl = null;
-  }
+  const backLink =
+    document.querySelector('[data-back-link]');
 
   const cameFromRankedPage =
-    lastMode === 'ranked' &&
-    referrerUrl &&
-    referrerUrl.origin === window.location.origin &&
-    referrerUrl.pathname === '/opportunities' &&
-    referrerUrl.searchParams.get('ranked') === 'true';
-
-  if (backLink && cameFromRankedPage) {
-    backLink.textContent = '← Back to your matches';
-
-    backLink.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      if (window.history.length > 1) {
-        window.history.back();
-        return;
-      }
-
-      // Fallback for unusual cases like opening the detail page in a new tab.
-      window.location.href = '/opportunities';
-    });
-  }
+    backLink?.dataset.backSource ===
+    'opportunity_matches';
 
   /*
     Populate the match section from sessionStorage if the user came from

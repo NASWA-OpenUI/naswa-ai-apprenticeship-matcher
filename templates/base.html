@@ -209,6 +209,47 @@ keeping it here too is harmless and explicit. #}
     })();
   </script>
 
+  <script>
+    document.addEventListener(
+      'click',
+      function (event) {
+        const link =
+          event.target.closest(
+            '[data-history-back]'
+          );
+
+        if (!link) {
+          return;
+        }
+
+        /*
+         * Preserve normal browser behaviour for
+         * Cmd/Ctrl-click, Shift-click, etc.
+         */
+        if (
+          event.button !== 0 ||
+          event.metaKey ||
+          event.ctrlKey ||
+          event.shiftKey ||
+          event.altKey
+        ) {
+          return;
+        }
+
+        /*
+         * If this page was opened in a new tab,
+         * there may be no usable history entry.
+         * In that case, let the real href work.
+         */
+        if (window.history.length <= 1) {
+          return;
+        }
+
+        event.preventDefault();
+        window.history.back();
+      }
+    );
+  </script>
   {% block scripts %}{% endblock %}
 
 </body>

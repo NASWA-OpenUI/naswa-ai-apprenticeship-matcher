@@ -26,6 +26,10 @@ from naswa_matcher.app_logging import (
     log_request,
     visitor_id_from_session_id,
 )
+from naswa_matcher.back_link import (
+    BackLink,
+    back_link_from_referer,
+)
 from naswa_matcher.db import (
     all_opportunities,
     all_program_groups,
@@ -1041,30 +1045,33 @@ async def saved_opportunities_page(
 
 # ── Single opportunity page ───────────────────────────────────────────────────
 
+OPPORTUNITY_DETAIL_BACK_SOURCES = frozenset(
+    {
+        "opportunities_browse",
+        "opportunity_matches",
+        "program_detail",
+        "saved",
+        "data_sources",
+    }
+)
+
 
 @app.get("/opportunities/{slug}")
-async def opportunity_detail_page(
-    request: Request,
-    slug: str,
-    from_program: str | None = None,
-):
+async def opportunity_detail_page(request: Request, slug: str):
     """Serve the opportunity detail page."""
     opp = get_opportunity(slug)
+
     if opp is None:
         raise HTTPException(status_code=404)
 
     detail = build_opportunity_detail(opp)
     saved = request.state.saves
 
-    back_href = "/opportunities"
-    back_label = "← All opportunities"
-
-    if from_program:
-        program_group = get_program_group(from_program)
-
-        if program_group is not None:
-            back_href = f"/programs/{program_group['socCode']}"
-            back_label = "← Back to program details"
+    back_link = back_link_from_referer(
+        request,
+        allowed_sources=OPPORTUNITY_DETAIL_BACK_SOURCES,
+        fallback=BackLink(href="/opportunities", label="← All opportunities"),
+    )
 
     return templates.TemplateResponse(
         request,
@@ -1072,8 +1079,7 @@ async def opportunity_detail_page(
         {
             "opp": opp,
             "detail": detail,
-            "back_href": back_href,
-            "back_label": back_label,
+            "back_link": back_link,
             "opportunity_id": opp["id"],
             "is_saved": saved.has_opportunity(opp["id"]),
         },
