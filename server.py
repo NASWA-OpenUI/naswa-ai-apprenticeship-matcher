@@ -28,6 +28,7 @@ from naswa_matcher.app_logging import (
 )
 from naswa_matcher.back_link import (
     BackLink,
+    back_link_for_request,
     back_link_from_referer,
 )
 from naswa_matcher.db import (
@@ -1015,13 +1016,15 @@ async def clear_saved_opportunities(request: Request):
     )
 
 
-@app.get("/saved")
+@app.get("/saved", name="saved_opportunities")
 async def saved_opportunities_page(
     request: Request,
 ):
     saved = request.state.saves
 
     available, unavailable_ids = resolve_saved_opportunities(saved)
+
+    back_link = back_link_for_request(request)
 
     log_event(
         request,
@@ -1039,24 +1042,15 @@ async def saved_opportunities_page(
             "available_count": len(available),
             "unavailable_count": len(unavailable_ids),
             "total_saved_count": (saved.total_count),
+            "back_link": back_link,
         },
     )
 
 
 # ── Single opportunity page ───────────────────────────────────────────────────
 
-OPPORTUNITY_DETAIL_BACK_SOURCES = frozenset(
-    {
-        "opportunities_browse",
-        "opportunity_matches",
-        "program_detail",
-        "saved",
-        "data_sources",
-    }
-)
 
-
-@app.get("/opportunities/{slug}")
+@app.get("/opportunities/{slug}", name="opportunity_detail")
 async def opportunity_detail_page(request: Request, slug: str):
     """Serve the opportunity detail page."""
     opp = get_opportunity(slug)
@@ -1067,11 +1061,7 @@ async def opportunity_detail_page(request: Request, slug: str):
     detail = build_opportunity_detail(opp)
     saved = request.state.saves
 
-    back_link = back_link_from_referer(
-        request,
-        allowed_sources=OPPORTUNITY_DETAIL_BACK_SOURCES,
-        fallback=BackLink(href="/opportunities", label="← All opportunities"),
-    )
+    back_link = back_link_for_request(request)
 
     return templates.TemplateResponse(
         request,
@@ -1278,7 +1268,7 @@ async def programs_page(
 # ── Single program group page ─────────────────────────────────────────────────
 
 
-@app.get("/programs/{soc_code}")
+@app.get("/programs/{soc_code}", name="program_detail")
 async def program_detail_page(
     request: Request,
     soc_code: str,
@@ -1289,12 +1279,15 @@ async def program_detail_page(
     if program_group is None:
         raise HTTPException(status_code=404)
 
+    back_link = back_link_for_request(request)
+
     return templates.TemplateResponse(
         request,
         "program.html",
         {
             "program_group": program_group,
             "program_title": program_group_title(program_group),
+            "back_link": back_link,
         },
     )
 

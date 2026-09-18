@@ -3264,21 +3264,6 @@ a.demo-profile-card__cta:focus-visible {
 
 /* ── Saved opportunities page ───────────────────────────────────────────── */
 
-.saved-page-crumb {
-  background: var(--app-surface);
-  padding: 0.85rem 0;
-}
-
-.saved-page-crumb a {
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.saved-page-crumb a:hover,
-.saved-page-crumb a:focus {
-  text-decoration: underline;
-}
-
 .saved-page {
   width: 100%;
   max-width: 850px;
@@ -3575,9 +3560,6 @@ body:has(.opportunity-detail-page) {
   min-height: 4.25rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: var(--app-space-100);
-  padding-bottom: var(--app-space-100);
 }
 
 .detail-save-button {

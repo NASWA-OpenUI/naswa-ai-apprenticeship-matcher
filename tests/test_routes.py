@@ -364,40 +364,18 @@ def test_opportunity_detail_defaults_back_to_all_opportunities(
     assert "← All opportunities" in response.text
 
 
-def test_opportunity_detail_can_link_back_to_program(
+def test_opportunity_detail_returns_to_program(
     client,
 ):
     response = client.get(
         "/opportunities/electrician-apprentice-fixture",
-        params={
-            "from_program": "47-2111.00",
-        },
+        headers={"referer": "http://testserver/programs/47-2111.00"},
     )
 
     assert response.status_code == 200
 
     assert 'href="/programs/47-2111.00"' in response.text
     assert "← Back to program details" in response.text
-
-
-def test_opportunity_detail_ignores_invalid_from_program(
-    client,
-):
-    response = client.get(
-        "/opportunities/electrician-apprentice-fixture",
-        params={
-            "from_program": "https://example.com",
-        },
-    )
-
-    assert response.status_code == 200
-
-    assert (
-        'id="detail-back-link" class="chip chip--warning" href="/opportunities"'
-        in response.text
-    )
-    assert "← All opportunities" in response.text
-    assert "← Back to program details" not in response.text
 
 
 def test_rank_opportunities_stream_renders_scored_opportunities(

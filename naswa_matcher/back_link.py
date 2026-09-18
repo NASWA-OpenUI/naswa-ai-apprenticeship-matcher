@@ -3,8 +3,6 @@ from urllib.parse import parse_qs, urlsplit
 
 from starlette.requests import Request
 
-from naswa_matcher.profile import has_profile_query_params
-
 
 @dataclass(frozen=True, slots=True)
 class BackLink:
@@ -14,29 +12,74 @@ class BackLink:
     use_history: bool = False
 
 
+@dataclass(frozen=True, slots=True)
+class BackLinkRule:
+    allowed_sources: frozenset[str]
+    fallback: BackLink
+
+
+BACK_LINK_RULES = {
+    "opportunity_detail": BackLinkRule(
+        allowed_sources=frozenset(
+            {
+                "opportunities_browse",
+                "opportunity_matches",
+                "program_detail",
+                "saved",
+                "data_sources",
+            }
+        ),
+        fallback=BackLink(
+            href="/opportunities",
+            label="← All opportunities",
+        ),
+    ),
+    "program_detail": BackLinkRule(
+        allowed_sources=frozenset(
+            {
+                "programs_browse",
+                "program_matches",
+                "data_sources",
+            }
+        ),
+        fallback=BackLink(
+            href="/programs",
+            label="← All apprenticeship programs",
+        ),
+    ),
+    "saved_opportunities": BackLinkRule(
+        allowed_sources=frozenset(
+            {
+                "home",
+                "chat",
+                "demo",
+                "ai_disclosure",
+                "data_sources",
+                "opportunities_browse",
+                "opportunity_matches",
+                "opportunity_detail",
+                "programs_browse",
+                "program_matches",
+                "program_detail",
+            }
+        ),
+        fallback=BackLink(
+            href="/",
+            label="← Back to home",
+        ),
+    ),
+}
+
+
 def _has_profile_query(
     query_string: str,
-    *,
-    include_transportation: bool,
 ) -> bool:
     params = parse_qs(
         query_string,
         keep_blank_values=True,
     )
 
-    transportation_values = params.get("transportation")
-
-    transportation = (
-        transportation_values[-1]
-        if include_transportation and transportation_values is not None
-        else None
-    )
-
-    return has_profile_query_params(
-        likes=params.get("likes", []),
-        dislikes=params.get("dislikes", []),
-        transportation=transportation,
-    )
+    return "likes" in params
 
 
 def _is_detail_path(
@@ -55,10 +98,7 @@ def _classify_source(
     path: str,
     query_string: str,
 ) -> tuple[str, str] | None:
-    """
-    Return the source key and human-readable Back label for
-    recognized page routes.
-    """
+    """Return the source key and Back label for recognized pages."""
     if path == "/":
         return "home", "← Back to home"
 
@@ -81,10 +121,7 @@ def _classify_source(
         )
 
     if path == "/opportunities":
-        if _has_profile_query(
-            query_string,
-            include_transportation=True,
-        ):
+        if _has_profile_query(query_string):
             return (
                 "opportunity_matches",
                 "← Back to your matches",
@@ -105,10 +142,7 @@ def _classify_source(
         )
 
     if path == "/programs":
-        if _has_profile_query(
-            query_string,
-            include_transportation=False,
-        ):
+        if _has_profile_query(query_string):
             return (
                 "program_matches",
                 "← Back to your matches",
@@ -137,15 +171,7 @@ def back_link_from_referer(
     allowed_sources: set[str] | frozenset[str],
     fallback: BackLink,
 ) -> BackLink:
-    """
-    Return an app-approved Back link derived from the request Referer.
-
-    The Referer must:
-    - be HTTP(S)
-    - use the same hostname
-    - match a recognized page type
-    - be allowed by the destination page
-    """
+    """Return a Back link for a recognized same-site Referer."""
     referer = request.headers.get("referer")
 
     if not referer:
@@ -156,21 +182,7 @@ def back_link_from_referer(
     except ValueError:
         return fallback
 
-    if parsed.scheme not in {"http", "https"}:
-        return fallback
-
-    request_hostname = request.url.hostname
-    referer_hostname = parsed.hostname
-
-    if (
-        not request_hostname
-        or not referer_hostname
-        or request_hostname.casefold() != referer_hostname.casefold()
-    ):
-        return fallback
-
-    # Don't create a Back link pointing at the page we're already on.
-    if parsed.path == request.url.path:
+    if parsed.hostname != request.url.hostname:
         return fallback
 
     classified = _classify_source(
@@ -186,9 +198,7 @@ def back_link_from_referer(
     if source not in allowed_sources:
         return fallback
 
-    # Always turn the Referer back into a relative URL.
-    # Even after validation, we never emit an arbitrary absolute URL.
-    href = parsed.path or "/"
+    href = parsed.path
 
     if parsed.query:
         href += f"?{parsed.query}"
@@ -198,4 +208,23 @@ def back_link_from_referer(
         label=label,
         source=source,
         use_history=True,
+    )
+
+
+def back_link_for_request(
+    request: Request,
+) -> BackLink:
+    """Return the configured Back link for the current route."""
+    route = request.scope.get("route")
+    route_name = getattr(route, "name", None)
+
+    rule = BACK_LINK_RULES.get(route_name)
+
+    if rule is None:
+        raise ValueError(f"No Back link rule configured for route: {route_name}")
+
+    return back_link_from_referer(
+        request,
+        allowed_sources=rule.allowed_sources,
+        fallback=rule.fallback,
     )

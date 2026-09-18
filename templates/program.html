@@ -10,13 +10,8 @@ opportunity.html: crumb, service-page hero, detail layout, match panel,
 and "On this page" navigation.
 #}
 {% block title_band %}
-<div class="detail-crumb">
-    <div class="container">
-        <a id="detail-back-link" class="chip chip--warning" href="/programs">
-            ← All matches
-        </a>
-    </div>
-</div>
+
+{% include "_back_link.html" %}
 
 <section class="detail-hero" aria-labelledby="program-title">
     <div class="container">
@@ -342,54 +337,36 @@ and "On this page" navigation.
 
         const socCode = page.dataset.programSocCode;
 
-
-        /* Set back link to recent matches results URL string */
-        const backLink =
-            document.getElementById('detail-back-link');
-
-        const lastProgramsUrl =
-            sessionStorage.getItem('lastProgramsUrl');
-
-        if (backLink && lastProgramsUrl) {
-            try {
-                const url = new URL(
-                    lastProgramsUrl,
-                    window.location.origin
-                );
-
-                if (
-                    url.origin === window.location.origin &&
-                    url.pathname === '/programs' &&
-                    url.search
-                ) {
-                    backLink.href =
-                        url.pathname + url.search;
-                }
-            } catch {
-                // Keep the default /programs fallback.
-            }
-        }
-
         /*
          * Match context
          *
-         * This mirrors opportunity.html: the detail page itself never runs
-         * ranking. It only reveals the match panel when the results page saved
-         * an existing ranking for this SOC group.
+         * The detail page only reveals the match panel when
+         * the user actually arrived from ranked program results.
          */
         let rankings = null;
 
         try {
             rankings = JSON.parse(
-                sessionStorage.getItem('programRankings') || 'null'
+                sessionStorage.getItem(
+                    'programRankings'
+                ) || 'null'
             );
         } catch {
             rankings = null;
         }
 
-        const match =
-            rankings?.ranked?.find(item => item.id === socCode);
+        const backLink =
+            document.querySelector('[data-back-link]');
 
+        const cameFromRankedPage =
+            backLink?.dataset.backSource ===
+            'program_matches';
+
+        const match = cameFromRankedPage
+            ? rankings?.ranked?.find(
+                item => item.id === socCode
+            )
+            : null;
         if (match) {
             const section =
                 document.getElementById('match');
