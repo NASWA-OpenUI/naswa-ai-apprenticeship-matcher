@@ -20,17 +20,6 @@
             {% endif %}
         </button>
 
-        <span class="detail-utility__saved-count"
-            aria-label="{{ active_saved_count }} saved {{ 'opportunity' if active_saved_count == 1 else 'opportunities' }}">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                <path d="M6 4.5A1.5 1.5 0 0 1 7.5 3h9A1.5 1.5 0 0 1 18 4.5V21l-6-3.5L6 21V4.5Z" stroke="currentColor"
-                    stroke-width="1.8" stroke-linejoin="round" />
-            </svg>
-
-            <strong>{{ active_saved_count }}</strong>
-            saved
-        </span>
-
     </div>
 
     {% if save_error %}

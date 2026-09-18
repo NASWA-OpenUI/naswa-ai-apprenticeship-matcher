@@ -832,7 +832,6 @@ def render_opportunity_save_utility(
         "_opportunity_save_utility.html",
         opportunity_id=opportunity_id,
         is_saved=saved.has_opportunity(opportunity_id),
-        active_saved_count=active_saved_count,
         status_message=status_message,
         save_error=save_error,
     )
@@ -845,6 +844,46 @@ def render_opportunity_save_utility(
     )
 
     return HTMLResponse(utility_html + header_html)
+
+
+def resolve_saved_opportunities(
+    saved: SavedItems,
+) -> tuple[list[dict], list[str]]:
+    """
+    Resolve saved opportunity IDs against the current dataset.
+
+    Returns:
+    - currently available opportunities
+    - saved IDs that no longer exist
+    """
+    opportunities_by_id = {
+        opportunity["id"]: opportunity for opportunity in all_opportunities()
+    }
+
+    available = []
+    unavailable_ids = []
+
+    for opportunity_id in saved.opportunity_ids:
+        opportunity = opportunities_by_id.get(opportunity_id)
+
+        if opportunity is None:
+            unavailable_ids.append(opportunity_id)
+            continue
+
+        available.append(
+            {
+                "opportunity": opportunity,
+                "detail": build_opportunity_detail(opportunity),
+            }
+        )
+
+    available.sort(
+        key=lambda item: (
+            item["opportunity"].get("posting", {}).get("jobTitle", "").casefold()
+        )
+    )
+
+    return available, unavailable_ids
 
 
 @app.post("/saves/opportunities/{opportunity_id}")
@@ -893,31 +932,110 @@ async def save_opportunity(
 
 
 @app.delete("/saves/opportunities/{opportunity_id}")
-async def unsave_opportunity(request: Request, opportunity_id: str):
-    """Remove an apprenticeship opportunity from this browser's saves."""
+async def unsave_opportunity(
+    request: Request,
+    opportunity_id: str,
+    view: str | None = None,
+):
     saved = request.state.saves
 
-    if not saved.has_opportunity(opportunity_id):
-        return render_opportunity_save_utility(
-            opportunity_id,
-            saved,
+    if saved.has_opportunity(opportunity_id):
+        updated = saved.without_opportunity(opportunity_id)
+
+        request.state.saves = updated
+
+        log_event(
+            request,
+            "opportunity_unsaved",
+            opportunity_id=opportunity_id,
+            saved_count=updated.total_count,
         )
+    else:
+        updated = saved
 
-    updated = saved.without_opportunity(opportunity_id)
-
-    request.state.saves = updated
-
-    log_event(
-        request,
-        "opportunity_unsaved",
-        opportunity_id=opportunity_id,
-        saved_count=updated.total_count,
-    )
+    if view == "saved":
+        return Response(
+            status_code=204,
+            headers={
+                "HX-Refresh": "true",
+            },
+        )
 
     return render_opportunity_save_utility(
         opportunity_id,
         updated,
         status_message=("Opportunity removed from saved opportunities."),
+    )
+
+
+@app.delete("/saves/unavailable-opportunities")
+async def remove_unavailable_saved_opportunities(request: Request):
+    saved = request.state.saves
+
+    available, unavailable_ids = resolve_saved_opportunities(saved)
+
+    request.state.saves = SavedItems(
+        opportunity_ids=tuple(item["opportunity"]["id"] for item in available)
+    )
+
+    if unavailable_ids:
+        log_event(
+            request,
+            "unavailable_saved_opportunities_removed",
+            removed_count=len(unavailable_ids),
+            saved_count=len(available),
+        )
+
+    return Response(
+        status_code=204,
+        headers={"HX-Refresh": "true"},
+    )
+
+
+@app.delete("/saves")
+async def clear_saved_opportunities(request: Request):
+    removed_count = request.state.saves.total_count
+
+    request.state.saves = SavedItems()
+
+    if removed_count:
+        log_event(
+            request,
+            "saved_opportunities_cleared",
+            removed_count=removed_count,
+        )
+
+    return Response(
+        status_code=204,
+        headers={"HX-Refresh": "true"},
+    )
+
+
+@app.get("/saved")
+async def saved_opportunities_page(
+    request: Request,
+):
+    saved = request.state.saves
+
+    available, unavailable_ids = resolve_saved_opportunities(saved)
+
+    log_event(
+        request,
+        "saved_list_viewed",
+        saved_count=saved.total_count,
+        active_saved_count=len(available),
+        unavailable_saved_count=len(unavailable_ids),
+    )
+
+    return templates.TemplateResponse(
+        request,
+        "saved.html",
+        {
+            "saved_opportunities": available,
+            "available_count": len(available),
+            "unavailable_count": len(unavailable_ids),
+            "total_saved_count": (saved.total_count),
+        },
     )
 
 
@@ -958,7 +1076,6 @@ async def opportunity_detail_page(
             "back_label": back_label,
             "opportunity_id": opp["id"],
             "is_saved": saved.has_opportunity(opp["id"]),
-            "active_saved_count": (active_saved_opportunity_count(saved)),
         },
     )
 
@@ -980,9 +1097,7 @@ async def rank_opportunities_stream(
     to the same ranked opportunities URL does not rerun the AI scoring work.
     """
     session = request.state.session
-    saved_opportunity_ids = (
-        request.state.saves.opportunity_ids
-    )
+    saved_opportunity_ids = request.state.saves.opportunity_ids
 
     profile = build_profile_from_input(
         likes=likes,
@@ -1009,9 +1124,7 @@ async def rank_opportunities_stream(
                 render=render,
                 adapter=OPPORTUNITY_RANKING_ADAPTER,
                 card_context={
-                    "saved_opportunity_ids": (
-                        saved_opportunity_ids
-                    ),
+                    "saved_opportunity_ids": (saved_opportunity_ids),
                 },
             )
         )
@@ -1058,9 +1171,7 @@ async def rank_opportunities_stream(
             render=render,
             config=RANKING_STREAM_CONFIG,
             card_context={
-                "saved_opportunity_ids": (
-                    saved_opportunity_ids
-                ),
+                "saved_opportunity_ids": (saved_opportunity_ids),
             },
         )
     )

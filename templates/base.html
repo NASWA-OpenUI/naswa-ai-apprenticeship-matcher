@@ -66,6 +66,7 @@ keeping it here too is harmless and explicit. #}
       {% set saved_total_count = saved_items.total_count %}
       {% set active_saved_count = active_saved_opportunity_count(saved_items) %}
       {% set saved_header_oob = false %}
+      {% set saved_header_active = request.url.path == "/saved" %}
       {% include "_saved_header.html" %}
 
     </div>

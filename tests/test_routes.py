@@ -1023,10 +1023,7 @@ def test_save_opportunity_returns_saved_utility(
     assert "Opportunity saved." in response.text
 
 
-def test_saved_count_excludes_unavailable_opportunities(
-    client,
-    opportunities,
-):
+def test_saved_header_count_excludes_unavailable_opportunities(client, opportunities):
     current_id = opportunities[0]["id"]
 
     saved = SavedItems(
@@ -1036,12 +1033,95 @@ def test_saved_count_excludes_unavailable_opportunities(
         )
     )
 
-    client.cookies.set(
-        SAVES_COOKIE_NAME,
-        serialize_saves_cookie(saved),
-    )
+    client.cookies.set(SAVES_COOKIE_NAME, serialize_saves_cookie(saved))
 
     response = client.get(f"/opportunities/{current_id}")
 
     assert response.status_code == 200
-    assert 'aria-label="1 saved opportunity"' in response.text
+    assert 'class="saved-nav-status"' in response.text
+    assert 'class="saved-nav-status__count"' in response.text
+    assert (
+        '<span class="saved-nav-status__count">      1    </span>'
+        in response.text.replace("\n", "")
+    )
+
+
+def test_saved_page_lists_available_saves(client, opportunities):
+    first = opportunities[0]
+    second = opportunities[1]
+
+    client.post(f"/saves/opportunities/{first['id']}")
+    client.post(f"/saves/opportunities/{second['id']}")
+
+    response = client.get("/saved")
+
+    assert response.status_code == 200
+    assert first["posting"]["jobTitle"] in response.text
+    assert second["posting"]["jobTitle"] in response.text
+    print("response.text", response.text.replace(" ", ""))
+
+    assert '<span class="count__strong">2</span> opportunities saved'.replace(
+        " ", ""
+    ) in response.text.replace(" ", "").replace("\n", "")
+
+
+def test_saved_page_reports_unavailable_saves(client, opportunities):
+    current_id = opportunities[0]["id"]
+
+    client.cookies.set(
+        SAVES_COOKIE_NAME,
+        serialize_saves_cookie(
+            SavedItems(
+                opportunity_ids=(
+                    current_id,
+                    "retired-one",
+                    "retired-two",
+                )
+            )
+        ),
+    )
+
+    response = client.get("/saved")
+
+    assert response.status_code == 200
+
+    assert '<span class="saved-unavailable-title--count">2</span> saved opportunities areno longer available'.replace(
+        " ", ""
+    ) in response.text.replace(
+        " ", ""
+    ).replace(
+        "\n", ""
+    )
+
+    assert "retired-one" not in response.text
+    assert "retired-two" not in response.text
+
+
+def test_saved_page_handles_only_unavailable_saves(client):
+    client.cookies.set(
+        SAVES_COOKIE_NAME,
+        serialize_saves_cookie(
+            SavedItems(
+                opportunity_ids=(
+                    "retired-one",
+                    "retired-two",
+                )
+            )
+        ),
+    )
+
+    response = client.get("/saved")
+
+    assert response.status_code == 200
+
+    assert "You don’t have any currently available saved opportunities" in response.text
+
+
+def test_saved_page_handles_no_saves(client):
+    response = client.get("/saved")
+
+    assert response.status_code == 200
+
+    assert "You haven’t saved any opportunities yet" in response.text
+
+    assert "Clear all" not in response.text

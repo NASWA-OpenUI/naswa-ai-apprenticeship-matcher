@@ -277,9 +277,9 @@ ol#chat-log ol {
   gap: 0.4rem;
   border: 1.5px solid transparent;
   transition:
-    background 0.12s,
-    border-color 0.12s,
-    color 0.12s;
+    background 0.05s,
+    border-color 0.05s,
+    color 0.05s;
 }
 
 .btn--filled {
@@ -316,6 +316,19 @@ a.btn--accent:focus {
   color: var(--app-ink);
 }
 
+.btn--danger-quiet {
+  background: transparent;
+  border-color: var(--app-border);
+  color: var(--app-text-weak);
+}
+
+.btn--danger-quiet:hover,
+.btn--danger-quiet:focus {
+  background: #fbece9;
+  border-color: #e7b4ab;
+  color: #8f3a2e;
+}
+
 .btn:disabled {
   opacity: 0.6;
   cursor: default;
@@ -327,7 +340,7 @@ a.btn--accent:focus {
   padding: 1rem 2.15rem;
   border-radius: var(--app-radius-lg);
   box-shadow: 0 10px 24px -8px rgba(16, 24, 40, 0.4), 0 2px 4px rgba(16, 24, 40, 0.12);
-  transition: background 0.12s, transform 0.12s, box-shadow 0.12s;
+  transition: background 0.05s, transform 0.12s, box-shadow 0.12s;
 }
 
 .btn--jumbo:hover,
@@ -400,7 +413,7 @@ a.btn--accent:focus {
 .dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: var(--app-radius-pill);
   background: var(--nys-color-success);
 }
 
@@ -656,14 +669,27 @@ a.btn--accent:focus {
 }
 
 @media (max-width: 520px) {
+  .site-header>.container-flex {
+    gap: 0.40rem;
+  }
+
   .site-header .app-logo {
     max-width: 135px;
-    min-width: 125px;
+    min-width: 105px;
   }
 
   .site-header .app-name {
-    font-size: 1rem;
-    margin: 0 .65rem;
+    margin: 0 .35rem;
+  }
+
+  .saved-nav-status__label,
+  .saved-nav-saved-nav-status__count,
+  .site-header .app-name {
+    font-size: .80rem;
+  }
+
+  .saved-nav-status>svg {
+    display: none;
   }
 }
 
@@ -676,10 +702,13 @@ a.btn--accent:focus {
 
 .saved-nav-status {
   display: inline-flex;
+  position: relative;
   align-items: center;
   gap: 0.35rem;
   min-height: 2.25rem;
-  padding: 0.3rem 0;
+  padding: 0.3rem 0.35rem;
+  text-decoration: none;
+  border-radius: var(--app-radius-lg);
 
   /* Deliberately plain in the inactive state. */
   border: 0;
@@ -691,6 +720,18 @@ a.btn--accent:focus {
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;
+}
+
+.saved-nav-status:hover,
+.saved-nav-status:focus {
+  color: var(--nys-color-theme, #084b52);
+  background-color: var(--app-base-weak);
+  border-radius: var(--app-radius-lg);
+  background: var(--app-base-weak);
+}
+
+.saved-nav-status--active {
+  color: var(--nys-color-theme, #084b52);
 }
 
 .saved-nav-status>svg {
@@ -707,10 +748,33 @@ a.btn--accent:focus {
 .saved-nav-status__count {
   /* Number is intentionally quieter than the label. */
   color: var(--app-text-weak);
+  background: var(--nys-color-black-transparent-100);
+  border-radius: var(--app-radius-pill);
+  padding: 2px 4.25px;
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1;
   font-variant-numeric: tabular-nums;
+}
+
+.saved-nav-status--active {
+  border-radius: var(--app-radius-lg);
+  background: var(--nys-color-theme-faint);
+}
+
+.saved-nav-status--active:hover,
+.saved-nav-status--active:focus {
+  background: var(--nys-color-theme-weaker);
+}
+
+.saved-nav-status--active>svg,
+.saved-nav-status--active .saved-nav-status__label,
+.saved-nav-status--active .saved-nav-status__count {
+  color: var(--nys-color-theme, #084b52);
+}
+
+.saved-nav-status--active .saved-nav-status__count {
+  background: var(--nys-color-theme-weak);
 }
 
 /* ── Page title band ─────────────────────────────────────────────────────── */
@@ -816,7 +880,7 @@ body:has(.landing-page) .site-footer {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 0;
+  column-gap: .33rem;
   row-gap: 1.25rem;
   position: relative;
 }
@@ -1757,7 +1821,7 @@ body.profile-modal-open {
   width: 30px;
   height: 30px;
   place-items: center;
-  border-radius: 50%;
+  border-radius: var(--app-radius-pill);
   background: var(--app-surface);
   box-shadow: var(--app-shadow-sm);
   font-size: 1rem;
@@ -1807,7 +1871,7 @@ body.profile-modal-open {
   left: 0;
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: var(--app-radius-pill);
   background: var(--demo-profile-accent);
   content: "";
 }
@@ -1990,7 +2054,7 @@ a.demo-profile-card__cta:focus-visible {
   height: 18px;
   border: 2px solid var(--nys-color-theme-weak, #a8cccd);
   border-top-color: var(--nys-color-theme, #084b52);
-  border-radius: 50%;
+  border-radius: var(--app-radius-pill);
   animation: rank-spin 0.8s linear infinite;
   cursor: progress;
 }
@@ -2006,7 +2070,7 @@ a.demo-profile-card__cta:focus-visible {
   flex: none;
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: var(--app-radius-pill);
   background: var(--nys-color-theme, #084b52);
   color: #fff;
   display: flex;
@@ -2023,14 +2087,14 @@ a.demo-profile-card__cta:focus-visible {
 .progress-track {
   height: 8px;
   background: var(--app-base-weak, #e4e8ea);
-  border-radius: 999px;
+  border-radius: var(--app-radius-pill);
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
   background: var(--nys-color-theme, #084b52);
-  border-radius: 999px;
+  border-radius: var(--app-radius-pill);
 }
 
 /* ranking-specific layout/behaviour */
@@ -2111,6 +2175,7 @@ a.demo-profile-card__cta:focus-visible {
   color: var(--app-text-weak);
 }
 
+.saved-unavailable-title--count,
 .results-bar .count span.count__strong {
   font-size: 1.4rem;
   font-weight: 800;
@@ -2881,6 +2946,7 @@ a.demo-profile-card__cta:focus-visible {
 
 .match-card__meta {
   margin: 0.05rem 0 0.6rem;
+  width: 85%;
 }
 
 .match-card .chip .chip__label {
@@ -3174,6 +3240,10 @@ a.demo-profile-card__cta:focus-visible {
     padding: 0.95rem 1rem;
   }
 
+  .match-card__meta {
+    width: 100%;
+  }
+
   .match-card__footer {
     align-items: flex-start;
   }
@@ -3189,6 +3259,198 @@ a.demo-profile-card__cta:focus-visible {
   .program-match-card .trade-list .t-count {
     display: block;
     margin-top: 0.1rem;
+  }
+}
+
+/* ── Saved opportunities page ───────────────────────────────────────────── */
+
+.saved-page-crumb {
+  background: var(--app-surface);
+  padding: 0.85rem 0;
+}
+
+.saved-page-crumb a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.saved-page-crumb a:hover,
+.saved-page-crumb a:focus {
+  text-decoration: underline;
+}
+
+.saved-page {
+  width: 100%;
+  max-width: 850px;
+  margin-bottom: 2rem;
+}
+
+.saved-results-bar {
+  margin-bottom: .5rem;
+}
+
+.saved-page__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Opportunity cards */
+
+.saved-opportunity-list {
+  margin-bottom: 0;
+}
+
+.saved-opportunity-card .match-card__inner {
+  border-left: 0;
+}
+
+.saved-opportunity-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Individual Remove */
+
+.saved-opportunity-card__remove {
+  line-height: 1;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  border-color: var(--nys-color-black-transparent-200);
+}
+
+.saved-opportunity-card__remove svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+/* Fact chips */
+
+.saved-fact svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--app-text-weak);
+}
+
+/* Empty state */
+
+.saved-empty {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.saved-empty__icon {
+  width: 30px;
+  height: 30px;
+  color: var(--app-text-weak);
+}
+
+.saved-empty h2 {
+  margin: 0.9rem 0 0;
+  font-size: 1.05rem;
+}
+
+.saved-empty p {
+  max-width: 34rem;
+  margin: 0.5rem auto 1rem;
+
+  color: var(--app-text-weak);
+  line-height: 1.45;
+}
+
+/* Unavailable saves */
+
+.saved-unavailable {
+  padding: var(--app-card-padding);
+  opacity: .85;
+}
+
+.saved-unavailable:hover {
+  opacity: 1;
+}
+
+.saved-unavailable__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.saved-unavailable__heading svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  color: var(--app-text-weak);
+}
+
+.saved-unavailable h2 {
+  margin: .25rem 0;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.saved-unavailable p {
+  max-width: 34rem;
+  margin: 0.55rem 0 0.85rem;
+  color: var(--app-text-weak);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+/* Page divider */
+
+.saved-page__section-rule {
+  border: 0;
+  border-top: 1px solid var(--nys-color-black-transparent-200);
+}
+
+@media (max-width: 640px) {
+  .saved-page__toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .saved-page__actions {
+    flex-wrap: wrap;
+  }
+
+  .saved-opportunity-card__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 0.8rem;
+  }
+
+  .saved-opportunity-card__head .match-card__title {
+    min-width: 0;
+    margin-bottom: .25rem;
+  }
+
+  .saved-opportunity-card__remove {
+    padding: 0.3rem 0.55rem;
+  }
+
+  .saved-opportunity-card__remove svg {
+    display: none;
+  }
+
+  .saved-opportunity-card .match-card__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .saved-opportunity-card .match-card__summary {
+    width: 100%;
+    gap: 0.55rem;
+  }
+
+  .saved-opportunity-card .match-card__details-link {
+    align-self: flex-end;
   }
 }
 
@@ -3276,7 +3538,7 @@ body:has(.opportunity-detail-page) {
   gap: 0.4rem;
   padding: 0.34rem 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
+  border-radius: var(--app-radius-pill);
   background: rgba(255, 255, 255, 0.12);
   color: var(--app-text-on-theme);
   font-size: 0.86rem;
@@ -3323,8 +3585,7 @@ body:has(.opportunity-detail-page) {
   border-radius: var(--app-radius-md);
 }
 
-.detail-save-button svg,
-.detail-utility__saved-count svg {
+.detail-save-button svg {
   width: 16px;
   height: 16px;
   flex: none;
@@ -3336,17 +3597,6 @@ body:has(.opportunity-detail-page) {
 
 .detail-save-button--saved:hover {
   background: var(--nys-color-theme-weaker, #d7e8e9);
-}
-
-.detail-utility__saved-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-left: auto;
-  color: var(--nys-color-theme, #084b52);
-  font-size: 0.9rem;
-  font-weight: 700;
-  white-space: nowrap;
 }
 
 .detail-utility__error {
@@ -3545,12 +3795,13 @@ details.earnings summary {
   font-size: 0.95rem;
   padding: 0.7rem 0.9rem;
   background: var(--app-surface-muted);
-  border-radius: 4px;
+  border-radius: var(--app-radius-md);
+
 }
 
 details.earnings[open] summary {
   border-bottom: 1px solid var(--nys-color-black-transparent-300);
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--app-radius-md) var(--app-radius-md) 0 0;
 }
 
 details.earnings summary::-webkit-details-marker {
