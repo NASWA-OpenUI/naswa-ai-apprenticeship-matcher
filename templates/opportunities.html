@@ -101,65 +101,6 @@
   {% set profile_save_mode = "redirect" %}
   {% include "_profile_edit_modal.html" %}
 
-
-  {% if unranked %}
-  <section id="unranked-opportunities" class="unranked-opportunities" aria-labelledby="unranked-heading" hidden>
-    <h2 id="unranked-heading" class="section-heading">
-      More opportunities
-    </h2>
-
-    <p class="text-meta">
-      These opportunities are available, but do not have enough occupation
-      data to rank against your interests.
-    </p>
-
-    <div class="table-wrap surface surface--shadow">
-      <table class="opportunities-table">
-        <caption class="visually-hidden">
-          More apprenticeship opportunities
-        </caption>
-
-        <thead>
-          <tr>
-            <th scope="col">Position / Organization</th>
-            <th scope="col">Location</th>
-            <th scope="col">Applications close</th>
-            <th scope="col" class="num">Openings</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {% for item in unranked %}
-          <tr>
-            <td>
-              <a class="job-link" href="/opportunities/{{ item.id }}">
-                {{ item.posting.jobTitle }}
-              </a>
-
-              <div class="org-name text-meta">
-                {{ item.posting.sourceTitle }}
-              </div>
-            </td>
-
-            <td class="location">
-              {{ item.posting.locationSummary or "—" }}
-            </td>
-
-            <td class="date">
-              {{ item.posting.applicationEndDate | format_date }}
-            </td>
-
-            <td class="num">
-              {{ item.posting.numberOfOpenings or "—" }}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </section>
-  {% endif %}
-
 </div>
 {% endblock %}
 
@@ -313,27 +254,6 @@
         String(count);
     }
 
-
-    function revealUnranked() {
-      const unranked =
-        document.getElementById(
-          'unranked-opportunities'
-        );
-
-      if (!unranked) {
-        return;
-      }
-
-      unranked.hidden = false;
-
-      requestAnimationFrame(() => {
-        unranked.classList.add(
-          'is-revealed'
-        );
-      });
-    }
-
-
     sortCards();
     updateCount();
     syncRankingsToSessionStorage();
@@ -345,7 +265,6 @@
           'Matches generated using AI. Matches loaded from cached results.';
       }
 
-      revealUnranked();
       revealNoStrongMatchNoticeIfNeeded();
 
     } else {
@@ -406,8 +325,6 @@
               },
               2000
             );
-
-            revealUnranked();
           }
         }
       );

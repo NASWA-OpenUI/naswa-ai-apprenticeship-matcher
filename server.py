@@ -752,26 +752,15 @@ async def opportunities_page(
 
     session.profile = display_profile
 
-    all_jobs = all_opportunities()
-    onet_jobs = [job for job in all_jobs if job.get("onet") is not None]
-    no_onet_jobs = [job for job in all_jobs if job.get("onet") is None]
+    jobs = all_opportunities()
 
-    total_openings = sum_openings(onet_jobs)
-
+    total_openings = sum_openings(jobs)
     cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
 
     ranking_cached = cached is not None
     cached_ranked = cached.ranked if cached else []
 
     rank_stream_url = profile_url("/api/rank-opportunities", profile)
-
-    unranked = [
-        {
-            "id": job["id"],
-            "posting": job["posting"],
-        }
-        for job in no_onet_jobs
-    ]
 
     return templates.TemplateResponse(
         request,
@@ -785,9 +774,8 @@ async def opportunities_page(
             ),
             "demo": demo,
             "likes": likes,
-            "unranked": unranked,
             "completed_items": cached.completed_items if cached else 0,
-            "total_items": cached.total_items if cached else len(onet_jobs),
+            "total_items": cached.total_items if cached else len(jobs),
             "completed_units": cached.completed_units if cached else 0,
             "total_units": cached.total_units if cached else total_openings,
             "is_done": ranking_cached,
@@ -1126,15 +1114,14 @@ async def rank_opportunities_stream(
         )
     request_started_at = time.perf_counter()
 
-    all_jobs = all_opportunities()
-    onet_jobs = [job for job in all_jobs if job.get("onet") is not None]
+    jobs = all_opportunities()
 
-    total_openings = sum_openings(onet_jobs)
+    total_openings = sum_openings(jobs)
 
-    job_index = {job["id"]: index for index, job in enumerate(onet_jobs)}
+    job_index = {job["id"]: index for index, job in enumerate(jobs)}
 
     batches = chunk_items(
-        onet_jobs,
+        jobs,
         RANKING_STREAM_CONFIG.batch_size,
     )
 
@@ -1143,7 +1130,7 @@ async def rank_opportunities_stream(
         "ranking_started",
         target=MatchTarget.OPPORTUNITIES.value,
         model=SCORING_MODEL_NAME,
-        items=len(onet_jobs),
+        items=len(jobs),
         units=total_openings,
         batches=len(batches),
         batch_size=RANKING_STREAM_CONFIG.batch_size,
@@ -1158,7 +1145,7 @@ async def rank_opportunities_stream(
             target=MatchTarget.OPPORTUNITIES,
             profile=profile,
             request_started_at=request_started_at,
-            items=onet_jobs,
+            items=jobs,
             total_units=total_openings,
             item_index=job_index,
             batches=batches,

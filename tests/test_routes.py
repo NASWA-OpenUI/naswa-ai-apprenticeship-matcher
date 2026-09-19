@@ -278,20 +278,17 @@ def test_chat_reset_route_redirects_to_fresh_chat(client):
 
 
 def test_opportunities_route_renders_fixture_opportunities(client):
-    """Verifies that the unranked opportunities page renders fixture jobs and
+    """Verifies that the opportunities page renders fixture jobs and
     displays their location and application close dates."""
     response = client.get("/opportunities")
 
     assert response.status_code == 200
     assert "Apprenticeship Opportunities" in response.text
     assert "Electrician Apprentice" in response.text
-    assert "Sheet Metal Worker Apprentice" in response.text
     assert "Binghamton, NY area" in response.text
-    assert "Elmira, NY" in response.text
 
     # Indirectly verifies the date filter is wired into the route template.
     assert "July 31, 2027" in response.text
-    assert "February 28, 2027" in response.text
 
 
 def test_opportunity_detail_route_renders_enriched_opportunity(client):
@@ -328,22 +325,6 @@ def test_opportunities_page_with_profile_uses_personalized_results(client):
     assert "/api/rank-opportunities" in response.text
     assert "likes=hands-on+work" in response.text
     assert "ranked=true" not in response.text
-
-
-def test_opportunity_detail_route_renders_non_enriched_opportunity(client):
-    """Verifies that a non-enriched opportunity detail page still renders, but
-    does not show OES, O*NET, or match-specific sections."""
-    response = client.get("/opportunities/sheet-metal-worker-apprentice-fixture")
-
-    assert response.status_code == 200
-    assert "Sheet Metal Worker Apprentice" in response.text
-    assert "Area Sheet Metal Workers Fixture" in response.text
-    assert "Obtain an application and submit it by the deadline." in response.text
-
-    # This fixture has no OES/O*NET enrichment.
-    assert "Entry-level annual wage" not in response.text
-    assert "Common work activities" not in response.text
-    assert "Why this matches you" not in response.text
 
 
 def test_opportunity_detail_route_returns_404_for_unknown_slug(client):
@@ -384,7 +365,7 @@ def test_rank_opportunities_stream_renders_scored_opportunities(
 ):
     """Verifies that opportunity ranking streams scored cards and progress."""
 
-    async def fake_score_jobs(profile, onet_jobs):
+    async def fake_score_jobs(profile, jobs):
         assert profile["likes"] == [
             "hands-on work",
             "problem solving",
@@ -398,7 +379,7 @@ def test_rank_opportunities_stream_renders_scored_opportunities(
                 "tier": "Strong",
                 "explanation": "Good match for hands-on technical work.",
             }
-            for job in onet_jobs
+            for job in jobs
         ]
 
     monkeypatch.setattr(server, "_score_jobs", fake_score_jobs)
@@ -425,18 +406,13 @@ def test_rank_opportunities_stream_renders_scored_opportunities(
 
     assert "Good match for hands-on technical work." in body
 
-    # Stream endpoint only returns ranked cards/progress, not the full page shell.
-    assert "Sheet Metal Worker Apprentice" not in body
-
     # Cards expose driver's-licence metadata for deterministic filtering.
     assert 'data-license-required="' in body
 
 
-def test_opportunities_page_with_profile_renders_ranking_shell_and_unranked_jobs(
-    client,
-):
-    """Verifies that the ranked opportunities page renders the streaming shell,
-    profile summary widget, and non-O*NET jobs in the unranked section."""
+def test_opportunities_page_with_profile_renders_ranking_shell(client):
+    """Verifies that the ranked opportunities page renders the streaming shell
+    and profile summary widget."""
     response = client.get(
         "/opportunities",
         params=[
@@ -469,9 +445,6 @@ def test_opportunities_page_with_profile_renders_ranking_shell_and_unranked_jobs
     assert "likes=hands-on+work" in response.text
     assert "likes=problem+solving" in response.text
     assert "dislikes=desk+work" in response.text
-
-    assert "More opportunities" in response.text
-    assert "Sheet Metal Worker Apprentice" in response.text
 
     # Ranked-result filters are still present.
     assert 'id="match-filters"' in response.text
@@ -1026,19 +999,16 @@ def test_saved_header_count_excludes_unavailable_opportunities(client, opportuni
 
 def test_saved_page_lists_available_saves(client, opportunities):
     first = opportunities[0]
-    second = opportunities[1]
 
     client.post(f"/saves/opportunities/{first['id']}")
-    client.post(f"/saves/opportunities/{second['id']}")
 
     response = client.get("/saved")
 
     assert response.status_code == 200
     assert first["posting"]["jobTitle"] in response.text
-    assert second["posting"]["jobTitle"] in response.text
     print("response.text", response.text.replace(" ", ""))
 
-    assert '<span class="count__strong">2</span> opportunities saved'.replace(
+    assert '<span class="count__strong">1</span> opportunity saved'.replace(
         " ", ""
     ) in response.text.replace(" ", "").replace("\n", "")
 

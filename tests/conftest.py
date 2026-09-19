@@ -27,7 +27,6 @@ class DummyAgent:
 def opportunities():
     """Load stable test opportunities instead of using the real data directory."""
     fixture_names = [
-        "apprenticeship-no-soccode.json",
         "apprenticeship-with-soccode.json",
     ]
 

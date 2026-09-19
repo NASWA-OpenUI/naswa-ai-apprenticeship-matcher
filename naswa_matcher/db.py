@@ -35,6 +35,9 @@ def load_opportunities(conn: sqlite3.Connection) -> None:
         with path.open() as f:
             raw = json.load(f)
 
+        if raw.get("onet") is None:
+            raise ValueError(f"Opportunity is missing O*NET data: {path.name}")
+
         conn.execute(
             "INSERT INTO opportunities (id, data) VALUES (?, ?)",
             (raw["id"], json.dumps(raw)),

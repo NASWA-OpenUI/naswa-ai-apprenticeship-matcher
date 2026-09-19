@@ -2140,10 +2140,6 @@ a.demo-profile-card__cta:focus-visible {
   }
 }
 
-.unranked-opportunities.is-revealed {
-  animation: unranked-fade 0.4s ease;
-}
-
 @keyframes unranked-fade {
   from {
     opacity: 0;
@@ -2151,12 +2147,6 @@ a.demo-profile-card__cta:focus-visible {
 
   to {
     opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .unranked-opportunities.is-revealed {
-    animation: none;
   }
 }
 
