@@ -27,9 +27,7 @@ from naswa_matcher.app_logging import (
     visitor_id_from_session_id,
 )
 from naswa_matcher.back_link import (
-    BackLink,
     back_link_for_request,
-    back_link_from_referer,
 )
 from naswa_matcher.db import (
     all_opportunities,
@@ -45,6 +43,7 @@ from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
     ChatProfileUpdate,
+    build_profile_for_target,
     build_profile_from_input,
     extract_profile,
     has_profile_query_params,
@@ -52,6 +51,7 @@ from naswa_matcher.profile import (
     profile_match_url,
     profile_url,
     strip_profile,
+    transportation_for_target,
 )
 from naswa_matcher.program_ranking import (
     build_ranked_program_items,
@@ -398,23 +398,19 @@ async def chat_page(
     has_prefilled_profile = has_profile_query_params(
         likes=likes,
         dislikes=dislikes,
-        transportation=(
-            transportation
-            if session.match_target is MatchTarget.OPPORTUNITIES
-            else None
+        transportation=transportation_for_target(
+            transportation,
+            session.match_target,
         ),
     )
 
     if has_prefilled_profile:
-        profile = build_profile_from_input(
+        profile = build_profile_for_target(
+            session.match_target,
             name=session.profile.get("name") if session.profile else None,
             likes=likes,
             dislikes=dislikes,
-            transportation=(
-                transportation
-                if session.match_target is MatchTarget.OPPORTUNITIES
-                else None
-            ),
+            transportation=transportation,
             confirmed=True,
         )
 
@@ -461,15 +457,12 @@ async def update_chat_profile(
 
     existing_name = session.profile.get("name") if session.profile else None
 
-    profile = build_profile_from_input(
+    profile = build_profile_for_target(
+        session.match_target,
         name=existing_name if update.name is None else update.name,
         likes=update.likes,
         dislikes=update.dislikes,
-        transportation=(
-            update.transportation
-            if session.match_target is MatchTarget.OPPORTUNITIES
-            else None
-        ),
+        transportation=update.transportation,
         confirmed=True,
     )
 
@@ -666,15 +659,12 @@ async def chat_stream(request: Request):
                 }
 
             if profile:
-                profile = build_profile_from_input(
+                profile = build_profile_for_target(
+                    session.match_target,
                     name=profile.get("name"),
                     likes=profile.get("likes") or [],
                     dislikes=profile.get("dislikes") or [],
-                    transportation=(
-                        profile.get("transportation")
-                        if session.match_target is MatchTarget.OPPORTUNITIES
-                        else None
-                    ),
+                    transportation=profile.get("transportation"),
                     confirmed=bool(profile.get("confirmed")),
                 )
 

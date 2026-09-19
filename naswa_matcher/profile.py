@@ -73,6 +73,39 @@ def clean_profile_values(values: list[str]) -> list[str]:
     return cleaned
 
 
+def transportation_for_target(
+    transportation: str | None,
+    target: MatchTarget,
+) -> str | None:
+    """Return transportation only when it applies to the match target."""
+    if target is MatchTarget.OPPORTUNITIES:
+        return transportation
+
+    return None
+
+
+def build_profile_for_target(
+    target: MatchTarget,
+    *,
+    likes: list[str],
+    dislikes: list[str],
+    transportation: str | None = None,
+    name: str | None = None,
+    confirmed: bool = False,
+) -> dict:
+    """Build a normalized profile using fields relevant to the match target."""
+    return build_profile_from_input(
+        name=name,
+        likes=likes,
+        dislikes=dislikes,
+        transportation=transportation_for_target(
+            transportation,
+            target,
+        ),
+        confirmed=confirmed,
+    )
+
+
 def build_profile_from_input(
     *,
     likes: list[str],
