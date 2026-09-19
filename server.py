@@ -37,7 +37,10 @@ from naswa_matcher.db import (
 )
 from naswa_matcher.db import load as load_db
 from naswa_matcher.demo_profiles import DEMO_PROFILES
-from naswa_matcher.location_data import LABOR_MARKET_REGIONS
+from naswa_matcher.match_results import (
+    build_opportunity_results_context,
+    build_program_results_context,
+)
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
 from naswa_matcher.opportunity_stats import sum_openings
@@ -47,9 +50,7 @@ from naswa_matcher.profile import (
     build_profile_from_input,
     extract_profile,
     has_profile_query_params,
-    profile_chat_url,
     profile_match_url,
-    profile_url,
     strip_profile,
     transportation_for_target,
 )
@@ -96,8 +97,6 @@ from naswa_matcher.template_filters import (
 
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
-
-REGION_FILTER_OPTIONS = LABOR_MARKET_REGIONS
 
 # ── Jinja2 setup ────────────────────────────────────────────────────────────────
 
@@ -724,69 +723,21 @@ async def opportunities_page(
             {"opportunities": all_opportunities()},
         )
 
-    profile = build_profile_from_input(
+    context = build_opportunity_results_context(
+        session=request.state.session,
+        opportunities=all_opportunities(),
         likes=likes,
         dislikes=dislikes,
         transportation=transportation,
+        name=name,
+        demo=demo,
+        saved_opportunity_ids=request.state.saves.opportunity_ids,
     )
-
-    session = request.state.session
-    saved_opportunity_ids = request.state.saves.opportunity_ids
-
-    session.set_match_target(MatchTarget.OPPORTUNITIES)
-
-    existing_name = session.profile.get("name") if session.profile else None
-
-    display_profile = build_profile_from_input(
-        name=existing_name if name is None else name,
-        likes=likes,
-        dislikes=dislikes,
-        transportation=transportation,
-        confirmed=True,
-    )
-
-    session.profile = display_profile
-
-    jobs = all_opportunities()
-
-    total_openings = sum_openings(jobs)
-    cached = session.ranking_cache.get(profile, MatchTarget.OPPORTUNITIES)
-
-    ranking_cached = cached is not None
-    cached_ranked = cached.ranked if cached else []
-
-    rank_stream_url = profile_url("/api/rank-opportunities", profile)
 
     return templates.TemplateResponse(
         request,
         "opportunities.html",
-        {
-            "rank_stream_url": rank_stream_url,
-            "profile": display_profile,
-            "match_target": MatchTarget.OPPORTUNITIES.value,
-            "chat_profile_url": profile_chat_url(
-                display_profile, MatchTarget.OPPORTUNITIES
-            ),
-            "demo": demo,
-            "likes": likes,
-            "completed_items": cached.completed_items if cached else 0,
-            "total_items": cached.total_items if cached else len(jobs),
-            "completed_units": cached.completed_units if cached else 0,
-            "total_units": cached.total_units if cached else total_openings,
-            "is_done": ranking_cached,
-            "ranking_cached": ranking_cached,
-            "cached_ranked": cached_ranked,
-            "cached_elapsed_seconds": cached.elapsed_seconds if cached else 0,
-            "item_singular": "opportunity",
-            "item_plural": "opportunities",
-            "unit_singular": "opening",
-            "unit_plural": "openings",
-            "region_filter_options": REGION_FILTER_OPTIONS,
-            "show_license_filter": True,
-            "filter_item_singular": "opportunity",
-            "filter_item_plural": "opportunities",
-            "saved_opportunity_ids": saved_opportunity_ids,
-        },
+        context,
     )
 
 
@@ -1129,66 +1080,16 @@ async def programs_page(
             },
         )
 
-    profile = build_profile_from_input(
+    context = build_program_results_context(
+        session=request.state.session,
+        program_groups=all_program_groups(),
         likes=likes,
         dislikes=dislikes,
+        name=name,
+        demo=demo,
     )
 
-    session = request.state.session
-
-    session.set_match_target(MatchTarget.PROGRAMS)
-
-    existing_name = session.profile.get("name") if session.profile else None
-
-    display_profile = build_profile_from_input(
-        name=existing_name if name is None else name,
-        likes=likes,
-        dislikes=dislikes,
-        confirmed=True,
-    )
-
-    session.profile = display_profile
-
-    program_groups = all_program_groups()
-    total_programs = sum_programs(program_groups)
-
-    cached = session.ranking_cache.get(
-        profile,
-        MatchTarget.PROGRAMS,
-    )
-
-    ranking_cached = cached is not None
-    cached_ranked = cached.ranked if cached else []
-
-    rank_stream_url = profile_url("/api/rank-programs", profile)
-
-    return templates.TemplateResponse(
-        request,
-        "programs.html",
-        {
-            "profile": display_profile,
-            "match_target": MatchTarget.PROGRAMS.value,
-            "chat_profile_url": profile_chat_url(display_profile, MatchTarget.PROGRAMS),
-            "demo": demo,
-            "rank_stream_url": rank_stream_url,
-            "ranking_cached": ranking_cached,
-            "cached_ranked": cached_ranked,
-            "completed_items": cached.completed_items if cached else 0,
-            "total_items": (cached.total_items if cached else len(program_groups)),
-            "completed_units": cached.completed_units if cached else 0,
-            "total_units": (cached.total_units if cached else total_programs),
-            "is_done": ranking_cached,
-            "cached_elapsed_seconds": (cached.elapsed_seconds if cached else 0),
-            "item_singular": "career",
-            "item_plural": "careers",
-            "unit_singular": "registered program",
-            "unit_plural": "registered programs",
-            "region_filter_options": REGION_FILTER_OPTIONS,
-            "show_license_filter": False,
-            "filter_item_singular": "career",
-            "filter_item_plural": "careers",
-        },
-    )
+    return templates.TemplateResponse(request, "programs.html", context)
 
 
 # ── Single program group page ─────────────────────────────────────────────────

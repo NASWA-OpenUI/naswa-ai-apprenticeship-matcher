@@ -2996,6 +2996,8 @@ a.demo-profile-card__cta:focus-visible {
 .match-card__details-link {
   color: var(--nys-color-theme);
   text-decoration: none;
+  min-width: 120px;
+  padding-left: 10px;
 }
 
 .match-card__details-link:hover,
