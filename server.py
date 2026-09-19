@@ -70,6 +70,10 @@ from naswa_matcher.ranking_stream import (
     stream_cached_ranking,
     stream_ranking,
 )
+from naswa_matcher.saved_opportunities import (
+    active_saved_opportunity_count,
+    resolve_saved_opportunities,
+)
 from naswa_matcher.saves import (
     SAVES_COOKIE_NAME,
     SAVES_MAX_ITEMS,
@@ -107,6 +111,7 @@ def get_github_sha() -> str | None:
 templates = Jinja2Templates(directory=BASE_DIR / "templates")
 templates.env.filters.update(TEMPLATE_FILTERS)
 templates.env.globals["get_github_sha"] = get_github_sha
+templates.env.globals["active_saved_opportunity_count"] = active_saved_opportunity_count
 
 
 def render(name: str, **ctx) -> str:
@@ -788,20 +793,6 @@ async def opportunities_page(
 # ── Saved opportunities ───────────────────────────────────────────────────────
 
 
-def active_saved_opportunity_count(
-    saved: SavedItems,
-) -> int:
-    """Return the number of saved opportunities still in the current dataset."""
-    return sum(
-        1
-        for opportunity_id in saved.opportunity_ids
-        if get_opportunity(opportunity_id) is not None
-    )
-
-
-templates.env.globals["active_saved_opportunity_count"] = active_saved_opportunity_count
-
-
 def render_opportunity_save_utility(
     opportunity_id: str,
     saved: SavedItems,
@@ -827,46 +818,6 @@ def render_opportunity_save_utility(
     )
 
     return HTMLResponse(utility_html + header_html)
-
-
-def resolve_saved_opportunities(
-    saved: SavedItems,
-) -> tuple[list[dict], list[str]]:
-    """
-    Resolve saved opportunity IDs against the current dataset.
-
-    Returns:
-    - currently available opportunities
-    - saved IDs that no longer exist
-    """
-    opportunities_by_id = {
-        opportunity["id"]: opportunity for opportunity in all_opportunities()
-    }
-
-    available = []
-    unavailable_ids = []
-
-    for opportunity_id in saved.opportunity_ids:
-        opportunity = opportunities_by_id.get(opportunity_id)
-
-        if opportunity is None:
-            unavailable_ids.append(opportunity_id)
-            continue
-
-        available.append(
-            {
-                "opportunity": opportunity,
-                "detail": build_opportunity_detail(opportunity),
-            }
-        )
-
-    available.sort(
-        key=lambda item: (
-            item["opportunity"].get("posting", {}).get("jobTitle", "").casefold()
-        )
-    )
-
-    return available, unavailable_ids
 
 
 @app.post("/saves/opportunities/{opportunity_id}")
@@ -955,18 +906,16 @@ async def unsave_opportunity(
 async def remove_unavailable_saved_opportunities(request: Request):
     saved = request.state.saves
 
-    available, unavailable_ids = resolve_saved_opportunities(saved)
+    resolved = resolve_saved_opportunities(saved)
 
-    request.state.saves = SavedItems(
-        opportunity_ids=tuple(item["opportunity"]["id"] for item in available)
-    )
+    request.state.saves = SavedItems(opportunity_ids=resolved.available_ids)
 
-    if unavailable_ids:
+    if resolved.unavailable_count:
         log_event(
             request,
             "unavailable_saved_opportunities_removed",
-            removed_count=len(unavailable_ids),
-            saved_count=len(available),
+            removed_count=resolved.unavailable_count,
+            saved_count=resolved.available_count,
         )
 
     return Response(
@@ -1000,7 +949,7 @@ async def saved_opportunities_page(
 ):
     saved = request.state.saves
 
-    available, unavailable_ids = resolve_saved_opportunities(saved)
+    resolved = resolve_saved_opportunities(saved)
 
     back_link = back_link_for_request(request)
 
@@ -1008,18 +957,18 @@ async def saved_opportunities_page(
         request,
         "saved_list_viewed",
         saved_count=saved.total_count,
-        active_saved_count=len(available),
-        unavailable_saved_count=len(unavailable_ids),
+        active_saved_count=resolved.available_count,
+        unavailable_saved_count=resolved.unavailable_count,
     )
 
     return templates.TemplateResponse(
         request,
         "saved.html",
         {
-            "saved_opportunities": available,
-            "available_count": len(available),
-            "unavailable_count": len(unavailable_ids),
-            "total_saved_count": (saved.total_count),
+            "saved_opportunities": resolved.available,
+            "available_count": resolved.available_count,
+            "unavailable_count": resolved.unavailable_count,
+            "total_saved_count": saved.total_count,
             "back_link": back_link,
         },
     )

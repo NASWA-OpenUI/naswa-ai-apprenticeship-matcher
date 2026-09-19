@@ -4,6 +4,7 @@ from pathlib import Path
 import pytest
 from fastapi.testclient import TestClient
 
+import naswa_matcher.saved_opportunities as saved_opportunities
 import server
 from naswa_matcher.sessions import SESSION_MAX_AGE_SECONDS, SessionStore
 
@@ -51,6 +52,7 @@ def client(monkeypatch, opportunities, program_groups):
 
     monkeypatch.setattr(server, "load_db", lambda: None)
     monkeypatch.setattr(server, "all_opportunities", lambda: opportunities)
+    monkeypatch.setattr(saved_opportunities, "all_opportunities", lambda: opportunities)
 
     monkeypatch.setattr(server, "all_program_groups", lambda: program_groups)
 
