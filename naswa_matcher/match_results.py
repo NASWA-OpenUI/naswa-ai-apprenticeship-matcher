@@ -6,8 +6,8 @@ from naswa_matcher.profile import (
     profile_chat_url,
     profile_url,
 )
-from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.program_ranking import sum_programs
+from naswa_matcher.ranking_cache import RankingCacheEntry
 from naswa_matcher.sessions import ChatSession
 
 
