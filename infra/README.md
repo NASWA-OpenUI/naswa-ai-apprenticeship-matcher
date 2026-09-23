@@ -17,7 +17,8 @@ infra/
 └── iam/
     ├── ecs-tasks-trust-policy.json
     ├── ecs-express-infrastructure-trust-policy.json
-    └── bedrock-invoke-policy.json
+    ├── bedrock-invoke-policy.json
+    └── ses-send-policy.json
 ```
 
 The IAM JSON files are not secrets. They are safe to commit.
@@ -39,7 +40,7 @@ containerPort: 8000
 health check path: /health
 ```
 
-The app uses AWS Bedrock through the Strands Agents SDK. In ECS, the app should use an IAM task role for Bedrock access. Do not deploy AWS access keys as container environment variables.
+The app uses AWS Bedrock through the Strands Agents SDK and Amazon SES for transactional opportunity emails. In ECS, the app uses an IAM task role for access to both services. Do not deploy AWS access keys as container environment variables.
 
 The deployed container currently receives these non-secret runtime environment variables:
 
@@ -48,6 +49,15 @@ AWS_DEFAULT_REGION
 AWS_REGION
 CHAT_MODEL_NAME
 SCORING_MODEL_NAME
+SESSION_COOKIE_SECURE
+GITHUB_SHA
+SES_FROM_EMAIL
+```
+
+The deployed container also receives this value through the ECS `secrets` configuration:
+
+```
+AWS_BEARER_TOKEN_BEDROCK
 ```
 
 The deployed container should not receive:
@@ -66,7 +76,7 @@ Install and configure:
 ```text
 Docker
 AWS CLI
-AWS credentials/profile with permissions for ECR, ECS, IAM, and Bedrock
+AWS credentials/profile with permissions for ECR, ECS, IAM, Bedrock, and SES
 ```
 
 Confirm your AWS CLI identity:
@@ -86,17 +96,21 @@ Set common environment variables:
 ```bash
 export AWS_PROFILE=your-profile-name
 export AWS_REGION=us-east-1
+export AWS_DEFAULT_REGION="$AWS_REGION"
+
+export APP_NAME=naswa-ai-apprenticeship-matcher
+export ECR_REPO="$APP_NAME"
+export SES_FROM_EMAIL="notifications@nofo.rodeo"
+
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity \
   --profile "$AWS_PROFILE" \
   --query Account \
   --output text)
 
-export APP_NAME=naswa-ai-apprenticeship-matcher
-export ECR_REPO=$APP_NAME
-export IMAGE_TAG=latest
+export GITHUB_SHA=$(git rev-parse HEAD)
+export IMAGE_TAG=$(git rev-parse --short HEAD)
 export IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
 ```
-
 ## Case 1: Create a new ECS Express Mode service
 
 Use this flow when creating a brand new deployed application.
@@ -129,6 +143,16 @@ aws ecr get-login-password \
 
 For an Apple Silicon Mac, build for `linux/amd64` unless the ECS service is explicitly configured for ARM.
 
+Use the current Git commit as the image tag so each deployment has a unique image:
+
+```bash
+export GITHUB_SHA="$(git rev-parse HEAD)"
+export IMAGE_TAG="$(git rev-parse --short HEAD)"
+export IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
+```
+
+Build and push the image:
+
 ```bash
 docker buildx build \
   --platform linux/amd64 \
@@ -142,6 +166,7 @@ Confirm the image exists:
 ```bash
 aws ecr describe-images \
   --repository-name "$ECR_REPO" \
+  --image-ids imageTag="$IMAGE_TAG" \
   --region "$AWS_REGION" \
   --profile "$AWS_PROFILE"
 ```
@@ -155,11 +180,11 @@ Execution role:
   Used by ECS to pull the container image and write logs.
 
 Infrastructure role:
-  Used by ECS Express Mode to create/manage supporting infrastructure.
+  Used by ECS Express Mode to create and manage supporting infrastructure.
 
 Task role:
   Used by the running application code inside the container.
-  This app needs a task role so it can call AWS Bedrock.
+  This app needs a task role so it can call AWS Bedrock and Amazon SES.
 ```
 
 Create the ECS task execution role:
@@ -217,31 +242,117 @@ aws iam put-role-policy \
   --profile "$AWS_PROFILE"
 ```
 
+Attach the SES policy to the task role:
+
+```bash
+aws iam put-role-policy \
+  --role-name naswaMatcherTaskRole \
+  --policy-name SesSendEmail \
+  --policy-document file://infra/iam/ses-send-policy.json \
+  --profile "$AWS_PROFILE"
+```
+
 If any role already exists, skip the corresponding `create-role` command and continue with the attach/get-role commands.
 
 ### 5. Export role ARNs
 
 ```bash
-export EXECUTION_ROLE_ARN=$(aws iam get-role \
+export EXECUTION_ROLE_ARN="$(aws iam get-role \
   --role-name ecsTaskExecutionRole \
   --query 'Role.Arn' \
   --output text \
-  --profile "$AWS_PROFILE")
+  --profile "$AWS_PROFILE")"
 
-export INFRASTRUCTURE_ROLE_ARN=$(aws iam get-role \
+export INFRASTRUCTURE_ROLE_ARN="$(aws iam get-role \
   --role-name ecsInfrastructureRoleForExpressServices \
   --query 'Role.Arn' \
   --output text \
-  --profile "$AWS_PROFILE")
+  --profile "$AWS_PROFILE")"
 
-export TASK_ROLE_ARN=$(aws iam get-role \
+export TASK_ROLE_ARN="$(aws iam get-role \
   --role-name naswaMatcherTaskRole \
   --query 'Role.Arn' \
   --output text \
-  --profile "$AWS_PROFILE")
+  --profile "$AWS_PROFILE")"
 ```
 
-### 6. Create the ECS Express Mode service
+### 6. Configure runtime values
+
+Set the non-secret SES sender address:
+
+```bash
+export SES_FROM_EMAIL="notifications@nofo.rodeo"
+```
+
+The Bedrock API key is stored in AWS Secrets Manager:
+
+```bash
+export BEDROCK_SECRET_NAME="naswa/bedrock-api-key"
+
+export BEDROCK_SECRET_ARN="$(
+  aws secretsmanager describe-secret \
+    --secret-id "$BEDROCK_SECRET_NAME" \
+    --region "$AWS_REGION" \
+    --profile "$AWS_PROFILE" \
+    --query ARN \
+    --output text
+)"
+```
+
+Build the ECS primary container configuration:
+
+```bash
+PRIMARY_CONTAINER="$(
+  jq -nc \
+    --arg image "$IMAGE_URI" \
+    --arg region "$AWS_REGION" \
+    --arg github_sha "$GITHUB_SHA" \
+    --arg ses_from_email "$SES_FROM_EMAIL" \
+    --arg bedrock_secret_arn "$BEDROCK_SECRET_ARN" \
+    '{
+      image: $image,
+      containerPort: 8000,
+      environment: [
+        {
+          name: "AWS_DEFAULT_REGION",
+          value: $region
+        },
+        {
+          name: "AWS_REGION",
+          value: $region
+        },
+        {
+          name: "CHAT_MODEL_NAME",
+          value: "sonnet-4.6"
+        },
+        {
+          name: "SCORING_MODEL_NAME",
+          value: "maverick-17"
+        },
+        {
+          name: "SESSION_COOKIE_SECURE",
+          value: "true"
+        },
+        {
+          name: "GITHUB_SHA",
+          value: $github_sha
+        },
+        {
+          name: "SES_FROM_EMAIL",
+          value: $ses_from_email
+        }
+      ],
+      secrets: [
+        {
+          name: "AWS_BEARER_TOKEN_BEDROCK",
+          valueFrom: $bedrock_secret_arn
+        }
+      ]
+    }'
+)"
+```
+
+### 7. Create the ECS Express Mode service
 
 ```bash
 aws ecs create-express-gateway-service \
@@ -249,7 +360,7 @@ aws ecs create-express-gateway-service \
   --execution-role-arn "$EXECUTION_ROLE_ARN" \
   --infrastructure-role-arn "$INFRASTRUCTURE_ROLE_ARN" \
   --task-role-arn "$TASK_ROLE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"maverick-17\"}]}" \
+  --primary-container "$PRIMARY_CONTAINER" \
   --health-check-path "/health" \
   --monitor-resources \
   --region "$AWS_REGION" \
@@ -283,22 +394,47 @@ https://<service-name>.ecs.<region>.on.aws/
 
 Use this flow when the ECS Express Mode service already exists and you want to deploy a new version of the app.
 
+For normal deployments, prefer the checked-in helper scripts:
+
+```bash
+source infra/scripts/1-deploy-env.sh
+infra/scripts/2-ecr-login.sh
+infra/scripts/3-deploy.sh
+```
+
+The manual steps below document the equivalent deployment process.
+
 ### 1. Set environment variables
 
 ```bash
 export AWS_PROFILE=your-profile-name
 export AWS_REGION=us-east-1
-export AWS_ACCOUNT_ID=$(aws sts get-caller-identity \
-  --profile "$AWS_PROFILE" \
-  --query Account \
-  --output text)
+export AWS_DEFAULT_REGION="$AWS_REGION"
 
 export APP_NAME=naswa-ai-apprenticeship-matcher
-export ECR_REPO=$APP_NAME
+export ECR_REPO="$APP_NAME"
 
-# Prefer a unique tag for deployments so it is easy to see what is running.
-export IMAGE_TAG=$(git rev-parse --short HEAD)
+export SES_FROM_EMAIL="notifications@nofo.rodeo"
+
+export AWS_ACCOUNT_ID="$(aws sts get-caller-identity \
+  --profile "$AWS_PROFILE" \
+  --query Account \
+  --output text)"
+
+export GITHUB_SHA="$(git rev-parse HEAD)"
+export IMAGE_TAG="$(git rev-parse --short HEAD)"
 export IMAGE_URI="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG"
+
+export BEDROCK_SECRET_NAME="naswa/bedrock-api-key"
+
+export BEDROCK_SECRET_ARN="$(
+  aws secretsmanager describe-secret \
+    --secret-id "$BEDROCK_SECRET_NAME" \
+    --region "$AWS_REGION" \
+    --profile "$AWS_PROFILE" \
+    --query ARN \
+    --output text
+)"
 
 # Use the service ARN returned by create-express-gateway-service.
 export SERVICE_ARN=arn:aws:ecs:...
@@ -330,18 +466,74 @@ Confirm the image was pushed:
 ```bash
 aws ecr describe-images \
   --repository-name "$ECR_REPO" \
+  --image-ids imageTag="$IMAGE_TAG" \
   --region "$AWS_REGION" \
   --profile "$AWS_PROFILE"
 ```
 
 ### 4. Update the ECS Express Mode service
 
-Update the service to use the new image:
+Build the primary container configuration:
+
+```bash
+PRIMARY_CONTAINER="$(
+  jq -nc \
+    --arg image "$IMAGE_URI" \
+    --arg region "$AWS_REGION" \
+    --arg github_sha "$GITHUB_SHA" \
+    --arg ses_from_email "$SES_FROM_EMAIL" \
+    --arg bedrock_secret_arn "$BEDROCK_SECRET_ARN" \
+    '{
+      image: $image,
+      containerPort: 8000,
+      environment: [
+        {
+          name: "AWS_DEFAULT_REGION",
+          value: $region
+        },
+        {
+          name: "AWS_REGION",
+          value: $region
+        },
+        {
+          name: "CHAT_MODEL_NAME",
+          value: "sonnet-4.6"
+        },
+        {
+          name: "SCORING_MODEL_NAME",
+          value: "maverick-17"
+        },
+        {
+          name: "SESSION_COOKIE_SECURE",
+          value: "true"
+        },
+        {
+          name: "GITHUB_SHA",
+          value: $github_sha
+        },
+        {
+          name: "SES_FROM_EMAIL",
+          value: $ses_from_email
+        }
+      ],
+      secrets: [
+        {
+          name: "AWS_BEARER_TOKEN_BEDROCK",
+          valueFrom: $bedrock_secret_arn
+        }
+      ]
+    }'
+)"
+```
+
+Deploy the new image:
 
 ```bash
 aws ecs update-express-gateway-service \
   --service-arn "$SERVICE_ARN" \
-  --primary-container "{\"image\":\"$IMAGE_URI\",\"containerPort\":8000,\"environment\":[{\"name\":\"AWS_DEFAULT_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"AWS_REGION\",\"value\":\"$AWS_REGION\"},{\"name\":\"CHAT_MODEL_NAME\",\"value\":\"sonnet-4.6\"},{\"name\":\"SCORING_MODEL_NAME\",\"value\":\"maverick-17\"}]}" \
+  --primary-container "$PRIMARY_CONTAINER" \
+  --scaling-target '{"minTaskCount":1,"maxTaskCount":1}' \
+  --health-check-path "/health" \
   --monitor-resources \
   --region "$AWS_REGION" \
   --profile "$AWS_PROFILE"
@@ -369,16 +561,25 @@ aws ecs monitor-express-gateway-service \
 
 ## Environment variables
 
-For ECS, this app should usually only need non-secret runtime config:
+The deployed ECS container currently receives these non-secret runtime environment variables:
 
 ```text
 AWS_DEFAULT_REGION
 AWS_REGION
 CHAT_MODEL_NAME
 SCORING_MODEL_NAME
+SESSION_COOKIE_SECURE
+GITHUB_SHA
+SES_FROM_EMAIL
 ```
 
-Do not set these in ECS:
+The container also receives this value through the ECS `secrets` configuration:
+
+```text
+AWS_BEARER_TOKEN_BEDROCK
+```
+
+The deployed container should not receive long-lived AWS credentials:
 
 ```text
 AWS_ACCESS_KEY_ID
@@ -387,7 +588,7 @@ AWS_SESSION_TOKEN
 AWS_PROFILE
 ```
 
-The app should use the ECS task role for AWS Bedrock access.
+The application uses the ECS task role for AWS Bedrock and Amazon SES permissions.
 
 For local Docker testing only, it is okay to use a local `.env` file with either:
 

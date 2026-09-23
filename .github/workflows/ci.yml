@@ -165,6 +165,10 @@ jobs:
                   {
                     name: "GITHUB_SHA",
                     value: $github_sha
+                  },
+                  {
+                    name: "SES_FROM_EMAIL",
+                    value: "notifications@nofo.rodeo"
                   }
                 ],
                 secrets: [

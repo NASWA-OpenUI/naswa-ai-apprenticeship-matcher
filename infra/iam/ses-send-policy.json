@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowNaswaSesSendEmail",
+            "Effect": "Allow",
+            "Action": "ses:SendEmail",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "ses:FromAddress": "notifications@nofo.rodeo"
+                }
+            }
+        }
+    ]
+}
