@@ -61,6 +61,11 @@ def client(monkeypatch, opportunities, program_groups):
         "test-saves-cookie-secret",
     )
 
+    monkeypatch.delenv(
+        "SES_FROM_EMAIL",
+        raising=False,
+    )
+
     def fake_get_opportunity(slug: str):
         return next((opp for opp in opportunities if opp["id"] == slug), None)
 

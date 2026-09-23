@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from dotenv import load_dotenv
+from email_validator import EmailNotValidError, validate_email
 from fastapi import FastAPI, Form, HTTPException, Query, Request, Response
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -43,6 +44,12 @@ from naswa_matcher.match_results import (
 )
 from naswa_matcher.match_target import MatchTarget
 from naswa_matcher.opportunity_detail import build_opportunity_detail
+from naswa_matcher.opportunity_email import (
+    EmailRateLimiter,
+    build_opportunity_email,
+    opportunity_email_enabled,
+    send_opportunity_email,
+)
 from naswa_matcher.opportunity_stats import sum_openings
 from naswa_matcher.profile import (
     ChatProfileUpdate,
@@ -144,6 +151,14 @@ logger = configure_logging(
 session_store = SessionStore(
     max_age_seconds=SESSION_MAX_AGE_SECONDS,
     chat_agent_factory=make_chat_agent,
+)
+
+
+# ── Email rate limiter ────────────────────────────────────────────────────────
+
+opportunity_email_rate_limiter = EmailRateLimiter(
+    limit=10,
+    window_seconds=60,
 )
 
 # ── Ranking orchestration helpers ────────────────────────────────────────────
@@ -922,6 +937,135 @@ async def saved_opportunities_page(
             "total_saved_count": saved.total_count,
             "back_link": back_link,
         },
+    )
+
+
+# ── Email routes ──────────────────────────────────────────────────────────────
+
+
+def render_opportunity_email_form(
+    opportunity_id: str,
+    *,
+    email_value: str = "",
+    email_error: str = "",
+    email_sent: bool = False,
+) -> HTMLResponse:
+    """Render the current opportunity-email form state."""
+    return HTMLResponse(
+        render(
+            "_opportunity_email_form.html",
+            opportunity_id=opportunity_id,
+            email_value=email_value,
+            email_error=email_error,
+            email_sent=email_sent,
+        )
+    )
+
+
+def opportunity_email_error_code(exc: Exception) -> str:
+    """Return a safe error category without logging exception details."""
+    response = getattr(exc, "response", None)
+
+    if isinstance(response, dict):
+        error = response.get("Error", {})
+        code = error.get("Code")
+
+        if isinstance(code, str) and code:
+            return code
+
+    return exc.__class__.__name__
+
+
+@app.post("/opportunities/{opportunity_id}/email")
+def email_opportunity(
+    request: Request,
+    opportunity_id: str,
+    email: str = Form(...),
+):
+    """Email one apprenticeship opportunity to the supplied address."""
+    opportunity = get_opportunity(opportunity_id)
+
+    if opportunity is None:
+        raise HTTPException(status_code=404)
+
+    if not opportunity_email_enabled():
+        raise HTTPException(
+            status_code=503,
+            detail="Opportunity email is not available.",
+        )
+
+    email_value = email.strip()
+
+    try:
+        validated = validate_email(
+            email_value,
+            check_deliverability=False,
+        )
+    except EmailNotValidError:
+        return render_opportunity_email_form(
+            opportunity_id,
+            email_value=email_value,
+            email_error="Enter a valid email address.",
+        )
+
+    recipient = validated.normalized
+
+    if not opportunity_email_rate_limiter.allow(request.state.visitor_id):
+        log_event(
+            request,
+            "opportunity_email_rate_limited",
+            opportunity_id=opportunity_id,
+        )
+
+        return render_opportunity_email_form(
+            opportunity_id,
+            email_value=recipient,
+            email_error=(
+                "Too many email attempts. " "Please wait a minute and try again."
+            ),
+        )
+
+    opportunity_url = str(
+        request.url_for(
+            "opportunity_detail",
+            slug=opportunity_id,
+        )
+    )
+
+    subject, body = build_opportunity_email(
+        opportunity,
+        opportunity_url=opportunity_url,
+    )
+
+    try:
+        send_opportunity_email(
+            recipient,
+            subject=subject,
+            body=body,
+        )
+    except Exception as exc:
+        log_event(
+            request,
+            "opportunity_email_failed",
+            opportunity_id=opportunity_id,
+            error_code=opportunity_email_error_code(exc),
+        )
+
+        return render_opportunity_email_form(
+            opportunity_id,
+            email_value=recipient,
+            email_error=("We couldn't send the email. " "Please try again."),
+        )
+
+    log_event(
+        request,
+        "opportunity_emailed",
+        opportunity_id=opportunity_id,
+    )
+
+    return render_opportunity_email_form(
+        opportunity_id,
+        email_sent=True,
     )
 
 

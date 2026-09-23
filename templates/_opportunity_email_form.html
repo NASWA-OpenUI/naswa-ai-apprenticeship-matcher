@@ -1,0 +1,34 @@
+<div id="opportunity-email-form">
+    {% if email_sent %}
+
+    <div role="status">
+        <strong>Email sent</strong>
+        <p>
+            We sent this opportunity to the email address you provided.
+            It may a few minutes to arrive.
+        </p>
+    </div>
+
+    {% else %}
+
+    <form hx-post="/opportunities/{{ opportunity_id }}/email" hx-target="#opportunity-email-form" hx-swap="outerHTML">
+        <label for="opportunity-email-address">
+            Your email address
+        </label>
+
+        <input id="opportunity-email-address" name="email" type="email" value="{{ email_value }}" autocomplete="email"
+            required {% if email_error %} aria-invalid="true" aria-describedby="opportunity-email-error" {% endif %}>
+
+        {% if email_error %}
+        <p id="opportunity-email-error" role="alert">
+            {{ email_error }}
+        </p>
+        {% endif %}
+
+        <button type="submit" hx-disabled-elt="this">
+            Send email
+        </button>
+    </form>
+
+    {% endif %}
+</div>

@@ -7,6 +7,7 @@ import naswa_matcher.template_filters as template_filters
 import server
 from naswa_matcher.demo_profiles import DEMO_PROFILES
 from naswa_matcher.match_target import MatchTarget
+from naswa_matcher.opportunity_email import EmailRateLimiter
 from naswa_matcher.profile import build_profile
 from naswa_matcher.saves import (
     SAVES_COOKIE_NAME,
@@ -1073,3 +1074,142 @@ def test_saved_page_handles_no_saves(client):
     assert "You haven’t saved any opportunities yet" in response.text
 
     assert "Clear all" not in response.text
+
+
+def test_email_opportunity_sends_email(client, monkeypatch):
+    sent = {}
+
+    monkeypatch.setenv("SES_FROM_EMAIL", "notifications@nofo.rodeo")
+
+    monkeypatch.setattr(server, "opportunity_email_rate_limiter", EmailRateLimiter())
+
+    def fake_send(recipient, *, subject, body):
+        sent["recipient"] = recipient
+        sent["subject"] = subject
+        sent["body"] = body
+
+    monkeypatch.setattr(
+        server,
+        "send_opportunity_email",
+        fake_send,
+    )
+
+    response = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "person@example.org"},
+    )
+
+    assert response.status_code == 200
+    assert "Email sent" in response.text
+
+    assert sent["recipient"] == "person@example.org"
+    assert "Electrician Apprentice" in sent["subject"]
+    assert "Electrician Apprentice" in sent["body"]
+
+    assert (
+        "http://testserver/opportunities/"
+        "electrician-apprentice-fixture" in sent["body"]
+    )
+
+
+def test_email_opportunity_is_unavailable_without_configuration(client, monkeypatch):
+    monkeypatch.delenv("SES_FROM_EMAIL", raising=False)
+
+    response = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "person@example.org"},
+    )
+
+    assert response.status_code == 503
+
+
+def test_email_opportunity_rejects_invalid_address(client, monkeypatch):
+    monkeypatch.setenv("SES_FROM_EMAIL", "notifications@nofo.rodeo")
+
+    def unexpected_send(*args, **kwargs):
+        raise AssertionError("SES should not be called")
+
+    monkeypatch.setattr(server, "send_opportunity_email", unexpected_send)
+
+    response = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "definitely-not-an-email"},
+    )
+
+    assert response.status_code == 200
+    assert "Enter a valid email address." in response.text
+
+
+def test_email_opportunity_returns_404_for_unknown_opportunity(
+    client,
+    monkeypatch,
+):
+    monkeypatch.setenv("SES_FROM_EMAIL", "notifications@nofo.rodeo")
+
+    response = client.post(
+        "/opportunities/not-a-real-opportunity/email",
+        data={"email": "person@example.org"},
+    )
+
+    assert response.status_code == 404
+
+
+def test_email_opportunity_handles_send_failure(client, monkeypatch):
+    monkeypatch.setenv("SES_FROM_EMAIL", "notifications@nofo.rodeo")
+
+    monkeypatch.setattr(server, "opportunity_email_rate_limiter", EmailRateLimiter())
+
+    class FakeSesError(Exception):
+        response = {
+            "Error": {
+                "Code": "MessageRejected",
+                "Message": "Something provider-specific happened.",
+            }
+        }
+
+    def fail_send(*args, **kwargs):
+        raise FakeSesError()
+
+    monkeypatch.setattr(server, "send_opportunity_email", fail_send)
+
+    response = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "person@example.org"},
+    )
+
+    assert response.status_code == 200
+    assert "We couldn&#39;t send the email." in response.text
+
+
+def test_email_opportunity_rate_limits_by_visitor(client, monkeypatch):
+    monkeypatch.setenv("SES_FROM_EMAIL", "notifications@nofo.rodeo")
+
+    limiter = EmailRateLimiter(limit=1, window_seconds=60)
+
+    monkeypatch.setattr(server, "opportunity_email_rate_limiter", limiter)
+
+    send_count = 0
+
+    def fake_send(*args, **kwargs):
+        nonlocal send_count
+        send_count += 1
+
+    monkeypatch.setattr(server, "send_opportunity_email", fake_send)
+
+    first = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "person@example.org"},
+    )
+
+    second = client.post(
+        "/opportunities/electrician-apprentice-fixture/email",
+        data={"email": "person@example.org"},
+    )
+
+    assert first.status_code == 200
+    assert "Email sent" in first.text
+
+    assert second.status_code == 200
+    assert "Too many email attempts." in second.text
+
+    assert send_count == 1
