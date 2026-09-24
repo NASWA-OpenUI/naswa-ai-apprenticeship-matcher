@@ -774,6 +774,7 @@ def render_opportunity_save_utility(
         is_saved=saved.has_opportunity(opportunity_id),
         status_message=status_message,
         save_error=save_error,
+        email_enabled=opportunity_email_enabled(),
     )
 
     header_html = render(
@@ -1094,6 +1095,7 @@ async def opportunity_detail_page(request: Request, slug: str):
             "back_link": back_link,
             "opportunity_id": opp["id"],
             "is_saved": saved.has_opportunity(opp["id"]),
+            "email_enabled": opportunity_email_enabled(),
         },
     )
 

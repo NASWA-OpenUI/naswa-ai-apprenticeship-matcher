@@ -3552,6 +3552,7 @@ body:has(.opportunity-detail-page) {
   min-height: 4.25rem;
   display: flex;
   align-items: center;
+  gap: 0.65rem;
 }
 
 .detail-save-button {
@@ -3578,6 +3579,87 @@ body:has(.opportunity-detail-page) {
   color: var(--app-danger);
   font-size: 0.88rem;
   font-weight: 700;
+}
+
+.detail-email-button {
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--app-radius-md);
+}
+
+.detail-email-button svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+/* ── Opportunity email modal ─────────────────────────────────────────────── */
+
+.opportunity-email-modal {
+  width: min(100%, 560px);
+}
+
+.opportunity-email-body {
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+.opportunity-email-field {
+  max-width: 30rem;
+}
+
+.opportunity-email-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 800;
+}
+
+.opportunity-email-help {
+  margin: 0 0 0.75rem;
+  color: var(--app-text-weak);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.opportunity-email-error {
+  margin: 0.5rem 0 0;
+  color: var(--app-danger);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.opportunity-email-success__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--nys-color-success);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.opportunity-email-success__heading svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.opportunity-email-success>p:last-child {
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .detail-utility__inner {
+    min-height: 4rem;
+    flex-wrap: wrap;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .detail-save-button,
+  .detail-email-button {
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+  }
 }
 
 @media (max-width: 520px) {

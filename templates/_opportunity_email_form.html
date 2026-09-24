@@ -1,34 +1,77 @@
-<div id="opportunity-email-form">
+{% set email_sent = email_sent | default(false) %}
+{% set email_value = email_value | default("") %}
+{% set email_error = email_error | default("") %}
+
+<div id="opportunity-email-state">
+
     {% if email_sent %}
 
-    <div role="status">
-        <strong>Email sent</strong>
-        <p>
-            We sent this opportunity to the email address you provided.
-            It may a few minutes to arrive.
-        </p>
+    <div class="profile-modal-body opportunity-email-body">
+        <div class="opportunity-email-success" role="status">
+            <p class="opportunity-email-success__heading">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                    <path d="m8 12 2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+
+                Email sent
+            </p>
+
+            <p>
+                We sent this opportunity to the email address you provided.
+                It can take a few minutes to arrive. If you don't see it,
+                check your spam or junk folder.
+            </p>
+        </div>
+    </div>
+
+    <div class="profile-modal-foot">
+        <button type="button" class="btn btn--filled" data-opportunity-email-close>
+            Done
+        </button>
     </div>
 
     {% else %}
 
-    <form hx-post="/opportunities/{{ opportunity_id }}/email" hx-target="#opportunity-email-form" hx-swap="outerHTML">
-        <label for="opportunity-email-address">
-            Your email address
-        </label>
+    <form hx-post="/opportunities/{{ opportunity_id }}/email" hx-target="#opportunity-email-state" hx-swap="outerHTML">
+        <div class="profile-modal-body opportunity-email-body">
 
-        <input id="opportunity-email-address" name="email" type="email" value="{{ email_value }}" autocomplete="email"
-            required {% if email_error %} aria-invalid="true" aria-describedby="opportunity-email-error" {% endif %}>
+            <div class="opportunity-email-field">
+                <label for="opportunity-email-address" class="opportunity-email-label">
+                    Your email address
+                </label>
 
-        {% if email_error %}
-        <p id="opportunity-email-error" role="alert">
-            {{ email_error }}
-        </p>
-        {% endif %}
+                <p id="opportunity-email-help" class="opportunity-email-help">
+                    We only use this to send the email.
+                    You will not be added to a mailing list.
+                </p>
 
-        <button type="submit" hx-disabled-elt="this">
-            Send email
-        </button>
+                <input id="opportunity-email-address" class="form-control" name="email" type="email"
+                    value="{{ email_value }}" autocomplete="email" required
+                    aria-describedby="opportunity-email-help{% if email_error %} opportunity-email-error{% endif %}" {%
+                    if email_error %} aria-invalid="true" {% endif %}>
+
+                {% if email_error %}
+                <p id="opportunity-email-error" class="opportunity-email-error" role="alert">
+                    {{ email_error }}
+                </p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="profile-modal-foot">
+            <button type="button" class="btn btn--outline" data-opportunity-email-close>
+                Cancel
+            </button>
+
+            <button type="submit" class="btn btn--filled" hx-disabled-elt="this">
+                Send email
+            </button>
+        </div>
     </form>
 
     {% endif %}
+
 </div>

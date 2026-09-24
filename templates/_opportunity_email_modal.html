@@ -1,0 +1,23 @@
+<div class="profile-modal-backdrop opportunity-email-modal-backdrop" data-opportunity-email-modal hidden>
+    <div class="profile-modal opportunity-email-modal" role="dialog" aria-modal="true"
+        aria-labelledby="opportunity-email-title" aria-describedby="opportunity-email-description" tabindex="-1">
+        <div class="profile-modal-head">
+            <div>
+                <h2 id="opportunity-email-title">
+                    Email this to yourself
+                </h2>
+
+                <p id="opportunity-email-description">
+                    We will send you the details of this apprenticeship
+                    so you can find it again later.
+                </p>
+            </div>
+
+            <button type="button" class="profile-modal-close" data-opportunity-email-close aria-label="Close">
+                ×
+            </button>
+        </div>
+
+        {% include "_opportunity_email_form.html" %}
+    </div>
+</div>

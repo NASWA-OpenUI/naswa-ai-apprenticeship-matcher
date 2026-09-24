@@ -87,6 +87,10 @@ scripts, and the outer #main-content landmark.
 
 {% include "_opportunity_save_utility.html" %}
 
+{% if email_enabled %}
+{% include "_opportunity_email_modal.html" %}
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -289,9 +293,15 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
     const slug = {{ opp.id | tojson
   }};
 
+  /*
+    Ranked match context
+  */
   let rankings = null;
+
   try {
-    rankings = JSON.parse(sessionStorage.getItem('jobRankings') || 'null');
+    rankings = JSON.parse(
+      sessionStorage.getItem('jobRankings') || 'null'
+    );
   } catch {
     rankings = null;
   }
@@ -315,22 +325,57 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
     : null;
 
   if (match) {
-    const section = document.getElementById('match');
-    const navItem = document.getElementById('on-this-page-match');
-    const tierContainerEl = document.getElementById('detail-match');
-    const tierEl = document.getElementById('detail-tier');
-    const tierTextEl = document.getElementById('detail-tier-text');
-    const expEl = document.getElementById('detail-explanation');
+    const section =
+      document.getElementById('match');
 
-    if (section && tierEl && tierTextEl && expEl) {
-      const tierClass = (match.tier || 'Weak').toLowerCase();
+    const navItem =
+      document.getElementById(
+        'on-this-page-match'
+      );
+
+    const tierContainerEl =
+      document.getElementById(
+        'detail-match'
+      );
+
+    const tierEl =
+      document.getElementById(
+        'detail-tier'
+      );
+
+    const tierTextEl =
+      document.getElementById(
+        'detail-tier-text'
+      );
+
+    const expEl =
+      document.getElementById(
+        'detail-explanation'
+      );
+
+    if (
+      section &&
+      tierEl &&
+      tierTextEl &&
+      expEl
+    ) {
+      const tierClass =
+        (match.tier || 'Weak')
+          .toLowerCase();
 
       if (tierContainerEl) {
-        tierContainerEl.className = `detail-match surface detail-match--${tierClass}`;
+        tierContainerEl.className =
+          `detail-match surface detail-match--${tierClass}`;
       }
-      tierEl.className = `chip chip--${tierClass}`;
-      tierTextEl.textContent = match.tier || 'Weak';
-      expEl.textContent = match.explanation || '';
+
+      tierEl.className =
+        `chip chip--${tierClass}`;
+
+      tierTextEl.textContent =
+        match.tier || 'Weak';
+
+      expEl.textContent =
+        match.explanation || '';
 
       section.hidden = false;
 
@@ -347,65 +392,480 @@ opp.posting.contactEmail or opp.posting.contactWebsite %}
     context exists, are ignored.
   */
   const scrollSpyOffset = 50;
-  const onThisPageNav = document.querySelector('.on-this-page');
+
+  const onThisPageNav =
+    document.querySelector(
+      '.on-this-page'
+    );
 
   function getVisibleDetailSections() {
-    return Array.from(document.querySelectorAll('.detail-section[id]'))
-      .filter(section => !section.hidden);
+    return Array.from(
+      document.querySelectorAll(
+        '.detail-section[id]'
+      )
+    ).filter(
+      section => !section.hidden
+    );
   }
 
-  function setActiveOnThisPageLink(sectionId) {
+  function setActiveOnThisPageLink(
+    sectionId
+  ) {
     if (!onThisPageNav) return;
 
-    const links = onThisPageNav.querySelectorAll('a[href^="#"]');
+    const links =
+      onThisPageNav.querySelectorAll(
+        'a[href^="#"]'
+      );
 
     links.forEach(link => {
-      const isActive = link.getAttribute('href') === `#${sectionId}`;
+      const isActive =
+        link.getAttribute('href') ===
+        `#${sectionId}`;
 
-      link.classList.toggle('active', isActive);
+      link.classList.toggle(
+        'active',
+        isActive
+      );
 
       if (isActive) {
-        link.setAttribute('aria-current', 'true');
+        link.setAttribute(
+          'aria-current',
+          'true'
+        );
       } else {
-        link.removeAttribute('aria-current');
+        link.removeAttribute(
+          'aria-current'
+        );
       }
     });
   }
 
   function updateActiveOnThisPageLink() {
-    const sections = getVisibleDetailSections();
+    const sections =
+      getVisibleDetailSections();
+
     if (!sections.length) return;
 
-    let activeSection = sections[0];
+    let activeSection =
+      sections[0];
 
     sections.forEach(section => {
-      const top = section.getBoundingClientRect().top;
+      const top =
+        section
+          .getBoundingClientRect()
+          .top;
 
       if (top <= scrollSpyOffset) {
         activeSection = section;
       }
     });
 
-    setActiveOnThisPageLink(activeSection.id);
+    setActiveOnThisPageLink(
+      activeSection.id
+    );
   }
 
   if (onThisPageNav) {
-    onThisPageNav.addEventListener('click', function (event) {
-      const link = event.target.closest('a[href^="#"]');
+    onThisPageNav.addEventListener(
+      'click',
+      function (event) {
+        const link =
+          event.target.closest(
+            'a[href^="#"]'
+          );
 
-      if (!link || !onThisPageNav.contains(link)) {
-        return;
+        if (
+          !link ||
+          !onThisPageNav.contains(link)
+        ) {
+          return;
+        }
+
+        event.preventDefault();
+
+        window.location.replace(
+          link.hash
+        );
       }
+    );
 
-      event.preventDefault();
-      window.location.replace(link.hash);
-    });
+    window.addEventListener(
+      'scroll',
+      updateActiveOnThisPageLink,
+      {
+        passive: true
+      }
+    );
 
-    window.addEventListener('scroll', updateActiveOnThisPageLink, { passive: true });
-    window.addEventListener('resize', updateActiveOnThisPageLink);
+    window.addEventListener(
+      'resize',
+      updateActiveOnThisPageLink
+    );
 
     updateActiveOnThisPageLink();
   }
+
+  /*
+    Opportunity email modal
+  */
+  const emailModal =
+    document.querySelector(
+      '[data-opportunity-email-modal]'
+    );
+
+  const emailDialog =
+    emailModal?.querySelector(
+      '.opportunity-email-modal'
+    );
+
+  /*
+    Keep a copy of the original blank form so closing the modal always
+    resets it, including after validation errors or a successful send.
+  */
+  const initialEmailStateHtml =
+    emailModal
+      ?.querySelector(
+        '#opportunity-email-state'
+      )
+      ?.outerHTML || '';
+
+  let lastEmailModalTrigger = null;
+
+  let emailModalInertedElements = [];
+
+  function getEmailModalFocusableElements() {
+    if (!emailDialog) {
+      return [];
+    }
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    return Array.from(
+      emailDialog.querySelectorAll(
+        focusableSelector
+      )
+    ).filter(function (element) {
+      return (
+        !element.disabled &&
+        element.offsetParent !== null
+      );
+    });
+  }
+
+  function moveEmailModalToBody() {
+    if (
+      emailModal &&
+      emailModal.parentElement !==
+      document.body
+    ) {
+      document.body.appendChild(
+        emailModal
+      );
+    }
+  }
+
+  function inertEmailModalBackground() {
+    if (!emailModal) return;
+
+    emailModalInertedElements =
+      Array.from(
+        document.body.children
+      )
+        .filter(function (element) {
+          return (
+            element !== emailModal
+          );
+        })
+        .map(function (element) {
+          return {
+            element: element,
+            inert: element.inert
+          };
+        });
+
+    emailModalInertedElements
+      .forEach(function (item) {
+        item.element.inert = true;
+      });
+  }
+
+  function restoreEmailModalBackground() {
+    emailModalInertedElements
+      .forEach(function (item) {
+        item.element.inert =
+          item.inert;
+      });
+
+    emailModalInertedElements = [];
+  }
+
+  function resetOpportunityEmailModal() {
+    if (
+      !emailModal ||
+      !initialEmailStateHtml
+    ) {
+      return;
+    }
+
+    const currentState =
+      emailModal.querySelector(
+        '#opportunity-email-state'
+      );
+
+    if (!currentState) {
+      return;
+    }
+
+    currentState.outerHTML =
+      initialEmailStateHtml;
+
+    /*
+      The restored form came from an HTML string, so tell HTMX to
+      initialize its hx-* attributes again.
+    */
+    const restoredState =
+      emailModal.querySelector(
+        '#opportunity-email-state'
+      );
+
+    if (
+      restoredState &&
+      window.htmx
+    ) {
+      window.htmx.process(
+        restoredState
+      );
+    }
+  }
+
+  function openOpportunityEmailModal(
+    trigger
+  ) {
+    if (
+      !emailModal ||
+      !emailDialog
+    ) {
+      return;
+    }
+
+    lastEmailModalTrigger =
+      trigger ||
+      document.activeElement;
+
+    moveEmailModalToBody();
+
+    emailModal.hidden = false;
+
+    document.body.classList.add(
+      'profile-modal-open'
+    );
+
+    inertEmailModalBackground();
+
+    const input =
+      emailModal.querySelector(
+        '#opportunity-email-address'
+      );
+
+    if (input) {
+      input.focus({
+        preventScroll: true
+      });
+    } else {
+      emailDialog.focus({
+        preventScroll: true
+      });
+    }
+  }
+
+  function closeOpportunityEmailModal() {
+    if (
+      !emailModal ||
+      emailModal.hidden
+    ) {
+      return;
+    }
+
+    emailModal.hidden = true;
+
+    document.body.classList.remove(
+      'profile-modal-open'
+    );
+
+    restoreEmailModalBackground();
+
+    resetOpportunityEmailModal();
+
+    if (
+      lastEmailModalTrigger &&
+      typeof lastEmailModalTrigger
+        .focus === 'function'
+    ) {
+      lastEmailModalTrigger.focus({
+        preventScroll: true
+      });
+    }
+
+    lastEmailModalTrigger = null;
+  }
+
+  /*
+    Event delegation is intentional here.
+
+    The save utility can be replaced by HTMX after saving/unsaving, so
+    the "Email this to me" button may be a newly-created DOM element.
+  */
+  document.addEventListener(
+    'click',
+    function (event) {
+      const openButton =
+        event.target.closest(
+          '[data-opportunity-email-open]'
+        );
+
+      if (openButton) {
+        openOpportunityEmailModal(
+          openButton
+        );
+
+        return;
+      }
+
+      if (
+        event.target.closest(
+          '[data-opportunity-email-close]'
+        )
+      ) {
+        closeOpportunityEmailModal();
+
+        return;
+      }
+
+      /*
+        Clicking the dark backdrop outside the dialog closes it.
+      */
+      if (
+        emailModal &&
+        event.target === emailModal
+      ) {
+        closeOpportunityEmailModal();
+      }
+    }
+  );
+
+  /*
+    Escape closes the modal and Tab remains trapped inside it.
+  */
+  document.addEventListener(
+    'keydown',
+    function (event) {
+      if (
+        !emailModal ||
+        emailModal.hidden
+      ) {
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        event.preventDefault();
+
+        closeOpportunityEmailModal();
+
+        return;
+      }
+
+      if (event.key !== 'Tab') {
+        return;
+      }
+
+      const focusable =
+        getEmailModalFocusableElements();
+
+      if (!focusable.length) {
+        event.preventDefault();
+
+        emailDialog?.focus();
+
+        return;
+      }
+
+      const first =
+        focusable[0];
+
+      const last =
+        focusable[
+        focusable.length - 1
+        ];
+
+      if (
+        event.shiftKey &&
+        document.activeElement ===
+        first
+      ) {
+        event.preventDefault();
+
+        last.focus();
+
+        return;
+      }
+
+      if (
+        !event.shiftKey &&
+        document.activeElement ===
+        last
+      ) {
+        event.preventDefault();
+
+        first.focus();
+      }
+    }
+  );
+
+  /*
+    HTMX swaps only the form/state inside the modal.
+
+    Validation failure:
+      focus the invalid email field.
+
+    Successful send:
+      focus the Done button.
+  */
+  document.body.addEventListener(
+    'htmx:afterSwap',
+    function (event) {
+      if (
+        event.detail.target?.id !==
+        'opportunity-email-state'
+      ) {
+        return;
+      }
+
+      const invalidInput =
+        emailModal?.querySelector(
+          '[aria-invalid="true"]'
+        );
+
+      if (invalidInput) {
+        invalidInput.focus();
+
+        return;
+      }
+
+      emailModal
+        ?.querySelector(
+          '[data-opportunity-email-close]'
+        )
+        ?.focus();
+    }
+  );
   }) ();
 </script>
 {% endblock %}
