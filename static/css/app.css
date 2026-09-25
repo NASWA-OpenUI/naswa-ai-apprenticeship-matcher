@@ -91,6 +91,10 @@
 }
 
 /* ── Page shell ──────────────────────────────────────────────────────────── */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   font-family: var(--app-font);
@@ -1504,7 +1508,7 @@ a.btn--jumbo:focus {
 
 /* ── Profile edit modal ─────────────────────────────────────────────────── */
 
-.profile-modal-backdrop {
+.modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -1516,7 +1520,7 @@ a.btn--jumbo:focus {
   overflow: auto;
 }
 
-.profile-modal {
+.modal {
   width: min(100%, 960px);
   max-height: 90vh;
   display: flex;
@@ -1528,7 +1532,7 @@ a.btn--jumbo:focus {
   overflow: hidden;
 }
 
-.profile-modal-head {
+.modal-head {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -1538,21 +1542,21 @@ a.btn--jumbo:focus {
   border-bottom: 1px solid var(--nys-color-theme-weaker, #d7e8e9);
 }
 
-.profile-modal-head h2 {
+.modal-head h2 {
   margin: 0;
   font-size: clamp(1.55rem, 2vw, 1.9rem);
   line-height: 1.15;
   font-weight: 800;
 }
 
-.profile-modal-head p {
+.modal-head p {
   margin: 0.55rem 0 0;
   color: var(--app-text-weak);
   font-size: 1rem;
   line-height: 1.4;
 }
 
-.profile-modal-close {
+.modal-close {
   width: 2.6rem;
   height: 2.6rem;
   flex: none;
@@ -1565,20 +1569,21 @@ a.btn--jumbo:focus {
   cursor: pointer;
 }
 
-.profile-modal-close:hover,
-.profile-modal-close:focus {
+.modal-close:hover,
+.modal-close:focus {
   color: var(--app-ink);
   background-color: var(--nys-color-black-transparent-100);
 }
 
-.profile-modal-body {
+.modal-body {
   padding: 0.85rem 1.75rem 1.25rem;
   overflow: auto;
 }
 
-.profile-modal-foot {
+.modal-foot {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
   gap: var(--app-space-150);
   padding: 1rem 1.75rem 1.35rem;
   border-top: 1px solid var(--nys-color-black-transparent-100);
@@ -1640,7 +1645,7 @@ a.btn--jumbo:focus {
   flex: none;
 }
 
-.profile-modal-rule {
+.modal-rule {
   border: 0;
   border-top: 1px solid var(--nys-color-black-transparent-100);
   margin: var(--app-space-100) 0 var(--app-space-300);
@@ -1700,28 +1705,28 @@ a.btn--jumbo:focus {
   opacity: 0.65;
 }
 
-body.profile-modal-open {
+body.modal-open {
   overflow: hidden;
 }
 
 @media (max-width: 1280px) {
-  .profile-modal {
+  .modal {
     width: min(100%, 920px);
   }
 }
 
 @media (max-width: 1024px) {
-  .profile-modal {
+  .modal {
     width: min(100%, 800px);
   }
 }
 
 @media (max-width: 720px) {
-  .profile-modal-backdrop {
+  .modal-backdrop {
     padding: 1rem;
   }
 
-  .profile-modal {
+  .modal {
     max-height: calc(100vh - 2rem);
     width: min(100%, 550px);
   }
@@ -1735,18 +1740,18 @@ body.profile-modal-open {
     min-height: 0;
   }
 
-  .profile-modal-head,
-  .profile-modal-body,
-  .profile-modal-foot {
+  .modal-head,
+  .modal-body,
+  .modal-foot {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
   }
 
-  .profile-modal-foot {
-    flex-direction: column;
+  .modal-foot {
+    flex-direction: column-reverse;
   }
 
-  .profile-modal-foot .btn {
+  .modal-foot .btn {
     justify-content: center;
     width: 100%;
   }
@@ -3645,6 +3650,18 @@ body:has(.opportunity-detail-page) {
 
 .opportunity-email-success>p:last-child {
   margin: 0;
+}
+
+.opportunity-email-submit__loading {
+  display: none;
+}
+
+.opportunity-email-form.htmx-request .opportunity-email-submit__default {
+  display: none;
+}
+
+.opportunity-email-form.htmx-request .opportunity-email-submit__loading {
+  display: inline;
 }
 
 @media (max-width: 520px) {

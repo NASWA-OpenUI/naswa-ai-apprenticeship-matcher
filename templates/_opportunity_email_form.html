@@ -6,7 +6,7 @@
 
     {% if email_sent %}
 
-    <div class="profile-modal-body opportunity-email-body">
+    <div class="modal-body opportunity-email-body">
         <div class="opportunity-email-success" role="status">
             <p class="opportunity-email-success__heading">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
@@ -26,19 +26,20 @@
         </div>
     </div>
 
-    <div class="profile-modal-foot">
-        <button type="button" class="btn btn--filled" data-opportunity-email-close>
+    <div class="modal-foot">
+        <button type="button" class="btn btn--filled" data-modal-close data-modal-close-done>
             Done
         </button>
     </div>
 
     {% else %}
 
-    <form hx-post="/opportunities/{{ opportunity_id }}/email" hx-target="#opportunity-email-state" hx-swap="outerHTML">
-        <div class="profile-modal-body opportunity-email-body">
+    <form class="opportunity-email-form" hx-post="/opportunities/{{ opportunity_id }}/email"
+        hx-target="#opportunity-email-state" hx-swap="outerHTML" hx-disabled-elt="#opportunity-email-submit">
+        <div class="modal-body opportunity-email-body">
 
             <div class="opportunity-email-field">
-                <label for="opportunity-email-address" class="opportunity-email-label">
+                <label for="opportunity-email-address" class="opportunity-email-label" data-modal-autofocus>
                     Your email address
                 </label>
 
@@ -61,13 +62,18 @@
 
         </div>
 
-        <div class="profile-modal-foot">
-            <button type="button" class="btn btn--outline" data-opportunity-email-close>
-                Cancel
+        <div class="modal-foot">
+            <button id="opportunity-email-submit" type="submit" class="btn btn--filled opportunity-email-submit">
+                <span class="opportunity-email-submit__default">
+                    Send email
+                </span>
+                <span class="opportunity-email-submit__loading">
+                    Sending…
+                </span>
             </button>
 
-            <button type="submit" class="btn btn--filled" hx-disabled-elt="this">
-                Send email
+            <button type="button" class="btn btn--outline" data-modal-close>
+                Cancel
             </button>
         </div>
     </form>
