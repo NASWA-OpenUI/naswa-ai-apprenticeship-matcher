@@ -1,8 +1,6 @@
-<div id="opportunity-save-utility" class="detail-utility" aria-label="Opportunity actions">
-    <div class="container detail-utility__inner">
-
-        <button type="button"
-            class="btn btn--outline detail-save-button{% if is_saved %} detail-save-button--saved{% endif %}"
+<div id="opportunity-save-utility" class="detail-hero__actions" aria-label="Opportunity actions">
+    <div class="detail-hero__action-buttons">
+        <button type="button" class="btn btn--hero-action{% if is_saved %} btn--hero-action-saved{% endif %}"
             aria-pressed="{{ 'true' if is_saved else 'false' }}" {% if is_saved %}
             hx-delete="/saves/opportunities/{{ opportunity_id }}" {% else %}
             hx-post="/saves/opportunities/{{ opportunity_id }}" {% endif %} hx-target="#opportunity-save-utility"
@@ -13,33 +11,32 @@
                     stroke-width="1.8" stroke-linejoin="round" />
             </svg>
 
-            {% if is_saved %}
-            Saved
-            {% else %}
-            Save opportunity
-            {% endif %}
+            <span>
+                {% if is_saved %}
+                Saved
+                {% else %}
+                Save
+                {% endif %}
+            </span>
         </button>
 
         {% if email_enabled %}
-        <button type="button" class="btn btn--outline detail-email-button" data-modal-open="opportunity-email">
+        <button type="button" class="btn btn--hero-action" data-modal-open="opportunity-email">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                 <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8" />
                 <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                     stroke-linejoin="round" />
             </svg>
 
-            Email this to me
+            <span>Send</span>
         </button>
         {% endif %}
-
     </div>
 
     {% if save_error %}
-    <div class="container">
-        <p class="detail-utility__error" role="alert">
-            {{ save_error }}
-        </p>
-    </div>
+    <p class="detail-hero__action-error" role="alert">
+        {{ save_error }}
+    </p>
     {% endif %}
 
     <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true">

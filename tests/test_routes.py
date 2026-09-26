@@ -218,7 +218,7 @@ def test_chat_get_route_prefills_confirmed_program_profile_from_query(client):
     assert "Your Profile" in response.text
     assert "data-profile-card" in response.text
     assert "data-profile-json" in response.text
-    assert "data-profile-edit-open" in response.text
+    assert "data-modal-open" in response.text
 
     # Active Programs profile values.
     assert "art" in response.text
@@ -230,7 +230,7 @@ def test_chat_get_route_prefills_confirmed_program_profile_from_query(client):
     assert "disabled" in response.text
 
     # Modal partial should be available for editing.
-    assert "data-profile-edit-modal" in response.text
+    assert "data-modal-dialog" in response.text
     assert 'role="dialog"' in response.text
     assert 'aria-modal="true"' in response.text
     assert "data-profile-save" in response.text
@@ -438,7 +438,7 @@ def test_opportunities_page_with_profile_renders_ranking_shell(client):
     assert "Back to conversation" in response.text
     assert "Edit profile" in response.text
     assert "data-profile-summary" in response.text
-    assert "data-profile-edit-modal" in response.text
+    assert "data-modal-dialog" in response.text
     assert 'data-profile-save-mode="redirect"' in response.text
 
     assert "sse-connect" in response.text
@@ -955,7 +955,7 @@ def test_opportunity_detail_shows_unsaved_control(
     assert 'id="opportunity-save-utility"' in response.text
     assert 'aria-pressed="false"' in response.text
     assert f'hx-post="/saves/opportunities/{opportunity_id}"' in response.text
-    assert "Save opportunity" in response.text
+    assert "Save" in response.text
     assert "0" in response.text
     assert "saved" in response.text
 
