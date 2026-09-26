@@ -233,7 +233,7 @@ class EmailRateLimiter:
     def __init__(
         self,
         *,
-        limit: int = 10,
+        limit: int = 5,
         window_seconds: float = 60,
         clock: Callable[[], float] = time.monotonic,
     ):

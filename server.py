@@ -157,7 +157,7 @@ session_store = SessionStore(
 # ── Email rate limiter ────────────────────────────────────────────────────────
 
 opportunity_email_rate_limiter = EmailRateLimiter(
-    limit=10,
+    limit=5,
     window_seconds=60,
 )
 

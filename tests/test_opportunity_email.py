@@ -232,12 +232,12 @@ def test_email_rate_limiter_allows_ten_attempts_per_minute():
     now = [100.0]
 
     limiter = EmailRateLimiter(
-        limit=10,
+        limit=5,
         window_seconds=60,
         clock=lambda: now[0],
     )
 
-    for _ in range(10):
+    for _ in range(5):
         assert limiter.allow("visitor-1") is True
 
     assert limiter.allow("visitor-1") is False
