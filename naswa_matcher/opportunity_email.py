@@ -49,6 +49,25 @@ def build_opportunity_email(
     if location:
         lines.append(location)
 
+    # Links
+    lines.extend(
+        [
+            "",
+            "View in the Registered Apprenticeship Finder",
+            opportunity_url,
+        ]
+    )
+
+    if detail["source_url"]:
+        lines.extend(
+            [
+                "",
+                "View original New York State Department of Labor posting",
+                detail["source_url"],
+            ]
+        )
+
+    # Hero metadata
     summary_lines = []
 
     if detail["application_chip_label"]:
@@ -68,84 +87,32 @@ def build_opportunity_email(
     if summary_lines:
         lines.extend(["", *summary_lines])
 
-    job_description = opportunity.get("jobDescription") or {}
-    description = job_description.get("description")
+    # How to apply
+    application_lines = []
 
-    if not description:
-        description = (opportunity.get("onet") or {}).get("description")
+    if posting.get("applicationSummary"):
+        application_lines.append(posting["applicationSummary"])
 
-    if description:
-        lines.extend(
-            [
-                "",
-                "About this job",
-                description,
-            ]
-        )
-
-    onet = opportunity.get("onet") or {}
-
-    activity_data = (onet.get("detailed_work_activities") or {}).get("data") or {}
-    activities = activity_data.get("activity") or []
-    activity_titles = [
-        activity.get("title") for activity in activities[:5] if activity.get("title")
+    application_details = [
+        ("Website", posting.get("applicationWebsite")),
+        ("Email", posting.get("applicationEmail")),
+        ("Phone", posting.get("applicationPhone")),
+        ("In person", posting.get("applicationInPersonAddress")),
+        ("Hours", posting.get("applicationHours")),
     ]
 
-    if activity_titles:
-        lines.extend(
-            [
-                "",
-                "What you might do day to day",
-                *(f"- {activity}" for activity in activity_titles),
-            ]
-        )
+    application_lines.extend(
+        f"{label}: {value}" for label, value in application_details if value
+    )
 
-    style_data = (onet.get("work_styles") or {}).get("data") or {}
-    styles = style_data.get("element") or []
-    style_names = [style.get("name") for style in styles[:5] if style.get("name")]
+    if application_lines:
+        lines.extend(["", "How to apply", "", *application_lines])
 
-    if style_names:
-        lines.extend(
-            [
-                "",
-                "Helpful traits for this job",
-                *(f"- {style}" for style in style_names),
-            ]
-        )
+    # Contact / more information
+    contact_lines = []
 
-    application_summary = posting.get("applicationSummary")
-
-    if application_summary:
-        lines.extend(
-            [
-                "",
-                "How to apply",
-                application_summary,
-            ]
-        )
-
-        application_details = [
-            ("Website", posting.get("applicationWebsite")),
-            ("Email", posting.get("applicationEmail")),
-            ("Phone", posting.get("applicationPhone")),
-            ("In person", posting.get("applicationInPersonAddress")),
-            ("Hours", posting.get("applicationHours")),
-        ]
-
-        lines.extend(
-            f"{label}: {value}" for label, value in application_details if value
-        )
-
-    requirements = posting.get("allRequirements") or []
-
-    if requirements:
-        lines.extend(
-            [
-                "",
-                "Job requirements",
-                *(f"- {requirement}" for requirement in requirements),
-            ]
-        )
+    if posting.get("contactSummary"):
+        contact_lines.append(posting["contactSummary"])
 
     contact_details = [
         ("Organization", posting.get("contactName")),
@@ -154,32 +121,12 @@ def build_opportunity_email(
         ("Website", posting.get("contactWebsite")),
     ]
 
-    contact_lines = [f"{label}: {value}" for label, value in contact_details if value]
-
-    if posting.get("contactSummary") or contact_lines:
-        lines.extend(["", "More information"])
-
-        if posting.get("contactSummary"):
-            lines.append(posting["contactSummary"])
-
-        lines.extend(contact_lines)
-
-    lines.extend(
-        [
-            "",
-            "View this opportunity in the Registered Apprenticeship Finder",
-            opportunity_url,
-        ]
+    contact_lines.extend(
+        f"{label}: {value}" for label, value in contact_details if value
     )
 
-    if detail["source_url"]:
-        lines.extend(
-            [
-                "",
-                "Original New York State Department of Labor posting",
-                detail["source_url"],
-            ]
-        )
+    if contact_lines:
+        lines.extend(["", "More information", "", *contact_lines])
 
     subject = f"{title} — Registered Apprenticeship Finder"
     body = "\n".join(lines).strip() + "\n"

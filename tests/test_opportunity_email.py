@@ -93,45 +93,39 @@ def test_opportunity_email_enabled_with_sender(monkeypatch):
 
 
 def test_build_opportunity_email(opportunity):
+    opportunity_url = "https://example.org/opportunities/electrician-apprentice"
+
     subject, body = build_opportunity_email(
         opportunity,
-        opportunity_url=("https://example.org/opportunities/electrician-apprentice"),
+        opportunity_url=opportunity_url,
         today=date(2027, 7, 1),
     )
 
-    assert subject == ("Electrician Apprentice — Registered Apprenticeship Finder")
+    assert subject == "Electrician Apprentice — Registered Apprenticeship Finder"
 
+    # Opportunity
     assert "Electrician Apprentice" in body
     assert "Electricians JAC" in body
     assert "Binghamton, NY area" in body
 
+    # Links
+    assert opportunity_url in body
+    assert "https://dol.ny.gov/example-opportunity" in body
+
+    # Hero metadata
     assert "Apply by Jul 31, 2027" in body
     assert "2 openings" in body
 
-    assert "Electricians install, maintain, and repair electrical systems." in body
-
-    assert "What you might do day to day" in body
-    assert "- Install electrical components." in body
-    assert "- Inspect electrical systems." in body
-
-    assert "Helpful traits for this job" in body
-    assert "- Attention to Detail" in body
-    assert "- Dependability" in body
-
+    # How to apply
     assert "How to apply" in body
     assert "Apply online during the recruitment period." in body
     assert "Website: https://example.org/apply" in body
     assert "Email: apply@example.org" in body
 
-    assert "Job requirements" in body
-    assert "- Must be at least 18 years old." in body
-
+    # More information
     assert "More information" in body
     assert "Phone: (555) 555-0200" in body
     assert "Email: info@example.org" in body
-
-    assert "https://example.org/opportunities/electrician-apprentice" in body
-    assert "https://dol.ny.gov/example-opportunity" in body
 
 
 def test_build_opportunity_email_handles_missing_optional_data():
@@ -142,19 +136,26 @@ def test_build_opportunity_email_handles_missing_optional_data():
         },
     }
 
+    opportunity_url = "https://example.org/opportunities/simple-apprentice"
+
     subject, body = build_opportunity_email(
         opportunity,
-        opportunity_url="https://example.org/opportunities/simple-apprentice",
+        opportunity_url=opportunity_url,
         today=date(2027, 7, 1),
     )
 
-    assert subject == ("Simple Apprentice — Registered Apprenticeship Finder")
+    assert subject == "Simple Apprentice — Registered Apprenticeship Finder"
+
     assert "Simple Apprentice" in body
-    assert "https://example.org/opportunities/simple-apprentice" in body
+
+    assert "View in the Registered Apprenticeship Finder" in body
+    assert opportunity_url in body
 
     assert "None" not in body
-    assert "Job requirements" not in body
+
     assert "How to apply" not in body
+    assert "More information" not in body
+    assert "Job requirements" not in body
 
 
 def test_send_opportunity_email_uses_ses(monkeypatch):
