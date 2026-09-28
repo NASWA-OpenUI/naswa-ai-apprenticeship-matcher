@@ -983,9 +983,7 @@ def email_opportunity(
     opportunity_id: str,
     email: str = Form(...),
 ):
-    """Email one apprenticeship opportunity to the supplied address."""
     opportunity = get_opportunity(opportunity_id)
-
     if opportunity is None:
         raise HTTPException(status_code=404)
 
@@ -1011,21 +1009,6 @@ def email_opportunity(
 
     recipient = validated.normalized
 
-    if not opportunity_email_rate_limiter.allow(request.state.visitor_id):
-        log_event(
-            request,
-            "opportunity_email_rate_limited",
-            opportunity_id=opportunity_id,
-        )
-
-        return render_opportunity_email_form(
-            opportunity_id,
-            email_value=recipient,
-            email_error=(
-                "Too many email attempts. " "Please wait a minute and try again."
-            ),
-        )
-
     opportunity_url = str(
         request.url_for(
             "opportunity_detail",
@@ -1037,6 +1020,50 @@ def email_opportunity(
         opportunity,
         opportunity_url=opportunity_url,
     )
+
+    # ---------------------------------------------------------------------
+    # EMAIL PREVIEW — START
+    #
+    # Temporary demo behaviour while SES can only send to verified
+    # recipients. Remove this block when normal email delivery is available.
+    # ---------------------------------------------------------------------
+    if True:
+        log_event(
+            request,
+            "opportunity_email_previewed",
+            opportunity_id=opportunity_id,
+        )
+
+        return templates.TemplateResponse(
+            request,
+            "opportunity_email_preview.html",
+            {
+                "recipient": recipient,
+                "subject": subject,
+                "body": body,
+            },
+            headers={
+                "Cache-Control": "no-store",
+            },
+        )
+    # ---------------------------------------------------------------------
+    # EMAIL PREVIEW — END
+    # ---------------------------------------------------------------------
+
+    if not opportunity_email_rate_limiter.allow(request.state.visitor_id):
+        log_event(
+            request,
+            "opportunity_email_rate_limited",
+            opportunity_id=opportunity_id,
+        )
+
+        return render_opportunity_email_form(
+            opportunity_id,
+            email_value=recipient,
+            email_error=(
+                "Too many email attempts. Please wait a minute and try again."
+            ),
+        )
 
     try:
         send_opportunity_email(
@@ -1055,7 +1082,7 @@ def email_opportunity(
         return render_opportunity_email_form(
             opportunity_id,
             email_value=recipient,
-            email_error=("We couldn't send the email. " "Please try again."),
+            email_error=("We couldn't send the email. Please try again."),
         )
 
     log_event(

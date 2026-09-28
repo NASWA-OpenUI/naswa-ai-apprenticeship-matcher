@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Email preview — Registered Apprenticeship Finder{% endblock %}
+
+{% block page_heading %}Email preview{% endblock %}
+
+{% block content %}
+<div class="email-preview">
+
+    <div class="email-preview__envelope">
+        <dl class="email-preview__meta">
+            <div>
+                <dt>To</dt>
+                <dd>{{ recipient }}</dd>
+            </div>
+
+            <div>
+                <dt>Subject</dt>
+                <dd>{{ subject }}</dd>
+            </div>
+        </dl>
+
+        <div class="email-preview__message">
+            {% for line in body.splitlines() %}
+
+            {% if loop.index == 1 %}
+            <p class="email-preview__title">
+                {{ line }}
+            </p>
+
+            {% elif line in ["How to apply", "More information"] %}
+            <p class="email-preview__heading">
+                <strong>{{ line }}</strong>
+            </p>
+
+            {% elif line %}
+            <p class="email-preview__line">
+                {{ line | urlize }}
+            </p>
+
+            {% else %}
+            <div class="email-preview__space" aria-hidden="true"></div>
+            {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

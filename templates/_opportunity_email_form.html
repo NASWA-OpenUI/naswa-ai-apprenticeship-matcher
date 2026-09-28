@@ -34,8 +34,8 @@
 
     {% else %}
 
-    <form class="opportunity-email-form" hx-post="/opportunities/{{ opportunity_id }}/email"
-        hx-target="#opportunity-email-state" hx-swap="outerHTML" hx-disabled-elt="#opportunity-email-submit">
+    <form class="opportunity-email-form" action="/opportunities/{{ opportunity_id }}/email" method="post"
+        target="_blank">
         <div class="modal-body opportunity-email-body">
 
             <div class="opportunity-email-field">
@@ -64,7 +64,7 @@
         <div class="modal-foot">
             <button id="opportunity-email-submit" type="submit" class="btn btn--filled opportunity-email-submit">
                 <span class="opportunity-email-submit__default">
-                    Send email
+                    Preview email
                 </span>
                 <span class="opportunity-email-submit__loading">
                     Sending…

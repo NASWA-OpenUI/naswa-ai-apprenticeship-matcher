@@ -4339,3 +4339,81 @@ p.earnings__summary {
     flex-direction: column;
   }
 }
+
+/* ── Opportunity email preview ─────────────────────────────────────────── */
+
+.email-preview {
+  width: 100%;
+  max-width: 720px;
+}
+
+.email-preview__envelope {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface);
+  box-shadow: var(--app-shadow-sm);
+  overflow: hidden;
+}
+
+.email-preview__meta {
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-surface-muted);
+}
+
+.email-preview__meta>div {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.35rem 0;
+}
+
+.email-preview__meta dt {
+  color: var(--app-text-weak);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.email-preview__meta dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.email-preview__message {
+  padding: 1.5rem;
+  line-height: 1.5;
+}
+
+.email-preview__title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.email-preview__heading {
+  margin: 1.5rem 0 -0.5rem;
+  color: var(--app-ink);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.email-preview__line {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.email-preview__line a {
+  color: var(--app-link);
+  text-decoration: underline;
+}
+
+.email-preview__space {
+  height: 1rem;
+}
+
+.email-preview__note {
+  margin-top: 0.75rem;
+}

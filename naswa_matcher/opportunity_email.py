@@ -49,24 +49,6 @@ def build_opportunity_email(
     if location:
         lines.append(location)
 
-    # Links
-    lines.extend(
-        [
-            "",
-            "View in the Registered Apprenticeship Finder",
-            opportunity_url,
-        ]
-    )
-
-    if detail["source_url"]:
-        lines.extend(
-            [
-                "",
-                "View original New York State Department of Labor posting",
-                detail["source_url"],
-            ]
-        )
-
     # Hero metadata
     summary_lines = []
 
@@ -86,6 +68,24 @@ def build_opportunity_email(
 
     if summary_lines:
         lines.extend(["", *summary_lines])
+
+    # Links
+    lines.extend(
+        [
+            "",
+            "View in the Registered Apprenticeship Finder",
+            opportunity_url,
+        ]
+    )
+
+    if detail["source_url"]:
+        lines.extend(
+            [
+                "",
+                "View original New York State Department of Labor posting",
+                detail["source_url"],
+            ]
+        )
 
     # How to apply
     application_lines = []
